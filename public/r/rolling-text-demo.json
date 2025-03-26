@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rolling-text-demo",
+  "type": "registry:example",
+  "title": "Rolling Text Demo",
+  "description": "Demo showing an animated rolling text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/rolling-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/rolling-text-demo.tsx",
+      "content": "import { RollingText } from '@/registry/text/rolling-text';\n\nexport const RollingTextDemo = () => {\n  return <RollingText className=\"text-2xl\" text=\"Rolling Text\" />;\n};\n",
+      "type": "registry:example",
+      "target": "components/animate-ui/rolling-text-demo.tsx"
+    }
+  ]
+}

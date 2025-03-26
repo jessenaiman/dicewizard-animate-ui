@@ -1,0 +1,491 @@
+{
+  "name": "Animate UI",
+  "homepage": "https://animate-ui.com",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "tailwindcss-animate",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "tailwind": {
+        "config": {
+          "plugins": ["require(\"tailwindcss-animate\")"]
+        }
+      },
+      "cssVars": {}
+    },
+
+    {
+      "name": "liquid-button",
+      "type": "registry:ui",
+      "title": "Liquid Button",
+      "description": "A liquid button component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/buttons/liquid-button.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/liquid-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-button-demo",
+      "type": "registry:example",
+      "title": "Liquid Button Demo",
+      "description": "Demo showing an animated button with liquid effect.",
+      "registryDependencies": ["https://animate-ui.com/r/liquid-button"],
+      "files": [
+        {
+          "path": "registry/demo/buttons/liquid-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/liquid-button-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "radix-tabs",
+      "type": "registry:ui",
+      "title": "Radix Tabs",
+      "description": "Radix UI tabs component",
+      "dependencies": ["motion", "@radix-ui/react-tabs"],
+      "files": [
+        {
+          "path": "registry/radix/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-tabs-demo",
+      "type": "registry:example",
+      "title": "Radix Tabs Demo",
+      "description": "Demo showing an animated Radix UI tabs.",
+      "registryDependencies": ["https://animate-ui.com/r/radix-tabs"],
+      "files": [
+        {
+          "path": "registry/demo/radix/tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/radix-tabs-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/components/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs-demo",
+      "type": "registry:example",
+      "title": "Tabs Demo",
+      "description": "Demo showing an animated tabs.",
+      "registryDependencies": ["https://animate-ui.com/r/tabs"],
+      "files": [
+        {
+          "path": "registry/demo/components/tabs-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/tabs-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "typing-text",
+      "type": "registry:ui",
+      "title": "Typing Text",
+      "description": "Typing text component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/text/typing-text.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/typing-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typing-text-demo",
+      "type": "registry:example",
+      "title": "Typing Text Demo",
+      "description": "Demo showing an animated typing text.",
+      "registryDependencies": ["https://animate-ui.com/r/typing-text"],
+      "files": [
+        {
+          "path": "registry/demo/text/typing-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/typing-text-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "radix-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox component",
+      "dependencies": ["motion", "@radix-ui/react-checkbox"],
+      "files": [
+        {
+          "path": "registry/radix/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-checkbox-demo",
+      "type": "registry:example",
+      "title": "Checkbox Demo",
+      "description": "Demo showing an animated checkbox.",
+      "registryDependencies": ["https://animate-ui.com/r/radix-checkbox"],
+      "files": [
+        {
+          "path": "registry/demo/radix/checkbox-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/radix-checkbox-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "stars-background",
+      "type": "registry:ui",
+      "title": "Stars Background",
+      "description": "Stars background component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/backgrounds/stars.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/stars-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stars-background-demo",
+      "type": "registry:example",
+      "title": "Stars Background Demo",
+      "description": "Demo showing an animated stars background.",
+      "registryDependencies": ["https://animate-ui.com/r/stars-background"],
+      "files": [
+        {
+          "path": "registry/demo/backgrounds/stars-background-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/stars-background-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "gradient-background",
+      "type": "registry:ui",
+      "title": "Gradient Background",
+      "description": "Gradient background component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/backgrounds/gradient.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/gradient-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gradient-background-demo",
+      "type": "registry:example",
+      "title": "Gradient Background Demo",
+      "description": "Demo showing an animated gradient background.",
+      "registryDependencies": ["https://animate-ui.com/r/gradient-background"],
+      "files": [
+        {
+          "path": "registry/demo/backgrounds/gradient-background-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/gradient-background-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "highlight-text",
+      "type": "registry:ui",
+      "title": "Highlight Text",
+      "description": "Highlight text component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/text/highlight-text.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/highlight-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "highlight-text-demo",
+      "type": "registry:example",
+      "title": "Highlight Text Demo",
+      "description": "Demo showing an animated highlight text.",
+      "registryDependencies": ["https://animate-ui.com/r/highlight-text"],
+      "files": [
+        {
+          "path": "registry/demo/text/highlight-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/highlight-text-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "radix-switch",
+      "type": "registry:ui",
+      "title": "Radix Switch",
+      "description": "Radix UI switch component",
+      "dependencies": ["motion", "@radix-ui/react-switch"],
+      "files": [
+        {
+          "path": "registry/radix/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-switch-demo",
+      "type": "registry:example",
+      "title": "Radix Switch Demo",
+      "description": "Demo showing an animated radix switch.",
+      "registryDependencies": ["https://animate-ui.com/r/radix-switch"],
+      "files": [
+        {
+          "path": "registry/demo/radix/switch-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/radix-switch-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "rolling-text",
+      "type": "registry:ui",
+      "title": "Rolling Text",
+      "description": "Rolling text component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/text/rolling-text.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/rolling-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rolling-text-demo",
+      "type": "registry:example",
+      "title": "Rolling Text Demo",
+      "description": "Demo showing an animated rolling text.",
+      "registryDependencies": ["https://animate-ui.com/r/rolling-text"],
+      "files": [
+        {
+          "path": "registry/demo/text/rolling-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/rolling-text-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "bubble-background",
+      "type": "registry:ui",
+      "title": "Bubble Background",
+      "description": "Bubble background component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/backgrounds/bubble.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/bubble-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bubble-background-demo",
+      "type": "registry:example",
+      "title": "Bubble Background Demo",
+      "description": "Demo showing an animated bubble background.",
+      "registryDependencies": ["https://animate-ui.com/r/bubble-background"],
+      "files": [
+        {
+          "path": "registry/demo/backgrounds/bubble-background-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/bubble-background-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "writing-text",
+      "type": "registry:ui",
+      "title": "Writing Text",
+      "description": "Writing text component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/text/writing-text.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/writing-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "writing-text-demo",
+      "type": "registry:example",
+      "title": "Writing Text Demo",
+      "description": "Demo showing an animated writing text.",
+      "registryDependencies": ["https://animate-ui.com/r/writing-text"],
+      "files": [
+        {
+          "path": "registry/demo/text/writing-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/writing-text-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "sliding-number",
+      "type": "registry:ui",
+      "title": "Sliding Number",
+      "description": "Sliding number component",
+      "dependencies": ["motion", "react-use-measure"],
+      "files": [
+        {
+          "path": "registry/text/sliding-number.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/sliding-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sliding-number-demo",
+      "type": "registry:example",
+      "title": "Sliding Number Demo",
+      "description": "Demo showing an animated sliding number.",
+      "registryDependencies": ["https://animate-ui.com/r/sliding-number"],
+      "files": [
+        {
+          "path": "registry/demo/text/sliding-number-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/sliding-number-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "radix-tooltip",
+      "type": "registry:ui",
+      "title": "Radix Tooltip",
+      "description": "Radix UI tooltip component",
+      "dependencies": ["motion", "@radix-ui/react-tooltip"],
+      "files": [
+        {
+          "path": "registry/radix/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-tooltip-demo",
+      "type": "registry:example",
+      "title": "Radix Tooltip Demo",
+      "description": "Demo showing an animated radix tooltip.",
+      "registryDependencies": ["https://animate-ui.com/r/radix-tooltip"],
+      "files": [
+        {
+          "path": "registry/demo/radix/tooltip-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/radix-tooltip-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "counter",
+      "type": "registry:ui",
+      "title": "Counter",
+      "description": "Counter component",
+      "dependencies": ["motion"],
+      "registryDependencies": [
+        "button",
+        "https://animate-ui.com/r/sliding-number"
+      ],
+      "files": [
+        {
+          "path": "registry/components/counter.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/counter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "counter-demo",
+      "type": "registry:example",
+      "title": "Counter Demo",
+      "description": "Demo showing an animated counter.",
+      "registryDependencies": ["https://animate-ui.com/r/counter"],
+      "files": [
+        {
+          "path": "registry/demo/components/counter-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/counter-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "radix-accordion",
+      "type": "registry:ui",
+      "title": "Radix Accordion",
+      "description": "Radix UI accordion component",
+      "dependencies": ["motion", "@radix-ui/react-accordion"],
+      "files": [
+        {
+          "path": "registry/radix/accordion.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-accordion-demo",
+      "type": "registry:example",
+      "title": "Radix Accordion Demo",
+      "description": "Demo showing an animated radix accordion.",
+      "registryDependencies": ["https://animate-ui.com/r/radix-accordion"],
+      "files": [
+        {
+          "path": "registry/demo/radix/accordion-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/radix-accordion-demo.tsx"
+        }
+      ]
+    }
+  ]
+}

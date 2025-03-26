@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars-background-demo",
+  "type": "registry:example",
+  "title": "Stars Background Demo",
+  "description": "Demo showing an animated stars background.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/stars-background"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/stars-background-demo.tsx",
+      "content": "import { StarsBackground } from '@/registry/backgrounds/stars';\n\nexport const StarsBackgroundDemo = () => {\n  return (\n    <StarsBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\">\n      <h1 className=\"text-3xl font-bold text-white\">Stars Background</h1>\n    </StarsBackground>\n  );\n};\n",
+      "type": "registry:example",
+      "target": "components/animate-ui/stars-background-demo.tsx"
+    }
+  ]
+}

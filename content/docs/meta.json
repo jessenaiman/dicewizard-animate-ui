@@ -1,0 +1,28 @@
+{
+  "title": "Animate UI",
+  "root": true,
+  "pages": [
+    "index",
+    "---Components---",
+    "components/counter",
+    "components/tabs",
+    "---Radix UI---",
+    "radix/radix-accordion",
+    "radix/radix-checkbox",
+    "radix/radix-switch",
+    "radix/radix-tabs",
+    "radix/radix-tooltip",
+    "---Buttons---",
+    "buttons/liquid-button",
+    "---Text Animations---",
+    "text-animations/highlight-text",
+    "text-animations/rolling-text",
+    "text-animations/sliding-number",
+    "text-animations/typing-text",
+    "text-animations/writing-text",
+    "---Backgrounds---",
+    "backgrounds/bubble-background",
+    "backgrounds/gradient-background",
+    "backgrounds/stars-background"
+  ]
+}

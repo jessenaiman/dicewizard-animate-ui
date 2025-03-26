@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight-text-demo",
+  "type": "registry:example",
+  "title": "Highlight Text Demo",
+  "description": "Demo showing an animated highlight text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/highlight-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/highlight-text-demo.tsx",
+      "content": "import { HighlightText } from '@/registry/text/highlight-text';\n\nexport const HighlightTextDemo = () => {\n  return <HighlightText className=\"text-2xl\">Highlight Text</HighlightText>;\n};\n",
+      "type": "registry:example",
+      "target": "components/animate-ui/highlight-text-demo.tsx"
+    }
+  ]
+}

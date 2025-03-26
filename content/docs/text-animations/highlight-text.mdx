@@ -1,0 +1,45 @@
+---
+title: Highlight Text
+description: A text component that smoothly reveals an animated highlight effect.
+---
+
+<ComponentPreview name="highlight-text-demo" />
+
+## Installation
+
+<ComponentInstallation name="highlight-text" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    startOnView: {
+      description: 'Whether the animation should start on view',
+      type: 'boolean',
+      default: 'false',
+      required: false,
+    },
+    duration: {
+      description: 'The duration of the animation',
+      type: 'number',
+      default: '2',
+      required: false,
+    },
+    delay: {
+      description: 'The delay of the animation',
+      type: 'number',
+      default: '0',
+      required: false,
+    },
+  }}
+/>

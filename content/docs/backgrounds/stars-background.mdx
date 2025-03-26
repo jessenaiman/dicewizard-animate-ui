@@ -1,0 +1,51 @@
+---
+title: Stars Background
+description: A dark, interactive background featuring animated dots of varying sizes and speeds, simulating a dynamic and immersive starry space effect.
+---
+
+<ComponentPreview name="stars-background-demo" />
+
+## Installation
+
+<ComponentInstallation name="stars-background" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    factor: {
+      description: 'The factor of the component',
+      type: 'number',
+      default: '0.05',
+      required: false,
+    },
+    speed: {
+      description: 'The speed of the component',
+      type: 'number',
+      default: '50',
+      required: false,
+    },
+    stiffness: {
+      description: 'The stiffness of the component',
+      type: 'number',
+      default: '50',
+      required: false,
+    },
+    damping: {
+      description: 'The damping of the component',
+      type: 'number',
+      default: '20',
+      required: false,
+    },
+  }}
+/>

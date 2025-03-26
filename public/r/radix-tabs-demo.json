@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-tabs-demo",
+  "type": "registry:example",
+  "title": "Radix Tabs Demo",
+  "description": "Demo showing an animated Radix UI tabs.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/tabs-demo.tsx",
+      "content": "import {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n  TabsContents,\n} from '@/registry/radix/tabs';\n\nexport const TabsDemo = () => {\n  return (\n    <Tabs\n      defaultValue=\"tab1\"\n      className=\"w-[400px] bg-neutral-100 dark:bg-neutral-800 rounded-lg p-0.5\"\n    >\n      <TabsList className=\"grid w-full grid-cols-3\">\n        <TabsTrigger value=\"tab1\">Tab 1</TabsTrigger>\n        <TabsTrigger value=\"tab2\">Tab 2</TabsTrigger>\n        <TabsTrigger value=\"tab3\">Tab 3</TabsTrigger>\n      </TabsList>\n\n      <TabsContents className=\"mx-1 mb-1 -mt-1.5 rounded-sm bg-background h-full overflow-y-hidden\">\n        <TabsContent value=\"tab1\" className=\"grid grid-cols-2 gap-1.5 p-1.5\">\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n        </TabsContent>\n        <TabsContent value=\"tab2\" className=\"grid grid-cols-2 gap-1.5 p-1.5\">\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n        </TabsContent>\n        <TabsContent value=\"tab3\" className=\"grid grid-cols-2 gap-1.5 p-1.5\">\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n};\n",
+      "type": "registry:example",
+      "target": "components/animate-ui/radix-tabs-demo.tsx"
+    }
+  ]
+}
