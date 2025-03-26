@@ -5,6 +5,52 @@ import { motion } from 'motion/react';
 import { Logo } from '@/components/logo';
 import { Hero } from '@/components/hero';
 
+const logoWrapperVariants = {
+  center: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: '100%',
+  },
+  topLeft: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 'auto',
+    height: 'auto',
+  },
+};
+
+const logoVariants = {
+  center: {
+    top: '50%',
+    left: '50%',
+    x: '-50%',
+    y: '-50%',
+    scale: 1,
+  },
+  topLeft: {
+    top: 20,
+    left: -43,
+    x: 0,
+    y: 0,
+    scale: 0.6,
+  },
+};
+
+const contentVariants = {
+  hidden: {
+    y: 2000,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: 'spring', stiffness: 100, damping: 30 },
+  },
+};
+
 export default function HomePage() {
   const [transition, setTransition] = useState(false);
 
@@ -14,52 +60,6 @@ export default function HomePage() {
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
-
-  const logoWrapperVariants = {
-    center: {
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      height: '100%',
-    },
-    topLeft: {
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 'auto',
-      height: 'auto',
-    },
-  };
-
-  const logoVariants = {
-    center: {
-      top: '50%',
-      left: '50%',
-      x: '-50%',
-      y: '-50%',
-      scale: 1,
-    },
-    topLeft: {
-      top: 20,
-      left: -43,
-      x: 0,
-      y: 0,
-      scale: 0.6,
-    },
-  };
-
-  const contentVariants = {
-    hidden: {
-      y: 2000,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: 'spring', stiffness: 100, damping: 30 },
-    },
-  };
 
   return (
     <main className="relative h-screen">
@@ -84,7 +84,7 @@ export default function HomePage() {
             animate={transition ? 'topLeft' : 'center'}
             transition={{ type: 'spring', stiffness: 200, damping: 30 }}
           >
-            <Logo className="h-14" draw />
+            <Logo size="xl" draw betaTag />
           </motion.div>
         </div>
       </motion.div>

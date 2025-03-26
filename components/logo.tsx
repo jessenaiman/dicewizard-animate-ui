@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { motion, type SVGMotionProps } from 'motion/react';
 
 const pathVariants = {
@@ -17,16 +18,36 @@ const pathVariants = {
   },
 };
 
+const sizes = {
+  sm: {
+    svg: 'h-6',
+    betaTag: 'bottom-[2px] left-[calc(100%+6px)] px-1.5 py-0.5 text-[9px]',
+  },
+  xl: {
+    svg: 'h-14',
+    betaTag: 'bottom-[7px] left-[calc(100%+15px)] px-2.5 py-1 text-[16px]',
+  },
+};
+
 export const Logo = ({
   betaTag = false,
   draw = false,
+  size = 'sm',
+  className,
+  containerClassName,
   ...props
-}: { betaTag?: boolean; draw?: boolean } & SVGMotionProps<SVGSVGElement>) => {
+}: {
+  containerClassName?: string;
+  betaTag?: boolean;
+  draw?: boolean;
+  size?: keyof typeof sizes;
+} & SVGMotionProps<SVGSVGElement>) => {
   return (
-    <div className="relative">
+    <div className={cn('relative', containerClassName)}>
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 4899.14 783.54"
+        className={cn(sizes[size].svg, className)}
         {...props}
       >
         <motion.path
@@ -42,7 +63,10 @@ export const Logo = ({
 
       {betaTag && (
         <motion.div
-          className="absolute top-[5px] -right-[45px] bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 px-1.5 py-0.5 text-[11px] rounded-full"
+          className={cn(
+            sizes[size].betaTag,
+            'absolute bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-full',
+          )}
           initial={draw ? { opacity: 0 } : undefined}
           animate={draw ? { opacity: 1 } : undefined}
           transition={{ duration: 4, ease: 'easeInOut' }}
