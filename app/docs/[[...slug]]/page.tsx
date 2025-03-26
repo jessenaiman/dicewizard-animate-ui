@@ -11,7 +11,7 @@ import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { ComponentPreview } from '@/components/docs/component-preview';
 import { ComponentInstallation } from '@/components/docs/component-installation';
 import { ExternalLink } from '@/components/docs/external-link';
-
+import { Steps, Step } from 'fumadocs-ui/components/steps';
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
@@ -33,6 +33,8 @@ export default async function Page(props: {
             ComponentInstallation,
             TypeTable,
             ExternalLink,
+            Steps,
+            Step,
           }}
         />
       </DocsBody>

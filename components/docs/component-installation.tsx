@@ -29,8 +29,6 @@ export function ComponentInstallation({
     bun: `bun x --bun shadcn@latest add "${component.command}"`,
   };
 
-  console.log(component, 'component');
-
   return (
     <div
       className={cn(
