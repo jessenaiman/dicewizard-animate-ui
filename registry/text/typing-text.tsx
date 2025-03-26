@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { motion } from 'motion/react';
-
 import { cn } from '@/lib/utils';
+import { useInView } from '@/hooks/use-in-view';
 
 const CursorBlinker = ({ className }: { className?: string }) => {
   return (
@@ -55,45 +55,30 @@ const TypingText = React.forwardRef<HTMLSpanElement, TypingTextProps>(
       cursorClassName,
       ...props
     },
-    forwardedRef,
+    ref,
   ) => {
-    const localRef = React.useRef<HTMLElement | null>(null);
+    const [viewRef, inView] = useInView<HTMLSpanElement>({ threshold: 0.1 });
 
-    const setRef = (node: HTMLElement | null) => {
-      localRef.current = node;
-      if (forwardedRef) {
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else {
-          (forwardedRef as React.RefObject<HTMLElement | null>).current = node;
-        }
-      }
-    };
+    React.useImperativeHandle(ref, () => viewRef.current!);
 
-    const [displayedText, setDisplayedText] = React.useState<string>('');
     const [started, setStarted] = React.useState(false);
+    const [displayedText, setDisplayedText] = React.useState<string>('');
 
     React.useEffect(() => {
-      if (!startOnView) {
+      if (startOnView) {
+        if (inView) {
+          const timeoutId = setTimeout(() => {
+            setStarted(true);
+          }, delay);
+          return () => clearTimeout(timeoutId);
+        }
+      } else {
         const timeoutId = setTimeout(() => {
           setStarted(true);
         }, delay);
         return () => clearTimeout(timeoutId);
       }
-      const observerCallback = ([entry]: IntersectionObserverEntry[]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setStarted(true);
-          }, delay);
-          observer.disconnect();
-        }
-      };
-      const observer = new IntersectionObserver(observerCallback, {
-        threshold: 0.1,
-      });
-      if (localRef.current) observer.observe(localRef.current);
-      return () => observer.disconnect();
-    }, [delay, startOnView]);
+    }, [inView, startOnView, delay]);
 
     React.useEffect(() => {
       if (!started) return;
@@ -154,7 +139,7 @@ const TypingText = React.forwardRef<HTMLSpanElement, TypingTextProps>(
     }, [text, duration, started, loop, holdDelay]);
 
     return (
-      <span ref={setRef} className={className} {...props}>
+      <span ref={viewRef} className={className} {...props}>
         <motion.span>{displayedText}</motion.span>
         {cursor && <CursorBlinker className={cursorClassName} />}
       </span>

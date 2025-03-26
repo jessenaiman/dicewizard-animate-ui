@@ -6,11 +6,9 @@ import { motion, type HTMLMotionProps } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-// Create motion-enabled components for the switch and thumb
 const MotionSwitch = motion.create(SwitchPrimitives.Root);
 const MotionThumb = motion.create(SwitchPrimitives.Thumb);
 
-// Define the Switch component props with optional icons
 type SwitchProps = React.ComponentPropsWithoutRef<
   typeof SwitchPrimitives.Root
 > &

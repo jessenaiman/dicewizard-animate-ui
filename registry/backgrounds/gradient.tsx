@@ -24,7 +24,7 @@ const GradientBackground = React.forwardRef<
         backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
       }}
       transition={{
-        duration: 15,
+        duration,
         ease: 'easeInOut',
         repeat: Infinity,
       }}

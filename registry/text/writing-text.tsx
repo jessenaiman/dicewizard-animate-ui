@@ -8,11 +8,22 @@ interface WritingTextProps
   duration?: number;
   delay?: number;
   startOnView?: boolean;
+  spacing?: number | string;
   text: string;
 }
 
 const WritingText = React.forwardRef<HTMLSpanElement, WritingTextProps>(
-  ({ startOnView = false, delay = 0.5, duration = 2, text, ...props }, ref) => {
+  (
+    {
+      startOnView = false,
+      delay = 0.5,
+      duration = 2,
+      spacing = 5,
+      text,
+      ...props
+    },
+    ref,
+  ) => {
     const words = React.useMemo(() => text.split(' '), [text]);
 
     return (
@@ -20,7 +31,8 @@ const WritingText = React.forwardRef<HTMLSpanElement, WritingTextProps>(
         {words.map((word, index) => (
           <motion.span
             key={index}
-            className="inline-block mr-1 will-change-transform will-change-opacity"
+            className="inline-block will-change-transform will-change-opacity"
+            style={{ marginRight: spacing }}
             initial={{ opacity: 0, y: 10 }}
             {...(startOnView
               ? {

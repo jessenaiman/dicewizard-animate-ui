@@ -1,0 +1,50 @@
+---
+title: Neon Text
+description: A neon text component.
+_bite: 'test'
+_openapi:
+  new: true
+---
+
+<ComponentPreview name="neon-text-demo" />
+
+## Installation
+
+<ComponentInstallation name="neon-text" />
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: 'The text to display',
+      type: 'string',
+      required: true,
+    },
+    duration: {
+      description: 'The duration of the animation',
+      type: 'number',
+      default: '50',
+      required: false,
+    },
+    repeat: {
+      description: 'The number of times to repeat the animation',
+      type: 'number',
+      default: 'Infinity',
+      required: false,
+    },
+    ease: {
+      description: 'The ease of the animation',
+      type: 'string',
+      default: 'linear',
+      required: false,
+    },
+    gradient: {
+      description: 'The gradient of the neon text',
+      type: 'string',
+      default:
+        'linear-gradient(90deg in lch longer hue, oklch(100% 70% 0) 0 0)',
+      required: false,
+    },
+  }}
+/>

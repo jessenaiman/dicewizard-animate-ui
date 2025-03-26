@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     title: 'Animate UI - Animated React Components',
     description:
       'A fully animated, open-source component library built with React, TypeScript, Tailwind CSS, and Motion.',
-    url: 'https://animate-ui.com',
+    url: 'https://www.animate-ui.com',
     siteName: 'Animate UI',
     images: [
       {
-        url: 'https://animate-ui.com/og-image.png',
+        url: 'https://www.animate-ui.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Animate UI - Animated React Components',

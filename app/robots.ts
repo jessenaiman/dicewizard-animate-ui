@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://animate-ui.com/sitemap.xml',
+    sitemap: 'https://www.animate-ui.com/sitemap.xml',
   };
 }
