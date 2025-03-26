@@ -64,7 +64,7 @@ export const Hero = () => {
               variant="neutral"
               asChild
             >
-              <Link href="/docs/components/counter">Browse Components</Link>
+              <Link href="/docs/components">Browse Components</Link>
             </Button>
           </motion.div>
         </div>

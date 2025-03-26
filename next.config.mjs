@@ -4,7 +4,31 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
-  reactStrictMode: true,
+  reactStrictMode: false,
+  async redirects() {
+    return [
+      {
+        source: '/components',
+        destination: '/docs/components/counter',
+        permanent: true,
+      },
+      {
+        source: '/components/:path*',
+        destination: '/docs/components/:path*',
+        permanent: true,
+      },
+      {
+        source: '/docs/components',
+        destination: '/docs/components/counter',
+        permanent: true,
+      },
+      {
+        source: '/r/:path([^.]*)',
+        destination: '/r/:path.json',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withMDX(config);
