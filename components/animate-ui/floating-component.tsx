@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { HTMLMotionProps, motion } from 'motion/react';
 import { cn, getRandomNumber } from '@/lib/utils';
 
-interface FloatingComponentProps extends HTMLMotionProps<'div'> {}
+type FloatingComponentProps = HTMLMotionProps<'div'>;
 
 const FloatingComponent: React.FC<FloatingComponentProps> = ({
   children,
