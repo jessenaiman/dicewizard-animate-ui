@@ -16,7 +16,11 @@
     "dev": "next dev",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "registry:build": "tsx ./scripts/build-registry.mts"
+    "registry:build": "tsx ./scripts/build-registry.mts",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
     "@bprogress/next": "^3.2.10",
@@ -53,6 +57,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.2.0",
     "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
     "tailwindcss": "^4.0.9",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"

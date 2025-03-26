@@ -109,7 +109,7 @@ export const Hero = () => {
 
         <FloatingComponent className="absolute top-20 right-92">
           <TooltipProvider>
-            <Tooltip defaultOpen>
+            <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="neutral">Hover</Button>
               </TooltipTrigger>

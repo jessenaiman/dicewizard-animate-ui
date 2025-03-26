@@ -78,5 +78,6 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
     );
   },
 );
+RollingText.displayName = 'RollingText';
 
 export { RollingText, type RollingTextProps };

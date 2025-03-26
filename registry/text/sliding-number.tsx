@@ -154,6 +154,7 @@ const SlidingNumber = ({
     : [];
   const newDecValue = newDecStr ? parseInt(newDecStr, 10) : 0;
   const prevDecValue = adjustedPrevDec ? parseInt(adjustedPrevDec, 10) : 0;
+
   return (
     <span
       ref={containerRef}
