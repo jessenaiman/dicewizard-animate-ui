@@ -4,7 +4,7 @@ export function OpenInV0Button({ url }: { url: string }) {
   return (
     <Button
       aria-label="Open in v0"
-      className="h-8 gap-1 rounded-md bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black"
+      className="h-8 gap-1 rounded-md px-3 text-xs bg-neutral-950 text-white dark:bg-white dark:text-black hover:opacity-80 transition-opacity"
       asChild
     >
       <a
