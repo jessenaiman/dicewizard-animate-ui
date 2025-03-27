@@ -505,30 +505,30 @@
     },
 
     {
-      "name": "neon-text",
+      "name": "gradient-text",
       "type": "registry:ui",
-      "title": "Neon Text",
-      "description": "Neon text component",
+      "title": "Gradient Text",
+      "description": "Gradient text component",
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "registry/text/neon-text.tsx",
+          "path": "registry/text/gradient-text.tsx",
           "type": "registry:ui",
-          "target": "components/animate-ui/neon-text.tsx"
+          "target": "components/animate-ui/gradient-text.tsx"
         }
       ]
     },
     {
-      "name": "neon-text-demo",
+      "name": "gradient-text-demo",
       "type": "registry:example",
-      "title": "Neon Text Demo",
-      "description": "Demo showing an animated neon text.",
-      "registryDependencies": ["https://animate-ui.com/r/neon-text"],
+      "title": "Gradient Text Demo",
+      "description": "Demo showing an animated gradient text.",
+      "registryDependencies": ["https://animate-ui.com/r/gradient-text"],
       "files": [
         {
-          "path": "registry/demo/text/neon-text-demo.tsx",
+          "path": "registry/demo/text/gradient-text-demo.tsx",
           "type": "registry:example",
-          "target": "components/animate-ui/neon-text-demo.tsx"
+          "target": "components/animate-ui/gradient-text-demo.tsx"
         }
       ]
     }
