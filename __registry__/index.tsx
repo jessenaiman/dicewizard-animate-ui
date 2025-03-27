@@ -743,48 +743,48 @@ export const index: Record<string, any> = {
     command: 'https://animate-ui.com/r/radix-accordion-demo',
     meta: undefined,
   },
-  "neon-text": {
-    name: "neon-text",
-    description: "Neon text component",
+  "gradient-text": {
+    name: "gradient-text",
+    description: "Gradient text component",
     type: "registry:ui",
     dependencies: ["motion"],
     registryDependencies: undefined,
     files: [
   {
-    "path": "registry/text/neon-text.tsx",
+    "path": "registry/text/gradient-text.tsx",
     "type": "registry:ui",
-    "target": "components/animate-ui/neon-text.tsx",
-    "content": "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\n// Define the NeonTextProps interface with a new \"gradient\" prop.\n// This prop expects a full CSS gradient string.\n// All comments are written in English.\ninterface NeonTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  text: string;\n  duration?: number; // Duration of the animation in seconds.\n  repeat?: number; // Number of times the animation should repeat (Infinity for endless).\n  ease?: string; // Easing function for the animation.\n  gradient?: string; // CSS gradient string for the text animation background.\n}\n\n// Use React.forwardRef to forward the ref to the span element.\nconst NeonText = React.forwardRef<HTMLSpanElement, NeonTextProps>(\n  (\n    {\n      text,\n      className,\n      duration = 50,\n      repeat = Infinity,\n      ease = 'linear',\n      gradient = 'linear-gradient(90deg in lch longer hue, oklch(100% 70% 0) 0 0)',\n      ...props\n    },\n    ref,\n  ) => {\n    // Base style for both motion spans using the provided gradient.\n    const baseStyle: React.CSSProperties = {\n      backgroundImage: gradient,\n    };\n\n    return (\n      <span\n        ref={ref}\n        className={cn('relative inline-block', className)}\n        {...props}\n      >\n        {/* Main text animation */}\n        <motion.span\n          className=\"m-0 text-transparent bg-clip-text bg-[length:700%_100%] bg-[position:0%_0%]\"\n          style={baseStyle}\n          initial={{ backgroundPosition: '0% 0%' }}\n          animate={{ backgroundPosition: '500% 100%' }}\n          transition={{ duration, repeat, ease }}\n        >\n          {text}\n        </motion.span>\n        {/* Blurred text animation for neon glow effect */}\n        <motion.span\n          className=\"m-0 absolute top-0 left-0 text-transparent bg-clip-text blur-[8px] mix-blend-plus-lighter bg-[length:700%_100%] bg-[position:0%_0%]\"\n          style={baseStyle}\n          initial={{ backgroundPosition: '0% 0%' }}\n          animate={{ backgroundPosition: '500% 100%' }}\n          transition={{ duration, repeat, ease }}\n        >\n          {text}\n        </motion.span>\n      </span>\n    );\n  },\n);\n\nNeonText.displayName = 'NeonText';\n\nexport { NeonText, type NeonTextProps };"
+    "target": "components/animate-ui/gradient-text.tsx",
+    "content": "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  text: string;\n  duration?: number;\n  repeat?: number;\n  ease?: string;\n  gradient?: string;\n  neon?: boolean;\n}\n\nconst GradientText = React.forwardRef<HTMLSpanElement, GradientTextProps>(\n  (\n    {\n      text,\n      className,\n      duration = 50,\n      repeat = Infinity,\n      ease = 'linear',\n      gradient = 'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',\n      neon = false,\n      ...props\n    },\n    ref,\n  ) => {\n    const baseStyle: React.CSSProperties = {\n      backgroundImage: gradient,\n    };\n\n    return (\n      <span\n        ref={ref}\n        className={cn('relative inline-block', className)}\n        {...props}\n      >\n        <motion.span\n          className=\"m-0 text-transparent bg-clip-text bg-[length:700%_100%] bg-[position:0%_0%]\"\n          style={baseStyle}\n          initial={{ backgroundPosition: '0% 0%' }}\n          animate={{ backgroundPosition: '500% 100%' }}\n          transition={{ duration, repeat, ease }}\n        >\n          {text}\n        </motion.span>\n\n        {neon && (\n          <motion.span\n            className=\"m-0 absolute top-0 left-0 text-transparent bg-clip-text blur-[8px] mix-blend-plus-lighter bg-[length:700%_100%] bg-[position:0%_0%]\"\n            style={baseStyle}\n            initial={{ backgroundPosition: '0% 0%' }}\n            animate={{ backgroundPosition: '500% 100%' }}\n            transition={{ duration, repeat, ease }}\n          >\n            {text}\n          </motion.span>\n        )}\n      </span>\n    );\n  },\n);\n\nGradientText.displayName = 'GradientText';\n\nexport { GradientText, type GradientTextProps };"
   }
 ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/text/neon-text.tsx")
+      const mod = await import("@/registry/text/gradient-text.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    command: 'https://animate-ui.com/r/neon-text',
+    command: 'https://animate-ui.com/r/gradient-text',
     meta: undefined,
   },
-  "neon-text-demo": {
-    name: "neon-text-demo",
-    description: "Demo showing an animated neon text.",
+  "gradient-text-demo": {
+    name: "gradient-text-demo",
+    description: "Demo showing an animated gradient text.",
     type: "registry:example",
     dependencies: undefined,
-    registryDependencies: ["https://animate-ui.com/r/neon-text"],
+    registryDependencies: ["https://animate-ui.com/r/gradient-text"],
     files: [
   {
-    "path": "registry/demo/text/neon-text-demo.tsx",
+    "path": "registry/demo/text/gradient-text-demo.tsx",
     "type": "registry:example",
-    "target": "components/animate-ui/neon-text-demo.tsx",
-    "content": "import { NeonText } from '@/registry/text/neon-text';\n\nexport const NeonTextDemo = () => {\n  return <NeonText className=\"text-4xl font-bold\" text=\"Hello World\" />;\n};"
+    "target": "components/animate-ui/gradient-text-demo.tsx",
+    "content": "import { GradientText } from '@/registry/text/gradient-text';\n\nexport const GradientTextDemo = () => {\n  return <GradientText className=\"text-4xl font-bold\" text=\"Hello World\" />;\n};"
   }
 ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/demo/text/neon-text-demo.tsx")
+      const mod = await import("@/registry/demo/text/gradient-text-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    command: 'https://animate-ui.com/r/neon-text-demo',
+    command: 'https://animate-ui.com/r/gradient-text-demo',
     meta: undefined,
   },
   }

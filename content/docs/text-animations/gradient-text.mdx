@@ -1,16 +1,16 @@
 ---
-title: Neon Text
-description: A neon text component.
+title: Gradient Text
+description: A gradient text component.
 _bite: 'test'
 _openapi:
   new: true
 ---
 
-<ComponentPreview name="neon-text-demo" />
+<ComponentPreview name="gradient-text-demo" />
 
 ## Installation
 
-<ComponentInstallation name="neon-text" />
+<ComponentInstallation name="gradient-text" />
 
 ## Props
 
@@ -43,7 +43,13 @@ _openapi:
       description: 'The gradient of the neon text',
       type: 'string',
       default:
-        'linear-gradient(90deg in lch longer hue, oklch(100% 70% 0) 0 0)',
+        'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',
+      required: false,
+    },
+    neon: {
+      description: 'Use a neon effect',
+      type: 'boolean',
+      default: 'false',
       required: false,
     },
   }}
