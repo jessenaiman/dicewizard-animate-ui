@@ -18,6 +18,7 @@
     "buttons/liquid-button",
     "---Text Animations---",
     "text-animations/highlight-text",
+    "text-animations/neon-text",
     "text-animations/rolling-text",
     "text-animations/sliding-number",
     "text-animations/typing-text",

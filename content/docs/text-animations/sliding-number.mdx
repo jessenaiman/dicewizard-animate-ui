@@ -23,28 +23,22 @@ description: A numeric display component that smoothly animates number changes w
       type: 'number',
       required: true,
     },
-    stiffness: {
-      description: 'The stiffness of the animation',
-      type: 'number',
-      default: '180',
-      required: false,
-    },
-    damping: {
-      description: 'The damping of the animation',
-      type: 'number',
-      default: '20',
-      required: false,
-    },
-    mass: {
-      description: 'The mass of the animation',
-      type: 'number',
-      default: '0.4',
-      required: false,
-    },
     startOnView: {
       description: 'Whether the animation should start on view',
       type: 'boolean',
       default: 'false',
+      required: false,
+    },
+    padStart: {
+      description: 'Whether to pad the start of the number with a zero',
+      type: 'boolean',
+      default: 'false',
+      required: false,
+    },
+    decimalSeparator: {
+      description: 'The decimal separator to use',
+      type: 'string',
+      default: '.',
       required: false,
     },
   }}

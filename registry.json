@@ -21,6 +21,20 @@
     },
 
     {
+      "name": "use-in-view",
+      "type": "registry:hook",
+      "title": "Use In View",
+      "description": "Custom hook to detect when an element is in view.",
+      "files": [
+        {
+          "path": "registry/hooks/use-in-view.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-in-view.ts"
+        }
+      ]
+    },
+
+    {
       "name": "liquid-button",
       "type": "registry:ui",
       "title": "Liquid Button",
@@ -113,6 +127,7 @@
       "title": "Typing Text",
       "description": "Typing text component",
       "dependencies": ["motion"],
+      "registryDependencies": ["https://animate-ui.com/r/use-in-view"],
       "files": [
         {
           "path": "registry/text/typing-text.tsx",
@@ -374,6 +389,7 @@
       "title": "Sliding Number",
       "description": "Sliding number component",
       "dependencies": ["motion", "react-use-measure"],
+      "registryDependencies": ["https://animate-ui.com/r/use-in-view"],
       "files": [
         {
           "path": "registry/text/sliding-number.tsx",
@@ -484,6 +500,35 @@
           "path": "registry/demo/radix/accordion-demo.tsx",
           "type": "registry:example",
           "target": "components/animate-ui/radix-accordion-demo.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "neon-text",
+      "type": "registry:ui",
+      "title": "Neon Text",
+      "description": "Neon text component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/text/neon-text.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/neon-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neon-text-demo",
+      "type": "registry:example",
+      "title": "Neon Text Demo",
+      "description": "Demo showing an animated neon text.",
+      "registryDependencies": ["https://animate-ui.com/r/neon-text"],
+      "files": [
+        {
+          "path": "registry/demo/text/neon-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animate-ui/neon-text-demo.tsx"
         }
       ]
     }

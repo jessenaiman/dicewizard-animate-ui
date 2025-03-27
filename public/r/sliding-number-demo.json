@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/sliding-number-demo.tsx",
-      "content": "import { SlidingNumber } from '@/registry/text/sliding-number';\n\nexport const SlidingNumberDemo = () => {\n  return <SlidingNumber number={18937932} className=\"text-2xl\" />;\n};\n",
+      "content": "import { SlidingNumber } from '@/registry/text/sliding-number';\n\nexport const SlidingNumberDemo = () => {\n  return <SlidingNumber number={18937932} padStart className=\"text-4xl\" />;\n};\n",
       "type": "registry:example",
       "target": "components/animate-ui/sliding-number-demo.tsx"
     }

@@ -24,7 +24,7 @@ const Tooltip: React.FC<
       setIsOpen(open);
       props.onOpenChange?.(open);
     },
-    [props.onOpenChange],
+    [props],
   );
 
   return (

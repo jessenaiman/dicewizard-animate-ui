@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-background-demo",
+  "type": "registry:example",
+  "title": "Gooey Background Demo",
+  "description": "Demo showing an animated gooey background.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/gooey-background"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/gooey-background-demo.tsx",
+      "content": "import { GooeyBackground } from '@/registry/backgrounds/gooey';\n\nexport const GooeyBackgroundDemo = () => {\n  return (\n    <GooeyBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\">\n      <h1 className=\"text-3xl font-bold text-white z-10\">Gooey Background</h1>\n    </GooeyBackground>\n  );\n};\n",
+      "type": "registry:example",
+      "target": "components/animate-ui/gooey-background-demo.tsx"
+    }
+  ]
+}
