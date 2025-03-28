@@ -5,7 +5,7 @@ import {
   AccordionContent,
 } from '@/registry/radix/radix-accordion';
 
-export const AccordionDemo = () => {
+export const RadixAccordionDemo = () => {
   return (
     <Accordion
       type="single"

@@ -6,7 +6,7 @@ import {
   TabsContents,
 } from '@/registry/radix/radix-tabs';
 
-export const TabsDemo = () => {
+export const RadixTabsDemo = () => {
   return (
     <Tabs
       defaultValue="tab1"

@@ -6,7 +6,7 @@ import {
   TooltipTrigger,
 } from '@/registry/radix/radix-tooltip';
 
-export const TooltipDemo = () => {
+export const RadixTooltipDemo = () => {
   return (
     <TooltipProvider>
       <Tooltip defaultOpen>
