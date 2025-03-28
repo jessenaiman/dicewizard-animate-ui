@@ -6,7 +6,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContents,
-} from '@/registry/radix/tabs';
+} from '@/registry/radix/radix-tabs';
 import { cn } from '@/lib/utils';
 import { Loader } from 'lucide-react';
 import { Suspense, useMemo } from 'react';

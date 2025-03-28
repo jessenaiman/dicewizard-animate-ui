@@ -1,17 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radix-checkbox-demo",
-  "type": "registry:example",
-  "title": "Checkbox Demo",
-  "description": "Demo showing an animated checkbox.",
+  "type": "registry:ui",
+  "title": "Radix Checkbox Demo",
+  "description": "Demo showing an animated radix checkbox.",
   "registryDependencies": [
     "https://animate-ui.com/r/radix-checkbox"
   ],
   "files": [
     {
-      "path": "registry/demo/radix/checkbox-demo.tsx",
-      "content": "import { Checkbox } from '@/registry/radix/checkbox';\n\nexport const CheckboxDemo = () => {\n  return <Checkbox defaultChecked />;\n};\n",
-      "type": "registry:example",
+      "path": "registry/demo/radix/radix-checkbox-demo/index.tsx",
+      "content": "import { Checkbox } from '@/registry/radix/radix-checkbox';\n\nexport const CheckboxDemo = () => {\n  return <Checkbox defaultChecked />;\n};\n",
+      "type": "registry:ui",
       "target": "components/animate-ui/radix-checkbox-demo.tsx"
     }
   ]

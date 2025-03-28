@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "counter-demo",
-  "type": "registry:example",
+  "type": "registry:ui",
   "title": "Counter Demo",
   "description": "Demo showing an animated counter.",
   "registryDependencies": [
@@ -9,9 +9,9 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/counter-demo.tsx",
+      "path": "registry/demo/components/counter-demo/index.tsx",
       "content": "'use client';\n\nimport * as React from 'react';\n\nimport { Counter } from '@/registry/components/counter';\n\nexport const CounterDemo = () => {\n  const [number, setNumber] = React.useState(100);\n\n  return <Counter number={number} setNumber={setNumber} />;\n};\n",
-      "type": "registry:example",
+      "type": "registry:ui",
       "target": "components/animate-ui/counter-demo.tsx"
     }
   ]

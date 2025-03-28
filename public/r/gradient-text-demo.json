@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gradient-text-demo",
-  "type": "registry:example",
+  "type": "registry:ui",
   "title": "Gradient Text Demo",
   "description": "Demo showing an animated gradient text.",
   "registryDependencies": [
@@ -9,9 +9,9 @@
   ],
   "files": [
     {
-      "path": "registry/demo/text/gradient-text-demo.tsx",
-      "content": "import { GradientText } from '@/registry/text/gradient-text';\n\nexport const GradientTextDemo = () => {\n  return <GradientText className=\"text-4xl font-bold\" text=\"Hello World\" />;\n};\n",
-      "type": "registry:example",
+      "path": "registry/demo/text/gradient-text-demo/index.tsx",
+      "content": "import { GradientText } from '@/registry/text/gradient-text';\n\nexport const GradientTextDemo = () => {\n  return <GradientText className=\"text-4xl font-bold\" text=\"Gradient Text\" />;\n};\n",
+      "type": "registry:ui",
       "target": "components/animate-ui/gradient-text-demo.tsx"
     }
   ]

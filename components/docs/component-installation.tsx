@@ -6,7 +6,7 @@ import {
   TabsTrigger,
   TabsContent,
   TabsContents,
-} from '@/registry/radix/tabs';
+} from '@/registry/radix/radix-tabs';
 import { InstallTabs } from './install-tabs';
 import { ComponentManualInstallation } from './component-manual-installation';
 
@@ -63,6 +63,7 @@ export function ComponentInstallation({
           <TabsContent value="manual">
             <ComponentManualInstallation
               dependencies={component.dependencies}
+              devDependencies={component.devDependencies}
               code={component.files[0].content}
             />
           </TabsContent>

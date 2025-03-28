@@ -6,6 +6,7 @@
     "cli",
     "installation",
     "---Components---",
+    "components/code-editor",
     "components/counter",
     "components/tabs",
     "---Radix UI---",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tabs-demo",
-  "type": "registry:example",
+  "type": "registry:ui",
   "title": "Tabs Demo",
   "description": "Demo showing an animated tabs.",
   "registryDependencies": [
@@ -9,9 +9,9 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/tabs-demo.tsx",
+      "path": "registry/demo/components/tabs-demo/index.tsx",
       "content": "import {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n  TabsContents,\n} from '@/registry/components/tabs';\n\nexport const TabsDemo = () => {\n  return (\n    <Tabs\n      defaultValue=\"tab1\"\n      className=\"w-[400px] bg-neutral-100 dark:bg-neutral-800 rounded-lg p-0.5\"\n    >\n      <TabsList className=\"grid w-full grid-cols-3\">\n        <TabsTrigger value=\"tab1\">Tab 1</TabsTrigger>\n        <TabsTrigger value=\"tab2\">Tab 2</TabsTrigger>\n        <TabsTrigger value=\"tab3\">Tab 3</TabsTrigger>\n      </TabsList>\n\n      <TabsContents className=\"mx-1 mb-1 -mt-1.5 rounded-sm bg-background h-full\">\n        <TabsContent value=\"tab1\" className=\"grid grid-cols-2 gap-1.5 p-1.5\">\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n        </TabsContent>\n        <TabsContent value=\"tab2\" className=\"grid grid-cols-2 gap-1.5 p-1.5\">\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n        </TabsContent>\n        <TabsContent value=\"tab3\" className=\"grid grid-cols-2 gap-1.5 p-1.5\">\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n          <div className=\"h-20 w-full bg-muted rounded-sm\" />\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n};\n",
-      "type": "registry:example",
+      "type": "registry:ui",
       "target": "components/animate-ui/tabs-demo.tsx"
     }
   ]
