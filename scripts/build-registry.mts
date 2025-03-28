@@ -2,7 +2,6 @@ import { exec } from 'child_process';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { rimraf } from 'rimraf';
-import registryItems from '../registry.json';
 
 /**
  * Function to build the merged registry.json file.
@@ -82,6 +81,10 @@ async function getRegistryItemsFromFolder(dir: string) {
  * This function reads the registry.json items and builds a dynamic index file.
  */
 async function buildRegistryIndex() {
+  const registryJsonPath = path.join(process.cwd(), 'registry.json');
+  const registryJsonContent = await fs.readFile(registryJsonPath, 'utf-8');
+  const registryItems = JSON.parse(registryJsonContent);
+
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck

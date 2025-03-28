@@ -16,12 +16,12 @@ export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
 
     if (meta.new) {
       node.name = (
-        <div className="flex items-center gap-3 w-full">
+        <span className="flex items-center gap-3 w-full">
           {node.name}{' '}
           <span className="ms-auto text-[10px] text-nowrap bg-blue-500 text-white rounded-sm leading-1 px-1 py-0.5 h-4.5 font-semibold flex items-center justify-center">
             <span>NEW</span>
           </span>
-        </div>
+        </span>
       );
     }
   }

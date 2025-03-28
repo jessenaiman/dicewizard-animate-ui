@@ -16,6 +16,7 @@
     "radix/radix-tabs",
     "radix/radix-tooltip",
     "---Buttons---",
+    "buttons/flip-button",
     "buttons/liquid-button",
     "---Text Animations---",
     "text-animations/gradient-text",
