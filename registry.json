@@ -368,6 +368,40 @@
       ]
     },
     {
+      "name": "radix-dialog-demo",
+      "type": "registry:ui",
+      "title": "Radix Dialog Demo",
+      "description": "Demo showing an animated radix dialog.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-checkbox",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-dialog-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dialog-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-dialog-from-demo",
+      "type": "registry:ui",
+      "title": "Radix Dialog From Demo",
+      "description": "Demo showing an animated radix dialog.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-checkbox",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-dialog-from-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dialog-from-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-progress-demo",
       "type": "registry:ui",
       "title": "Radix Progress Demo",
@@ -558,6 +592,24 @@
           "path": "registry/radix/radix-checkbox/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Dialog component",
+      "dependencies": [
+        "motion",
+        "lucide-react",
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dialog.tsx"
         }
       ]
     },

@@ -23,6 +23,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/registry/radix/radix-accordion';
+import { RadixProgressDemo } from '@/registry/demo/radix/radix-progress-demo';
 
 export const Hero = () => {
   const { resolvedTheme: theme, setTheme } = useTheme();
@@ -95,7 +96,7 @@ export const Hero = () => {
           />
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-20 right-40">
+        <FloatingComponent className="absolute top-10 right-82">
           <Counter
             number={number}
             setNumber={setNumber}
@@ -105,7 +106,11 @@ export const Hero = () => {
           />
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-20 right-92">
+        <FloatingComponent className="absolute top-34 right-40">
+          <RadixProgressDemo />
+        </FloatingComponent>
+
+        <FloatingComponent className="absolute -top-10 right-76">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -118,7 +123,7 @@ export const Hero = () => {
           </TooltipProvider>
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-46 right-0">
+        <FloatingComponent className="absolute top-48 right-0">
           <Accordion
             type="single"
             defaultValue="item-1"
