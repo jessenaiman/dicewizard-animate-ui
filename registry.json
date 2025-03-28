@@ -104,6 +104,22 @@
       ]
     },
     {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "A ripple button component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/buttons/ripple-button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/ripple-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "code-editor",
       "type": "registry:ui",
       "title": "Code Editor",
@@ -252,6 +268,22 @@
           "path": "registry/demo/buttons/liquid-button-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/liquid-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button-demo",
+      "type": "registry:ui",
+      "title": "Ripple Button Demo",
+      "description": "Demo showing an animated button with ripple effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/ripple-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/buttons/ripple-button-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/ripple-button-demo.tsx"
         }
       ]
     },

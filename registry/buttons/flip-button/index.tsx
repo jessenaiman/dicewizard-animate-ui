@@ -69,7 +69,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
         whileHover="hover"
         whileTap={{ scale: 0.95 }}
         className={cn(
-          'relative inline-block px-6 py-3 text-base font-semibold cursor-pointer perspective-[1000px]',
+          'relative inline-block h-10 px-4 py-2 text-sm font-medium cursor-pointer perspective-[1000px] focus:outline-none',
           className,
         )}
         {...props}

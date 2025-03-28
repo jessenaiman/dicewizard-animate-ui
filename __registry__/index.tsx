@@ -121,7 +121,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/flip-button.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { type HTMLMotionProps, type Variant, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype FlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ninterface FlipButtonProps extends HTMLMotionProps<'button'> {\n  frontText: string;\n  backText: string;\n  stiffness?: number;\n  damping?: number;\n  frontClassName?: string;\n  backClassName?: string;\n  from?: FlipDirection;\n}\n\nconst defaultSpanClassName =\n  'absolute inset-0 flex items-center justify-center rounded-lg';\n\nconst FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(\n  (\n    {\n      frontText,\n      backText,\n      stiffness = 280,\n      damping = 20,\n      className,\n      frontClassName,\n      backClassName,\n      from = 'top',\n      ...props\n    },\n    ref,\n  ) => {\n    const isVertical = from === 'top' || from === 'bottom';\n    const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n    const frontOffset = from === 'top' || from === 'left' ? '50%' : '-50%';\n    const backOffset = from === 'top' || from === 'left' ? '-50%' : '50%';\n\n    const buildVariant = (\n      opacity: number,\n      rotation: number,\n      offset: string | null = null,\n    ): Variant => ({\n      opacity,\n      [rotateAxis]: rotation,\n      ...(isVertical && offset !== null ? { y: offset } : {}),\n      ...(!isVertical && offset !== null ? { x: offset } : {}),\n    });\n\n    const frontVariants = {\n      initial: buildVariant(1, 0, '0%'),\n      hover: buildVariant(0, 90, frontOffset),\n    };\n\n    const backVariants = {\n      initial: buildVariant(0, 90, backOffset),\n      hover: buildVariant(1, 0, '0%'),\n    };\n\n    return (\n      <motion.button\n        ref={ref}\n        initial=\"initial\"\n        whileHover=\"hover\"\n        whileTap={{ scale: 0.95 }}\n        className={cn(\n          'relative inline-block px-6 py-3 text-base font-semibold cursor-pointer perspective-[1000px]',\n          className,\n        )}\n        {...props}\n      >\n        <motion.span\n          variants={frontVariants}\n          transition={{ type: 'spring', stiffness, damping }}\n          className={cn(\n            defaultSpanClassName,\n            'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-white',\n            frontClassName,\n          )}\n        >\n          {frontText}\n        </motion.span>\n        <motion.span\n          variants={backVariants}\n          transition={{ type: 'spring', stiffness, damping }}\n          className={cn(\n            defaultSpanClassName,\n            'bg-neutral-800 text-white dark:bg-white dark:text-neutral-800',\n            backClassName,\n          )}\n        >\n          {backText}\n        </motion.span>\n        <span className=\"invisible\">{frontText}</span>\n      </motion.button>\n    );\n  },\n);\n\nFlipButton.displayName = 'FlipButton';\n\nexport { FlipButton, type FlipButtonProps, type FlipDirection };",
+          "'use client';\n\nimport * as React from 'react';\nimport { type HTMLMotionProps, type Variant, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype FlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ninterface FlipButtonProps extends HTMLMotionProps<'button'> {\n  frontText: string;\n  backText: string;\n  stiffness?: number;\n  damping?: number;\n  frontClassName?: string;\n  backClassName?: string;\n  from?: FlipDirection;\n}\n\nconst defaultSpanClassName =\n  'absolute inset-0 flex items-center justify-center rounded-lg';\n\nconst FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(\n  (\n    {\n      frontText,\n      backText,\n      stiffness = 280,\n      damping = 20,\n      className,\n      frontClassName,\n      backClassName,\n      from = 'top',\n      ...props\n    },\n    ref,\n  ) => {\n    const isVertical = from === 'top' || from === 'bottom';\n    const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n    const frontOffset = from === 'top' || from === 'left' ? '50%' : '-50%';\n    const backOffset = from === 'top' || from === 'left' ? '-50%' : '50%';\n\n    const buildVariant = (\n      opacity: number,\n      rotation: number,\n      offset: string | null = null,\n    ): Variant => ({\n      opacity,\n      [rotateAxis]: rotation,\n      ...(isVertical && offset !== null ? { y: offset } : {}),\n      ...(!isVertical && offset !== null ? { x: offset } : {}),\n    });\n\n    const frontVariants = {\n      initial: buildVariant(1, 0, '0%'),\n      hover: buildVariant(0, 90, frontOffset),\n    };\n\n    const backVariants = {\n      initial: buildVariant(0, 90, backOffset),\n      hover: buildVariant(1, 0, '0%'),\n    };\n\n    return (\n      <motion.button\n        ref={ref}\n        initial=\"initial\"\n        whileHover=\"hover\"\n        whileTap={{ scale: 0.95 }}\n        className={cn(\n          'relative inline-block h-10 px-4 py-2 text-sm font-medium cursor-pointer perspective-[1000px] focus:outline-none',\n          className,\n        )}\n        {...props}\n      >\n        <motion.span\n          variants={frontVariants}\n          transition={{ type: 'spring', stiffness, damping }}\n          className={cn(\n            defaultSpanClassName,\n            'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-white',\n            frontClassName,\n          )}\n        >\n          {frontText}\n        </motion.span>\n        <motion.span\n          variants={backVariants}\n          transition={{ type: 'spring', stiffness, damping }}\n          className={cn(\n            defaultSpanClassName,\n            'bg-neutral-800 text-white dark:bg-white dark:text-neutral-800',\n            backClassName,\n          )}\n        >\n          {backText}\n        </motion.span>\n        <span className=\"invisible\">{frontText}</span>\n      </motion.button>\n    );\n  },\n);\n\nFlipButton.displayName = 'FlipButton';\n\nexport { FlipButton, type FlipButtonProps, type FlipDirection };",
       },
     ],
     component: React.lazy(async () => {
@@ -148,7 +148,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/liquid-button.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, HTMLMotionProps } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nexport type LiquidButtonProps = HTMLMotionProps<'button'>;\n\nexport const LiquidButton = React.forwardRef<\n  HTMLButtonElement,\n  LiquidButtonProps\n>(({ className, ...props }, ref) => {\n  return (\n    <motion.button\n      whileTap={{ scale: 0.95 }}\n      whileHover={{ scale: 1.05 }}\n      className={cn(\n        'relative px-6 py-3 text-base font-semibold text-primary hover:text-primary-foreground !bg-muted [--liquid-button-color:var(--primary)] rounded-lg cursor-pointer overflow-hidden [background:_linear-gradient(var(--liquid-button-color)_0_0)_no-repeat_calc(200%-var(--liquid-button-fill,0%))_100%/200%_var(--liquid-button-fill,0.2em)] hover:[--liquid-button-fill:100%] hover:[--liquid-button-delay:0.3s] [transition:_background_0.3s_var(--liquid-button-delay,0s),_color_0.3s_var(--liquid-button-delay,0s),_background-position_0.3s_calc(0.3s_-_var(--liquid-button-delay,0s))]',\n        className,\n      )}\n      {...props}\n      ref={ref}\n    />\n  );\n});\n\nLiquidButton.displayName = 'LiquidButton';",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, HTMLMotionProps } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype LiquidButtonProps = HTMLMotionProps<'button'>;\n\nconst LiquidButton = React.forwardRef<HTMLButtonElement, LiquidButtonProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <motion.button\n        whileTap={{ scale: 0.95 }}\n        whileHover={{ scale: 1.05 }}\n        className={cn(\n          'relative h-10 px-4 py-2 text-sm font-medium text-primary hover:text-primary-foreground !bg-muted [--liquid-button-color:var(--primary)] rounded-lg cursor-pointer overflow-hidden [background:_linear-gradient(var(--liquid-button-color)_0_0)_no-repeat_calc(200%-var(--liquid-button-fill,0%))_100%/200%_var(--liquid-button-fill,0.2em)] hover:[--liquid-button-fill:100%] hover:[--liquid-button-delay:0.3s] [transition:_background_0.3s_var(--liquid-button-delay,0s),_color_0.3s_var(--liquid-button-delay,0s),_background-position_0.3s_calc(0.3s_-_var(--liquid-button-delay,0s))] focus:outline-none',\n          className,\n        )}\n        {...props}\n        ref={ref}\n      />\n    );\n  },\n);\n\nLiquidButton.displayName = 'LiquidButton';\n\nexport { LiquidButton, type LiquidButtonProps };",
       },
     ],
     component: React.lazy(async () => {
@@ -161,6 +161,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/liquid-button',
+  },
+  'ripple-button': {
+    name: 'ripple-button',
+    description: 'A ripple button component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/buttons/ripple-button/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/ripple-button.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { type HTMLMotionProps, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface Ripple {\n  id: number;\n  x: number;\n  y: number;\n}\n\ninterface RippleButtonProps extends HTMLMotionProps<'button'> {\n  children: React.ReactNode;\n  rippleClassName?: string;\n  duration?: number;\n  ease?: string;\n  scale?: number;\n}\n\nconst RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(\n  (\n    {\n      children,\n      onClick,\n      className,\n      rippleClassName,\n      duration = 0.6,\n      ease = 'easeOut',\n      scale = 10,\n      ...props\n    },\n    ref,\n  ) => {\n    const [ripples, setRipples] = React.useState<Ripple[]>([]);\n    const buttonRef = React.useRef<HTMLButtonElement>(null);\n    React.useImperativeHandle(\n      ref,\n      () => buttonRef.current as HTMLButtonElement,\n    );\n\n    const createRipple = React.useCallback(\n      (event: React.MouseEvent<HTMLButtonElement>) => {\n        const button = buttonRef.current;\n        if (!button) return;\n\n        const rect = button.getBoundingClientRect();\n        const x = event.clientX - rect.left;\n        const y = event.clientY - rect.top;\n\n        const newRipple: Ripple = {\n          id: Date.now(),\n          x,\n          y,\n        };\n\n        setRipples((prev) => [...prev, newRipple]);\n\n        setTimeout(() => {\n          setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));\n        }, 600);\n      },\n      [],\n    );\n\n    const handleClick = React.useCallback(\n      (event: React.MouseEvent<HTMLButtonElement>) => {\n        createRipple(event);\n        if (onClick) {\n          onClick(event);\n        }\n      },\n      [createRipple, onClick],\n    );\n\n    return (\n      <motion.button\n        ref={buttonRef}\n        onClick={handleClick}\n        whileTap={{ scale: 0.95 }}\n        whileHover={{ scale: 1.05 }}\n        className={cn(\n          'relative h-10 px-4 py-2 text-sm font-medium text-primary-foreground overflow-hidden bg-primary cursor-pointer rounded-lg focus:outline-none',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {ripples.map((ripple) => (\n          <motion.span\n            key={ripple.id}\n            initial={{ scale: 0, opacity: 0.5 }}\n            animate={{ scale, opacity: 0 }}\n            transition={{ duration, ease }}\n            className={cn(\n              'absolute bg-white dark:bg-neutral-800 rounded-full size-5 pointer-events-none',\n              rippleClassName,\n            )}\n            style={{\n              top: ripple.y - 10,\n              left: ripple.x - 10,\n            }}\n          />\n        ))}\n      </motion.button>\n    );\n  },\n);\n\nRippleButton.displayName = 'RippleButton';\n\nexport { RippleButton, type RippleButtonProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/buttons/ripple-button/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/ripple-button',
   },
   'code-editor': {
     name: 'code-editor',
@@ -416,6 +443,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/liquid-button-demo',
+  },
+  'ripple-button-demo': {
+    name: 'ripple-button-demo',
+    description: 'Demo showing an animated button with ripple effect.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/ripple-button'],
+    files: [
+      {
+        path: 'registry/demo/buttons/ripple-button-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/ripple-button-demo.tsx',
+        content:
+          "import { RippleButton } from '@/registry/buttons/ripple-button';\n\nexport const RippleButtonDemo = () => {\n  return <RippleButton>Ripple Button</RippleButton>;\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/buttons/ripple-button-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/ripple-button-demo',
   },
   'code-editor-demo': {
     name: 'code-editor-demo',

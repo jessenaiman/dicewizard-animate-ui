@@ -1,6 +1,6 @@
 {
   "name": "animate-ui",
-  "version": "1.0.1-beta.3",
+  "version": "1.0.1-beta.4",
   "description": "Animate UI is a fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion.",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "dev": "next dev",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "registry:build": "tsx ./scripts/build-registry.mts",
+    "registry:build": "pnpm format:write && tsx ./scripts/build-registry.mts && pnpm format:write",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
