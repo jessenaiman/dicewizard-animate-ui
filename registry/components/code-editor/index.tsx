@@ -113,9 +113,9 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         {header && (
           <div className="flex flex-col gap-y-2 p-4 border-b border-neutral-800">
             <div className="flex flex-row gap-x-2">
-              <div className="h-2 w-2 rounded-full bg-red-500"></div>
-              <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
-              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+              <div className="size-2.5 rounded-full bg-red-500"></div>
+              <div className="size-2.5 rounded-full bg-yellow-500"></div>
+              <div className="size-2.5 rounded-full bg-green-500"></div>
             </div>
           </div>
         )}
