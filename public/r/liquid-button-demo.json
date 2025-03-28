@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "liquid-button-demo",
-  "type": "registry:example",
+  "type": "registry:ui",
   "title": "Liquid Button Demo",
   "description": "Demo showing an animated button with liquid effect.",
   "registryDependencies": [
@@ -9,9 +9,9 @@
   ],
   "files": [
     {
-      "path": "registry/demo/buttons/liquid-button-demo.tsx",
+      "path": "registry/demo/buttons/liquid-button-demo/index.tsx",
       "content": "import { LiquidButton } from '@/registry/buttons/liquid-button';\n\nexport const LiquidButtonDemo = () => {\n  return <LiquidButton>Liquid Button</LiquidButton>;\n};\n",
-      "type": "registry:example",
+      "type": "registry:ui",
       "target": "components/animate-ui/liquid-button-demo.tsx"
     }
   ]

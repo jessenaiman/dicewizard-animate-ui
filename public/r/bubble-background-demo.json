@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bubble-background-demo",
-  "type": "registry:example",
+  "type": "registry:ui",
   "title": "Bubble Background Demo",
   "description": "Demo showing an animated bubble background.",
   "registryDependencies": [
@@ -9,9 +9,9 @@
   ],
   "files": [
     {
-      "path": "registry/demo/backgrounds/bubble-background-demo.tsx",
-      "content": "import { BubbleBackground } from '@/registry/backgrounds/bubble';\n\nexport const GradientBackgroundDemo = () => {\n  return (\n    <BubbleBackground\n      interactive\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n    >\n      <h1 className=\"text-3xl font-bold text-white z-10\">\n        Gradient Background\n      </h1>\n    </BubbleBackground>\n  );\n};\n",
-      "type": "registry:example",
+      "path": "registry/demo/backgrounds/bubble-background-demo/index.tsx",
+      "content": "import { BubbleBackground } from '@/registry/backgrounds/bubble-background';\n\nexport const GradientBackgroundDemo = () => {\n  return (\n    <BubbleBackground\n      interactive\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n    >\n      <h1 className=\"text-3xl font-bold text-white z-10\">\n        Gradient Background\n      </h1>\n    </BubbleBackground>\n  );\n};\n",
+      "type": "registry:ui",
       "target": "components/animate-ui/bubble-background-demo.tsx"
     }
   ]

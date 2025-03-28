@@ -1,0 +1,71 @@
+---
+title: Code Editor
+description: A code editor component featuring syntax highlighting and animation.
+_openapi:
+  new: true
+---
+
+<ComponentPreview name="code-editor-demo" />
+
+## Installation
+
+<ComponentInstallation name="code-editor" />
+
+## Props
+
+<TypeTable
+  type={{
+    code: {
+      description: 'The code to display in the editor.',
+      type: 'string',
+      required: true,
+    },
+    lang: {
+      description: 'The language of the code.',
+      type: 'string',
+      required: true,
+    },
+    theme: {
+      description: 'The theme of the code.',
+      type: 'string',
+      required: false,
+      default: 'atom-dark',
+    },
+    duration: {
+      description: 'The duration of the animation.',
+      type: 'number',
+      required: false,
+      default: '5',
+    },
+    delay: {
+      description: 'The delay of the animation.',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+    showLineNumbers: {
+      description: 'Whether to show line numbers.',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    header: {
+      description: 'Whether to show the header.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    cursor: {
+      description: 'Whether to show the cursor.',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    startOnView: {
+      description: 'Whether to start the animation on view.',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+  }}
+/>

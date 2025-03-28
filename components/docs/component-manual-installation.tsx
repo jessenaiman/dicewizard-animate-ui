@@ -12,16 +12,25 @@ import { useRef, useState } from 'react';
 
 export const ComponentManualInstallation = ({
   dependencies,
+  devDependencies,
   code,
 }: {
   dependencies?: string[];
+  devDependencies?: string[];
   code: string;
 }) => {
-  const commands = {
+  const depsCommands = {
     npm: `npm install ${dependencies?.join(' ')}`,
     pnpm: `pnpm add ${dependencies?.join(' ')}`,
     yarn: `yarn add ${dependencies?.join(' ')}`,
     bun: `bun add ${dependencies?.join(' ')}`,
+  };
+
+  const devDepsCommands = {
+    npm: `npm install -D ${devDependencies?.join(' ')}`,
+    pnpm: `pnpm add -D ${devDependencies?.join(' ')}`,
+    yarn: `yarn add -D ${devDependencies?.join(' ')}`,
+    bun: `bun add -D ${devDependencies?.join(' ')}`,
   };
 
   const [isOpened, setIsOpened] = useState(false);
@@ -32,7 +41,14 @@ export const ComponentManualInstallation = ({
       {dependencies && (
         <Step>
           <h4 className="pt-1 pb-4">Install the following dependencies:</h4>
-          <InstallTabs commands={commands} />
+          <InstallTabs commands={depsCommands} />
+        </Step>
+      )}
+
+      {devDependencies && (
+        <Step>
+          <h4 className="pt-1 pb-4">Install the following dev dependencies:</h4>
+          <InstallTabs commands={devDepsCommands} />
         </Step>
       )}
 

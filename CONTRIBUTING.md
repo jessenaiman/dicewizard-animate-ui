@@ -48,9 +48,9 @@ To **add a new component to Animate UI**, you will need to update several files.
 
 ### Create the Component
 
-Create your main component in `registry/[category]/my-component.tsx`.
+Create your main component in `registry/[category]/my-component/index.tsx`.
 
-```tsx title="my-component.tsx"
+```tsx title="my-component/index.tsx"
 'use client';
 
 import * as React from 'react';
@@ -75,10 +75,10 @@ export { MyComponent, type MyComponentProps };
 
 ### Create the Component Demo
 
-Provide a basic demo to showcase your component in `registry/demo/[category]/my-component-demo.tsx`.
+Provide a basic demo to showcase your component in `registry/demo/[category]/my-component-demo/index.tsx`.
 
-```tsx title="my-component-demo.tsx"
-import MyComponent from '@/registry/[category]/my-component'
+```tsx title="my-component-demo/index.tsx"
+import MyComponent from '@/registry/[category]/my-component';
 
 export const MyComponentDemo() {
   return (
@@ -136,51 +136,45 @@ description: Description for the new component
 
 ### Update the Registry
 
-Update the `registry.json` file to export your component and its demo.
+Create a `registry/[category]/my-component/registry-item.json` file to export your component :
 
-```json title="registry.json"
+```json title="my-component/registry-item.json"
 {
-  "name": "Animate UI",
-  "homepage": "https://animate-ui.com",
-  "items": [
-     {
-      "name": "my-component",
-      "type": "registry:ui",
-      "title": "My Component",
-      "description": "Description for the new component",
-      "dependencies": [...],
-      "files": [
-        {
-          "path": "registry/[category]/my-component.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/my-component.tsx"
-        }
-      ]
-    },
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-component",
+  "type": "registry:ui",
+  "title": "My Component",
+  "description": "My Component Description",
+  "dependencies": [...],
+  "devDependencies": [...],
+  "files": [
     {
-      "name": "my-component-demo",
-      "type": "registry:example",
-      "title": "My Component Demo",
-      "description": "New Component Demo",
-      "registryDependencies": ["https://animate-ui.com/r/my-component"],
-      "files": [
-        {
-          "path": "registry/demo/[category]/my-component-demo.tsx",
-          "type": "registry:example",
-          "target": "components/animate-ui/my-component-demo.tsx"
-        }
-      ]
-    },
+      "path": "registry/[category]/my-component/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/my-component.tsx"
+    }
   ]
 }
 ```
 
-### Build the Registry
+And a `registry/demo/[category]/my-component-demo/registry-item.json` file to export its demo :
 
-To update the registry, run the following command:
-
-```bash
-pnpm registry:build
+```json title="my-component-demo/registry-item.json"
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-component-demo",
+  "type": "registry:ui",
+  "title": "My Component Demo",
+  "description": "My Component Demo Description",
+  "registryDependencies": ["https://animate-ui.com/r/my-component"],
+  "files": [
+    {
+      "path": "registry/demo/[category]/my-component-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/my-component-demo.tsx"
+    }
+  ]
+}
 ```
 
 ### Format and Fix Linting Issues
@@ -190,6 +184,14 @@ Before committing your changes, run:
 ```bash
 pnpm format:write
 pnpm lint:fix
+```
+
+### Build the Registry
+
+To update the registry, run the following command:
+
+```bash
+pnpm registry:build
 ```
 
 ## Ask for Help

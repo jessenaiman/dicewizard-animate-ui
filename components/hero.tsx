@@ -7,7 +7,7 @@ import { HighlightText } from '@/registry/text/highlight-text';
 import { motion } from 'motion/react';
 import FloatingComponent from './animate-ui/floating-component';
 import { Tabs, TabsList, TabsTrigger } from '@/registry/components/tabs';
-import { Switch } from '@/registry/radix/switch';
+import { Switch } from '@/registry/radix/radix-switch';
 import { useTheme } from 'next-themes';
 import { Counter } from '@/registry/components/counter';
 import {
@@ -15,14 +15,14 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/registry/radix/tooltip';
+} from '@/registry/radix/radix-tooltip';
 import { useState } from 'react';
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@/registry/radix/accordion';
+} from '@/registry/radix/radix-accordion';
 
 export const Hero = () => {
   const { resolvedTheme: theme, setTheme } = useTheme();
@@ -33,9 +33,7 @@ export const Hero = () => {
       <div className="lg:max-w-[50%] max-w-[700px] space-y-6">
         <h1 className="text-3xl md:text-4xl lg:text-[43px] font-semibold text-neutral-800 dark:text-white !leading-relaxed lg:!leading-snug text-start">
           Make{' '}
-          <HighlightText delay={0.5} startOnView>
-            animated websites
-          </HighlightText>{' '}
+          <HighlightText delay={0.5} startOnView text="animated websites" />{' '}
           easily and quickly
         </h1>
 

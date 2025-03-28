@@ -9,7 +9,7 @@
   ],
   "files": [
     {
-      "path": "registry/text/writing-text.tsx",
+      "path": "registry/text/writing-text/index.tsx",
       "content": "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\ninterface WritingTextProps\n  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {\n  duration?: number;\n  delay?: number;\n  startOnView?: boolean;\n  spacing?: number | string;\n  text: string;\n}\n\nconst WritingText = React.forwardRef<HTMLSpanElement, WritingTextProps>(\n  (\n    {\n      startOnView = false,\n      delay = 0.5,\n      duration = 2,\n      spacing = 5,\n      text,\n      ...props\n    },\n    ref,\n  ) => {\n    const words = React.useMemo(() => text.split(' '), [text]);\n\n    return (\n      <span ref={ref} {...props}>\n        {words.map((word, index) => (\n          <motion.span\n            key={index}\n            className=\"inline-block will-change-transform will-change-opacity\"\n            style={{ marginRight: spacing }}\n            initial={{ opacity: 0, y: 10 }}\n            {...(startOnView\n              ? {\n                  whileInView: { opacity: 1, y: 0 },\n                }\n              : {\n                  animate: { opacity: 1, y: 0 },\n                })}\n            transition={{\n              type: 'spring',\n              duration,\n              bounce: 0,\n              delay: index * delay,\n            }}\n          >\n            {word}{' '}\n          </motion.span>\n        ))}\n      </span>\n    );\n  },\n);\nWritingText.displayName = 'WritingText';\n\nexport { WritingText, type WritingTextProps };\n",
       "type": "registry:ui",
       "target": "components/animate-ui/writing-text.tsx"

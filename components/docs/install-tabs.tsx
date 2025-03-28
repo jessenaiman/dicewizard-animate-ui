@@ -22,8 +22,8 @@ export const InstallTabs = ({
       className="relative overflow-hidden w-full border border-fd-border rounded-lg gap-0"
     >
       <TabsList
-        className="justify-start border-b border-fd-border w-full rounded-none h-9 flex flex-row items-end bg-fd-secondary overflow-x-auto text-fd-muted-foreground"
-        activeClassName="bg-white dark:bg-neutral-950 shadow-none rounded-md"
+        className="justify-start border-b border-fd-border w-full rounded-none h-9 flex flex-row items-end bg-fd-secondary/50 overflow-x-auto text-fd-muted-foreground"
+        activeClassName="bg-neutral-200 dark:bg-neutral-950 shadow-none rounded-md"
       >
         {Object.keys(commands).map((tab) => (
           <TabsTrigger

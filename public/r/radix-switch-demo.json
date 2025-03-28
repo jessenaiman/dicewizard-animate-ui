@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radix-switch-demo",
-  "type": "registry:example",
+  "type": "registry:ui",
   "title": "Radix Switch Demo",
   "description": "Demo showing an animated radix switch.",
   "registryDependencies": [
@@ -9,9 +9,9 @@
   ],
   "files": [
     {
-      "path": "registry/demo/radix/switch-demo.tsx",
-      "content": "import { Switch } from '@/registry/radix/switch';\n\nexport const SwitchDemo = () => {\n  return <Switch defaultChecked />;\n};\n",
-      "type": "registry:example",
+      "path": "registry/demo/radix/radix-switch-demo/index.tsx",
+      "content": "import { Switch } from '@/registry/radix/radix-switch';\n\nexport const SwitchDemo = () => {\n  return <Switch defaultChecked />;\n};\n",
+      "type": "registry:ui",
       "target": "components/animate-ui/radix-switch-demo.tsx"
     }
   ]

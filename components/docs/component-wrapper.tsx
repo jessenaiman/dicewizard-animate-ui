@@ -37,7 +37,7 @@ export const ComponentWrapper = ({
         </Button>
       </div>
 
-      <div className="flex min-h-[400px] w-full items-center justify-center p-10">
+      <div className="flex min-h-[400px] w-full items-center justify-center px-10 py-16">
         {children}
       </div>
     </div>
