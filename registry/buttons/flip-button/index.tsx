@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { type HTMLMotionProps, motion } from 'motion/react';
+import { type HTMLMotionProps, type Variant, motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -45,7 +45,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
       opacity: number,
       rotation: number,
       offset: string | null = null,
-    ): Record<string, any> => ({
+    ): Variant => ({
       opacity,
       [rotateAxis]: rotation,
       ...(isVertical && offset !== null ? { y: offset } : {}),
