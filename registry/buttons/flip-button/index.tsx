@@ -79,7 +79,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
           transition={{ type: 'spring', stiffness, damping }}
           className={cn(
             defaultSpanClassName,
-            'bg-neutral-800 text-white',
+            'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-white',
             frontClassName,
           )}
         >
@@ -90,7 +90,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
           transition={{ type: 'spring', stiffness, damping }}
           className={cn(
             defaultSpanClassName,
-            'bg-white text-neutral-800',
+            'bg-neutral-800 text-white dark:bg-white dark:text-neutral-800',
             backClassName,
           )}
         >
