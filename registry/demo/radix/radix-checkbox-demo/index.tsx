@@ -1,8 +1,8 @@
 import { Checkbox } from '@/registry/radix/radix-checkbox';
 
-export const CheckboxDemo = () => {
+export const RadixCheckboxDemo = () => {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center space-x-3">
       <Checkbox defaultChecked id="terms" />
       <label
         htmlFor="terms"
