@@ -12,6 +12,7 @@
     "---Radix UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",
+    "radix/radix-progress",
     "radix/radix-switch",
     "radix/radix-tabs",
     "radix/radix-tooltip",

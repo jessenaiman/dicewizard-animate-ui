@@ -573,7 +573,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-accordion-demo.tsx',
         content:
-          'import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n} from \'@/registry/radix/radix-accordion\';\n\nexport const AccordionDemo = () => {\n  return (\n    <Accordion\n      type="single"\n      defaultValue="item-1"\n      collapsible\n      className="w-[400px]"\n    >\n      <AccordionItem value="item-1">\n        <AccordionTrigger>What is Animate UI?</AccordionTrigger>\n        <AccordionContent>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionContent>\n      </AccordionItem>\n\n      <AccordionItem value="item-2">\n        <AccordionTrigger>\n          How is it different from other libraries?\n        </AccordionTrigger>\n        <AccordionContent>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionContent>\n      </AccordionItem>\n\n      <AccordionItem value="item-3">\n        <AccordionTrigger>Is Animate UI free to use?</AccordionTrigger>\n        <AccordionContent>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
+          'import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n} from \'@/registry/radix/radix-accordion\';\n\nexport const RadixAccordionDemo = () => {\n  return (\n    <Accordion\n      type="single"\n      defaultValue="item-1"\n      collapsible\n      className="w-[400px]"\n    >\n      <AccordionItem value="item-1">\n        <AccordionTrigger>What is Animate UI?</AccordionTrigger>\n        <AccordionContent>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionContent>\n      </AccordionItem>\n\n      <AccordionItem value="item-2">\n        <AccordionTrigger>\n          How is it different from other libraries?\n        </AccordionTrigger>\n        <AccordionContent>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionContent>\n      </AccordionItem>\n\n      <AccordionItem value="item-3">\n        <AccordionTrigger>Is Animate UI free to use?</AccordionTrigger>\n        <AccordionContent>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -602,7 +602,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-checkbox-demo.tsx',
         content:
-          "import { Checkbox } from '@/registry/radix/radix-checkbox';\n\nexport const CheckboxDemo = () => {\n  return <Checkbox defaultChecked />;\n};",
+          'import { Checkbox } from \'@/registry/radix/radix-checkbox\';\n\nexport const CheckboxDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Checkbox defaultChecked id="terms" />\n      <label\n        htmlFor="terms"\n        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -618,6 +618,35 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-checkbox-demo',
   },
+  'radix-progress-demo': {
+    name: 'radix-progress-demo',
+    description: 'Demo showing an animated radix progress.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/radix-progress'],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-progress-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-progress-demo.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress } from '@/registry/radix/radix-progress';\n\nexport const RadixProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return <Progress value={progress} className=\"w-[300px]\" />;\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-progress-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-progress-demo',
+  },
   'radix-switch-demo': {
     name: 'radix-switch-demo',
     description: 'Demo showing an animated radix switch.',
@@ -631,7 +660,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-switch-demo.tsx',
         content:
-          "import { Switch } from '@/registry/radix/radix-switch';\n\nexport const SwitchDemo = () => {\n  return <Switch defaultChecked />;\n};",
+          'import { Switch } from \'@/registry/radix/radix-switch\';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className="flex items-center space-x-3">\n      <Switch defaultChecked id="airplane-mode" />\n      <label\n        htmlFor="airplane-mode"\n        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -660,7 +689,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-tabs-demo.tsx',
         content:
-          'import {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n  TabsContents,\n} from \'@/registry/radix/radix-tabs\';\n\nexport const TabsDemo = () => {\n  return (\n    <Tabs\n      defaultValue="tab1"\n      className="w-[400px] bg-neutral-100 dark:bg-neutral-800 rounded-lg p-0.5"\n    >\n      <TabsList className="grid w-full grid-cols-3">\n        <TabsTrigger value="tab1">Tab 1</TabsTrigger>\n        <TabsTrigger value="tab2">Tab 2</TabsTrigger>\n        <TabsTrigger value="tab3">Tab 3</TabsTrigger>\n      </TabsList>\n\n      <TabsContents className="mx-1 mb-1 -mt-1.5 rounded-sm bg-background h-full overflow-y-hidden">\n        <TabsContent value="tab1" className="grid grid-cols-2 gap-1.5 p-1.5">\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n        </TabsContent>\n        <TabsContent value="tab2" className="grid grid-cols-2 gap-1.5 p-1.5">\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n        </TabsContent>\n        <TabsContent value="tab3" className="grid grid-cols-2 gap-1.5 p-1.5">\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n};',
+          'import {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n  TabsContents,\n} from \'@/registry/radix/radix-tabs\';\n\nexport const RadixTabsDemo = () => {\n  return (\n    <Tabs\n      defaultValue="tab1"\n      className="w-[400px] bg-neutral-100 dark:bg-neutral-800 rounded-lg p-0.5"\n    >\n      <TabsList className="grid w-full grid-cols-3">\n        <TabsTrigger value="tab1">Tab 1</TabsTrigger>\n        <TabsTrigger value="tab2">Tab 2</TabsTrigger>\n        <TabsTrigger value="tab3">Tab 3</TabsTrigger>\n      </TabsList>\n\n      <TabsContents className="mx-1 mb-1 -mt-1.5 rounded-sm bg-background h-full overflow-y-hidden">\n        <TabsContent value="tab1" className="grid grid-cols-2 gap-1.5 p-1.5">\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n        </TabsContent>\n        <TabsContent value="tab2" className="grid grid-cols-2 gap-1.5 p-1.5">\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n        </TabsContent>\n        <TabsContent value="tab3" className="grid grid-cols-2 gap-1.5 p-1.5">\n          <div className="h-20 w-full bg-muted rounded-sm" />\n          <div className="h-20 w-full bg-muted rounded-sm" />\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -689,7 +718,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-tooltip-demo.tsx',
         content:
-          "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/registry/radix/radix-tooltip';\n\nexport const TooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <Tooltip defaultOpen>\n        <TooltipTrigger asChild>\n          <Button variant=\"neutral\">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};",
+          "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/registry/radix/radix-tooltip';\n\nexport const RadixTooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <Tooltip defaultOpen>\n        <TooltipTrigger asChild>\n          <Button variant=\"neutral\">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};",
       },
     ],
     component: React.lazy(async () => {
@@ -932,6 +961,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-checkbox',
+  },
+  'radix-progress': {
+    name: 'radix-progress',
+    description: 'Progress component',
+    type: 'registry:ui',
+    dependencies: ['motion', '@radix-ui/react-progress'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/radix/radix-progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport * as ProgressPrimitive from '@radix-ui/react-progress';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\nconst Progress = React.forwardRef<\n  React.ComponentRef<typeof ProgressPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>\n>(({ className, value, ...props }, ref) => (\n  <ProgressPrimitive.Root\n    ref={ref}\n    className={cn(\n      'relative h-3 w-full overflow-hidden rounded-full bg-secondary',\n      className,\n    )}\n    {...props}\n  >\n    <MotionProgressIndicator\n      className=\"h-full w-full flex-1 bg-primary\"\n      animate={{\n        translateX: `-${100 - (value || 0)}%`,\n      }}\n      transition={{\n        type: 'spring',\n        stiffness: 100,\n        damping: 30,\n      }}\n    />\n  </ProgressPrimitive.Root>\n));\nProgress.displayName = ProgressPrimitive.Root.displayName;\n\nexport { Progress };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/radix/radix-progress/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-progress',
   },
   'radix-switch': {
     name: 'radix-switch',

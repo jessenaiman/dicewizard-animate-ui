@@ -177,15 +177,6 @@ And a `registry/demo/[category]/my-component-demo/registry-item.json` file to ex
 }
 ```
 
-### Format and Fix Linting Issues
-
-Before committing your changes, run:
-
-```bash
-pnpm format:write
-pnpm lint:fix
-```
-
 ### Build the Registry
 
 To update the registry, run the following command:
