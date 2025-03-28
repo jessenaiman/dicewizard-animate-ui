@@ -18,6 +18,7 @@
     "---Buttons---",
     "buttons/flip-button",
     "buttons/liquid-button",
+    "buttons/ripple-button",
     "---Text Animations---",
     "text-animations/gradient-text",
     "text-animations/highlight-text",
