@@ -11,7 +11,7 @@
 </p>
 
 <a href="https://github.com/Skyleen77/animate-ui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Skyleen77/animate-ui?style=for-the-badge"></a>
-<a href="https://twitter.com/animat_ui"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/animate_ui?style=for-the-badge&logo=x"></a>
+<a href="https://twitter.com/animate_ui"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/animate_ui?style=for-the-badge&logo=x"></a>
 <a href="https://github.com/Skyleen77/animate-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge"></a>
 
 </div>
