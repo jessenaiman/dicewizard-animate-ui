@@ -29,7 +29,7 @@ const Tooltip: React.FC<
 
   return (
     <TooltipContext.Provider value={{ isOpen }}>
-      <TooltipPrimitive.Root onOpenChange={handleOpenChange} {...props}>
+      <TooltipPrimitive.Root {...props} onOpenChange={handleOpenChange}>
         {children}
       </TooltipPrimitive.Root>
     </TooltipContext.Provider>

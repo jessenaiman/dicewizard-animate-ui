@@ -618,6 +618,64 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-checkbox-demo',
   },
+  'radix-dialog-demo': {
+    name: 'radix-dialog-demo',
+    description: 'Demo showing an animated radix dialog.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/radix-checkbox', 'button'],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-dialog-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-dialog-demo.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport {\n  Dialog,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogFooter,\n} from \'@/registry/radix/radix-dialog\';\n\nexport const RadixDialogDemo = () => {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button variant="outline">Open Dialog</Button>\n      </DialogTrigger>\n      <DialogContent className="sm:max-w-[425px]">\n        <DialogHeader>\n          <DialogTitle>Terms of Service</DialogTitle>\n          <DialogDescription>\n            Please read the following terms of service carefully.\n          </DialogDescription>\n        </DialogHeader>\n        <div className="grid gap-4 py-4">\n          <p>\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,\n            quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.\n            Quisquam, quos.\n          </p>\n        </div>\n        <DialogFooter>\n          <Button variant="outline">Decline</Button>\n          <Button type="submit">Accept</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-dialog-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-dialog-demo',
+  },
+  'radix-dialog-from-demo': {
+    name: 'radix-dialog-from-demo',
+    description: 'Demo showing an animated radix dialog.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/radix-checkbox', 'button'],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-dialog-from-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-dialog-from-demo.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport {\n  Dialog,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogFooter,\n} from \'@/registry/radix/radix-dialog\';\n\nexport const RadixDialogFromDemo = () => {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button variant="outline">Open Dialog</Button>\n      </DialogTrigger>\n      <DialogContent className="sm:max-w-[425px]" from="left">\n        <DialogHeader>\n          <DialogTitle>Terms of Service</DialogTitle>\n          <DialogDescription>\n            Please read the following terms of service carefully.\n          </DialogDescription>\n        </DialogHeader>\n        <div className="grid gap-4 py-4">\n          <p>\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,\n            quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.\n            Quisquam, quos.\n          </p>\n        </div>\n        <DialogFooter>\n          <Button variant="outline">Decline</Button>\n          <Button type="submit">Accept</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-dialog-from-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-dialog-from-demo',
+  },
   'radix-progress-demo': {
     name: 'radix-progress-demo',
     description: 'Demo showing an animated radix progress.',
@@ -962,6 +1020,33 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-checkbox',
   },
+  'radix-dialog': {
+    name: 'radix-dialog',
+    description: 'Dialog component',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react', '@radix-ui/react-dialog'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/radix/radix-dialog/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-dialog.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport * as DialogPrimitive from '@radix-ui/react-dialog';\nimport { X } from 'lucide-react';\nimport { AnimatePresence, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype DialogContextType = { isOpen: boolean };\nconst DialogContext = React.createContext<DialogContextType>({ isOpen: false });\n\ntype DialogProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>;\nconst Dialog = ({ children, ...props }: DialogProps) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <DialogPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n      <DialogContext.Provider value={{ isOpen }}>\n        {children}\n      </DialogContext.Provider>\n    </DialogPrimitive.Root>\n  );\n};\n\ntype DialogTriggerProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Trigger\n>;\nconst DialogTrigger = DialogPrimitive.Trigger;\n\ntype DialogPortalProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Portal\n>;\nconst DialogPortal = DialogPrimitive.Portal;\n\ntype DialogCloseProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Close\n>;\nconst DialogClose = DialogPrimitive.Close;\n\ntype DialogOverlayProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Overlay\n>;\nconst DialogOverlay = React.forwardRef<\n  React.ComponentRef<typeof DialogPrimitive.Overlay>,\n  DialogOverlayProps\n>(({ className, ...props }, ref) => (\n  <DialogPrimitive.Overlay\n    ref={ref}\n    className={cn('fixed inset-0 z-50 bg-black/80', className)}\n    {...props}\n  />\n));\nDialogOverlay.displayName = DialogPrimitive.Overlay.displayName;\n\ntype FlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ntype DialogContentProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Content\n> & {\n  from?: FlipDirection;\n};\nconst DialogContent = React.forwardRef<\n  React.ComponentRef<typeof DialogPrimitive.Content>,\n  DialogContentProps\n>(({ className, children, from = 'top', ...props }, ref) => {\n  const { isOpen } = React.useContext(DialogContext);\n\n  const initialRotation =\n    from === 'top' || from === 'left' ? '20deg' : '-20deg';\n  const isVertical = from === 'top' || from === 'bottom';\n  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n  return (\n    <DialogPortal forceMount>\n      <AnimatePresence>\n        {isOpen && (\n          <>\n            <DialogOverlay asChild forceMount>\n              <motion.div\n                key=\"dialog-overlay\"\n                initial={{ opacity: 0, filter: 'blur(4px)' }}\n                animate={{ opacity: 1, filter: 'blur(0px)' }}\n                exit={{ opacity: 0, filter: 'blur(4px)' }}\n                transition={{ duration: 0.3, ease: 'easeInOut' }}\n              />\n            </DialogOverlay>\n            <DialogPrimitive.Content asChild forceMount ref={ref} {...props}>\n              <motion.div\n                key=\"dialog-content\"\n                initial={{\n                  opacity: 0,\n                  filter: 'blur(4px)',\n                  transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n                }}\n                animate={{\n                  opacity: 1,\n                  filter: 'blur(0px)',\n                  transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,\n                }}\n                exit={{\n                  opacity: 0,\n                  filter: 'blur(4px)',\n                  transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n                }}\n                transition={{ type: 'spring', stiffness: 150, damping: 25 }}\n                className={cn(\n                  'fixed left-[50%] top-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg rounded-xl',\n                  className,\n                )}\n              >\n                {children}\n                <DialogPrimitive.Close className=\"absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground\">\n                  <X className=\"h-4 w-4\" />\n                  <span className=\"sr-only\">Close</span>\n                </DialogPrimitive.Close>\n              </motion.div>\n            </DialogPrimitive.Content>\n          </>\n        )}\n      </AnimatePresence>\n    </DialogPortal>\n  );\n});\nDialogContent.displayName = DialogPrimitive.Content.displayName;\n\ntype DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>;\nconst DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\n        'flex flex-col space-y-1.5 text-center sm:text-left',\n        className,\n      )}\n      {...props}\n    />\n  ),\n);\nDialogHeader.displayName = 'DialogHeader';\n\ntype DialogFooterProps = React.HTMLAttributes<HTMLDivElement>;\nconst DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\n        'flex flex-col-reverse sm:flex-row sm:justify-end gap-2',\n        className,\n      )}\n      {...props}\n    />\n  ),\n);\nDialogFooter.displayName = 'DialogFooter';\n\ntype DialogTitleProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Title\n>;\n\nconst DialogTitle = React.forwardRef<\n  React.ComponentRef<typeof DialogPrimitive.Title>,\n  DialogTitleProps\n>(({ className, ...props }, ref) => (\n  <DialogPrimitive.Title\n    ref={ref}\n    className={cn(\n      'text-lg font-semibold leading-none tracking-tight',\n      className,\n    )}\n    {...props}\n  />\n));\nDialogTitle.displayName = DialogPrimitive.Title.displayName;\n\ntype DialogDescriptionProps = React.ComponentPropsWithoutRef<\n  typeof DialogPrimitive.Description\n>;\nconst DialogDescription = React.forwardRef<\n  React.ComponentRef<typeof DialogPrimitive.Description>,\n  DialogDescriptionProps\n>(({ className, ...props }, ref) => (\n  <DialogPrimitive.Description\n    ref={ref}\n    className={cn('text-sm text-muted-foreground', className)}\n    {...props}\n  />\n));\nDialogDescription.displayName = DialogPrimitive.Description.displayName;\n\nexport {\n  Dialog,\n  DialogPortal,\n  DialogOverlay,\n  DialogClose,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  type DialogProps,\n  type DialogTriggerProps,\n  type DialogPortalProps,\n  type DialogCloseProps,\n  type DialogOverlayProps,\n  type DialogContentProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/radix/radix-dialog/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-dialog',
+  },
   'radix-progress': {
     name: 'radix-progress',
     description: 'Progress component',
@@ -975,7 +1060,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-progress.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport * as ProgressPrimitive from '@radix-ui/react-progress';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\nconst Progress = React.forwardRef<\n  React.ComponentRef<typeof ProgressPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>\n>(({ className, value, ...props }, ref) => (\n  <ProgressPrimitive.Root\n    ref={ref}\n    className={cn(\n      'relative h-3 w-full overflow-hidden rounded-full bg-secondary',\n      className,\n    )}\n    {...props}\n  >\n    <MotionProgressIndicator\n      className=\"h-full w-full flex-1 bg-primary\"\n      animate={{\n        translateX: `-${100 - (value || 0)}%`,\n      }}\n      transition={{\n        type: 'spring',\n        stiffness: 100,\n        damping: 30,\n      }}\n    />\n  </ProgressPrimitive.Root>\n));\nProgress.displayName = ProgressPrimitive.Root.displayName;\n\nexport { Progress };",
+          "'use client';\n\nimport * as React from 'react';\nimport * as ProgressPrimitive from '@radix-ui/react-progress';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressProps = React.ComponentPropsWithoutRef<\n  typeof ProgressPrimitive.Root\n>;\n\nconst Progress = React.forwardRef<\n  React.ComponentRef<typeof ProgressPrimitive.Root>,\n  ProgressProps\n>(({ className, value, ...props }, ref) => (\n  <ProgressPrimitive.Root\n    ref={ref}\n    className={cn(\n      'relative h-3 w-full overflow-hidden rounded-full bg-secondary',\n      className,\n    )}\n    {...props}\n  >\n    <MotionProgressIndicator\n      className=\"h-full w-full flex-1 bg-primary\"\n      animate={{\n        translateX: `-${100 - (value || 0)}%`,\n      }}\n      transition={{\n        type: 'spring',\n        stiffness: 100,\n        damping: 30,\n      }}\n    />\n  </ProgressPrimitive.Root>\n));\nProgress.displayName = ProgressPrimitive.Root.displayName;\n\nexport { Progress, type ProgressProps };",
       },
     ],
     component: React.lazy(async () => {
@@ -1056,7 +1141,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-tooltip.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport * as TooltipPrimitive from '@radix-ui/react-tooltip';\nimport { AnimatePresence, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst TooltipProvider = TooltipPrimitive.Provider;\n\nconst TooltipContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\nconst Tooltip: React.FC<\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>\n> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <TooltipContext.Provider value={{ isOpen }}>\n      <TooltipPrimitive.Root onOpenChange={handleOpenChange} {...props}>\n        {children}\n      </TooltipPrimitive.Root>\n    </TooltipContext.Provider>\n  );\n};\n\nconst TooltipTrigger = TooltipPrimitive.Trigger;\n\nconst TooltipContent = React.forwardRef<\n  React.ComponentRef<typeof TooltipPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\n>(({ className, sideOffset = 4, children, ...props }, ref) => {\n  const { isOpen } = React.useContext(TooltipContext);\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <TooltipPrimitive.Portal forceMount>\n          <TooltipPrimitive.Content\n            forceMount\n            sideOffset={sideOffset}\n            className=\"z-50\"\n            {...props}\n            ref={ref}\n          >\n            <motion.div\n              key=\"tooltip\"\n              initial={{ opacity: 0, scale: 0, y: 25 }}\n              animate={{ opacity: 1, scale: 1, y: 0 }}\n              exit={{ opacity: 0, scale: 0, y: 25 }}\n              transition={{ type: 'spring', stiffness: 300, damping: 20 }}\n              className={cn(\n                'relative overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md',\n                className,\n              )}\n            >\n              {children}\n            </motion.div>\n          </TooltipPrimitive.Content>\n        </TooltipPrimitive.Portal>\n      )}\n    </AnimatePresence>\n  );\n});\nTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };",
+          "'use client';\n\nimport * as React from 'react';\nimport * as TooltipPrimitive from '@radix-ui/react-tooltip';\nimport { AnimatePresence, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst TooltipProvider = TooltipPrimitive.Provider;\n\nconst TooltipContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\nconst Tooltip: React.FC<\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>\n> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <TooltipContext.Provider value={{ isOpen }}>\n      <TooltipPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n        {children}\n      </TooltipPrimitive.Root>\n    </TooltipContext.Provider>\n  );\n};\n\nconst TooltipTrigger = TooltipPrimitive.Trigger;\n\nconst TooltipContent = React.forwardRef<\n  React.ComponentRef<typeof TooltipPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\n>(({ className, sideOffset = 4, children, ...props }, ref) => {\n  const { isOpen } = React.useContext(TooltipContext);\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <TooltipPrimitive.Portal forceMount>\n          <TooltipPrimitive.Content\n            forceMount\n            sideOffset={sideOffset}\n            className=\"z-50\"\n            {...props}\n            ref={ref}\n          >\n            <motion.div\n              key=\"tooltip\"\n              initial={{ opacity: 0, scale: 0, y: 25 }}\n              animate={{ opacity: 1, scale: 1, y: 0 }}\n              exit={{ opacity: 0, scale: 0, y: 25 }}\n              transition={{ type: 'spring', stiffness: 300, damping: 20 }}\n              className={cn(\n                'relative overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md',\n                className,\n              )}\n            >\n              {children}\n            </motion.div>\n          </TooltipPrimitive.Content>\n        </TooltipPrimitive.Portal>\n      )}\n    </AnimatePresence>\n  );\n});\nTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };",
       },
     ],
     component: React.lazy(async () => {

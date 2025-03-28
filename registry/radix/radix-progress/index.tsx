@@ -8,9 +8,13 @@ import { cn } from '@/lib/utils';
 
 const MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);
 
+type ProgressProps = React.ComponentPropsWithoutRef<
+  typeof ProgressPrimitive.Root
+>;
+
 const Progress = React.forwardRef<
   React.ComponentRef<typeof ProgressPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
+  ProgressProps
 >(({ className, value, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}
@@ -35,4 +39,4 @@ const Progress = React.forwardRef<
 ));
 Progress.displayName = ProgressPrimitive.Root.displayName;
 
-export { Progress };
+export { Progress, type ProgressProps };

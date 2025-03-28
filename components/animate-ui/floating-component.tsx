@@ -16,7 +16,7 @@ const FloatingComponent: React.FC<FloatingComponentProps> = ({
     <motion.div
       {...props}
       className={cn('flex items-center justify-center', className)}
-      animate={{ y: [0, -10, 0] }}
+      animate={{ y: [0, -7, 0] }}
       transition={{
         duration: 6,
         repeat: Infinity,
