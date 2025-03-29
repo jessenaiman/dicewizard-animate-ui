@@ -1,0 +1,47 @@
+---
+title: Collapsible
+description: An interactive component which expands/collapses a panel.
+_openapi:
+  new: true
+---
+
+We take the [Shadcn UI](https://ui.shadcn.com/docs/components/collapsible) component and animate it with Motion.
+
+<ComponentPreview name="radix-collapsible-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-collapsible" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/collapsible"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/collapsible#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI Props
+
+#### CollapsibleContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the collapsible content',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/collapsible) for the collapsible component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/collapsible) for the collapsible style (to make it easier to replace a shadcn component with the animate ui component).

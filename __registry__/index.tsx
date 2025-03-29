@@ -618,6 +618,38 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-checkbox-demo',
   },
+  'radix-collapsible-demo': {
+    name: 'radix-collapsible-demo',
+    description: 'Demo showing an animated radix collapsible.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/radix-collapsible',
+      'button',
+    ],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-collapsible-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-collapsible-demo.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \'@/registry/radix/radix-collapsible\';\nimport { ChevronsUpDown } from \'lucide-react\';\n\nexport const RadixCollapsibleDemo = () => {\n  return (\n    <Collapsible className="w-[350px]">\n      <div className="space-y-2 mb-2">\n        <div className="flex items-center justify-between space-x-4">\n          <h4 className="text-sm font-semibold">\n            @peduarte starred 3 repositories\n          </h4>\n          <CollapsibleTrigger asChild>\n            <Button variant="outline" size="sm" className="w-9 p-0">\n              <ChevronsUpDown className="h-4 w-4" />\n              <span className="sr-only">Toggle</span>\n            </Button>\n          </CollapsibleTrigger>\n        </div>\n        <div className="rounded-md border px-4 py-3 font-mono text-sm">\n          @radix-ui/primitives\n        </div>\n      </div>\n      <CollapsibleContent className="space-y-2">\n        <div className="rounded-md border px-4 py-3 font-mono text-sm">\n          @radix-ui/colors\n        </div>\n        <div className="rounded-md border px-4 py-3 font-mono text-sm">\n          @stitches/react\n        </div>\n      </CollapsibleContent>\n    </Collapsible>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-collapsible-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-collapsible-demo',
+  },
   'radix-dialog-demo': {
     name: 'radix-dialog-demo',
     description: 'Demo showing an animated radix dialog.',
@@ -1019,6 +1051,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-checkbox',
+  },
+  'radix-collapsible': {
+    name: 'radix-collapsible',
+    description: 'Collapsible component',
+    type: 'registry:ui',
+    dependencies: ['motion', '@radix-ui/react-collapsible'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/radix/radix-collapsible/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-collapsible.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport * as CollapsiblePrimitive from '@radix-ui/react-collapsible';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\ntype CollapsibleContextType = { isOpen: boolean };\nconst CollapsibleContext = React.createContext<CollapsibleContextType>({\n  isOpen: false,\n});\n\ntype CollapsibleProps = React.ComponentPropsWithoutRef<\n  typeof CollapsiblePrimitive.Root\n>;\nconst Collapsible: React.FC<CollapsibleProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <CollapsiblePrimitive.Root {...props} onOpenChange={handleOpenChange}>\n      <CollapsibleContext.Provider value={{ isOpen }}>\n        {children}\n      </CollapsibleContext.Provider>\n    </CollapsiblePrimitive.Root>\n  );\n};\n\ntype CollapsibleTriggerProps = React.ComponentPropsWithoutRef<\n  typeof CollapsiblePrimitive.Trigger\n>;\nconst CollapsibleTrigger = CollapsiblePrimitive.Trigger;\n\ntype CollapsibleContentProps = React.ComponentPropsWithoutRef<\n  typeof CollapsiblePrimitive.Content\n> & {\n  transition?: Transition;\n};\nconst CollapsibleContent = React.forwardRef<\n  React.ComponentRef<typeof CollapsiblePrimitive.Content>,\n  CollapsibleContentProps\n>(\n  (\n    {\n      className,\n      children,\n      transition = { type: 'spring', stiffness: 150, damping: 17 },\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(CollapsibleContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <CollapsiblePrimitive.Content asChild forceMount ref={ref} {...props}>\n            <motion.div\n              key=\"collapsible-content\"\n              layout\n              initial={{ opacity: 0, height: 0, overflow: 'hidden' }}\n              animate={{ opacity: 1, height: 'auto', overflow: 'hidden' }}\n              exit={{ opacity: 0, height: 0, overflow: 'hidden' }}\n              transition={transition}\n              className={className}\n            >\n              {children}\n            </motion.div>\n          </CollapsiblePrimitive.Content>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nCollapsibleContent.displayName = CollapsiblePrimitive.Content.displayName;\n\nexport {\n  Collapsible,\n  CollapsibleTrigger,\n  CollapsibleContent,\n  type CollapsibleProps,\n  type CollapsibleTriggerProps,\n  type CollapsibleContentProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/radix/radix-collapsible/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-collapsible',
   },
   'radix-dialog': {
     name: 'radix-dialog',
