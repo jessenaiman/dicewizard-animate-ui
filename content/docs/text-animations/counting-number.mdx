@@ -1,0 +1,76 @@
+---
+title: Counting Number
+description: A numeric display component that smoothly animates number changes with a counting animation.
+_openapi:
+  new: true
+---
+
+<ComponentPreview name="counting-number-demo" />
+
+## Installation
+
+<ComponentInstallation name="counting-number" />
+
+## Examples
+
+### With decimal
+
+<ComponentPreview name="counting-number-decimal-demo" />
+
+### Starting from a specific number
+
+<ComponentPreview name="counting-from-number-demo" />
+
+## Props
+
+<TypeTable
+  type={{
+    number: {
+      description: 'The number to display',
+      type: 'number',
+      required: true,
+    },
+    fromNumber: {
+      description: 'The number to start from',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+    padStart: {
+      description: 'Whether to pad the number with leading zeros',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    startOnView: {
+      description:
+        'Whether to start the animation when the component enters the viewport',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    decimalSeparator: {
+      description: 'The decimal separator to use',
+      type: 'string',
+      required: false,
+      default: '.',
+    },
+    transition: {
+      description: 'The transition to use for the animation',
+      type: 'object',
+      required: false,
+      default: '{ stiffness: 90, damping: 50 }',
+    },
+    decimalPlaces: {
+      description: 'The number of decimal places to display',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Motion](https://examples.motion.dev/react/html-content) for the inspiration
+- Credits to [Magic UI](https://magicui.design/docs/components/number-ticker) for the spring transition
