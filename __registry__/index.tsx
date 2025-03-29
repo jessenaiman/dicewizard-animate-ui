@@ -656,7 +656,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/radix-checkbox', 'button'],
+    registryDependencies: ['https://animate-ui.com/r/radix-dialog', 'button'],
     files: [
       {
         path: 'registry/demo/radix/radix-dialog-demo/index.tsx',
@@ -685,7 +685,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/radix-checkbox', 'button'],
+    registryDependencies: ['https://animate-ui.com/r/radix-dialog', 'button'],
     files: [
       {
         path: 'registry/demo/radix/radix-dialog-from-demo/index.tsx',
@@ -707,6 +707,38 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-dialog-from-demo',
+  },
+  'radix-hover-card-demo': {
+    name: 'radix-hover-card-demo',
+    description: 'Demo showing an animated radix hover card.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/radix-hover-card',
+      'button',
+    ],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-hover-card-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-hover-card-demo.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardContent,\n} from \'@/registry/radix/radix-hover-card\';\n\nexport const RadixHoverCardDemo = () => {\n  return (\n    <HoverCard>\n      <HoverCardTrigger asChild>\n        <a\n          className="size-12 rounded-full overflow-hidden border"\n          href="https://twitter.com/animate_ui"\n          target="_blank"\n          rel="noreferrer noopener"\n        >\n          <img\n            src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n            alt="Animate UI"\n          />\n        </a>\n      </HoverCardTrigger>\n      <HoverCardContent className="w-80">\n        <div className="flex flex-col gap-4">\n          <img\n            className="size-16 rounded-full overflow-hidden border"\n            src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n            alt="Animate UI"\n          />\n          <div className="flex flex-col gap-4">\n            <div>\n              <div className="font-bold">Animate UI</div>\n              <div className="text-sm text-muted-foreground">@animate_ui</div>\n            </div>\n            <div className="text-sm text-muted-foreground">\n              A fully animated, open-source component distribution built with\n              React, TypeScript, Tailwind CSS, and Motion.\n            </div>\n            <div className="flex gap-4">\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">0</div>{\' \'}\n                <div className="text-muted-foreground">Following</div>\n              </div>\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">2,900</div>{\' \'}\n                <div className="text-muted-foreground">Followers</div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </HoverCardContent>\n    </HoverCard>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-hover-card-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-hover-card-demo',
   },
   'radix-progress-demo': {
     name: 'radix-progress-demo',
@@ -750,7 +782,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-switch-demo.tsx',
         content:
-          'import { Switch } from \'@/registry/radix/radix-switch\';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Switch defaultChecked id="airplane-mode" />\n      <label\n        htmlFor="airplane-mode"\n        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  );\n};',
+          'import { Switch } from \'@/registry/radix/radix-switch\';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <label\n        htmlFor="airplane-mode"\n        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n      >\n        Airplane mode\n      </label>\n      <Switch defaultChecked id="airplane-mode" />\n    </div>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -1223,6 +1255,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-dialog',
+  },
+  'radix-hover-card': {
+    name: 'radix-hover-card',
+    description: 'Hover Card component',
+    type: 'registry:ui',
+    dependencies: ['motion', '@radix-ui/react-hover-card'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/radix/radix-hover-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-hover-card.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport * as HoverCardPrimitive from '@radix-ui/react-hover-card';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst HoverCardContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\ntype HoverCardProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Root\n>;\n\nconst HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n      <HoverCardContext.Provider value={{ isOpen }}>\n        {children}\n      </HoverCardContext.Provider>\n    </HoverCardPrimitive.Root>\n  );\n};\n\ntype HoverCardTriggerProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Trigger\n>;\n\nconst HoverCardTrigger = HoverCardPrimitive.Trigger;\n\ntype HoverCardContentProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst HoverCardContent = React.forwardRef<\n  React.ComponentRef<typeof HoverCardPrimitive.Content>,\n  HoverCardContentProps\n>(\n  (\n    {\n      className,\n      align = 'center',\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 20 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(HoverCardContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <HoverCardPrimitive.Portal forceMount>\n            <HoverCardPrimitive.Content\n              forceMount\n              align={align}\n              sideOffset={sideOffset}\n              className=\"z-50\"\n              ref={ref}\n              {...props}\n            >\n              <motion.div\n                key=\"hover-card\"\n                initial={{ opacity: 0, scale: 0.5, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0.5, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </HoverCardPrimitive.Content>\n          </HoverCardPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nHoverCardContent.displayName = HoverCardPrimitive.Content.displayName;\n\nexport {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardContent,\n  type HoverCardProps,\n  type HoverCardTriggerProps,\n  type HoverCardContentProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/radix/radix-hover-card/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-hover-card',
   },
   'radix-progress': {
     name: 'radix-progress',
