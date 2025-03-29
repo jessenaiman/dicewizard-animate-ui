@@ -486,6 +486,54 @@
       ]
     },
     {
+      "name": "counting-from-number-demo",
+      "type": "registry:ui",
+      "title": "Counting From Number Demo",
+      "description": "Demo showing a counting number starting from a specific number.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/counting-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/counting-from-number-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/counting-from-number-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "counting-number-decimal-demo",
+      "type": "registry:ui",
+      "title": "Counting Number Decimal Demo",
+      "description": "Demo showing a counting number with a decimal separator.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/counting-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/counting-number-decimal-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/counting-number-decimal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "counting-number-demo",
+      "type": "registry:ui",
+      "title": "Counting Number Demo",
+      "description": "Demo showing a counting number.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/counting-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/counting-number-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/counting-number-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "gradient-text-demo",
       "type": "registry:ui",
       "title": "Gradient Text Demo",
@@ -530,6 +578,22 @@
           "path": "registry/demo/text/rolling-text-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/rolling-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sliding-number-decimal-demo",
+      "type": "registry:ui",
+      "title": "Sliding Number Decimal Demo",
+      "description": "Demo showing an animated sliding number with a decimal separator.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/sliding-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/sliding-number-decimal-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/sliding-number-decimal-demo.tsx"
         }
       ]
     },
@@ -715,6 +779,22 @@
           "path": "registry/radix/radix-tooltip/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "counting-number",
+      "type": "registry:ui",
+      "title": "Counting Number",
+      "description": "Counting number component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/text/counting-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/counting-number.tsx"
         }
       ]
     },

@@ -1,11 +1,13 @@
 import { SlidingNumber } from '@/registry/text/sliding-number';
 
-export const SlidingNumberDemo = () => {
+export const SlidingNumberDecimalDemo = () => {
   return (
     <SlidingNumber
-      number={new Date().getFullYear()}
+      number={12345.67}
+      decimalSeparator=","
       padStart
       className="text-4xl"
+      startOnView
     />
   );
 };

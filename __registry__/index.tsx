@@ -824,6 +824,94 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-tooltip-demo',
   },
+  'counting-from-number-demo': {
+    name: 'counting-from-number-demo',
+    description:
+      'Demo showing a counting number starting from a specific number.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/counting-number'],
+    files: [
+      {
+        path: 'registry/demo/text/counting-from-number-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/counting-from-number-demo.tsx',
+        content:
+          'import { CountingNumber } from \'@/registry/text/counting-number\';\n\nexport const CountingFromNumberDemo = () => {\n  return (\n    <CountingNumber\n      number={0}\n      fromNumber={new Date().getFullYear()}\n      className="text-4xl"\n      startOnView\n    />\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/text/counting-from-number-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/counting-from-number-demo',
+  },
+  'counting-number-decimal-demo': {
+    name: 'counting-number-decimal-demo',
+    description: 'Demo showing a counting number with a decimal separator.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/counting-number'],
+    files: [
+      {
+        path: 'registry/demo/text/counting-number-decimal-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/counting-number-decimal-demo.tsx',
+        content:
+          'import { CountingNumber } from \'@/registry/text/counting-number\';\n\nexport const CountingNumberDecimalDemo = () => {\n  return (\n    <CountingNumber\n      number={12345.67}\n      decimalPlaces={2}\n      decimalSeparator=","\n      className="text-4xl"\n      startOnView\n    />\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/text/counting-number-decimal-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/counting-number-decimal-demo',
+  },
+  'counting-number-demo': {
+    name: 'counting-number-demo',
+    description: 'Demo showing a counting number.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/counting-number'],
+    files: [
+      {
+        path: 'registry/demo/text/counting-number-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/counting-number-demo.tsx',
+        content:
+          'import { CountingNumber } from \'@/registry/text/counting-number\';\n\nexport const CountingNumberDemo = () => {\n  return (\n    <CountingNumber number={new Date().getFullYear()} className="text-4xl" />\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/text/counting-number-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/counting-number-demo',
+  },
   'gradient-text-demo': {
     name: 'gradient-text-demo',
     description: 'Demo showing an animated gradient text.',
@@ -911,6 +999,36 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/rolling-text-demo',
   },
+  'sliding-number-decimal-demo': {
+    name: 'sliding-number-decimal-demo',
+    description:
+      'Demo showing an animated sliding number with a decimal separator.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/sliding-number'],
+    files: [
+      {
+        path: 'registry/demo/text/sliding-number-decimal-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/sliding-number-decimal-demo.tsx',
+        content:
+          'import { SlidingNumber } from \'@/registry/text/sliding-number\';\n\nexport const SlidingNumberDecimalDemo = () => {\n  return (\n    <SlidingNumber\n      number={12345.67}\n      decimalSeparator=","\n      padStart\n      className="text-4xl"\n      startOnView\n    />\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/text/sliding-number-decimal-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/sliding-number-decimal-demo',
+  },
   'sliding-number-demo': {
     name: 'sliding-number-demo',
     description: 'Demo showing an animated sliding number.',
@@ -924,7 +1042,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/sliding-number-demo.tsx',
         content:
-          'import { SlidingNumber } from \'@/registry/text/sliding-number\';\n\nexport const SlidingNumberDemo = () => {\n  return <SlidingNumber number={18937932} padStart className="text-4xl" />;\n};',
+          'import { SlidingNumber } from \'@/registry/text/sliding-number\';\n\nexport const SlidingNumberDemo = () => {\n  return (\n    <SlidingNumber\n      number={new Date().getFullYear()}\n      padStart\n      className="text-4xl"\n    />\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -1213,6 +1331,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-tooltip',
+  },
+  'counting-number': {
+    name: 'counting-number',
+    description: 'Counting number component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/text/counting-number/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/counting-number.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  type SpringOptions,\n  useInView,\n  useMotionValue,\n  useSpring,\n} from 'motion/react';\n\ninterface CountingNumberProps extends React.HTMLAttributes<HTMLSpanElement> {\n  number: number;\n  fromNumber?: number;\n  padStart?: boolean;\n  startOnView?: boolean;\n  decimalSeparator?: string;\n  transition?: SpringOptions;\n  decimalPlaces?: number;\n}\n\nconst CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(\n  (\n    {\n      number,\n      fromNumber = 0,\n      padStart = false,\n      startOnView = false,\n      decimalSeparator = '.',\n      transition = { stiffness: 90, damping: 50 },\n      decimalPlaces = 0,\n      className,\n      ...props\n    },\n    ref,\n  ) => {\n    const viewRef = React.useRef<HTMLSpanElement>(null);\n    React.useImperativeHandle(ref, () => viewRef.current as HTMLSpanElement);\n\n    const numberStr = number.toString();\n    const decimals =\n      typeof decimalPlaces === 'number'\n        ? decimalPlaces\n        : numberStr.includes('.')\n          ? numberStr.split('.')[1].length\n          : 0;\n\n    const motionVal = useMotionValue(fromNumber);\n    const springVal = useSpring(motionVal, transition);\n    const inView = useInView(viewRef, { once: true, margin: '0px' });\n\n    React.useEffect(() => {\n      if (!startOnView || inView) motionVal.set(number);\n    }, [inView, startOnView, number, motionVal]);\n\n    React.useEffect(() => {\n      const unsubscribe = springVal.on('change', (latest) => {\n        if (viewRef.current) {\n          let formatted =\n            decimals > 0\n              ? latest.toFixed(decimals)\n              : Math.round(latest).toString();\n\n          if (decimals > 0) {\n            formatted = formatted.replace('.', decimalSeparator);\n          }\n\n          if (padStart) {\n            const finalIntLength = Math.floor(Math.abs(number)).toString()\n              .length;\n            const [intPart, fracPart] = formatted.split(decimalSeparator);\n            const paddedInt = intPart.padStart(finalIntLength, '0');\n            formatted = fracPart\n              ? `${paddedInt}${decimalSeparator}${fracPart}`\n              : paddedInt;\n          }\n\n          viewRef.current.textContent = formatted;\n        }\n      });\n      return () => unsubscribe();\n    }, [springVal, decimals, padStart, number, decimalSeparator]);\n\n    const finalIntLength = Math.floor(Math.abs(number)).toString().length;\n    const initialText = padStart\n      ? '0'.padStart(finalIntLength, '0') +\n        (decimals > 0 ? decimalSeparator + '0'.repeat(decimals) : '')\n      : '0' + (decimals > 0 ? decimalSeparator + '0'.repeat(decimals) : '');\n\n    return (\n      <span ref={viewRef} className={className} {...props}>\n        {initialText}\n      </span>\n    );\n  },\n);\n\nexport { CountingNumber, type CountingNumberProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/text/counting-number/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/counting-number',
   },
   'gradient-text': {
     name: 'gradient-text',

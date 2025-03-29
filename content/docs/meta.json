@@ -23,6 +23,7 @@
     "buttons/liquid-button",
     "buttons/ripple-button",
     "---Text Animations---",
+    "text-animations/counting-number",
     "text-animations/gradient-text",
     "text-animations/highlight-text",
     "text-animations/rolling-text",
