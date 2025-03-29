@@ -368,6 +368,26 @@
       ]
     },
     {
+      "name": "radix-collapsible-demo",
+      "type": "registry:ui",
+      "title": "Radix Collapsible Demo",
+      "description": "Demo showing an animated radix collapsible.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-collapsible",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-collapsible-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-collapsible-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-dialog-demo",
       "type": "registry:ui",
       "title": "Radix Dialog Demo",
@@ -592,6 +612,23 @@
           "path": "registry/radix/radix-checkbox/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Collapsible component",
+      "dependencies": [
+        "motion",
+        "@radix-ui/react-collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-collapsible/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-collapsible.tsx"
         }
       ]
     },

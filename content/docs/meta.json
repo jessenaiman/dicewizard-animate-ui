@@ -12,6 +12,7 @@
     "---Radix UI / Shadcn UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",
+    "radix/radix-collapsible",
     "radix/radix-dialog",
     "radix/radix-progress",
     "radix/radix-switch",
