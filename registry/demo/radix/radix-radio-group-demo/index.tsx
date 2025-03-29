@@ -1,3 +1,4 @@
+import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/registry/radix/radix-radio-group';
 
 export function RadioGroupDemo() {
@@ -5,30 +6,15 @@ export function RadioGroupDemo() {
     <RadioGroup defaultValue="default">
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="default" id="r1" />
-        <label
-          htmlFor="r1"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Default
-        </label>
+        <Label htmlFor="r1">Default</Label>
       </div>
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="comfortable" id="r2" />
-        <label
-          htmlFor="r2"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Comfortable
-        </label>
+        <Label htmlFor="r2">Comfortable</Label>
       </div>
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="compact" id="r3" />
-        <label
-          htmlFor="r3"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Compact
-        </label>
+        <Label htmlFor="r3">Compact</Label>
       </div>
     </RadioGroup>
   );

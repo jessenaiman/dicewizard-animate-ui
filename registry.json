@@ -357,7 +357,8 @@
       "title": "Radix Checkbox Demo",
       "description": "Demo showing an animated radix checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/radix-checkbox"
+        "https://animate-ui.com/r/radix-checkbox",
+        "label"
       ],
       "files": [
         {
@@ -439,6 +440,25 @@
       ]
     },
     {
+      "name": "radix-popover-demo",
+      "type": "registry:ui",
+      "title": "Radix Popover Demo",
+      "description": "Demo showing an animated radix popover.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-popover",
+        "label",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-popover-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-popover-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-progress-demo",
       "type": "registry:ui",
       "title": "Radix Progress Demo",
@@ -460,7 +480,8 @@
       "title": "Radix Radio Group Demo",
       "description": "Demo showing an animated radix radio group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/radix-radio-group"
+        "https://animate-ui.com/r/radix-radio-group",
+        "label"
       ],
       "files": [
         {
@@ -476,7 +497,8 @@
       "title": "Radix Switch Demo",
       "description": "Demo showing an animated radix switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/radix-switch"
+        "https://animate-ui.com/r/radix-switch",
+        "label"
       ],
       "files": [
         {
@@ -761,6 +783,23 @@
           "path": "registry/radix/radix-hover-card/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-hover-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover component",
+      "dependencies": [
+        "motion",
+        "@radix-ui/react-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-popover.tsx"
         }
       ]
     },

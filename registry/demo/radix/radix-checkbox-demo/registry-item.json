@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Checkbox Demo",
   "description": "Demo showing an animated radix checkbox.",
-  "registryDependencies": ["https://animate-ui.com/r/radix-checkbox"],
+  "registryDependencies": ["https://animate-ui.com/r/radix-checkbox", "label"],
   "files": [
     {
       "path": "registry/demo/radix/radix-checkbox-demo/index.tsx",

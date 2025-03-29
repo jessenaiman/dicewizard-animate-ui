@@ -62,7 +62,7 @@ const TooltipContent = React.forwardRef<
     {
       className,
       sideOffset = 4,
-      transition = { type: 'spring', stiffness: 300, damping: 20 },
+      transition = { type: 'spring', stiffness: 300, damping: 25 },
       children,
       ...props
     },
