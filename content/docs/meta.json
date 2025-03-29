@@ -15,6 +15,7 @@
     "radix/radix-collapsible",
     "radix/radix-dialog",
     "radix/radix-hover-card",
+    "radix/radix-popover",
     "radix/radix-progress",
     "radix/radix-radio-group",
     "radix/radix-switch",

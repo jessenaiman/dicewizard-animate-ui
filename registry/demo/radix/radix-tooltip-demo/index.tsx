@@ -11,7 +11,7 @@ export const RadixTooltipDemo = () => {
     <TooltipProvider>
       <Tooltip defaultOpen>
         <TooltipTrigger asChild>
-          <Button variant="neutral">Hover</Button>
+          <Button variant="outline">Hover</Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>Add to library</p>

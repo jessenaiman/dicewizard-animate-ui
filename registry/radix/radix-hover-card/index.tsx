@@ -57,7 +57,7 @@ const HoverCardContent = React.forwardRef<
       className,
       align = 'center',
       sideOffset = 4,
-      transition = { type: 'spring', stiffness: 300, damping: 20 },
+      transition = { type: 'spring', stiffness: 300, damping: 25 },
       children,
       ...props
     },

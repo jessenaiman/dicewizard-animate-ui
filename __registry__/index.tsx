@@ -595,14 +595,14 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/radix-checkbox'],
+    registryDependencies: ['https://animate-ui.com/r/radix-checkbox', 'label'],
     files: [
       {
         path: 'registry/demo/radix/radix-checkbox-demo/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/radix-checkbox-demo.tsx',
         content:
-          'import { Checkbox } from \'@/registry/radix/radix-checkbox\';\n\nexport const RadixCheckboxDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Checkbox defaultChecked id="terms" />\n      <label\n        htmlFor="terms"\n        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  );\n};',
+          'import { Label } from \'@/components/ui/label\';\nimport { Checkbox } from \'@/registry/radix/radix-checkbox\';\n\nexport const RadixCheckboxDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Checkbox defaultChecked id="terms" />\n      <Label htmlFor="terms">Accept terms and conditions</Label>\n    </div>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -740,6 +740,40 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-hover-card-demo',
   },
+  'radix-popover-demo': {
+    name: 'radix-popover-demo',
+    description: 'Demo showing an animated radix popover.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/radix-popover',
+      'label',
+      'button',
+      'input',
+    ],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-popover-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-popover-demo.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \'@/registry/radix/radix-popover\';\n\nexport function RadixPopoverDemo() {\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button variant="outline">Open popover</Button>\n      </PopoverTrigger>\n      <PopoverContent className="w-80">\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="font-medium leading-none">Dimensions</h4>\n            <p className="text-sm text-muted-foreground">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n}',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-popover-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-popover-demo',
+  },
   'radix-progress-demo': {
     name: 'radix-progress-demo',
     description: 'Demo showing an animated radix progress.',
@@ -775,14 +809,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/radix-radio-group'],
+    registryDependencies: [
+      'https://animate-ui.com/r/radix-radio-group',
+      'label',
+    ],
     files: [
       {
         path: 'registry/demo/radix/radix-radio-group-demo/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/radix-radio-group-demo.tsx',
         content:
-          'import { RadioGroup, RadioGroupItem } from \'@/registry/radix/radix-radio-group\';\n\nexport function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue="default">\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="default" id="r1" />\n        <label\n          htmlFor="r1"\n          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n        >\n          Default\n        </label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="comfortable" id="r2" />\n        <label\n          htmlFor="r2"\n          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n        >\n          Comfortable\n        </label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="compact" id="r3" />\n        <label\n          htmlFor="r3"\n          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n        >\n          Compact\n        </label>\n      </div>\n    </RadioGroup>\n  );\n}',
+          'import { Label } from \'@/components/ui/label\';\nimport { RadioGroup, RadioGroupItem } from \'@/registry/radix/radix-radio-group\';\n\nexport function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue="default">\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="default" id="r1" />\n        <Label htmlFor="r1">Default</Label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="comfortable" id="r2" />\n        <Label htmlFor="r2">Comfortable</Label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="compact" id="r3" />\n        <Label htmlFor="r3">Compact</Label>\n      </div>\n    </RadioGroup>\n  );\n}',
       },
     ],
     component: React.lazy(async () => {
@@ -804,14 +841,14 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/radix-switch'],
+    registryDependencies: ['https://animate-ui.com/r/radix-switch', 'label'],
     files: [
       {
         path: 'registry/demo/radix/radix-switch-demo/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/radix-switch-demo.tsx',
         content:
-          'import { Switch } from \'@/registry/radix/radix-switch\';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <label\n        htmlFor="airplane-mode"\n        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n      >\n        Airplane mode\n      </label>\n      <Switch defaultChecked id="airplane-mode" />\n    </div>\n  );\n};',
+          'import { Label } from \'@/components/ui/label\';\nimport { Switch } from \'@/registry/radix/radix-switch\';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Label htmlFor="airplane-mode">Airplane mode</Label>\n      <Switch defaultChecked id="airplane-mode" />\n    </div>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -869,7 +906,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-tooltip-demo.tsx',
         content:
-          "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/registry/radix/radix-tooltip';\n\nexport const RadixTooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <Tooltip defaultOpen>\n        <TooltipTrigger asChild>\n          <Button variant=\"neutral\">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};",
+          "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/registry/radix/radix-tooltip';\n\nexport const RadixTooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <Tooltip defaultOpen>\n        <TooltipTrigger asChild>\n          <Button variant=\"outline\">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};",
       },
     ],
     component: React.lazy(async () => {
@@ -1298,7 +1335,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-hover-card.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport * as HoverCardPrimitive from '@radix-ui/react-hover-card';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst HoverCardContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\ntype HoverCardProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Root\n>;\n\nconst HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n      <HoverCardContext.Provider value={{ isOpen }}>\n        {children}\n      </HoverCardContext.Provider>\n    </HoverCardPrimitive.Root>\n  );\n};\n\ntype HoverCardTriggerProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Trigger\n>;\n\nconst HoverCardTrigger = HoverCardPrimitive.Trigger;\n\ntype HoverCardContentProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst HoverCardContent = React.forwardRef<\n  React.ComponentRef<typeof HoverCardPrimitive.Content>,\n  HoverCardContentProps\n>(\n  (\n    {\n      className,\n      align = 'center',\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 20 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(HoverCardContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <HoverCardPrimitive.Portal forceMount>\n            <HoverCardPrimitive.Content\n              forceMount\n              align={align}\n              sideOffset={sideOffset}\n              className=\"z-50\"\n              ref={ref}\n              {...props}\n            >\n              <motion.div\n                key=\"hover-card\"\n                initial={{ opacity: 0, scale: 0.5, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0.5, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </HoverCardPrimitive.Content>\n          </HoverCardPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nHoverCardContent.displayName = HoverCardPrimitive.Content.displayName;\n\nexport {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardContent,\n  type HoverCardProps,\n  type HoverCardTriggerProps,\n  type HoverCardContentProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport * as HoverCardPrimitive from '@radix-ui/react-hover-card';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst HoverCardContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\ntype HoverCardProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Root\n>;\n\nconst HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n      <HoverCardContext.Provider value={{ isOpen }}>\n        {children}\n      </HoverCardContext.Provider>\n    </HoverCardPrimitive.Root>\n  );\n};\n\ntype HoverCardTriggerProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Trigger\n>;\n\nconst HoverCardTrigger = HoverCardPrimitive.Trigger;\n\ntype HoverCardContentProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst HoverCardContent = React.forwardRef<\n  React.ComponentRef<typeof HoverCardPrimitive.Content>,\n  HoverCardContentProps\n>(\n  (\n    {\n      className,\n      align = 'center',\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(HoverCardContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <HoverCardPrimitive.Portal forceMount>\n            <HoverCardPrimitive.Content\n              forceMount\n              align={align}\n              sideOffset={sideOffset}\n              className=\"z-50\"\n              ref={ref}\n              {...props}\n            >\n              <motion.div\n                key=\"hover-card\"\n                initial={{ opacity: 0, scale: 0.5, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0.5, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </HoverCardPrimitive.Content>\n          </HoverCardPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nHoverCardContent.displayName = HoverCardPrimitive.Content.displayName;\n\nexport {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardContent,\n  type HoverCardProps,\n  type HoverCardTriggerProps,\n  type HoverCardContentProps,\n};",
       },
     ],
     component: React.lazy(async () => {
@@ -1311,6 +1348,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-hover-card',
+  },
+  'radix-popover': {
+    name: 'radix-popover',
+    description: 'Popover component',
+    type: 'registry:ui',
+    dependencies: ['motion', '@radix-ui/react-popover'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/radix/radix-popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-popover.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport * as PopoverPrimitive from '@radix-ui/react-popover';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst PopoverContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\ntype PopoverProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Root\n>;\n\nconst Popover: React.FC<PopoverProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n      <PopoverContext.Provider value={{ isOpen }}>\n        {children}\n      </PopoverContext.Provider>\n    </PopoverPrimitive.Root>\n  );\n};\n\ntype PopoverTriggerProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Trigger\n>;\n\nconst PopoverTrigger = PopoverPrimitive.Trigger;\n\ntype PopoverContentProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst PopoverContent = React.forwardRef<\n  React.ComponentRef<typeof PopoverPrimitive.Content>,\n  PopoverContentProps\n>(\n  (\n    {\n      className,\n      align = 'center',\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(PopoverContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <PopoverPrimitive.Portal forceMount>\n            <PopoverPrimitive.Content\n              forceMount\n              align={align}\n              sideOffset={sideOffset}\n              ref={ref}\n              className=\"z-50\"\n              {...props}\n            >\n              <motion.div\n                key=\"popover\"\n                initial={{ opacity: 0, scale: 0.5, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0.5, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </PopoverPrimitive.Content>\n          </PopoverPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nPopoverContent.displayName = PopoverPrimitive.Content.displayName;\n\nexport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n  type PopoverProps,\n  type PopoverTriggerProps,\n  type PopoverContentProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/radix/radix-popover/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-popover',
   },
   'radix-progress': {
     name: 'radix-progress',
@@ -1433,7 +1497,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-tooltip.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport * as TooltipPrimitive from '@radix-ui/react-tooltip';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype TooltipProviderProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Provider\n>;\n\nconst TooltipProvider = TooltipPrimitive.Provider;\n\nconst TooltipContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\ntype TooltipProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Root\n>;\n\nconst Tooltip: React.FC<TooltipProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <TooltipContext.Provider value={{ isOpen }}>\n      <TooltipPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n        {children}\n      </TooltipPrimitive.Root>\n    </TooltipContext.Provider>\n  );\n};\n\ntype TooltipTriggerProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Trigger\n>;\n\nconst TooltipTrigger = TooltipPrimitive.Trigger;\n\ntype TooltipContentProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst TooltipContent = React.forwardRef<\n  React.ComponentRef<typeof TooltipPrimitive.Content>,\n  TooltipContentProps\n>(\n  (\n    {\n      className,\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 20 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(TooltipContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <TooltipPrimitive.Portal forceMount>\n            <TooltipPrimitive.Content\n              forceMount\n              sideOffset={sideOffset}\n              className=\"z-50\"\n              {...props}\n              ref={ref}\n            >\n              <motion.div\n                key=\"tooltip\"\n                initial={{ opacity: 0, scale: 0, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'relative overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </TooltipPrimitive.Content>\n          </TooltipPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport {\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  TooltipProvider,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipContentProps,\n  type TooltipProviderProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport * as TooltipPrimitive from '@radix-ui/react-tooltip';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype TooltipProviderProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Provider\n>;\n\nconst TooltipProvider = TooltipPrimitive.Provider;\n\nconst TooltipContext = React.createContext<{ isOpen: boolean }>({\n  isOpen: false,\n});\n\ntype TooltipProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Root\n>;\n\nconst Tooltip: React.FC<TooltipProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <TooltipContext.Provider value={{ isOpen }}>\n      <TooltipPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n        {children}\n      </TooltipPrimitive.Root>\n    </TooltipContext.Provider>\n  );\n};\n\ntype TooltipTriggerProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Trigger\n>;\n\nconst TooltipTrigger = TooltipPrimitive.Trigger;\n\ntype TooltipContentProps = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst TooltipContent = React.forwardRef<\n  React.ComponentRef<typeof TooltipPrimitive.Content>,\n  TooltipContentProps\n>(\n  (\n    {\n      className,\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = React.useContext(TooltipContext);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <TooltipPrimitive.Portal forceMount>\n            <TooltipPrimitive.Content\n              forceMount\n              sideOffset={sideOffset}\n              className=\"z-50\"\n              {...props}\n              ref={ref}\n            >\n              <motion.div\n                key=\"tooltip\"\n                initial={{ opacity: 0, scale: 0, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'relative overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </TooltipPrimitive.Content>\n          </TooltipPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport {\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  TooltipProvider,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipContentProps,\n  type TooltipProviderProps,\n};",
       },
     ],
     component: React.lazy(async () => {
