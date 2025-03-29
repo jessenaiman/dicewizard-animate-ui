@@ -16,6 +16,7 @@
     "radix/radix-dialog",
     "radix/radix-hover-card",
     "radix/radix-progress",
+    "radix/radix-radio-group",
     "radix/radix-switch",
     "radix/radix-tabs",
     "radix/radix-tooltip",

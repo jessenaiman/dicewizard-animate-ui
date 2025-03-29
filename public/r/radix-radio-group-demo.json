@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-radio-group-demo",
+  "type": "registry:ui",
+  "title": "Radix Radio Group Demo",
+  "description": "Demo showing an animated radix radio group.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-radio-group-demo/index.tsx",
+      "content": "import { RadioGroup, RadioGroupItem } from '@/registry/radix/radix-radio-group';\n\nexport function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue=\"default\">\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"default\" id=\"r1\" />\n        <label\n          htmlFor=\"r1\"\n          className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n        >\n          Default\n        </label>\n      </div>\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"comfortable\" id=\"r2\" />\n        <label\n          htmlFor=\"r2\"\n          className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n        >\n          Comfortable\n        </label>\n      </div>\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"compact\" id=\"r3\" />\n        <label\n          htmlFor=\"r3\"\n          className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n        >\n          Compact\n        </label>\n      </div>\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-radio-group-demo.tsx"
+    }
+  ]
+}

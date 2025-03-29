@@ -769,6 +769,35 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-progress-demo',
   },
+  'radix-radio-group-demo': {
+    name: 'radix-radio-group-demo',
+    description: 'Demo showing an animated radix radio group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/radix-radio-group'],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-radio-group-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-radio-group-demo.tsx',
+        content:
+          'import { RadioGroup, RadioGroupItem } from \'@/registry/radix/radix-radio-group\';\n\nexport function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue="default">\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="default" id="r1" />\n        <label\n          htmlFor="r1"\n          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n        >\n          Default\n        </label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="comfortable" id="r2" />\n        <label\n          htmlFor="r2"\n          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n        >\n          Comfortable\n        </label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="compact" id="r3" />\n        <label\n          htmlFor="r3"\n          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"\n        >\n          Compact\n        </label>\n      </div>\n    </RadioGroup>\n  );\n}',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-radio-group-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-radio-group-demo',
+  },
   'radix-switch-demo': {
     name: 'radix-switch-demo',
     description: 'Demo showing an animated radix switch.',
@@ -1309,6 +1338,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/radix-progress',
+  },
+  'radix-radio-group': {
+    name: 'radix-radio-group',
+    description: 'Radio Group component',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react', '@radix-ui/react-radio-group'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/radix/radix-radio-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-radio-group.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport * as RadioGroupPrimitive from '@radix-ui/react-radio-group';\nimport { Circle } from 'lucide-react';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype RadioGroupProps = React.ComponentPropsWithoutRef<\n  typeof RadioGroupPrimitive.Root\n> & {\n  transition?: Transition;\n};\n\nconst RadioGroup = React.forwardRef<\n  React.ComponentRef<typeof RadioGroupPrimitive.Root>,\n  RadioGroupProps\n>(({ className, ...props }, ref) => {\n  return (\n    <RadioGroupPrimitive.Root\n      ref={ref}\n      className={cn('grid gap-2.5', className)}\n      {...props}\n    />\n  );\n});\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\n\ntype RadioGroupIndicatorProps = React.ComponentPropsWithoutRef<\n  typeof RadioGroupPrimitive.Indicator\n> & {\n  transition: Transition;\n};\n\nconst RadioGroupIndicator = React.forwardRef<\n  React.ComponentRef<typeof RadioGroupPrimitive.Indicator>,\n  RadioGroupIndicatorProps\n>(({ className, transition, ...props }, ref) => {\n  return (\n    <RadioGroupPrimitive.Indicator\n      ref={ref}\n      className={cn('flex items-center justify-center', className)}\n      {...props}\n    >\n      <AnimatePresence>\n        <motion.div\n          key=\"radio-indicator\"\n          initial={{ opacity: 0, scale: 0 }}\n          animate={{ opacity: 1, scale: 1 }}\n          exit={{ opacity: 0, scale: 0 }}\n          transition={transition}\n        >\n          <Circle className=\"size-3 fill-current text-current\" />\n        </motion.div>\n      </AnimatePresence>\n    </RadioGroupPrimitive.Indicator>\n  );\n});\nRadioGroupIndicator.displayName = RadioGroupPrimitive.Indicator.displayName;\n\ntype RadioGroupItemProps = React.ComponentPropsWithoutRef<\n  typeof RadioGroupPrimitive.Item\n> & {\n  transition?: Transition;\n};\n\nconst RadioGroupItem = React.forwardRef<\n  React.ComponentRef<typeof RadioGroupPrimitive.Item>,\n  RadioGroupItemProps\n>(\n  (\n    {\n      className,\n      transition = { type: 'spring', stiffness: 200, damping: 16 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <RadioGroupPrimitive.Item ref={ref} asChild {...props}>\n        <motion.button\n          className={cn(\n            'aspect-square size-5 rounded-full flex items-center justify-center border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',\n            className,\n          )}\n          whileHover={{ scale: 1.05 }}\n          whileTap={{ scale: 0.95 }}\n        >\n          <RadioGroupIndicator transition={transition} />\n        </motion.button>\n      </RadioGroupPrimitive.Item>\n    );\n  },\n);\nRadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;\n\nexport {\n  RadioGroup,\n  RadioGroupItem,\n  type RadioGroupProps,\n  type RadioGroupItemProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/radix/radix-radio-group/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-radio-group',
   },
   'radix-switch': {
     name: 'radix-switch',

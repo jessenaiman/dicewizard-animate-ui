@@ -455,6 +455,22 @@
       ]
     },
     {
+      "name": "radix-radio-group-demo",
+      "type": "registry:ui",
+      "title": "Radix Radio Group Demo",
+      "description": "Demo showing an animated radix radio group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-radio-group-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-radio-group-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-switch-demo",
       "type": "registry:ui",
       "title": "Radix Switch Demo",
@@ -762,6 +778,24 @@
           "path": "registry/radix/radix-progress/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio Group component",
+      "dependencies": [
+        "motion",
+        "lucide-react",
+        "@radix-ui/react-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-radio-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-radio-group.tsx"
         }
       ]
     },
