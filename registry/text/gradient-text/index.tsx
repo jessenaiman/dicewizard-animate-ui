@@ -1,17 +1,15 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
 interface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {
   text: string;
-  duration?: number;
-  repeat?: number;
-  ease?: string;
   gradient?: string;
   neon?: boolean;
+  transition?: Transition;
 }
 
 const GradientText = React.forwardRef<HTMLSpanElement, GradientTextProps>(
@@ -19,11 +17,9 @@ const GradientText = React.forwardRef<HTMLSpanElement, GradientTextProps>(
     {
       text,
       className,
-      duration = 50,
-      repeat = Infinity,
-      ease = 'linear',
       gradient = 'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',
       neon = false,
+      transition = { duration: 50, repeat: Infinity, ease: 'linear' },
       ...props
     },
     ref,
@@ -43,7 +39,7 @@ const GradientText = React.forwardRef<HTMLSpanElement, GradientTextProps>(
           style={baseStyle}
           initial={{ backgroundPosition: '0% 0%' }}
           animate={{ backgroundPosition: '500% 100%' }}
-          transition={{ duration, repeat, ease }}
+          transition={transition}
         >
           {text}
         </motion.span>
@@ -54,7 +50,7 @@ const GradientText = React.forwardRef<HTMLSpanElement, GradientTextProps>(
             style={baseStyle}
             initial={{ backgroundPosition: '0% 0%' }}
             animate={{ backgroundPosition: '500% 100%' }}
-            transition={{ duration, repeat, ease }}
+            transition={transition}
           >
             {text}
           </motion.span>

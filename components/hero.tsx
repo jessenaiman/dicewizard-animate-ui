@@ -34,7 +34,11 @@ export const Hero = () => {
       <div className="lg:max-w-[50%] max-w-[700px] space-y-6">
         <h1 className="text-3xl md:text-4xl lg:text-[43px] font-semibold text-neutral-800 dark:text-white !leading-relaxed lg:!leading-snug text-start">
           Make{' '}
-          <HighlightText delay={0.5} startOnView text="animated websites" />{' '}
+          <HighlightText
+            transition={{ duration: 2, delay: 0.5, ease: 'easeInOut' }}
+            startOnView
+            text="animated websites"
+          />{' '}
           easily and quickly
         </h1>
 

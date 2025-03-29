@@ -53,7 +53,7 @@ const Checkbox = React.forwardRef<
       ref={ref}
       {...props}
       className={cn(
-        'peer h-6 w-6 flex items-center justify-center shrink-0 rounded-sm bg-muted transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
+        'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-muted transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
         className,
       )}
       asChild
@@ -70,7 +70,7 @@ const Checkbox = React.forwardRef<
             viewBox="0 0 24 24"
             strokeWidth="3.5"
             stroke="currentColor"
-            className="h-4 w-4"
+            className="size-3.5"
             initial="unchecked"
             animate={isChecked ? 'checked' : 'unchecked'}
           >

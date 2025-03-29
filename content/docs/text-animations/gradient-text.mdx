@@ -21,23 +21,11 @@ _openapi:
       type: 'string',
       required: true,
     },
-    duration: {
-      description: 'The duration of the animation',
-      type: 'number',
-      default: '50',
+    transition: {
+      description: 'The transition of the gradient text',
+      type: 'Transition',
       required: false,
-    },
-    repeat: {
-      description: 'The number of times to repeat the animation',
-      type: 'number',
-      default: 'Infinity',
-      required: false,
-    },
-    ease: {
-      description: 'The ease of the animation',
-      type: 'string',
-      default: 'linear',
-      required: false,
+      default: "{ duration: 50, repeat: Infinity, ease: 'linear' }",
     },
     gradient: {
       description: 'The gradient of the neon text',

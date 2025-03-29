@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -11,7 +11,7 @@ type DialogContextType = { isOpen: boolean };
 const DialogContext = React.createContext<DialogContextType>({ isOpen: false });
 
 type DialogProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>;
-const Dialog = ({ children, ...props }: DialogProps) => {
+const Dialog: React.FC<DialogProps> = ({ children, ...props }) => {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
@@ -69,69 +69,81 @@ type DialogContentProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > & {
   from?: FlipDirection;
+  transition?: Transition;
 };
 const DialogContent = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Content>,
   DialogContentProps
->(({ className, children, from = 'top', ...props }, ref) => {
-  const { isOpen } = React.useContext(DialogContext);
+>(
+  (
+    {
+      className,
+      children,
+      from = 'top',
+      transition = { type: 'spring', stiffness: 150, damping: 25 },
+      ...props
+    },
+    ref,
+  ) => {
+    const { isOpen } = React.useContext(DialogContext);
 
-  const initialRotation =
-    from === 'top' || from === 'left' ? '20deg' : '-20deg';
-  const isVertical = from === 'top' || from === 'bottom';
-  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';
+    const initialRotation =
+      from === 'top' || from === 'left' ? '20deg' : '-20deg';
+    const isVertical = from === 'top' || from === 'bottom';
+    const rotateAxis = isVertical ? 'rotateX' : 'rotateY';
 
-  return (
-    <DialogPortal forceMount>
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <DialogOverlay asChild forceMount>
-              <motion.div
-                key="dialog-overlay"
-                initial={{ opacity: 0, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, filter: 'blur(4px)' }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-              />
-            </DialogOverlay>
-            <DialogPrimitive.Content asChild forceMount ref={ref} {...props}>
-              <motion.div
-                key="dialog-content"
-                initial={{
-                  opacity: 0,
-                  filter: 'blur(4px)',
-                  transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,
-                }}
-                animate={{
-                  opacity: 1,
-                  filter: 'blur(0px)',
-                  transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,
-                }}
-                exit={{
-                  opacity: 0,
-                  filter: 'blur(4px)',
-                  transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,
-                }}
-                transition={{ type: 'spring', stiffness: 150, damping: 25 }}
-                className={cn(
-                  'fixed left-[50%] top-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg rounded-xl',
-                  className,
-                )}
-              >
-                {children}
-                <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-                  <X className="h-4 w-4" />
-                  <span className="sr-only">Close</span>
-                </DialogPrimitive.Close>
-              </motion.div>
-            </DialogPrimitive.Content>
-          </>
-        )}
-      </AnimatePresence>
-    </DialogPortal>
-  );
-});
+    return (
+      <DialogPortal forceMount>
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              <DialogOverlay asChild forceMount>
+                <motion.div
+                  key="dialog-overlay"
+                  initial={{ opacity: 0, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                />
+              </DialogOverlay>
+              <DialogPrimitive.Content asChild forceMount ref={ref} {...props}>
+                <motion.div
+                  key="dialog-content"
+                  initial={{
+                    opacity: 0,
+                    filter: 'blur(4px)',
+                    transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                    transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    filter: 'blur(4px)',
+                    transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,
+                  }}
+                  transition={transition}
+                  className={cn(
+                    'fixed left-[50%] top-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg rounded-xl',
+                    className,
+                  )}
+                >
+                  {children}
+                  <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                    <X className="h-4 w-4" />
+                    <span className="sr-only">Close</span>
+                  </DialogPrimitive.Close>
+                </motion.div>
+              </DialogPrimitive.Content>
+            </>
+          )}
+        </AnimatePresence>
+      </DialogPortal>
+    );
+  },
+);
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>;

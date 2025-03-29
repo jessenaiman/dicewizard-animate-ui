@@ -5,6 +5,8 @@ _openapi:
   new: true
 ---
 
+We take the [Shadcn UI](https://ui.shadcn.com/docs/components/progress) component and animate it with Motion.
+
 <ComponentPreview name="radix-progress-demo" />
 
 ## Installation
@@ -23,6 +25,19 @@ _openapi:
     text="API Reference"
   />
 </div>
+
+### Animate UI props
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the progress bar',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 100, damping: 30 }",
+    },
+  }}
+/>
 
 ## Credits
 

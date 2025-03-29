@@ -33,17 +33,11 @@ Use the `from` prop to change the direction of the flip.
       type: 'string',
       required: true,
     },
-    stiffness: {
-      description: 'The stiffness of the animation',
-      type: 'number',
+    transition: {
+      description: 'The transition of the button',
+      type: 'Transition',
       required: false,
-      default: 280,
-    },
-    damping: {
-      description: 'The damping of the animation',
-      type: 'number',
-      required: false,
-      default: 20,
+      default: '{ type: "spring", stiffness: 280, damping: 20 }',
     },
     className: {
       description: 'The className of the component',

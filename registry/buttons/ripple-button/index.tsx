@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { type HTMLMotionProps, motion } from 'motion/react';
+import { type HTMLMotionProps, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -14,9 +14,8 @@ interface Ripple {
 interface RippleButtonProps extends HTMLMotionProps<'button'> {
   children: React.ReactNode;
   rippleClassName?: string;
-  duration?: number;
-  ease?: string;
   scale?: number;
+  transition?: Transition;
 }
 
 const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
@@ -26,9 +25,8 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       onClick,
       className,
       rippleClassName,
-      duration = 0.6,
-      ease = 'easeOut',
       scale = 10,
+      transition = { duration: 0.6, ease: 'easeOut' },
       ...props
     },
     ref,
@@ -92,7 +90,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
             key={ripple.id}
             initial={{ scale: 0, opacity: 0.5 }}
             animate={{ scale, opacity: 0 }}
-            transition={{ duration, ease }}
+            transition={transition}
             className={cn(
               'absolute bg-white dark:bg-neutral-800 rounded-full size-5 pointer-events-none',
               rippleClassName,

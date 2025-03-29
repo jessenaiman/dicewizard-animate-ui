@@ -9,7 +9,7 @@
     "components/code-editor",
     "components/counter",
     "components/tabs",
-    "---Radix UI---",
+    "---Radix UI / Shadcn UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",
     "radix/radix-dialog",

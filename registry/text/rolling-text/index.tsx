@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 
 const entryAnimation = {
   initial: { rotateX: 0 },
@@ -19,15 +19,19 @@ const formatCharacter = (char: string): string => {
 
 interface RollingTextProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
-  duration?: number;
-  delay?: number;
+  transition?: Transition;
   startOnView?: boolean;
   text: string;
 }
 
 const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
   (
-    { duration = 0.5, delay = 0.1, startOnView = false, text, ...props },
+    {
+      transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },
+      startOnView = false,
+      text,
+      ...props
+    },
     ref,
   ) => {
     const characters = React.useMemo(() => text.split(''), [text]);
@@ -48,9 +52,8 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
                 ? { whileInView: entryAnimation.animate }
                 : { animate: entryAnimation.animate })}
               transition={{
-                ease: 'easeOut',
-                duration,
-                delay: idx * delay,
+                ...transition,
+                delay: idx * (transition?.delay ?? 0),
               }}
             >
               {formatCharacter(char)}
@@ -62,9 +65,8 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
                 ? { whileInView: exitAnimation.animate }
                 : { animate: exitAnimation.animate })}
               transition={{
-                ease: 'easeOut',
-                duration,
-                delay: idx * delay + 0.3,
+                ...transition,
+                delay: idx * (transition?.delay ?? 0) + 0.3,
               }}
             >
               {formatCharacter(char)}

@@ -30,17 +30,11 @@ _openapi:
       type: 'string',
       required: false,
     },
-    duration: {
-      description: 'The duration of the ripple',
-      type: 'number',
+    transition: {
+      description: 'The transition of the ripple',
+      type: 'Transition',
       required: false,
-      default: 0.6,
-    },
-    ease: {
-      description: 'The ease of the ripple',
-      type: 'string',
-      required: false,
-      default: 'easeOut',
+      default: '{ duration: 0.6, ease: "easeOut" }',
     },
     scale: {
       description: 'The scale of the ripple',

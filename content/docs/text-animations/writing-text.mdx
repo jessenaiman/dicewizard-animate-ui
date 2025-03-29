@@ -47,6 +47,12 @@ description: A text component that smoothly reveals content word by word.
       type: 'string',
       required: true,
     },
+    transition: {
+      description: 'The transition of the writing text',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', bounce: 0, duration: 2, delay: 0.5 }",
+    },
   }}
 />
 

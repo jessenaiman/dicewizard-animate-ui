@@ -35,17 +35,11 @@ description: A dark, interactive background featuring animated dots of varying s
       default: '50',
       required: false,
     },
-    stiffness: {
-      description: 'The stiffness of the component',
-      type: 'number',
-      default: '50',
+    transition: {
+      description: 'The transition of the interactive movement',
+      type: 'SpringOptions',
       required: false,
-    },
-    damping: {
-      description: 'The damping of the component',
-      type: 'number',
-      default: '20',
-      required: false,
+      default: '{ stiffness: 50, damping: 20 }',
     },
   }}
 />

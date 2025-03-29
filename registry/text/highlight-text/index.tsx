@@ -1,22 +1,27 @@
 'use client';
 
 import * as React from 'react';
-import { HTMLMotionProps, motion } from 'motion/react';
+import { type HTMLMotionProps, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
 interface HighlightTextProps extends HTMLMotionProps<'span'> {
   text: string;
   startOnView?: boolean;
-  duration?: number;
-  delay?: number;
+  transition?: Transition;
 }
 
 const animation = { backgroundSize: '100% 100%' };
 
 const HighlightText = React.forwardRef<HTMLSpanElement, HighlightTextProps>(
   (
-    { text, className, startOnView, duration = 2, delay = 0, ...props },
+    {
+      text,
+      className,
+      startOnView,
+      transition = { duration: 2, ease: 'easeInOut' },
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -26,12 +31,7 @@ const HighlightText = React.forwardRef<HTMLSpanElement, HighlightTextProps>(
           backgroundSize: '0% 100%',
         }}
         {...(startOnView ? { whileInView: animation } : { animate: animation })}
-        transition={{
-          type: 'keyframes',
-          duration,
-          ease: 'easeInOut',
-          delay,
-        }}
+        transition={transition}
         style={{
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'left center',

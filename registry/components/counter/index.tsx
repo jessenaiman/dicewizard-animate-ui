@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { type HTMLMotionProps, motion } from 'motion/react';
+import { type HTMLMotionProps, type Transition, motion } from 'motion/react';
 
 import {
   SlidingNumber,
@@ -15,23 +15,27 @@ interface CounterProps extends HTMLMotionProps<'div'> {
   setNumber: (number: number) => void;
   slidingNumberProps?: Omit<SlidingNumberProps, 'number'>;
   buttonProps?: Omit<React.ComponentProps<typeof Button>, 'onClick'>;
+  transition?: Transition;
 }
 
 const Counter = React.forwardRef<HTMLDivElement, CounterProps>(
   (
-    { number, setNumber, className, slidingNumberProps, buttonProps, ...props },
+    {
+      number,
+      setNumber,
+      className,
+      slidingNumberProps,
+      buttonProps,
+      transition = { type: 'spring', bounce: 0, stiffness: 300, damping: 30 },
+      ...props
+    },
     ref,
   ) => {
     return (
       <motion.div
         ref={ref}
         layout
-        transition={{
-          type: 'spring',
-          bounce: 0,
-          stiffness: 300,
-          damping: 30,
-        }}
+        transition={transition}
         className={cn(
           'flex items-center gap-x-2 p-1 rounded-lg bg-neutral-100 dark:bg-neutral-800',
           className,

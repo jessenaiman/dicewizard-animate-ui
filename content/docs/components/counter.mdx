@@ -38,5 +38,11 @@ description: A numeric input control featuring increment and decrement buttons, 
       type: "Omit<SlidingNumberProps, 'number'>",
       required: false,
     },
+    transition: {
+      description: 'The transition of the counter width',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", bounce: 0, stiffness: 300, damping: 30 }',
+    },
   }}
 />

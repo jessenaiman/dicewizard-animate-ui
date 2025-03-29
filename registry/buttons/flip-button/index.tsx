@@ -1,7 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { type HTMLMotionProps, type Variant, motion } from 'motion/react';
+import {
+  type HTMLMotionProps,
+  type Transition,
+  type Variant,
+  motion,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -10,8 +15,7 @@ type FlipDirection = 'top' | 'bottom' | 'left' | 'right';
 interface FlipButtonProps extends HTMLMotionProps<'button'> {
   frontText: string;
   backText: string;
-  stiffness?: number;
-  damping?: number;
+  transition?: Transition;
   frontClassName?: string;
   backClassName?: string;
   from?: FlipDirection;
@@ -25,8 +29,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
     {
       frontText,
       backText,
-      stiffness = 280,
-      damping = 20,
+      transition = { type: 'spring', stiffness: 280, damping: 20 },
       className,
       frontClassName,
       backClassName,
@@ -76,7 +79,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
       >
         <motion.span
           variants={frontVariants}
-          transition={{ type: 'spring', stiffness, damping }}
+          transition={transition}
           className={cn(
             defaultSpanClassName,
             'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-white',
@@ -87,7 +90,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
         </motion.span>
         <motion.span
           variants={backVariants}
-          transition={{ type: 'spring', stiffness, damping }}
+          transition={transition}
           className={cn(
             defaultSpanClassName,
             'bg-neutral-800 text-white dark:bg-white dark:text-neutral-800',

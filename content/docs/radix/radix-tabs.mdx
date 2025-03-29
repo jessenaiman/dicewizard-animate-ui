@@ -3,6 +3,8 @@ title: Tabs
 description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 ---
 
+We take the [Shadcn UI](https://ui.shadcn.com/docs/components/tabs) component and animate it with Motion.
+
 <ComponentPreview name="radix-tabs-demo" />
 
 ## Installation
@@ -21,6 +23,62 @@ description: A set of layered sections of content—known as tab panels—that a
     text="API Reference"
   />
 </div>
+
+### Animate UI props
+
+#### TabsList
+
+<TypeTable
+  type={{
+    activeClassName: {
+      description: 'The class name to apply to the active tab',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs list',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', bounce: 0, stiffness: 300, damping: 30 }",
+    },
+  }}
+/>
+
+#### TabsContents
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tabs contents',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The class name to apply to the tabs contents',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs contents',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 280, damping: 30 }",
+    },
+  }}
+/>
+
+#### TabContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the tab content',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 0.4, ease: 'easeInOut' }",
+    },
+  }}
+/>
 
 ## Credits
 

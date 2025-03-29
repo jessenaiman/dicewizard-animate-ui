@@ -1,14 +1,18 @@
 'use client';
 
 import * as React from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import {
+  motion,
+  type SpringOptions,
+  useMotionValue,
+  useSpring,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
 interface BubbleBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   interactive?: boolean;
-  stiffness?: number;
-  damping?: number;
+  transition?: SpringOptions;
   colors?: {
     first: string;
     second: string;
@@ -28,8 +32,7 @@ const BubbleBackground = React.forwardRef<
       className,
       children,
       interactive = false,
-      stiffness = 100,
-      damping = 20,
+      transition = { stiffness: 100, damping: 20 },
       colors = {
         first: '18,113,255',
         second: '221,74,255',
@@ -50,8 +53,8 @@ const BubbleBackground = React.forwardRef<
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
-    const springX = useSpring(mouseX, { stiffness, damping });
-    const springY = useSpring(mouseY, { stiffness, damping });
+    const springX = useSpring(mouseX, transition);
+    const springY = useSpring(mouseY, transition);
 
     React.useEffect(() => {
       if (!interactive) return;

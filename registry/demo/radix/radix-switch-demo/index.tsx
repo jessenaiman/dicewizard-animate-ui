@@ -2,7 +2,7 @@ import { Switch } from '@/registry/radix/radix-switch';
 
 export const RadixSwitchDemo = () => {
   return (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-2">
       <Switch defaultChecked id="airplane-mode" />
       <label
         htmlFor="airplane-mode"

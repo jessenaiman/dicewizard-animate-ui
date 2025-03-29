@@ -41,6 +41,12 @@ description: A numeric display component that smoothly animates number changes w
       default: '.',
       required: false,
     },
+    transition: {
+      description: 'The spring transition of the sliding number',
+      type: 'SpringOptions',
+      default: '{ stiffness: 200, damping: 20, mass: 0.4 }',
+      required: false,
+    },
   }}
 />
 

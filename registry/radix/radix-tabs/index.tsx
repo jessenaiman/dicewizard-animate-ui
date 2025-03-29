@@ -2,14 +2,7 @@
 
 import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  useCallback,
-} from 'react';
-import { motion } from 'motion/react';
+import { type HTMLMotionProps, type Transition, motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -32,21 +25,35 @@ Tabs.displayName = 'Tabs';
 
 type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List> & {
   activeClassName?: string;
+  transition?: Transition;
 };
 
 const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
-  ({ className, activeClassName, ...props }, ref) => {
-    const localRef = useRef<HTMLDivElement | null>(null);
+  (
+    {
+      className,
+      activeClassName,
+      transition = {
+        type: 'spring',
+        bounce: 0,
+        stiffness: 300,
+        damping: 30,
+      },
+      ...props
+    },
+    ref,
+  ) => {
+    const localRef = React.useRef<HTMLDivElement | null>(null);
     React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);
 
-    const [indicatorStyle, setIndicatorStyle] = useState({
+    const [indicatorStyle, setIndicatorStyle] = React.useState({
       left: 0,
       top: 0,
       width: 0,
       height: 0,
     });
 
-    const updateIndicator = useCallback(() => {
+    const updateIndicator = React.useCallback(() => {
       if (!localRef.current) return;
 
       const activeTab = localRef.current.querySelector<HTMLElement>(
@@ -65,7 +72,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       });
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
       updateIndicator();
       window.addEventListener('resize', updateIndicator);
       const observer = new MutationObserver(updateIndicator);
@@ -105,12 +112,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
             width: indicatorStyle.width,
             height: indicatorStyle.height,
           }}
-          transition={{
-            type: 'spring',
-            bounce: 0,
-            stiffness: 300,
-            damping: 30,
-          }}
+          transition={transition}
         />
       </div>
     );
@@ -137,10 +139,23 @@ const TabsTrigger = React.forwardRef<
 });
 TabsTrigger.displayName = 'TabsTrigger';
 
-type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content>;
+type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content> & {
+  transition?: Transition;
+};
 
 const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-  ({ className, children, ...props }, ref) => {
+  (
+    {
+      className,
+      children,
+      transition = {
+        duration: 0.4,
+        ease: 'easeInOut',
+      },
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <TabsPrimitive.Content
         asChild
@@ -154,10 +169,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
           initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           exit={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-          transition={{
-            duration: 0.4,
-            ease: 'easeInOut',
-          }}
+          transition={transition}
         >
           {children}
         </motion.div>
@@ -170,19 +182,27 @@ TabsContent.displayName = 'TabsContent';
 type TabsContentsProps = {
   children: React.ReactNode;
   className?: string;
-};
+  transition?: Transition;
+} & HTMLMotionProps<'div'>;
 
 const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
-  ({ children, className }, ref) => {
-    const containerRef = useRef<HTMLDivElement | null>(null);
+  (
+    {
+      children,
+      className,
+      transition = { type: 'spring', stiffness: 280, damping: 30 },
+    },
+    ref,
+  ) => {
+    const containerRef = React.useRef<HTMLDivElement | null>(null);
     React.useImperativeHandle(
       ref,
       () => containerRef.current as HTMLDivElement,
     );
 
-    const [height, setHeight] = useState(0);
+    const [height, setHeight] = React.useState(0);
 
-    useEffect(() => {
+    React.useEffect(() => {
       if (!containerRef.current) return;
 
       const resizeObserver = new ResizeObserver((entries) => {
@@ -199,7 +219,7 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
       };
     }, [children]);
 
-    useLayoutEffect(() => {
+    React.useLayoutEffect(() => {
       if (containerRef.current) {
         const initialHeight =
           containerRef.current.getBoundingClientRect().height;
@@ -211,7 +231,7 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
       <motion.div
         layout
         animate={{ height: height }}
-        transition={{ type: 'spring', stiffness: 280, damping: 30 }}
+        transition={transition}
         className={className}
       >
         <div ref={containerRef}>{children}</div>

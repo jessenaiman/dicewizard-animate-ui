@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -100,10 +100,24 @@ interface TabsListProps {
   children: React.ReactNode;
   className?: string;
   activeClassName?: string;
+  transition?: Transition;
 }
 
 const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
-  ({ children, className, activeClassName }, forwardedRef) => {
+  (
+    {
+      children,
+      className,
+      activeClassName,
+      transition = {
+        type: 'spring',
+        bounce: 0,
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+    forwardedRef,
+  ) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const { activeValue, getTrigger } = React.useContext(TabsContext)!;
     const [indicatorStyle, setIndicatorStyle] = React.useState({
@@ -170,12 +184,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
             top: indicatorStyle.top,
             height: indicatorStyle.height,
           }}
-          transition={{
-            type: 'spring',
-            bounce: 0,
-            stiffness: 300,
-            damping: 30,
-          }}
+          transition={transition}
         />
       </div>
     );
@@ -228,10 +237,14 @@ TabsTrigger.displayName = 'TabsTrigger';
 interface TabsContentsProps {
   children: React.ReactNode;
   className?: string;
+  transition?: Transition;
 }
 
 const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
-  ({ children, className }, forwardedRef) => {
+  (
+    { children, className, transition = { duration: 0.3, ease: 'easeInOut' } },
+    forwardedRef,
+  ) => {
     const { activeValue } = React.useContext(TabsContext)!;
     const childrenArray = React.Children.toArray(children);
     const activeIndex = childrenArray.findIndex(
@@ -259,7 +272,7 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
         <motion.div
           className="flex"
           animate={{ x: activeIndex * -100 + '%' }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={transition}
         >
           {childrenArray.map((child, index) => (
             <div key={index} className="w-full flex-shrink-0">

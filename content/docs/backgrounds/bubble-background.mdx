@@ -24,17 +24,11 @@ description: An interactive background featuring smoothly animated gradient bubb
       default: 'false',
       required: false,
     },
-    stiffness: {
-      description: 'The stiffness of the background',
-      type: 'number',
-      default: '100',
+    transition: {
+      description: 'The transition of the interactive bubble',
+      type: 'SpringOptions',
       required: false,
-    },
-    damping: {
-      description: 'The damping of the background',
-      type: 'number',
-      default: '20',
-      required: false,
+      default: '{ stiffness: 100, damping: 20 }',
     },
     colors: {
       description: 'The colors of the background',

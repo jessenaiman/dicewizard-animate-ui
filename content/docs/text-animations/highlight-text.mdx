@@ -29,17 +29,11 @@ description: A text component that smoothly reveals an animated highlight effect
       default: 'false',
       required: false,
     },
-    duration: {
-      description: 'The duration of the animation',
-      type: 'number',
-      default: '2',
+    transition: {
+      description: 'The transition of the highlight text',
+      type: 'Transition',
       required: false,
-    },
-    delay: {
-      description: 'The delay of the animation',
-      type: 'number',
-      default: '0',
-      required: false,
+      default: "{ duration: 2, ease: 'easeInOut' }",
     },
   }}
 />

@@ -3,6 +3,8 @@ title: Switch
 description: A control that allows the user to toggle between checked and not checked.
 ---
 
+We take the [Shadcn UI](https://ui.shadcn.com/docs/components/switch) component and animate it with Motion.
+
 <ComponentPreview name="radix-switch-demo" />
 
 ## Installation
@@ -21,6 +23,46 @@ description: A control that allows the user to toggle between checked and not ch
     text="API Reference"
   />
 </div>
+
+### Animate UI props:
+
+<TypeTable
+  type={{
+    leftIcon: {
+      description: 'The icon to display on the left of the switch',
+      type: 'React.ElementType',
+      required: false,
+    },
+    rightIcon: {
+      description: 'The icon to display on the right of the switch',
+      type: 'React.ElementType',
+      required: false,
+    },
+    thumbIcon: {
+      description: 'The icon to display on the thumb of the switch',
+      type: 'React.ElementType',
+      required: false,
+    },
+    width: {
+      description: 'The width of the switch',
+      type: 'number',
+      required: false,
+      default: 40,
+    },
+    height: {
+      description: 'The height of the switch',
+      type: 'number',
+      required: false,
+      default: 24,
+    },
+    margin: {
+      description: 'The margin of the switch',
+      type: 'number',
+      required: false,
+      default: 2.5,
+    },
+  }}
+/>
 
 ## Credits
 

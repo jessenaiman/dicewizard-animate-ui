@@ -1,12 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 
 interface WritingTextProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
-  duration?: number;
-  delay?: number;
+  transition?: Transition;
   startOnView?: boolean;
   spacing?: number | string;
   text: string;
@@ -16,10 +15,9 @@ const WritingText = React.forwardRef<HTMLSpanElement, WritingTextProps>(
   (
     {
       startOnView = false,
-      delay = 0.5,
-      duration = 2,
       spacing = 5,
       text,
+      transition = { type: 'spring', bounce: 0, duration: 2, delay: 0.5 },
       ...props
     },
     ref,
@@ -42,10 +40,8 @@ const WritingText = React.forwardRef<HTMLSpanElement, WritingTextProps>(
                   animate: { opacity: 1, y: 0 },
                 })}
             transition={{
-              type: 'spring',
-              duration,
-              bounce: 0,
-              delay: index * delay,
+              ...transition,
+              delay: index * (transition?.delay ?? 0),
             }}
           >
             {word}{' '}

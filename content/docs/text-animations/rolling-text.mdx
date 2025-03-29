@@ -23,17 +23,11 @@ description: A text component that reveals content through an engaging rolling a
       type: 'string',
       required: false,
     },
-    duration: {
-      description: 'The duration of the animation',
-      type: 'number',
-      default: '0.5',
+    transition: {
+      description: 'The transition of the rolling text',
+      type: 'Transition',
       required: false,
-    },
-    delay: {
-      description: 'The delay of the animation',
-      type: 'number',
-      default: '0.1',
-      required: false,
+      default: "{ duration: 0.5, delay: 0.1, ease: 'easeOut' }",
     },
     startOnView: {
       description: 'Whether the animation should start on view',

@@ -3,6 +3,8 @@ title: Tooltip
 description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 ---
 
+We take the [Shadcn UI](https://ui.shadcn.com/docs/components/tooltip) component and animate it with Motion.
+
 <ComponentPreview name="radix-tooltip-demo" />
 
 ## Installation
@@ -21,6 +23,21 @@ description: A popup that displays information related to an element when the el
     text="API Reference"
   />
 </div>
+
+### Animate UI props
+
+#### TooltipContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the tooltip content animation',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 20 }",
+    },
+  }}
+/>
 
 ## Credits
 

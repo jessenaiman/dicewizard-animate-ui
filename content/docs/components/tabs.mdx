@@ -62,6 +62,12 @@ description: A set of layered sections with the same height of content—known a
       type: 'string',
       required: false,
     },
+    transition: {
+      description: 'The transition of the tabs list',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", bounce: 0, stiffness: 300, damping: 30 }',
+    },
   }}
 />
 
@@ -100,6 +106,12 @@ description: A set of layered sections with the same height of content—known a
       description: 'The className of the tabs contents',
       type: 'string',
       required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs contents',
+      type: 'Transition',
+      required: false,
+      default: '{ duration: 0.3, ease: "easeInOut" }',
     },
   }}
 />
