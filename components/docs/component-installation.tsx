@@ -7,7 +7,7 @@ import {
   TabsContent,
   TabsContents,
 } from '@/registry/radix/radix-tabs';
-import { InstallTabs } from './install-tabs';
+import { InstallTabs } from '@/registry/components/install-tabs';
 import { ComponentManualInstallation } from './component-manual-installation';
 
 interface ComponentInstallationProps
