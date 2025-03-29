@@ -5,7 +5,7 @@
   "title": "Radix Dialog Demo",
   "description": "Demo showing an animated radix dialog.",
   "registryDependencies": [
-    "https://animate-ui.com/r/radix-checkbox",
+    "https://animate-ui.com/r/radix-dialog",
     "button"
   ],
   "files": [

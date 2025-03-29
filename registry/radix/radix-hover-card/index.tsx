@@ -1,0 +1,109 @@
+'use client';
+
+import * as React from 'react';
+import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
+import { AnimatePresence, motion, type Transition } from 'motion/react';
+
+import { cn } from '@/lib/utils';
+
+const HoverCardContext = React.createContext<{ isOpen: boolean }>({
+  isOpen: false,
+});
+
+type HoverCardProps = React.ComponentPropsWithoutRef<
+  typeof HoverCardPrimitive.Root
+>;
+
+const HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {
+  const [isOpen, setIsOpen] = React.useState(
+    props?.open ?? props?.defaultOpen ?? false,
+  );
+
+  const handleOpenChange = React.useCallback(
+    (open: boolean) => {
+      setIsOpen(open);
+      props.onOpenChange?.(open);
+    },
+    [props],
+  );
+
+  return (
+    <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>
+      <HoverCardContext.Provider value={{ isOpen }}>
+        {children}
+      </HoverCardContext.Provider>
+    </HoverCardPrimitive.Root>
+  );
+};
+
+type HoverCardTriggerProps = React.ComponentPropsWithoutRef<
+  typeof HoverCardPrimitive.Trigger
+>;
+
+const HoverCardTrigger = HoverCardPrimitive.Trigger;
+
+type HoverCardContentProps = React.ComponentPropsWithoutRef<
+  typeof HoverCardPrimitive.Content
+> & {
+  transition?: Transition;
+};
+
+const HoverCardContent = React.forwardRef<
+  React.ComponentRef<typeof HoverCardPrimitive.Content>,
+  HoverCardContentProps
+>(
+  (
+    {
+      className,
+      align = 'center',
+      sideOffset = 4,
+      transition = { type: 'spring', stiffness: 300, damping: 20 },
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    const { isOpen } = React.useContext(HoverCardContext);
+
+    return (
+      <AnimatePresence>
+        {isOpen && (
+          <HoverCardPrimitive.Portal forceMount>
+            <HoverCardPrimitive.Content
+              forceMount
+              align={align}
+              sideOffset={sideOffset}
+              className="z-50"
+              ref={ref}
+              {...props}
+            >
+              <motion.div
+                key="hover-card"
+                initial={{ opacity: 0, scale: 0.5, y: 25 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5, y: 25 }}
+                transition={transition}
+                className={cn(
+                  'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+                  className,
+                )}
+              >
+                {children}
+              </motion.div>
+            </HoverCardPrimitive.Content>
+          </HoverCardPrimitive.Portal>
+        )}
+      </AnimatePresence>
+    );
+  },
+);
+HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
+
+export {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+  type HoverCardProps,
+  type HoverCardTriggerProps,
+  type HoverCardContentProps,
+};

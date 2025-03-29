@@ -393,7 +393,7 @@
       "title": "Radix Dialog Demo",
       "description": "Demo showing an animated radix dialog.",
       "registryDependencies": [
-        "https://animate-ui.com/r/radix-checkbox",
+        "https://animate-ui.com/r/radix-dialog",
         "button"
       ],
       "files": [
@@ -410,7 +410,7 @@
       "title": "Radix Dialog From Demo",
       "description": "Demo showing an animated radix dialog.",
       "registryDependencies": [
-        "https://animate-ui.com/r/radix-checkbox",
+        "https://animate-ui.com/r/radix-dialog",
         "button"
       ],
       "files": [
@@ -418,6 +418,23 @@
           "path": "registry/demo/radix/radix-dialog-from-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-dialog-from-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-hover-card-demo",
+      "type": "registry:ui",
+      "title": "Radix Hover Card Demo",
+      "description": "Demo showing an animated radix hover card.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-hover-card",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-hover-card-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-hover-card-demo.tsx"
         }
       ]
     },
@@ -711,6 +728,23 @@
           "path": "registry/radix/radix-dialog/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Hover Card component",
+      "dependencies": [
+        "motion",
+        "@radix-ui/react-hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-hover-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-hover-card.tsx"
         }
       ]
     },
