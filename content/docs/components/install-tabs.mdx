@@ -1,0 +1,36 @@
+---
+title: Install Tabs
+description: A tabs component that displays install commands for different package managers.
+_openapi:
+  new: true
+---
+
+<ComponentPreview name="install-tabs-demo" />
+
+## Installation
+
+<ComponentInstallation name="install-tabs" />
+
+## Props
+
+<TypeTable
+  type={{
+    commands: {
+      description: 'The commands to display in the tabs',
+      type: 'Record<string, string>',
+      required: true,
+    },
+    lang: {
+      description: 'The language of the commands',
+      type: 'string',
+      required: false,
+      default: 'bash',
+    },
+    themes: {
+      description: 'The shiki themes to display in the tabs',
+      type: 'Record<string, string>',
+      required: false,
+      default: "{ light: 'github-light', dark: 'github-dark' }",
+    },
+  }}
+/>
