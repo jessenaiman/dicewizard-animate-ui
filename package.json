@@ -1,6 +1,6 @@
 {
   "name": "animate-ui",
-  "version": "1.0.1-beta.11",
+  "version": "1.0.1-beta.12",
   "description": "Animate UI is a fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion.",
   "repository": {
     "type": "git",
