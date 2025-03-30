@@ -4,7 +4,12 @@
   "type": "registry:ui",
   "title": "Tabs Demo",
   "description": "Demo showing an animated tabs.",
-  "registryDependencies": ["https://animate-ui.com/r/tabs"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/tabs",
+    "label",
+    "input",
+    "button"
+  ],
   "files": [
     {
       "path": "registry/demo/components/tabs-demo/index.tsx",

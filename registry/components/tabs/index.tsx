@@ -128,8 +128,8 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       transition = {
         type: 'spring',
         bounce: 0,
-        stiffness: 300,
-        damping: 30,
+        stiffness: 200,
+        damping: 25,
       },
     },
     forwardedRef,
@@ -258,7 +258,7 @@ interface TabsContentsProps {
 
 const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
   (
-    { children, className, transition = { duration: 0.3, ease: 'easeInOut' } },
+    { children, className, transition = { duration: 0.4, ease: 'easeInOut' } },
     forwardedRef,
   ) => {
     const { activeValue } = React.useContext(TabsContext)!;

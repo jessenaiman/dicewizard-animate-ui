@@ -36,8 +36,8 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       transition = {
         type: 'spring',
         bounce: 0,
-        stiffness: 300,
-        damping: 30,
+        stiffness: 200,
+        damping: 25,
       },
       ...props
     },
@@ -149,7 +149,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
       className,
       children,
       transition = {
-        duration: 0.4,
+        duration: 0.5,
         ease: 'easeInOut',
       },
       ...props
@@ -166,9 +166,9 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
         <motion.div
           ref={ref}
           layout
-          initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          exit={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+          initial={{ opacity: 0, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, filter: 'blur(4px)' }}
           transition={transition}
         >
           {children}
@@ -190,7 +190,7 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
     {
       children,
       className,
-      transition = { type: 'spring', stiffness: 280, damping: 30 },
+      transition = { type: 'spring', stiffness: 200, damping: 25 },
     },
     ref,
   ) => {

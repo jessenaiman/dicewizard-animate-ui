@@ -399,7 +399,10 @@
       "title": "Tabs Demo",
       "description": "Demo showing an animated tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/tabs"
+        "https://animate-ui.com/r/tabs",
+        "label",
+        "input",
+        "button"
       ],
       "files": [
         {
@@ -588,7 +591,10 @@
       "title": "Radix Tabs Demo",
       "description": "Demo showing an animated Radix UI tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/radix-tabs"
+        "https://animate-ui.com/r/radix-tabs",
+        "label",
+        "input",
+        "button"
       ],
       "files": [
         {
