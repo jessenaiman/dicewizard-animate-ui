@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cards-hover-demo",
+  "type": "registry:ui",
+  "title": "Cards Hover Demo",
+  "description": "Demo showing an animated cards hover.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/cards-hover"],
+  "files": [
+    {
+      "path": "registry/demo/components/cards-hover-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/cards-hover-demo.tsx"
+    }
+  ]
+}

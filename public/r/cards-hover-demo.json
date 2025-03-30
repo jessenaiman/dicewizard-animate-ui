@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cards-hover-demo",
+  "type": "registry:ui",
+  "title": "Cards Hover Demo",
+  "description": "Demo showing an animated cards hover.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/cards-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/cards-hover-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { BringToFront, GitPullRequest } from 'lucide-react';\nimport { CardsHover, CardHover } from '@/registry/components/cards-hover';\n\nconst CARDS = [\n  {\n    value: '1',\n    icon: BringToFront,\n    title: 'Animated components',\n    description: 'Beautiful Motion-animated components for dynamic websites.',\n  },\n  {\n    value: '2',\n    icon: GitPullRequest,\n    title: 'Open Source',\n    description:\n      'Install the components in your project and modify them as you wish.',\n  },\n  {\n    value: '3',\n    icon: ({ className }: { className: string }) => (\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        viewBox=\"0 0 256 256\"\n        className={className}\n      >\n        <rect width=\"256\" height=\"256\" fill=\"none\" />\n        <line\n          x1=\"208\"\n          y1=\"128\"\n          x2=\"128\"\n          y2=\"208\"\n          fill=\"none\"\n          stroke=\"currentColor\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          strokeWidth=\"32\"\n        />\n        <line\n          x1=\"192\"\n          y1=\"40\"\n          x2=\"40\"\n          y2=\"192\"\n          fill=\"none\"\n          stroke=\"currentColor\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          strokeWidth=\"32\"\n        />\n      </svg>\n    ),\n    title: 'Complementary to Shadcn UI',\n    description:\n      'The components are designed to be used with Shadcn UI components.',\n  },\n  {\n    value: '4',\n    icon: ({ className }: { className: string }) => (\n      <svg viewBox=\"0 0 34 20\" fill=\"currentColor\" className={className}>\n        <path d=\"M17.183 0C12.6 0 9.737 2.291 8.59 6.873c1.719-2.29 3.723-3.15 6.014-2.577 1.307.326 2.242 1.274 3.275 2.324 1.685 1.71 3.635 3.689 7.894 3.689 4.582 0 7.445-2.291 8.591-6.872-1.718 2.29-3.723 3.15-6.013 2.576-1.308-.326-2.243-1.274-3.276-2.324C23.39 1.98 21.44 0 17.183 0ZM8.59 10.309C4.01 10.309 1.145 12.6 0 17.182c1.718-2.291 3.723-3.15 6.013-2.577 1.308.326 2.243 1.274 3.276 2.324 1.685 1.71 3.635 3.689 7.894 3.689 4.582 0 7.445-2.29 8.59-6.872-1.718 2.29-3.722 3.15-6.013 2.577-1.307-.327-2.242-1.276-3.276-2.325-1.684-1.71-3.634-3.689-7.893-3.689Z\" />\n      </svg>\n    ),\n    title: 'Build with Tailwind CSS',\n    description: 'The components are designed with Tailwind CSS.',\n  },\n];\n\nexport const CardsHoverDemo = () => {\n  const [value, setValue] = React.useState<string | null>(null);\n\n  return (\n    <CardsHover\n      className=\"w-full lg:grid-cols-2\"\n      value={value}\n      onValueChange={setValue}\n    >\n      {CARDS.map((card) => (\n        <CardHover\n          key={card.value}\n          value={card.value}\n          className=\"p-4 flex flex-col\"\n        >\n          <div className=\"flex items-center justify-around size-10 rounded-lg bg-blue-500/10 mb-2\">\n            <card.icon className=\"size-5 text-blue-500\" />\n          </div>\n          <p className=\"text-base font-medium mb-1\">{card.title}</p>\n          <p className=\"text-sm text-muted-foreground\">{card.description}</p>\n        </CardHover>\n      ))}\n    </CardsHover>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/cards-hover-demo.tsx"
+    }
+  ]
+}

@@ -120,6 +120,22 @@
       ]
     },
     {
+      "name": "cards-hover",
+      "type": "registry:ui",
+      "title": "Cards Hover",
+      "description": "Cards hover component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/cards-hover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/cards-hover.tsx"
+        }
+      ]
+    },
+    {
       "name": "code-editor",
       "type": "registry:ui",
       "title": "Code Editor",
@@ -322,6 +338,25 @@
           "path": "registry/demo/buttons/ripple-button-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/ripple-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-hover-demo",
+      "type": "registry:ui",
+      "title": "Cards Hover Demo",
+      "description": "Demo showing an animated cards hover.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/cards-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/cards-hover-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/cards-hover-demo.tsx"
         }
       ]
     },
