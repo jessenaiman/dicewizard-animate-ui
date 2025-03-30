@@ -6,6 +6,7 @@
     "cli",
     "installation",
     "---Components---",
+    "components/cards-hover",
     "components/code-editor",
     "components/counter",
     "components/install-tabs",

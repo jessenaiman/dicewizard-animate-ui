@@ -3,12 +3,12 @@
 import * as React from 'react';
 import { motion, type Transition } from 'motion/react';
 
-const entryAnimation = {
+const ENTRY_ANIMATION = {
   initial: { rotateX: 0 },
   animate: { rotateX: 90 },
 };
 
-const exitAnimation = {
+const EXIT_ANIMATION = {
   initial: { rotateX: 90 },
   animate: { rotateX: 0 },
 };
@@ -46,11 +46,11 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
           >
             <motion.span
               className="absolute inline-block backface-hidden origin-[50%_25%]"
-              initial={entryAnimation.initial}
-              animate={entryAnimation.animate}
+              initial={ENTRY_ANIMATION.initial}
+              animate={ENTRY_ANIMATION.animate}
               {...(startOnView
-                ? { whileInView: entryAnimation.animate }
-                : { animate: entryAnimation.animate })}
+                ? { whileInView: ENTRY_ANIMATION.animate }
+                : { animate: ENTRY_ANIMATION.animate })}
               transition={{
                 ...transition,
                 delay: idx * (transition?.delay ?? 0),
@@ -60,10 +60,10 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
             </motion.span>
             <motion.span
               className="absolute inline-block backface-hidden origin-[50%_100%]"
-              initial={exitAnimation.initial}
+              initial={EXIT_ANIMATION.initial}
               {...(startOnView
-                ? { whileInView: exitAnimation.animate }
-                : { animate: exitAnimation.animate })}
+                ? { whileInView: EXIT_ANIMATION.animate }
+                : { animate: EXIT_ANIMATION.animate })}
               transition={{
                 ...transition,
                 delay: idx * (transition?.delay ?? 0) + 0.3,

@@ -6,11 +6,11 @@ import { motion, type HTMLMotionProps } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-const baseContainerWidth = 40;
-const baseContainerHeight = 24;
-const baseMargin = 2.5;
-const baseIconSize = baseContainerHeight / 2;
-const baseIconOffset = baseIconSize / 3;
+const BASE_CONTAINER_WIDTH = 40;
+const BASE_CONTAINER_HEIGHT = 24;
+const BASE_MARGIN = 2.5;
+const BASE_ICON_SIZE = BASE_CONTAINER_HEIGHT / 2;
+const BASE_ICON_OFFSET = BASE_ICON_SIZE / 3;
 
 const MotionSwitch = motion.create(SwitchPrimitives.Root);
 const MotionThumb = motion.create(SwitchPrimitives.Thumb);
@@ -37,9 +37,9 @@ const Switch = React.forwardRef<
       leftIcon: LeftIcon,
       rightIcon: RightIcon,
       thumbIcon: ThumbIcon,
-      width = baseContainerWidth,
-      height = baseContainerHeight,
-      margin = baseMargin,
+      width = BASE_CONTAINER_WIDTH,
+      height = BASE_CONTAINER_HEIGHT,
+      margin = BASE_MARGIN,
       ...props
     },
     ref,
@@ -52,16 +52,16 @@ const Switch = React.forwardRef<
 
     const [isChecked, setIsChecked] = React.useState(false);
 
-    const marginSize = (baseMargin / baseContainerHeight) * height;
+    const marginSize = (BASE_MARGIN / BASE_CONTAINER_HEIGHT) * height;
     const thumbSize = height - 2 * marginSize;
     const checkedTranslateX = width - thumbSize - marginSize;
     const uncheckedTranslateX = marginSize;
 
-    const tappedWidth = thumbSize + 3 * (height / baseContainerHeight);
+    const tappedWidth = thumbSize + 3 * (height / BASE_CONTAINER_HEIGHT);
     const tappedCheckedTranslateX = checkedTranslateX - marginSize;
 
-    const iconSize = (baseIconSize / baseContainerHeight) * height;
-    const iconOffset = (baseIconOffset / baseContainerHeight) * height;
+    const iconSize = (BASE_ICON_SIZE / BASE_CONTAINER_HEIGHT) * height;
+    const iconOffset = (BASE_ICON_OFFSET / BASE_CONTAINER_HEIGHT) * height;
 
     React.useEffect(() => {
       if (!switchRef.current) return;
