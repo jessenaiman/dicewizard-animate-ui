@@ -34,6 +34,9 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
         dark: 'github-dark',
       },
       className,
+      defaultValue,
+      value,
+      onValueChange,
       ...props
     },
     ref,
@@ -43,6 +46,9 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
     const [highlightedCommands, setHighlightedCommands] = React.useState<
       Record<string, string>
     >({});
+    const [selectedCommand, setSelectedCommand] = React.useState<string>(
+      value ?? defaultValue ?? Object.keys(commands)[0],
+    );
     const [isCopied, setIsCopied] = React.useState(false);
 
     React.useEffect(() => {
@@ -51,8 +57,8 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
           const { codeToHtml } = await import('shiki');
           const newHighlightedCommands: Record<string, string> = {};
 
-          for (const [command, value] of Object.entries(commands)) {
-            const highlighted = await codeToHtml(value, {
+          for (const [command, val] of Object.entries(commands)) {
+            const highlighted = await codeToHtml(val, {
               lang,
               themes: {
                 light: themes.light,
@@ -80,7 +86,15 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
           'w-full gap-0 dark:bg-neutral-800 bg-neutral-200 rounded-lg border border-neutral-200 dark:border-neutral-800',
           className,
         )}
-        {...(props as TabsProps)}
+        {...(props as Omit<
+          TabsProps,
+          'value' | 'defaultValue' | 'onValueChange'
+        >)}
+        value={selectedCommand}
+        onValueChange={(val) => {
+          setSelectedCommand(val);
+          onValueChange?.(val);
+        }}
       >
         <TabsList
           className="w-full relative justify-between rounded-b-none h-9 dark:text-white text-black dark:bg-neutral-800 bg-neutral-200 py-0 px-4"
@@ -104,10 +118,17 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
             className="size-6 rounded-sm -mr-2.5 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors flex items-center justify-center"
             onClick={() => {
               if (isCopied) return;
-              setIsCopied(true);
-              setTimeout(() => {
-                setIsCopied(false);
-              }, 3000);
+              navigator.clipboard
+                .writeText(commands[selectedCommand])
+                .then(() => {
+                  setIsCopied(true);
+                  setTimeout(() => {
+                    setIsCopied(false);
+                  }, 3000);
+                })
+                .catch((error) => {
+                  console.error('Error copying command', error);
+                });
             }}
           >
             <AnimatePresence mode="wait">
@@ -136,7 +157,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
           </motion.button>
         </TabsList>
         <TabsContents className="rounded-b-lg dark:bg-neutral-900 dark:text-white bg-neutral-100 text-black">
-          {Object.entries(highlightedCommands).map(([command, value]) => (
+          {Object.entries(highlightedCommands).map(([command, val]) => (
             <TabsContent
               key={command}
               className="h-12 w-full text-sm flex items-center px-4 overflow-auto"
@@ -144,7 +165,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
             >
               <div
                 className="[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-sm"
-                dangerouslySetInnerHTML={{ __html: value }}
+                dangerouslySetInnerHTML={{ __html: val }}
               />
             </TabsContent>
           ))}
