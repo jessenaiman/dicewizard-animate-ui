@@ -270,6 +270,35 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/install-tabs',
   },
+  'scroll-progress': {
+    name: 'scroll-progress',
+    description: 'Scroll progress component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/components/scroll-progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/scroll-progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useScroll,\n  useSpring,\n  type HTMLMotionProps,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface ScrollProgressProps extends React.HTMLAttributes<HTMLDivElement> {\n  progressProps?: HTMLMotionProps<'div'>;\n}\n\nconst ScrollProgress = React.forwardRef<HTMLDivElement, ScrollProgressProps>(\n  ({ className, children, progressProps, ...props }, ref) => {\n    const containerRef = React.useRef<HTMLDivElement | null>(null);\n    React.useImperativeHandle(\n      ref,\n      () => containerRef.current as HTMLDivElement,\n    );\n\n    const { scrollYProgress } = useScroll(\n      children ? { container: containerRef } : undefined,\n    );\n\n    const scaleX = useSpring(scrollYProgress, {\n      stiffness: 250,\n      damping: 40,\n      bounce: 0,\n    });\n\n    return (\n      <>\n        <motion.div\n          {...progressProps}\n          style={{ scaleX }}\n          className={cn(\n            'fixed z-50 top-0 inset-x-0 h-1 bg-blue-500 origin-left',\n            progressProps?.className,\n          )}\n        />\n        {containerRef && (\n          <div\n            ref={containerRef}\n            className={cn('overflow-y-auto h-full', className)}\n            {...props}\n          >\n            {children}\n          </div>\n        )}\n      </>\n    );\n  },\n);\n\nScrollProgress.displayName = 'ScrollProgress';\n\nexport { ScrollProgress, type ScrollProgressProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/components/scroll-progress/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/scroll-progress',
+  },
   tabs: {
     name: 'tabs',
     description: 'Tabs component',
@@ -586,6 +615,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/install-tabs-demo',
+  },
+  'scroll-progress-demo': {
+    name: 'scroll-progress-demo',
+    description: 'Demo showing a scroll progress.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/scroll-progress'],
+    files: [
+      {
+        path: 'registry/demo/components/scroll-progress-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/scroll-progress-demo.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { ArrowDown } from \'lucide-react\';\nimport { motion } from \'motion/react\';\n\nimport { ScrollProgress } from \'@/registry/components/scroll-progress\';\n\nexport const ScrollProgressDemo = () => {\n  return (\n    <div className="absolute inset-0">\n      <div className="relative h-full w-full overflow-hidden rounded-xl">\n        <ScrollProgress progressProps={{ className: \'absolute\' }}>\n          <div className="size-full flex items-center justify-center dark:bg-neutral-950 bg-white">\n            <p className="flex items-center gap-2 font-medium">\n              Scroll down to see the progress bar{\' \'}\n              <motion.span\n                animate={{ y: [3, -3, 3] }}\n                transition={{\n                  duration: 1.25,\n                  repeat: Infinity,\n                  ease: \'easeInOut\',\n                  type: \'keyframes\',\n                }}\n              >\n                <ArrowDown className="size-5" />\n              </motion.span>\n            </p>\n          </div>\n          <div className="size-full dark:bg-neutral-900 bg-neutral-100" />\n          <div className="size-full dark:bg-neutral-950 bg-white" />\n          <div className="size-full dark:bg-neutral-900 bg-neutral-100" />\n          <div className="size-full dark:bg-neutral-950 bg-white" />\n        </ScrollProgress>\n      </div>\n    </div>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/components/scroll-progress-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/scroll-progress-demo',
   },
   'tabs-demo': {
     name: 'tabs-demo',

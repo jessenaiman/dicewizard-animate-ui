@@ -22,8 +22,6 @@ const FloatingComponent: React.FC<FloatingComponentProps> = ({
         repeat: Infinity,
         ease: 'easeInOut',
         type: 'keyframes',
-        stiffness: 50,
-        damping: 10,
         delay,
       }}
     >

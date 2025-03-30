@@ -9,6 +9,7 @@
     "components/code-editor",
     "components/counter",
     "components/install-tabs",
+    "components/scroll-progress",
     "components/tabs",
     "---Radix UI / Shadcn UI---",
     "radix/radix-accordion",

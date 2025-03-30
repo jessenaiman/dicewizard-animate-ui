@@ -182,6 +182,22 @@
       ]
     },
     {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "Scroll progress component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/scroll-progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/scroll-progress.tsx"
+        }
+      ]
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
@@ -354,6 +370,26 @@
           "path": "registry/demo/components/install-tabs-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/install-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress-demo",
+      "type": "registry:ui",
+      "title": "Scroll Progress Demo",
+      "description": "Demo showing a scroll progress.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/scroll-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/scroll-progress-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/scroll-progress-demo.tsx"
         }
       ]
     },
