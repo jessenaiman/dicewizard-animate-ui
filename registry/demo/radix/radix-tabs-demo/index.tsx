@@ -17,7 +17,7 @@ export const RadixTabsDemo = () => {
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>
 
-      <TabsContents className="mx-1 mb-1 -mt-1.5 rounded-sm h-full bg-background">
+      <TabsContents className="mx-1 mb-1 -mt-2 rounded-sm h-full bg-background">
         <TabsContent value="account" className="space-y-6 p-6">
           <p className="text-sm text-muted-foreground">
             Make changes to your account here. Click save when you're done.
