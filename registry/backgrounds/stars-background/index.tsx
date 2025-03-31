@@ -1,14 +1,8 @@
 'use client';
 
-import * as React from 'react';
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  type SpringOptions,
-} from 'motion/react';
-
 import { cn } from '@/lib/utils';
+import { motion, useMotionValue, useSpring } from 'motion/react';
+import * as React from 'react';
 
 interface StarLayerProps {
   count: number;
@@ -16,16 +10,26 @@ interface StarLayerProps {
   duration: number;
 }
 
+const seededRandom = (seed: number) => {
+  const x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+};
+
+const generateStars = (count: number, size: number, seed: number) => {
+  const shadows: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const x = Math.floor(seededRandom(seed + i) * 4000) - 2000;
+    const y = Math.floor(seededRandom(seed + i + 1000) * 4000) - 2000;
+    shadows.push(`${x}px ${y}px #000`);
+  }
+  return shadows.join(', ');
+};
+
 const StarLayer = ({ count, size, duration }: StarLayerProps) => {
-  const boxShadow = React.useMemo(() => {
-    const shadows: string[] = [];
-    for (let i = 0; i < count; i++) {
-      const x = Math.floor(Math.random() * 4000) - 2000;
-      const y = Math.floor(Math.random() * 4000) - 2000;
-      shadows.push(`${x}px ${y}px #FFF`);
-    }
-    return shadows.join(', ');
-  }, [count]);
+  const boxShadow = React.useMemo(
+    () => generateStars(count, size, 0),
+    [count, size],
+  );
 
   return (
     <motion.div
@@ -56,7 +60,8 @@ const StarLayer = ({ count, size, duration }: StarLayerProps) => {
 interface StarsBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   factor?: number;
   speed?: number;
-  transition?: SpringOptions;
+  stiffness?: number;
+  damping?: number;
 }
 
 const StarsBackground = React.forwardRef<HTMLDivElement, StarsBackgroundProps>(
@@ -66,7 +71,8 @@ const StarsBackground = React.forwardRef<HTMLDivElement, StarsBackgroundProps>(
       className,
       factor = 0.05,
       speed = 50,
-      transition = { stiffness: 50, damping: 20 },
+      stiffness = 50,
+      damping = 20,
       ...props
     },
     ref,
@@ -74,8 +80,8 @@ const StarsBackground = React.forwardRef<HTMLDivElement, StarsBackgroundProps>(
     const offsetX = useMotionValue(1);
     const offsetY = useMotionValue(1);
 
-    const springX = useSpring(offsetX, transition);
-    const springY = useSpring(offsetY, transition);
+    const springX = useSpring(offsetX, { stiffness, damping });
+    const springY = useSpring(offsetY, { stiffness, damping });
 
     const handleMouseMove = React.useCallback(
       (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
