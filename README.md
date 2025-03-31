@@ -1,10 +1,4 @@
 <div align="center">
-  <a href="https://animate-ui.com" style="margin-bottom: 5px">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://animate-ui.com/gh-image.png">
-      <img alt="Animate UI logo" src="https://animate-ui.com/gh-image.png" height="80">
-    </picture>
-  </a>
   <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0">Animate UI</h1>
   <p align="center">
     A fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion.
