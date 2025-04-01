@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 const EXIT_DELAY = 0.3;
 
-interface CardsHoverContextValue {
+interface CardsHoverContextType {
   activeValue: string | null;
   setActiveValue: (value: string | null) => void;
   scheduleReset: () => void;
@@ -15,8 +15,16 @@ interface CardsHoverContextValue {
 }
 
 const CardsHoverContext = React.createContext<
-  CardsHoverContextValue | undefined
+  CardsHoverContextType | undefined
 >(undefined);
+
+const useCardsHover = (): CardsHoverContextType => {
+  const context = React.useContext(CardsHoverContext);
+  if (!context) {
+    throw new Error('useCardsHover must be used within a CardsHoverProvider');
+  }
+  return context;
+};
 
 interface CardsHoverProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'value' | 'defaultValue'> {
@@ -94,6 +102,7 @@ const CardsHover = React.forwardRef<HTMLDivElement, CardsHoverProps>(
     );
   },
 );
+CardsHover.displayName = 'CardsHover';
 
 interface CardHoverProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
@@ -111,7 +120,7 @@ const CardHover = React.forwardRef<HTMLDivElement, CardHoverProps>(
     ref,
   ) => {
     const { activeValue, setActiveValue, scheduleReset, clearReset } =
-      React.useContext(CardsHoverContext)!;
+      useCardsHover();
 
     const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
       clearReset();
@@ -163,5 +172,13 @@ const CardHover = React.forwardRef<HTMLDivElement, CardHoverProps>(
     );
   },
 );
+CardHover.displayName = 'CardHover';
 
-export { CardsHover, CardHover };
+export {
+  CardsHover,
+  CardHover,
+  useCardsHover,
+  type CardsHoverContextType,
+  type CardsHoverProps,
+  type CardHoverProps,
+};

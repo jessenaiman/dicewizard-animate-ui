@@ -6,9 +6,20 @@ import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-const PopoverContext = React.createContext<{ isOpen: boolean }>({
+interface PopoverContextType {
+  isOpen: boolean;
+}
+const PopoverContext = React.createContext<PopoverContextType>({
   isOpen: false,
 });
+
+const usePopover = (): PopoverContextType => {
+  const context = React.useContext(PopoverContext);
+  if (!context) {
+    throw new Error('usePopover must be used within a Popover');
+  }
+  return context;
+};
 
 type PopoverProps = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Root
@@ -63,7 +74,7 @@ const PopoverContent = React.forwardRef<
     },
     ref,
   ) => {
-    const { isOpen } = React.useContext(PopoverContext);
+    const { isOpen } = usePopover();
 
     return (
       <AnimatePresence>
@@ -103,6 +114,8 @@ export {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  usePopover,
+  type PopoverContextType,
   type PopoverProps,
   type PopoverTriggerProps,
   type PopoverContentProps,

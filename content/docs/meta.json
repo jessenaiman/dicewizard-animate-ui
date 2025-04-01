@@ -9,6 +9,7 @@
     "components/cards-hover",
     "components/code-editor",
     "components/counter",
+    "components/cursor",
     "components/install-tabs",
     "components/scroll-progress",
     "components/tabs",

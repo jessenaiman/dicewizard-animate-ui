@@ -7,14 +7,22 @@ import { motion, AnimatePresence, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-interface AccordionItemContextValue {
+interface AccordionItemContextType {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }
 
 const AccordionItemContext = React.createContext<
-  AccordionItemContextValue | undefined
+  AccordionItemContextType | undefined
 >(undefined);
+
+const useAccordionItem = (): AccordionItemContextType => {
+  const context = React.useContext(AccordionItemContext);
+  if (!context) {
+    throw new Error('useAccordionItem must be used within an AccordionItem');
+  }
+  return context;
+};
 
 type AccordionProps = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Root
@@ -68,7 +76,7 @@ const AccordionTrigger = React.forwardRef<
     ref,
   ) => {
     const triggerRef = React.useRef<HTMLButtonElement | null>(null);
-    const context = React.useContext(AccordionItemContext);
+    const context = useAccordionItem();
 
     if (!context) {
       throw new Error('AccordionTrigger must be used within an AccordionItem');
@@ -147,7 +155,7 @@ const AccordionContent = React.forwardRef<
     },
     ref,
   ) => {
-    const context = React.useContext(AccordionItemContext);
+    const context = useAccordionItem();
 
     if (!context) {
       throw new Error('AccordionContent must be used within an AccordionItem');
@@ -187,6 +195,8 @@ export {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
+  useAccordionItem,
+  type AccordionItemContextType,
   type AccordionProps,
   type AccordionItemProps,
   type AccordionTriggerProps,

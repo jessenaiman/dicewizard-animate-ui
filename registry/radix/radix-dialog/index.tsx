@@ -7,8 +7,18 @@ import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-type DialogContextType = { isOpen: boolean };
+interface DialogContextType {
+  isOpen: boolean;
+}
 const DialogContext = React.createContext<DialogContextType>({ isOpen: false });
+
+const useDialog = (): DialogContextType => {
+  const context = React.useContext(DialogContext);
+  if (!context) {
+    throw new Error('useDialog must be used within a Dialog');
+  }
+  return context;
+};
 
 type DialogProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>;
 const Dialog: React.FC<DialogProps> = ({ children, ...props }) => {
@@ -85,7 +95,7 @@ const DialogContent = React.forwardRef<
     },
     ref,
   ) => {
-    const { isOpen } = React.useContext(DialogContext);
+    const { isOpen } = useDialog();
 
     const initialRotation =
       from === 'top' || from === 'left' ? '20deg' : '-20deg';
@@ -221,6 +231,8 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  useDialog,
+  type DialogContextType,
   type DialogProps,
   type DialogTriggerProps,
   type DialogPortalProps,

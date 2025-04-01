@@ -6,9 +6,20 @@ import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-const HoverCardContext = React.createContext<{ isOpen: boolean }>({
+interface HoverCardContextType {
+  isOpen: boolean;
+}
+const HoverCardContext = React.createContext<HoverCardContextType>({
   isOpen: false,
 });
+
+const useHoverCard = (): HoverCardContextType => {
+  const context = React.useContext(HoverCardContext);
+  if (!context) {
+    throw new Error('useHoverCard must be used within a HoverCard');
+  }
+  return context;
+};
 
 type HoverCardProps = React.ComponentPropsWithoutRef<
   typeof HoverCardPrimitive.Root
@@ -63,7 +74,7 @@ const HoverCardContent = React.forwardRef<
     },
     ref,
   ) => {
-    const { isOpen } = React.useContext(HoverCardContext);
+    const { isOpen } = useHoverCard();
 
     return (
       <AnimatePresence>
@@ -103,6 +114,8 @@ export {
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
+  useHoverCard,
+  type HoverCardContextType,
   type HoverCardProps,
   type HoverCardTriggerProps,
   type HoverCardContentProps,
