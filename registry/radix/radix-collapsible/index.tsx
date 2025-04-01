@@ -4,10 +4,20 @@ import * as React from 'react';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 
-type CollapsibleContextType = { isOpen: boolean };
+interface CollapsibleContextType {
+  isOpen: boolean;
+}
 const CollapsibleContext = React.createContext<CollapsibleContextType>({
   isOpen: false,
 });
+
+const useCollapsible = (): CollapsibleContextType => {
+  const context = React.useContext(CollapsibleContext);
+  if (!context) {
+    throw new Error('useCollapsible must be used within a Collapsible');
+  }
+  return context;
+};
 
 type CollapsibleProps = React.ComponentPropsWithoutRef<
   typeof CollapsiblePrimitive.Root
@@ -57,7 +67,7 @@ const CollapsibleContent = React.forwardRef<
     },
     ref,
   ) => {
-    const { isOpen } = React.useContext(CollapsibleContext);
+    const { isOpen } = useCollapsible();
 
     return (
       <AnimatePresence>
@@ -86,6 +96,8 @@ export {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent,
+  useCollapsible,
+  type CollapsibleContextType,
   type CollapsibleProps,
   type CollapsibleTriggerProps,
   type CollapsibleContentProps,

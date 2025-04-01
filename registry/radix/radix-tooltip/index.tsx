@@ -12,9 +12,20 @@ type TooltipProviderProps = React.ComponentPropsWithoutRef<
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
-const TooltipContext = React.createContext<{ isOpen: boolean }>({
+interface TooltipContextType {
+  isOpen: boolean;
+}
+const TooltipContext = React.createContext<TooltipContextType>({
   isOpen: false,
 });
+
+const useTooltip = (): TooltipContextType => {
+  const context = React.useContext(TooltipContext);
+  if (!context) {
+    throw new Error('useTooltip must be used within a Tooltip');
+  }
+  return context;
+};
 
 type TooltipProps = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Root
@@ -68,7 +79,7 @@ const TooltipContent = React.forwardRef<
     },
     ref,
   ) => {
-    const { isOpen } = React.useContext(TooltipContext);
+    const { isOpen } = useTooltip();
 
     return (
       <AnimatePresence>
@@ -108,6 +119,8 @@ export {
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
+  useTooltip,
+  type TooltipContextType,
   type TooltipProps,
   type TooltipTriggerProps,
   type TooltipContentProps,

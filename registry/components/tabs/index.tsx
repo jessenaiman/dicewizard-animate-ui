@@ -5,16 +5,22 @@ import { motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-interface TabsContextProps {
+interface TabsContextType {
   activeValue: string;
   handleValueChange: (value: string) => void;
   registerTrigger: (value: string, node: HTMLElement | null) => void;
   getTrigger: (value: string) => HTMLElement | null;
 }
 
-const TabsContext = React.createContext<TabsContextProps | undefined>(
-  undefined,
-);
+const TabsContext = React.createContext<TabsContextType | undefined>(undefined);
+
+const useTabs = (): TabsContextType => {
+  const context = React.useContext(TabsContext);
+  if (!context) {
+    throw new Error('useTabs must be used within a TabsProvider');
+  }
+  return context;
+};
 
 type TabsProps =
   | {
@@ -130,7 +136,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
     forwardedRef,
   ) => {
     const localRef = React.useRef<HTMLDivElement | null>(null);
-    const { activeValue, getTrigger } = React.useContext(TabsContext)!;
+    const { activeValue, getTrigger } = useTabs();
     const [indicatorStyle, setIndicatorStyle] = React.useState({
       left: 0,
       top: 0,
@@ -204,8 +210,7 @@ interface TabsTriggerProps {
 
 const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
   ({ value, children, className }, forwardedRef) => {
-    const { activeValue, handleValueChange, registerTrigger } =
-      React.useContext(TabsContext)!;
+    const { activeValue, handleValueChange, registerTrigger } = useTabs();
 
     const localRef = React.useRef<HTMLButtonElement | null>(null);
     React.useImperativeHandle(
@@ -248,7 +253,7 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
     { children, className, transition = { duration: 0.4, ease: 'easeInOut' } },
     forwardedRef,
   ) => {
-    const { activeValue } = React.useContext(TabsContext)!;
+    const { activeValue } = useTabs();
     const childrenArray = React.Children.toArray(children);
     const activeIndex = childrenArray.findIndex(
       (child): child is React.ReactElement<{ value: string }> =>
@@ -313,6 +318,8 @@ export {
   TabsTrigger,
   TabsContents,
   TabsContent,
+  useTabs,
+  type TabsContextType,
   type TabsProps,
   type TabsListProps,
   type TabsTriggerProps,
