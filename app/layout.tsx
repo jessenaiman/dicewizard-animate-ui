@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: 'Animate UI - Animated React Components',
   },
   description:
-    'A fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Powered by the Shadcn CLI and with animated Radix components..',
+    'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Browse a list of components you can install, modify, and use in your projects.',
   keywords: [
     'Animate UI',
     'React',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Animate UI',
     description:
-      'A fully animated, open-source component library built with React, TypeScript, Tailwind CSS, and Motion.',
+      'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Browse a list of components you can install, modify, and use in your projects.',
     url: 'https://animate-ui.com',
     siteName: 'Animate UI',
     images: [
