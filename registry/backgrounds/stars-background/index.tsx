@@ -1,8 +1,9 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion, SpringOptions, useMotionValue, useSpring } from 'motion/react';
 import * as React from 'react';
+
+import { cn } from '@/lib/utils';
 
 interface StarLayerProps {
   count: number;
@@ -60,8 +61,7 @@ const StarLayer = ({ count, size, duration }: StarLayerProps) => {
 interface StarsBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   factor?: number;
   speed?: number;
-  stiffness?: number;
-  damping?: number;
+  transition?: SpringOptions;
 }
 
 const StarsBackground = React.forwardRef<HTMLDivElement, StarsBackgroundProps>(
@@ -71,8 +71,7 @@ const StarsBackground = React.forwardRef<HTMLDivElement, StarsBackgroundProps>(
       className,
       factor = 0.05,
       speed = 50,
-      stiffness = 50,
-      damping = 20,
+      transition = { stiffness: 50, damping: 20 },
       ...props
     },
     ref,
@@ -80,8 +79,8 @@ const StarsBackground = React.forwardRef<HTMLDivElement, StarsBackgroundProps>(
     const offsetX = useMotionValue(1);
     const offsetY = useMotionValue(1);
 
-    const springX = useSpring(offsetX, { stiffness, damping });
-    const springY = useSpring(offsetY, { stiffness, damping });
+    const springX = useSpring(offsetX, transition);
+    const springY = useSpring(offsetY, transition);
 
     const handleMouseMove = React.useCallback(
       (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
