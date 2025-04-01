@@ -7,7 +7,10 @@ import { Providers } from './providers';
 import { jsonLd } from '@/lib/json-ld';
 
 export const metadata: Metadata = {
-  title: 'Animate UI',
+  title: {
+    template: '%s - Animate UI',
+    default: 'Animate UI - Animated React Components',
+  },
   description:
     'A fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Powered by the Shadcn CLI and with animated Radix components..',
   keywords: [
