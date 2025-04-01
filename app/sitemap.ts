@@ -7,7 +7,7 @@ export const revalidate = false;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = (path: string): string =>
-    new URL(path, 'https://www.animate-ui.com').toString();
+    new URL(path, 'https://animate-ui.com').toString();
 
   return [
     {
