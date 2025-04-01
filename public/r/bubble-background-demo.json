@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/backgrounds/bubble-background-demo/index.tsx",
-      "content": "import { BubbleBackground } from '@/registry/backgrounds/bubble-background';\n\nexport const GradientBackgroundDemo = () => {\n  return (\n    <BubbleBackground\n      interactive\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n    >\n      <h1 className=\"text-3xl font-bold text-white z-10\">\n        Gradient Background\n      </h1>\n    </BubbleBackground>\n  );\n};\n",
+      "content": "import { BubbleBackground } from '@/registry/backgrounds/bubble-background';\n\nexport const BubbleBackgroundDemo = () => {\n  return (\n    <BubbleBackground\n      interactive\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n    >\n      <h1 className=\"text-3xl font-bold text-white z-10\">Bubble Background</h1>\n    </BubbleBackground>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/bubble-background-demo.tsx"
     }
