@@ -25,7 +25,7 @@ const GradientBackground = React.forwardRef<
       <motion.div
         ref={ref}
         className={cn(
-          'w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 bg-[length:400%_400%]',
+          'size-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 bg-[length:400%_400%]',
           className,
         )}
         animate={{

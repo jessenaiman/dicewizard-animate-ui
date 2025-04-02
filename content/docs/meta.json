@@ -40,6 +40,7 @@
     "---Backgrounds---",
     "backgrounds/bubble-background",
     "backgrounds/gradient-background",
+    "backgrounds/hexagon-background",
     "backgrounds/stars-background"
   ]
 }
