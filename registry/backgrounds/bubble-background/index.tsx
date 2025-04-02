@@ -79,7 +79,7 @@ const BubbleBackground = React.forwardRef<
       <div
         ref={containerRef}
         className={cn(
-          'relative w-full h-full overflow-hidden bg-gradient-to-br from-violet-900 to-blue-900',
+          'relative size-full overflow-hidden bg-gradient-to-br from-violet-900 to-blue-900',
           className,
         )}
         {...props}
