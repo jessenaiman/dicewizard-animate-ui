@@ -11,6 +11,8 @@ description: A dark, interactive background featuring animated dots of varying s
 
 ## Props
 
+### StarsBackground
+
 <TypeTable
   type={{
     children: {
@@ -41,9 +43,46 @@ description: A dark, interactive background featuring animated dots of varying s
       required: false,
       default: '{ stiffness: 50, damping: 20 }',
     },
+    starColor: {
+      description: 'The color of the stars',
+      type: 'string',
+      default: '#fff',
+      required: false,
+    },
+  }}
+/>
+
+### StarLayer
+
+<TypeTable
+  type={{
+    count: {
+      description: 'The number of stars',
+      type: 'number',
+      default: '1000',
+      required: false,
+    },
+    size: {
+      description: 'The size of the stars',
+      type: 'number',
+      default: '1',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the stars',
+      type: 'Transition',
+      required: false,
+      default: '{ repeat: Infinity, duration: 50, ease: "linear" }',
+    },
+    starColor: {
+      description: 'The color of the stars',
+      type: 'string',
+      default: '#fff',
+      required: false,
+    },
   }}
 />
 
 ## Credits
 
-- Credits to [umangladani](https://codepen.io/umangladani) for the inspiration
+- Credits to [umangladani](https://codepen.io/umangladani/pen/wvgwgjK) for the inspiration
