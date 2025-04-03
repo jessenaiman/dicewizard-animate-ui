@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Logo } from '@/components/logo';
 import { Hero } from '@/components/hero';
+import { useIsMobile } from '@/hooks/use-mobile';
+import GithubIcon from '@/components/icons/github-icon';
+import XIcon from '@/components/icons/x-icon';
 
 const logoWrapperVariants = {
   center: {
@@ -22,7 +25,7 @@ const logoWrapperVariants = {
   },
 };
 
-const logoVariants = {
+const logoVariants = (isMobile: boolean) => ({
   center: {
     top: '50%',
     left: '50%',
@@ -32,12 +35,12 @@ const logoVariants = {
   },
   topLeft: {
     top: 20,
-    left: -43,
+    left: isMobile ? -36 : -43,
     x: 0,
     y: 0,
     scale: 0.6,
   },
-};
+});
 
 const contentVariants = {
   hidden: {
@@ -53,6 +56,7 @@ const contentVariants = {
 
 export default function HomePage() {
   const [transition, setTransition] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -79,12 +83,12 @@ export default function HomePage() {
         <div className="relative w-full max-w-7xl h-full">
           <motion.div
             className="absolute"
-            variants={logoVariants}
+            variants={logoVariants(isMobile)}
             initial="center"
             animate={transition ? 'topLeft' : 'center'}
             transition={{ type: 'spring', stiffness: 200, damping: 30 }}
           >
-            <Logo size="xl" draw betaTag />
+            <Logo size={isMobile ? 'lg' : 'xl'} draw betaTag />
           </motion.div>
         </div>
       </motion.div>
@@ -99,6 +103,35 @@ export default function HomePage() {
           <Hero key={String(transition)} />
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ top: 27, right: -43, opacity: 0 }}
+        animate={
+          transition ? { right: 20, opacity: 1 } : { right: -43, opacity: 0 }
+        }
+        transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+        className="fixed z-40 flex items-center gap-2"
+        style={{ top: 20 }}
+      >
+        <a
+          href="https://github.com/Skyleen77/animate-ui"
+          rel="noreferrer noopener"
+          target="_blank"
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&amp;_svg]:size-5 text-fd-muted-foreground md:[&amp;_svg]:size-4.5"
+          data-active="false"
+        >
+          <GithubIcon />
+        </a>
+        <a
+          href="https://x.com/animate_ui"
+          rel="noreferrer noopener"
+          target="_blank"
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&amp;_svg]:size-5 text-fd-muted-foreground md:[&amp;_svg]:size-4.5"
+          data-active="false"
+        >
+          <XIcon />
+        </a>
+      </motion.div>
     </main>
   );
 }
