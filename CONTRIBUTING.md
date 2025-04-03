@@ -132,6 +132,10 @@ description: Description for the new component
     },
   }}
 />
+
+## Credits
+
+- Credits to [you](https://link-to-your-profile.com) for creating the component
 ```
 
 ### Update the Registry

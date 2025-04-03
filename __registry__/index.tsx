@@ -50,6 +50,35 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/bubble-background',
   },
+  'fireworks-background': {
+    name: 'fireworks-background',
+    description: 'Fireworks background component',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/backgrounds/fireworks-background/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/fireworks-background.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\nconst rand = (min: number, max: number): number =>\n  Math.random() * (max - min) + min;\nconst randInt = (min: number, max: number): number =>\n  Math.floor(Math.random() * (max - min) + min);\nconst randColor = (): string => `hsl(${randInt(0, 360)}, 100%, 50%)`;\n\ninterface ParticleType {\n  x: number;\n  y: number;\n  color: string;\n  speed: number;\n  direction: number;\n  vx: number;\n  vy: number;\n  gravity: number;\n  friction: number;\n  alpha: number;\n  decay: number;\n  size: number;\n  update: () => void;\n  draw: (ctx: CanvasRenderingContext2D) => void;\n  isAlive: () => boolean;\n}\n\nconst createParticle = (\n  x: number,\n  y: number,\n  color: string,\n  speed: number,\n  direction: number,\n  gravity: number,\n  friction: number,\n  size: number,\n): ParticleType => {\n  const vx = Math.cos(direction) * speed;\n  const vy = Math.sin(direction) * speed;\n  const alpha = 1;\n  const decay = rand(0.005, 0.02);\n\n  return {\n    x,\n    y,\n    color,\n    speed,\n    direction,\n    vx,\n    vy,\n    gravity,\n    friction,\n    alpha,\n    decay,\n    size,\n    update() {\n      this.vx *= this.friction;\n      this.vy *= this.friction;\n      this.vy += this.gravity;\n      this.x += this.vx;\n      this.y += this.vy;\n      this.alpha -= this.decay;\n    },\n    draw(ctx: CanvasRenderingContext2D) {\n      ctx.save();\n      ctx.globalAlpha = this.alpha;\n      ctx.beginPath();\n      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);\n      ctx.fillStyle = this.color;\n      ctx.fill();\n      ctx.restore();\n    },\n    isAlive() {\n      return this.alpha > 0;\n    },\n  };\n};\n\ninterface FireworkType {\n  x: number;\n  y: number;\n  targetY: number;\n  color: string;\n  speed: number;\n  size: number;\n  angle: number;\n  vx: number;\n  vy: number;\n  trail: { x: number; y: number }[];\n  trailLength: number;\n  exploded: boolean;\n  update: () => boolean;\n  explode: () => void;\n  draw: (ctx: CanvasRenderingContext2D) => void;\n}\n\nconst createFirework = (\n  x: number,\n  y: number,\n  targetY: number,\n  color: string,\n  speed: number,\n  size: number,\n  particleSpeed: { min: number; max: number } | number,\n  particleSize: { min: number; max: number } | number,\n  onExplode: (particles: ParticleType[]) => void,\n): FireworkType => {\n  const angle = -Math.PI / 2 + rand(-0.3, 0.3);\n  const vx = Math.cos(angle) * speed;\n  const vy = Math.sin(angle) * speed;\n  const trail: { x: number; y: number }[] = [];\n  const trailLength = randInt(10, 25);\n\n  return {\n    x,\n    y,\n    targetY,\n    color,\n    speed,\n    size,\n    angle,\n    vx,\n    vy,\n    trail,\n    trailLength,\n    exploded: false,\n    update() {\n      this.trail.push({ x: this.x, y: this.y });\n      if (this.trail.length > this.trailLength) {\n        this.trail.shift();\n      }\n      this.x += this.vx;\n      this.y += this.vy;\n      this.vy += 0.02;\n      if (this.vy >= 0 || this.y <= this.targetY) {\n        this.explode();\n        return false;\n      }\n      return true;\n    },\n    explode() {\n      const numParticles = randInt(50, 150);\n      const particles: ParticleType[] = [];\n      for (let i = 0; i < numParticles; i++) {\n        const particleAngle = rand(0, Math.PI * 2);\n        const localParticleSpeed = getValueByRange(particleSpeed);\n        const localParticleSize = getValueByRange(particleSize);\n        particles.push(\n          createParticle(\n            this.x,\n            this.y,\n            this.color,\n            localParticleSpeed,\n            particleAngle,\n            0.05,\n            0.98,\n            localParticleSize,\n          ),\n        );\n      }\n      onExplode(particles);\n    },\n    draw(ctx: CanvasRenderingContext2D) {\n      ctx.save();\n      ctx.beginPath();\n      if (this.trail.length > 1) {\n        ctx.moveTo(this.trail[0].x, this.trail[0].y);\n        for (const point of this.trail) {\n          ctx.lineTo(point.x, point.y);\n        }\n      } else {\n        ctx.moveTo(this.x, this.y);\n        ctx.lineTo(this.x, this.y);\n      }\n      ctx.strokeStyle = this.color;\n      ctx.lineWidth = this.size;\n      ctx.lineCap = 'round';\n      ctx.stroke();\n      ctx.restore();\n    },\n  };\n};\n\nconst getValueByRange = (\n  range: { min: number; max: number } | number,\n): number => {\n  if (typeof range === 'number') {\n    return range;\n  }\n  return rand(range.min, range.max);\n};\n\nconst getColor = (color: string | string[] | undefined): string => {\n  if (Array.isArray(color)) {\n    return color[randInt(0, color.length)];\n  }\n  return color ?? randColor();\n};\n\ninterface FireworksBackgroundProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {\n  canvasProps?: React.HTMLAttributes<HTMLCanvasElement>;\n  population?: number;\n  color?: string | string[];\n  fireworkSpeed?: { min: number; max: number } | number;\n  fireworkSize?: { min: number; max: number } | number;\n  particleSpeed?: { min: number; max: number } | number;\n  particleSize?: { min: number; max: number } | number;\n}\n\nconst FireworksBackground = React.forwardRef<\n  HTMLDivElement,\n  FireworksBackgroundProps\n>(\n  (\n    {\n      className,\n      canvasProps,\n      population = 1,\n      color,\n      fireworkSpeed = { min: 4, max: 8 },\n      fireworkSize = { min: 2, max: 5 },\n      particleSpeed = { min: 2, max: 7 },\n      particleSize = { min: 1, max: 5 },\n      ...props\n    },\n    ref,\n  ) => {\n    const canvasRef = React.useRef<HTMLCanvasElement>(null);\n    const containerRef = React.useRef<HTMLDivElement>(null);\n    React.useImperativeHandle(\n      ref,\n      () => containerRef.current as HTMLDivElement,\n    );\n\n    React.useEffect(() => {\n      const canvas = canvasRef.current;\n      const container = containerRef.current;\n      if (!canvas || !container) return;\n      const ctx = canvas.getContext('2d');\n      if (!ctx) return;\n\n      let maxX = window.innerWidth;\n      let ratio = container.offsetHeight / container.offsetWidth;\n      let maxY = maxX * ratio;\n      canvas.width = maxX;\n      canvas.height = maxY;\n\n      const setCanvasSize = () => {\n        maxX = window.innerWidth;\n        ratio = container.offsetHeight / container.offsetWidth;\n        maxY = maxX * ratio;\n        canvas.width = maxX;\n        canvas.height = maxY;\n      };\n      window.addEventListener('resize', setCanvasSize);\n\n      const explosions: ParticleType[] = [];\n      const fireworks: FireworkType[] = [];\n\n      const handleExplosion = (particles: ParticleType[]) => {\n        explosions.push(...particles);\n      };\n\n      const launchFirework = () => {\n        const x = rand(maxX * 0.1, maxX * 0.9);\n        const y = maxY;\n        const targetY = rand(maxY * 0.1, maxY * 0.4);\n        const fireworkColor = getColor(color);\n        const speed = getValueByRange(fireworkSpeed);\n        const size = getValueByRange(fireworkSize);\n        fireworks.push(\n          createFirework(\n            x,\n            y,\n            targetY,\n            fireworkColor,\n            speed,\n            size,\n            particleSpeed,\n            particleSize,\n            handleExplosion,\n          ),\n        );\n        const timeout = rand(300, 800) / population;\n        setTimeout(launchFirework, timeout);\n      };\n\n      launchFirework();\n\n      let animationFrameId: number;\n      const animate = () => {\n        ctx.clearRect(0, 0, maxX, maxY);\n\n        for (let i = fireworks.length - 1; i >= 0; i--) {\n          const firework = fireworks[i];\n          if (!firework.update()) {\n            fireworks.splice(i, 1);\n          } else {\n            firework.draw(ctx);\n          }\n        }\n\n        for (let i = explosions.length - 1; i >= 0; i--) {\n          const particle = explosions[i];\n          particle.update();\n          if (particle.isAlive()) {\n            particle.draw(ctx);\n          } else {\n            explosions.splice(i, 1);\n          }\n        }\n\n        animationFrameId = requestAnimationFrame(animate);\n      };\n\n      animate();\n\n      const handleClick = (event: MouseEvent) => {\n        const x = event.clientX;\n        const y = maxY;\n        const targetY = event.clientY;\n        const fireworkColor = getColor(color);\n        const speed = getValueByRange(fireworkSpeed);\n        const size = getValueByRange(fireworkSize);\n        fireworks.push(\n          createFirework(\n            x,\n            y,\n            targetY,\n            fireworkColor,\n            speed,\n            size,\n            particleSpeed,\n            particleSize,\n            handleExplosion,\n          ),\n        );\n      };\n\n      container.addEventListener('click', handleClick);\n\n      return () => {\n        window.removeEventListener('resize', setCanvasSize);\n        container.removeEventListener('click', handleClick);\n        cancelAnimationFrame(animationFrameId);\n      };\n    }, [\n      population,\n      color,\n      fireworkSpeed,\n      fireworkSize,\n      particleSpeed,\n      particleSize,\n    ]);\n\n    return (\n      <div\n        ref={containerRef}\n        className={cn('relative size-full overflow-hidden', className)}\n        {...props}\n      >\n        <canvas\n          {...canvasProps}\n          ref={canvasRef}\n          className={cn('absolute inset-0 size-full', canvasProps?.className)}\n        />\n      </div>\n    );\n  },\n);\n\nFireworksBackground.displayName = 'FireworksBackground';\n\nexport { FireworksBackground, type FireworksBackgroundProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/backgrounds/fireworks-background/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/fireworks-background',
+  },
   'gradient-background': {
     name: 'gradient-background',
     description: 'Gradient background component',
@@ -92,7 +121,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/hexagon-background.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\ninterface HexagonBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {\n  children?: React.ReactNode;\n  hexagonProps?: React.HTMLAttributes<HTMLDivElement>;\n  hexagonSize?: number; // value greater than 50\n  hexagonMargin?: number;\n}\n\nconst HexagonBackground = React.forwardRef<\n  HTMLDivElement,\n  HexagonBackgroundProps\n>(\n  (\n    {\n      className,\n      children,\n      hexagonProps,\n      hexagonSize = 75,\n      hexagonMargin = 3,\n      ...props\n    },\n    ref,\n  ) => {\n    const hexagonWidth = hexagonSize;\n    const hexagonHeight = hexagonSize * 1.1;\n    const rowSpacing = hexagonSize * 0.8;\n    const baseMarginTop = -36 - 0.275 * (hexagonSize - 100);\n    const computedMarginTop = baseMarginTop + hexagonMargin;\n    const oddRowMarginLeft = -(hexagonSize / 2);\n    const evenRowMarginLeft = hexagonMargin / 2;\n\n    const [gridDimensions, setGridDimensions] = React.useState({\n      rows: 0,\n      columns: 0,\n    });\n\n    const updateGridDimensions = React.useCallback(() => {\n      const rows = Math.ceil(window.innerHeight / rowSpacing);\n      const columns = Math.ceil(window.innerWidth / hexagonWidth) + 1;\n      setGridDimensions({ rows, columns });\n    }, [rowSpacing, hexagonWidth]);\n\n    React.useEffect(() => {\n      updateGridDimensions();\n      window.addEventListener('resize', updateGridDimensions);\n      return () => window.removeEventListener('resize', updateGridDimensions);\n    }, [updateGridDimensions]);\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          'relative w-full h-full overflow-hidden dark:bg-neutral-900 bg-neutral-100',\n          className,\n        )}\n        {...props}\n      >\n        <style>{`:root { --hexagon-margin: ${hexagonMargin}px; }`}</style>\n        <div className=\"absolute top-0 -left-0 w-full h-full overflow-hidden\">\n          {Array.from({ length: gridDimensions.rows }).map((_, rowIndex) => (\n            <div\n              key={`row-${rowIndex}`}\n              style={{\n                marginTop: computedMarginTop,\n                marginLeft:\n                  ((rowIndex + 1) % 2 === 0\n                    ? evenRowMarginLeft\n                    : oddRowMarginLeft) - 10,\n              }}\n              className=\"inline-flex\"\n            >\n              {Array.from({ length: gridDimensions.columns }).map(\n                (_, colIndex) => (\n                  <div\n                    key={`hexagon-${rowIndex}-${colIndex}`}\n                    {...hexagonProps}\n                    style={{\n                      width: hexagonWidth,\n                      height: hexagonHeight,\n                      marginLeft: hexagonMargin,\n                      ...hexagonProps?.style,\n                    }}\n                    className={cn(\n                      'relative',\n                      '[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]',\n                      \"before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full dark:before:bg-neutral-950 before:bg-white before:opacity-100 before:transition-all before:duration-1000\",\n                      \"after:content-[''] after:absolute after:inset-[var(--hexagon-margin)] dark:after:bg-neutral-950 after:bg-white\",\n                      'after:[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]',\n                      'hover:before:bg-neutral-200 dark:hover:before:bg-neutral-800 hover:before:opacity-100 hover:before:duration-0 dark:hover:after:bg-neutral-900 hover:after:bg-neutral-100 hover:after:opacity-100 hover:after:duration-0',\n                      hexagonProps?.className,\n                    )}\n                  />\n                ),\n              )}\n            </div>\n          ))}\n        </div>\n        {children}\n      </div>\n    );\n  },\n);\n\nHexagonBackground.displayName = 'HexagonBackground';\n\nexport { HexagonBackground, type HexagonBackgroundProps };",
+          "'use client';\n\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\ninterface HexagonBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {\n  children?: React.ReactNode;\n  hexagonProps?: React.HTMLAttributes<HTMLDivElement>;\n  hexagonSize?: number; // value greater than 50\n  hexagonMargin?: number;\n}\n\nconst HexagonBackground = React.forwardRef<\n  HTMLDivElement,\n  HexagonBackgroundProps\n>(\n  (\n    {\n      className,\n      children,\n      hexagonProps,\n      hexagonSize = 75,\n      hexagonMargin = 3,\n      ...props\n    },\n    ref,\n  ) => {\n    const hexagonWidth = hexagonSize;\n    const hexagonHeight = hexagonSize * 1.1;\n    const rowSpacing = hexagonSize * 0.8;\n    const baseMarginTop = -36 - 0.275 * (hexagonSize - 100);\n    const computedMarginTop = baseMarginTop + hexagonMargin;\n    const oddRowMarginLeft = -(hexagonSize / 2);\n    const evenRowMarginLeft = hexagonMargin / 2;\n\n    const [gridDimensions, setGridDimensions] = React.useState({\n      rows: 0,\n      columns: 0,\n    });\n\n    const updateGridDimensions = React.useCallback(() => {\n      const rows = Math.ceil(window.innerHeight / rowSpacing);\n      const columns = Math.ceil(window.innerWidth / hexagonWidth) + 1;\n      setGridDimensions({ rows, columns });\n    }, [rowSpacing, hexagonWidth]);\n\n    React.useEffect(() => {\n      updateGridDimensions();\n      window.addEventListener('resize', updateGridDimensions);\n      return () => window.removeEventListener('resize', updateGridDimensions);\n    }, [updateGridDimensions]);\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          'relative size-full overflow-hidden dark:bg-neutral-900 bg-neutral-100',\n          className,\n        )}\n        {...props}\n      >\n        <style>{`:root { --hexagon-margin: ${hexagonMargin}px; }`}</style>\n        <div className=\"absolute top-0 -left-0 size-full overflow-hidden\">\n          {Array.from({ length: gridDimensions.rows }).map((_, rowIndex) => (\n            <div\n              key={`row-${rowIndex}`}\n              style={{\n                marginTop: computedMarginTop,\n                marginLeft:\n                  ((rowIndex + 1) % 2 === 0\n                    ? evenRowMarginLeft\n                    : oddRowMarginLeft) - 10,\n              }}\n              className=\"inline-flex\"\n            >\n              {Array.from({ length: gridDimensions.columns }).map(\n                (_, colIndex) => (\n                  <div\n                    key={`hexagon-${rowIndex}-${colIndex}`}\n                    {...hexagonProps}\n                    style={{\n                      width: hexagonWidth,\n                      height: hexagonHeight,\n                      marginLeft: hexagonMargin,\n                      ...hexagonProps?.style,\n                    }}\n                    className={cn(\n                      'relative',\n                      '[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]',\n                      \"before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full dark:before:bg-neutral-950 before:bg-white before:opacity-100 before:transition-all before:duration-1000\",\n                      \"after:content-[''] after:absolute after:inset-[var(--hexagon-margin)] dark:after:bg-neutral-950 after:bg-white\",\n                      'after:[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]',\n                      'hover:before:bg-neutral-200 dark:hover:before:bg-neutral-800 hover:before:opacity-100 hover:before:duration-0 dark:hover:after:bg-neutral-900 hover:after:bg-neutral-100 hover:after:opacity-100 hover:after:duration-0',\n                      hexagonProps?.className,\n                    )}\n                  />\n                ),\n              )}\n            </div>\n          ))}\n        </div>\n        {children}\n      </div>\n    );\n  },\n);\n\nHexagonBackground.displayName = 'HexagonBackground';\n\nexport { HexagonBackground, type HexagonBackgroundProps };",
       },
     ],
     component: React.lazy(async () => {
@@ -437,6 +466,129 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/bubble-background-demo',
+  },
+  'fireworks-background-demo': {
+    name: 'fireworks-background-demo',
+    description: 'Demo showing an animated fireworks background.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/fireworks-background'],
+    files: [
+      {
+        path: 'registry/demo/backgrounds/fireworks-background-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/fireworks-background-demo.tsx',
+        content:
+          "'use client';\n\nimport { FireworksBackground } from '@/registry/backgrounds/fireworks-background';\nimport { useTheme } from 'next-themes';\nexport default function FireworksBackgroundDemo() {\n  const { resolvedTheme: theme } = useTheme();\n\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      color={theme === 'dark' ? 'white' : 'black'}\n    />\n  );\n}",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/backgrounds/fireworks-background-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/fireworks-background-demo',
+  },
+  'fireworks-background-fix-size-speed-demo': {
+    name: 'fireworks-background-fix-size-speed-demo',
+    description:
+      'Demo showing an animated fireworks background with fixed size and speed.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/fireworks-background'],
+    files: [
+      {
+        path: 'registry/demo/backgrounds/fireworks-background-fix-size-speed-demo/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/fireworks-background-fix-size-speed-demo.tsx',
+        content:
+          "'use client';\n\nimport { FireworksBackground } from '@/registry/backgrounds/fireworks-background';\n\nexport default function FireworksBackgroundFixSizeSpeedDemo() {\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      fireworkSize={7}\n      fireworkSpeed={7}\n      particleSize={7}\n      particleSpeed={7}\n    />\n  );\n}",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/backgrounds/fireworks-background-fix-size-speed-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command:
+      'https://animate-ui.com/r/fireworks-background-fix-size-speed-demo',
+  },
+  'fireworks-background-population-demo': {
+    name: 'fireworks-background-population-demo',
+    description:
+      'Demo showing an animated fireworks background with a higher population.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/fireworks-background'],
+    files: [
+      {
+        path: 'registry/demo/backgrounds/fireworks-background-population-demo/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/fireworks-background-population-demo.tsx',
+        content:
+          "'use client';\n\nimport { FireworksBackground } from '@/registry/backgrounds/fireworks-background';\n\nexport default function FireworksBackgroundPopulationDemo() {\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      population={8}\n    />\n  );\n}",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/backgrounds/fireworks-background-population-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/fireworks-background-population-demo',
+  },
+  'fireworks-background-size-speed-demo': {
+    name: 'fireworks-background-size-speed-demo',
+    description:
+      'Demo showing an animated fireworks background with high size and speed.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/fireworks-background'],
+    files: [
+      {
+        path: 'registry/demo/backgrounds/fireworks-background-size-speed-demo/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/fireworks-background-size-speed-demo.tsx',
+        content:
+          "'use client';\n\nimport { FireworksBackground } from '@/registry/backgrounds/fireworks-background';\n\nexport default function FireworksBackgroundSizeSpeedDemo() {\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      fireworkSpeed={{ min: 8, max: 16 }}\n      fireworkSize={{ min: 4, max: 10 }}\n      particleSpeed={{ min: 4, max: 14 }}\n      particleSize={{ min: 2, max: 10 }}\n    />\n  );\n}",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/backgrounds/fireworks-background-size-speed-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/fireworks-background-size-speed-demo',
   },
   'gradient-background-demo': {
     name: 'gradient-background-demo',
