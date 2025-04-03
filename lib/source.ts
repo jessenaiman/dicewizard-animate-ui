@@ -3,6 +3,7 @@ import { loader } from 'fumadocs-core/source';
 import { createElement } from 'react';
 import { icons } from 'lucide-react';
 import { attachFile } from './attach-file';
+
 export const source = loader({
   baseUrl: '/docs',
   source: docs.toFumadocsSource(),
