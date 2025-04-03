@@ -90,6 +90,36 @@ export default function HomePage() {
           >
             <Logo size={isMobile ? 'lg' : 'xl'} draw betaTag />
           </motion.div>
+
+          <motion.div
+            initial={{ top: 28, right: -43, opacity: 0 }}
+            animate={
+              transition
+                ? { right: 20, opacity: 1 }
+                : { right: -43, opacity: 0 }
+            }
+            transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+            className="absolute z-40 flex items-center gap-x-1"
+          >
+            <a
+              href="https://github.com/Skyleen77/animate-ui"
+              rel="noreferrer noopener"
+              target="_blank"
+              className="inline-flex sm:mt-1 items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5"
+              data-active="false"
+            >
+              <GithubIcon />
+            </a>
+            <a
+              href="https://x.com/animate_ui"
+              rel="noreferrer noopener"
+              target="_blank"
+              className="inline-flex sm:mt-1 items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5"
+              data-active="false"
+            >
+              <XIcon />
+            </a>
+          </motion.div>
         </div>
       </motion.div>
 
@@ -103,35 +133,6 @@ export default function HomePage() {
           <Hero key={String(transition)} />
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ top: 27, right: -43, opacity: 0 }}
-        animate={
-          transition ? { right: 20, opacity: 1 } : { right: -43, opacity: 0 }
-        }
-        transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-        className="fixed z-40 flex items-center gap-2"
-        style={{ top: 20 }}
-      >
-        <a
-          href="https://github.com/Skyleen77/animate-ui"
-          rel="noreferrer noopener"
-          target="_blank"
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&amp;_svg]:size-5 text-fd-muted-foreground md:[&amp;_svg]:size-4.5"
-          data-active="false"
-        >
-          <GithubIcon />
-        </a>
-        <a
-          href="https://x.com/animate_ui"
-          rel="noreferrer noopener"
-          target="_blank"
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&amp;_svg]:size-5 text-fd-muted-foreground md:[&amp;_svg]:size-4.5"
-          data-active="false"
-        >
-          <XIcon />
-        </a>
-      </motion.div>
     </main>
   );
 }
