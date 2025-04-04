@@ -52,14 +52,11 @@ const Switch = React.forwardRef<
 
     const [isChecked, setIsChecked] = React.useState(false);
 
-    const marginSize = (BASE_MARGIN / BASE_CONTAINER_HEIGHT) * height;
-    const thumbSize = height - 2 * marginSize;
-    const checkedTranslateX = width - thumbSize - marginSize;
-    const uncheckedTranslateX = marginSize;
-
+    const thumbSize = height - margin * 2;
+    const checkedTranslateX = width - thumbSize - margin;
+    const uncheckedTranslateX = margin;
     const tappedWidth = thumbSize + 3 * (height / BASE_CONTAINER_HEIGHT);
-    const tappedCheckedTranslateX = checkedTranslateX - marginSize;
-
+    const tappedCheckedTranslateX = width - tappedWidth - margin;
     const iconSize = (BASE_ICON_SIZE / BASE_CONTAINER_HEIGHT) * height;
     const iconOffset = (BASE_ICON_OFFSET / BASE_CONTAINER_HEIGHT) * height;
 
