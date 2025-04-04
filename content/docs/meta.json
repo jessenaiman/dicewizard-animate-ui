@@ -24,6 +24,7 @@
     "radix/radix-radio-group",
     "radix/radix-switch",
     "radix/radix-tabs",
+    "radix/radix-toggle-group",
     "radix/radix-tooltip",
     "---Buttons---",
     "buttons/flip-button",
