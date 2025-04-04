@@ -113,6 +113,7 @@ Create an MDX file to document your component in `content/docs/[category]/my-com
 ---
 title: My Component
 description: Description for the new component
+new: true
 ---
 
 <ComponentPreview name="my-component-demo" />

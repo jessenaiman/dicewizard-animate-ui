@@ -18,6 +18,7 @@
     "radix/radix-checkbox",
     "radix/radix-collapsible",
     "radix/radix-dialog",
+    "radix/radix-dropdown-menu",
     "radix/radix-hover-card",
     "radix/radix-popover",
     "radix/radix-progress",

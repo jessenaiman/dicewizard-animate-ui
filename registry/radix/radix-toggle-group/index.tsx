@@ -49,6 +49,14 @@ const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({
   type: 'single',
 });
 
+const useToggleGroup = (): ToggleGroupContextProps => {
+  const context = React.useContext(ToggleGroupContext);
+  if (!context) {
+    throw new Error('useToggleGroup must be used within a ToggleGroup');
+  }
+  return context;
+};
+
 type ToggleGroupProps = React.ComponentPropsWithoutRef<
   typeof ToggleGroupPrimitive.Root
 > &
@@ -58,7 +66,7 @@ type ToggleGroupProps = React.ComponentPropsWithoutRef<
   };
 
 const ToggleGroup = React.forwardRef<
-  React.ComponentRef<typeof ToggleGroupPrimitive.Root>,
+  React.ElementRef<typeof ToggleGroupPrimitive.Root>,
   ToggleGroupProps
 >(
   (
@@ -109,7 +117,7 @@ type ToggleGroupItemProps = React.ComponentPropsWithoutRef<
   };
 
 const ToggleGroupItem = React.forwardRef<
-  React.ComponentRef<typeof ToggleGroupPrimitive.Item>,
+  React.ElementRef<typeof ToggleGroupPrimitive.Item>,
   ToggleGroupItemProps
 >(
   (
@@ -122,7 +130,7 @@ const ToggleGroupItem = React.forwardRef<
       type,
       variant: contextVariant,
       size: contextSize,
-    } = React.useContext(ToggleGroupContext);
+    } = useToggleGroup();
     const itemRef = React.useRef<HTMLButtonElement | null>(null);
     React.useImperativeHandle(ref, () => itemRef.current as HTMLButtonElement);
     const [isActive, setIsActive] = React.useState(false);
@@ -169,7 +177,7 @@ const ToggleGroupItem = React.forwardRef<
           <AnimatePresence initial={false}>
             {isActive && type === 'single' && (
               <motion.span
-                layoutId="activeToggleGroupItem"
+                layoutId="active-toggle-group-item"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

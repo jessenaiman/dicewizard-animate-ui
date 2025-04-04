@@ -689,6 +689,60 @@
       ]
     },
     {
+      "name": "radix-dropdown-menu-checkboxes-demo",
+      "type": "registry:ui",
+      "title": "Radix Dropdown Menu Checkboxes Demo",
+      "description": "Demo showing an animated radix dropdown menu with checkboxes.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-dropdown-menu",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-dropdown-menu-checkboxes-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dropdown-menu-checkboxes-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-dropdown-menu-demo",
+      "type": "registry:ui",
+      "title": "Radix Dropdown Menu Demo",
+      "description": "Demo showing an animated radix dropdown menu.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-dropdown-menu",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-dropdown-menu-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dropdown-menu-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-dropdown-menu-radio-group-demo",
+      "type": "registry:ui",
+      "title": "Radix Dropdown Menu Radio Group Demo",
+      "description": "Demo showing an animated radix dropdown menu with radio groups.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-dropdown-menu",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-dropdown-menu-radio-group-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dropdown-menu-radio-group-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-hover-card-demo",
       "type": "registry:ui",
       "title": "Radix Hover Card Demo",
@@ -1070,6 +1124,24 @@
           "path": "registry/radix/radix-dialog/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Dropdown Menu component",
+      "dependencies": [
+        "motion",
+        "lucide-react",
+        "@radix-ui/react-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-dropdown-menu/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-dropdown-menu.tsx"
         }
       ]
     },

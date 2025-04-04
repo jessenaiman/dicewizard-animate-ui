@@ -62,7 +62,7 @@ type DialogOverlayProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Overlay
 >;
 const DialogOverlay = React.forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Overlay>,
+  React.ElementRef<typeof DialogPrimitive.Overlay>,
   DialogOverlayProps
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
@@ -82,7 +82,7 @@ type DialogContentProps = React.ComponentPropsWithoutRef<
   transition?: Transition;
 };
 const DialogContent = React.forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Content>,
+  React.ElementRef<typeof DialogPrimitive.Content>,
   DialogContentProps
 >(
   (
@@ -103,10 +103,10 @@ const DialogContent = React.forwardRef<
     const rotateAxis = isVertical ? 'rotateX' : 'rotateY';
 
     return (
-      <DialogPortal forceMount>
-        <AnimatePresence>
-          {isOpen && (
-            <>
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <DialogPortal forceMount>
               <DialogOverlay asChild forceMount>
                 <motion.div
                   key="dialog-overlay"
@@ -147,10 +147,10 @@ const DialogContent = React.forwardRef<
                   </DialogPrimitive.Close>
                 </motion.div>
               </DialogPrimitive.Content>
-            </>
-          )}
-        </AnimatePresence>
-      </DialogPortal>
+            </DialogPortal>
+          </>
+        )}
+      </AnimatePresence>
     );
   },
 );
@@ -191,7 +191,7 @@ type DialogTitleProps = React.ComponentPropsWithoutRef<
 >;
 
 const DialogTitle = React.forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Title>,
+  React.ElementRef<typeof DialogPrimitive.Title>,
   DialogTitleProps
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
@@ -209,7 +209,7 @@ type DialogDescriptionProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Description
 >;
 const DialogDescription = React.forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Description>,
+  React.ElementRef<typeof DialogPrimitive.Description>,
   DialogDescriptionProps
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description

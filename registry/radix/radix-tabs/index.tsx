@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
 
 const Tabs = React.forwardRef<
-  React.ComponentRef<typeof TabsPrimitive.Root>,
+  React.ElementRef<typeof TabsPrimitive.Root>,
   TabsProps
 >(({ className, ...props }, ref) => {
   return (
@@ -123,7 +123,7 @@ TabsList.displayName = 'TabsList';
 type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>;
 
 const TabsTrigger = React.forwardRef<
-  React.ComponentRef<typeof TabsPrimitive.Trigger>,
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
   TabsTriggerProps
 >(({ className, ...props }, ref) => {
   return (

@@ -14,7 +14,7 @@ type RadioGroupProps = React.ComponentPropsWithoutRef<
 };
 
 const RadioGroup = React.forwardRef<
-  React.ComponentRef<typeof RadioGroupPrimitive.Root>,
+  React.ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroupProps
 >(({ className, ...props }, ref) => {
   return (
@@ -34,7 +34,7 @@ type RadioGroupIndicatorProps = React.ComponentPropsWithoutRef<
 };
 
 const RadioGroupIndicator = React.forwardRef<
-  React.ComponentRef<typeof RadioGroupPrimitive.Indicator>,
+  React.ElementRef<typeof RadioGroupPrimitive.Indicator>,
   RadioGroupIndicatorProps
 >(({ className, transition, ...props }, ref) => {
   return (
@@ -66,7 +66,7 @@ type RadioGroupItemProps = React.ComponentPropsWithoutRef<
 };
 
 const RadioGroupItem = React.forwardRef<
-  React.ComponentRef<typeof RadioGroupPrimitive.Item>,
+  React.ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItemProps
 >(
   (
