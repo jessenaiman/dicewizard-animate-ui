@@ -60,7 +60,7 @@ type PopoverContentProps = React.ComponentPropsWithoutRef<
 };
 
 const PopoverContent = React.forwardRef<
-  React.ComponentRef<typeof PopoverPrimitive.Content>,
+  React.ElementRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
 >(
   (

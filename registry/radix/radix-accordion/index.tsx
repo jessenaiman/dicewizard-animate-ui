@@ -37,7 +37,7 @@ type AccordionItemProps = React.ComponentPropsWithoutRef<
 };
 
 const AccordionItem = React.forwardRef<
-  React.ComponentRef<typeof AccordionPrimitive.Item>,
+  React.ElementRef<typeof AccordionPrimitive.Item>,
   AccordionItemProps
 >(({ className, children, ...props }, ref) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -63,7 +63,7 @@ type AccordionTriggerProps = React.ComponentPropsWithoutRef<
 };
 
 const AccordionTrigger = React.forwardRef<
-  React.ComponentRef<typeof AccordionPrimitive.Trigger>,
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
   AccordionTriggerProps
 >(
   (
@@ -143,7 +143,7 @@ type AccordionContentProps = React.ComponentPropsWithoutRef<
 };
 
 const AccordionContent = React.forwardRef<
-  React.ComponentRef<typeof AccordionPrimitive.Content>,
+  React.ElementRef<typeof AccordionPrimitive.Content>,
   AccordionContentProps
 >(
   (

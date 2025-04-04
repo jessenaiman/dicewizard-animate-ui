@@ -60,7 +60,7 @@ type HoverCardContentProps = React.ComponentPropsWithoutRef<
 };
 
 const HoverCardContent = React.forwardRef<
-  React.ComponentRef<typeof HoverCardPrimitive.Content>,
+  React.ElementRef<typeof HoverCardPrimitive.Content>,
   HoverCardContentProps
 >(
   (

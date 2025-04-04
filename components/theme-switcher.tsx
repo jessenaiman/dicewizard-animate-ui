@@ -13,8 +13,6 @@ export const ThemeSwitcher = () => {
       rightIcon={Moon}
       checked={theme === 'dark'}
       onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
-      width={45}
-      height={26}
     />
   );
 };

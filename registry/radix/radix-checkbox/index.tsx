@@ -11,7 +11,7 @@ type CheckboxProps = React.ComponentPropsWithoutRef<
 >;
 
 const Checkbox = React.forwardRef<
-  React.ComponentRef<typeof CheckboxPrimitive.Root>,
+  React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
 >(({ className, ...props }, ref) => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);

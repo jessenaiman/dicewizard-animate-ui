@@ -81,15 +81,15 @@ const CardsHover = React.forwardRef<HTMLDivElement, CardsHoverProps>(
       onValueChange?.(val);
     };
 
-    const contextValue = {
-      activeValue,
-      setActiveValue,
-      scheduleReset,
-      clearReset,
-    };
-
     return (
-      <CardsHoverContext.Provider value={contextValue}>
+      <CardsHoverContext.Provider
+        value={{
+          activeValue,
+          setActiveValue,
+          scheduleReset,
+          clearReset,
+        }}
+      >
         <div
           ref={ref}
           className={cn(
@@ -136,15 +136,15 @@ const CardHover = React.forwardRef<HTMLDivElement, CardHoverProps>(
     return (
       <div
         key={value}
-        className="relative block h-full w-full"
+        className="relative block size-full"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <AnimatePresence>
           {activeValue === value && (
             <motion.div
-              className="absolute inset-0 h-full w-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"
-              layoutId="hoverBackground"
+              className="absolute inset-0 size-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"
+              layoutId="card-hover-background"
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
@@ -163,7 +163,7 @@ const CardHover = React.forwardRef<HTMLDivElement, CardHoverProps>(
         <div
           ref={ref}
           className={cn(
-            'h-full w-full p-4 overflow-hidden rounded-lg border relative z-20',
+            'size-full p-4 overflow-hidden rounded-lg border relative z-20',
             className,
           )}
           {...props}

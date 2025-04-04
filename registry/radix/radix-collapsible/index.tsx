@@ -55,7 +55,7 @@ type CollapsibleContentProps = React.ComponentPropsWithoutRef<
   transition?: Transition;
 };
 const CollapsibleContent = React.forwardRef<
-  React.ComponentRef<typeof CollapsiblePrimitive.Content>,
+  React.ElementRef<typeof CollapsiblePrimitive.Content>,
   CollapsibleContentProps
 >(
   (
