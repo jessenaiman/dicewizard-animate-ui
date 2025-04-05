@@ -28,6 +28,7 @@
     "radix/radix-toggle-group",
     "radix/radix-tooltip",
     "---Buttons---",
+    "buttons/copy-button",
     "buttons/flip-button",
     "buttons/liquid-button",
     "buttons/ripple-button",

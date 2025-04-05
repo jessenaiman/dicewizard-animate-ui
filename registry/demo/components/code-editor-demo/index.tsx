@@ -27,6 +27,7 @@ export { MyComponent, type MyComponentProps };`}
       lang="tsx"
       duration={15}
       delay={0.5}
+      copyButton
     />
   );
 };

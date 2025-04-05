@@ -4,8 +4,11 @@
   "type": "registry:ui",
   "title": "Install Tabs",
   "description": "Install tabs component",
-  "dependencies": ["motion", "shiki", "next-themes", "lucide-react"],
-  "registryDependencies": ["https://animate-ui.com/r/tabs"],
+  "dependencies": ["shiki"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/tabs",
+    "https://animate-ui.com/r/copy-button"
+  ],
   "files": [
     {
       "path": "registry/components/install-tabs/index.tsx",

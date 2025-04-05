@@ -5,6 +5,7 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { motion, useInView } from 'motion/react';
 
 import { cn } from '@/lib/utils';
+import { CopyButton } from '@/components/animate-ui/copy-button';
 
 interface CodeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
   code: string;
@@ -16,6 +17,7 @@ interface CodeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
   header?: boolean;
   cursor?: boolean;
   startOnView?: boolean;
+  copyButton?: boolean;
 }
 
 const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
@@ -31,6 +33,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
       header = true,
       cursor = false,
       startOnView = false,
+      copyButton = false,
       ...props
     },
     ref,
@@ -111,12 +114,20 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         {...props}
       >
         {header && (
-          <div className="flex flex-col gap-y-2 p-4 border-b border-neutral-800">
+          <div className="flex flex-row items-center justify-between gap-y-2 h-11 pl-4 pr-2 border-b border-neutral-800">
             <div className="flex flex-row gap-x-2">
               <div className="size-2.5 rounded-full bg-red-500"></div>
               <div className="size-2.5 rounded-full bg-yellow-500"></div>
               <div className="size-2.5 rounded-full bg-green-500"></div>
             </div>
+
+            {copyButton && (
+              <CopyButton
+                content={code}
+                size="sm"
+                className="size-7 [&_svg]:size-3.5 bg-transparent hover:bg-neutral-800 text-white"
+              />
+            )}
           </div>
         )}
         <div

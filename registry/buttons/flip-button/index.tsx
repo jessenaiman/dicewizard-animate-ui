@@ -82,7 +82,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
           transition={transition}
           className={cn(
             defaultSpanClassName,
-            'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-white',
+            'bg-muted text-black dark:text-white',
             frontClassName,
           )}
         >
@@ -93,7 +93,7 @@ const FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(
           transition={transition}
           className={cn(
             defaultSpanClassName,
-            'bg-neutral-800 text-white dark:bg-white dark:text-neutral-800',
+            'bg-primary text-primary-foreground',
             backClassName,
           )}
         >
