@@ -92,7 +92,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
             animate={{ scale, opacity: 0 }}
             transition={transition}
             className={cn(
-              'absolute bg-white dark:bg-neutral-800 rounded-full size-5 pointer-events-none',
+              'absolute bg-primary-foreground rounded-full size-5 pointer-events-none',
               rippleClassName,
             )}
             style={{

@@ -2,8 +2,6 @@
 
 import * as React from 'react';
 import { useTheme } from 'next-themes';
-import { AnimatePresence, motion } from 'motion/react';
-import { CheckIcon, CopyIcon } from 'lucide-react';
 
 import {
   Tabs,
@@ -14,6 +12,7 @@ import {
   type TabsProps,
 } from '@/components/animate-ui/tabs';
 import { cn } from '@/lib/utils';
+import { CopyButton } from '@/components/animate-ui/copy-button';
 
 type InstallTabsProps = {
   commands: Record<string, string>;
@@ -22,6 +21,7 @@ type InstallTabsProps = {
     light: string;
     dark: string;
   };
+  copyButton?: boolean;
 } & Omit<TabsProps, 'children'>;
 
 const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
@@ -37,6 +37,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
       defaultValue,
       value,
       onValueChange,
+      copyButton = true,
       ...props
     },
     ref,
@@ -49,7 +50,6 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
     const [selectedCommand, setSelectedCommand] = React.useState<string>(
       value ?? defaultValue ?? Object.keys(commands)[0],
     );
-    const [isCopied, setIsCopied] = React.useState(false);
 
     React.useEffect(() => {
       async function loadHighlightedCode() {
@@ -112,49 +112,14 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
             ))}
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="size-6 rounded-sm -mr-2.5 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors flex items-center justify-center"
-            onClick={() => {
-              if (isCopied) return;
-              navigator.clipboard
-                .writeText(commands[selectedCommand])
-                .then(() => {
-                  setIsCopied(true);
-                  setTimeout(() => {
-                    setIsCopied(false);
-                  }, 3000);
-                })
-                .catch((error) => {
-                  console.error('Error copying command', error);
-                });
-            }}
-          >
-            <AnimatePresence mode="wait">
-              {isCopied ? (
-                <motion.div
-                  key="check"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <CheckIcon className="size-3.5" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="copy"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <CopyIcon className="size-3.5" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
+          {copyButton && (
+            <CopyButton
+              content={commands[selectedCommand]}
+              size="sm"
+              variant="ghost"
+              className="-mr-2.5 bg-transparent hover:bg-neutral-300 dark:hover:bg-neutral-700"
+            />
+          )}
         </TabsList>
         <TabsContents className="rounded-b-lg dark:bg-neutral-900 dark:text-white bg-neutral-100 text-black">
           {Object.entries(highlightedCommands).map(([command, val]) => (

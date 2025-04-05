@@ -6,6 +6,7 @@
   "description": "Code editor component",
   "dependencies": ["motion", "react-syntax-highlighter"],
   "devDependencies": ["@types/react-syntax-highlighter"],
+  "registryDependencies": ["https://animate-ui.com/r/copy-button"],
   "files": [
     {
       "path": "registry/components/code-editor/index.tsx",

@@ -1,0 +1,48 @@
+---
+title: Copy Button
+description: A button with a copy to clipboard animation.
+author:
+  name: Skyleen77
+  url: https://github.com/Skyleen77
+new: true
+---
+
+<ComponentPreview name="copy-button-demo" />
+
+## Installation
+
+<ComponentInstallation name="copy-button" />
+
+## Props
+
+<TypeTable
+  type={{
+    content: {
+      description: 'The content to copy to the clipboard.',
+      type: 'string',
+      required: true,
+    },
+    delay: {
+      description: 'The delay in milliseconds before the button resets.',
+      type: 'number',
+      required: false,
+      default: '3000',
+    },
+    size: {
+      description: 'The size of the button.',
+      type: "'default' | 'sm' | 'md' | 'lg'",
+      required: false,
+      default: 'default',
+    },
+    variant: {
+      description: 'The variant of the button.',
+      type: "'default' | 'muted' | 'outline' | 'secondary' | 'ghost'",
+      required: false,
+      default: 'default',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Shadcn UI](https://ui.shadcn.com/docs/components/button) for the button style.
