@@ -73,6 +73,8 @@ export default function HomePage() {
         }
       `}</style>
 
+      <h1 className="sr-only">Animate UI</h1>
+
       <motion.div
         variants={logoWrapperVariants}
         initial="center"

@@ -56,5 +56,46 @@ export async function generateMetadata(props: {
   return {
     title: page.data.title,
     description: page.data.description,
+    authors: page.data?.author
+      ? [
+          {
+            name: page.data.author.name,
+            ...(page.data.author?.url && { url: page.data.author.url }),
+          },
+        ]
+      : {
+          name: 'Skyleen77',
+          url: 'https://github.com/Skyleen77',
+        },
+    openGraph: {
+      title: page.data.title,
+      description: page.data.description,
+      url: 'https://animate-ui.com',
+      siteName: 'Animate UI',
+      images: [
+        {
+          url: 'https://animate-ui.com/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Animate UI',
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@animate_ui',
+      title: page.data.title,
+      description: page.data.description,
+      images: [
+        {
+          url: 'https://animate-ui.com/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Animate UI',
+        },
+      ],
+    },
   };
 }
