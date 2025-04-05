@@ -4,7 +4,6 @@ description: Cards hover component that displays the hover effect of the cards.
 author:
   name: Skyleen77
   url: https://github.com/Skyleen77
-new: true
 ---
 
 <ComponentPreview name="cards-hover-demo" />
@@ -12,3 +11,65 @@ new: true
 ## Installation
 
 <ComponentInstallation name="cards-hover" />
+
+## Props
+
+### CardsHover
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    value: {
+      description: 'The value of the component',
+      type: 'string | null',
+      required: false,
+    },
+    defaultValue: {
+      description: 'The default value of the component',
+      type: 'string | null',
+      required: false,
+    },
+    onValueChange: {
+      description: 'The function to call when the value changes',
+      type: '(value: string | null) => void',
+      required: false,
+    },
+  }}
+/>
+
+### CardHover
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    value: {
+      description: 'The value of the card',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the card hover animation',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", stiffness: 200, damping: 20 }',
+    },
+  }}
+/>
