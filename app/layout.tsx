@@ -96,7 +96,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-dvh">
         <RootProvider theme={{ defaultTheme: 'dark' }}>
           <Providers>{children}</Providers>
         </RootProvider>

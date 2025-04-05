@@ -220,8 +220,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    overscroll-behavior: none;
   }
 
   a[href^='/docs/installation'] > svg[data-icon='true'] {
