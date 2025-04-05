@@ -66,13 +66,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="relative h-screen">
-      <style>{`
-        html, body {
-          overflow: hidden;
-        }
-      `}</style>
-
+    <main className="relative h-dvh">
       <h1 className="sr-only">Animate UI</h1>
 
       <motion.div
@@ -125,7 +119,7 @@ export default function HomePage() {
         </div>
       </motion.div>
 
-      <div className="h-screen w-full flex items-center">
+      <div className="h-dvh w-full flex items-center">
         <motion.div
           variants={contentVariants}
           initial="hidden"
