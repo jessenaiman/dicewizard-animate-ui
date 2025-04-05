@@ -74,7 +74,7 @@ export const Hero = () => {
       </div>
 
       <div className="hidden lg:block">
-        <FloatingComponent className="absolute -top-5 right-0">
+        <FloatingComponent className="absolute -top-5 right-4">
           <Tabs>
             <TabsList className="w-[250px]">
               <TabsTrigger className="flex-1" value="code">
@@ -90,7 +90,7 @@ export const Hero = () => {
           </Tabs>
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-24 right-10">
+        <FloatingComponent className="absolute top-24 right-14">
           <Switch
             className="scale-125"
             leftIcon={Sun}
@@ -100,7 +100,7 @@ export const Hero = () => {
           />
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-10 right-82">
+        <FloatingComponent className="absolute top-10 right-86">
           <Counter
             number={number}
             setNumber={setNumber}
@@ -110,11 +110,11 @@ export const Hero = () => {
           />
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-34 right-40">
+        <FloatingComponent className="absolute top-34 right-44">
           <RadixProgressDemo />
         </FloatingComponent>
 
-        <FloatingComponent className="absolute -top-10 right-76">
+        <FloatingComponent className="absolute -top-10 right-80">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -127,7 +127,7 @@ export const Hero = () => {
           </TooltipProvider>
         </FloatingComponent>
 
-        <FloatingComponent className="absolute top-48 right-0">
+        <FloatingComponent className="absolute top-48 right-4">
           <Accordion
             type="single"
             defaultValue="item-1"

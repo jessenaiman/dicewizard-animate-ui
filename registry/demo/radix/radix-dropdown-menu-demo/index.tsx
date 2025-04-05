@@ -1,9 +1,8 @@
+'use client';
+
 import {
-  Cloud,
   CreditCard,
-  Github,
   Keyboard,
-  LifeBuoy,
   LogOut,
   Mail,
   MessageSquare,
@@ -14,7 +13,7 @@ import {
   UserPlus,
   Users,
 } from 'lucide-react';
-
+import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -35,7 +34,14 @@ export const RadixDropdownMenuDemo = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="outline" asChild>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Open
+          </motion.button>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>

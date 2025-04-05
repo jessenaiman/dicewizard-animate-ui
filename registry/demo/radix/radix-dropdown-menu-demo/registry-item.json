@@ -8,7 +8,7 @@
     "https://animate-ui.com/r/radix-dropdown-menu",
     "button"
   ],
-  "dependencies": ["lucide-react"],
+  "dependencies": ["lucide-react", "motion"],
   "files": [
     {
       "path": "registry/demo/radix/radix-dropdown-menu-demo/index.tsx",

@@ -715,7 +715,8 @@
         "button"
       ],
       "dependencies": [
-        "lucide-react"
+        "lucide-react",
+        "motion"
       ],
       "files": [
         {

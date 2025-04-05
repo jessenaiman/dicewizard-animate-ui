@@ -32,17 +32,10 @@ const Switch = React.forwardRef<
     const [isChecked, setIsChecked] = React.useState(
       props?.checked ?? props?.defaultChecked ?? false,
     );
-    const [isClient, setIsClient] = React.useState(false);
     const [isTapped, setIsTapped] = React.useState(false);
     React.useEffect(() => {
       setIsChecked(props?.checked ?? props?.defaultChecked ?? false);
     }, [props?.checked, props?.defaultChecked]);
-
-    React.useEffect(() => {
-      setIsClient(true);
-    }, []);
-
-    if (!isClient) return null;
 
     return (
       <SwitchPrimitives.Root

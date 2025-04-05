@@ -108,12 +108,8 @@ type DropdownMenuTriggerProps = React.ComponentPropsWithoutRef<
 const DropdownMenuTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Trigger>,
   DropdownMenuTriggerProps
->(({ className, children, ...props }, ref) => (
-  <DropdownMenuPrimitive.Trigger ref={ref} className={className} {...props}>
-    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      {children}
-    </motion.button>
-  </DropdownMenuPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Trigger ref={ref} className={className} {...props} />
 ));
 DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName;
 
