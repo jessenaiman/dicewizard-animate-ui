@@ -3,6 +3,8 @@ import type { MetadataRoute } from 'next';
 import { source } from '@/lib/source';
 import { getGithubLastEdit } from 'fumadocs-core/server';
 
+export const dynamic = 'force-dynamic';
+
 export const revalidate = false;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
