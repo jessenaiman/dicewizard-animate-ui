@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-popover",
+  "type": "registry:ui",
+  "title": "Headless Popover",
+  "description": "Headless UI popover component",
+  "dependencies": [
+    "@headlessui/react",
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/headless/headless-popover/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n} from '@headlessui/react';\nimport {\n  AnimatePresence,\n  HTMLMotionProps,\n  motion,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface PopoverContextType {\n  isOpen: boolean;\n}\nconst PopoverContext = React.createContext<PopoverContextType>({\n  isOpen: false,\n});\n\nconst usePopover = (): PopoverContextType => {\n  const context = React.useContext(PopoverContext);\n  if (!context) {\n    throw new Error('usePopover must be used within a Popover');\n  }\n  return context;\n};\n\ntype PopoverProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive>;\n\nconst Popover = React.forwardRef<HTMLDivElement, PopoverProps>(\n  ({ children, ...props }, ref) => {\n    return (\n      <PopoverPrimitive ref={ref} {...props}>\n        {(bag) => (\n          <PopoverContext.Provider value={{ isOpen: bag.open }}>\n            {typeof children === 'function' ? children(bag) : children}\n          </PopoverContext.Provider>\n        )}\n      </PopoverPrimitive>\n    );\n  },\n);\nPopover.displayName = 'Popover';\n\ntype PopoverButtonProps = React.ComponentPropsWithoutRef<\n  typeof PopoverButtonPrimitive\n>;\nconst PopoverButton = PopoverButtonPrimitive;\n\ntype PopoverPanelProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPanelPrimitive\n> &\n  HTMLMotionProps<'div'> & {\n    transition?: Transition;\n  };\nconst PopoverPanel = React.forwardRef<\n  React.ElementRef<typeof PopoverPanelPrimitive>,\n  PopoverPanelProps\n>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      anchor = {\n        to: 'bottom',\n        gap: 4,\n      },\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = usePopover();\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <PopoverPanelPrimitive\n            key=\"popover\"\n            ref={ref}\n            static\n            as={motion.div}\n            initial={{ opacity: 0, scale: 0.5, y: 25, transition }}\n            animate={{ opacity: 1, scale: 1, y: 0, transition }}\n            exit={{ opacity: 0, scale: 0.5, y: 25, transition }}\n            className={cn(\n              'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n              className,\n            )}\n            anchor={anchor}\n            {...props}\n          >\n            {children}\n          </PopoverPanelPrimitive>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-popover.tsx"
+    }
+  ]
+}
