@@ -70,7 +70,7 @@ const AccordionTrigger = React.forwardRef<
     {
       className,
       children,
-      transition = { type: 'spring', stiffness: 150, damping: 22 },
+      transition = { type: 'spring', stiffness: 150, damping: 17 },
       ...props
     },
     ref,
