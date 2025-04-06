@@ -34,14 +34,14 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
 );
 AccordionItem.displayName = 'AccordionItem';
 
-type AccordionTriggerProps = React.ComponentPropsWithoutRef<
+type AccordionButtonProps = React.ComponentPropsWithoutRef<
   typeof DisclosureButton
 > & {
   transition?: Transition;
 };
-const AccordionTrigger = React.forwardRef<
+const AccordionButton = React.forwardRef<
   HTMLButtonElement,
-  AccordionTriggerProps
+  AccordionButtonProps
 >(
   (
     {
@@ -79,34 +79,33 @@ const AccordionTrigger = React.forwardRef<
     );
   },
 );
-AccordionTrigger.displayName = 'AccordionTrigger';
+AccordionButton.displayName = 'AccordionButton';
 
-type AccordionContentProps = React.ComponentPropsWithoutRef<
+type AccordionPanelProps = React.ComponentPropsWithoutRef<
   typeof DisclosurePanel
 >;
-const AccordionContent = React.forwardRef<
-  HTMLDivElement,
-  AccordionContentProps
->(({ children, className, ...props }, ref) => {
-  return (
-    <DisclosurePanel {...props} ref={ref}>
-      {(bag) => (
-        <div className={cn('pb-4 pt-0 text-sm', className)}>
-          {typeof children === 'function' ? children(bag) : children}
-        </div>
-      )}
-    </DisclosurePanel>
-  );
-});
-AccordionContent.displayName = 'AccordionContent';
+const AccordionPanel = React.forwardRef<HTMLDivElement, AccordionPanelProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <DisclosurePanel {...props} ref={ref}>
+        {(bag) => (
+          <div className={cn('pb-4 pt-0 text-sm', className)}>
+            {typeof children === 'function' ? children(bag) : children}
+          </div>
+        )}
+      </DisclosurePanel>
+    );
+  },
+);
+AccordionPanel.displayName = 'AccordionPanel';
 
 export {
   Accordion,
   AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
+  AccordionButton,
+  AccordionPanel,
   type AccordionProps,
   type AccordionItemProps,
-  type AccordionTriggerProps,
-  type AccordionContentProps,
+  type AccordionButtonProps,
+  type AccordionPanelProps,
 };

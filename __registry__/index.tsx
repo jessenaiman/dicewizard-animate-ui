@@ -1161,7 +1161,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/headless-accordion-demo.tsx',
         content:
-          'import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n} from \'@/registry/headless/headless-accordion\';\n\nexport const HeadlessAccordionDemo = () => {\n  return (\n    <Accordion className="w-[400px]">\n      <AccordionItem defaultOpen>\n        <AccordionTrigger>What is Animate UI?</AccordionTrigger>\n        <AccordionContent>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionTrigger>\n          How is it different from other libraries?\n        </AccordionTrigger>\n        <AccordionContent>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionTrigger>Is Animate UI free to use?</AccordionTrigger>\n        <AccordionContent>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
+          'import {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n} from \'@/registry/headless/headless-accordion\';\n\nexport const HeadlessAccordionDemo = () => {\n  return (\n    <Accordion className="w-[400px]">\n      <AccordionItem defaultOpen>\n        <AccordionButton>What is Animate UI?</AccordionButton>\n        <AccordionPanel>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionPanel>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionButton>\n          How is it different from other libraries?\n        </AccordionButton>\n        <AccordionPanel>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionPanel>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionButton>Is Animate UI free to use?</AccordionButton>\n        <AccordionPanel>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionPanel>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -1234,6 +1234,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/headless-disclosure-demo',
+  },
+  'headless-popover-demo': {
+    name: 'headless-popover-demo',
+    description: 'Demo showing an animated headless popover.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['button', 'input', 'label'],
+    files: [
+      {
+        path: 'registry/demo/headless/headless-popover-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-popover-demo.tsx',
+        content:
+          '\'use client\';\n\nimport { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n} from \'@/registry/headless/headless-popover\';\n\nexport function RadixPopoverDemo() {\n  return (\n    <Popover>\n      <PopoverButton as={Button} variant="outline">\n        Open popover\n      </PopoverButton>\n      <PopoverPanel className="w-80">\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="font-medium leading-none">Dimensions</h4>\n            <p className="text-sm text-muted-foreground">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverPanel>\n    </Popover>\n  );\n}',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/headless/headless-popover-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-popover-demo',
   },
   'radix-accordion-demo': {
     name: 'radix-accordion-demo',
@@ -2065,7 +2094,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/headless-accordion.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\nimport { ChevronDown } from 'lucide-react';\n\nimport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n} from '@/components/animate-ui/headless-disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = React.HTMLAttributes<HTMLDivElement> & {\n  children: React.ReactNode;\n};\nconst Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(\n  (props, ref) => <div ref={ref} {...props} />,\n);\nAccordion.displayName = 'Accordion';\n\ntype AccordionItemProps = React.ComponentPropsWithoutRef<typeof Disclosure>;\nconst AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(\n  ({ className, as = 'div', ...props }, ref) => {\n    return (\n      <Disclosure\n        {...props}\n        ref={ref}\n        as={as}\n        className={cn('border-b', className)}\n      />\n    );\n  },\n);\nAccordionItem.displayName = 'AccordionItem';\n\ntype AccordionTriggerProps = React.ComponentPropsWithoutRef<\n  typeof DisclosureButton\n> & {\n  transition?: Transition;\n};\nconst AccordionTrigger = React.forwardRef<\n  HTMLButtonElement,\n  AccordionTriggerProps\n>(\n  (\n    {\n      children,\n      className,\n      as = 'button',\n      transition = { type: 'spring', stiffness: 150, damping: 22 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <DisclosureButton\n        {...props}\n        className={cn(\n          'flex w-full flex-1 items-center justify-between py-4 font-medium hover:underline',\n          className,\n        )}\n        as={as}\n        ref={ref}\n      >\n        {(bag) => (\n          <>\n            {typeof children === 'function' ? children(bag) : children}\n\n            <motion.div\n              animate={{ rotate: bag.open ? 180 : 0 }}\n              transition={transition}\n            >\n              <ChevronDown className=\"size-5 shrink-0\" />\n            </motion.div>\n          </>\n        )}\n      </DisclosureButton>\n    );\n  },\n);\nAccordionTrigger.displayName = 'AccordionTrigger';\n\ntype AccordionContentProps = React.ComponentPropsWithoutRef<\n  typeof DisclosurePanel\n>;\nconst AccordionContent = React.forwardRef<\n  HTMLDivElement,\n  AccordionContentProps\n>(({ children, className, ...props }, ref) => {\n  return (\n    <DisclosurePanel {...props} ref={ref}>\n      {(bag) => (\n        <div className={cn('pb-4 pt-0 text-sm', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePanel>\n  );\n});\nAccordionContent.displayName = 'AccordionContent';\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\nimport { ChevronDown } from 'lucide-react';\n\nimport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n} from '@/components/animate-ui/headless-disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = React.HTMLAttributes<HTMLDivElement> & {\n  children: React.ReactNode;\n};\nconst Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(\n  (props, ref) => <div ref={ref} {...props} />,\n);\nAccordion.displayName = 'Accordion';\n\ntype AccordionItemProps = React.ComponentPropsWithoutRef<typeof Disclosure>;\nconst AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(\n  ({ className, as = 'div', ...props }, ref) => {\n    return (\n      <Disclosure\n        {...props}\n        ref={ref}\n        as={as}\n        className={cn('border-b', className)}\n      />\n    );\n  },\n);\nAccordionItem.displayName = 'AccordionItem';\n\ntype AccordionButtonProps = React.ComponentPropsWithoutRef<\n  typeof DisclosureButton\n> & {\n  transition?: Transition;\n};\nconst AccordionButton = React.forwardRef<\n  HTMLButtonElement,\n  AccordionButtonProps\n>(\n  (\n    {\n      children,\n      className,\n      as = 'button',\n      transition = { type: 'spring', stiffness: 150, damping: 22 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <DisclosureButton\n        {...props}\n        className={cn(\n          'flex w-full flex-1 items-center justify-between py-4 font-medium hover:underline',\n          className,\n        )}\n        as={as}\n        ref={ref}\n      >\n        {(bag) => (\n          <>\n            {typeof children === 'function' ? children(bag) : children}\n\n            <motion.div\n              animate={{ rotate: bag.open ? 180 : 0 }}\n              transition={transition}\n            >\n              <ChevronDown className=\"size-5 shrink-0\" />\n            </motion.div>\n          </>\n        )}\n      </DisclosureButton>\n    );\n  },\n);\nAccordionButton.displayName = 'AccordionButton';\n\ntype AccordionPanelProps = React.ComponentPropsWithoutRef<\n  typeof DisclosurePanel\n>;\nconst AccordionPanel = React.forwardRef<HTMLDivElement, AccordionPanelProps>(\n  ({ children, className, ...props }, ref) => {\n    return (\n      <DisclosurePanel {...props} ref={ref}>\n        {(bag) => (\n          <div className={cn('pb-4 pt-0 text-sm', className)}>\n            {typeof children === 'function' ? children(bag) : children}\n          </div>\n        )}\n      </DisclosurePanel>\n    );\n  },\n);\nAccordionPanel.displayName = 'AccordionPanel';\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionButtonProps,\n  type AccordionPanelProps,\n};",
       },
     ],
     component: React.lazy(async () => {
@@ -2138,6 +2167,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/headless-disclosure',
+  },
+  'headless-popover': {
+    name: 'headless-popover',
+    description: 'Headless UI popover component',
+    type: 'registry:ui',
+    dependencies: ['@headlessui/react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/headless/headless-popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-popover.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n} from '@headlessui/react';\nimport {\n  AnimatePresence,\n  HTMLMotionProps,\n  motion,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface PopoverContextType {\n  isOpen: boolean;\n}\nconst PopoverContext = React.createContext<PopoverContextType>({\n  isOpen: false,\n});\n\nconst usePopover = (): PopoverContextType => {\n  const context = React.useContext(PopoverContext);\n  if (!context) {\n    throw new Error('usePopover must be used within a Popover');\n  }\n  return context;\n};\n\ntype PopoverProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive>;\n\nconst Popover = React.forwardRef<HTMLDivElement, PopoverProps>(\n  ({ children, ...props }, ref) => {\n    return (\n      <PopoverPrimitive ref={ref} {...props}>\n        {(bag) => (\n          <PopoverContext.Provider value={{ isOpen: bag.open }}>\n            {typeof children === 'function' ? children(bag) : children}\n          </PopoverContext.Provider>\n        )}\n      </PopoverPrimitive>\n    );\n  },\n);\nPopover.displayName = 'Popover';\n\ntype PopoverButtonProps = React.ComponentPropsWithoutRef<\n  typeof PopoverButtonPrimitive\n>;\nconst PopoverButton = PopoverButtonPrimitive;\n\ntype PopoverPanelProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPanelPrimitive\n> &\n  HTMLMotionProps<'div'> & {\n    transition?: Transition;\n  };\nconst PopoverPanel = React.forwardRef<\n  React.ElementRef<typeof PopoverPanelPrimitive>,\n  PopoverPanelProps\n>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      anchor = {\n        to: 'bottom',\n        gap: 4,\n      },\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = usePopover();\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <PopoverPanelPrimitive\n            key=\"popover\"\n            ref={ref}\n            static\n            as={motion.div}\n            initial={{ opacity: 0, scale: 0.5, y: 25, transition }}\n            animate={{ opacity: 1, scale: 1, y: 0, transition }}\n            exit={{ opacity: 0, scale: 0.5, y: 25, transition }}\n            className={cn(\n              'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n              className,\n            )}\n            anchor={anchor}\n            {...props}\n          >\n            {children}\n          </PopoverPanelPrimitive>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/headless/headless-popover/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-popover',
   },
   'radix-accordion': {
     name: 'radix-accordion',

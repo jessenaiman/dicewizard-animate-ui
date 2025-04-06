@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-popover-demo",
+  "type": "registry:ui",
+  "title": "Headless Popover Demo",
+  "description": "Demo showing an animated headless popover.",
+  "registryDependencies": ["button", "input", "label"],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-popover-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-popover-demo.tsx"
+    }
+  ]
+}

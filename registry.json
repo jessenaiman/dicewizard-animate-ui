@@ -723,6 +723,24 @@
       ]
     },
     {
+      "name": "headless-popover-demo",
+      "type": "registry:ui",
+      "title": "Headless Popover Demo",
+      "description": "Demo showing an animated headless popover.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-popover-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-popover-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-accordion-demo",
       "type": "registry:ui",
       "title": "Radix Accordion Demo",
@@ -1231,6 +1249,23 @@
           "path": "registry/headless/headless-disclosure/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/headless-disclosure.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-popover",
+      "type": "registry:ui",
+      "title": "Headless Popover",
+      "description": "Headless UI popover component",
+      "dependencies": [
+        "@headlessui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/headless/headless-popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-popover.tsx"
         }
       ]
     },
