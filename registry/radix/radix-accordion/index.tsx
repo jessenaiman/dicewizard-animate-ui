@@ -70,17 +70,13 @@ const AccordionTrigger = React.forwardRef<
     {
       className,
       children,
-      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      transition = { type: 'spring', stiffness: 150, damping: 22 },
       ...props
     },
     ref,
   ) => {
     const triggerRef = React.useRef<HTMLButtonElement | null>(null);
-    const context = useAccordionItem();
-
-    if (!context) {
-      throw new Error('AccordionTrigger must be used within an AccordionItem');
-    }
+    const { isOpen, setIsOpen } = useAccordionItem();
 
     React.useEffect(() => {
       const node = triggerRef.current;
@@ -90,7 +86,7 @@ const AccordionTrigger = React.forwardRef<
         mutationsList.forEach((mutation) => {
           if (mutation.attributeName === 'data-state') {
             const currentState = node.getAttribute('data-state');
-            context.setIsOpen(currentState === 'open');
+            setIsOpen(currentState === 'open');
           }
         });
       });
@@ -99,11 +95,11 @@ const AccordionTrigger = React.forwardRef<
         attributeFilter: ['data-state'],
       });
       const initialState = node.getAttribute('data-state');
-      context.setIsOpen(initialState === 'open');
+      setIsOpen(initialState === 'open');
       return () => {
         observer.disconnect();
       };
-    }, [context]);
+    }, [setIsOpen]);
 
     return (
       <AccordionPrimitive.Header className="flex">
@@ -124,7 +120,7 @@ const AccordionTrigger = React.forwardRef<
         >
           {children}
           <motion.div
-            animate={{ rotate: context.isOpen ? 180 : 0 }}
+            animate={{ rotate: isOpen ? 180 : 0 }}
             transition={transition}
           >
             <ChevronDown className="size-5 shrink-0" />
@@ -155,15 +151,11 @@ const AccordionContent = React.forwardRef<
     },
     ref,
   ) => {
-    const context = useAccordionItem();
-
-    if (!context) {
-      throw new Error('AccordionContent must be used within an AccordionItem');
-    }
+    const { isOpen } = useAccordionItem();
 
     return (
       <AnimatePresence>
-        {context.isOpen && (
+        {isOpen && (
           <AccordionPrimitive.Content forceMount {...props}>
             <motion.div
               key="accordion-content"
@@ -177,10 +169,12 @@ const AccordionContent = React.forwardRef<
                 WebkitMaskImage:
                   'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
               }}
-              className={cn('overflow-hidden text-sm', className)}
+              className="overflow-hidden"
               ref={ref}
             >
-              <div className="pb-4 pt-0">{children}</div>
+              <div className={cn('pb-4 pt-0 text-sm', className)}>
+                {children}
+              </div>
             </motion.div>
           </AccordionPrimitive.Content>
         )}

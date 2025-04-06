@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-accordion",
+  "type": "registry:ui",
+  "title": "Headless Accordion",
+  "description": "Headless UI accordion component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/headless-disclosure"
+  ],
+  "files": [
+    {
+      "path": "registry/headless/headless-accordion/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\nimport { ChevronDown } from 'lucide-react';\n\nimport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n} from '@/components/animate-ui/headless-disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = React.HTMLAttributes<HTMLDivElement> & {\n  children: React.ReactNode;\n};\nconst Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(\n  (props, ref) => <div ref={ref} {...props} />,\n);\nAccordion.displayName = 'Accordion';\n\ntype AccordionItemProps = React.ComponentPropsWithoutRef<typeof Disclosure>;\nconst AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(\n  ({ className, as = 'div', ...props }, ref) => {\n    return (\n      <Disclosure\n        {...props}\n        ref={ref}\n        as={as}\n        className={cn('border-b', className)}\n      />\n    );\n  },\n);\nAccordionItem.displayName = 'AccordionItem';\n\ntype AccordionTriggerProps = React.ComponentPropsWithoutRef<\n  typeof DisclosureButton\n> & {\n  transition?: Transition;\n};\nconst AccordionTrigger = React.forwardRef<\n  HTMLButtonElement,\n  AccordionTriggerProps\n>(\n  (\n    {\n      children,\n      className,\n      as = 'button',\n      transition = { type: 'spring', stiffness: 150, damping: 22 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <DisclosureButton\n        {...props}\n        className={cn(\n          'flex w-full flex-1 items-center justify-between py-4 font-medium hover:underline',\n          className,\n        )}\n        as={as}\n        ref={ref}\n      >\n        {(bag) => (\n          <>\n            {typeof children === 'function' ? children(bag) : children}\n\n            <motion.div\n              animate={{ rotate: bag.open ? 180 : 0 }}\n              transition={transition}\n            >\n              <ChevronDown className=\"size-5 shrink-0\" />\n            </motion.div>\n          </>\n        )}\n      </DisclosureButton>\n    );\n  },\n);\nAccordionTrigger.displayName = 'AccordionTrigger';\n\ntype AccordionContentProps = React.ComponentPropsWithoutRef<\n  typeof DisclosurePanel\n>;\nconst AccordionContent = React.forwardRef<\n  HTMLDivElement,\n  AccordionContentProps\n>(({ children, className, ...props }, ref) => {\n  return (\n    <DisclosurePanel {...props} ref={ref}>\n      {(bag) => (\n        <div className={cn('pb-4 pt-0 text-sm', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePanel>\n  );\n});\nAccordionContent.displayName = 'AccordionContent';\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-accordion.tsx"
+    }
+  ]
+}
