@@ -49,8 +49,9 @@ type DisclosureButtonProps = React.ComponentPropsWithoutRef<
 >;
 const DisclosureButton = DisclosureButtonPrimitive;
 
-type DisclosurePanelProps = React.ComponentPropsWithoutRef<
-  typeof DisclosurePanelPrimitive
+type DisclosurePanelProps = Omit<
+  React.ComponentPropsWithoutRef<typeof DisclosurePanelPrimitive>,
+  'as'
 > & {
   transition?: Transition;
 };

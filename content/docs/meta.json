@@ -29,6 +29,7 @@
     "radix/radix-tooltip",
     "---Headless UI---",
     "headless/headless-accordion",
+    "headless/headless-checkbox",
     "headless/headless-disclosure",
     "---Buttons---",
     "buttons/copy-button",

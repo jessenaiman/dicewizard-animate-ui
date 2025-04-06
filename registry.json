@@ -685,6 +685,25 @@
       ]
     },
     {
+      "name": "headless-checkbox-demo",
+      "type": "registry:ui",
+      "title": "Headless Checkbox Demo",
+      "description": "Demo showing an animated headless checkbox.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-checkbox-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-checkbox-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "headless-disclosure-demo",
       "type": "registry:ui",
       "title": "Headless Disclosure Demo",
@@ -1178,6 +1197,23 @@
           "path": "registry/headless/headless-accordion/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/headless-accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-checkbox",
+      "type": "registry:ui",
+      "title": "Headless Checkbox",
+      "description": "Headless UI checkbox component",
+      "dependencies": [
+        "@headlessui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/headless/headless-checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-checkbox.tsx"
         }
       ]
     },
