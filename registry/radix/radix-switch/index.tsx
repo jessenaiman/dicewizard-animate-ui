@@ -33,6 +33,7 @@ const Switch = React.forwardRef<
       props?.checked ?? props?.defaultChecked ?? false,
     );
     const [isTapped, setIsTapped] = React.useState(false);
+
     React.useEffect(() => {
       setIsChecked(props?.checked ?? props?.defaultChecked ?? false);
     }, [props?.checked, props?.defaultChecked]);
@@ -40,17 +41,14 @@ const Switch = React.forwardRef<
     return (
       <SwitchPrimitives.Root
         {...props}
-        checked={isChecked}
-        data-state={isChecked ? 'checked' : 'unchecked'}
-        aria-checked={isChecked}
         onCheckedChange={(checked) => {
           setIsChecked(checked);
           props.onCheckedChange?.(checked);
         }}
-        ref={ref}
         asChild
       >
         <motion.button
+          ref={ref}
           className={cn(
             'relative flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input',
             className,

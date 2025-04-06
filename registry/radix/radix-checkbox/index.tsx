@@ -14,52 +14,29 @@ const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
 >(({ className, ...props }, ref) => {
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
-
-  React.useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement);
-
-  const [observedChecked, setObservedChecked] = React.useState(false);
+  const [isChecked, setIsChecked] = React.useState(
+    props?.checked ?? props?.defaultChecked ?? false,
+  );
 
   React.useEffect(() => {
-    if (!buttonRef.current) return;
-
-    const observer = new MutationObserver((mutationsList) => {
-      mutationsList.forEach((mutation) => {
-        if (mutation.attributeName === 'data-state') {
-          const currentState = buttonRef.current?.getAttribute('data-state');
-          setObservedChecked(currentState === 'checked');
-        }
-      });
-    });
-
-    observer.observe(buttonRef.current, {
-      attributes: true,
-      attributeFilter: ['data-state'],
-    });
-
-    const initialState = buttonRef.current.getAttribute('data-state');
-    setObservedChecked(initialState === 'checked');
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const isChecked =
-    typeof props.checked !== 'undefined' ? props.checked : observedChecked;
+    setIsChecked(props?.checked ?? props?.defaultChecked ?? false);
+  }, [props?.checked, props?.defaultChecked]);
 
   return (
     <CheckboxPrimitive.Root
-      ref={ref}
       {...props}
-      className={cn(
-        'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-muted transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
-        className,
-      )}
+      onCheckedChange={(checked) => {
+        setIsChecked(checked);
+        props.onCheckedChange?.(checked);
+      }}
       asChild
     >
       <motion.button
-        ref={buttonRef}
+        className={cn(
+          'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-muted transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
+          className,
+        )}
+        ref={ref}
         whileTap={{ scale: 0.95 }}
         whileHover={{ scale: 1.05 }}
       >
