@@ -1,6 +1,6 @@
 {
   "name": "animate-ui",
-  "version": "1.0.1-beta.20",
+  "version": "1.0.1-beta.21",
   "description": "Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Browse a list of components you can install, modify, and use in your projects.",
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@bprogress/next": "^3.2.10",
+    "@headlessui/react": "^2.2.1",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-checkbox": "^1.1.4",
     "@radix-ui/react-collapsible": "^1.1.3",

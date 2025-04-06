@@ -669,6 +669,41 @@
       ]
     },
     {
+      "name": "headless-accordion-demo",
+      "type": "registry:ui",
+      "title": "Headless Accordion Demo",
+      "description": "Demo showing an animated headless accordion.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-accordion-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-accordion-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-disclosure-demo",
+      "type": "registry:ui",
+      "title": "Headless Disclosure Demo",
+      "description": "Demo showing an animated headless disclosure.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-disclosure"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-disclosure-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-disclosure-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-accordion-demo",
       "type": "registry:ui",
       "title": "Radix Accordion Demo",
@@ -1123,6 +1158,43 @@
           "path": "registry/demo/text/writing-text-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/writing-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-accordion",
+      "type": "registry:ui",
+      "title": "Headless Accordion",
+      "description": "Headless UI accordion component",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-disclosure"
+      ],
+      "files": [
+        {
+          "path": "registry/headless/headless-accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-disclosure",
+      "type": "registry:ui",
+      "title": "Headless Disclosure",
+      "description": "Headless UI disclosure component",
+      "dependencies": [
+        "@headlessui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/headless/headless-disclosure/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-disclosure.tsx"
         }
       ]
     },

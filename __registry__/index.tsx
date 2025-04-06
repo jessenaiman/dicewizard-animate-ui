@@ -1148,6 +1148,64 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/tabs-demo',
   },
+  'headless-accordion-demo': {
+    name: 'headless-accordion-demo',
+    description: 'Demo showing an animated headless accordion.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/headless-accordion'],
+    files: [
+      {
+        path: 'registry/demo/headless/headless-accordion-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-accordion-demo.tsx',
+        content:
+          'import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n} from \'@/registry/headless/headless-accordion\';\n\nexport const HeadlessAccordionDemo = () => {\n  return (\n    <Accordion className="w-[400px]">\n      <AccordionItem defaultOpen>\n        <AccordionTrigger>What is Animate UI?</AccordionTrigger>\n        <AccordionContent>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionTrigger>\n          How is it different from other libraries?\n        </AccordionTrigger>\n        <AccordionContent>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionTrigger>Is Animate UI free to use?</AccordionTrigger>\n        <AccordionContent>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/headless/headless-accordion-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-accordion-demo',
+  },
+  'headless-disclosure-demo': {
+    name: 'headless-disclosure-demo',
+    description: 'Demo showing an animated headless disclosure.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/headless-disclosure'],
+    files: [
+      {
+        path: 'registry/demo/headless/headless-disclosure-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-disclosure-demo.tsx',
+        content:
+          '\'use client\';\n\nimport { Button } from \'@/components/ui/button\';\nimport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n} from \'@/registry/headless/headless-disclosure\';\nimport { ChevronsUpDown } from \'lucide-react\';\n\nexport const RadixCollapsibleDemo = () => {\n  return (\n    <Disclosure className="w-[350px]" as="div">\n      <div className="space-y-2 mb-2">\n        <div className="flex items-center justify-between space-x-4">\n          <h4 className="text-sm font-semibold">\n            @peduarte starred 3 repositories\n          </h4>\n          <DisclosureButton\n            as={Button}\n            variant="outline"\n            size="sm"\n            className="w-9 p-0"\n          >\n            <ChevronsUpDown className="h-4 w-4" />\n            <span className="sr-only">Toggle</span>\n          </DisclosureButton>\n        </div>\n        <div className="rounded-md border px-4 py-3 font-mono text-sm">\n          @headlessui/react\n        </div>\n      </div>\n      <DisclosurePanel className="space-y-2">\n        <div className="rounded-md border px-4 py-3 font-mono text-sm">\n          @headlessui/vue\n        </div>\n        <div className="rounded-md border px-4 py-3 font-mono text-sm">\n          @stitches/react\n        </div>\n      </DisclosurePanel>\n    </Disclosure>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/headless/headless-disclosure-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-disclosure-demo',
+  },
   'radix-accordion-demo': {
     name: 'radix-accordion-demo',
     description: 'Demo showing an animated radix accordion.',
@@ -1965,6 +2023,64 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/writing-text-demo',
   },
+  'headless-accordion': {
+    name: 'headless-accordion',
+    description: 'Headless UI accordion component',
+    type: 'registry:ui',
+    dependencies: ['lucide-react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/headless-disclosure'],
+    files: [
+      {
+        path: 'registry/headless/headless-accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-accordion.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\nimport { ChevronDown } from 'lucide-react';\n\nimport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n} from '@/components/animate-ui/headless-disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = React.HTMLAttributes<HTMLDivElement> & {\n  children: React.ReactNode;\n};\nconst Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(\n  (props, ref) => <div ref={ref} {...props} />,\n);\nAccordion.displayName = 'Accordion';\n\ntype AccordionItemProps = React.ComponentPropsWithoutRef<typeof Disclosure>;\nconst AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(\n  ({ className, as = 'div', ...props }, ref) => {\n    return (\n      <Disclosure\n        {...props}\n        ref={ref}\n        as={as}\n        className={cn('border-b', className)}\n      />\n    );\n  },\n);\nAccordionItem.displayName = 'AccordionItem';\n\ntype AccordionTriggerProps = React.ComponentPropsWithoutRef<\n  typeof DisclosureButton\n> & {\n  transition?: Transition;\n};\nconst AccordionTrigger = React.forwardRef<\n  HTMLButtonElement,\n  AccordionTriggerProps\n>(\n  (\n    {\n      children,\n      className,\n      as = 'button',\n      transition = { type: 'spring', stiffness: 150, damping: 22 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <DisclosureButton\n        {...props}\n        className={cn(\n          'flex w-full flex-1 items-center justify-between py-4 font-medium hover:underline',\n          className,\n        )}\n        as={as}\n        ref={ref}\n      >\n        {(bag) => (\n          <>\n            {typeof children === 'function' ? children(bag) : children}\n\n            <motion.div\n              animate={{ rotate: bag.open ? 180 : 0 }}\n              transition={transition}\n            >\n              <ChevronDown className=\"size-5 shrink-0\" />\n            </motion.div>\n          </>\n        )}\n      </DisclosureButton>\n    );\n  },\n);\nAccordionTrigger.displayName = 'AccordionTrigger';\n\ntype AccordionContentProps = React.ComponentPropsWithoutRef<\n  typeof DisclosurePanel\n>;\nconst AccordionContent = React.forwardRef<\n  HTMLDivElement,\n  AccordionContentProps\n>(({ children, className, ...props }, ref) => {\n  return (\n    <DisclosurePanel {...props} ref={ref}>\n      {(bag) => (\n        <div className={cn('pb-4 pt-0 text-sm', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePanel>\n  );\n});\nAccordionContent.displayName = 'AccordionContent';\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/headless/headless-accordion/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-accordion',
+  },
+  'headless-disclosure': {
+    name: 'headless-disclosure',
+    description: 'Headless UI disclosure component',
+    type: 'registry:ui',
+    dependencies: ['@headlessui/react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/headless/headless-disclosure/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-disclosure.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n} from '@headlessui/react';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface DisclosureContextType {\n  isOpen: boolean;\n}\nconst DisclosureContext = React.createContext<DisclosureContextType>({\n  isOpen: false,\n});\n\nconst useDisclosure = (): DisclosureContextType => {\n  const context = React.useContext(DisclosureContext);\n  if (!context) {\n    throw new Error('useDisclosure must be used within a Disclosure');\n  }\n  return context;\n};\n\ntype DisclosureProps = React.ComponentPropsWithoutRef<\n  typeof DisclosurePrimitive\n>;\nconst Disclosure = React.forwardRef<\n  React.ElementRef<typeof DisclosurePrimitive>,\n  DisclosureProps\n>(({ children, ...props }, ref) => {\n  return (\n    <DisclosurePrimitive {...props} ref={ref}>\n      {(bag) => (\n        <DisclosureContext.Provider value={{ isOpen: bag.open }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </DisclosureContext.Provider>\n      )}\n    </DisclosurePrimitive>\n  );\n});\nDisclosure.displayName = DisclosurePrimitive.displayName;\n\ntype DisclosureButtonProps = React.ComponentPropsWithoutRef<\n  typeof DisclosureButtonPrimitive\n>;\nconst DisclosureButton = DisclosureButtonPrimitive;\n\ntype DisclosurePanelProps = React.ComponentPropsWithoutRef<\n  typeof DisclosurePanelPrimitive\n> & {\n  transition?: Transition;\n};\nconst DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(\n  (\n    {\n      className,\n      children,\n      transition = { type: 'spring', stiffness: 150, damping: 22 },\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = useDisclosure();\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <DisclosurePanelPrimitive static as={React.Fragment} {...props}>\n            {(bag) => (\n              <motion.div\n                key=\"disclosure-panel\"\n                initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n                animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n                exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n                transition={transition}\n                style={{\n                  maskImage:\n                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                  WebkitMaskImage:\n                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                }}\n                className={cn('overflow-hidden', className)}\n                ref={ref}\n              >\n                {typeof children === 'function' ? children(bag) : children}\n              </motion.div>\n            )}\n          </DisclosurePanelPrimitive>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nDisclosurePanel.displayName = DisclosurePanelPrimitive.displayName;\n\nexport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n  useDisclosure,\n  type DisclosureProps,\n  type DisclosureButtonProps,\n  type DisclosurePanelProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/headless/headless-disclosure/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-disclosure',
+  },
   'radix-accordion': {
     name: 'radix-accordion',
     description: 'Radix UI accordion component',
@@ -1978,7 +2094,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-accordion.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport * as AccordionPrimitive from '@radix-ui/react-accordion';\nimport { ChevronDown } from 'lucide-react';\nimport { motion, AnimatePresence, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface AccordionItemContextType {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n}\n\nconst AccordionItemContext = React.createContext<\n  AccordionItemContextType | undefined\n>(undefined);\n\nconst useAccordionItem = (): AccordionItemContextType => {\n  const context = React.useContext(AccordionItemContext);\n  if (!context) {\n    throw new Error('useAccordionItem must be used within an AccordionItem');\n  }\n  return context;\n};\n\ntype AccordionProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Root\n>;\n\nconst Accordion = AccordionPrimitive.Root;\n\ntype AccordionItemProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Item\n> & {\n  children: React.ReactNode;\n};\n\nconst AccordionItem = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Item>,\n  AccordionItemProps\n>(({ className, children, ...props }, ref) => {\n  const [isOpen, setIsOpen] = React.useState(false);\n\n  return (\n    <AccordionPrimitive.Item\n      ref={ref}\n      className={cn('border-b', className)}\n      {...props}\n    >\n      <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>\n        {children}\n      </AccordionItemContext.Provider>\n    </AccordionPrimitive.Item>\n  );\n});\nAccordionItem.displayName = 'AccordionItem';\n\ntype AccordionTriggerProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Trigger\n> & {\n  transition?: Transition;\n};\n\nconst AccordionTrigger = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Trigger>,\n  AccordionTriggerProps\n>(\n  (\n    {\n      className,\n      children,\n      transition = { type: 'spring', stiffness: 150, damping: 17 },\n      ...props\n    },\n    ref,\n  ) => {\n    const triggerRef = React.useRef<HTMLButtonElement | null>(null);\n    const context = useAccordionItem();\n\n    if (!context) {\n      throw new Error('AccordionTrigger must be used within an AccordionItem');\n    }\n\n    React.useEffect(() => {\n      const node = triggerRef.current;\n      if (!node) return;\n\n      const observer = new MutationObserver((mutationsList) => {\n        mutationsList.forEach((mutation) => {\n          if (mutation.attributeName === 'data-state') {\n            const currentState = node.getAttribute('data-state');\n            context.setIsOpen(currentState === 'open');\n          }\n        });\n      });\n      observer.observe(node, {\n        attributes: true,\n        attributeFilter: ['data-state'],\n      });\n      const initialState = node.getAttribute('data-state');\n      context.setIsOpen(initialState === 'open');\n      return () => {\n        observer.disconnect();\n      };\n    }, [context]);\n\n    return (\n      <AccordionPrimitive.Header className=\"flex\">\n        <AccordionPrimitive.Trigger\n          ref={(node) => {\n            triggerRef.current = node;\n            if (typeof ref === 'function') {\n              ref(node);\n            } else if (ref) {\n              (ref as React.RefObject<HTMLButtonElement | null>).current = node;\n            }\n          }}\n          className={cn(\n            'flex flex-1 items-center justify-between py-4 font-medium hover:underline',\n            className,\n          )}\n          {...props}\n        >\n          {children}\n          <motion.div\n            animate={{ rotate: context.isOpen ? 180 : 0 }}\n            transition={transition}\n          >\n            <ChevronDown className=\"size-5 shrink-0\" />\n          </motion.div>\n        </AccordionPrimitive.Trigger>\n      </AccordionPrimitive.Header>\n    );\n  },\n);\nAccordionTrigger.displayName = 'AccordionTrigger';\n\ntype AccordionContentProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst AccordionContent = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Content>,\n  AccordionContentProps\n>(\n  (\n    {\n      className,\n      children,\n      transition = { type: 'spring', stiffness: 150, damping: 17 },\n      ...props\n    },\n    ref,\n  ) => {\n    const context = useAccordionItem();\n\n    if (!context) {\n      throw new Error('AccordionContent must be used within an AccordionItem');\n    }\n\n    return (\n      <AnimatePresence>\n        {context.isOpen && (\n          <AccordionPrimitive.Content forceMount {...props}>\n            <motion.div\n              key=\"accordion-content\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              }}\n              className={cn('overflow-hidden text-sm', className)}\n              ref={ref}\n            >\n              <div className=\"pb-4 pt-0\">{children}</div>\n            </motion.div>\n          </AccordionPrimitive.Content>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nAccordionContent.displayName = 'AccordionContent';\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n  useAccordionItem,\n  type AccordionItemContextType,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport * as AccordionPrimitive from '@radix-ui/react-accordion';\nimport { ChevronDown } from 'lucide-react';\nimport { motion, AnimatePresence, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface AccordionItemContextType {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n}\n\nconst AccordionItemContext = React.createContext<\n  AccordionItemContextType | undefined\n>(undefined);\n\nconst useAccordionItem = (): AccordionItemContextType => {\n  const context = React.useContext(AccordionItemContext);\n  if (!context) {\n    throw new Error('useAccordionItem must be used within an AccordionItem');\n  }\n  return context;\n};\n\ntype AccordionProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Root\n>;\n\nconst Accordion = AccordionPrimitive.Root;\n\ntype AccordionItemProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Item\n> & {\n  children: React.ReactNode;\n};\n\nconst AccordionItem = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Item>,\n  AccordionItemProps\n>(({ className, children, ...props }, ref) => {\n  const [isOpen, setIsOpen] = React.useState(false);\n\n  return (\n    <AccordionPrimitive.Item\n      ref={ref}\n      className={cn('border-b', className)}\n      {...props}\n    >\n      <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>\n        {children}\n      </AccordionItemContext.Provider>\n    </AccordionPrimitive.Item>\n  );\n});\nAccordionItem.displayName = 'AccordionItem';\n\ntype AccordionTriggerProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Trigger\n> & {\n  transition?: Transition;\n};\n\nconst AccordionTrigger = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Trigger>,\n  AccordionTriggerProps\n>(\n  (\n    {\n      className,\n      children,\n      transition = { type: 'spring', stiffness: 150, damping: 22 },\n      ...props\n    },\n    ref,\n  ) => {\n    const triggerRef = React.useRef<HTMLButtonElement | null>(null);\n    const { isOpen, setIsOpen } = useAccordionItem();\n\n    React.useEffect(() => {\n      const node = triggerRef.current;\n      if (!node) return;\n\n      const observer = new MutationObserver((mutationsList) => {\n        mutationsList.forEach((mutation) => {\n          if (mutation.attributeName === 'data-state') {\n            const currentState = node.getAttribute('data-state');\n            setIsOpen(currentState === 'open');\n          }\n        });\n      });\n      observer.observe(node, {\n        attributes: true,\n        attributeFilter: ['data-state'],\n      });\n      const initialState = node.getAttribute('data-state');\n      setIsOpen(initialState === 'open');\n      return () => {\n        observer.disconnect();\n      };\n    }, [setIsOpen]);\n\n    return (\n      <AccordionPrimitive.Header className=\"flex\">\n        <AccordionPrimitive.Trigger\n          ref={(node) => {\n            triggerRef.current = node;\n            if (typeof ref === 'function') {\n              ref(node);\n            } else if (ref) {\n              (ref as React.RefObject<HTMLButtonElement | null>).current = node;\n            }\n          }}\n          className={cn(\n            'flex flex-1 items-center justify-between py-4 font-medium hover:underline',\n            className,\n          )}\n          {...props}\n        >\n          {children}\n          <motion.div\n            animate={{ rotate: isOpen ? 180 : 0 }}\n            transition={transition}\n          >\n            <ChevronDown className=\"size-5 shrink-0\" />\n          </motion.div>\n        </AccordionPrimitive.Trigger>\n      </AccordionPrimitive.Header>\n    );\n  },\n);\nAccordionTrigger.displayName = 'AccordionTrigger';\n\ntype AccordionContentProps = React.ComponentPropsWithoutRef<\n  typeof AccordionPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst AccordionContent = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Content>,\n  AccordionContentProps\n>(\n  (\n    {\n      className,\n      children,\n      transition = { type: 'spring', stiffness: 150, damping: 17 },\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = useAccordionItem();\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <AccordionPrimitive.Content forceMount {...props}>\n            <motion.div\n              key=\"accordion-content\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              }}\n              className=\"overflow-hidden\"\n              ref={ref}\n            >\n              <div className={cn('pb-4 pt-0 text-sm', className)}>\n                {children}\n              </div>\n            </motion.div>\n          </AccordionPrimitive.Content>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nAccordionContent.displayName = 'AccordionContent';\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n  useAccordionItem,\n  type AccordionItemContextType,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n};",
       },
     ],
     component: React.lazy(async () => {
