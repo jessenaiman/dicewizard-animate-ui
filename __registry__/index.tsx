@@ -1299,7 +1299,12 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['button', 'input', 'label'],
+    registryDependencies: [
+      'button',
+      'input',
+      'label',
+      'https://animate-ui.com/r/headless-popover',
+    ],
     files: [
       {
         path: 'registry/demo/headless/headless-popover-demo/index.tsx',
@@ -1321,6 +1326,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/headless-popover-demo',
+  },
+  'headless-switch-demo': {
+    name: 'headless-switch-demo',
+    description: 'Demo showing an animated headless switch.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/headless-switch'],
+    files: [
+      {
+        path: 'registry/demo/headless/headless-switch-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-switch-demo.tsx',
+        content:
+          'import { Switch } from \'@/registry/headless/headless-switch\';\nimport { Field, Label } from \'@headlessui/react\';\n\nexport const HeadlessSwitchDemo = () => {\n  return (\n    <Field className="flex items-center space-x-2">\n      <Label htmlFor="airplane-mode" className="text-sm font-medium">\n        Airplane mode\n      </Label>\n      <Switch defaultChecked id="airplane-mode" />\n    </Field>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/headless/headless-switch-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-switch-demo',
   },
   'radix-accordion-demo': {
     name: 'radix-accordion-demo',
@@ -2282,6 +2316,33 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/headless-popover',
   },
+  'headless-switch': {
+    name: 'headless-switch',
+    description: 'Headless UI switch component',
+    type: 'registry:ui',
+    dependencies: ['@headlessui/react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/headless/headless-switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/headless-switch.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Switch as SwitchPrimitive } from '@headlessui/react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype SwitchProps = React.ComponentPropsWithoutRef<\n  typeof SwitchPrimitive<typeof motion.button>\n> & {\n  leftIcon?: React.ElementType;\n  rightIcon?: React.ElementType;\n  thumbIcon?: React.ElementType;\n  onCheckedChange?: (checked: boolean) => void;\n};\n\nconst Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(\n  (\n    {\n      className,\n      leftIcon: LeftIcon,\n      rightIcon: RightIcon,\n      thumbIcon: ThumbIcon,\n      onChange,\n      as = motion.button,\n      ...props\n    },\n    ref,\n  ) => {\n    const [isChecked, setIsChecked] = React.useState(\n      props.checked ?? props.defaultChecked ?? false,\n    );\n    const [isTapped, setIsTapped] = React.useState(false);\n\n    React.useEffect(() => {\n      setIsChecked(props.checked ?? props.defaultChecked ?? false);\n    }, [props.checked, props.defaultChecked]);\n\n    const handleChange = React.useCallback(\n      (checked: boolean) => {\n        setIsChecked(checked);\n        onChange?.(checked);\n      },\n      [onChange],\n    );\n\n    return (\n      <SwitchPrimitive\n        checked={isChecked}\n        onChange={handleChange}\n        ref={ref}\n        className={cn(\n          'relative flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary bg-input data-[checked]:justify-end justify-start',\n          className,\n        )}\n        as={as}\n        whileTap=\"tap\"\n        initial={false}\n        onTapStart={() => setIsTapped(true)}\n        onTapCancel={() => setIsTapped(false)}\n        onTap={() => setIsTapped(false)}\n        {...props}\n      >\n        {LeftIcon && (\n          <motion.div\n            animate={\n              isChecked ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }\n            }\n            transition={{ type: 'spring', bounce: 0 }}\n            className=\"absolute left-1 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400\"\n          >\n            <LeftIcon className=\"size-3\" />\n          </motion.div>\n        )}\n\n        {RightIcon && (\n          <motion.div\n            animate={\n              isChecked ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }\n            }\n            transition={{ type: 'spring', bounce: 0 }}\n            className=\"absolute right-1 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500\"\n          >\n            <RightIcon className=\"size-3\" />\n          </motion.div>\n        )}\n\n        <motion.span\n          whileTap=\"tab\"\n          className={cn(\n            'relative z-[1] flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500',\n          )}\n          layout\n          transition={{ type: 'spring', stiffness: 300, damping: 25 }}\n          style={{\n            width: 18,\n            height: 18,\n          }}\n          animate={\n            isTapped\n              ? { width: 21, transition: { duration: 0.1 } }\n              : { width: 18, transition: { duration: 0.1 } }\n          }\n        >\n          {ThumbIcon && <ThumbIcon className=\"size-3\" />}\n        </motion.span>\n      </SwitchPrimitive>\n    );\n  },\n);\n\nSwitch.displayName = 'Switch';\n\nexport { Switch, type SwitchProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/headless/headless-switch/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/headless-switch',
+  },
   'radix-accordion': {
     name: 'radix-accordion',
     description: 'Radix UI accordion component',
@@ -2540,7 +2601,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-switch.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport * as SwitchPrimitives from '@radix-ui/react-switch';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype SwitchProps = React.ComponentPropsWithoutRef<\n  typeof SwitchPrimitives.Root\n> & {\n  leftIcon?: React.ElementType;\n  rightIcon?: React.ElementType;\n  thumbIcon?: React.ElementType;\n};\n\nconst Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitives.Root>,\n  SwitchProps\n>(\n  (\n    {\n      className,\n      style,\n      leftIcon: LeftIcon,\n      rightIcon: RightIcon,\n      thumbIcon: ThumbIcon,\n      ...props\n    },\n    ref,\n  ) => {\n    const [isChecked, setIsChecked] = React.useState(\n      props?.checked ?? props?.defaultChecked ?? false,\n    );\n    const [isTapped, setIsTapped] = React.useState(false);\n\n    React.useEffect(() => {\n      setIsChecked(props?.checked ?? props?.defaultChecked ?? false);\n    }, [props?.checked, props?.defaultChecked]);\n\n    return (\n      <SwitchPrimitives.Root\n        {...props}\n        onCheckedChange={(checked) => {\n          setIsChecked(checked);\n          props.onCheckedChange?.(checked);\n        }}\n        asChild\n      >\n        <motion.button\n          ref={ref}\n          className={cn(\n            'relative flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input',\n            className,\n          )}\n          style={{\n            ...style,\n            justifyContent: isChecked ? 'flex-end' : 'flex-start',\n          }}\n          whileTap=\"tap\"\n          initial={false}\n          onTapStart={() => setIsTapped(true)}\n          onTapCancel={() => setIsTapped(false)}\n          onTap={() => setIsTapped(false)}\n        >\n          {LeftIcon && (\n            <motion.div\n              animate={\n                isChecked ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }\n              }\n              transition={{ type: 'spring', bounce: 0 }}\n              className=\"absolute left-1 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400\"\n            >\n              <LeftIcon className=\"size-3\" />\n            </motion.div>\n          )}\n\n          {RightIcon && (\n            <motion.div\n              animate={\n                isChecked ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }\n              }\n              transition={{ type: 'spring', bounce: 0 }}\n              className=\"absolute right-1 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500\"\n            >\n              <RightIcon className=\"size-3\" />\n            </motion.div>\n          )}\n\n          <SwitchPrimitives.Thumb asChild>\n            <motion.div\n              whileTap=\"tab\"\n              className={cn(\n                'relative z-[1] flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500',\n              )}\n              layout\n              transition={{ type: 'spring', stiffness: 300, damping: 25 }}\n              style={{\n                width: 18,\n                height: 18,\n              }}\n              animate={\n                isTapped\n                  ? { width: 21, transition: { duration: 0.1 } }\n                  : { width: 18, transition: { duration: 0.1 } }\n              }\n            >\n              {ThumbIcon && <ThumbIcon className=\"size-3\" />}\n            </motion.div>\n          </SwitchPrimitives.Thumb>\n        </motion.button>\n      </SwitchPrimitives.Root>\n    );\n  },\n);\nSwitch.displayName = SwitchPrimitives.Root.displayName;\n\nexport { Switch, type SwitchProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport * as SwitchPrimitives from '@radix-ui/react-switch';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype SwitchProps = React.ComponentPropsWithoutRef<\n  typeof SwitchPrimitives.Root\n> & {\n  leftIcon?: React.ElementType;\n  rightIcon?: React.ElementType;\n  thumbIcon?: React.ElementType;\n};\n\nconst Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitives.Root>,\n  SwitchProps\n>(\n  (\n    {\n      className,\n      leftIcon: LeftIcon,\n      rightIcon: RightIcon,\n      thumbIcon: ThumbIcon,\n      onCheckedChange,\n      ...props\n    },\n    ref,\n  ) => {\n    const [isChecked, setIsChecked] = React.useState(\n      props?.checked ?? props?.defaultChecked ?? false,\n    );\n    const [isTapped, setIsTapped] = React.useState(false);\n\n    React.useEffect(() => {\n      setIsChecked(props?.checked ?? props?.defaultChecked ?? false);\n    }, [props?.checked, props?.defaultChecked]);\n\n    const handleChange = React.useCallback(\n      (checked: boolean) => {\n        setIsChecked(checked);\n        onCheckedChange?.(checked);\n      },\n      [onCheckedChange],\n    );\n\n    return (\n      <SwitchPrimitives.Root {...props} onCheckedChange={handleChange} asChild>\n        <motion.button\n          ref={ref}\n          className={cn(\n            'relative flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input data-[state=checked]:justify-end data-[state=unchecked]:justify-start',\n            className,\n          )}\n          whileTap=\"tap\"\n          initial={false}\n          onTapStart={() => setIsTapped(true)}\n          onTapCancel={() => setIsTapped(false)}\n          onTap={() => setIsTapped(false)}\n        >\n          {LeftIcon && (\n            <motion.div\n              animate={\n                isChecked ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }\n              }\n              transition={{ type: 'spring', bounce: 0 }}\n              className=\"absolute left-1 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400\"\n            >\n              <LeftIcon className=\"size-3\" />\n            </motion.div>\n          )}\n\n          {RightIcon && (\n            <motion.div\n              animate={\n                isChecked ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }\n              }\n              transition={{ type: 'spring', bounce: 0 }}\n              className=\"absolute right-1 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500\"\n            >\n              <RightIcon className=\"size-3\" />\n            </motion.div>\n          )}\n\n          <SwitchPrimitives.Thumb asChild>\n            <motion.div\n              whileTap=\"tab\"\n              className={cn(\n                'relative z-[1] flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500',\n              )}\n              layout\n              transition={{ type: 'spring', stiffness: 300, damping: 25 }}\n              style={{\n                width: 18,\n                height: 18,\n              }}\n              animate={\n                isTapped\n                  ? { width: 21, transition: { duration: 0.1 } }\n                  : { width: 18, transition: { duration: 0.1 } }\n              }\n            >\n              {ThumbIcon && <ThumbIcon className=\"size-3\" />}\n            </motion.div>\n          </SwitchPrimitives.Thumb>\n        </motion.button>\n      </SwitchPrimitives.Root>\n    );\n  },\n);\nSwitch.displayName = SwitchPrimitives.Root.displayName;\n\nexport { Switch, type SwitchProps };",
       },
     ],
     component: React.lazy(async () => {
