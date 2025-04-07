@@ -33,6 +33,7 @@
     "headless/headless-dialog",
     "headless/headless-disclosure",
     "headless/headless-popover",
+    "headless/headless-switch",
     "---Buttons---",
     "buttons/copy-button",
     "buttons/flip-button",

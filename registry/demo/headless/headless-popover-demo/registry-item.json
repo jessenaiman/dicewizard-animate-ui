@@ -4,7 +4,12 @@
   "type": "registry:ui",
   "title": "Headless Popover Demo",
   "description": "Demo showing an animated headless popover.",
-  "registryDependencies": ["button", "input", "label"],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "https://animate-ui.com/r/headless-popover"
+  ],
   "files": [
     {
       "path": "registry/demo/headless/headless-popover-demo/index.tsx",
