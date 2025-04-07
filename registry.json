@@ -704,6 +704,44 @@
       ]
     },
     {
+      "name": "headless-dialog-demo",
+      "type": "registry:ui",
+      "title": "Headless Dialog Demo",
+      "description": "Demo showing an animated headless dialog.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-dialog-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-dialog-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-dialog-from-demo",
+      "type": "registry:ui",
+      "title": "Headless Dialog From Demo",
+      "description": "Demo showing an animated headless dialog with a from prop.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-dialog-from-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-dialog-from-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "headless-disclosure-demo",
       "type": "registry:ui",
       "title": "Headless Disclosure Demo",
@@ -1232,6 +1270,23 @@
           "path": "registry/headless/headless-checkbox/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/headless-checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-dialog",
+      "type": "registry:ui",
+      "title": "Headless Dialog",
+      "description": "Headless UI dialog component",
+      "dependencies": [
+        "@headlessui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/headless/headless-dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-dialog.tsx"
         }
       ]
     },

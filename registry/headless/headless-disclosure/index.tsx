@@ -49,9 +49,8 @@ type DisclosureButtonProps = React.ComponentPropsWithoutRef<
 >;
 const DisclosureButton = DisclosureButtonPrimitive;
 
-type DisclosurePanelProps = Omit<
-  React.ComponentPropsWithoutRef<typeof DisclosurePanelPrimitive>,
-  'as'
+type DisclosurePanelProps = React.ComponentPropsWithoutRef<
+  typeof DisclosurePanelPrimitive
 > & {
   transition?: Transition;
 };
@@ -61,6 +60,7 @@ const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
       className,
       children,
       transition = { type: 'spring', stiffness: 150, damping: 17 },
+      as = React.Fragment,
       ...props
     },
     ref,
@@ -70,7 +70,7 @@ const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
     return (
       <AnimatePresence>
         {isOpen && (
-          <DisclosurePanelPrimitive static as={React.Fragment} {...props}>
+          <DisclosurePanelPrimitive static as={as} {...props}>
             {(bag) => (
               <motion.div
                 key="disclosure-panel"
