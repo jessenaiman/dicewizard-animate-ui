@@ -25,7 +25,7 @@ export const ComponentWrapper = ({
       )}
       key={key}
     >
-      {/* <div className="absolute top-3 right-3 z-10 bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
+      <div className="absolute top-3 right-3 z-10 bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
         <OpenInV0Button url={`https://animate-ui.com/r/${name}.json`} />
         <Button
           onClick={() => setKey((prev) => prev + 1)}
@@ -35,7 +35,7 @@ export const ComponentWrapper = ({
         >
           <RotateCcw aria-label="restart-btn" size={14} />
         </Button>
-      </div> */}
+      </div>
 
       <div className="flex min-h-[400px] w-full items-center justify-center px-10 py-16">
         {children}
