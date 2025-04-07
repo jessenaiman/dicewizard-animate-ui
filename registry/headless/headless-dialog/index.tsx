@@ -7,10 +7,12 @@ import {
   DialogPanel as DialogPanelPrimitive,
   DialogTitle as DialogTitlePrimitive,
   Description as DialogDescriptionPrimitive,
+  CloseButton,
 } from '@headlessui/react';
 import { motion, AnimatePresence, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
+import { X } from 'lucide-react';
 
 type DialogProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive<typeof motion.div>
@@ -67,6 +69,7 @@ const DialogPanel = React.forwardRef<
 >(
   (
     {
+      children,
       className,
       as = motion.div,
       from = 'top',
@@ -108,7 +111,18 @@ const DialogPanel = React.forwardRef<
           transition,
         }}
         {...props}
-      />
+      >
+        {(bag) => (
+          <>
+            {typeof children === 'function' ? children(bag) : children}
+
+            <CloseButton className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+              <X className="h-4 w-4" />
+              <span className="sr-only">Close</span>
+            </CloseButton>
+          </>
+        )}
+      </DialogPanelPrimitive>
     );
   },
 );
