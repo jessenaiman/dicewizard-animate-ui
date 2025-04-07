@@ -30,6 +30,7 @@
     "---Headless UI---",
     "headless/headless-accordion",
     "headless/headless-checkbox",
+    "headless/headless-dialog",
     "headless/headless-disclosure",
     "headless/headless-popover",
     "---Buttons---",

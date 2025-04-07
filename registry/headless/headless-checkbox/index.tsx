@@ -6,16 +6,13 @@ import { motion, type HTMLMotionProps } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-type CheckboxProps = Omit<
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive>,
-  'as'
-> &
+type CheckboxProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive> &
   Omit<HTMLMotionProps<'button'>, 'checked' | 'onChange' | 'defaultChecked'>;
 
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive>,
   CheckboxProps
->(({ className, ...props }, ref) => {
+>(({ className, as = motion.button, ...props }, ref) => {
   return (
     <CheckboxPrimitive
       whileTap={{ scale: 0.95 }}
@@ -26,7 +23,7 @@ const Checkbox = React.forwardRef<
         className,
       )}
       ref={ref}
-      as={motion.button}
+      as={as}
     >
       {({ checked }) => (
         <motion.svg
@@ -66,6 +63,6 @@ const Checkbox = React.forwardRef<
     </CheckboxPrimitive>
   );
 });
-Checkbox.displayName = 'Checkbox';
+Checkbox.displayName = CheckboxPrimitive.displayName;
 
 export { Checkbox, type CheckboxProps };

@@ -5,13 +5,10 @@ import {
   Popover as PopoverPrimitive,
   PopoverButton as PopoverButtonPrimitive,
   PopoverPanel as PopoverPanelPrimitive,
+  PopoverBackdrop as PopoverBackdropPrimitive,
+  PopoverGroup as PopoverGroupPrimitive,
 } from '@headlessui/react';
-import {
-  AnimatePresence,
-  HTMLMotionProps,
-  motion,
-  type Transition,
-} from 'motion/react';
+import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -45,19 +42,28 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
-Popover.displayName = 'Popover';
+Popover.displayName = PopoverPrimitive.displayName;
 
 type PopoverButtonProps = React.ComponentPropsWithoutRef<
   typeof PopoverButtonPrimitive
 >;
 const PopoverButton = PopoverButtonPrimitive;
 
+type PopoverBackdropProps = React.ComponentPropsWithoutRef<
+  typeof PopoverBackdropPrimitive
+>;
+const PopoverBackdrop = PopoverBackdropPrimitive;
+
+type PopoverGroupProps = React.ComponentPropsWithoutRef<
+  typeof PopoverGroupPrimitive
+>;
+const PopoverGroup = PopoverGroupPrimitive;
+
 type PopoverPanelProps = React.ComponentPropsWithoutRef<
-  typeof PopoverPanelPrimitive
-> &
-  HTMLMotionProps<'div'> & {
-    transition?: Transition;
-  };
+  typeof PopoverPanelPrimitive<typeof motion.div>
+> & {
+  transition?: Transition;
+};
 const PopoverPanel = React.forwardRef<
   React.ElementRef<typeof PopoverPanelPrimitive>,
   PopoverPanelProps
@@ -71,6 +77,7 @@ const PopoverPanel = React.forwardRef<
         to: 'bottom',
         gap: 4,
       },
+      as = motion.div,
       ...props
     },
     ref,
@@ -84,7 +91,7 @@ const PopoverPanel = React.forwardRef<
             key="popover"
             ref={ref}
             static
-            as={motion.div}
+            as={as}
             initial={{ opacity: 0, scale: 0.5, y: 25, transition }}
             animate={{ opacity: 1, scale: 1, y: 0, transition }}
             exit={{ opacity: 0, scale: 0.5, y: 25, transition }}
@@ -102,12 +109,17 @@ const PopoverPanel = React.forwardRef<
     );
   },
 );
+PopoverPanel.displayName = PopoverPanelPrimitive.displayName;
 
 export {
   Popover,
   PopoverButton,
   PopoverPanel,
+  PopoverBackdrop,
+  PopoverGroup,
   type PopoverProps,
   type PopoverButtonProps,
   type PopoverPanelProps,
+  type PopoverBackdropProps,
+  type PopoverGroupProps,
 };
