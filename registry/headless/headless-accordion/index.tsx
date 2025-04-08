@@ -57,7 +57,7 @@ const AccordionButton = React.forwardRef<
       <DisclosureButton
         {...props}
         className={cn(
-          'flex w-full flex-1 items-center justify-between py-4 font-medium hover:underline',
+          'flex w-full text-start flex-1 items-center justify-between py-4 font-medium hover:underline',
           className,
         )}
         as={as}

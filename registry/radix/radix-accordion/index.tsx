@@ -113,7 +113,7 @@ const AccordionTrigger = React.forwardRef<
             }
           }}
           className={cn(
-            'flex flex-1 items-center justify-between py-4 font-medium hover:underline',
+            'flex flex-1 text-start items-center justify-between py-4 font-medium hover:underline',
             className,
           )}
           {...props}
