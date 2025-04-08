@@ -12,6 +12,8 @@ import { ComponentPreview } from '@/components/docs/component-preview';
 import { ComponentInstallation } from '@/components/docs/component-installation';
 import { ExternalLink } from '@/components/docs/external-link';
 import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Footer } from '@/components/footer';
+
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
@@ -22,7 +24,11 @@ export default async function Page(props: {
   const MDX = page.data.body;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      footer={{ component: <Footer /> }}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>

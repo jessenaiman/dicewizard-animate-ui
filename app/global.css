@@ -230,6 +230,10 @@
     @apply !hidden;
   }
 
+  #nd-docs-layout {
+    @apply relative;
+  }
+
   @keyframes blink {
     50% {
       opacity: 0.6;
