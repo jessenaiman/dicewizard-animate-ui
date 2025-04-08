@@ -10,45 +10,67 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { useRef, useState } from 'react';
 
-export const ComponentManualInstallation = ({
-  dependencies,
-  devDependencies,
-  code,
-}: {
-  dependencies?: string[];
-  devDependencies?: string[];
-  code: string;
-}) => {
-  const depsCommands = {
+const getDepsCommands = (dependencies?: string[]) => {
+  if (!dependencies) return undefined;
+  return {
     npm: `npm install ${dependencies?.join(' ')}`,
     pnpm: `pnpm add ${dependencies?.join(' ')}`,
     yarn: `yarn add ${dependencies?.join(' ')}`,
     bun: `bun add ${dependencies?.join(' ')}`,
   };
+};
 
-  const devDepsCommands = {
-    npm: `npm install -D ${devDependencies?.join(' ')}`,
-    pnpm: `pnpm add -D ${devDependencies?.join(' ')}`,
-    yarn: `yarn add -D ${devDependencies?.join(' ')}`,
-    bun: `bun add -D ${devDependencies?.join(' ')}`,
+const getRegistryDepsCommands = (dependencies?: string[]) => {
+  if (!dependencies) return undefined;
+  const quotedDependencies = dependencies.map((dep) => `"${dep}"`).join(' ');
+  return {
+    npm: `npx shadcn@latest add ${quotedDependencies}`,
+    pnpm: `pnpm dlx shadcn@latest add ${quotedDependencies}`,
+    yarn: `npx shadcn@latest add ${quotedDependencies}`,
+    bun: `bun x --bun shadcn@latest add ${quotedDependencies}`,
   };
+};
+
+export const ComponentManualInstallation = ({
+  dependencies,
+  devDependencies,
+  registryDependencies,
+  code,
+}: {
+  dependencies?: string[];
+  devDependencies?: string[];
+  registryDependencies?: string[];
+  code: string;
+}) => {
+  const depsCommands = getDepsCommands(dependencies);
+  const devDepsCommands = getDepsCommands(devDependencies);
+  const registryDepsCommands = getRegistryDepsCommands(registryDependencies);
 
   const [isOpened, setIsOpened] = useState(false);
   const collapsibleRef = useRef<HTMLDivElement>(null);
 
   return (
     <Steps>
-      {dependencies && (
+      {dependencies && depsCommands && (
         <Step>
           <h4 className="pt-1 pb-4">Install the following dependencies:</h4>
           <InstallTabs commands={depsCommands} />
         </Step>
       )}
 
-      {devDependencies && (
+      {devDependencies && devDepsCommands && (
         <Step>
           <h4 className="pt-1 pb-4">Install the following dev dependencies:</h4>
           <InstallTabs commands={devDepsCommands} />
+        </Step>
+      )}
+
+      {registryDependencies && registryDepsCommands && (
+        <Step>
+          <h4 className="pt-1 pb-4">
+            Install the following registry dependencies:
+          </h4>
+          <InstallTabs commands={registryDepsCommands} />
         </Step>
       )}
 

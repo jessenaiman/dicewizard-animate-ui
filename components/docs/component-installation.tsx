@@ -64,6 +64,7 @@ export function ComponentInstallation({
             <ComponentManualInstallation
               dependencies={component.dependencies}
               devDependencies={component.devDependencies}
+              registryDependencies={component.registryDependencies}
               code={component.files[0].content}
             />
           </TabsContent>
