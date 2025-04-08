@@ -148,6 +148,26 @@
       ]
     },
     {
+      "name": "github-stars-button",
+      "type": "registry:ui",
+      "title": "GitHub Stars Button",
+      "description": "A GitHub stars button component",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/sliding-number"
+      ],
+      "files": [
+        {
+          "path": "registry/buttons/github-stars-button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/github-stars-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "liquid-button",
       "type": "registry:ui",
       "title": "Liquid Button",
@@ -495,6 +515,22 @@
           "path": "registry/demo/buttons/flip-button-from-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/flip-button-from-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "github-stars-button-demo",
+      "type": "registry:ui",
+      "title": "GitHub Stars Button Demo",
+      "description": "Demo showing a GitHub stars button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/github-stars-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/buttons/github-stars-button-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/github-stars-button-demo.tsx"
         }
       ]
     },

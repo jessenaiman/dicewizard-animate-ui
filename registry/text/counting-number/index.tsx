@@ -94,4 +94,6 @@ const CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(
   },
 );
 
+CountingNumber.displayName = 'CountingNumber';
+
 export { CountingNumber, type CountingNumberProps };
