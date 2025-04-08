@@ -17,6 +17,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           type: 'icon',
         },
       ]}
+      sidebar={{
+        enabled: true,
+      }}
       tree={source.pageTree}
       themeSwitch={{
         component: <ThemeSwitcher />,

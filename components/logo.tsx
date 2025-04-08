@@ -78,6 +78,8 @@ export const Logo = ({
           Beta
         </motion.div>
       )}
+
+      <span className="sr-only">Animate UI</span>
     </div>
   );
 };

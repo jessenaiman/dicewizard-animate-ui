@@ -67,8 +67,6 @@ export default function HomePage() {
 
   return (
     <main className="relative h-dvh overflow-hidden">
-      <h1 className="sr-only">Animate UI</h1>
-
       <motion.div
         variants={logoWrapperVariants}
         initial="center"
