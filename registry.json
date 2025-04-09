@@ -168,6 +168,22 @@
       ]
     },
     {
+      "name": "input-button",
+      "type": "registry:ui",
+      "title": "Input Button",
+      "description": "A input button component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/buttons/input-button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/input-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "liquid-button",
       "type": "registry:ui",
       "title": "Liquid Button",
@@ -531,6 +547,38 @@
           "path": "registry/demo/buttons/github-stars-button-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/github-stars-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-button-demo",
+      "type": "registry:ui",
+      "title": "Input Button Demo",
+      "description": "Demo showing an animated button with input effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/input-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/buttons/input-button-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/input-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-button-loading-demo",
+      "type": "registry:ui",
+      "title": "Input Button Loading Demo",
+      "description": "Demo showing an animated button with input effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/input-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/buttons/input-button-loading-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/input-button-loading-demo.tsx"
         }
       ]
     },

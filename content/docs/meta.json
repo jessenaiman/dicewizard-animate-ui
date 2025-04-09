@@ -38,6 +38,7 @@
     "buttons/copy-button",
     "buttons/flip-button",
     "buttons/github-stars-button",
+    "buttons/input-button",
     "buttons/liquid-button",
     "buttons/ripple-button",
     "---Text Animations---",
