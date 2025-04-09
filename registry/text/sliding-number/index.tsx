@@ -88,7 +88,7 @@ const NumberDisplay = ({
 };
 
 interface SlidingNumberProps extends React.HTMLAttributes<HTMLSpanElement> {
-  number: number;
+  number: number | string;
   startOnView?: boolean;
   padStart?: boolean;
   decimalSeparator?: string;
@@ -119,7 +119,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     const prevNumberRef = React.useRef<number>(0);
 
     const effectiveNumber = React.useMemo(
-      () => (startOnView && !inView ? 0 : Math.abs(number)),
+      () => (startOnView && !inView ? 0 : Math.abs(Number(number))),
       [number, startOnView, inView],
     );
 
@@ -181,7 +181,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
         className={cn('flex items-center', className)}
         {...props}
       >
-        {!(startOnView && !inView) && number < 0 && (
+        {!(startOnView && !inView) && Number(number) < 0 && (
           <span className="mr-1">-</span>
         )}
 
