@@ -14,24 +14,25 @@ import {
 import { cn } from '@/lib/utils';
 import { SlidingNumber } from '@/components/animate-ui/sliding-number';
 
-const formatNumber = (
-  num: number,
-): {
-  number: number;
-  unit: string;
-} => {
-  if (num < 1000) {
-    return { number: num, unit: '' };
+type FormatNumberResult = { number: string[]; unit: string };
+
+const formatNumber = (num: number, formatted: boolean): FormatNumberResult => {
+  if (formatted) {
+    if (num < 1000) {
+      return { number: [num.toString()], unit: '' };
+    }
+    const units = ['k', 'M', 'B', 'T'];
+    let unitIndex = 0;
+    let n = num;
+    while (n >= 1000 && unitIndex < units.length) {
+      n /= 1000;
+      unitIndex++;
+    }
+    const finalNumber = Math.floor(n).toString();
+    return { number: [finalNumber], unit: units[unitIndex - 1] };
+  } else {
+    return { number: num.toLocaleString('en-US').split(','), unit: '' };
   }
-  const units = ['k', 'M', 'B', 'T'];
-  let unitIndex = 0;
-  let n = num;
-  while (n >= 1000 && unitIndex < units.length) {
-    n /= 1000;
-    unitIndex++;
-  }
-  const finalNumber = Math.round(n);
-  return { number: finalNumber, unit: units[unitIndex - 1] };
 };
 
 const animations = {
@@ -81,7 +82,9 @@ const GitHubStarsButton = React.forwardRef<
   ) => {
     const motionVal = useMotionValue(0);
     const springVal = useSpring(motionVal, transition);
-    const [motionNumber, setMotionNumber] = React.useState(0);
+    const motionNumberRef = React.useRef(0);
+    const isCompletedRef = React.useRef(false);
+    const [, forceRender] = React.useReducer((x) => x + 1, 0);
     const [stars, setStars] = React.useState(0);
     const [isCompleted, setIsCompleted] = React.useState(false);
     const [displayParticles, setDisplayParticles] = React.useState(false);
@@ -104,37 +107,59 @@ const GitHubStarsButton = React.forwardRef<
         .finally(() => setIsLoading(false));
     }, [username, repo]);
 
-    React.useEffect(() => {
-      const unsubscribe = springVal.on('change', (latest: number) => {
-        setMotionNumber(Math.round(latest));
-      });
-      return () => unsubscribe();
-    }, [springVal]);
-
-    React.useEffect(() => {
-      if (stars > 0) motionVal.set(stars);
-    }, [motionVal, stars]);
-
-    const fillPercentage = React.useMemo(
-      () => Math.min(100, (motionNumber / stars) * 100),
-      [motionNumber, stars],
-    );
-    const { number, unit } = React.useMemo(
-      () => formatNumber(motionNumber),
-      [motionNumber],
-    );
-
     const handleDisplayParticles = React.useCallback(() => {
       setDisplayParticles(true);
       setTimeout(() => setDisplayParticles(false), 1500);
     }, []);
 
     React.useEffect(() => {
-      if (stars === 0) return;
-      const completed = motionNumber >= stars;
-      setIsCompleted(completed);
-      if (completed) handleDisplayParticles();
-    }, [handleDisplayParticles, motionNumber, stars]);
+      const unsubscribe = springVal.on('change', (latest: number) => {
+        const newValue = Math.round(latest);
+        if (motionNumberRef.current !== newValue) {
+          motionNumberRef.current = newValue;
+          forceRender();
+        }
+        if (stars !== 0 && newValue >= stars && !isCompletedRef.current) {
+          isCompletedRef.current = true;
+          setIsCompleted(true);
+          handleDisplayParticles();
+        }
+      });
+      return () => unsubscribe();
+    }, [springVal, stars, handleDisplayParticles]);
+
+    React.useEffect(() => {
+      if (stars > 0) motionVal.set(stars);
+    }, [motionVal, stars]);
+
+    const fillPercentage = Math.min(
+      100,
+      (motionNumberRef.current / stars) * 100,
+    );
+    const formattedResult = formatNumber(motionNumberRef.current, formatted);
+    const ghostFormattedNumber = formatNumber(stars, formatted);
+
+    const renderNumberSegments = (
+      segments: string[],
+      unit: string,
+      isGhost: boolean,
+    ) => (
+      <span
+        className={cn(
+          'flex items-center gap-px',
+          isGhost ? 'invisible' : 'absolute top-0 left-0',
+        )}
+      >
+        {segments.map((segment, index) => (
+          <React.Fragment key={index}>
+            <SlidingNumber number={+segment} />
+            {index < segments.length - 1 && <span>,</span>}
+          </React.Fragment>
+        ))}
+
+        {formatted && unit && <span className="leading-[1]">{unit}</span>}
+      </span>
+    );
 
     const handleClick = React.useCallback(
       (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -208,15 +233,18 @@ const GitHubStarsButton = React.forwardRef<
             )}
           </AnimatePresence>
         </div>
-
-        {formatted ? (
-          <span className="flex items-center gap-0.5">
-            <SlidingNumber number={number} />
-            {unit && <span>{unit}</span>}
-          </span>
-        ) : (
-          <SlidingNumber number={motionNumber} />
-        )}
+        <span className="relative inline-flex">
+          {renderNumberSegments(
+            ghostFormattedNumber.number,
+            ghostFormattedNumber.unit,
+            true,
+          )}
+          {renderNumberSegments(
+            formattedResult.number,
+            formattedResult.unit,
+            false,
+          )}
+        </span>
       </motion.a>
     );
   },

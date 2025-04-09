@@ -7,28 +7,23 @@ import {
   type MotionValue,
   motion,
   useInView,
+  type SpringOptions,
 } from 'motion/react';
 import useMeasure from 'react-use-measure';
 
 import { cn } from '@/lib/utils';
 
-const TRANSITION = {
-  type: 'spring',
-  stiffness: 200,
-  damping: 20,
-  mass: 0.4,
-};
-
 interface NumberProps {
   prevValue: number;
   value: number;
   place: number;
+  transition: SpringOptions;
 }
 
-const NumberRoller = ({ prevValue, value, place }: NumberProps) => {
+const NumberRoller = ({ prevValue, value, place, transition }: NumberProps) => {
   const startNumber = Math.floor(prevValue / place) % 10;
   const targetNumber = Math.floor(value / place) % 10;
-  const animatedValue = useSpring(startNumber, TRANSITION);
+  const animatedValue = useSpring(startNumber, transition);
 
   React.useEffect(() => {
     animatedValue.set(targetNumber);
@@ -48,6 +43,7 @@ const NumberRoller = ({ prevValue, value, place }: NumberProps) => {
           motionValue={animatedValue}
           number={i}
           height={height}
+          transition={transition}
         />
       ))}
     </div>
@@ -58,9 +54,15 @@ interface NumberDisplayProps {
   motionValue: MotionValue<number>;
   number: number;
   height: number;
+  transition: SpringOptions;
 }
 
-const NumberDisplay = ({ motionValue, number, height }: NumberDisplayProps) => {
+const NumberDisplay = ({
+  motionValue,
+  number,
+  height,
+  transition,
+}: NumberDisplayProps) => {
   const y = useTransform(motionValue, (latest) => {
     if (!height) return 0;
     const currentNumber = latest % 10;
@@ -78,7 +80,7 @@ const NumberDisplay = ({ motionValue, number, height }: NumberDisplayProps) => {
     <motion.span
       style={{ y }}
       className="absolute inset-0 flex items-center justify-center"
-      transition={TRANSITION}
+      transition={{ ...transition, type: 'spring' }}
     >
       {number}
     </motion.span>
@@ -86,10 +88,11 @@ const NumberDisplay = ({ motionValue, number, height }: NumberDisplayProps) => {
 };
 
 interface SlidingNumberProps extends React.HTMLAttributes<HTMLSpanElement> {
-  number: number;
+  number: number | string;
   startOnView?: boolean;
   padStart?: boolean;
   decimalSeparator?: string;
+  transition?: SpringOptions;
 }
 
 const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
@@ -100,6 +103,11 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
       startOnView = false,
       padStart = false,
       decimalSeparator = '.',
+      transition = {
+        stiffness: 200,
+        damping: 20,
+        mass: 0.4,
+      },
       ...props
     },
     ref,
@@ -111,7 +119,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     const prevNumberRef = React.useRef<number>(0);
 
     const effectiveNumber = React.useMemo(
-      () => (startOnView && !inView ? 0 : Math.abs(number)),
+      () => (startOnView && !inView ? 0 : Math.abs(Number(number))),
       [number, startOnView, inView],
     );
 
@@ -173,7 +181,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
         className={cn('flex items-center', className)}
         {...props}
       >
-        {!(startOnView && !inView) && number < 0 && (
+        {!(startOnView && !inView) && Number(number) < 0 && (
           <span className="mr-1">-</span>
         )}
 
@@ -183,6 +191,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
             prevValue={parseInt(adjustedPrevInt, 10)}
             value={parseInt(newIntStr, 10)}
             place={place}
+            transition={transition}
           />
         ))}
 
@@ -195,6 +204,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
                 prevValue={prevDecValue}
                 value={newDecValue}
                 place={place}
+                transition={transition}
               />
             ))}
           </>
