@@ -34,7 +34,7 @@ const useInputButton = (): InputButtonContextType => {
 type InputButtonProps = React.HTMLAttributes<HTMLDivElement> &
   Partial<InputButtonContextType>;
 
-export const InputButton = React.forwardRef<HTMLDivElement, InputButtonProps>(
+const InputButton = React.forwardRef<HTMLDivElement, InputButtonProps>(
   (
     {
       className,
@@ -76,7 +76,7 @@ InputButton.displayName = 'InputButton';
 
 type ButtonsProps = HTMLMotionProps<'div'>;
 
-export const Buttons = React.forwardRef<HTMLDivElement, ButtonsProps>(
+const Buttons = React.forwardRef<HTMLDivElement, ButtonsProps>(
   ({ className, ...props }, ref) => {
     return (
       <motion.div
@@ -92,7 +92,7 @@ Buttons.displayName = 'Buttons';
 
 type ButtonProps = HTMLMotionProps<'button'>;
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, ...props }, ref) => {
     const { transition, setShowInput, id } = useInputButton();
 
@@ -118,53 +118,52 @@ type SubmitButtonProps = HTMLMotionProps<'button'> & {
   icon?: React.ElementType;
 };
 
-export const SubmitButton = React.forwardRef<
-  HTMLButtonElement,
-  SubmitButtonProps
->(({ className, children, icon: Icon = ArrowRight, ...props }, ref) => {
-  const { transition, showInput, setShowInput, id } = useInputButton();
+const SubmitButton = React.forwardRef<HTMLButtonElement, SubmitButtonProps>(
+  ({ className, children, icon: Icon = ArrowRight, ...props }, ref) => {
+    const { transition, showInput, setShowInput, id } = useInputButton();
 
-  return (
-    <motion.button
-      ref={ref}
-      layoutId={`button-${id}`}
-      transition={transition}
-      className={cn(
-        "z-[1] [&_svg:not([class*='size-'])]:size-4 cursor-pointer disabled:pointer-events-none  disabled:opacity-50 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap bg-primary hover:bg-primary/90 transition-colors text-primary-foreground rounded-full text-sm flex items-center justify-center font-medium absolute inset-y-1 right-1",
-        showInput ? 'px-4' : 'aspect-square',
-        className,
-      )}
-      onClick={() => setShowInput((prev) => !prev)}
-      {...props}
-    >
-      {showInput ? (
-        <motion.span
-          key="show-button"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
-        >
-          {children}
-        </motion.span>
-      ) : (
-        <motion.span
-          key="show-icon"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Icon className="size-4" />
-        </motion.span>
-      )}
-    </motion.button>
-  );
-});
+    return (
+      <motion.button
+        ref={ref}
+        layoutId={`button-${id}`}
+        transition={transition}
+        className={cn(
+          "z-[1] [&_svg:not([class*='size-'])]:size-4 cursor-pointer disabled:pointer-events-none  disabled:opacity-50 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap bg-primary hover:bg-primary/90 transition-colors text-primary-foreground rounded-full text-sm flex items-center justify-center font-medium absolute inset-y-1 right-1",
+          showInput ? 'px-4' : 'aspect-square',
+          className,
+        )}
+        onClick={() => setShowInput((prev) => !prev)}
+        {...props}
+      >
+        {showInput ? (
+          <motion.span
+            key="show-button"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            {children}
+          </motion.span>
+        ) : (
+          <motion.span
+            key="show-icon"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Icon className="size-4" />
+          </motion.span>
+        )}
+      </motion.button>
+    );
+  },
+);
 
 SubmitButton.displayName = 'SubmitButton';
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {
     const { transition, showInput, id } = useInputButton();
 
@@ -194,3 +193,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = 'Input';
+
+export {
+  InputButton,
+  Buttons,
+  Button,
+  SubmitButton,
+  Input,
+  useInputButton,
+  type InputButtonProps,
+  type ButtonsProps,
+  type ButtonProps,
+  type SubmitButtonProps,
+  type InputProps,
+};
