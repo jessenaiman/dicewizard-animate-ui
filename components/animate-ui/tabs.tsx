@@ -1,12 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  motion,
-  type Tween,
-  type Transition,
-  useAnimation,
-} from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 import {
