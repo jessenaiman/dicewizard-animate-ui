@@ -224,50 +224,18 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
         child.props.value === activeValue,
     );
 
-    const blurControls = useAnimation();
-    const duration = ((transition as Tween).duration ?? 0.2) / 2;
-
-    React.useEffect(() => {
-      async function runBlurAnimation() {
-        await blurControls.start({
-          filter: 'blur(4px)',
-          transition: {
-            duration: duration,
-            ease: 'easeInOut',
-          },
-        });
-        await blurControls.start({
-          filter: 'blur(0px)',
-          transition: {
-            duration: duration,
-            ease: 'easeInOut',
-          },
-        });
-      }
-      runBlurAnimation();
-    }, [activeIndex, blurControls]);
-
     return (
       <div ref={ref} className={cn('overflow-hidden', className)}>
         <motion.div
-          animate={blurControls}
-          initial={{ filter: 'blur(0px)' }}
-          transition={{
-            duration: duration,
-            ease: 'easeInOut',
-          }}
+          className="flex"
+          animate={{ x: activeIndex * -100 + '%' }}
+          transition={transition}
         >
-          <motion.div
-            className="flex"
-            animate={{ x: activeIndex * -100 + '%' }}
-            transition={transition}
-          >
-            {childrenArray.map((child, index) => (
-              <div key={index} className="w-full shrink-0">
-                {child}
-              </div>
-            ))}
-          </motion.div>
+          {childrenArray.map((child, index) => (
+            <div key={index} className="w-full shrink-0">
+              {child}
+            </div>
+          ))}
         </motion.div>
       </div>
     );
@@ -282,11 +250,23 @@ interface TabsContentProps {
 }
 
 const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-  ({ children, className }, ref) => (
-    <div role="tabpanel" ref={ref} className={className}>
-      {children}
-    </div>
-  ),
+  ({ children, value, className }, ref) => {
+    const { activeValue } = useTabs();
+    const isActive = activeValue === value;
+    return (
+      <motion.div
+        role="tabpanel"
+        ref={ref}
+        className={className}
+        initial={{ filter: 'blur(0px)' }}
+        animate={{ filter: isActive ? 'blur(0px)' : 'blur(4px)' }}
+        exit={{ filter: 'blur(0px)' }}
+        transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+      >
+        {children}
+      </motion.div>
+    );
+  },
 );
 TabsContent.displayName = 'TabsContent';
 
