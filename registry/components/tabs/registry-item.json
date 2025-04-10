@@ -5,6 +5,7 @@
   "title": "Tabs",
   "description": "Tabs component",
   "dependencies": ["motion"],
+  "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
   "files": [
     {
       "path": "registry/components/tabs/index.tsx",

@@ -13,6 +13,8 @@
     "components/install-tabs",
     "components/scroll-progress",
     "components/tabs",
+    "---Effects---",
+    "effects/motion-highlight",
     "---Radix UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",

@@ -6,22 +6,16 @@ import { Check, ChevronRight, Circle } from 'lucide-react';
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
-
-const EXIT_DELAY = 0.3;
+import {
+  MotionHighlight,
+  MotionHighlightItem,
+} from '@/components/animate-ui/motion-highlight';
 
 interface DropdownMenuContextType {
   isOpen: boolean;
-  activeValue: string | null;
-  setActiveValue: (value: string | null) => void;
-  scheduleReset: () => void;
-  clearReset: () => void;
 }
 const DropdownMenuContext = React.createContext<DropdownMenuContextType>({
   isOpen: false,
-  activeValue: null,
-  setActiveValue: () => {},
-  scheduleReset: () => {},
-  clearReset: () => {},
 });
 
 const useDropdownMenu = (): DropdownMenuContextType => {
@@ -34,48 +28,17 @@ const useDropdownMenu = (): DropdownMenuContextType => {
 
 type DropdownMenuProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Root
->;
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, ...props }) => {
+> & {
+  transition?: Transition;
+};
+const DropdownMenu: React.FC<DropdownMenuProps> = ({
+  children,
+  transition = { type: 'spring', stiffness: 200, damping: 25 },
+  ...props
+}) => {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
-  const [activeValue, setActiveValueState] = React.useState<string | null>(
-    null,
-  );
-
-  const exitTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
-
-  const scheduleReset = React.useCallback(() => {
-    if (exitTimeoutRef.current) {
-      clearTimeout(exitTimeoutRef.current);
-    }
-    exitTimeoutRef.current = setTimeout(() => {
-      setActiveValueState(null);
-      exitTimeoutRef.current = null;
-    }, EXIT_DELAY * 1000);
-  }, []);
-
-  const clearReset = React.useCallback(() => {
-    if (exitTimeoutRef.current) {
-      clearTimeout(exitTimeoutRef.current);
-      exitTimeoutRef.current = null;
-    }
-  }, []);
-
-  React.useEffect(() => {
-    return () => {
-      if (exitTimeoutRef.current) {
-        clearTimeout(exitTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  const setActiveValue = (val: string | null) => {
-    clearReset();
-    setActiveValueState(val);
-  };
 
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
@@ -86,19 +49,18 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, ...props }) => {
   );
 
   return (
-    <DropdownMenuPrimitive.Root {...props} onOpenChange={handleOpenChange}>
-      <DropdownMenuContext.Provider
-        value={{
-          isOpen,
-          activeValue,
-          setActiveValue,
-          scheduleReset,
-          clearReset,
-        }}
+    <DropdownMenuContext.Provider value={{ isOpen }}>
+      <MotionHighlight
+        hover
+        className="rounded-sm"
+        controlledItems
+        transition={transition}
       >
-        {children}
-      </DropdownMenuContext.Provider>
-    </DropdownMenuPrimitive.Root>
+        <DropdownMenuPrimitive.Root {...props} onOpenChange={handleOpenChange}>
+          {children}
+        </DropdownMenuPrimitive.Root>
+      </MotionHighlight>
+    </DropdownMenuContext.Provider>
   );
 };
 
@@ -137,92 +99,28 @@ type DropdownMenuSubTriggerProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.SubTrigger
 > & {
   inset?: boolean;
-  transition?: Transition;
 };
 const DropdownMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
   DropdownMenuSubTriggerProps
->(
-  (
-    {
-      className,
-      children,
-      inset,
-      disabled,
-      transition = { type: 'spring', stiffness: 200, damping: 20 },
-      ...props
-    },
-    ref,
-  ) => {
-    const { activeValue, setActiveValue, scheduleReset, clearReset } =
-      useDropdownMenu();
-    const id = React.useId();
-
-    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-      clearReset();
-      setActiveValue(id);
-      props.onMouseEnter?.(e);
-    };
-
-    const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-      scheduleReset();
-      props.onMouseLeave?.(e);
-    };
-
-    return (
-      <DropdownMenuPrimitive.SubTrigger
-        ref={ref}
-        className="relative"
-        {...props}
-        disabled={disabled}
-        onMouseEnter={(e) => {
-          handleMouseEnter(e);
-          props.onMouseEnter?.(e);
-        }}
-        onMouseLeave={(e) => {
-          handleMouseLeave(e);
-          props.onMouseLeave?.(e);
-        }}
+>(({ className, children, inset, disabled, ...props }, ref) => (
+  <MotionHighlightItem disabled={disabled}>
+    <DropdownMenuPrimitive.SubTrigger ref={ref} {...props} disabled={disabled}>
+      <motion.span
+        data-disabled={disabled}
+        whileTap={{ scale: 0.95 }}
+        className={cn(
+          'relative z-[1] flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+          inset && 'pl-8',
+          className,
+        )}
       >
-        <AnimatePresence>
-          {activeValue === id && !disabled && (
-            <motion.span
-              className="absolute inset-0 h-full w-full bg-muted rounded-sm"
-              layoutId="dropdown-menu-item-background"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  transition: {
-                    ...transition,
-                    delay: EXIT_DELAY + (transition?.delay ?? 0),
-                  },
-                },
-              }}
-            />
-          )}
-        </AnimatePresence>
-
-        <motion.span
-          data-disabled={disabled}
-          whileTap={{ scale: 0.95 }}
-          className={cn(
-            'relative z-[1] flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
-            inset && 'pl-8',
-            className,
-          )}
-        >
-          {children}
-          <ChevronRight className="ml-auto" />
-        </motion.span>
-      </DropdownMenuPrimitive.SubTrigger>
-    );
-  },
-);
+        {children}
+        <ChevronRight className="ml-auto" />
+      </motion.span>
+    </DropdownMenuPrimitive.SubTrigger>
+  </MotionHighlightItem>
+));
 DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName;
 
@@ -285,17 +183,14 @@ const DropdownMenuContent = React.forwardRef<
                 initial={{
                   opacity: 0,
                   scale: 0.95,
-                  clipPath: 'inset(0 0 100% 0)',
                 }}
                 animate={{
                   opacity: 1,
                   scale: 1,
-                  clipPath: 'inset(0 0 0 0)',
                 }}
                 exit={{
                   opacity: 0,
                   scale: 0.95,
-                  clipPath: 'inset(0 0 100% 0)',
                 }}
                 transition={transition}
                 style={{ willChange: 'opacity, transform, clip-path' }}
@@ -315,79 +210,19 @@ type DropdownMenuItemProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Item
 > & {
   inset?: boolean;
-  transition?: Transition;
 };
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   DropdownMenuItemProps
->(
-  (
-    {
-      className,
-      children,
-      inset,
-      disabled,
-      transition = { type: 'spring', stiffness: 200, damping: 20 },
-      ...props
-    },
-    ref,
-  ) => {
-    const { activeValue, setActiveValue, scheduleReset, clearReset } =
-      useDropdownMenu();
-    const id = React.useId();
-
-    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-      clearReset();
-      setActiveValue(id);
-      props.onMouseEnter?.(e);
-    };
-
-    const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-      scheduleReset();
-      props.onMouseLeave?.(e);
-    };
-
-    return (
-      <DropdownMenuPrimitive.Item
-        ref={ref}
-        className="relative"
-        {...props}
-        disabled={disabled}
-        onMouseEnter={(e) => {
-          handleMouseEnter(e);
-          props.onMouseEnter?.(e);
-        }}
-        onMouseLeave={(e) => {
-          handleMouseLeave(e);
-          props.onMouseLeave?.(e);
-        }}
-      >
-        <AnimatePresence>
-          {activeValue === id && !disabled && (
-            <motion.span
-              className="absolute inset-0 h-full w-full bg-muted rounded-sm"
-              layoutId="dropdown-menu-item-background"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  ...transition,
-                  delay: EXIT_DELAY + (transition?.delay ?? 0),
-                },
-              }}
-            />
-          )}
-        </AnimatePresence>
-
+>(({ className, children, inset, disabled, ...props }, ref) => {
+  return (
+    <MotionHighlightItem disabled={disabled}>
+      <DropdownMenuPrimitive.Item ref={ref} {...props} disabled={disabled}>
         <motion.span
           data-disabled={disabled}
           whileTap={{ scale: 0.95 }}
           className={cn(
-            'relative z-[1] flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+            'relative z-[1] flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus-visible:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
             inset && 'pl-8',
             className,
           )}
@@ -395,88 +230,31 @@ const DropdownMenuItem = React.forwardRef<
           {children}
         </motion.span>
       </DropdownMenuPrimitive.Item>
-    );
-  },
-);
+    </MotionHighlightItem>
+  );
+});
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
 type DropdownMenuCheckboxItemProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.CheckboxItem
-> & {
-  transition?: Transition;
-};
+>;
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   DropdownMenuCheckboxItemProps
->(
-  (
-    {
-      className,
-      children,
-      checked,
-      disabled,
-      transition = { type: 'spring', stiffness: 200, damping: 20 },
-      ...props
-    },
-    ref,
-  ) => {
-    const { activeValue, setActiveValue, scheduleReset, clearReset } =
-      useDropdownMenu();
-    const id = React.useId();
-
-    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-      clearReset();
-      setActiveValue(id);
-      props.onMouseEnter?.(e);
-    };
-
-    const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-      scheduleReset();
-      props.onMouseLeave?.(e);
-    };
-
-    return (
+>(({ className, children, checked, disabled, ...props }, ref) => {
+  return (
+    <MotionHighlightItem disabled={disabled}>
       <DropdownMenuPrimitive.CheckboxItem
         ref={ref}
-        className="relative"
         {...props}
         checked={checked}
         disabled={disabled}
-        onMouseEnter={(e) => {
-          handleMouseEnter(e);
-          props.onMouseEnter?.(e);
-        }}
-        onMouseLeave={(e) => {
-          handleMouseLeave(e);
-          props.onMouseLeave?.(e);
-        }}
       >
-        <AnimatePresence>
-          {activeValue === id && !disabled && (
-            <motion.span
-              className="absolute inset-0 h-full w-full bg-muted rounded-sm"
-              layoutId="dropdown-menu-item-background"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  ...transition,
-                  delay: EXIT_DELAY + (transition?.delay ?? 0),
-                },
-              }}
-            />
-          )}
-        </AnimatePresence>
-
         <motion.span
           data-disabled={disabled}
           whileTap={{ scale: 0.95 }}
           className={cn(
-            'relative z-[1] flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+            'relative z-[1] flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus-visible:bg-accent focus-visible:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
             className,
           )}
         >
@@ -488,87 +266,27 @@ const DropdownMenuCheckboxItem = React.forwardRef<
           {children}
         </motion.span>
       </DropdownMenuPrimitive.CheckboxItem>
-    );
-  },
-);
+    </MotionHighlightItem>
+  );
+});
 DropdownMenuCheckboxItem.displayName =
   DropdownMenuPrimitive.CheckboxItem.displayName;
 
 type DropdownMenuRadioItemProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.RadioItem
-> & {
-  transition?: Transition;
-};
+>;
 const DropdownMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
   DropdownMenuRadioItemProps
->(
-  (
-    {
-      className,
-      children,
-      disabled,
-      transition = { type: 'spring', stiffness: 200, damping: 20 },
-      ...props
-    },
-    ref,
-  ) => {
-    const { activeValue, setActiveValue, scheduleReset, clearReset } =
-      useDropdownMenu();
-    const id = React.useId();
-
-    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-      clearReset();
-      setActiveValue(id);
-      props.onMouseEnter?.(e);
-    };
-
-    const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-      scheduleReset();
-      props.onMouseLeave?.(e);
-    };
-
-    return (
-      <DropdownMenuPrimitive.RadioItem
-        ref={ref}
-        className="relative"
-        {...props}
-        disabled={disabled}
-        onMouseEnter={(e) => {
-          handleMouseEnter(e);
-          props.onMouseEnter?.(e);
-        }}
-        onMouseLeave={(e) => {
-          handleMouseLeave(e);
-          props.onMouseLeave?.(e);
-        }}
-      >
-        <AnimatePresence>
-          {activeValue === id && !disabled && (
-            <motion.span
-              className="absolute inset-0 h-full w-full bg-muted rounded-sm"
-              layoutId="dropdown-menu-item-background"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  ...transition,
-                  delay: EXIT_DELAY + (transition?.delay ?? 0),
-                },
-              }}
-            />
-          )}
-        </AnimatePresence>
-
+>(({ className, children, disabled, ...props }, ref) => {
+  return (
+    <MotionHighlightItem disabled={disabled}>
+      <DropdownMenuPrimitive.RadioItem ref={ref} {...props} disabled={disabled}>
         <motion.span
           data-disabled={disabled}
           whileTap={{ scale: 0.95 }}
           className={cn(
-            'relative z-[1] flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+            'relative z-[1] flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus-visible:bg-accent focus-visible:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
             className,
           )}
         >
@@ -580,9 +298,9 @@ const DropdownMenuRadioItem = React.forwardRef<
           {children}
         </motion.span>
       </DropdownMenuPrimitive.RadioItem>
-    );
-  },
-);
+    </MotionHighlightItem>
+  );
+});
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 
 type DropdownMenuLabelProps = React.ComponentPropsWithoutRef<

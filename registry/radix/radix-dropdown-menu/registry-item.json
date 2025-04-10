@@ -5,6 +5,7 @@
   "title": "Dropdown Menu",
   "description": "Dropdown Menu component",
   "dependencies": ["motion", "lucide-react", "@radix-ui/react-dropdown-menu"],
+  "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
   "files": [
     {
       "path": "registry/radix/radix-dropdown-menu/index.tsx",

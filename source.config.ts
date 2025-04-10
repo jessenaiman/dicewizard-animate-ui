@@ -10,6 +10,7 @@ export const docs = defineDocs({
   docs: {
     schema: frontmatterSchema.extend({
       new: z.boolean().optional(),
+      deprecated: z.boolean().optional(),
       author: z
         .object({
           name: z.string(),
