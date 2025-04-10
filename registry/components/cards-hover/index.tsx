@@ -12,6 +12,7 @@ interface CardsHoverContextType {
   setActiveValue: (value: string | null) => void;
   scheduleReset: () => void;
   clearReset: () => void;
+  id: string;
 }
 
 const CardsHoverContext = React.createContext<
@@ -31,10 +32,13 @@ interface CardsHoverProps
   value?: string | null;
   defaultValue?: string | null;
   onValueChange?: (value: string | null) => void;
+  id?: string;
 }
 
 const CardsHover = React.forwardRef<HTMLDivElement, CardsHoverProps>(
-  ({ value, defaultValue, onValueChange, className, ...props }, ref) => {
+  ({ value, defaultValue, onValueChange, className, id, ...props }, ref) => {
+    const localId = React.useId();
+
     const [activeValue, setActiveValueState] = React.useState<string | null>(
       value ?? defaultValue ?? null,
     );
@@ -88,6 +92,7 @@ const CardsHover = React.forwardRef<HTMLDivElement, CardsHoverProps>(
           setActiveValue,
           scheduleReset,
           clearReset,
+          id: id ?? localId,
         }}
       >
         <div
@@ -119,7 +124,7 @@ const CardHover = React.forwardRef<HTMLDivElement, CardHoverProps>(
     },
     ref,
   ) => {
-    const { activeValue, setActiveValue, scheduleReset, clearReset } =
+    const { activeValue, setActiveValue, scheduleReset, clearReset, id } =
       useCardsHover();
 
     const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -144,7 +149,7 @@ const CardHover = React.forwardRef<HTMLDivElement, CardHoverProps>(
           {activeValue === value && (
             <motion.div
               className="absolute inset-0 size-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"
-              layoutId="card-hover-background"
+              layoutId={`card-hover-background-${id}`}
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,

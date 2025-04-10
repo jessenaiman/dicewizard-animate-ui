@@ -334,6 +334,9 @@
       "dependencies": [
         "motion"
       ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
+      ],
       "files": [
         {
           "path": "registry/components/tabs/index.tsx",
@@ -749,6 +752,54 @@
           "path": "registry/demo/components/tabs-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "motion-highlight-cards-hover-demo",
+      "type": "registry:ui",
+      "title": "Motion Highlight Cards Hover Demo",
+      "description": "Demo showing the motion highlight cards hover effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/motion-highlight-cards-hover-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-highlight-cards-hover-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "motion-highlight-tabs-demo",
+      "type": "registry:ui",
+      "title": "Motion Highlight Tabs Demo",
+      "description": "Demo showing the motion highlight tabs effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/motion-highlight-tabs-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-highlight-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "motion-highlight-tabs-hover-demo",
+      "type": "registry:ui",
+      "title": "Motion Highlight Tabs Hover Demo",
+      "description": "Demo showing the motion highlight tabs hover effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/motion-highlight-tabs-hover-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-highlight-tabs-hover-demo.tsx"
         }
       ]
     },
@@ -1338,6 +1389,22 @@
       ]
     },
     {
+      "name": "motion-highlight",
+      "type": "registry:ui",
+      "title": "Motion Highlight",
+      "description": "Motion highlight component that displays the motion highlight effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/motion-highlight/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-highlight.tsx"
+        }
+      ]
+    },
+    {
       "name": "headless-accordion",
       "type": "registry:ui",
       "title": "Headless Accordion",
@@ -1521,6 +1588,9 @@
         "lucide-react",
         "@radix-ui/react-dropdown-menu"
       ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
+      ],
       "files": [
         {
           "path": "registry/radix/radix-dropdown-menu/index.tsx",
@@ -1623,6 +1693,9 @@
       "dependencies": [
         "motion",
         "@radix-ui/react-tabs"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
       ],
       "files": [
         {

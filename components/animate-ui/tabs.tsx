@@ -5,16 +5,22 @@ import { motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-interface TabsContextProps {
+interface TabsContextType {
   activeValue: string;
   handleValueChange: (value: string) => void;
   registerTrigger: (value: string, node: HTMLElement | null) => void;
   getTrigger: (value: string) => HTMLElement | null;
 }
 
-const TabsContext = React.createContext<TabsContextProps | undefined>(
-  undefined,
-);
+const TabsContext = React.createContext<TabsContextType | undefined>(undefined);
+
+const useTabs = (): TabsContextType => {
+  const context = React.useContext(TabsContext);
+  if (!context) {
+    throw new Error('useTabs must be used within a TabsProvider');
+  }
+  return context;
+};
 
 type TabsProps =
   | {
@@ -79,16 +85,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       }
     };
 
-    const setRef = (node: HTMLDivElement | null) => {
-      if (forwardedRef) {
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else {
-          (forwardedRef as React.RefObject<HTMLDivElement | null>).current =
-            node;
-        }
-      }
-    };
+    const localRef = React.useRef<HTMLDivElement | null>(null);
+    React.useImperativeHandle(
+      forwardedRef,
+      () => localRef.current as HTMLDivElement,
+    );
 
     return (
       <TabsContext.Provider
@@ -100,7 +101,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         }}
       >
         <div
-          ref={setRef}
+          ref={localRef}
           className={cn('flex flex-col gap-2', className)}
           {...props}
         >
@@ -128,14 +129,14 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       transition = {
         type: 'spring',
         bounce: 0,
-        stiffness: 300,
-        damping: 30,
+        stiffness: 200,
+        damping: 25,
       },
     },
     forwardedRef,
   ) => {
-    const containerRef = React.useRef<HTMLDivElement>(null);
-    const { activeValue, getTrigger } = React.useContext(TabsContext)!;
+    const localRef = React.useRef<HTMLDivElement | null>(null);
+    const { activeValue, getTrigger } = useTabs();
     const [indicatorStyle, setIndicatorStyle] = React.useState({
       left: 0,
       top: 0,
@@ -144,12 +145,12 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
     });
 
     const updateIndicator = React.useCallback(() => {
-      if (!containerRef.current) return;
+      if (!localRef.current) return;
 
       const trigger = getTrigger(activeValue);
       if (!trigger) return;
 
-      const containerRect = containerRef.current.getBoundingClientRect();
+      const containerRect = localRef.current.getBoundingClientRect();
       const triggerRect = trigger.getBoundingClientRect();
 
       setIndicatorStyle({
@@ -166,20 +167,13 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       return () => window.removeEventListener('resize', updateIndicator);
     }, [updateIndicator, children]);
 
-    const setRef = (node: HTMLDivElement | null) => {
-      containerRef.current = node;
-      if (forwardedRef) {
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else {
-          (forwardedRef as React.RefObject<HTMLDivElement | null>).current =
-            node;
-        }
-      }
-    };
+    React.useImperativeHandle(
+      forwardedRef,
+      () => localRef.current as HTMLDivElement,
+    );
 
     return (
-      <div ref={setRef} className="relative">
+      <div ref={localRef} className="relative">
         <div
           role="tablist"
           className={cn(
@@ -216,30 +210,28 @@ interface TabsTriggerProps {
 
 const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
   ({ value, children, className }, forwardedRef) => {
-    const { activeValue, handleValueChange, registerTrigger } =
-      React.useContext(TabsContext)!;
+    const { activeValue, handleValueChange, registerTrigger } = useTabs();
 
-    const setRef = (node: HTMLButtonElement | null) => {
-      registerTrigger(value, node);
-      if (forwardedRef) {
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else {
-          (forwardedRef as React.RefObject<HTMLButtonElement | null>).current =
-            node;
-        }
-      }
-    };
+    const localRef = React.useRef<HTMLButtonElement | null>(null);
+    React.useImperativeHandle(
+      forwardedRef,
+      () => localRef.current as HTMLButtonElement,
+    );
+
+    React.useEffect(() => {
+      registerTrigger(value, localRef.current);
+      return () => registerTrigger(value, null);
+    }, [value, registerTrigger]);
 
     return (
       <motion.button
         role="tab"
         whileTap={{ scale: 0.95 }}
-        ref={setRef}
+        ref={localRef}
         onClick={() => handleValueChange(value)}
         data-state={activeValue === value ? 'active' : 'inactive'}
         className={cn(
-          'inline-flex items-center h-full justify-center whitespace-nowrap rounded-sm px-2 py-1 text-sm font-medium ring-offset-background transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground z-10',
+          'inline-flex items-center h-full justify-center whitespace-nowrap rounded-sm px-2 py-1 text-sm font-medium ring-offset-background transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground z-[1]',
           className,
         )}
       >
@@ -258,10 +250,10 @@ interface TabsContentsProps {
 
 const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
   (
-    { children, className, transition = { duration: 0.3, ease: 'easeInOut' } },
+    { children, className, transition = { duration: 0.4, ease: 'easeInOut' } },
     forwardedRef,
   ) => {
-    const { activeValue } = React.useContext(TabsContext)!;
+    const { activeValue } = useTabs();
     const childrenArray = React.Children.toArray(children);
     const activeIndex = childrenArray.findIndex(
       (child): child is React.ReactElement<{ value: string }> =>
@@ -272,19 +264,14 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
         child.props.value === activeValue,
     );
 
-    const setRef = (node: HTMLDivElement | null) => {
-      if (forwardedRef) {
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else {
-          (forwardedRef as React.RefObject<HTMLDivElement | null>).current =
-            node;
-        }
-      }
-    };
+    const localRef = React.useRef<HTMLDivElement | null>(null);
+    React.useImperativeHandle(
+      forwardedRef,
+      () => localRef.current as HTMLDivElement,
+    );
 
     return (
-      <div ref={setRef} className={cn('overflow-hidden', className)}>
+      <div ref={localRef} className={cn('overflow-hidden', className)}>
         <motion.div
           className="flex"
           animate={{ x: activeIndex * -100 + '%' }}
@@ -310,8 +297,14 @@ interface TabsContentProps {
 
 const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
   ({ children, className }, forwardedRef) => {
+    const localRef = React.useRef<HTMLDivElement | null>(null);
+    React.useImperativeHandle(
+      forwardedRef,
+      () => localRef.current as HTMLDivElement,
+    );
+
     return (
-      <div role="tabpanel" ref={forwardedRef} className={className}>
+      <div role="tabpanel" ref={localRef} className={className}>
         {children}
       </div>
     );
@@ -325,6 +318,8 @@ export {
   TabsTrigger,
   TabsContents,
   TabsContent,
+  useTabs,
+  type TabsContextType,
   type TabsProps,
   type TabsListProps,
   type TabsTriggerProps,

@@ -37,7 +37,7 @@ const Counter = React.forwardRef<HTMLDivElement, CounterProps>(
         layout
         transition={transition}
         className={cn(
-          'flex items-center gap-x-2 p-1 rounded-lg bg-neutral-100 dark:bg-neutral-800',
+          'flex items-center gap-x-2 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-800',
           className,
         )}
         {...props}
