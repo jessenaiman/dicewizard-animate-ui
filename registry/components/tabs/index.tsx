@@ -1,7 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { motion, type Transition } from 'motion/react';
+import {
+  motion,
+  type Tween,
+  type Transition,
+  useAnimation,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 import {
@@ -175,7 +180,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
           onClick={() => handleValueChange(value)}
           data-state={activeValue === value ? 'active' : 'inactive'}
           className={cn(
-            'inline-flex items-center size-full justify-center whitespace-nowrap rounded-sm px-2 py-1 text-sm font-medium ring-offset-background transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground z-[1]',
+            'inline-flex cursor-pointer items-center size-full justify-center whitespace-nowrap rounded-sm px-2 py-1 text-sm font-medium ring-offset-background transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground z-[1]',
             className,
           )}
         >
@@ -195,7 +200,17 @@ interface TabsContentsProps {
 
 const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
   (
-    { children, className, transition = { duration: 0.4, ease: 'easeInOut' } },
+    {
+      children,
+      className,
+      transition = {
+        type: 'spring',
+        stiffness: 300,
+        damping: 30,
+        bounce: 0,
+        restDelta: 0.01,
+      },
+    },
     ref,
   ) => {
     const { activeValue } = useTabs();
@@ -209,18 +224,50 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
         child.props.value === activeValue,
     );
 
+    const blurControls = useAnimation();
+    const duration = ((transition as Tween).duration ?? 0.2) / 2;
+
+    React.useEffect(() => {
+      async function runBlurAnimation() {
+        await blurControls.start({
+          filter: 'blur(4px)',
+          transition: {
+            duration: duration,
+            ease: 'easeInOut',
+          },
+        });
+        await blurControls.start({
+          filter: 'blur(0px)',
+          transition: {
+            duration: duration,
+            ease: 'easeInOut',
+          },
+        });
+      }
+      runBlurAnimation();
+    }, [activeIndex, blurControls]);
+
     return (
       <div ref={ref} className={cn('overflow-hidden', className)}>
         <motion.div
-          className="flex"
-          animate={{ x: activeIndex * -100 + '%' }}
-          transition={transition}
+          animate={blurControls}
+          initial={{ filter: 'blur(0px)' }}
+          transition={{
+            duration: duration,
+            ease: 'easeInOut',
+          }}
         >
-          {childrenArray.map((child, index) => (
-            <div key={index} className="w-full flex-shrink-0">
-              {child}
-            </div>
-          ))}
+          <motion.div
+            className="flex"
+            animate={{ x: activeIndex * -100 + '%' }}
+            transition={transition}
+          >
+            {childrenArray.map((child, index) => (
+              <div key={index} className="w-full shrink-0">
+                {child}
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     );
