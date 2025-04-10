@@ -42,12 +42,33 @@ pnpm i
 pnpm dev
 ```
 
+## Edit a Component
+
+If you need to modify a component to correct or improve it, you must :
+
+- add a screenshot (photo or video as appropriate) of before and after the modification
+- clearly explain why you made the modification
+
+### Edit the code
+
+Edit the component in the `registry` folder. Don't forget to adapt the demo and documentation if necessary.
+
+You shouldn't change your behavior completely unless there's a good reason.
+
+### Build the Registry
+
+To update the registry, run the following command:
+
+```bash
+pnpm registry:build
+```
+
 ## Adding a New Component
 
 The addition of a new component must comply with certain rules:
 
 - The component must be animated in some way (css, motion, ...).
-- You must not copy/paste component code from other libraries. You can be inspired by a component, but it must have added value, and you must produce the code yourself.
+- You can't just copy/paste component code from other libraries. You can be inspired by a component, but it must have added value. For example, I took Shadcn's components and animated them. So I didn't copy and paste the component, I added something to it.
 - If you take inspiration from a component (CodePen, another library, etc.), remember to add the “Credits” section to your documentation. It's important to respect the work of other developers.
 
 To submit your component, please include a demo video in the MR. Once the component has been submitted, it must be validated by @Skyleen77.
