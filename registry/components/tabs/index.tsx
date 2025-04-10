@@ -167,7 +167,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
     }, [value, registerTrigger]);
 
     return (
-      <MotionHighlightItem value={value} className="size-full">
+      <MotionHighlightItem value={value} className="h-full">
         <motion.button
           ref={localRef}
           role="tab"
