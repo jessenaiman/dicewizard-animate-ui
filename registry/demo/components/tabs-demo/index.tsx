@@ -12,10 +12,9 @@ import { Label } from '@/components/ui/label';
 export const TabsDemo = () => {
   return (
     <Tabs defaultValue="account" className="w-[400px] bg-muted rounded-lg">
-      <TabsList className="grid w-full grid-cols-3">
+      <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="password2">Password2</TabsTrigger>
       </TabsList>
 
       <TabsContents className="mx-1 mb-1 -mt-2 rounded-sm h-full bg-background">
@@ -38,27 +37,6 @@ export const TabsDemo = () => {
           <Button>Save changes</Button>
         </TabsContent>
         <TabsContent value="password" className="space-y-6 p-6">
-          <p className="text-sm text-muted-foreground">
-            Change your password here. After saving, you'll be logged out.
-          </p>
-          <div className="space-y-3">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="confirm">Confirm password</Label>
-              <Input id="confirm" type="password" />
-            </div>
-          </div>
-
-          <Button>Save password</Button>
-        </TabsContent>
-        <TabsContent value="password2" className="space-y-6 p-6">
           <p className="text-sm text-muted-foreground">
             Change your password here. After saving, you'll be logged out.
           </p>
