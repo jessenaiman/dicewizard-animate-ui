@@ -77,13 +77,13 @@ export const Hero = () => {
         <FloatingComponent className="absolute -top-5 right-4">
           <Tabs>
             <TabsList className="w-[250px]">
-              <TabsTrigger className="flex-1" value="code">
+              <TabsTrigger className="w-full" value="code">
                 Code
               </TabsTrigger>
-              <TabsTrigger className="flex-1" value="issues">
+              <TabsTrigger className="w-full" value="issues">
                 Issues
               </TabsTrigger>
-              <TabsTrigger className="flex-1" value="docs">
+              <TabsTrigger className="w-full" value="docs">
                 Docs
               </TabsTrigger>
             </TabsList>

@@ -115,7 +115,7 @@ const TabsTrigger = React.forwardRef<
   TabsTriggerProps
 >(({ className, value, ...props }, ref) => {
   return (
-    <MotionHighlightItem value={value} className="h-full">
+    <MotionHighlightItem value={value} className="size-full">
       <TabsPrimitive.Trigger
         ref={ref}
         className={cn(
