@@ -1291,6 +1291,93 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/tabs-demo',
   },
+  'motion-effect-fade-blur-demo': {
+    name: 'motion-effect-fade-blur-demo',
+    description: 'Demo showing the motion effect fade blur.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/motion-effect'],
+    files: [
+      {
+        path: 'registry/demo/effects/motion-effect-fade-blur-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/motion-effect-fade-blur-demo.tsx',
+        content:
+          'import { MotionEffect } from \'@/registry/effects/motion-effect\';\n\nexport const MotionEffectFadeBlurDemo = () => {\n  return (\n    <MotionEffect\n      fade\n      blur="10px"\n      transition={{\n        duration: 0.5,\n        ease: \'easeInOut\',\n      }}\n    >\n      <p className="text-4xl font-bold">Motion Effect Fade Blur</p>\n    </MotionEffect>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/effects/motion-effect-fade-blur-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/motion-effect-fade-blur-demo',
+  },
+  'motion-effect-image-grid-demo': {
+    name: 'motion-effect-image-grid-demo',
+    description: 'Demo showing the motion effect image grid.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/motion-effect'],
+    files: [
+      {
+        path: 'registry/demo/effects/motion-effect-image-grid-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/motion-effect-image-grid-demo.tsx',
+        content:
+          'import { MotionEffect } from \'@/registry/effects/motion-effect\';\n\nexport const MotionEffectImageGridDemo = () => {\n  return (\n    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">\n      {Array.from({ length: 4 }).map((_, index) => (\n        <MotionEffect\n          key={index}\n          slide={{\n            direction: \'down\',\n          }}\n          fade\n          zoom\n          delay={0.5 + index * 0.1}\n        >\n          <img\n            src={`https://picsum.photos/seed/${index + 100}/600/600`}\n            alt="Slide In Demo"\n            className="w-[300px] h-[300px] object-cover object-center bg-muted rounded-xl flex items-center justify-center"\n          />\n        </MotionEffect>\n      ))}\n    </div>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/effects/motion-effect-image-grid-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/motion-effect-image-grid-demo',
+  },
+  'motion-effect-slide-demo': {
+    name: 'motion-effect-slide-demo',
+    description: 'Demo showing the motion effect slide.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/motion-effect'],
+    files: [
+      {
+        path: 'registry/demo/effects/motion-effect-slide-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/motion-effect-slide-demo.tsx',
+        content:
+          'import { MotionEffect } from \'@/registry/effects/motion-effect\';\n\nexport const MotionEffectSlideDemo = () => {\n  return (\n    <MotionEffect slide>\n      <p className="text-4xl font-bold">Motion Effect Slide</p>\n    </MotionEffect>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/effects/motion-effect-slide-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/motion-effect-slide-demo',
+  },
   'motion-highlight-cards-hover-demo': {
     name: 'motion-highlight-cards-hover-demo',
     description: 'Demo showing the motion highlight cards hover effect.',
@@ -2460,6 +2547,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/writing-text-demo',
+  },
+  'motion-effect': {
+    name: 'motion-effect',
+    description: 'Motion effect component that displays the motion effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/effects/motion-effect/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/motion-effect.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatePresence,\n  motion,\n  useInView,\n  type MotionProps,\n  type UseInViewOptions,\n  type Transition,\n} from 'motion/react';\n\ninterface MotionEffectProps extends MotionProps {\n  children: React.ReactNode;\n  className?: string;\n  transition?: Transition;\n  delay?: number;\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  blur?: string | boolean;\n  slide?:\n    | {\n        direction?: 'up' | 'down' | 'left' | 'right';\n        offset?: number;\n      }\n    | boolean;\n  fade?: { initialOpacity?: number; opacity?: number } | boolean;\n  zoom?:\n    | {\n        initialScale?: number;\n        scale?: number;\n      }\n    | boolean;\n}\n\nconst MotionEffect = React.forwardRef<HTMLDivElement, MotionEffectProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 200, damping: 20 },\n      delay = 0,\n      inView = false,\n      inViewMargin = '-50px',\n      blur = false,\n      slide = false,\n      fade = false,\n      zoom = false,\n      ...props\n    }: MotionEffectProps,\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLDivElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n    const inViewResult = useInView(localRef, {\n      once: true,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n\n    const hiddenVariant: { [key: string]: any } = {};\n    const visibleVariant: { [key: string]: any } = {};\n\n    if (slide) {\n      const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);\n      const direction =\n        typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');\n      const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';\n      hiddenVariant[axis] =\n        direction === 'left' || direction === 'up' ? -offset : offset;\n      visibleVariant[axis] = 0;\n    }\n\n    if (fade) {\n      hiddenVariant.opacity =\n        typeof fade === 'boolean' ? 0 : (fade.initialOpacity ?? 0);\n      visibleVariant.opacity =\n        typeof fade === 'boolean' ? 1 : (fade.opacity ?? 1);\n    }\n\n    if (zoom) {\n      hiddenVariant.scale =\n        typeof zoom === 'boolean' ? 0.5 : (zoom.initialScale ?? 0.5);\n      visibleVariant.scale = typeof zoom === 'boolean' ? 1 : (zoom.scale ?? 1);\n    }\n\n    if (blur) {\n      hiddenVariant.filter =\n        typeof blur === 'boolean' ? 'blur(10px)' : `blur(${blur})`;\n      visibleVariant.filter = 'blur(0px)';\n    }\n\n    return (\n      <AnimatePresence>\n        <motion.div\n          ref={localRef}\n          initial=\"hidden\"\n          animate={isInView ? 'visible' : 'hidden'}\n          exit=\"hidden\"\n          variants={{\n            hidden: hiddenVariant,\n            visible: visibleVariant,\n          }}\n          transition={{\n            ...transition,\n            delay: (transition?.delay ?? 0) + delay,\n          }}\n          className={className}\n          {...props}\n        >\n          {children}\n        </motion.div>\n      </AnimatePresence>\n    );\n  },\n);\n\nMotionEffect.displayName = 'MotionEffect';\n\nexport { MotionEffect, type MotionEffectProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/effects/motion-effect/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/motion-effect',
   },
   'motion-highlight': {
     name: 'motion-highlight',

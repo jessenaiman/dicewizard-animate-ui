@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { RotateCcw } from 'lucide-react';
 import { useState } from 'react';
+import { motion } from 'motion/react';
 
 interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -32,8 +33,14 @@ export const ComponentWrapper = ({
           className="flex items-center rounded-lg"
           variant="neutral"
           size="icon-sm"
+          asChild
         >
-          <RotateCcw aria-label="restart-btn" size={14} />
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <RotateCcw aria-label="restart-btn" size={14} />
+          </motion.button>
         </Button>
       </div>
 

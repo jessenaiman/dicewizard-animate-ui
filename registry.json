@@ -756,6 +756,54 @@
       ]
     },
     {
+      "name": "motion-effect-fade-blur-demo",
+      "type": "registry:ui",
+      "title": "Motion Effect Fade Blur Demo",
+      "description": "Demo showing the motion effect fade blur.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-effect"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/motion-effect-fade-blur-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-effect-fade-blur-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "motion-effect-image-grid-demo",
+      "type": "registry:ui",
+      "title": "Motion Effect Image Grid Demo",
+      "description": "Demo showing the motion effect image grid.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-effect"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/motion-effect-image-grid-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-effect-image-grid-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "motion-effect-slide-demo",
+      "type": "registry:ui",
+      "title": "Motion Effect Slide Demo",
+      "description": "Demo showing the motion effect slide.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-effect"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/motion-effect-slide-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-effect-slide-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "motion-highlight-cards-hover-demo",
       "type": "registry:ui",
       "title": "Motion Highlight Cards Hover Demo",
@@ -1417,6 +1465,22 @@
           "path": "registry/demo/text/writing-text-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/writing-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "motion-effect",
+      "type": "registry:ui",
+      "title": "Motion Effect",
+      "description": "Motion effect component that displays the motion effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/motion-effect/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/motion-effect.tsx"
         }
       ]
     },

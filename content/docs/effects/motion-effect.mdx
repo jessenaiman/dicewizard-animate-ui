@@ -1,21 +1,27 @@
 ---
-title: Slide In
-description: Slide in component that displays the slide in effect.
+title: Motion Effect
+description: Motion effect component that displays the motion effect (fade in, slide in, etc.).
 author:
   name: Skyleen77
   url: https://github.com/Skyleen77
 new: true
 ---
 
-<ComponentPreview name="slide-in-demo" />
+<ComponentPreview name="motion-effect-image-grid-demo" />
 
 ## Installation
 
-<ComponentInstallation name="slide-in" />
+<ComponentInstallation name="motion-effect" />
 
 ## Examples
 
-<ComponentPreview name="slide-in-multiple-demo" />
+### Slide
+
+<ComponentPreview name="motion-effect-slide-demo" />
+
+### Fade Blur
+
+<ComponentPreview name="motion-effect-fade-blur-demo" />
 
 ## Props
 
@@ -37,18 +43,6 @@ new: true
       required: false,
       default: "{ type: 'spring', stiffness: 200, damping: 20 }",
     },
-    offset: {
-      description: 'The offset of the slide in',
-      type: 'number',
-      required: false,
-      default: '100',
-    },
-    direction: {
-      description: 'The direction of the slide in',
-      type: 'string',
-      required: false,
-      default: 'left',
-    },
     inView: {
       description: 'Whether the slide in is in view',
       type: 'boolean',
@@ -61,17 +55,35 @@ new: true
       required: false,
       default: '-50px',
     },
-    blur: {
-      description: 'The blur of the slide in',
-      type: 'string',
-      required: false,
-      default: '0px',
-    },
     delay: {
       description: 'The delay of the slide in',
       type: 'number',
       required: false,
       default: '0',
+    },
+    blur: {
+      description: 'The blur of the slide in',
+      type: 'boolean | string',
+      required: false,
+      default: 'false',
+    },
+    slide: {
+      description: 'The slide of the slide in',
+      type: "boolean | { direction?: 'up' | 'down' | 'left' | 'right'; offset?: number }",
+      required: false,
+      default: 'false',
+    },
+    fade: {
+      description: 'The fade of the slide in',
+      type: 'boolean | { initialOpacity?: number; opacity?: number }',
+      required: false,
+      default: 'false',
+    },
+    zoom: {
+      description: 'The zoom of the slide in',
+      type: 'boolean | { initialScale?: number; scale?: number }',
+      required: false,
+      default: 'false',
     },
   }}
 />
