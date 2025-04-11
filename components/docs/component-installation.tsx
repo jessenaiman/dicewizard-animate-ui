@@ -39,7 +39,7 @@ export function ComponentInstallation({
     >
       <Tabs defaultValue="cli" className="relative mr-auto w-full">
         <TabsList
-          className="w-[200px] justify-start mb-2 rounded-xl h-10 bg-transparent p-0"
+          className="justify-start mb-2 rounded-xl h-10 bg-transparent p-0"
           activeClassName="bg-neutral-100 dark:bg-neutral-800 shadow-none rounded-lg"
         >
           <TabsTrigger

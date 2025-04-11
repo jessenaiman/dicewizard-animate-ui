@@ -65,7 +65,7 @@ export function ComponentPreview({
         {!preview && (
           <div className="flex items-center justify-between pb-2">
             <TabsList
-              className="w-[200px] justify-start rounded-xl h-10 bg-transparent p-0"
+              className="justify-start rounded-xl h-10 bg-transparent p-0"
               activeClassName="bg-neutral-100 dark:bg-neutral-800 shadow-none rounded-lg"
             >
               <TabsTrigger

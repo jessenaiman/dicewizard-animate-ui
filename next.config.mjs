@@ -9,7 +9,7 @@ const config = {
     return [
       {
         source: '/components',
-        destination: '/docs/components/cards-hover',
+        destination: '/docs/components/code-editor',
         permanent: true,
       },
       {
@@ -19,7 +19,7 @@ const config = {
       },
       {
         source: '/docs/components',
-        destination: '/docs/components/cards-hover',
+        destination: '/docs/components/code-editor',
         permanent: true,
       },
       {
