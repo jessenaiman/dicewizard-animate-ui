@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-in-multiple-demo",
+  "type": "registry:ui",
+  "title": "Slide In Multiple Demo",
+  "description": "Demo showing the slide in effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/slide-in"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/slide-in-multiple-demo/index.tsx",
+      "content": "import { SlideIn } from '@/registry/effects/slide-in';\n\nexport const SlideInMultipleDemo = () => {\n  return (\n    <div className=\"grid grid-cols-1 sm:grid-cols-2 gap-4\">\n      {Array.from({ length: 4 }).map((_, index) => (\n        <SlideIn key={index} direction=\"down\" delay={0.5 + index * 0.1}>\n          <img\n            src={`https://picsum.photos/seed/${index + 100}/600/600`}\n            alt=\"Slide In Demo\"\n            className=\"w-[300px] h-[300px] object-cover object-center bg-muted rounded-xl flex items-center justify-center\"\n          />\n        </SlideIn>\n      ))}\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/slide-in-multiple-demo.tsx"
+    }
+  ]
+}

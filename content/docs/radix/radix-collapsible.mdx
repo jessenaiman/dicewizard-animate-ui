@@ -40,6 +40,47 @@ author:
   }}
 />
 
+## Don't delete from the DOM
+
+The choice made is the same as Radix UI, i.e. to remove the element from the DOM for accessibility and performance reasons. However, this may pose a problem for SEO. If you want your Collapsible content to be taken into account by Google, please **replace the CollapsibleContent component with**:
+
+```tsx title="components/animate-ui/radix-collapsible.tsx"
+const CollapsibleContent = React.forwardRef<
+  React.ElementRef<typeof CollapsiblePrimitive.Content>,
+  CollapsibleContentProps
+>(
+  (
+    {
+      className,
+      children,
+      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      ...props
+    },
+    ref,
+  ) => {
+    const { isOpen } = useCollapsible();
+
+    return (
+      <CollapsiblePrimitive.Content asChild forceMount ref={ref} {...props}>
+        <motion.div
+          layout
+          initial={false}
+          animate={
+            isOpen
+              ? { opacity: 1, height: 'auto', overflow: 'hidden' }
+              : { opacity: 0, height: 0, overflow: 'hidden' }
+          }
+          transition={transition}
+          className={className}
+        >
+          {children}
+        </motion.div>
+      </CollapsiblePrimitive.Content>
+    );
+  },
+);
+```
+
 ## Credits
 
 - We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/collapsible) for the collapsible component.

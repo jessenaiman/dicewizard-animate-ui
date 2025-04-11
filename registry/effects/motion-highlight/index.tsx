@@ -13,6 +13,7 @@ interface MotionHighlightContextType {
   className?: string;
   transition?: Transition;
   disabled?: boolean;
+  exitDelay?: number;
 }
 
 const MotionHighlightContext = React.createContext<
@@ -38,6 +39,7 @@ interface BaseMotionHighlightProps {
   hover?: boolean;
   containerClassName?: string;
   disabled?: boolean;
+  exitDelay?: number;
 }
 
 interface ControlledMotionHighlightProps extends BaseMotionHighlightProps {
@@ -66,6 +68,7 @@ function MotionHighlight(props: MotionHighlightProps) {
     controlledItems,
     containerClassName,
     disabled = false,
+    exitDelay = 0.2,
   } = props;
 
   const [activeValue, setActiveValue] = React.useState<string | null>(
@@ -96,6 +99,7 @@ function MotionHighlight(props: MotionHighlightProps) {
         className,
         transition,
         disabled,
+        exitDelay,
       }}
     >
       {controlledItems
@@ -126,6 +130,7 @@ interface MotionHighlightItemProps {
   transition?: Transition;
   activeClassName?: string;
   disabled?: boolean;
+  exitDelay?: number;
 }
 
 const MotionHighlightItem = ({
@@ -136,6 +141,7 @@ const MotionHighlightItem = ({
   transition,
   disabled = false,
   activeClassName,
+  exitDelay,
 }: MotionHighlightItemProps) => {
   const itemId = React.useId();
   const {
@@ -146,6 +152,7 @@ const MotionHighlightItem = ({
     transition: contextTransition,
     id: contextId,
     disabled: contextDisabled,
+    exitDelay: contextExitDelay,
   } = useMotionHighlight();
 
   if (!React.isValidElement(children)) return children;
@@ -155,6 +162,7 @@ const MotionHighlightItem = ({
     id ?? value ?? element.props?.['data-value'] ?? element.props?.id ?? itemId;
   const isActive = activeValue === childValue;
   const isDisabled = disabled === undefined ? contextDisabled : disabled;
+  const itemTransition = transition ?? contextTransition;
 
   return (
     <div
@@ -182,10 +190,18 @@ const MotionHighlightItem = ({
               contextClassName,
               activeClassName,
             )}
-            transition={transition ?? contextTransition}
+            transition={itemTransition}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{
+              opacity: 0,
+              transition: {
+                ...itemTransition,
+                delay:
+                  (itemTransition?.delay ?? 0) +
+                  (exitDelay ?? contextExitDelay ?? 0),
+              },
+            }}
             data-active={isActive ? 'true' : 'false'}
             aria-selected={isActive}
             data-disabled={isDisabled ? 'true' : 'false'}
