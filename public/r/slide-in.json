@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-in",
+  "type": "registry:ui",
+  "title": "Slide In",
+  "description": "Slide in component that displays the slide in effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/slide-in/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatePresence,\n  motion,\n  useInView,\n  type MotionProps,\n  type UseInViewOptions,\n  type Transition,\n} from 'motion/react';\n\ntype MarginType = UseInViewOptions['margin'];\n\ninterface SlideInProps extends MotionProps {\n  children: React.ReactNode;\n  className?: string;\n  transition?: Transition;\n  offset?: number;\n  direction?: 'up' | 'down' | 'left' | 'right';\n  inView?: boolean;\n  inViewMargin?: MarginType;\n  blur?: string;\n  delay?: number;\n}\n\nconst SlideIn = React.forwardRef<HTMLDivElement, SlideInProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 200, damping: 20 },\n      delay = 0,\n      offset = 100,\n      direction = 'left',\n      inView = false,\n      inViewMargin = '-50px',\n      blur = '0px',\n      ...props\n    }: SlideInProps,\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLDivElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n    const inViewResult = useInView(localRef, {\n      once: true,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n    const axis: 'x' | 'y' =\n      direction === 'up' || direction === 'down' ? 'y' : 'x';\n    const initialPosition =\n      axis === 'x'\n        ? direction === 'left'\n          ? -offset\n          : offset\n        : direction === 'up'\n          ? -offset\n          : offset;\n\n    return (\n      <AnimatePresence>\n        <motion.div\n          ref={ref}\n          initial=\"hidden\"\n          animate={isInView ? 'visible' : 'hidden'}\n          exit=\"hidden\"\n          variants={{\n            hidden: {\n              [axis]: initialPosition,\n              opacity: 0,\n              filter: `blur(${blur})`,\n            },\n            visible: {\n              [axis]: 0,\n              opacity: 1,\n              filter: 'blur(0px)',\n            },\n          }}\n          transition={{\n            ...transition,\n            delay: (transition?.delay ?? 0) + delay,\n          }}\n          className={className}\n          {...props}\n        >\n          {children}\n        </motion.div>\n      </AnimatePresence>\n    );\n  },\n);\n\nSlideIn.displayName = 'SlideIn';\n\nexport { SlideIn, type SlideInProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/slide-in.tsx"
+    }
+  ]
+}

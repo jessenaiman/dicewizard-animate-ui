@@ -1378,6 +1378,64 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/motion-highlight-tabs-hover-demo',
   },
+  'slide-in-demo': {
+    name: 'slide-in-demo',
+    description: 'Demo showing the slide in effect.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/slide-in'],
+    files: [
+      {
+        path: 'registry/demo/effects/slide-in-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/slide-in-demo.tsx',
+        content:
+          'import { SlideIn } from \'@/registry/effects/slide-in\';\n\nexport const SlideInDemo = () => {\n  return (\n    <SlideIn>\n      <p className="text-4xl font-bold">Slide In</p>\n    </SlideIn>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/effects/slide-in-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/slide-in-demo',
+  },
+  'slide-in-multiple-demo': {
+    name: 'slide-in-multiple-demo',
+    description: 'Demo showing the slide in effect.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/slide-in'],
+    files: [
+      {
+        path: 'registry/demo/effects/slide-in-multiple-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/slide-in-multiple-demo.tsx',
+        content:
+          'import { SlideIn } from \'@/registry/effects/slide-in\';\n\nexport const SlideInMultipleDemo = () => {\n  return (\n    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">\n      {Array.from({ length: 4 }).map((_, index) => (\n        <SlideIn key={index} direction="down" delay={0.5 + index * 0.1}>\n          <img\n            src={`https://picsum.photos/seed/${index + 100}/600/600`}\n            alt="Slide In Demo"\n            className="w-[300px] h-[300px] object-cover object-center bg-muted rounded-xl flex items-center justify-center"\n          />\n        </SlideIn>\n      ))}\n    </div>\n  );\n};',
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/effects/slide-in-multiple-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/slide-in-multiple-demo',
+  },
   'headless-accordion-demo': {
     name: 'headless-accordion-demo',
     description: 'Demo showing an animated headless accordion.',
@@ -2417,7 +2475,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/motion-highlight.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, Transition, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface MotionHighlightContextType {\n  activeValue: string | null;\n  setActiveValue: (value: string | null) => void;\n  id: string;\n  hover: boolean;\n  className?: string;\n  transition?: Transition;\n  disabled?: boolean;\n}\n\nconst MotionHighlightContext = React.createContext<\n  MotionHighlightContextType | undefined\n>(undefined);\n\nconst useMotionHighlight = (): MotionHighlightContextType => {\n  const context = React.useContext(MotionHighlightContext);\n  if (!context) {\n    throw new Error(\n      'useMotionHighlight must be used within a MotionHighlightProvider',\n    );\n  }\n  return context;\n};\n\ninterface BaseMotionHighlightProps {\n  value?: string | null;\n  defaultValue?: string | null;\n  onValueChange?: (value: string | null) => void;\n  className?: string;\n  transition?: Transition;\n  hover?: boolean;\n  containerClassName?: string;\n  disabled?: boolean;\n}\n\ninterface ControlledMotionHighlightProps extends BaseMotionHighlightProps {\n  controlledItems: true;\n  children: React.ReactNode;\n}\n\ninterface UncontrolledMotionHighlightProps extends BaseMotionHighlightProps {\n  controlledItems?: false;\n  children: React.ReactElement | React.ReactElement[];\n}\n\ntype MotionHighlightProps =\n  | ControlledMotionHighlightProps\n  | UncontrolledMotionHighlightProps;\n\nfunction MotionHighlight(props: MotionHighlightProps) {\n  const {\n    children,\n    value,\n    defaultValue,\n    onValueChange,\n    className,\n    transition = { type: 'spring', stiffness: 200, damping: 25 },\n    hover = false,\n    controlledItems,\n    containerClassName,\n    disabled = false,\n  } = props;\n\n  const [activeValue, setActiveValue] = React.useState<string | null>(\n    value ?? defaultValue ?? null,\n  );\n  const id = React.useId();\n\n  const handleSetActiveId = React.useCallback(\n    (id: string | null) => {\n      setActiveValue(id);\n      onValueChange?.(id);\n    },\n    [onValueChange],\n  );\n\n  React.useEffect(() => {\n    if (value !== undefined) setActiveValue(value);\n    else if (defaultValue !== undefined) setActiveValue(defaultValue);\n  }, [value, defaultValue]);\n\n  return (\n    <MotionHighlightContext.Provider\n      value={{\n        activeValue,\n        setActiveValue: handleSetActiveId,\n        id,\n        hover,\n        className,\n        transition,\n        disabled,\n      }}\n    >\n      {controlledItems\n        ? children\n        : React.Children.map(children, (child, index) => (\n            <MotionHighlightItem key={index} className={containerClassName}>\n              {child}\n            </MotionHighlightItem>\n          ))}\n    </MotionHighlightContext.Provider>\n  );\n}\n\nMotionHighlight.displayName = 'MotionHighlight';\n\ninterface ExtendedChildProps extends React.HTMLAttributes<HTMLElement> {\n  id?: string;\n  'data-active'?: string;\n  'data-value'?: string;\n  'data-disabled'?: string;\n}\n\ninterface MotionHighlightItemProps {\n  children: React.ReactElement;\n  id?: string;\n  value?: string;\n  className?: string;\n  transition?: Transition;\n  activeClassName?: string;\n  disabled?: boolean;\n}\n\nconst MotionHighlightItem = ({\n  children,\n  id,\n  value,\n  className,\n  transition,\n  disabled = false,\n  activeClassName,\n}: MotionHighlightItemProps) => {\n  const itemId = React.useId();\n  const {\n    activeValue,\n    setActiveValue,\n    hover,\n    className: contextClassName,\n    transition: contextTransition,\n    id: contextId,\n    disabled: contextDisabled,\n  } = useMotionHighlight();\n\n  if (!React.isValidElement(children)) return children;\n  const element = children as React.ReactElement<ExtendedChildProps>;\n\n  const childValue =\n    id ?? value ?? element.props?.['data-value'] ?? element.props?.id ?? itemId;\n  const isActive = activeValue === childValue;\n  const isDisabled = disabled === undefined ? contextDisabled : disabled;\n\n  return (\n    <div\n      key={childValue}\n      className={cn('relative', className)}\n      data-active={isActive ? 'true' : 'false'}\n      data-value={childValue}\n      aria-selected={isActive}\n      data-disabled={isDisabled ? 'true' : 'false'}\n      {...(hover\n        ? {\n            onMouseEnter: () => setActiveValue(childValue),\n            onMouseLeave: () => setActiveValue(null),\n          }\n        : {\n            onClick: () => setActiveValue(childValue),\n          })}\n    >\n      <AnimatePresence>\n        {isActive && !isDisabled && (\n          <motion.div\n            layoutId={`transition-background-${contextId}`}\n            className={cn(\n              'absolute inset-0 bg-muted z-0',\n              contextClassName,\n              activeClassName,\n            )}\n            transition={transition ?? contextTransition}\n            initial={{ opacity: 0 }}\n            animate={{ opacity: 1 }}\n            exit={{ opacity: 0 }}\n            data-active={isActive ? 'true' : 'false'}\n            aria-selected={isActive}\n            data-disabled={isDisabled ? 'true' : 'false'}\n            data-value={childValue}\n          />\n        )}\n      </AnimatePresence>\n      {React.cloneElement(element, {\n        className: cn('relative z-[1]', element.props.className),\n        'data-active': isActive ? 'true' : 'false',\n        'aria-selected': isActive,\n        'data-disabled': isDisabled ? 'true' : 'false',\n        'data-value': childValue,\n      })}\n    </div>\n  );\n};\n\nexport {\n  MotionHighlight,\n  MotionHighlightItem,\n  useMotionHighlight,\n  type MotionHighlightProps,\n  type MotionHighlightItemProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, Transition, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface MotionHighlightContextType {\n  activeValue: string | null;\n  setActiveValue: (value: string | null) => void;\n  id: string;\n  hover: boolean;\n  className?: string;\n  transition?: Transition;\n  disabled?: boolean;\n  exitDelay?: number;\n}\n\nconst MotionHighlightContext = React.createContext<\n  MotionHighlightContextType | undefined\n>(undefined);\n\nconst useMotionHighlight = (): MotionHighlightContextType => {\n  const context = React.useContext(MotionHighlightContext);\n  if (!context) {\n    throw new Error(\n      'useMotionHighlight must be used within a MotionHighlightProvider',\n    );\n  }\n  return context;\n};\n\ninterface BaseMotionHighlightProps {\n  value?: string | null;\n  defaultValue?: string | null;\n  onValueChange?: (value: string | null) => void;\n  className?: string;\n  transition?: Transition;\n  hover?: boolean;\n  containerClassName?: string;\n  disabled?: boolean;\n  exitDelay?: number;\n}\n\ninterface ControlledMotionHighlightProps extends BaseMotionHighlightProps {\n  controlledItems: true;\n  children: React.ReactNode;\n}\n\ninterface UncontrolledMotionHighlightProps extends BaseMotionHighlightProps {\n  controlledItems?: false;\n  children: React.ReactElement | React.ReactElement[];\n}\n\ntype MotionHighlightProps =\n  | ControlledMotionHighlightProps\n  | UncontrolledMotionHighlightProps;\n\nfunction MotionHighlight(props: MotionHighlightProps) {\n  const {\n    children,\n    value,\n    defaultValue,\n    onValueChange,\n    className,\n    transition = { type: 'spring', stiffness: 200, damping: 25 },\n    hover = false,\n    controlledItems,\n    containerClassName,\n    disabled = false,\n    exitDelay = 0.2,\n  } = props;\n\n  const [activeValue, setActiveValue] = React.useState<string | null>(\n    value ?? defaultValue ?? null,\n  );\n  const id = React.useId();\n\n  const handleSetActiveId = React.useCallback(\n    (id: string | null) => {\n      setActiveValue(id);\n      onValueChange?.(id);\n    },\n    [onValueChange],\n  );\n\n  React.useEffect(() => {\n    if (value !== undefined) setActiveValue(value);\n    else if (defaultValue !== undefined) setActiveValue(defaultValue);\n  }, [value, defaultValue]);\n\n  return (\n    <MotionHighlightContext.Provider\n      value={{\n        activeValue,\n        setActiveValue: handleSetActiveId,\n        id,\n        hover,\n        className,\n        transition,\n        disabled,\n        exitDelay,\n      }}\n    >\n      {controlledItems\n        ? children\n        : React.Children.map(children, (child, index) => (\n            <MotionHighlightItem key={index} className={containerClassName}>\n              {child}\n            </MotionHighlightItem>\n          ))}\n    </MotionHighlightContext.Provider>\n  );\n}\n\nMotionHighlight.displayName = 'MotionHighlight';\n\ninterface ExtendedChildProps extends React.HTMLAttributes<HTMLElement> {\n  id?: string;\n  'data-active'?: string;\n  'data-value'?: string;\n  'data-disabled'?: string;\n}\n\ninterface MotionHighlightItemProps {\n  children: React.ReactElement;\n  id?: string;\n  value?: string;\n  className?: string;\n  transition?: Transition;\n  activeClassName?: string;\n  disabled?: boolean;\n  exitDelay?: number;\n}\n\nconst MotionHighlightItem = ({\n  children,\n  id,\n  value,\n  className,\n  transition,\n  disabled = false,\n  activeClassName,\n  exitDelay,\n}: MotionHighlightItemProps) => {\n  const itemId = React.useId();\n  const {\n    activeValue,\n    setActiveValue,\n    hover,\n    className: contextClassName,\n    transition: contextTransition,\n    id: contextId,\n    disabled: contextDisabled,\n    exitDelay: contextExitDelay,\n  } = useMotionHighlight();\n\n  if (!React.isValidElement(children)) return children;\n  const element = children as React.ReactElement<ExtendedChildProps>;\n\n  const childValue =\n    id ?? value ?? element.props?.['data-value'] ?? element.props?.id ?? itemId;\n  const isActive = activeValue === childValue;\n  const isDisabled = disabled === undefined ? contextDisabled : disabled;\n  const itemTransition = transition ?? contextTransition;\n\n  return (\n    <div\n      key={childValue}\n      className={cn('relative', className)}\n      data-active={isActive ? 'true' : 'false'}\n      data-value={childValue}\n      aria-selected={isActive}\n      data-disabled={isDisabled ? 'true' : 'false'}\n      {...(hover\n        ? {\n            onMouseEnter: () => setActiveValue(childValue),\n            onMouseLeave: () => setActiveValue(null),\n          }\n        : {\n            onClick: () => setActiveValue(childValue),\n          })}\n    >\n      <AnimatePresence>\n        {isActive && !isDisabled && (\n          <motion.div\n            layoutId={`transition-background-${contextId}`}\n            className={cn(\n              'absolute inset-0 bg-muted z-0',\n              contextClassName,\n              activeClassName,\n            )}\n            transition={itemTransition}\n            initial={{ opacity: 0 }}\n            animate={{ opacity: 1 }}\n            exit={{\n              opacity: 0,\n              transition: {\n                ...itemTransition,\n                delay:\n                  (itemTransition?.delay ?? 0) +\n                  (exitDelay ?? contextExitDelay ?? 0),\n              },\n            }}\n            data-active={isActive ? 'true' : 'false'}\n            aria-selected={isActive}\n            data-disabled={isDisabled ? 'true' : 'false'}\n            data-value={childValue}\n          />\n        )}\n      </AnimatePresence>\n      {React.cloneElement(element, {\n        className: cn('relative z-[1]', element.props.className),\n        'data-active': isActive ? 'true' : 'false',\n        'aria-selected': isActive,\n        'data-disabled': isDisabled ? 'true' : 'false',\n        'data-value': childValue,\n      })}\n    </div>\n  );\n};\n\nexport {\n  MotionHighlight,\n  MotionHighlightItem,\n  useMotionHighlight,\n  type MotionHighlightProps,\n  type MotionHighlightItemProps,\n};",
       },
     ],
     component: React.lazy(async () => {
@@ -2430,6 +2488,33 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/motion-highlight',
+  },
+  'slide-in': {
+    name: 'slide-in',
+    description: 'Slide in component that displays the slide in effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/effects/slide-in/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/slide-in.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatePresence,\n  motion,\n  useInView,\n  type MotionProps,\n  type UseInViewOptions,\n  type Transition,\n} from 'motion/react';\n\ntype MarginType = UseInViewOptions['margin'];\n\ninterface SlideInProps extends MotionProps {\n  children: React.ReactNode;\n  className?: string;\n  transition?: Transition;\n  offset?: number;\n  direction?: 'up' | 'down' | 'left' | 'right';\n  inView?: boolean;\n  inViewMargin?: MarginType;\n  blur?: string;\n  delay?: number;\n}\n\nconst SlideIn = React.forwardRef<HTMLDivElement, SlideInProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 200, damping: 20 },\n      delay = 0,\n      offset = 100,\n      direction = 'left',\n      inView = false,\n      inViewMargin = '-50px',\n      blur = '0px',\n      ...props\n    }: SlideInProps,\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLDivElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n    const inViewResult = useInView(localRef, {\n      once: true,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n    const axis: 'x' | 'y' =\n      direction === 'up' || direction === 'down' ? 'y' : 'x';\n    const initialPosition =\n      axis === 'x'\n        ? direction === 'left'\n          ? -offset\n          : offset\n        : direction === 'up'\n          ? -offset\n          : offset;\n\n    return (\n      <AnimatePresence>\n        <motion.div\n          ref={ref}\n          initial=\"hidden\"\n          animate={isInView ? 'visible' : 'hidden'}\n          exit=\"hidden\"\n          variants={{\n            hidden: {\n              [axis]: initialPosition,\n              opacity: 0,\n              filter: `blur(${blur})`,\n            },\n            visible: {\n              [axis]: 0,\n              opacity: 1,\n              filter: 'blur(0px)',\n            },\n          }}\n          transition={{\n            ...transition,\n            delay: (transition?.delay ?? 0) + delay,\n          }}\n          className={className}\n          {...props}\n        >\n          {children}\n        </motion.div>\n      </AnimatePresence>\n    );\n  },\n);\n\nSlideIn.displayName = 'SlideIn';\n\nexport { SlideIn, type SlideInProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/effects/slide-in/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/slide-in',
   },
   'headless-accordion': {
     name: 'headless-accordion',

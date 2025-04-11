@@ -15,6 +15,7 @@
     "components/tabs",
     "---Effects---",
     "effects/motion-highlight",
+    "effects/slide-in",
     "---Radix UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",
