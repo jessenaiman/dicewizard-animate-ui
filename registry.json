@@ -1170,6 +1170,22 @@
       ]
     },
     {
+      "name": "radix-popover-datepicker-demo",
+      "type": "registry:ui",
+      "title": "Radix Popover DatePicker ",
+      "description": "Radix Popover DatePicker",
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-popover-datepicker-demo"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-popover-datepicker-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-popover-datepicker-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-popover-demo",
       "type": "registry:ui",
       "title": "Radix Popover Demo",

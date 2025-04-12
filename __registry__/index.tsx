@@ -2010,6 +2010,37 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/radix-hover-card-demo',
   },
+  'radix-popover-datepicker-demo': {
+    name: 'radix-popover-datepicker-demo',
+    description: 'Radix Popover DatePicker',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/radix-popover-datepicker-demo',
+    ],
+    files: [
+      {
+        path: 'registry/demo/radix/radix-popover-datepicker-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/radix-popover-datepicker-demo.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { format } from 'date-fns';\nimport { CalendarIcon } from 'lucide-react';\n\nimport { cn } from '@/lib/utils';\nimport { Button } from '@/components/ui/button';\nimport { Calendar } from '@/components/ui/calendar';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/registry/radix/radix-popover/index';\n\nexport function DatePickerDemo() {\n  const [date, setDate] = React.useState<Date>();\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button\n          variant={'outline'}\n          className={cn(\n            'w-[240px] justify-start text-left font-normal',\n            !date && 'text-muted-foreground',\n          )}\n        >\n          <CalendarIcon />\n          {date ? format(date, 'PPP') : <span>Pick a date</span>}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          initialFocus\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/radix/radix-popover-datepicker-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/radix-popover-datepicker-demo',
+  },
   'radix-popover-demo': {
     name: 'radix-popover-demo',
     description: 'Demo showing an animated radix popover.',
