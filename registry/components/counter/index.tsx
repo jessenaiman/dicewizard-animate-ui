@@ -6,7 +6,7 @@ import { type HTMLMotionProps, type Transition, motion } from 'motion/react';
 import {
   SlidingNumber,
   type SlidingNumberProps,
-} from '@/components/animate-ui/sliding-number';
+} from '@/registry/text/sliding-number';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

@@ -4,10 +4,11 @@ import * as React from 'react';
 import {
   useSpring,
   useTransform,
-  type MotionValue,
   motion,
   useInView,
+  type MotionValue,
   type SpringOptions,
+  type UseInViewOptions,
 } from 'motion/react';
 import useMeasure from 'react-use-measure';
 
@@ -89,7 +90,9 @@ const NumberDisplay = ({
 
 interface SlidingNumberProps extends React.HTMLAttributes<HTMLSpanElement> {
   number: number | string;
-  startOnView?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   padStart?: boolean;
   decimalSeparator?: string;
   transition?: SpringOptions;
@@ -100,7 +103,9 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     {
       number,
       className,
-      startOnView = false,
+      inView = false,
+      inViewMargin = '0px',
+      inViewOnce = true,
       padStart = false,
       decimalSeparator = '.',
       transition = {
@@ -112,15 +117,20 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     },
     ref,
   ) => {
-    const viewRef = React.useRef<HTMLSpanElement>(null);
-    const inView = useInView(viewRef, { once: true });
-    React.useImperativeHandle(ref, () => viewRef.current!);
+    const localRef = React.useRef<HTMLSpanElement>(null);
+    React.useImperativeHandle(ref, () => localRef.current!);
+
+    const inViewResult = useInView(localRef, {
+      once: inViewOnce,
+      margin: inViewMargin,
+    });
+    const isInView = !inView || inViewResult;
 
     const prevNumberRef = React.useRef<number>(0);
 
     const effectiveNumber = React.useMemo(
-      () => (startOnView && !inView ? 0 : Math.abs(Number(number))),
-      [number, startOnView, inView],
+      () => (!isInView ? 0 : Math.abs(Number(number))),
+      [number, isInView],
     );
 
     const numberStr = effectiveNumber.toString();
@@ -149,10 +159,8 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     }, [prevDecStr, newDecStr]);
 
     React.useEffect(() => {
-      if (!startOnView || inView) {
-        prevNumberRef.current = effectiveNumber;
-      }
-    }, [effectiveNumber, inView, startOnView]);
+      if (isInView) prevNumberRef.current = effectiveNumber;
+    }, [effectiveNumber, isInView]);
 
     const intDigitCount = newIntStr.length;
     const intPlaces = React.useMemo(
@@ -177,13 +185,11 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
 
     return (
       <span
-        ref={viewRef}
+        ref={localRef}
         className={cn('flex items-center', className)}
         {...props}
       >
-        {!(startOnView && !inView) && Number(number) < 0 && (
-          <span className="mr-1">-</span>
-        )}
+        {isInView && Number(number) < 0 && <span className="mr-1">-</span>}
 
         {intPlaces.map((place) => (
           <NumberRoller

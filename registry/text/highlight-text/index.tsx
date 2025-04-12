@@ -1,13 +1,21 @@
 'use client';
 
 import * as React from 'react';
-import { type HTMLMotionProps, motion, type Transition } from 'motion/react';
+import {
+  motion,
+  useInView,
+  type HTMLMotionProps,
+  type Transition,
+  type UseInViewOptions,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
 interface HighlightTextProps extends HTMLMotionProps<'span'> {
   text: string;
-  startOnView?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   transition?: Transition;
 }
 
@@ -18,19 +26,29 @@ const HighlightText = React.forwardRef<HTMLSpanElement, HighlightTextProps>(
     {
       text,
       className,
-      startOnView,
+      inView = false,
+      inViewMargin = '0px',
       transition = { duration: 2, ease: 'easeInOut' },
       ...props
     },
     ref,
   ) => {
+    const localRef = React.useRef<HTMLSpanElement>(null);
+    React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);
+
+    const inViewResult = useInView(localRef, {
+      once: true,
+      margin: inViewMargin,
+    });
+    const isInView = !inView || inViewResult;
+
     return (
       <motion.span
-        ref={ref}
+        ref={localRef}
         initial={{
           backgroundSize: '0% 100%',
         }}
-        {...(startOnView ? { whileInView: animation } : { animate: animation })}
+        animate={isInView ? animation : undefined}
         transition={transition}
         style={{
           backgroundRepeat: 'no-repeat',
@@ -38,7 +56,7 @@ const HighlightText = React.forwardRef<HTMLSpanElement, HighlightTextProps>(
           display: 'inline',
         }}
         className={cn(
-          `relative inline-block px-2 py-1 rounded-lg bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 dark:from-blue-500 dark:via-purple-500 dark:to-pink-500`,
+          `relative inline-block px-2 py-1 rounded-lg bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-500 dark:to-purple-500`,
           className,
         )}
         {...props}

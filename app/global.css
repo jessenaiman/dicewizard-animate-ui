@@ -3,6 +3,7 @@
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
+
 @import 'fumadocs-ui/css/black.css';
 @import 'fumadocs-ui/css/preset.css';
 
@@ -143,6 +144,8 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 30rem;
+
   --color-background: var(--background);
 
   --color-foreground: var(--foreground);
@@ -232,6 +235,9 @@
 
   #nd-docs-layout {
     @apply relative;
+  }
+  figure.shiki {
+    @apply !bg-muted;
   }
 
   @keyframes blink {

@@ -7,12 +7,14 @@ import {
   AnimatePresence,
   useMotionValue,
   useSpring,
+  useInView,
   type HTMLMotionProps,
   type SpringOptions,
+  type UseInViewOptions,
 } from 'motion/react';
 
 import { cn } from '@/lib/utils';
-import { SlidingNumber } from '@/components/animate-ui/sliding-number';
+import { SlidingNumber } from '@/registry/text/sliding-number';
 
 type FormatNumberResult = { number: string[]; unit: string };
 
@@ -63,6 +65,9 @@ interface GitHubStarsButtonProps extends HTMLMotionProps<'a'> {
   repo: string;
   transition?: SpringOptions;
   formatted?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
 }
 
 const GitHubStarsButton = React.forwardRef<
@@ -75,6 +80,9 @@ const GitHubStarsButton = React.forwardRef<
       repo,
       transition = { stiffness: 90, damping: 50 },
       formatted = false,
+      inView = false,
+      inViewOnce = true,
+      inViewMargin = '0px',
       className,
       ...props
     },
@@ -112,6 +120,15 @@ const GitHubStarsButton = React.forwardRef<
       setTimeout(() => setDisplayParticles(false), 1500);
     }, []);
 
+    const localRef = React.useRef<HTMLAnchorElement>(null);
+    React.useImperativeHandle(ref, () => localRef.current as HTMLAnchorElement);
+
+    const inViewResult = useInView(localRef, {
+      once: inViewOnce,
+      margin: inViewMargin,
+    });
+    const isComponentInView = !inView || inViewResult;
+
     React.useEffect(() => {
       const unsubscribe = springVal.on('change', (latest: number) => {
         const newValue = Math.round(latest);
@@ -129,8 +146,8 @@ const GitHubStarsButton = React.forwardRef<
     }, [springVal, stars, handleDisplayParticles]);
 
     React.useEffect(() => {
-      if (stars > 0) motionVal.set(stars);
-    }, [motionVal, stars]);
+      if (stars > 0 && isComponentInView) motionVal.set(stars);
+    }, [motionVal, stars, isComponentInView]);
 
     const fillPercentage = Math.min(
       100,
@@ -174,7 +191,7 @@ const GitHubStarsButton = React.forwardRef<
 
     return (
       <motion.a
-        ref={ref}
+        ref={localRef}
         href={repoUrl}
         rel="noopener noreferrer"
         target="_blank"

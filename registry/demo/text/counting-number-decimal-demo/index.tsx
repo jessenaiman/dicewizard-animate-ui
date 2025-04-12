@@ -7,7 +7,7 @@ export const CountingNumberDecimalDemo = () => {
       decimalPlaces={2}
       decimalSeparator=","
       className="text-4xl"
-      startOnView
+      inView
     />
   );
 };

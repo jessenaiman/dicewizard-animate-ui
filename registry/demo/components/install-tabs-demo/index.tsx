@@ -1,6 +1,6 @@
 import { InstallTabs } from '@/registry/components/install-tabs';
 
-const commands = {
+const COMMANDS = {
   npm: `npx shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
   pnpm: `pnpm dlx shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
   yarn: `npx shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
@@ -12,7 +12,7 @@ export const InstallTabsDemo = () => {
     <InstallTabs
       defaultValue="pnpm"
       className="max-w-[650px]"
-      commands={commands}
+      commands={COMMANDS}
     />
   );
 };

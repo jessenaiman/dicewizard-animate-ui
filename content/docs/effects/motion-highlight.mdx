@@ -23,6 +23,62 @@ new: true
 
 <ComponentPreview name="motion-highlight-tabs-hover-demo" />
 
+### Tabs Hover with Parent Mode
+
+<ComponentPreview name="motion-highlight-tabs-hover-parent-demo" />
+
+## Usage
+
+### Uncontrolled Items
+
+By default, child items will have the highlight effect. This will map the children elements and surround them with the `MotionHighlightItem` element.
+
+```tsx
+<MotionHighlight>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</MotionHighlight>
+```
+
+### Controlled Items
+
+Using the `controlledItems` props, you place your `MotionHighlightItem` wherever you like in the `MotionHighlight` component.
+
+```tsx
+<MotionHighlight controlledItems>
+  <MotionHighlightItem>Item 1</MotionHighlightItem>
+  <div>
+    <MotionHighlightItem>Item 2</MotionHighlightItem>
+  </div>
+  <MotionHighlightItem>Item 3</MotionHighlightItem>
+</MotionHighlight>
+```
+
+### Children Mode
+
+By default, in `mode` with the value `children` the highlight is placed in the `MotionHighlightItem` component using Motion's `layoutId` technique. This technique should be preferred in most cases. However, in some cases, you may run into z-index problems, so it's best to use the `parent` mode to avoid visual bugs.
+
+```tsx
+<MotionHighlight>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</MotionHighlight>
+```
+
+### Parent Mode
+
+By using the `mode` property with the value `parent`, the `MotionHighlight` component will set the highlight to absolute in `MotionHighlight`. This may be useful in some cases to avoid the visual z-index bugs you can get with `mode` `children`.
+
+```tsx
+<MotionHighlight mode="parent">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</MotionHighlight>
+```
+
 ## Props
 
 ### MotionHighlight
@@ -45,7 +101,14 @@ new: true
       required: false,
     },
     containerClassName: {
-      description: 'The className of the container of the motion highlight',
+      description:
+        'The className of the container of the motion highlight (only used when mode is "parent")',
+      type: 'string',
+      required: false,
+    },
+    itemsClassName: {
+      description:
+        'The className of the items of the motion highlight (only used when controlledItems is true)',
       type: 'string',
       required: false,
     },
@@ -93,6 +156,19 @@ new: true
       type: 'number',
       required: false,
       default: '0.2',
+    },
+    mode: {
+      description: 'The mode of the motion highlight',
+      type: "'children' | 'parent'",
+      required: false,
+      default: 'children',
+    },
+    boundsOffset: {
+      description:
+        'The offset of the bounds of the motion highlight (only used when mode is "parent"). For example, you need to add an offset of the same size as the border when setting a border in containerClassName.',
+      type: 'Partial<Bounds>',
+      required: false,
+      default: 'undefined',
     },
   }}
 />

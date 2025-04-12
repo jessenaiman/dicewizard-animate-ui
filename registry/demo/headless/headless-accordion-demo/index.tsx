@@ -7,7 +7,7 @@ import {
 
 export const HeadlessAccordionDemo = () => {
   return (
-    <Accordion className="w-[400px]">
+    <Accordion className="max-w-[400px] w-full">
       <AccordionItem defaultOpen>
         <AccordionButton>What is Animate UI?</AccordionButton>
         <AccordionPanel>

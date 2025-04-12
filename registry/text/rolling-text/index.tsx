@@ -1,7 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { motion, type Transition } from 'motion/react';
+import {
+  motion,
+  useInView,
+  type UseInViewOptions,
+  type Transition,
+} from 'motion/react';
 
 const ENTRY_ANIMATION = {
   initial: { rotateX: 0 },
@@ -20,7 +25,9 @@ const formatCharacter = (char: string): string => {
 interface RollingTextProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   transition?: Transition;
-  startOnView?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   text: string;
 }
 
@@ -28,12 +35,23 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
   (
     {
       transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },
-      startOnView = false,
+      inView = false,
+      inViewMargin = '0px',
+      inViewOnce = true,
       text,
       ...props
     },
     ref,
   ) => {
+    const localRef = React.useRef<HTMLSpanElement>(null);
+    React.useImperativeHandle(ref, () => localRef.current!);
+
+    const inViewResult = useInView(localRef, {
+      once: inViewOnce,
+      margin: inViewMargin,
+    });
+    const isInView = !inView || inViewResult;
+
     const characters = React.useMemo(() => text.split(''), [text]);
 
     return (
@@ -47,10 +65,7 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
             <motion.span
               className="absolute inline-block backface-hidden origin-[50%_25%]"
               initial={ENTRY_ANIMATION.initial}
-              animate={ENTRY_ANIMATION.animate}
-              {...(startOnView
-                ? { whileInView: ENTRY_ANIMATION.animate }
-                : { animate: ENTRY_ANIMATION.animate })}
+              animate={isInView ? ENTRY_ANIMATION.animate : undefined}
               transition={{
                 ...transition,
                 delay: idx * (transition?.delay ?? 0),
@@ -61,9 +76,7 @@ const RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(
             <motion.span
               className="absolute inline-block backface-hidden origin-[50%_100%]"
               initial={EXIT_ANIMATION.initial}
-              {...(startOnView
-                ? { whileInView: EXIT_ANIMATION.animate }
-                : { animate: EXIT_ANIMATION.animate })}
+              animate={isInView ? EXIT_ANIMATION.animate : undefined}
               transition={{
                 ...transition,
                 delay: idx * (transition?.delay ?? 0) + 0.3,

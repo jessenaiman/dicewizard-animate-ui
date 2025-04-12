@@ -8,7 +8,7 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-} from '@/components/animate-ui/headless-disclosure';
+} from '@/registry/headless/headless-disclosure';
 import { cn } from '@/lib/utils';
 
 type AccordionProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -38,6 +38,7 @@ type AccordionButtonProps = React.ComponentPropsWithoutRef<
   typeof DisclosureButton
 > & {
   transition?: Transition;
+  chevron?: boolean;
 };
 const AccordionButton = React.forwardRef<
   HTMLButtonElement,
@@ -49,6 +50,7 @@ const AccordionButton = React.forwardRef<
       className,
       as = 'button',
       transition = { type: 'spring', stiffness: 150, damping: 17 },
+      chevron = true,
       ...props
     },
     ref,
@@ -67,12 +69,14 @@ const AccordionButton = React.forwardRef<
           <>
             {typeof children === 'function' ? children(bag) : children}
 
-            <motion.div
-              animate={{ rotate: bag.open ? 180 : 0 }}
-              transition={transition}
-            >
-              <ChevronDown className="size-5 shrink-0" />
-            </motion.div>
+            {chevron && (
+              <motion.div
+                animate={{ rotate: bag.open ? 180 : 0 }}
+                transition={transition}
+              >
+                <ChevronDown className="size-5 shrink-0" />
+              </motion.div>
+            )}
           </>
         )}
       </DisclosureButton>

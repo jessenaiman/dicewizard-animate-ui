@@ -20,7 +20,7 @@ const TABS = [
 
 export const MotionHighlightTabsDemo = () => {
   return (
-    <div className="flex gap-2 border rounded-full p-1">
+    <div className="flex border rounded-full p-1">
       <MotionHighlight defaultValue={TABS[0].value} className="rounded-full">
         {TABS.map((tab) => (
           <div

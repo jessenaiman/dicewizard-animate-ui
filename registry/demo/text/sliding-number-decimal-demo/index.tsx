@@ -7,7 +7,7 @@ export const SlidingNumberDecimalDemo = () => {
       decimalSeparator=","
       padStart
       className="text-4xl"
-      startOnView
+      inView
     />
   );
 };

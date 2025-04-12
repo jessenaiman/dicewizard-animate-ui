@@ -3,7 +3,8 @@ import { CodeEditor } from '@/registry/components/code-editor';
 export const CodeEditorDemo = () => {
   return (
     <CodeEditor
-      className="w-[650px] h-[510px]"
+      cursor
+      className="w-[640px] h-[480px]"
       code={`'use client';
 
 import * as React from 'react';

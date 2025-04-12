@@ -8,6 +8,7 @@ import {
   type MotionProps,
   type UseInViewOptions,
   type Transition,
+  type Variant,
 } from 'motion/react';
 
 interface MotionEffectProps extends MotionProps {
@@ -17,6 +18,7 @@ interface MotionEffectProps extends MotionProps {
   delay?: number;
   inView?: boolean;
   inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   blur?: string | boolean;
   slide?:
     | {
@@ -41,7 +43,8 @@ const MotionEffect = React.forwardRef<HTMLDivElement, MotionEffectProps>(
       transition = { type: 'spring', stiffness: 200, damping: 20 },
       delay = 0,
       inView = false,
-      inViewMargin = '-50px',
+      inViewMargin = '0px',
+      inViewOnce = true,
       blur = false,
       slide = false,
       fade = false,
@@ -54,13 +57,13 @@ const MotionEffect = React.forwardRef<HTMLDivElement, MotionEffectProps>(
     React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);
 
     const inViewResult = useInView(localRef, {
-      once: true,
+      once: inViewOnce,
       margin: inViewMargin,
     });
     const isInView = !inView || inViewResult;
 
-    const hiddenVariant: { [key: string]: any } = {};
-    const visibleVariant: { [key: string]: any } = {};
+    const hiddenVariant: Variant = {};
+    const visibleVariant: Variant = {};
 
     if (slide) {
       const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);

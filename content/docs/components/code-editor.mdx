@@ -26,11 +26,12 @@ author:
       type: 'string',
       required: true,
     },
-    theme: {
-      description: 'The theme of the code.',
-      type: 'string',
+    themes: {
+      description:
+        'The theme of the code editor (see https://shiki.style/themes).',
+      type: '{ light: string; dark: string }',
       required: false,
-      default: 'atom-dark',
+      default: '{ light: "github-light"; dark: "github-dark" }',
     },
     duration: {
       description: 'The duration of the animation.',
@@ -44,12 +45,6 @@ author:
       required: false,
       default: '0',
     },
-    showLineNumbers: {
-      description: 'Whether to show line numbers.',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-    },
     header: {
       description: 'Whether to show the header.',
       type: 'boolean',
@@ -62,17 +57,45 @@ author:
       required: false,
       default: 'false',
     },
-    startOnView: {
-      description: 'Whether to start the animation on view.',
+    inView: {
+      description: 'Enable animation when in view.',
       type: 'boolean',
       required: false,
       default: 'false',
+    },
+    inViewMargin: {
+      description: 'The margin of the in view.',
+      type: 'string',
+      required: false,
+      default: '0px',
+    },
+    inViewOnce: {
+      description: 'Enable animation only once when in view.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
     },
     copyButton: {
       description: 'Whether to show the copy button.',
       type: 'boolean',
       required: false,
       default: 'false',
+    },
+    writing: {
+      description: 'Enable writing animation.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    title: {
+      description: 'The file name.',
+      type: 'string',
+      required: false,
+    },
+    onDone: {
+      description: 'Callback when the animation is done.',
+      type: '() => void',
+      required: false,
     },
   }}
 />

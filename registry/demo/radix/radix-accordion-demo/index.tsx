@@ -11,7 +11,7 @@ export const RadixAccordionDemo = () => {
       type="single"
       defaultValue="item-1"
       collapsible
-      className="w-[400px]"
+      className="max-w-[400px] w-full"
     >
       <AccordionItem value="item-1">
         <AccordionTrigger>What is Animate UI?</AccordionTrigger>

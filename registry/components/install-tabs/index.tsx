@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useTheme } from 'next-themes';
 
+import { cn } from '@/lib/utils';
 import {
   Tabs,
   TabsContent,
@@ -10,9 +11,8 @@ import {
   TabsTrigger,
   TabsContents,
   type TabsProps,
-} from '@/components/animate-ui/tabs';
-import { cn } from '@/lib/utils';
-import { CopyButton } from '@/components/animate-ui/copy-button';
+} from '@/registry/components/tabs';
+import { CopyButton } from '@/registry/buttons/copy-button';
 
 type InstallTabsProps = {
   commands: Record<string, string>;
@@ -44,9 +44,10 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
   ) => {
     const { resolvedTheme } = useTheme();
 
-    const [highlightedCommands, setHighlightedCommands] = React.useState<
-      Record<string, string>
-    >({});
+    const [highlightedCommands, setHighlightedCommands] = React.useState<Record<
+      string,
+      string
+    > | null>(null);
     const [selectedCommand, setSelectedCommand] = React.useState<string>(
       value ?? defaultValue ?? Object.keys(commands)[0],
     );
@@ -83,7 +84,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
       <Tabs
         ref={ref}
         className={cn(
-          'w-full gap-0 dark:bg-neutral-800 bg-neutral-200 rounded-lg border border-neutral-200 dark:border-neutral-800',
+          'w-full gap-0 rounded-lg border overflow-hidden',
           className,
         )}
         {...(props as Omit<
@@ -97,22 +98,23 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
         }}
       >
         <TabsList
-          className="w-full relative justify-between rounded-b-none h-9 dark:text-white text-black dark:bg-neutral-800 bg-neutral-200 py-0 px-4"
+          className="w-full relative justify-between rounded-none h-9 bg-muted text-current py-0 px-4"
           activeClassName="rounded-none shadow-none bg-transparent after:content-[''] after:absolute after:inset-x-0 after:h-0.5 after:bottom-0 dark:after:bg-white after:bg-black after:rounded-t-full"
         >
           <div className="flex gap-x-3 h-full">
-            {Object.keys(highlightedCommands).map((command) => (
-              <TabsTrigger
-                key={command}
-                value={command}
-                className="dark:text-neutral-400 text-neutral-500 dark:data-[state=active]:text-white data-[state=active]:text-black px-0"
-              >
-                {command}
-              </TabsTrigger>
-            ))}
+            {highlightedCommands &&
+              Object.keys(highlightedCommands).map((command) => (
+                <TabsTrigger
+                  key={command}
+                  value={command}
+                  className="text-muted-foreground data-[state=active]:text-current px-0"
+                >
+                  {command}
+                </TabsTrigger>
+              ))}
           </div>
 
-          {copyButton && (
+          {copyButton && highlightedCommands && (
             <CopyButton
               content={commands[selectedCommand]}
               size="sm"
@@ -121,19 +123,20 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
             />
           )}
         </TabsList>
-        <TabsContents className="rounded-b-lg dark:bg-neutral-900 dark:text-white bg-neutral-100 text-black">
-          {Object.entries(highlightedCommands).map(([command, val]) => (
-            <TabsContent
-              key={command}
-              className="h-12 w-full text-sm flex items-center px-4 overflow-auto"
-              value={command}
-            >
-              <div
-                className="[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-sm"
-                dangerouslySetInnerHTML={{ __html: val }}
-              />
-            </TabsContent>
-          ))}
+        <TabsContents className="h-12 bg-background">
+          {highlightedCommands &&
+            Object.entries(highlightedCommands).map(([command, val]) => (
+              <TabsContent
+                key={command}
+                className="h-12 w-full text-sm flex items-center px-4 overflow-auto"
+                value={command}
+              >
+                <div
+                  className="[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-sm"
+                  dangerouslySetInnerHTML={{ __html: val }}
+                />
+              </TabsContent>
+            ))}
         </TabsContents>
       </Tabs>
     );

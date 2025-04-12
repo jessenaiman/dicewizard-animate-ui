@@ -6,8 +6,10 @@ import {
 
 export const CursorDemo = () => {
   return (
-    <div className="size-[400px] rounded-xl bg-muted flex items-center justify-center">
-      <p className="font-medium">Move your mouse over the div</p>
+    <div className="max-w-[400px] h-[400px] w-full rounded-xl bg-muted flex items-center justify-center">
+      <p className="font-medium italic text-muted-foreground">
+        Move your mouse over the div
+      </p>
       <CursorProvider>
         <Cursor>
           <svg

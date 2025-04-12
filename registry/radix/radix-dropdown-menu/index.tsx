@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import {
   MotionHighlight,
   MotionHighlightItem,
-} from '@/components/animate-ui/motion-highlight';
+} from '@/registry/effects/motion-highlight';
 
 interface DropdownMenuContextType {
   isOpen: boolean;

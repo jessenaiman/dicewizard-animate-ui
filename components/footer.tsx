@@ -1,8 +1,8 @@
 export const Footer = () => {
   return (
-    <div className="h-14">
-      <div className="absolute z-10 bottom-0 left-0 right-0 h-[55px] border-t">
-        <div className="size-full px-4 md:px-6 flex items-center justify-end prose prose-sm text-sm text-muted-foreground">
+    <div className="h-[55px] border-t">
+      <div className="max-w-7xl mx-auto h-full">
+        <div className="size-full px-4 md:px-6 flex items-center justify-start prose prose-sm text-sm text-muted-foreground">
           <p className="text-start truncate">
             Built by{' '}
             <a

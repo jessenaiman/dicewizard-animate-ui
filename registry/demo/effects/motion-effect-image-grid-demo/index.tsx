@@ -11,12 +11,13 @@ export const MotionEffectImageGridDemo = () => {
           }}
           fade
           zoom
+          inView
           delay={0.5 + index * 0.1}
         >
           <img
-            src={`https://picsum.photos/seed/${index + 100}/600/600`}
+            src={`https://picsum.photos/seed/${index + 100}/600/400`}
             alt="Slide In Demo"
-            className="w-[300px] h-[300px] object-cover object-center bg-muted rounded-xl flex items-center justify-center"
+            className="w-[300px] h-[200px] object-cover object-center bg-muted rounded-xl flex items-center justify-center"
           />
         </MotionEffect>
       ))}
