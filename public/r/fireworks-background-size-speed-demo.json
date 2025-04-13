@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/backgrounds/fireworks-background-size-speed-demo/index.tsx",
-      "content": "'use client';\n\nimport { FireworksBackground } from '@/registry/backgrounds/fireworks-background';\n\nexport default function FireworksBackgroundSizeSpeedDemo() {\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      fireworkSpeed={{ min: 8, max: 16 }}\n      fireworkSize={{ min: 4, max: 10 }}\n      particleSpeed={{ min: 4, max: 14 }}\n      particleSize={{ min: 2, max: 10 }}\n    />\n  );\n}\n",
+      "content": "'use client';\n\nimport { FireworksBackground } from '@/components/animate-ui/fireworks-background';\n\nexport default function FireworksBackgroundSizeSpeedDemo() {\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      fireworkSpeed={{ min: 8, max: 16 }}\n      fireworkSize={{ min: 4, max: 10 }}\n      particleSpeed={{ min: 4, max: 14 }}\n      particleSize={{ min: 2, max: 10 }}\n    />\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/animate-ui/fireworks-background-size-speed-demo.tsx"
     }

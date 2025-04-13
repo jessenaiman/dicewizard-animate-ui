@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/sliding-number-decimal-demo/index.tsx",
-      "content": "import { SlidingNumber } from '@/registry/text/sliding-number';\n\nexport const SlidingNumberDecimalDemo = () => {\n  return (\n    <SlidingNumber\n      number={12345.67}\n      decimalSeparator=\",\"\n      padStart\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
+      "content": "import { SlidingNumber } from '@/components/animate-ui/sliding-number';\n\nexport const SlidingNumberDecimalDemo = () => {\n  return (\n    <SlidingNumber\n      number={12345.67}\n      decimalSeparator=\",\"\n      padStart\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/sliding-number-decimal-demo.tsx"
     }

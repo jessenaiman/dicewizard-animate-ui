@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/demo/radix/radix-switch-demo/index.tsx",
-      "content": "import { Label } from '@/components/ui/label';\nimport { Switch } from '@/registry/radix/radix-switch';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"airplane-mode\">Airplane mode</Label>\n      <Switch defaultChecked id=\"airplane-mode\" />\n    </div>\n  );\n};\n",
+      "content": "import { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/animate-ui/radix-switch';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"airplane-mode\">Airplane mode</Label>\n      <Switch defaultChecked id=\"airplane-mode\" />\n    </div>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/radix-switch-demo.tsx"
     }

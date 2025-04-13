@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/radix/radix-tooltip-demo/index.tsx",
-      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/registry/radix/radix-tooltip';\n\nexport const RadixTooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <Tooltip defaultOpen>\n        <TooltipTrigger asChild>\n          <Button variant=\"outline\">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};\n",
+      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/components/animate-ui/radix-tooltip';\n\nexport const RadixTooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <Tooltip defaultOpen>\n        <TooltipTrigger asChild>\n          <Button variant=\"outline\">Hover</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/radix-tooltip-demo.tsx"
     }

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/backgrounds/hole-background-demo/index.tsx",
-      "content": "import { HoleBackground } from '@/registry/backgrounds/hole-background';\n\nexport const HoleBackgroundDemo = () => {\n  return (\n    <HoleBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
+      "content": "import { HoleBackground } from '@/components/animate-ui/hole-background';\n\nexport const HoleBackgroundDemo = () => {\n  return (\n    <HoleBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/hole-background-demo.tsx"
     }

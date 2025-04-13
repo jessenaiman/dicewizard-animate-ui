@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/demo/radix/radix-checkbox-demo/index.tsx",
-      "content": "import { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/registry/radix/radix-checkbox';\n\nexport const RadixCheckboxDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox defaultChecked id=\"terms\" />\n      <Label htmlFor=\"terms\">Accept terms and conditions</Label>\n    </div>\n  );\n};\n",
+      "content": "import { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/animate-ui/radix-checkbox';\n\nexport const RadixCheckboxDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox defaultChecked id=\"terms\" />\n      <Label htmlFor=\"terms\">Accept terms and conditions</Label>\n    </div>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/radix-checkbox-demo.tsx"
     }

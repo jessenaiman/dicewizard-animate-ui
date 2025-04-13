@@ -230,13 +230,10 @@ async function buildRegistry() {
 
       const registryItem = JSON.parse(content);
 
-      // Replace `@/registry/animate-ui/` in file contents
+      // Replace `@/registry` in file contents
       registryItem.files = registryItem.files?.map((file) => {
-        if (file.content?.includes('@/registry/animate-ui')) {
-          file.content = file.content?.replaceAll(
-            '@/registry/animate-ui',
-            '@/components/animate-ui',
-          );
+        if (file.content?.includes('@/registry')) {
+          file.content = replaceRegistryPaths(file.content);
         }
         return file;
       });
