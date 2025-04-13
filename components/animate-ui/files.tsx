@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
-import { FileIcon, FolderClosedIcon, FolderOpenIcon } from 'lucide-react';
+import { FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import {
@@ -126,7 +126,7 @@ const FolderTrigger = React.forwardRef<HTMLButtonElement, FolderTriggerProps>(
       >
         <FileButton
           open={isOpen}
-          icons={{ open: FolderOpenIcon, close: FolderClosedIcon }}
+          icons={{ open: FolderOpenIcon, close: FolderIcon }}
           layoutId={layoutId}
         >
           {children}
