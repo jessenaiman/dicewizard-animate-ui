@@ -12,6 +12,10 @@
 
 ![hero](/public/og-image.png)
 
+## Beta
+
+Animate UI is currently in **Beta phase**, so it's possible that the components contain **bugs** and that these will be **modified regularly**.
+
 ## Documentation
 
 Visit [animate-ui.com](https://animate-ui.com/docs) to view the documentation.
