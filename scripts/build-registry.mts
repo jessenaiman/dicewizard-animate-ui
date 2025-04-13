@@ -4,6 +4,24 @@ import path from 'path';
 import { rimraf } from 'rimraf';
 
 /**
+ * Replace registry paths with component paths.
+ * @param inputStr - The input string to process.
+ * @returns The processed string with registry paths replaced.
+ */
+function replaceRegistryPaths(inputStr: string) {
+  return inputStr.replace(/(["'])([\s\S]*?)\1/g, (match, quote, content) => {
+    if (content.startsWith('@/registry/')) {
+      const rest = content.slice(11); // 11 = length of "@/registry/"
+      const segments = rest.split('/');
+      if (segments.length === 2) {
+        return `${quote}@/components/animate-ui/${segments[1]}${quote}`;
+      }
+    }
+    return match;
+  });
+}
+
+/**
  * Function to build the merged registry.json file.
  * It searches for all registry-item.json files in the registry directory,
  * removes the $schema property, and merges them into the base registry.json items array.
@@ -124,7 +142,8 @@ export const index: Record<string, any> = {`;
         try {
           // Read the file content (preserving newlines)
           const content = await fs.readFile(resolvedFilePath, 'utf-8');
-          const processedContent = content.trim(); // Trim leading/trailing spaces
+          const processedContent = replaceRegistryPaths(content).trim(); // Trim leading/trailing spaces
+
           return {
             path: filePath,
             type: file.type || 'unknown',

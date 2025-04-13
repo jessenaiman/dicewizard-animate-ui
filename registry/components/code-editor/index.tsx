@@ -1,23 +1,30 @@
 'use client';
 
 import * as React from 'react';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { motion, useInView } from 'motion/react';
+import { useInView, type UseInViewOptions } from 'motion/react';
+import { useTheme } from 'next-themes';
 
 import { cn } from '@/lib/utils';
-import { CopyButton } from '@/components/animate-ui/copy-button';
+import { CopyButton } from '@/registry/buttons/copy-button';
 
 interface CodeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
   code: string;
-  lang: string; // "javascript", "tsx", etc.
-  theme?: string; // "vsc-dark-plus", "atom-dark", etc.
+  lang: string;
+  themes?: {
+    light: string;
+    dark: string;
+  };
   duration?: number;
   delay?: number;
-  showLineNumbers?: boolean;
   header?: boolean;
   cursor?: boolean;
-  startOnView?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   copyButton?: boolean;
+  writing?: boolean;
+  title?: string;
+  onDone?: () => void;
 }
 
 const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
@@ -25,53 +32,81 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
     {
       code,
       lang,
-      theme = 'atom-dark',
+      themes = {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
       duration = 5,
       delay = 0,
       className,
-      showLineNumbers = false,
       header = true,
       cursor = false,
-      startOnView = false,
+      inView = false,
+      inViewMargin = '0px',
+      inViewOnce = true,
       copyButton = false,
+      writing = true,
+      title,
+      onDone,
       ...props
     },
     ref,
   ) => {
+    const { resolvedTheme } = useTheme();
+
     const editorRef = React.useRef<HTMLDivElement>(null);
     const [visibleCode, setVisibleCode] = React.useState('');
-    const [importsReady, setImportsReady] = React.useState(false);
-    const [highlighterTheme, setHighlighterTheme] = React.useState<
-      Record<string, React.CSSProperties>
-    >({});
+    const [highlightedCode, setHighlightedCode] = React.useState('');
     const [isDone, setIsDone] = React.useState(false);
 
-    const inView = useInView(editorRef, { once: true });
+    const inViewResult = useInView(editorRef, {
+      once: inViewOnce,
+      margin: inViewMargin,
+    });
+    const isInView = !inView || inViewResult;
 
     React.useEffect(() => {
-      const loadLanguageAndTheme = async () => {
+      if (!visibleCode.length || !isInView) return;
+
+      const loadHighlightedCode = async () => {
         try {
-          const themeMod = await import(
-            `react-syntax-highlighter/dist/esm/styles/prism/${theme}`
-          );
-          setHighlighterTheme(themeMod.default);
-          const mod = await import(
-            `react-syntax-highlighter/dist/esm/languages/prism/${lang}`
-          );
-          SyntaxHighlighter.registerLanguage(lang, mod.default);
-          setHighlighterTheme(themeMod.default);
-          setImportsReady(true);
+          const { codeToHtml } = await import('shiki');
+
+          const highlighted = await codeToHtml(visibleCode, {
+            lang,
+            themes: {
+              light: themes.light,
+              dark: themes.dark,
+            },
+            defaultColor: resolvedTheme === 'dark' ? 'dark' : 'light',
+          });
+
+          setHighlightedCode(highlighted);
         } catch (e) {
           console.error(`Language "${lang}" could not be loaded.`, e);
         }
       };
 
-      loadLanguageAndTheme();
-    }, [lang, theme]);
+      loadHighlightedCode();
+    }, [
+      lang,
+      themes,
+      writing,
+      isInView,
+      duration,
+      delay,
+      visibleCode,
+      resolvedTheme,
+    ]);
 
     React.useEffect(() => {
-      if (!importsReady || !code.length) return;
-      if (startOnView && !inView) return;
+      if (!writing) {
+        setVisibleCode(code);
+        onDone?.();
+        return;
+      }
+
+      if (!code.length || !isInView) return;
 
       const characters = Array.from(code);
       let index = 0;
@@ -94,6 +129,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
           } else {
             clearInterval(intervalId);
             setIsDone(true);
+            onDone?.();
           }
         }, interval);
       }, delay * 1000);
@@ -102,24 +138,30 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         clearTimeout(timeout);
         clearInterval(intervalId);
       };
-    }, [code, duration, delay, importsReady, startOnView, inView]);
+    }, [code, duration, delay, isInView, writing, onDone]);
 
     return (
       <div
         ref={ref}
         className={cn(
-          'bg-neutral-900 w-[600px] h-[400px] border border-neutral-800 text-white overflow-hidden flex flex-col rounded-xl',
+          'bg-background w-[600px] h-[400px] border border-border text-white overflow-hidden flex flex-col rounded-xl',
           className,
         )}
         {...props}
       >
         {header && (
-          <div className="flex flex-row items-center justify-between gap-y-2 h-11 pl-4 pr-2 border-b border-neutral-800">
+          <div className="bg-muted relative flex flex-row items-center justify-between gap-y-2 h-11 pl-4 pr-2">
             <div className="flex flex-row gap-x-2">
               <div className="size-2.5 rounded-full bg-red-500"></div>
               <div className="size-2.5 rounded-full bg-yellow-500"></div>
               <div className="size-2.5 rounded-full bg-green-500"></div>
             </div>
+
+            {title && (
+              <p className="absolute max-w-[50%] truncate left-1/2 -translate-x-1/2 text-sm text-neutral-500">
+                {title}
+              </p>
+            )}
 
             {copyButton && (
               <CopyButton
@@ -132,44 +174,17 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         )}
         <div
           ref={editorRef}
-          className="size-full text-sm p-4 font-mono relative overflow-auto flex-1"
+          className="h-[calc(100%-2.75rem)] w-full text-sm p-4 font-mono relative overflow-auto flex-1"
         >
-          {importsReady && (
-            <SyntaxHighlighter
-              showLineNumbers={showLineNumbers}
-              lineNumberStyle={{
-                minWidth: `${2 + String(code.split('\n').length).length}ch`,
-              }}
-              codeTagProps={{ className: 'bg-transparent' }}
-              wrapLines
-              language={lang}
-              style={highlighterTheme}
-              customStyle={{
-                background: 'transparent',
-                padding: 0,
-                margin: 0,
-                border: 'none',
-                overflow: 'unset',
-              }}
-              CodeTag={(props) => (
-                <code {...props}>
-                  {props.children}
-                  {cursor && !isDone && (
-                    <motion.span
-                      className="inline-block w-[1ch] -translate-px"
-                      initial={{ opacity: 1 }}
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.7, repeat: Infinity }}
-                    >
-                      |
-                    </motion.span>
-                  )}
-                </code>
-              )}
-            >
-              {visibleCode}
-            </SyntaxHighlighter>
-          )}
+          <div
+            className={cn(
+              '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-sm',
+              cursor &&
+                !isDone &&
+                "[&_.line:last-of-type::after]:content-['|'] [&_.line:last-of-type::after]:animate-pulse [&_.line:last-of-type::after]:inline-block [&_.line:last-of-type::after]:w-[1ch] [&_.line:last-of-type::after]:-translate-px",
+            )}
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+          />
         </div>
       </div>
     );

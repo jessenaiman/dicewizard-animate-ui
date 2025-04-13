@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Animate UI',
     short_name: 'Animate UI',
     description:
-      'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Browse a list of components you can install, modify, and use in your projects.',
+      'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, Motion and Shadcn CLI. Browse a list of components you can install, modify, and use in your projects.',
     start_url: '/',
     display: 'standalone',
     background_color: '#fff',

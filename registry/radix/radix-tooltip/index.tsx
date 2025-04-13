@@ -36,6 +36,10 @@ const Tooltip: React.FC<TooltipProps> = ({ children, ...props }) => {
     props?.open ?? props?.defaultOpen ?? false,
   );
 
+  React.useEffect(() => {
+    setIsOpen(props?.open ?? props?.defaultOpen ?? false);
+  }, [props?.open, props?.defaultOpen]);
+
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       setIsOpen(open);

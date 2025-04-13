@@ -4,8 +4,7 @@
   "type": "registry:ui",
   "title": "Code Editor",
   "description": "Code editor component",
-  "dependencies": ["motion", "react-syntax-highlighter"],
-  "devDependencies": ["@types/react-syntax-highlighter"],
+  "dependencies": ["motion", "shiki"],
   "registryDependencies": ["https://animate-ui.com/r/copy-button"],
   "files": [
     {

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView, type UseInViewOptions } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -33,7 +33,9 @@ interface TypingTextProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   duration?: number;
   delay?: number;
-  startOnView?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   cursor?: boolean;
   loop?: boolean;
   holdDelay?: number;
@@ -47,7 +49,9 @@ const TypingText = React.forwardRef<HTMLSpanElement, TypingTextProps>(
       className,
       duration = 100,
       delay = 0,
-      startOnView = false,
+      inView = false,
+      inViewMargin = '0px',
+      inViewOnce = true,
       cursor = false,
       loop = false,
       holdDelay = 1000,
@@ -57,28 +61,31 @@ const TypingText = React.forwardRef<HTMLSpanElement, TypingTextProps>(
     },
     ref,
   ) => {
-    const viewRef = React.useRef<HTMLSpanElement>(null);
-    const inView = useInView(viewRef, { once: true });
-    React.useImperativeHandle(ref, () => viewRef.current!);
+    const localRef = React.useRef<HTMLSpanElement>(null);
+    React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);
+
+    const inViewResult = useInView(localRef, {
+      once: inViewOnce,
+      margin: inViewMargin,
+    });
+    const isInView = !inView || inViewResult;
 
     const [started, setStarted] = React.useState(false);
     const [displayedText, setDisplayedText] = React.useState<string>('');
 
     React.useEffect(() => {
-      if (startOnView) {
-        if (inView) {
-          const timeoutId = setTimeout(() => {
-            setStarted(true);
-          }, delay);
-          return () => clearTimeout(timeoutId);
-        }
+      if (isInView) {
+        const timeoutId = setTimeout(() => {
+          setStarted(true);
+        }, delay);
+        return () => clearTimeout(timeoutId);
       } else {
         const timeoutId = setTimeout(() => {
           setStarted(true);
         }, delay);
         return () => clearTimeout(timeoutId);
       }
-    }, [inView, startOnView, delay]);
+    }, [isInView, delay]);
 
     React.useEffect(() => {
       if (!started) return;
@@ -139,7 +146,7 @@ const TypingText = React.forwardRef<HTMLSpanElement, TypingTextProps>(
     }, [text, duration, started, loop, holdDelay]);
 
     return (
-      <span ref={viewRef} className={className} {...props}>
+      <span ref={localRef} className={className} {...props}>
         <motion.span>{displayedText}</motion.span>
         {cursor && <CursorBlinker className={cursorClassName} />}
       </span>

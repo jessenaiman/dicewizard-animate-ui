@@ -6,7 +6,7 @@ export const CountingFromNumberDemo = () => {
       number={0}
       fromNumber={new Date().getFullYear()}
       className="text-4xl"
-      startOnView
+      inView
     />
   );
 };

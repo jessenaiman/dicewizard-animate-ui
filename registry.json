@@ -216,32 +216,13 @@
       ]
     },
     {
-      "name": "cards-hover",
-      "type": "registry:ui",
-      "title": "Cards Hover",
-      "description": "Cards hover component",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/components/cards-hover/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/cards-hover.tsx"
-        }
-      ]
-    },
-    {
       "name": "code-editor",
       "type": "registry:ui",
       "title": "Code Editor",
       "description": "Code editor component",
       "dependencies": [
         "motion",
-        "react-syntax-highlighter"
-      ],
-      "devDependencies": [
-        "@types/react-syntax-highlighter"
+        "shiki"
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/copy-button"
@@ -287,6 +268,27 @@
           "path": "registry/components/cursor/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "files",
+      "type": "registry:ui",
+      "title": "Files",
+      "description": "Files component",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight",
+        "https://animate-ui.com/r/radix-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/files.tsx"
         }
       ]
     },
@@ -618,25 +620,6 @@
       ]
     },
     {
-      "name": "cards-hover-demo",
-      "type": "registry:ui",
-      "title": "Cards Hover Demo",
-      "description": "Demo showing an animated cards hover.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "https://animate-ui.com/r/cards-hover"
-      ],
-      "files": [
-        {
-          "path": "registry/demo/components/cards-hover-demo/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/cards-hover-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "code-editor-demo",
       "type": "registry:ui",
       "title": "Code Editor Demo",
@@ -697,6 +680,22 @@
           "path": "registry/demo/components/cursor-follow-only-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/cursor-follow-only-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "files-demo",
+      "type": "registry:ui",
+      "title": "Files Demo",
+      "description": "Demo showing an files.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/files"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/files-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/files-demo.tsx"
         }
       ]
     },
@@ -852,34 +851,18 @@
       ]
     },
     {
-      "name": "slide-in-demo",
+      "name": "motion-highlight-tabs-hover-parent-demo",
       "type": "registry:ui",
-      "title": "Slide In Demo",
-      "description": "Demo showing the slide in effect.",
+      "title": "Motion Highlight Tabs Hover Parent Demo",
+      "description": "Demo showing the motion highlight tabs hover effect.",
       "registryDependencies": [
-        "https://animate-ui.com/r/slide-in"
+        "https://animate-ui.com/r/motion-highlight"
       ],
       "files": [
         {
-          "path": "registry/demo/effects/slide-in-demo/index.tsx",
+          "path": "registry/demo/effects/motion-highlight-tabs-hover-parent-demo/index.tsx",
           "type": "registry:ui",
-          "target": "components/animate-ui/slide-in-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "slide-in-multiple-demo",
-      "type": "registry:ui",
-      "title": "Slide In Multiple Demo",
-      "description": "Demo showing the slide in effect.",
-      "registryDependencies": [
-        "https://animate-ui.com/r/slide-in"
-      ],
-      "files": [
-        {
-          "path": "registry/demo/effects/slide-in-multiple-demo/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/slide-in-multiple-demo.tsx"
+          "target": "components/animate-ui/motion-highlight-tabs-hover-parent-demo.tsx"
         }
       ]
     },
@@ -1513,22 +1496,6 @@
           "path": "registry/effects/motion-highlight/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/motion-highlight.tsx"
-        }
-      ]
-    },
-    {
-      "name": "slide-in",
-      "type": "registry:ui",
-      "title": "Slide In",
-      "description": "Slide in component that displays the slide in effect.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/slide-in/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/slide-in.tsx"
         }
       ]
     },

@@ -7,7 +7,7 @@ export const jsonLd = {
       url: 'https://animate-ui.com',
       name: 'Animate UI',
       description:
-        'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion. Browse a list of components you can install, modify, and use in your projects.',
+        'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, Motion and Shadcn CLI. Browse a list of components you can install, modify, and use in your projects.',
       inLanguage: 'en',
       publisher: {
         '@id': 'https://animate-ui.com/#organization',

@@ -60,6 +60,7 @@ type AccordionTriggerProps = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Trigger
 > & {
   transition?: Transition;
+  chevron?: boolean;
 };
 
 const AccordionTrigger = React.forwardRef<
@@ -71,11 +72,16 @@ const AccordionTrigger = React.forwardRef<
       className,
       children,
       transition = { type: 'spring', stiffness: 150, damping: 17 },
+      chevron = true,
       ...props
     },
     ref,
   ) => {
     const triggerRef = React.useRef<HTMLButtonElement | null>(null);
+    React.useImperativeHandle(
+      ref,
+      () => triggerRef.current as HTMLButtonElement,
+    );
     const { isOpen, setIsOpen } = useAccordionItem();
 
     React.useEffect(() => {
@@ -104,14 +110,7 @@ const AccordionTrigger = React.forwardRef<
     return (
       <AccordionPrimitive.Header className="flex">
         <AccordionPrimitive.Trigger
-          ref={(node) => {
-            triggerRef.current = node;
-            if (typeof ref === 'function') {
-              ref(node);
-            } else if (ref) {
-              (ref as React.RefObject<HTMLButtonElement | null>).current = node;
-            }
-          }}
+          ref={triggerRef}
           className={cn(
             'flex flex-1 text-start items-center justify-between py-4 font-medium hover:underline',
             className,
@@ -119,12 +118,15 @@ const AccordionTrigger = React.forwardRef<
           {...props}
         >
           {children}
-          <motion.div
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={transition}
-          >
-            <ChevronDown className="size-5 shrink-0" />
-          </motion.div>
+
+          {chevron && (
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={transition}
+            >
+              <ChevronDown className="size-5 shrink-0" />
+            </motion.div>
+          )}
         </AccordionPrimitive.Trigger>
       </AccordionPrimitive.Header>
     );

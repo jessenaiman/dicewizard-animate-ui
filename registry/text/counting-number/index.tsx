@@ -3,6 +3,7 @@
 import * as React from 'react';
 import {
   type SpringOptions,
+  type UseInViewOptions,
   useInView,
   useMotionValue,
   useSpring,
@@ -12,7 +13,9 @@ interface CountingNumberProps extends React.HTMLAttributes<HTMLSpanElement> {
   number: number;
   fromNumber?: number;
   padStart?: boolean;
-  startOnView?: boolean;
+  inView?: boolean;
+  inViewMargin?: UseInViewOptions['margin'];
+  inViewOnce?: boolean;
   decimalSeparator?: string;
   transition?: SpringOptions;
   decimalPlaces?: number;
@@ -24,7 +27,9 @@ const CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(
       number,
       fromNumber = 0,
       padStart = false,
-      startOnView = false,
+      inView = false,
+      inViewMargin = '0px',
+      inViewOnce = true,
       decimalSeparator = '.',
       transition = { stiffness: 90, damping: 50 },
       decimalPlaces = 0,
@@ -33,8 +38,8 @@ const CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(
     },
     ref,
   ) => {
-    const viewRef = React.useRef<HTMLSpanElement>(null);
-    React.useImperativeHandle(ref, () => viewRef.current as HTMLSpanElement);
+    const localRef = React.useRef<HTMLSpanElement>(null);
+    React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);
 
     const numberStr = number.toString();
     const decimals =
@@ -46,15 +51,19 @@ const CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(
 
     const motionVal = useMotionValue(fromNumber);
     const springVal = useSpring(motionVal, transition);
-    const inView = useInView(viewRef, { once: true, margin: '0px' });
+    const inViewResult = useInView(localRef, {
+      once: inViewOnce,
+      margin: inViewMargin,
+    });
+    const isInView = !inView || inViewResult;
 
     React.useEffect(() => {
-      if (!startOnView || inView) motionVal.set(number);
-    }, [inView, startOnView, number, motionVal]);
+      if (isInView) motionVal.set(number);
+    }, [isInView, number, motionVal]);
 
     React.useEffect(() => {
       const unsubscribe = springVal.on('change', (latest) => {
-        if (viewRef.current) {
+        if (localRef.current) {
           let formatted =
             decimals > 0
               ? latest.toFixed(decimals)
@@ -74,7 +83,7 @@ const CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(
               : paddedInt;
           }
 
-          viewRef.current.textContent = formatted;
+          localRef.current.textContent = formatted;
         }
       });
       return () => unsubscribe();
@@ -87,7 +96,7 @@ const CountingNumber = React.forwardRef<HTMLSpanElement, CountingNumberProps>(
       : '0' + (decimals > 0 ? decimalSeparator + '0'.repeat(decimals) : '');
 
     return (
-      <span ref={viewRef} className={className} {...props}>
+      <span ref={localRef} className={className} {...props}>
         {initialText}
       </span>
     );

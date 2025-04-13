@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import {
   MotionHighlight,
   MotionHighlightItem,
-} from '@/components/animate-ui/motion-highlight';
+} from '@/registry/effects/motion-highlight';
 
 interface TabsContextType {
   activeValue: string;
@@ -222,12 +222,12 @@ const TabsContents = React.forwardRef<HTMLDivElement, TabsContentsProps>(
     return (
       <div ref={ref} className={cn('overflow-hidden', className)}>
         <motion.div
-          className="flex"
+          className="flex -mx-2"
           animate={{ x: activeIndex * -100 + '%' }}
           transition={transition}
         >
           {childrenArray.map((child, index) => (
-            <div key={index} className="w-full shrink-0">
+            <div key={index} className="w-full shrink-0 px-2">
               {child}
             </div>
           ))}
@@ -252,7 +252,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
       <motion.div
         role="tabpanel"
         ref={ref}
-        className={className}
+        className={cn('overflow-hidden', className)}
         initial={{ filter: 'blur(0px)' }}
         animate={{ filter: isActive ? 'blur(0px)' : 'blur(4px)' }}
         exit={{ filter: 'blur(0px)' }}

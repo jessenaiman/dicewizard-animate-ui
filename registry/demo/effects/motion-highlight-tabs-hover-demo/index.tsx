@@ -20,7 +20,7 @@ const TABS = [
 
 export const MotionHighlightTabsHoverDemo = () => {
   return (
-    <div className="flex gap-2 border rounded-full p-1">
+    <div className="flex border rounded-full p-1">
       <MotionHighlight hover className="rounded-full">
         {TABS.map((tab) => (
           <div
