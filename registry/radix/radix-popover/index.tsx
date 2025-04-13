@@ -95,7 +95,7 @@ const PopoverContent = React.forwardRef<
                 exit={{ opacity: 0, scale: 0.5, y: 25 }}
                 transition={transition}
                 className={cn(
-                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none z-50',
+                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
                   className,
                 )}
               >

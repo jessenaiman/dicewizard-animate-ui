@@ -96,7 +96,7 @@ const PopoverPanel = React.forwardRef<
             animate={{ opacity: 1, scale: 1, y: 0, transition }}
             exit={{ opacity: 0, scale: 0.5, y: 25, transition }}
             className={cn(
-              'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+              'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none z-50',
               className,
             )}
             anchor={anchor}
