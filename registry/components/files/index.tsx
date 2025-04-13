@@ -152,8 +152,9 @@ FolderTrigger.displayName = 'FolderTrigger';
 
 type FolderProps = Omit<
   AccordionItemProps,
-  'value' | 'onValueChange' | 'defaultValue'
+  'value' | 'onValueChange' | 'defaultValue' | 'children'
 > & {
+  children?: React.ReactNode;
   name: string;
   open?: string[];
   onOpenChange?: (open: string[]) => void;
@@ -172,16 +173,18 @@ const Folder = React.forwardRef<HTMLDivElement, FolderProps>(
       {...props}
     >
       <FolderTrigger className={className}>{name}</FolderTrigger>
-      <AccordionContent className="relative pb-0 !ml-7 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">
-        <Accordion
-          type="multiple"
-          defaultValue={defaultOpen}
-          value={open}
-          onValueChange={onOpenChange}
-        >
-          {children}
-        </Accordion>
-      </AccordionContent>
+      {children && (
+        <AccordionContent className="relative pb-0 !ml-7 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">
+          <Accordion
+            type="multiple"
+            defaultValue={defaultOpen}
+            value={open}
+            onValueChange={onOpenChange}
+          >
+            {children}
+          </Accordion>
+        </AccordionContent>
+      )}
     </AccordionItem>
   ),
 );

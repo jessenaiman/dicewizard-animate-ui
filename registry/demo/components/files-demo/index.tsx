@@ -19,6 +19,7 @@ export const FilesDemo = () => {
         <File name="button.tsx" />
         <File name="tabs.tsx" />
         <File name="dialog.tsx" />
+        <Folder name="empty" />
       </Folder>
       <File name="package.json" />
     </Files>
