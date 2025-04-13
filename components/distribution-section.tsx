@@ -10,6 +10,7 @@ export const DistributionSection = () => {
 
   const isInView = useInView(localRef, {
     once: true,
+    margin: '50px',
   });
 
   const [openStructureFile, setOpenStructureFile] = useState(false);

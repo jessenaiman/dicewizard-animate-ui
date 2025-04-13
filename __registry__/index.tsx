@@ -1307,7 +1307,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/motion-effect-fade-blur-demo.tsx',
         content:
-          'import { MotionEffect } from \'@/components/animate-ui/motion-effect\';\n\nexport const MotionEffectFadeBlurDemo = () => {\n  return (\n    <MotionEffect\n      fade\n      blur="10px"\n      transition={{\n        duration: 0.5,\n        ease: \'easeInOut\',\n      }}\n    >\n      <p className="text-4xl font-bold">Motion Effect Fade Blur</p>\n    </MotionEffect>\n  );\n};',
+          'import { MotionEffect } from \'@/components/animate-ui/motion-effect\';\n\nexport const MotionEffectFadeBlurDemo = () => {\n  return (\n    <MotionEffect\n      fade\n      blur="10px"\n      transition={{\n        duration: 0.5,\n        ease: \'easeInOut\',\n      }}\n      inView\n    >\n      <p className="text-4xl font-bold">Motion Effect Fade Blur</p>\n    </MotionEffect>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -1329,14 +1329,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/motion-effect'],
+    registryDependencies: [
+      'https://animate-ui.com/r/motion-effect',
+      'use-mobile',
+    ],
     files: [
       {
         path: 'registry/demo/effects/motion-effect-image-grid-demo/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/motion-effect-image-grid-demo.tsx',
         content:
-          'import { MotionEffect } from \'@/components/animate-ui/motion-effect\';\n\nexport const MotionEffectImageGridDemo = () => {\n  return (\n    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">\n      {Array.from({ length: 4 }).map((_, index) => (\n        <MotionEffect\n          key={index}\n          slide={{\n            direction: \'down\',\n          }}\n          fade\n          zoom\n          inView\n          delay={0.5 + index * 0.1}\n        >\n          <img\n            src={`https://picsum.photos/seed/${index + 100}/600/400`}\n            alt="Slide In Demo"\n            className="w-[300px] h-[200px] object-cover object-center bg-muted rounded-xl flex items-center justify-center"\n          />\n        </MotionEffect>\n      ))}\n    </div>\n  );\n};',
+          'import { useIsMobile } from \'@/hooks/use-mobile\';\nimport { MotionEffect } from \'@/components/animate-ui/motion-effect\';\n\nexport const MotionEffectImageGridDemo = () => {\n  const isMobile = useIsMobile();\n\n  return (\n    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">\n      {Array.from({ length: isMobile ? 2 : 4 }).map((_, index) => (\n        <MotionEffect\n          key={index}\n          slide={{\n            direction: \'down\',\n          }}\n          fade\n          zoom\n          inView\n          delay={0.5 + index * 0.1}\n        >\n          <img\n            src={`https://picsum.photos/seed/${index + 100}/600/400`}\n            alt="Slide In Demo"\n            className="w-[300px] h-[200px] object-cover object-center bg-muted rounded-xl flex items-center justify-center"\n          />\n        </MotionEffect>\n      ))}\n    </div>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {
@@ -1365,7 +1368,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/motion-effect-slide-demo.tsx',
         content:
-          'import { MotionEffect } from \'@/components/animate-ui/motion-effect\';\n\nexport const MotionEffectSlideDemo = () => {\n  return (\n    <MotionEffect slide>\n      <p className="text-4xl font-bold">Motion Effect Slide</p>\n    </MotionEffect>\n  );\n};',
+          'import { MotionEffect } from \'@/components/animate-ui/motion-effect\';\n\nexport const MotionEffectSlideDemo = () => {\n  return (\n    <MotionEffect slide inView>\n      <p className="text-4xl font-bold">Motion Effect Slide</p>\n    </MotionEffect>\n  );\n};',
       },
     ],
     component: React.lazy(async () => {

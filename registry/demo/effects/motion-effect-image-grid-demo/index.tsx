@@ -1,9 +1,12 @@
+import { useIsMobile } from '@/hooks/use-mobile';
 import { MotionEffect } from '@/registry/effects/motion-effect';
 
 export const MotionEffectImageGridDemo = () => {
+  const isMobile = useIsMobile();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {Array.from({ length: 4 }).map((_, index) => (
+      {Array.from({ length: isMobile ? 2 : 4 }).map((_, index) => (
         <MotionEffect
           key={index}
           slide={{

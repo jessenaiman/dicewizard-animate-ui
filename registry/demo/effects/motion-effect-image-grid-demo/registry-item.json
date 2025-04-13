@@ -4,7 +4,10 @@
   "type": "registry:ui",
   "title": "Motion Effect Image Grid Demo",
   "description": "Demo showing the motion effect image grid.",
-  "registryDependencies": ["https://animate-ui.com/r/motion-effect"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-effect",
+    "use-mobile"
+  ],
   "files": [
     {
       "path": "registry/demo/effects/motion-effect-image-grid-demo/index.tsx",

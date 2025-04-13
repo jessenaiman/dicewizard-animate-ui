@@ -9,6 +9,7 @@ export const MotionEffectFadeBlurDemo = () => {
         duration: 0.5,
         ease: 'easeInOut',
       }}
+      inView
     >
       <p className="text-4xl font-bold">Motion Effect Fade Blur</p>
     </MotionEffect>
