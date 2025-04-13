@@ -1,3 +1,5 @@
+'use client';
+
 import { useIsMobile } from '@/hooks/use-mobile';
 import { MotionEffect } from '@/registry/effects/motion-effect';
 
