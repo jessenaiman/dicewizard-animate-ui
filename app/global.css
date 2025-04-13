@@ -75,6 +75,8 @@
   --sidebar-border: oklch(0.922 0 0);
 
   --sidebar-ring: oklch(0.708 0 0);
+
+  --color-fd-primary: oklch(0.62 0.188 259.81);
 }
 
 .dark {
@@ -141,6 +143,8 @@
   --sidebar-border: oklch(1 0 0 / 10%);
 
   --sidebar-ring: oklch(0.556 0 0);
+
+  --color-fd-primary: oklch(0.62 0.188 259.81);
 }
 
 @theme inline {
