@@ -169,7 +169,7 @@ export const Hero = () => {
         </FloatingComponent>
 
         <FloatingComponent className="absolute top-4 right-85">
-          <GitHubStarsButton repo="animate-ui" username="Skyleen77" />
+          <GitHubStarsButton repo="animate-ui" username="imskyleen" />
         </FloatingComponent>
 
         <FloatingComponent className="absolute top-75 right-4">

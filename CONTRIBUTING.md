@@ -10,7 +10,7 @@ Thank you for your interest in **contributing to Animate UI**! Your support is h
 
 #### 1. Fork the Repository
 
-Click [here](https://github.com/Skyleen77/animate-ui/fork) to fork the repository.
+Click [here](https://github.com/imskyleen/animate-ui/fork) to fork the repository.
 
 #### 2. Clone your Fork to Your Local Machine
 
@@ -71,7 +71,7 @@ The addition of a new component must comply with certain rules:
 - You can't just copy/paste component code from other libraries. You can be inspired by a component, but it must have added value. For example, I took Shadcn's components and animated them. So I didn't copy and paste the component, I added something to it.
 - If you take inspiration from a component (CodePen, another library, etc.), remember to add the “Credits” section to your documentation. It's important to respect the work of other developers.
 
-To submit your component, please include a demo video in the MR. Once the component has been submitted, it must be validated by @Skyleen77.
+To submit your component, please include a demo video in the MR. Once the component has been submitted, it must be validated by @imskyleen.
 
 To **add a new component to Animate UI**, you will need to update several files. Follow these steps:
 
@@ -221,6 +221,6 @@ pnpm registry:build
 
 ## Ask for Help
 
-If you need any assistance or have questions, please feel free to open a [GitHub issue](https://github.com/Skyleen77/animate-ui/issues/new). We are here to help!
+If you need any assistance or have questions, please feel free to open a [GitHub issue](https://github.com/imskyleen/animate-ui/issues/new). We are here to help!
 
 Thank you again for your contribution to Animate UI! We look forward to seeing your improvements and new components.

@@ -952,7 +952,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/github-stars-button-demo.tsx',
         content:
-          'import { GitHubStarsButton } from \'@/components/animate-ui/github-stars-button\';\n\nexport const GitHubStarsButtonDemo = () => {\n  return <GitHubStarsButton username="Skyleen77" repo="animate-ui" />;\n};',
+          'import { GitHubStarsButton } from \'@/components/animate-ui/github-stars-button\';\n\nexport const GitHubStarsButtonDemo = () => {\n  return <GitHubStarsButton username="imskyleen" repo="animate-ui" />;\n};',
       },
     ],
     component: React.lazy(async () => {

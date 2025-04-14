@@ -71,8 +71,8 @@ export async function generateMetadata(props: {
           },
         ]
       : {
-          name: 'Skyleen77',
-          url: 'https://github.com/Skyleen77',
+          name: 'imskyleen',
+          url: 'https://github.com/imskyleen',
         },
     openGraph: {
       title: page.data.title,

@@ -6,7 +6,7 @@ export const Footer = () => {
           <p className="text-start truncate">
             Built by{' '}
             <a
-              href="https://x.com/elliot_stn"
+              href="https://x.com/imskyleen"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -14,7 +14,7 @@ export const Footer = () => {
             </a>
             . The source code is available on{' '}
             <a
-              href="https://github.com/Skyleen77/animate-ui"
+              href="https://github.com/imskyleen/animate-ui"
               rel="noopener noreferrer"
               target="_blank"
             >

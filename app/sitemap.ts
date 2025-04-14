@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(await Promise.all(
       source.getPages().map(async (page) => {
         const time = await getGithubLastEdit({
-          owner: 'Skyleen77',
+          owner: 'imskyleen',
           repo: 'animate-ui',
           path: `content/docs/${page.file.path}`,
         });
