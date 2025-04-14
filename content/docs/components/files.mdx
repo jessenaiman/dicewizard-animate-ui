@@ -13,6 +13,12 @@ new: true
 
 <ComponentInstallation name="files" />
 
+## Examples
+
+### Files Advanced
+
+<ComponentPreview name="files-advanced-demo" />
+
 ## Props
 
 ### Files
@@ -47,6 +53,12 @@ new: true
     onOpenChange: {
       description: 'The callback function when the child folders open change.',
       type: 'function',
+      required: false,
+    },
+    sideComponent: {
+      description:
+        'The component to display on the right side of the component.',
+      type: 'React.ReactNode',
       required: false,
     },
   }}

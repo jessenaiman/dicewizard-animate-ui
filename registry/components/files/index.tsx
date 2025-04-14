@@ -26,42 +26,59 @@ interface FileButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   };
   icon?: React.ElementType;
   open?: boolean;
+  sideComponent?: React.ReactNode;
 }
 
 const FileButton = React.forwardRef<HTMLDivElement, FileButtonProps>(
-  ({ children, className, icons: Icons, icon: Icon, open, ...props }, ref) => {
+  (
+    {
+      children,
+      className,
+      icons: Icons,
+      icon: Icon,
+      open,
+      sideComponent,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <MotionHighlightItem className="size-full">
         <div
           ref={ref}
           className={cn(
-            'flex items-center gap-2 p-2 h-10 relative z-10 rounded-lg w-full cursor-default',
+            'flex items-center truncate gap-2 p-2 h-10 relative z-10 rounded-lg w-full cursor-default',
             className,
           )}
           {...props}
         >
-          {Icon ? (
-            <Icon className="size-4" />
-          ) : (
-            Icons && (
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={open ? 'open' : 'close'}
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0.9 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {open ? (
-                    <Icons.open className="size-4" />
-                  ) : (
-                    <Icons.close className="size-4" />
-                  )}
-                </motion.span>
-              </AnimatePresence>
-            )
-          )}
-          <span className="text-sm block truncate">{children}</span>
+          <span className="flex items-center gap-2 shrink-1 truncate">
+            {Icon ? (
+              <Icon className="size-4 shrink-0" />
+            ) : (
+              Icons && (
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={open ? 'open' : 'close'}
+                    initial={{ scale: 0.9 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0.9 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    {open ? (
+                      <Icons.open className="size-4 shrink-0" />
+                    ) : (
+                      <Icons.close className="size-4 shrink-0" />
+                    )}
+                  </motion.span>
+                </AnimatePresence>
+              )
+            )}
+            <span className="shrink-1 text-sm block truncate break-words">
+              {children}
+            </span>
+          </span>
+          {sideComponent}
         </div>
       </MotionHighlightItem>
     );
@@ -124,16 +141,18 @@ const Files = React.forwardRef<HTMLDivElement, FilesProps>(
 );
 Files.displayName = 'Files';
 
-type FolderTriggerProps = AccordionTriggerProps;
+type FolderTriggerProps = AccordionTriggerProps & {
+  sideComponent?: React.ReactNode;
+};
 
 const FolderTrigger = React.forwardRef<HTMLButtonElement, FolderTriggerProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, sideComponent, ...props }, ref) => {
     const { isOpen } = useAccordionItem();
 
     return (
       <AccordionTrigger
         ref={ref}
-        className="h-auto py-0 hover:no-underline font-normal relative z-10"
+        className="h-auto py-0 hover:no-underline font-normal relative z-10 max-w-full"
         {...props}
         chevron={false}
       >
@@ -141,6 +160,7 @@ const FolderTrigger = React.forwardRef<HTMLButtonElement, FolderTriggerProps>(
           open={isOpen}
           icons={{ open: FolderOpenIcon, close: FolderIcon }}
           className={className}
+          sideComponent={sideComponent}
         >
           {children}
         </FileButton>
@@ -159,11 +179,21 @@ type FolderProps = Omit<
   open?: string[];
   onOpenChange?: (open: string[]) => void;
   defaultOpen?: string[];
+  sideComponent?: React.ReactNode;
 };
 
 const Folder = React.forwardRef<HTMLDivElement, FolderProps>(
   (
-    { children, className, name, open, defaultOpen, onOpenChange, ...props },
+    {
+      children,
+      className,
+      name,
+      open,
+      defaultOpen,
+      onOpenChange,
+      sideComponent,
+      ...props
+    },
     ref,
   ) => (
     <AccordionItem
@@ -172,7 +202,9 @@ const Folder = React.forwardRef<HTMLDivElement, FolderProps>(
       className="relative border-b-0"
       {...props}
     >
-      <FolderTrigger className={className}>{name}</FolderTrigger>
+      <FolderTrigger className={className} sideComponent={sideComponent}>
+        {name}
+      </FolderTrigger>
       {children && (
         <AccordionContent className="relative pb-0 !ml-7 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">
           <Accordion
@@ -192,11 +224,18 @@ Folder.displayName = 'Folder';
 
 type FileProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
   name: string;
+  sideComponent?: React.ReactNode;
 };
 
 const File = React.forwardRef<HTMLDivElement, FileProps>(
-  ({ name, className, ...props }, ref) => (
-    <FileButton ref={ref} icon={FileIcon} className={className} {...props}>
+  ({ name, className, sideComponent, ...props }, ref) => (
+    <FileButton
+      ref={ref}
+      icon={FileIcon}
+      className={className}
+      sideComponent={sideComponent}
+      {...props}
+    >
       {name}
     </FileButton>
   ),
