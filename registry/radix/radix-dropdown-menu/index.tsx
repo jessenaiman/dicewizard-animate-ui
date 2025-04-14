@@ -13,9 +13,11 @@ import {
 
 interface DropdownMenuContextType {
   isOpen: boolean;
+  highlightTransition: Transition;
 }
 const DropdownMenuContext = React.createContext<DropdownMenuContextType>({
   isOpen: false,
+  highlightTransition: { type: 'spring', stiffness: 200, damping: 25 },
 });
 
 const useDropdownMenu = (): DropdownMenuContextType => {
@@ -40,6 +42,10 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
     props?.open ?? props?.defaultOpen ?? false,
   );
 
+  React.useEffect(() => {
+    if (props?.open !== undefined) setIsOpen(props.open);
+  }, [props?.open]);
+
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       setIsOpen(open);
@@ -49,17 +55,12 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   );
 
   return (
-    <DropdownMenuContext.Provider value={{ isOpen }}>
-      <MotionHighlight
-        hover
-        className="rounded-sm"
-        controlledItems
-        transition={transition}
-      >
-        <DropdownMenuPrimitive.Root {...props} onOpenChange={handleOpenChange}>
-          {children}
-        </DropdownMenuPrimitive.Root>
-      </MotionHighlight>
+    <DropdownMenuContext.Provider
+      value={{ isOpen, highlightTransition: transition }}
+    >
+      <DropdownMenuPrimitive.Root {...props} onOpenChange={handleOpenChange}>
+        {children}
+      </DropdownMenuPrimitive.Root>
     </DropdownMenuContext.Provider>
   );
 };
@@ -162,7 +163,7 @@ const DropdownMenuContent = React.forwardRef<
     },
     ref,
   ) => {
-    const { isOpen } = useDropdownMenu();
+    const { isOpen, highlightTransition } = useDropdownMenu();
 
     return (
       <AnimatePresence>
@@ -195,7 +196,14 @@ const DropdownMenuContent = React.forwardRef<
                 transition={transition}
                 style={{ willChange: 'opacity, transform, clip-path' }}
               >
-                {children}
+                <MotionHighlight
+                  hover
+                  className="rounded-sm"
+                  controlledItems
+                  transition={highlightTransition}
+                >
+                  {children}
+                </MotionHighlight>
               </motion.div>
             </DropdownMenuPrimitive.Content>
           </DropdownMenuPrimitive.Portal>

@@ -1,3 +1,4 @@
+import ReactIcon from '@/components/icons/react-icon';
 import { CodeEditor } from '@/registry/components/code-editor';
 
 export const CodeEditorDemo = () => {
@@ -26,6 +27,8 @@ MyComponent.displayName = 'MyComponent';
 
 export { MyComponent, type MyComponentProps };`}
       lang="tsx"
+      title="component.tsx"
+      icon={<ReactIcon />}
       duration={15}
       delay={0.5}
       copyButton

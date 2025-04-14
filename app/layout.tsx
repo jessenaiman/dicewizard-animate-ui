@@ -45,11 +45,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'Skyleen77',
-      url: 'https://github.com/Skyleen77',
+      name: 'imskyleen',
+      url: 'https://github.com/imskyleen',
     },
   ],
-  creator: 'Skyleen77',
+  creator: 'imskyleen',
   openGraph: {
     title: 'Animate UI',
     description:

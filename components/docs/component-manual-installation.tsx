@@ -10,6 +10,7 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { useRef, useState } from 'react';
 import { track } from '@vercel/analytics';
+import ReactIcon from '../icons/react-icon';
 
 const getDepsCommands = (dependencies?: string[]) => {
   if (!dependencies) return undefined;
@@ -99,6 +100,8 @@ export const ComponentManualInstallation = ({
                 <DynamicCodeBlock
                   code={code}
                   lang="tsx"
+                  title={`${name}.tsx`}
+                  icon={<ReactIcon />}
                   onCopy={() => {
                     track('Manual Code Copy', {
                       component: name,
@@ -109,7 +112,7 @@ export const ComponentManualInstallation = ({
             </CollapsibleContent>
             <div
               className={cn(
-                'absolute flex items-center justify-center bg-gradient-to-b from-neutral-300/30 to-white/90 dark:from-neutral-700/30 dark:to-neutral-950/90 p-2',
+                'absolute flex items-center justify-center bg-gradient-to-b rounded-t-xl from-neutral-300/30 to-white dark:from-neutral-700/30 dark:to-neutral-950 p-2',
                 isOpened ? 'inset-x-0 bottom-0 h-12' : 'inset-0',
               )}
             >

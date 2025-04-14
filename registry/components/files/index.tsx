@@ -21,25 +21,17 @@ import {
 
 interface FileButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   icons?: {
-    close: React.ElementType;
-    open: React.ElementType;
+    close: React.ReactNode;
+    open: React.ReactNode;
   };
-  icon?: React.ElementType;
+  icon?: React.ReactNode;
   open?: boolean;
   sideComponent?: React.ReactNode;
 }
 
 const FileButton = React.forwardRef<HTMLDivElement, FileButtonProps>(
   (
-    {
-      children,
-      className,
-      icons: Icons,
-      icon: Icon,
-      open,
-      sideComponent,
-      ...props
-    },
+    { children, className, icons, icon, open, sideComponent, ...props },
     ref,
   ) => {
     return (
@@ -52,28 +44,30 @@ const FileButton = React.forwardRef<HTMLDivElement, FileButtonProps>(
           )}
           {...props}
         >
-          <span className="flex items-center gap-2 shrink-1 truncate">
-            {Icon ? (
-              <Icon className="size-4 shrink-0" />
-            ) : (
-              Icons && (
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={open ? 'open' : 'close'}
-                    initial={{ scale: 0.9 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0.9 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    {open ? (
-                      <Icons.open className="size-4 shrink-0" />
-                    ) : (
-                      <Icons.close className="size-4 shrink-0" />
-                    )}
-                  </motion.span>
-                </AnimatePresence>
-              )
-            )}
+          <span className="flex [&_svg]:size-4 [&_svg]:shrink-0 items-center gap-2 shrink-1 truncate">
+            {icon
+              ? typeof icon !== 'string'
+                ? icon
+                : null
+              : icons && (
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={open ? 'open' : 'close'}
+                      initial={{ scale: 0.9 }}
+                      animate={{ scale: 1 }}
+                      exit={{ scale: 0.9 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      {open
+                        ? typeof icons.open !== 'string'
+                          ? icons.open
+                          : null
+                        : typeof icons.close !== 'string'
+                          ? icons.close
+                          : null}
+                    </motion.span>
+                  </AnimatePresence>
+                )}
             <span className="shrink-1 text-sm block truncate break-words">
               {children}
             </span>
@@ -158,7 +152,7 @@ const FolderTrigger = React.forwardRef<HTMLButtonElement, FolderTriggerProps>(
       >
         <FileButton
           open={isOpen}
-          icons={{ open: FolderOpenIcon, close: FolderIcon }}
+          icons={{ open: <FolderOpenIcon />, close: <FolderIcon /> }}
           className={className}
           sideComponent={sideComponent}
         >
@@ -231,7 +225,7 @@ const File = React.forwardRef<HTMLDivElement, FileProps>(
   ({ name, className, sideComponent, ...props }, ref) => (
     <FileButton
       ref={ref}
-      icon={FileIcon}
+      icon={<FileIcon />}
       className={className}
       sideComponent={sideComponent}
       {...props}

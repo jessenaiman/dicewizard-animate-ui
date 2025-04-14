@@ -30,6 +30,10 @@ const HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {
     props?.open ?? props?.defaultOpen ?? false,
   );
 
+  React.useEffect(() => {
+    if (props?.open !== undefined) setIsOpen(props.open);
+  }, [props?.open]);
+
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       setIsOpen(open);
@@ -39,11 +43,11 @@ const HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {
   );
 
   return (
-    <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>
-      <HoverCardContext.Provider value={{ isOpen }}>
+    <HoverCardContext.Provider value={{ isOpen }}>
+      <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>
         {children}
-      </HoverCardContext.Provider>
-    </HoverCardPrimitive.Root>
+      </HoverCardPrimitive.Root>
+    </HoverCardContext.Provider>
   );
 };
 

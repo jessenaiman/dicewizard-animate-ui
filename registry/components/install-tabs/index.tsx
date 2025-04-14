@@ -86,7 +86,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
       <Tabs
         ref={ref}
         className={cn(
-          'w-full gap-0 rounded-lg border overflow-hidden',
+          'w-full gap-0 bg-muted/50 rounded-xl border overflow-hidden',
           className,
         )}
         {...(props as Omit<
@@ -100,7 +100,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
         }}
       >
         <TabsList
-          className="w-full relative justify-between rounded-none h-9 bg-muted text-current py-0 px-4"
+          className="w-full relative justify-between rounded-none h-10 bg-muted border-b border-border/75 dark:border-border/50 text-current py-0 px-4"
           activeClassName="rounded-none shadow-none bg-transparent after:content-[''] after:absolute after:inset-x-0 after:h-0.5 after:bottom-0 dark:after:bg-white after:bg-black after:rounded-t-full"
         >
           <div className="flex gap-x-3 h-full">
@@ -121,12 +121,12 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
               content={commands[selectedCommand]}
               size="sm"
               variant="ghost"
-              className="-mr-2.5 bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+              className="-me-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/10"
               onCopy={onCopy}
             />
           )}
         </TabsList>
-        <TabsContents className="h-12 bg-background">
+        <TabsContents className="h-12">
           {highlightedCommands &&
             Object.entries(highlightedCommands).map(([command, val]) => (
               <TabsContent

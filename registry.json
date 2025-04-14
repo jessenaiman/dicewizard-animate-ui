@@ -1279,6 +1279,55 @@
       ]
     },
     {
+      "name": "radix-sheet-demo",
+      "type": "registry:ui",
+      "title": "Radix Sheet Demo",
+      "description": "Demo showing a sheet with radix dialog.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-sheet",
+        "button",
+        "label",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-sheet-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-sheet-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-sidebar-demo",
+      "type": "registry:ui",
+      "title": "Radix Sidebar Demo",
+      "description": "Demo showing a sidebar with radix components.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-sidebar",
+        "https://animate-ui.com/r/radix-collapsible",
+        "https://animate-ui.com/r/radix-dropdown-menu",
+        "use-mobile",
+        "avatar",
+        "breadcrumb",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/radix/radix-sidebar-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-sidebar-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-switch-demo",
       "type": "registry:ui",
       "title": "Radix Switch Demo",
@@ -1818,6 +1867,54 @@
           "path": "registry/radix/radix-radio-group/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/radix-radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-sheet",
+      "type": "registry:ui",
+      "title": "Radix Sheet",
+      "description": "Radix Sheet component",
+      "dependencies": [
+        "motion",
+        "class-variance-authority",
+        "lucide-react",
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radix-sidebar",
+      "type": "registry:ui",
+      "title": "Radix Sidebar",
+      "description": "Radix Sidebar component",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/radix-sheet",
+        "https://animate-ui.com/r/radix-tooltip",
+        "https://animate-ui.com/r/motion-highlight",
+        "use-mobile",
+        "button",
+        "input",
+        "label",
+        "separator",
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/radix/radix-sidebar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/radix-sidebar.tsx"
         }
       ]
     },

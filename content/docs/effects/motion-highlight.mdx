@@ -79,6 +79,90 @@ By using the `mode` property with the value `parent`, the `MotionHighlight` comp
 </MotionHighlight>
 ```
 
+### MotionHighlightItem asChild
+
+#### Children Mode
+
+```tsx
+// With asChild
+<MotionHighlight>
+  <MotionHighlightItem asChild>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem asChild>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative" id="item-1">
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]">Item 1</div>
+</div>
+<div className="relative" id="item-2">
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]">Item 2</div>
+</div>
+
+// Without asChild
+<MotionHighlight>
+  <MotionHighlightItem>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative" >
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]" id="item-1">Item 1</div>
+</div>
+<div className="relative" >
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]" id="item-2">Item 2</div>
+</div>
+```
+
+#### Parent Mode
+
+```tsx
+// With asChild
+<MotionHighlight mode="parent">
+  <MotionHighlightItem asChild>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem asChild>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative">
+  <div /> {/* Highlight */}
+  <div id="item-1">Item 1</div>
+  <div id="item-2">Item 2</div>
+</div>
+
+// Without asChild
+<MotionHighlight mode="parent">
+  <MotionHighlightItem>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative">
+  <div /> {/* Highlight */}
+  <div>
+    <div id="item-1">Item 1</div>
+  </div>
+  <div>
+    <div id="item-2">Item 2</div>
+  </div>
+</div>
+```
+
 ## Props
 
 ### MotionHighlight
@@ -170,6 +254,13 @@ By using the `mode` property with the value `parent`, the `MotionHighlight` comp
       required: false,
       default: 'undefined',
     },
+    forceUpdateBounds: {
+      description:
+        'Whether to force update the bounds of the motion highlight items (only used when mode is "parent")',
+      type: 'boolean',
+      required: false,
+      default: 'undefined',
+    },
   }}
 />
 
@@ -217,6 +308,26 @@ By using the `mode` property with the value `parent`, the `MotionHighlight` comp
       description: 'The delay of the exit of the motion highlight item',
       type: 'number',
       required: false,
+    },
+    withoutDataAttributes: {
+      description:
+        'Whether to not add data attributes to the component wrapped with the MotionHighlightItem',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    asChild: {
+      description: 'Whether to use the child component as the component',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    forceUpdateBounds: {
+      description:
+        'Whether to force update the bounds of the motion highlight item (only used when mode is "parent")',
+      type: 'boolean',
+      required: false,
+      default: 'undefined',
     },
   }}
 />

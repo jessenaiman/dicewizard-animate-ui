@@ -11,16 +11,21 @@ import { cn } from '@/lib/utils';
 import { Loader } from 'lucide-react';
 import { Suspense, useMemo } from 'react';
 import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
+import ReactIcon from '../icons/react-icon';
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   preview?: boolean;
+  iframe?: boolean;
+  bigScreen?: boolean;
 }
 
 export function ComponentPreview({
   name,
   className,
   preview = false,
+  iframe = false,
+  bigScreen = false,
   ...props
 }: ComponentPreviewProps) {
   const Code = useMemo(() => {
@@ -86,7 +91,7 @@ export function ComponentPreview({
 
         <TabsContents>
           <TabsContent value="preview" className="relative rounded-md">
-            <ComponentWrapper name={name}>
+            <ComponentWrapper name={name} iframe={iframe} bigScreen={bigScreen}>
               <Suspense
                 fallback={
                   <div className="flex items-center text-sm text-muted-foreground">
@@ -102,7 +107,12 @@ export function ComponentPreview({
           <TabsContent value="code">
             <div className="flex flex-col space-y-4">
               <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[400px] [&_pre]:overflow-auto">
-                <DynamicCodeBlock code={Code} lang="tsx" />
+                <DynamicCodeBlock
+                  code={Code}
+                  lang="tsx"
+                  title={`${name}.tsx`}
+                  icon={<ReactIcon />}
+                />
               </div>
             </div>
           </TabsContent>

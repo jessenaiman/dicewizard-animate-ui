@@ -26,6 +26,8 @@
     "radix/radix-popover",
     "radix/radix-progress",
     "radix/radix-radio-group",
+    "radix/radix-sheet",
+    "radix/radix-sidebar",
     "radix/radix-switch",
     "radix/radix-tabs",
     "radix/radix-toggle-group",

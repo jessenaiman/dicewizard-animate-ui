@@ -161,8 +161,8 @@ export const Hero = () => {
         <FloatingComponent className="absolute top-58 right-14">
           <Switch
             className="scale-125"
-            leftIcon={Sun}
-            rightIcon={Moon}
+            leftIcon={<Sun />}
+            rightIcon={<Moon />}
             checked={theme === 'dark'}
             onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
           />
