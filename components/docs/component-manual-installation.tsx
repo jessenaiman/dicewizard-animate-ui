@@ -1,6 +1,6 @@
 'use client';
 
-import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
 import { InstallTabs } from '@/registry/components/install-tabs';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { CollapsibleContent } from 'fumadocs-ui/components/ui/collapsible';
@@ -9,6 +9,7 @@ import { CollapsibleTrigger } from 'fumadocs-ui/components/ui/collapsible';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { useRef, useState } from 'react';
+import { track } from '@vercel/analytics';
 
 const getDepsCommands = (dependencies?: string[]) => {
   if (!dependencies) return undefined;
@@ -32,11 +33,13 @@ const getRegistryDepsCommands = (dependencies?: string[]) => {
 };
 
 export const ComponentManualInstallation = ({
+  name,
   dependencies,
   devDependencies,
   registryDependencies,
   code,
 }: {
+  name: string;
   dependencies?: string[];
   devDependencies?: string[];
   registryDependencies?: string[];
@@ -93,7 +96,15 @@ export const ComponentManualInstallation = ({
                     : '[&_pre]:overflow-auto]',
                 )}
               >
-                <DynamicCodeBlock code={code} lang="tsx" />
+                <DynamicCodeBlock
+                  code={code}
+                  lang="tsx"
+                  onCopy={() => {
+                    track('Manual Code Copy', {
+                      component: name,
+                    });
+                  }}
+                />
               </div>
             </CollapsibleContent>
             <div

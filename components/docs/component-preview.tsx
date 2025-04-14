@@ -10,7 +10,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Loader } from 'lucide-react';
 import { Suspense, useMemo } from 'react';
-import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;

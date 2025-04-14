@@ -22,6 +22,7 @@ type InstallTabsProps = {
     dark: string;
   };
   copyButton?: boolean;
+  onCopy?: (content: string) => void;
 } & Omit<TabsProps, 'children'>;
 
 const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
@@ -38,6 +39,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
       value,
       onValueChange,
       copyButton = true,
+      onCopy,
       ...props
     },
     ref,
@@ -119,7 +121,8 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
               content={commands[selectedCommand]}
               size="sm"
               variant="ghost"
-              className="-mr-2.5 bg-transparent hover:bg-neutral-300 dark:hover:bg-neutral-700"
+              className="-mr-2.5 bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+              onCopy={onCopy}
             />
           )}
         </TabsList>
@@ -132,7 +135,7 @@ const InstallTabs = React.forwardRef<HTMLDivElement, InstallTabsProps>(
                 value={command}
               >
                 <div
-                  className="[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-sm"
+                  className="[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px]"
                   dangerouslySetInnerHTML={{ __html: val }}
                 />
               </TabsContent>

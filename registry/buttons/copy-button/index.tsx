@@ -39,29 +39,65 @@ const buttonVariants = cva(
 );
 
 interface CopyButtonProps
-  extends Omit<HTMLMotionProps<'button'>, 'children'>,
+  extends Omit<HTMLMotionProps<'button'>, 'children' | 'onCopy'>,
     VariantProps<typeof buttonVariants> {
-  content: string;
+  content?: string;
   delay?: number;
+  onCopy?: (content: string) => void;
+  isCopied?: boolean;
+  onCopyChange?: (isCopied: boolean) => void;
 }
 
 const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
-  ({ content, className, size, variant, delay = 3000, ...props }, ref) => {
-    const [isCopied, setIsCopied] = React.useState(false);
-    const Icon = isCopied ? CheckIcon : CopyIcon;
+  (
+    {
+      content,
+      className,
+      size,
+      variant,
+      delay = 3000,
+      onClick,
+      onCopy,
+      isCopied,
+      onCopyChange,
+      ...props
+    },
+    ref,
+  ) => {
+    const [localIsCopied, setLocalIsCopied] = React.useState(isCopied ?? false);
+    const Icon = localIsCopied ? CheckIcon : CopyIcon;
 
-    const handleCopy = React.useCallback(() => {
-      if (isCopied) return;
-      navigator.clipboard
-        .writeText(content)
-        .then(() => {
-          setIsCopied(true);
-          setTimeout(() => setIsCopied(false), delay);
-        })
-        .catch((error) => {
-          console.error('Error copying command', error);
-        });
-    }, [isCopied, content, delay]);
+    React.useEffect(() => {
+      setLocalIsCopied(isCopied ?? false);
+    }, [isCopied]);
+
+    const handleIsCopied = React.useCallback(
+      (isCopied: boolean) => {
+        setLocalIsCopied(isCopied);
+        onCopyChange?.(isCopied);
+      },
+      [onCopyChange],
+    );
+
+    const handleCopy = React.useCallback(
+      (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (isCopied) return;
+        if (content) {
+          navigator.clipboard
+            .writeText(content)
+            .then(() => {
+              handleIsCopied(true);
+              setTimeout(() => handleIsCopied(false), delay);
+              onCopy?.(content);
+            })
+            .catch((error) => {
+              console.error('Error copying command', error);
+            });
+        }
+        onClick?.(e);
+      },
+      [isCopied, content, delay, onClick, onCopy, handleIsCopied],
+    );
 
     return (
       <motion.button

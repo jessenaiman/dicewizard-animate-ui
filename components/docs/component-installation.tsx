@@ -1,3 +1,7 @@
+'use client';
+
+import { track } from '@vercel/analytics';
+
 import { index } from '@/__registry__';
 import { cn } from '@/lib/utils';
 import {
@@ -58,10 +62,19 @@ export function ComponentInstallation({
 
         <TabsContents>
           <TabsContent value="cli">
-            <InstallTabs commands={commands} />
+            <InstallTabs
+              commands={commands}
+              onCopy={(content) =>
+                track('CLI Copy Command', {
+                  component: name,
+                  command: content,
+                })
+              }
+            />
           </TabsContent>
           <TabsContent value="manual">
             <ComponentManualInstallation
+              name={name}
               dependencies={component.dependencies}
               devDependencies={component.devDependencies}
               registryDependencies={component.registryDependencies}

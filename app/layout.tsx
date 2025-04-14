@@ -1,6 +1,7 @@
 import { RootProvider } from 'fumadocs-ui/provider';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 
 import './global.css';
 import { Providers } from './providers';
@@ -100,6 +101,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <RootProvider theme={{ defaultTheme: 'dark' }}>
           <Providers>{children}</Providers>
         </RootProvider>
+
+        <Analytics />
       </body>
     </html>
   );

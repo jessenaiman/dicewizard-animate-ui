@@ -19,7 +19,7 @@ author:
     content: {
       description: 'The content to copy to the clipboard.',
       type: 'string',
-      required: true,
+      required: false,
     },
     delay: {
       description: 'The delay in milliseconds before the button resets.',
@@ -38,6 +38,11 @@ author:
       type: "'default' | 'muted' | 'outline' | 'secondary' | 'ghost'",
       required: false,
       default: 'default',
+    },
+    onCopy: {
+      description: 'The function to call when copy is successful.',
+      type: '(content: string) => void',
+      required: false,
     },
   }}
 />

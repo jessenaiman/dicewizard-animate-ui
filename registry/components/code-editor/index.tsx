@@ -7,7 +7,8 @@ import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 import { CopyButton } from '@/registry/buttons/copy-button';
 
-interface CodeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CodeEditorProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onCopy'> {
   code: string;
   lang: string;
   themes?: {
@@ -25,6 +26,7 @@ interface CodeEditorProps extends React.HTMLAttributes<HTMLDivElement> {
   writing?: boolean;
   title?: string;
   onDone?: () => void;
+  onCopy?: (content: string) => void;
 }
 
 const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
@@ -48,6 +50,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
       writing = true,
       title,
       onDone,
+      onCopy,
       ...props
     },
     ref,
@@ -144,7 +147,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
       <div
         ref={ref}
         className={cn(
-          'bg-background w-[600px] h-[400px] border border-border text-white overflow-hidden flex flex-col rounded-xl',
+          'bg-background w-[600px] h-[400px] border border-border overflow-hidden flex flex-col rounded-xl',
           className,
         )}
         {...props}
@@ -167,7 +170,9 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
               <CopyButton
                 content={code}
                 size="sm"
-                className="size-7 [&_svg]:size-3.5 bg-transparent hover:bg-neutral-800 text-white"
+                variant="ghost"
+                className="size-7 [&_svg]:size-3.5 bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                onCopy={onCopy}
               />
             )}
           </div>
@@ -178,7 +183,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         >
           <div
             className={cn(
-              '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-sm',
+              '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px]',
               cursor &&
                 !isDone &&
                 "[&_.line:last-of-type::after]:content-['|'] [&_.line:last-of-type::after]:animate-pulse [&_.line:last-of-type::after]:inline-block [&_.line:last-of-type::after]:w-[1ch] [&_.line:last-of-type::after]:-translate-px",
