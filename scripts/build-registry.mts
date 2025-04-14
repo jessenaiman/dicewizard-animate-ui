@@ -11,10 +11,11 @@ import { rimraf } from 'rimraf';
 function replaceRegistryPaths(inputStr: string) {
   return inputStr.replace(/(["'])([\s\S]*?)\1/g, (match, quote, content) => {
     if (content.startsWith('@/registry/')) {
-      const rest = content.slice(11); // 11 = length of "@/registry/"
+      const rest = content.slice(11);
       const segments = rest.split('/');
-      if (segments.length === 2) {
-        return `${quote}@/components/animate-ui/${segments[1]}${quote}`;
+      if (segments.length >= 2) {
+        const newPath = segments.slice(1).join('/');
+        return `${quote}@/components/animate-ui/${newPath}${quote}`;
       }
     }
     return match;

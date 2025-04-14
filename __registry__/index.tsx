@@ -278,6 +278,33 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/github-stars-button',
   },
+  'icon-button': {
+    name: 'icon-button',
+    description: 'An icon button component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/buttons/icon-button/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icon-button.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst sizes = {\n  default: 'size-8 [&_svg]:size-5',\n  sm: 'size-6 [&_svg]:size-4',\n  md: 'size-10 [&_svg]:size-6',\n  lg: 'size-12 [&_svg]:size-7',\n};\n\nconst animations = {\n  pulse: {\n    initial: { scale: 1.2, opacity: 0 },\n    animate: { scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] },\n    transition: { duration: 1.2, ease: 'easeInOut' },\n  },\n  glow: {\n    initial: { scale: 1, opacity: 0 },\n    animate: { scale: [1, 1.5], opacity: [0.8, 0] },\n    transition: { duration: 0.8, ease: 'easeOut' },\n  },\n  particle: (index: number) => ({\n    initial: { x: '50%', y: '50%', scale: 0, opacity: 0 },\n    animate: {\n      x: `calc(50% + ${Math.cos((index * Math.PI) / 3) * 30}px)`,\n      y: `calc(50% + ${Math.sin((index * Math.PI) / 3) * 30}px)`,\n      scale: [0, 1, 0],\n      opacity: [0, 1, 0],\n    },\n    transition: { duration: 0.8, delay: index * 0.05, ease: 'easeOut' },\n  }),\n};\n\ninterface IconButtonProps extends Omit<HTMLMotionProps<'button'>, 'color'> {\n  icon: React.ElementType;\n  active?: boolean;\n  className?: string;\n  animate?: boolean;\n  size?: keyof typeof sizes;\n  color?: [number, number, number];\n  transition?: Transition;\n}\n\nconst IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(\n  (\n    {\n      icon: Icon,\n      className,\n      active = false,\n      animate = true,\n      size = 'default',\n      color = [59, 130, 246],\n      transition = { type: 'spring', stiffness: 300, damping: 15 },\n      ...props\n    },\n    ref,\n  ) => {\n    const MotionIcon = motion(Icon);\n\n    return (\n      <motion.button\n        ref={ref}\n        className={cn(\n          `group/icon-button cursor-pointer relative inline-flex size-10 shrink-0 rounded-full hover:bg-[var(--icon-button-color)]/10 active:bg-[var(--icon-button-color)]/20 text-[var(--icon-button-color)]`,\n          sizes[size],\n          className,\n        )}\n        whileHover={{ scale: 1.05 }}\n        whileTap={{ scale: 0.95 }}\n        style={\n          {\n            '--icon-button-color': `rgb(${color[0]}, ${color[1]}, ${color[2]})`,\n          } as React.CSSProperties\n        }\n        {...props}\n      >\n        <Icon\n          className=\"absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 stroke-muted-foreground group-hover/icon-button:stroke-[var(--icon-button-color)]\"\n          aria-hidden=\"true\"\n        />\n        <AnimatePresence mode=\"wait\">\n          {active && (\n            <MotionIcon\n              className=\"absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[var(--icon-button-color)] fill-[var(--icon-button-color)]\"\n              aria-hidden=\"true\"\n              initial={{ opacity: 0, scale: 0 }}\n              animate={{ opacity: 1, scale: 1 }}\n              exit={{ opacity: 0, scale: 0 }}\n              transition={transition}\n            />\n          )}\n        </AnimatePresence>\n\n        <AnimatePresence>\n          {animate && active && (\n            <>\n              <motion.div\n                className=\"absolute inset-0 z-10 rounded-full \"\n                style={{\n                  background: `radial-gradient(circle, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.4) 0%, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0) 70%)`,\n                }}\n                {...animations.pulse}\n              />\n              <motion.div\n                className=\"absolute inset-0 z-10 rounded-full\"\n                style={{\n                  boxShadow: `0 0 10px 2px rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.6)`,\n                }}\n                {...animations.glow}\n              />\n              {[...Array(6)].map((_, i) => (\n                <motion.div\n                  key={i}\n                  className=\"absolute w-1 h-1 rounded-full bg-[var(--icon-button-color)]\"\n                  initial={animations.particle(i).initial}\n                  animate={animations.particle(i).animate}\n                  transition={animations.particle(i).transition}\n                />\n              ))}\n            </>\n          )}\n        </AnimatePresence>\n      </motion.button>\n    );\n  },\n);\n\nIconButton.displayName = 'IconButton';\n\nexport { IconButton, sizes, type IconButtonProps };",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import('@/registry/buttons/icon-button/index.tsx');
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/icon-button',
+  },
   'input-button': {
     name: 'input-button',
     description: 'A input button component',
@@ -940,6 +967,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/github-stars-button-demo',
+  },
+  'icon-button-demo': {
+    name: 'icon-button-demo',
+    description: 'Demo showing an icon button.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/icon-button'],
+    files: [
+      {
+        path: 'registry/demo/buttons/icon-button-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icon-button-demo.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Star } from 'lucide-react';\n\nimport { IconButton } from '@/components/animate-ui/icon-button';\n\nexport const IconButtonDemo = () => {\n  const [active, setActive] = React.useState(false);\n\n  return (\n    <IconButton\n      icon={Star}\n      active={active}\n      onClick={() => setActive(!active)}\n    />\n  );\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/buttons/icon-button-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/icon-button-demo',
   },
   'input-button-demo': {
     name: 'input-button-demo',
@@ -1992,10 +2048,12 @@ export const index: Record<string, any> = {
     name: 'radix-popover-datepicker-demo',
     description: 'Radix Popover DatePicker',
     type: 'registry:ui',
-    dependencies: undefined,
+    dependencies: ['date-fns', 'lucide-react'],
     devDependencies: undefined,
     registryDependencies: [
       'https://animate-ui.com/r/radix-popover-datepicker-demo',
+      'button',
+      'calendar',
     ],
     files: [
       {
@@ -2003,7 +2061,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-popover-datepicker-demo.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { format } from 'date-fns';\nimport { CalendarIcon } from 'lucide-react';\n\nimport { cn } from '@/lib/utils';\nimport { Button } from '@/components/ui/button';\nimport { Calendar } from '@/components/ui/calendar';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/registry/radix/radix-popover/index';\n\nexport function DatePickerDemo() {\n  const [date, setDate] = React.useState<Date>();\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button\n          variant={'outline'}\n          className={cn(\n            'w-[240px] justify-start text-left font-normal',\n            !date && 'text-muted-foreground',\n          )}\n        >\n          <CalendarIcon />\n          {date ? format(date, 'PPP') : <span>Pick a date</span>}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          initialFocus\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}",
+          "'use client';\n\nimport * as React from 'react';\nimport { format } from 'date-fns';\nimport { CalendarIcon } from 'lucide-react';\n\nimport { cn } from '@/lib/utils';\nimport { Button } from '@/components/ui/button';\nimport { Calendar } from '@/components/ui/calendar';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/components/animate-ui/radix-popover';\n\nexport function DatePickerDemo() {\n  const [date, setDate] = React.useState<Date>();\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button\n          variant={'outline'}\n          className={cn(\n            'w-[240px] justify-start text-left font-normal',\n            !date && 'text-muted-foreground',\n          )}\n        >\n          <CalendarIcon />\n          {date ? format(date, 'PPP') : <span>Pick a date</span>}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          initialFocus\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}",
       },
     ],
     component: React.lazy(async () => {

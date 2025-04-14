@@ -11,7 +11,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/registry/radix/radix-popover/index';
+} from '@/registry/radix/radix-popover';
 
 export function DatePickerDemo() {
   const [date, setDate] = React.useState<Date>();
