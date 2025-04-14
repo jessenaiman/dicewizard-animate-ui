@@ -41,6 +41,7 @@
     "buttons/copy-button",
     "buttons/flip-button",
     "buttons/github-stars-button",
+    "buttons/icon-button",
     "buttons/input-button",
     "buttons/liquid-button",
     "buttons/ripple-button",
