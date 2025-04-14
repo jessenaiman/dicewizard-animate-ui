@@ -53,5 +53,14 @@ export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
       </Badge>
     );
   }
+
+  if ('updated' in data && typeof data.updated === 'boolean' && data.updated) {
+    node.name = (
+      <Badge name={node.name} className="bg-emerald-500">
+        updated
+      </Badge>
+    );
+  }
+
   return node;
 };
