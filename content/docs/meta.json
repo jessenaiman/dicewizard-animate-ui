@@ -16,7 +16,7 @@
     "---Effects---",
     "effects/motion-effect",
     "effects/motion-highlight",
-    "---Radix UI---",
+    "---Radix UI / Shadcn UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",
     "radix/radix-collapsible",
