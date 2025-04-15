@@ -75,9 +75,10 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const DATA = {
   user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: 'Skyleen',
+    email: 'skyleen@example.com',
+    avatar:
+      'https://pbs.twimg.com/profile_images/1909615404789506048/MTqvRsjo_400x400.jpg',
   },
   teams: [
     {
