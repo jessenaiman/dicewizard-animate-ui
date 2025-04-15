@@ -18,8 +18,8 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
     isClient && (
       <Switch
         className={className}
-        leftIcon={Sun}
-        rightIcon={Moon}
+        leftIcon={<Sun />}
+        rightIcon={<Moon />}
         checked={theme === 'dark'}
         onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
       />

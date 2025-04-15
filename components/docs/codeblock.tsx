@@ -46,7 +46,6 @@ export const CodeBlock = forwardRef<HTMLElement, CodeBlockProps>(
     {
       title,
       allowCopy = true,
-      keepBackground = false,
       icon,
       viewportProps,
       onCopy: onCopyEvent,
@@ -79,16 +78,18 @@ export const CodeBlock = forwardRef<HTMLElement, CodeBlockProps>(
         ref={ref}
         {...props}
         className={cn(
-          'not-prose group fd-codeblock relative my-6 overflow-hidden rounded-xl border bg-fd-secondary/50 text-sm',
-          keepBackground && 'bg-(--shiki-light-bg) dark:bg-(--shiki-dark-bg)',
-          props.className,
+          'not-prose group fd-codeblock relative my-6 overflow-hidden rounded-xl border border-border bg-muted/50 text-sm',
+          props.className?.replace(
+            'shiki shiki-themes github-light github-dark',
+            '',
+          ),
         )}
       >
         {title ? (
-          <div className="flex flex-row items-center gap-2 border-b bg-fd-muted px-4 h-10">
+          <div className="flex flex-row items-center gap-2 bg-muted border-b border-border/75 dark:border-border/50 px-4 h-10">
             {icon ? (
               <div
-                className="text-fd-muted-foreground [&_svg]:size-3.5"
+                className="text-muted-foreground [&_svg]:size-3.5"
                 dangerouslySetInnerHTML={
                   typeof icon === 'string' ? { __html: icon } : undefined
                 }
@@ -96,14 +97,14 @@ export const CodeBlock = forwardRef<HTMLElement, CodeBlockProps>(
                 {typeof icon !== 'string' ? icon : null}
               </div>
             ) : null}
-            <figcaption className="flex-1 truncate text-fd-muted-foreground">
+            <figcaption className="flex-1 truncate text-muted-foreground">
               {title}
             </figcaption>
             {allowCopy ? (
               <CopyButton
                 size="sm"
                 variant="ghost"
-                className="-me-2 bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                className="-me-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/10"
                 onClick={onCopy}
                 isCopied={isCopied}
               />
@@ -114,7 +115,7 @@ export const CodeBlock = forwardRef<HTMLElement, CodeBlockProps>(
             <CopyButton
               size="sm"
               variant="ghost"
-              className="absolute right-2 top-2 z-[2] backdrop-blur-md bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+              className="absolute right-2 top-2 z-[2] backdrop-blur-md bg-transparent hover:bg-black/5 dark:hover:bg-white/10"
               onClick={onCopy}
               isCopied={isCopied}
             />

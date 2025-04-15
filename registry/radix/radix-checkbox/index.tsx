@@ -19,8 +19,8 @@ const Checkbox = React.forwardRef<
   );
 
   React.useEffect(() => {
-    setIsChecked(props?.checked ?? props?.defaultChecked ?? false);
-  }, [props?.checked, props?.defaultChecked]);
+    if (props?.checked !== undefined) setIsChecked(props.checked);
+  }, [props?.checked]);
 
   return (
     <CheckboxPrimitive.Root

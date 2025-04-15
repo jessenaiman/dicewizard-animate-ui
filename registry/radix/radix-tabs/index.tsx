@@ -77,7 +77,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       return () => {
         observer.disconnect();
       };
-    }, []);
+    }, [getActiveValue]);
 
     return (
       <MotionHighlight

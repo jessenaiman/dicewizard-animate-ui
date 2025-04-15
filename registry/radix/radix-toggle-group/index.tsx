@@ -82,26 +82,26 @@ const ToggleGroup = React.forwardRef<
     ref,
   ) => {
     return (
-      <ToggleGroupPrimitive.Root
-        ref={ref}
-        className={cn(
-          'flex items-center justify-center gap-1 relative',
-          className,
-        )}
-        {...props}
+      <ToggleGroupContext.Provider
+        value={{
+          variant,
+          size,
+          type: props.type,
+          transition,
+          activeClassName,
+        }}
       >
-        <ToggleGroupContext.Provider
-          value={{
-            variant,
-            size,
-            type: props.type,
-            transition,
-            activeClassName,
-          }}
+        <ToggleGroupPrimitive.Root
+          ref={ref}
+          className={cn(
+            'flex items-center justify-center gap-1 relative',
+            className,
+          )}
+          {...props}
         >
           {children}
-        </ToggleGroupContext.Provider>
-      </ToggleGroupPrimitive.Root>
+        </ToggleGroupPrimitive.Root>
+      </ToggleGroupContext.Provider>
     );
   },
 );

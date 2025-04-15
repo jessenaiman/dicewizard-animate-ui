@@ -43,15 +43,15 @@ const AccordionItem = React.forwardRef<
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <AccordionPrimitive.Item
-      ref={ref}
-      className={cn('border-b', className)}
-      {...props}
-    >
-      <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>
+    <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>
+      <AccordionPrimitive.Item
+        ref={ref}
+        className={cn('border-b', className)}
+        {...props}
+      >
         {children}
-      </AccordionItemContext.Provider>
-    </AccordionPrimitive.Item>
+      </AccordionPrimitive.Item>
+    </AccordionItemContext.Provider>
   );
 });
 AccordionItem.displayName = 'AccordionItem';

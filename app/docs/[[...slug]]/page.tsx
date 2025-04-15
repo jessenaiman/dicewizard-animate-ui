@@ -13,6 +13,11 @@ import { ComponentInstallation } from '@/components/docs/component-installation'
 import { ExternalLink } from '@/components/docs/external-link';
 import { Steps, Step } from 'fumadocs-ui/components/steps';
 import { Footer } from '@/components/docs/footer';
+import {
+  CodeBlock,
+  type CodeBlockProps,
+  Pre,
+} from '@/components/docs/codeblock';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -42,6 +47,11 @@ export default async function Page(props: {
             ExternalLink,
             Steps,
             Step,
+            pre: (props: CodeBlockProps) => (
+              <CodeBlock {...props} keepBackground={false} className="">
+                <Pre>{props.children}</Pre>
+              </CodeBlock>
+            ),
           }}
         />
       </DocsBody>

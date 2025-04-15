@@ -27,6 +27,10 @@ const Collapsible: React.FC<CollapsibleProps> = ({ children, ...props }) => {
     props?.open ?? props?.defaultOpen ?? false,
   );
 
+  React.useEffect(() => {
+    if (props?.open !== undefined) setIsOpen(props.open);
+  }, [props?.open]);
+
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       setIsOpen(open);
@@ -36,11 +40,11 @@ const Collapsible: React.FC<CollapsibleProps> = ({ children, ...props }) => {
   );
 
   return (
-    <CollapsiblePrimitive.Root {...props} onOpenChange={handleOpenChange}>
-      <CollapsibleContext.Provider value={{ isOpen }}>
+    <CollapsibleContext.Provider value={{ isOpen }}>
+      <CollapsiblePrimitive.Root {...props} onOpenChange={handleOpenChange}>
         {children}
-      </CollapsibleContext.Provider>
-    </CollapsiblePrimitive.Root>
+      </CollapsiblePrimitive.Root>
+    </CollapsibleContext.Provider>
   );
 };
 

@@ -30,6 +30,10 @@ const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
     props?.open ?? props?.defaultOpen ?? false,
   );
 
+  React.useEffect(() => {
+    if (props?.open !== undefined) setIsOpen(props.open);
+  }, [props?.open]);
+
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       setIsOpen(open);
@@ -39,11 +43,11 @@ const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
   );
 
   return (
-    <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>
-      <PopoverContext.Provider value={{ isOpen }}>
+    <PopoverContext.Provider value={{ isOpen }}>
+      <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>
         {children}
-      </PopoverContext.Provider>
-    </PopoverPrimitive.Root>
+      </PopoverPrimitive.Root>
+    </PopoverContext.Provider>
   );
 };
 

@@ -18,6 +18,8 @@ interface CodeEditorProps
   duration?: number;
   delay?: number;
   header?: boolean;
+  dots?: boolean;
+  icon?: React.ReactNode;
   cursor?: boolean;
   inView?: boolean;
   inViewMargin?: UseInViewOptions['margin'];
@@ -42,6 +44,8 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
       delay = 0,
       className,
       header = true,
+      dots = true,
+      icon,
       cursor = false,
       inView = false,
       inViewMargin = '0px',
@@ -147,35 +151,64 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
       <div
         ref={ref}
         className={cn(
-          'bg-background w-[600px] h-[400px] border border-border overflow-hidden flex flex-col rounded-xl',
+          'relative bg-muted/50 w-[600px] h-[400px] border border-border overflow-hidden flex flex-col rounded-xl',
           className,
         )}
         {...props}
       >
-        {header && (
-          <div className="bg-muted relative flex flex-row items-center justify-between gap-y-2 h-11 pl-4 pr-2">
-            <div className="flex flex-row gap-x-2">
-              <div className="size-2.5 rounded-full bg-red-500"></div>
-              <div className="size-2.5 rounded-full bg-yellow-500"></div>
-              <div className="size-2.5 rounded-full bg-green-500"></div>
-            </div>
+        {header ? (
+          <div className="bg-muted border-b border-border/75 dark:border-border/50 relative flex flex-row items-center justify-between gap-y-2 h-10 px-4">
+            {dots && (
+              <div className="flex flex-row gap-x-2">
+                <div className="size-2 rounded-full bg-red-500"></div>
+                <div className="size-2 rounded-full bg-yellow-500"></div>
+                <div className="size-2 rounded-full bg-green-500"></div>
+              </div>
+            )}
 
             {title && (
-              <p className="absolute max-w-[50%] truncate left-1/2 -translate-x-1/2 text-sm text-neutral-500">
-                {title}
-              </p>
+              <div
+                className={cn(
+                  'flex flex-row items-center gap-2',
+                  dots &&
+                    'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+                )}
+              >
+                {icon ? (
+                  <div
+                    className="text-muted-foreground [&_svg]:size-3.5"
+                    dangerouslySetInnerHTML={
+                      typeof icon === 'string' ? { __html: icon } : undefined
+                    }
+                  >
+                    {typeof icon !== 'string' ? icon : null}
+                  </div>
+                ) : null}
+                <figcaption className="flex-1 truncate text-muted-foreground text-[13px]">
+                  {title}
+                </figcaption>
+              </div>
             )}
 
-            {copyButton && (
+            {copyButton ? (
               <CopyButton
-                content={code}
                 size="sm"
                 variant="ghost"
-                className="size-7 [&_svg]:size-3.5 bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                className="-me-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/10"
                 onCopy={onCopy}
               />
-            )}
+            ) : null}
           </div>
+        ) : (
+          copyButton && (
+            <CopyButton
+              content={code}
+              size="sm"
+              variant="ghost"
+              className="absolute right-2 top-2 z-[2] backdrop-blur-md bg-transparent hover:bg-black/5 dark:hover:bg-white/10"
+              onCopy={onCopy}
+            />
+          )
         )}
         <div
           ref={editorRef}
