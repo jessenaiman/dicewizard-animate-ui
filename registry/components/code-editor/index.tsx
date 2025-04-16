@@ -9,7 +9,7 @@ import { CopyButton } from '@/registry/buttons/copy-button';
 
 interface CodeEditorProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onCopy'> {
-  code: string;
+  children: string;
   lang: string;
   themes?: {
     light: string;
@@ -34,7 +34,7 @@ interface CodeEditorProps
 const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
   (
     {
-      code,
+      children: code,
       lang,
       themes = {
         light: 'github-light',
