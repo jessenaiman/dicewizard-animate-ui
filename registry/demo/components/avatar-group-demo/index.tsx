@@ -25,6 +25,11 @@ const AVATARS = [
     fallback: 'GR',
     tooltip: 'Guillermo Rauch',
   },
+  {
+    src: 'https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg',
+    fallback: 'JH',
+    tooltip: 'Jhey',
+  },
 ];
 
 export const AvatarGroupDemo = () => {
