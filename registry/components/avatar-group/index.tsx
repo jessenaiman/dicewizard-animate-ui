@@ -35,6 +35,7 @@ const Avatar: React.FC<AvatarProps> = ({
         <motion.div
           initial="initial"
           whileHover="hover"
+          whileTap="hover"
           className="relative"
           style={{
             zIndex: invertZIndex
