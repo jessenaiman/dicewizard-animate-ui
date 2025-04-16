@@ -57,6 +57,19 @@ type HoverCardTriggerProps = React.ComponentPropsWithoutRef<
 
 const HoverCardTrigger = HoverCardPrimitive.Trigger;
 
+const getInitialPosition = (side: 'top' | 'bottom' | 'left' | 'right') => {
+  switch (side) {
+    case 'top':
+      return { y: 15 };
+    case 'bottom':
+      return { y: -15 };
+    case 'left':
+      return { x: 15 };
+    case 'right':
+      return { x: -15 };
+  }
+};
+
 type HoverCardContentProps = React.ComponentPropsWithoutRef<
   typeof HoverCardPrimitive.Content
 > & {
@@ -71,6 +84,7 @@ const HoverCardContent = React.forwardRef<
     {
       className,
       align = 'center',
+      side = 'bottom',
       sideOffset = 4,
       transition = { type: 'spring', stiffness: 300, damping: 25 },
       children,
@@ -79,6 +93,7 @@ const HoverCardContent = React.forwardRef<
     ref,
   ) => {
     const { isOpen } = useHoverCard();
+    const initialPosition = getInitialPosition(side);
 
     return (
       <AnimatePresence>
@@ -94,9 +109,9 @@ const HoverCardContent = React.forwardRef<
             >
               <motion.div
                 key="hover-card"
-                initial={{ opacity: 0, scale: 0.5, y: 25 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.5, y: 25 }}
+                initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
+                animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
                 transition={transition}
                 className={cn(
                   'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
