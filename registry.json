@@ -232,6 +232,25 @@
       ]
     },
     {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "Avatar group component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/avatar-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group.tsx"
+        }
+      ]
+    },
+    {
       "name": "code-editor",
       "type": "registry:ui",
       "title": "Code Editor",
@@ -360,6 +379,22 @@
           "path": "registry/components/tabs/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/tooltip.tsx"
         }
       ]
     },
@@ -655,6 +690,22 @@
       ]
     },
     {
+      "name": "avatar-group-demo",
+      "type": "registry:ui",
+      "title": "Avatar Group Demo",
+      "description": "Demo showing an animated avatar group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/avatar-group-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "code-editor-demo",
       "type": "registry:ui",
       "title": "Code Editor Demo",
@@ -802,6 +853,22 @@
           "path": "registry/demo/components/tabs-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/tabs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-demo",
+      "type": "registry:ui",
+      "title": "Tooltip Demo",
+      "description": "Demo showing an animated tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/tooltip-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/tooltip-demo.tsx"
         }
       ]
     },

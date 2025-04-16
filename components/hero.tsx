@@ -141,7 +141,7 @@ export const Hero = () => {
         <FloatingComponent className="absolute top-28 right-4">
           <InstallTabs
             defaultValue="pnpm"
-            className="max-w-[500px]"
+            className="max-w-[520px]"
             commands={COMMANDS}
           />
         </FloatingComponent>

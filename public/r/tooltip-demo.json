@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-demo",
+  "type": "registry:ui",
+  "title": "Tooltip Demo",
+  "description": "Demo showing an animated tooltip.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/tooltip-demo/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/components/animate-ui/tooltip';\nimport React from 'react';\n\nexport const TooltipDemo = () => {\n  return (\n    <TooltipProvider>\n      <div className=\"flex flex-col gap-5 justify-center items-center\">\n        <div className=\"flex flex-row gap-5 border rounded-lg p-5\">\n          <Tooltip>\n            <TooltipTrigger>\n              <Button variant=\"outline\">Docs</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>Documentation</p>\n            </TooltipContent>\n          </Tooltip>\n          <Tooltip>\n            <TooltipTrigger>\n              <Button variant=\"outline\">API</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>API Reference</p>\n            </TooltipContent>\n          </Tooltip>\n          <Tooltip>\n            <TooltipTrigger>\n              <Button variant=\"outline\">Guide</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>User Guide</p>\n            </TooltipContent>\n          </Tooltip>\n        </div>\n        <div className=\"flex flex-row gap-5\">\n          <Tooltip>\n            <TooltipTrigger>\n              <Button variant=\"outline\">Repo</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>GitHub</p>\n            </TooltipContent>\n          </Tooltip>\n        </div>\n      </div>\n    </TooltipProvider>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/tooltip-demo.tsx"
+    }
+  ]
+}
