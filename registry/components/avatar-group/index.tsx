@@ -16,7 +16,7 @@ import {
 interface AvatarProps extends TooltipProps {
   children: React.ReactNode;
   index: number;
-  invertZIndex: boolean;
+  zIndex: number;
   transition: Transition;
   translate: string | number;
 }
@@ -24,57 +24,49 @@ interface AvatarProps extends TooltipProps {
 const Avatar: React.FC<AvatarProps> = ({
   children,
   index,
-  invertZIndex,
+  zIndex,
   transition,
   translate,
   ...props
-}: AvatarProps) => {
-  return (
-    <Tooltip {...props}>
-      <TooltipTrigger>
+}: AvatarProps) => (
+  <Tooltip {...props}>
+    <TooltipTrigger>
+      <motion.div
+        initial="initial"
+        whileHover="hover"
+        whileTap="hover"
+        className="relative"
+        style={{ zIndex }}
+      >
         <motion.div
-          initial="initial"
-          whileHover="hover"
-          whileTap="hover"
-          className="relative"
-          style={{
-            zIndex: invertZIndex
-              ? React.Children.count(children) - index
-              : index,
+          variants={{
+            initial: { translateY: 0 },
+            hover: { translateY: translate },
           }}
+          transition={transition}
         >
-          <motion.div
-            variants={{
-              initial: { translateY: 0 },
-              hover: { translateY: translate },
-            }}
-            transition={transition}
-          >
-            {children}
-          </motion.div>
+          {children}
         </motion.div>
-      </TooltipTrigger>
-    </Tooltip>
-  );
-};
+      </motion.div>
+    </TooltipTrigger>
+  </Tooltip>
+);
 
 type AvatarGroupTooltipProps = TooltipContentProps;
 
 const AvatarGroupTooltip: React.FC<AvatarGroupTooltipProps> = ({
   children,
   ...props
-}) => {
-  return <TooltipContent {...props}>{children}</TooltipContent>;
-};
+}) => <TooltipContent {...props}>{children}</TooltipContent>;
 AvatarGroupTooltip.displayName = 'AvatarGroupTooltip';
 
 interface AvatarGroupProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'translate'> {
   children: React.ReactElement[];
   transition?: Transition;
-  invertZIndex?: boolean;
+  invertOverlap?: boolean;
   translate?: string | number;
-  tooltipProps?: TooltipProps;
+  tooltipProps?: Omit<TooltipProps, 'children'>;
 }
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
@@ -83,36 +75,36 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
       children,
       className,
       transition = { type: 'spring', stiffness: 300, damping: 17 },
-      invertZIndex = false,
+      invertOverlap = false,
       translate = '-30%',
       tooltipProps = { side: 'top', sideOffset: 20 },
       ...props
     },
     ref,
-  ) => {
-    return (
-      <TooltipProvider openDelay={0} closeDelay={0}>
-        <div
-          ref={ref}
-          className={cn('flex flex-row -space-x-2 items-center h-8', className)}
-          {...props}
-        >
-          {children?.map((child, index) => (
-            <Avatar
-              key={index}
-              index={index}
-              invertZIndex={invertZIndex}
-              transition={transition}
-              translate={translate}
-              {...tooltipProps}
-            >
-              {child}
-            </Avatar>
-          ))}
-        </div>
-      </TooltipProvider>
-    );
-  },
+  ) => (
+    <TooltipProvider openDelay={0} closeDelay={0}>
+      <div
+        ref={ref}
+        className={cn('flex flex-row -space-x-2 items-center h-8', className)}
+        {...props}
+      >
+        {children?.map((child, index) => (
+          <Avatar
+            key={index}
+            index={index}
+            zIndex={
+              invertOverlap ? React.Children.count(children) - index : index
+            }
+            transition={transition}
+            translate={translate}
+            {...tooltipProps}
+          >
+            {child}
+          </Avatar>
+        ))}
+      </div>
+    </TooltipProvider>
+  ),
 );
 AvatarGroup.displayName = 'AvatarGroup';
 
