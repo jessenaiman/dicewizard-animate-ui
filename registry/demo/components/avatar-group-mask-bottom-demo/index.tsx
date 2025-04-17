@@ -35,7 +35,7 @@ const AVATARS = [
 export const AvatarGroupMaskBottomDemo = () => {
   return (
     <div className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% p-0.5 rounded-full">
-      <div className="bg-gradient-to-r from-indigo-100 from-10% via-sky-100 via-30% to-emerald-100 to-90% p-1.5 rounded-full">
+      <div className="bg-gradient-to-r from-indigo-100 dark:from-indigo-950 from-10% via-sky-100 dark:via-sky-950 via-30% to-emerald-100 dark:to-emerald-950 to-90% p-1.5 rounded-full">
         <AvatarGroup
           invertOverlap
           align="start"
