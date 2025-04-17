@@ -399,7 +399,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/avatar-group.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProps,\n  type TooltipContentProps,\n} from '@/components/animate-ui/tooltip';\n\ninterface AvatarProps extends TooltipProps {\n  children: React.ReactNode;\n  index: number;\n  invertZIndex: boolean;\n  transition: Transition;\n  translate: string | number;\n}\n\nconst Avatar: React.FC<AvatarProps> = ({\n  children,\n  index,\n  invertZIndex,\n  transition,\n  translate,\n  ...props\n}: AvatarProps) => {\n  return (\n    <Tooltip {...props}>\n      <TooltipTrigger>\n        <motion.div\n          initial=\"initial\"\n          whileHover=\"hover\"\n          whileTap=\"hover\"\n          className=\"relative\"\n          style={{\n            zIndex: invertZIndex\n              ? React.Children.count(children) - index\n              : index,\n          }}\n        >\n          <motion.div\n            variants={{\n              initial: { translateY: 0 },\n              hover: { translateY: translate },\n            }}\n            transition={transition}\n          >\n            {children}\n          </motion.div>\n        </motion.div>\n      </TooltipTrigger>\n    </Tooltip>\n  );\n};\n\ntype AvatarGroupTooltipProps = TooltipContentProps;\n\nconst AvatarGroupTooltip: React.FC<AvatarGroupTooltipProps> = ({\n  children,\n  ...props\n}) => {\n  return <TooltipContent {...props}>{children}</TooltipContent>;\n};\nAvatarGroupTooltip.displayName = 'AvatarGroupTooltip';\n\ninterface AvatarGroupProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'translate'> {\n  children: React.ReactElement[];\n  transition?: Transition;\n  invertZIndex?: boolean;\n  translate?: string | number;\n  tooltipProps?: TooltipProps;\n}\n\nconst AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 300, damping: 17 },\n      invertZIndex = false,\n      translate = '-30%',\n      tooltipProps = { side: 'top', sideOffset: 20 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <TooltipProvider openDelay={0} closeDelay={0}>\n        <div\n          ref={ref}\n          className={cn('flex flex-row -space-x-2 items-center h-8', className)}\n          {...props}\n        >\n          {children?.map((child, index) => (\n            <Avatar\n              key={index}\n              index={index}\n              invertZIndex={invertZIndex}\n              transition={transition}\n              translate={translate}\n              {...tooltipProps}\n            >\n              {child}\n            </Avatar>\n          ))}\n        </div>\n      </TooltipProvider>\n    );\n  },\n);\nAvatarGroup.displayName = 'AvatarGroup';\n\nexport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n  type AvatarGroupProps,\n  type AvatarGroupTooltipProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProps,\n  type TooltipContentProps,\n} from '@/components/animate-ui/tooltip';\n\ninterface AvatarProps extends TooltipProps {\n  children: React.ReactNode;\n  index: number;\n  zIndex: number;\n  transition: Transition;\n  translate: string | number;\n}\n\nconst Avatar: React.FC<AvatarProps> = ({\n  children,\n  index,\n  zIndex,\n  transition,\n  translate,\n  ...props\n}: AvatarProps) => (\n  <Tooltip {...props}>\n    <TooltipTrigger>\n      <motion.div\n        initial=\"initial\"\n        whileHover=\"hover\"\n        whileTap=\"hover\"\n        className=\"relative\"\n        style={{ zIndex }}\n      >\n        <motion.div\n          variants={{\n            initial: { translateY: 0 },\n            hover: { translateY: translate },\n          }}\n          transition={transition}\n        >\n          {children}\n        </motion.div>\n      </motion.div>\n    </TooltipTrigger>\n  </Tooltip>\n);\n\ntype AvatarGroupTooltipProps = TooltipContentProps;\n\nconst AvatarGroupTooltip: React.FC<AvatarGroupTooltipProps> = ({\n  children,\n  ...props\n}) => <TooltipContent {...props}>{children}</TooltipContent>;\nAvatarGroupTooltip.displayName = 'AvatarGroupTooltip';\n\ninterface AvatarGroupProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'translate'> {\n  children: React.ReactElement[];\n  transition?: Transition;\n  invertOverlap?: boolean;\n  translate?: string | number;\n  tooltipProps?: Omit<TooltipProps, 'children'>;\n}\n\nconst AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 300, damping: 17 },\n      invertOverlap = false,\n      translate = '-30%',\n      tooltipProps = { side: 'top', sideOffset: 20 },\n      ...props\n    },\n    ref,\n  ) => (\n    <TooltipProvider openDelay={0} closeDelay={0}>\n      <div\n        ref={ref}\n        className={cn('flex flex-row -space-x-2 items-center h-8', className)}\n        {...props}\n      >\n        {children?.map((child, index) => (\n          <Avatar\n            key={index}\n            index={index}\n            zIndex={\n              invertOverlap ? React.Children.count(children) - index : index\n            }\n            transition={transition}\n            translate={translate}\n            {...tooltipProps}\n          >\n            {child}\n          </Avatar>\n        ))}\n      </div>\n    </TooltipProvider>\n  ),\n);\nAvatarGroup.displayName = 'AvatarGroup';\n\nexport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n  type AvatarGroupProps,\n  type AvatarGroupTooltipProps,\n};",
       },
     ],
     component: React.lazy(async () => {
@@ -412,6 +412,35 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/avatar-group',
+  },
+  'avatar-group-mask': {
+    name: 'avatar-group-mask',
+    description: 'Avatar group mask component',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/tooltip'],
+    files: [
+      {
+        path: 'registry/components/avatar-group-mask/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/avatar-group-mask.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProps,\n  type TooltipContentProps,\n} from '@/components/animate-ui/tooltip';\n\ntype Align = 'start' | 'center' | 'end';\n\ninterface AvatarProps extends TooltipProps {\n  children: React.ReactNode;\n  align?: Align;\n  invertOverlap?: boolean;\n}\n\nconst Avatar: React.FC<AvatarProps> = ({\n  children,\n  align,\n  invertOverlap,\n  ...props\n}: AvatarProps) => {\n  return (\n    <Tooltip {...props}>\n      <TooltipTrigger>\n        <span\n          className={cn(\n            align === 'start'\n              ? 'items-start'\n              : align === 'center'\n                ? 'items-center'\n                : 'items-end',\n            'relative grid w-[var(--avatar-size)] aspect-[1/calc(1+var(--avatar-mask-ratio))]',\n            '[&_[data-slot=avatar]]:size-[var(--avatar-size)] [&_[data-slot=avatar]]:rounded-full',\n            invertOverlap\n              ? cn(\n                  '[&:not(:first-of-type)]:[--circle:calc(((var(--avatar-border)*2)+var(--avatar-size))*0.5)]',\n                  '[&:not(:first-of-type)]:[mask:radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)-var(--avatar-column-size)-var(--avatar-border))_50%,#0000_var(--circle),#fff_var(--circle))_0_calc(var(--avatar-size)*var(--avatar-mask-base))/100%_100%]',\n                  '[&:not(:first-of-type)]:transition-[mask-position] [&:not(:first-of-type)]:duration-300 [&:not(:first-of-type)]:ease-in-out',\n                  '[&:hover+&]:[mask-position:0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',\n                )\n              : cn(\n                  '[&:not(:last-of-type)]:[--circle:calc(((var(--avatar-border)*2)+var(--avatar-size))*0.5)]',\n                  '[&:not(:last-of-type)]:[mask:radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)+var(--avatar-column-size)-var(--avatar-border))_50%,#0000_var(--circle),#fff_var(--circle))_0_calc(var(--avatar-size)*var(--avatar-mask-base))/100%_100%]',\n                  '[&:not(:last-of-type)]:transition-[mask-position] [&:not(:last-of-type)]:duration-300 [&:not(:last-of-type)]:ease-in-out',\n                  '[&:has(+&:hover)]:[mask-position:0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',\n                ),\n            '[&>span]:transition-[translate] [&>span]:duration-300 [&>span]:ease-in-out',\n            '[&:hover_span:first-of-type]:translate-y-[var(--avatar-translate-pct)]',\n          )}\n        >\n          {children}\n        </span>\n      </TooltipTrigger>\n    </Tooltip>\n  );\n};\n\ntype AvatarGroupTooltipProps = TooltipContentProps;\n\nconst AvatarGroupTooltip: React.FC<AvatarGroupTooltipProps> = ({\n  children,\n  ...props\n}) => {\n  return <TooltipContent {...props}>{children}</TooltipContent>;\n};\nAvatarGroupTooltip.displayName = 'AvatarGroupTooltip';\n\ninterface AvatarGroupProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'translate'> {\n  children: React.ReactElement[];\n  invertOverlap?: boolean;\n  translate?: number;\n  size?: string | number;\n  border?: string | number;\n  columnSize?: string | number;\n  align?: Align;\n  tooltipProps?: Omit<TooltipProps, 'children'>;\n}\n\nconst AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(\n  (\n    {\n      children,\n      className,\n      invertOverlap = false,\n      size = '43px',\n      border = '3px',\n      columnSize = '37px',\n      align = 'end',\n      translate = -30,\n      tooltipProps = { side: 'top', sideOffset: 10 },\n      ...props\n    },\n    ref,\n  ) => {\n    const maskRatio = Math.abs(translate / 100);\n    const alignOffset =\n      align === 'start' ? 0 : align === 'center' ? maskRatio / 2 : maskRatio;\n    const maskBase = alignOffset - maskRatio / 2;\n    const maskFactor = 1 - alignOffset + maskRatio / 2;\n\n    return (\n      <TooltipProvider openDelay={0} closeDelay={0}>\n        <div\n          ref={ref}\n          style={\n            {\n              '--avatar-size': size,\n              '--avatar-border': border,\n              '--avatar-column-size': columnSize,\n              '--avatar-translate-pct': `${translate}%`,\n              '--avatar-mask-offset': -(translate / 100),\n              '--avatar-mask-ratio': maskRatio,\n              '--avatar-mask-base': maskBase,\n              '--avatar-mask-factor': maskFactor,\n              '--avatar-columns': React.Children.count(children),\n            } as React.CSSProperties\n          }\n          className=\"h-[var(--avatar-size)] w-[calc(var(--avatar-column-size)*(var(--avatar-columns))+calc(var(--avatar-size)-var(--avatar-column-size)))]\"\n        >\n          <span\n            className={cn(\n              'grid h-[var(--avatar-size)] grid-cols-[repeat(var(--avatar-columns),var(--avatar-column-size))]',\n              align === 'start'\n                ? 'content-start'\n                : align === 'center'\n                  ? 'content-center'\n                  : 'content-end',\n              className,\n            )}\n            {...props}\n          >\n            {children?.map((child, index) => (\n              <Avatar\n                key={index}\n                invertOverlap={invertOverlap}\n                {...tooltipProps}\n                align={align}\n              >\n                {child}\n              </Avatar>\n            ))}\n          </span>\n        </div>\n      </TooltipProvider>\n    );\n  },\n);\nAvatarGroup.displayName = 'AvatarGroup';\n\nexport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n  type AvatarGroupProps,\n  type AvatarGroupTooltipProps,\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/components/avatar-group-mask/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/avatar-group-mask',
   },
   'code-editor': {
     name: 'code-editor',
@@ -1167,6 +1196,36 @@ export const index: Record<string, any> = {
     }),
     command: 'https://animate-ui.com/r/ripple-button-demo',
   },
+  'avatar-group-bottom-demo': {
+    name: 'avatar-group-bottom-demo',
+    description:
+      'Demo showing an animated avatar group with the tooltip on the bottom.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/avatar-group'],
+    files: [
+      {
+        path: 'registry/demo/components/avatar-group-bottom-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/avatar-group-bottom-demo.tsx',
+        content:
+          "import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';\nimport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n} from '@/components/animate-ui/avatar-group';\n\nconst AVATARS = [\n  {\n    src: 'https://pbs.twimg.com/profile_images/1909615404789506048/MTqvRsjo_400x400.jpg',\n    fallback: 'SK',\n    tooltip: 'Skyleen',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg',\n    fallback: 'CN',\n    tooltip: 'Shadcn',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1677042510839857154/Kq4tpySA_400x400.jpg',\n    fallback: 'AW',\n    tooltip: 'Adam Wathan',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg',\n    fallback: 'GR',\n    tooltip: 'Guillermo Rauch',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg',\n    fallback: 'JH',\n    tooltip: 'Jhey',\n  },\n];\n\nexport const AvatarGroupDemo = () => {\n  return (\n    <AvatarGroup\n      invertOverlap\n      className=\"h-12 -space-x-3\"\n      tooltipProps={{ side: 'bottom', sideOffset: 20 }}\n      translate=\"30%\"\n    >\n      {AVATARS.map((avatar, index) => (\n        <Avatar key={index} className=\"size-12 border-3 border-background\">\n          <AvatarImage src={avatar.src} />\n          <AvatarFallback>{avatar.fallback}</AvatarFallback>\n          <AvatarGroupTooltip>\n            <p>{avatar.tooltip}</p>\n          </AvatarGroupTooltip>\n        </Avatar>\n      ))}\n    </AvatarGroup>\n  );\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/components/avatar-group-bottom-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/avatar-group-bottom-demo',
+  },
   'avatar-group-demo': {
     name: 'avatar-group-demo',
     description: 'Demo showing an animated avatar group.',
@@ -1195,6 +1254,65 @@ export const index: Record<string, any> = {
       return { default: mod.default || mod[exportName] };
     }),
     command: 'https://animate-ui.com/r/avatar-group-demo',
+  },
+  'avatar-group-mask-bottom-demo': {
+    name: 'avatar-group-mask-bottom-demo',
+    description:
+      'Demo showing an animated avatar group mask with bottom translation.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/avatar-group-mask'],
+    files: [
+      {
+        path: 'registry/demo/components/avatar-group-mask-bottom-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/avatar-group-mask-bottom-demo.tsx',
+        content:
+          "import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';\nimport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n} from '@/components/animate-ui/avatar-group-mask';\n\nconst AVATARS = [\n  {\n    src: 'https://pbs.twimg.com/profile_images/1909615404789506048/MTqvRsjo_400x400.jpg',\n    fallback: 'SK',\n    tooltip: 'Skyleen',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg',\n    fallback: 'CN',\n    tooltip: 'Shadcn',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1677042510839857154/Kq4tpySA_400x400.jpg',\n    fallback: 'AW',\n    tooltip: 'Adam Wathan',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg',\n    fallback: 'GR',\n    tooltip: 'Guillermo Rauch',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg',\n    fallback: 'JH',\n    tooltip: 'Jhey',\n  },\n];\n\nexport const AvatarGroupMaskBottomDemo = () => {\n  return (\n    <div className=\"bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% p-0.5 rounded-full\">\n      <div className=\"bg-gradient-to-r from-indigo-100 from-10% via-sky-100 via-30% to-emerald-100 to-90% p-1.5 rounded-full\">\n        <AvatarGroup\n          invertOverlap\n          align=\"start\"\n          translate={50}\n          tooltipProps={{ side: 'bottom', sideOffset: 10 }}\n        >\n          {AVATARS.map((avatar, index) => (\n            <Avatar key={index}>\n              <AvatarImage src={avatar.src} />\n              <AvatarFallback>{avatar.fallback}</AvatarFallback>\n              <AvatarGroupTooltip>\n                <p>{avatar.tooltip}</p>\n              </AvatarGroupTooltip>\n            </Avatar>\n          ))}\n        </AvatarGroup>\n      </div>\n    </div>\n  );\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/components/avatar-group-mask-bottom-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/avatar-group-mask-bottom-demo',
+  },
+  'avatar-group-mask-demo': {
+    name: 'avatar-group-mask-demo',
+    description: 'Demo showing an animated avatar group mask.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/avatar-group-mask'],
+    files: [
+      {
+        path: 'registry/demo/components/avatar-group-mask-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/avatar-group-mask-demo.tsx',
+        content:
+          "import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';\nimport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n} from '@/components/animate-ui/avatar-group-mask';\n\nconst AVATARS = [\n  {\n    src: 'https://pbs.twimg.com/profile_images/1909615404789506048/MTqvRsjo_400x400.jpg',\n    fallback: 'SK',\n    tooltip: 'Skyleen',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg',\n    fallback: 'CN',\n    tooltip: 'Shadcn',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1677042510839857154/Kq4tpySA_400x400.jpg',\n    fallback: 'AW',\n    tooltip: 'Adam Wathan',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg',\n    fallback: 'GR',\n    tooltip: 'Guillermo Rauch',\n  },\n  {\n    src: 'https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg',\n    fallback: 'JH',\n    tooltip: 'Jhey',\n  },\n];\n\nexport const AvatarGroupMaskDemo = () => {\n  return (\n    <div className=\"bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 rounded-full\">\n      <div className=\"bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 p-1.5 rounded-full\">\n        <AvatarGroup>\n          {AVATARS.map((avatar, index) => (\n            <Avatar key={index}>\n              <AvatarImage src={avatar.src} />\n              <AvatarFallback>{avatar.fallback}</AvatarFallback>\n              <AvatarGroupTooltip>\n                <p>{avatar.tooltip}</p>\n              </AvatarGroupTooltip>\n            </Avatar>\n          ))}\n        </AvatarGroup>\n      </div>\n    </div>\n  );\n};",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        '@/registry/demo/components/avatar-group-mask-demo/index.tsx'
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === 'function' || typeof mod[key] === 'object',
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    command: 'https://animate-ui.com/r/avatar-group-mask-demo',
   },
   'code-editor-demo': {
     name: 'code-editor-demo',
