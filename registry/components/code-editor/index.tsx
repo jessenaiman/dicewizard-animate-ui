@@ -192,6 +192,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
 
             {copyButton ? (
               <CopyButton
+                content={code}
                 size="sm"
                 variant="ghost"
                 className="-me-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/10"
