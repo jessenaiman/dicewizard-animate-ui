@@ -4,10 +4,10 @@
   "description": "Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, Motion and Shadcn CLI. Browse a list of components you can install, modify, and use in your projects.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/imskyleen/animate-ui"
+    "url": "https://github.com/Animate-UI/animate-ui"
   },
   "bugs": {
-    "url": "https://github.com/imskyleen/animate-ui/issues"
+    "url": "https://github.com/Animate-UI/animate-ui/issues"
   },
   "homepage": "https://animate-ui.com",
   "private": true,
