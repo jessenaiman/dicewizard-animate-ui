@@ -168,7 +168,7 @@ export const Hero = () => {
         </div>
 
         <div className="absolute top-4 right-85">
-          <GitHubStarsButton repo="animate-ui" username="imskyleen" />
+          <GitHubStarsButton repo="Animate-UI" username="animate-ui" />
         </div>
 
         <div className="absolute top-75 right-4">
