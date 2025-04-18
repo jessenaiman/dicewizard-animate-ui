@@ -30,6 +30,32 @@ const Avatar: React.FC<AvatarProps> = ({
     <Tooltip {...props}>
       <TooltipTrigger>
         <span
+          // className={cn(
+          //   align === 'start'
+          //     ? 'items-start'
+          //     : align === 'center'
+          //       ? 'items-center'
+          //       : 'items-end',
+          //   'relative grid w-[var(--avatar-size)] aspect-[1/calc(1+var(--avatar-mask-ratio))]',
+          //   '[&_[data-slot=avatar]]:size-[var(--avatar-size)] [&_[data-slot=avatar]]:rounded-full',
+          //   invertOverlap
+          //     ? cn(
+          //         '[&:not(:first-of-type)]:[--circle:calc(((var(--avatar-border)*2)+var(--avatar-size))*0.5)]',
+          //         '[&:not(:first-of-type)]:[mask:radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)-var(--avatar-column-size)-var(--avatar-border))_50%,#0000_var(--circle),#fff_var(--circle))_0_calc(var(--avatar-size)*var(--avatar-mask-base))/100%_100%]',
+          //         '[&:not(:first-of-type)]:mask-size-[100%_100%]',
+          //         '[&:not(:first-of-type)]:transition-[mask-position] [&:not(:first-of-type)]:duration-300 [&:not(:first-of-type)]:ease-in-out',
+          //         '[&:hover+&]:[mask-position:0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',
+          //       )
+          //     : cn(
+          //         '[&:not(:last-of-type)]:[--circle:calc(((var(--avatar-border)*2)+var(--avatar-size))*0.5)]',
+          //         '[&:not(:last-of-type)]:[mask:radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)+var(--avatar-column-size)-var(--avatar-border))_50%,#0000_var(--circle),#fff_var(--circle))_0_calc(var(--avatar-size)*var(--avatar-mask-base))/100%_100%]',
+          //         '[&:not(:last-of-type)]:mask-size-[100%_100%]',
+          //         '[&:not(:last-of-type)]:transition-[mask-position] [&:not(:last-of-type)]:duration-300 [&:not(:last-of-type)]:ease-in-out',
+          //         '[&:has(+&:hover)]:[mask-position:0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',
+          //       ),
+          //   '[&>span]:transition-[translate] [&>span]:duration-300 [&>span]:ease-in-out',
+          //   '[&:hover_span:first-of-type]:translate-y-[var(--avatar-translate-pct)]',
+          // )}
           className={cn(
             align === 'start'
               ? 'items-start'
@@ -41,15 +67,19 @@ const Avatar: React.FC<AvatarProps> = ({
             invertOverlap
               ? cn(
                   '[&:not(:first-of-type)]:[--circle:calc(((var(--avatar-border)*2)+var(--avatar-size))*0.5)]',
-                  '[&:not(:first-of-type)]:[mask:radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)-var(--avatar-column-size)-var(--avatar-border))_50%,#0000_var(--circle),#fff_var(--circle))_0_calc(var(--avatar-size)*var(--avatar-mask-base))/100%_100%]',
+                  '[&:not(:first-of-type)]:mask-[radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)-var(--avatar-column-size)-var(--avatar-border))_50%_,#0000_calc(var(--circle)-0.5px),#fff_var(--circle))]',
+                  '[&:not(:first-of-type)]:mask-size-[100%_100%]',
+                  '[&:not(:first-of-type)]:mask-position-[0_calc(var(--avatar-size)*var(--avatar-mask-base))]',
                   '[&:not(:first-of-type)]:transition-[mask-position] [&:not(:first-of-type)]:duration-300 [&:not(:first-of-type)]:ease-in-out',
-                  '[&:hover+&]:[mask-position:0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',
+                  '[&:hover+&]:mask-position-[0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',
                 )
               : cn(
                   '[&:not(:last-of-type)]:[--circle:calc(((var(--avatar-border)*2)+var(--avatar-size))*0.5)]',
-                  '[&:not(:last-of-type)]:[mask:radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)+var(--avatar-column-size)-var(--avatar-border))_50%,#0000_var(--circle),#fff_var(--circle))_0_calc(var(--avatar-size)*var(--avatar-mask-base))/100%_100%]',
+                  '[&:not(:last-of-type)]:mask-[radial-gradient(var(--circle)_var(--circle)_at_calc(var(--circle)+var(--avatar-column-size)-var(--avatar-border))_50%_,#0000_calc(var(--circle)-0.5px),#fff_var(--circle))]',
+                  '[&:not(:last-of-type)]:mask-size-[100%_100%]',
+                  '[&:not(:last-of-type)]:mask-position-[0_calc(var(--avatar-size)*var(--avatar-mask-base))]',
                   '[&:not(:last-of-type)]:transition-[mask-position] [&:not(:last-of-type)]:duration-300 [&:not(:last-of-type)]:ease-in-out',
-                  '[&:has(+&:hover)]:[mask-position:0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',
+                  '[&:has(+&:hover)]:mask-position-[0_calc(var(--avatar-size)_-_calc(var(--avatar-size)*(var(--avatar-mask-factor)+var(--avatar-mask-offset))))]',
                 ),
             '[&>span]:transition-[translate] [&>span]:duration-300 [&>span]:ease-in-out',
             '[&:hover_span:first-of-type]:translate-y-[var(--avatar-translate-pct)]',
