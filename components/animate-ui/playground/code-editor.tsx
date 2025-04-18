@@ -7,7 +7,7 @@ import { shikiToMonaco } from '@shikijs/monaco';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
-
+import { editor } from 'monaco-editor';
 interface CodeEditorProps {
   code: string;
   setCode: (code: string) => void;
@@ -43,7 +43,7 @@ export const CodeEditor = ({ code, setCode }: CodeEditorProps) => {
   );
 
   const handleEditorMount = useCallback(
-    (editorInstance: any, monaco: Monaco) => {
+    (editorInstance: editor.IEditor, monaco: Monaco) => {
       monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
         noSemanticValidation: true,
         noSyntaxValidation: true,
