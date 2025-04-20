@@ -19,7 +19,7 @@ interface RadixPopoverDemoProps {
   closeDelay?: number;
 }
 
-export function RadixPopoverDemo({
+export const RadixPopoverDemo = ({
   side,
   sideOffset,
   align,
@@ -27,7 +27,7 @@ export function RadixPopoverDemo({
   openOnHover,
   delay,
   closeDelay,
-}: RadixPopoverDemoProps) {
+}: RadixPopoverDemoProps) => {
   return (
     <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>
       <PopoverTrigger
@@ -85,4 +85,4 @@ export function RadixPopoverDemo({
       </PopoverContent>
     </Popover>
   );
-}
+};

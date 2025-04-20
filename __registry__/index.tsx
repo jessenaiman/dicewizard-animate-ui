@@ -225,6 +225,38 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/stars-background',
   },
+  'base-checkbox': {
+    name: 'base-checkbox',
+    description: 'Base checkbox component',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/base/base-checkbox/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/base-checkbox.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { Checkbox as CheckboxPrimitive } from \'@base-ui-components/react/checkbox\';\nimport { type HTMLMotionProps, motion } from \'motion/react\';\n\nimport { cn } from \'@/lib/utils\';\n\ntype CheckboxProps = React.ComponentPropsWithoutRef<\n  typeof CheckboxPrimitive.Root\n> & {\n  motionProps?: HTMLMotionProps<\'button\'>;\n};\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(({ className, onCheckedChange, motionProps, ...props }, ref) => {\n  const [isChecked, setIsChecked] = React.useState(\n    props?.checked ?? props?.defaultChecked ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.checked !== undefined) setIsChecked(props.checked);\n  }, [props?.checked]);\n\n  const handleCheckedChange = React.useCallback(\n    (checked: boolean, event: Event) => {\n      setIsChecked(checked);\n      onCheckedChange?.(checked, event);\n    },\n    [onCheckedChange],\n  );\n\n  return (\n    <CheckboxPrimitive.Root\n      ref={ref}\n      className={cn(\n        \'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-input transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[checked]:text-primary-foreground\',\n        className,\n      )}\n      {...props}\n      onCheckedChange={handleCheckedChange}\n      render={\n        <motion.button\n          whileTap={{ scale: 0.95 }}\n          whileHover={{ scale: 1.05 }}\n          {...motionProps}\n        />\n      }\n    >\n      <CheckboxPrimitive.Indicator keepMounted>\n        <motion.svg\n          xmlns="http://www.w3.org/2000/svg"\n          fill="none"\n          viewBox="0 0 24 24"\n          strokeWidth="3.5"\n          stroke="currentColor"\n          className="size-3.5"\n          initial="unchecked"\n          animate={isChecked ? \'checked\' : \'unchecked\'}\n        >\n          <motion.path\n            strokeLinecap="round"\n            strokeLinejoin="round"\n            d="M4.5 12.75l6 6 9-13.5"\n            variants={{\n              checked: {\n                pathLength: 1,\n                opacity: 1,\n                transition: {\n                  duration: 0.2,\n                  delay: 0.2,\n                },\n              },\n              unchecked: {\n                pathLength: 0,\n                opacity: 0,\n                transition: {\n                  duration: 0.2,\n                },\n              },\n            }}\n          />\n        </motion.svg>\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  );\n});\n\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\n\nexport { Checkbox, type CheckboxProps };',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/base-checkbox/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-checkbox';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-checkbox',
+  },
   'base-popover': {
     name: 'base-popover',
     description: 'Base popover component',
@@ -1130,6 +1162,40 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/stars-background-demo',
   },
+  'base-checkbox-demo': {
+    name: 'base-checkbox-demo',
+    description: 'Demo showing a base checkbox.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://base-ui-components.com/r/base-checkbox'],
+    files: [
+      {
+        path: 'registry/demo/base/base-checkbox-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/base-checkbox-demo.tsx',
+        content:
+          'import { Label } from \'@/components/ui/label\';\nimport { Checkbox } from \'@/components/animate-ui/base-checkbox\';\n\nexport const BaseCheckboxDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Checkbox defaultChecked id="terms" />\n      <Label htmlFor="terms">Accept terms and conditions</Label>\n    </div>\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/base/base-checkbox-demo/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-checkbox-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-checkbox-demo',
+  },
   'base-popover-demo': {
     name: 'base-popover-demo',
     description: 'Demo showing a base popover.',
@@ -1143,7 +1209,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/base/base-popover-demo.tsx',
         content:
-          'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n  type Side,\n  type Align,\n} from \'@/components/animate-ui/base-popover\';\n\ninterface RadixPopoverDemoProps {\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n  openOnHover?: boolean;\n  delay?: number;\n  closeDelay?: number;\n}\n\nexport function RadixPopoverDemo({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  openOnHover,\n  delay,\n  closeDelay,\n}: RadixPopoverDemoProps) {\n  return (\n    <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>\n      <PopoverTrigger\n        render={<Button variant="outline">Open popover</Button>}\n      />\n      <PopoverContent\n        className="w-80"\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="font-medium leading-none">Dimensions</h4>\n            <p className="text-sm text-muted-foreground">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n}',
+          'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n  type Side,\n  type Align,\n} from \'@/components/animate-ui/base-popover\';\n\ninterface RadixPopoverDemoProps {\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n  openOnHover?: boolean;\n  delay?: number;\n  closeDelay?: number;\n}\n\nexport const RadixPopoverDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  openOnHover,\n  delay,\n  closeDelay,\n}: RadixPopoverDemoProps) => {\n  return (\n    <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>\n      <PopoverTrigger\n        render={<Button variant="outline">Open popover</Button>}\n      />\n      <PopoverContent\n        className="w-80"\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="font-medium leading-none">Dimensions</h4>\n            <p className="text-sm text-muted-foreground">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n};',
       },
     ],
     component: (function () {
@@ -3873,7 +3939,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix-checkbox.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport * as CheckboxPrimitive from \'@radix-ui/react-checkbox\';\nimport { motion, type HTMLMotionProps } from \'motion/react\';\n\nimport { cn } from \'@/lib/utils\';\n\ntype CheckboxProps = React.ComponentPropsWithoutRef<\n  typeof CheckboxPrimitive.Root\n> &\n  HTMLMotionProps<\'button\'>;\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(({ className, ...props }, ref) => {\n  const [isChecked, setIsChecked] = React.useState(\n    props?.checked ?? props?.defaultChecked ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.checked !== undefined) setIsChecked(props.checked);\n  }, [props?.checked]);\n\n  return (\n    <CheckboxPrimitive.Root\n      {...props}\n      onCheckedChange={(checked) => {\n        setIsChecked(checked);\n        props.onCheckedChange?.(checked);\n      }}\n      asChild\n    >\n      <motion.button\n        className={cn(\n          \'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-input transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\',\n          className,\n        )}\n        ref={ref}\n        whileTap={{ scale: 0.95 }}\n        whileHover={{ scale: 1.05 }}\n        {...props}\n      >\n        <CheckboxPrimitive.Indicator forceMount asChild>\n          <motion.svg\n            xmlns="http://www.w3.org/2000/svg"\n            fill="none"\n            viewBox="0 0 24 24"\n            strokeWidth="3.5"\n            stroke="currentColor"\n            className="size-3.5"\n            initial="unchecked"\n            animate={isChecked ? \'checked\' : \'unchecked\'}\n          >\n            <motion.path\n              strokeLinecap="round"\n              strokeLinejoin="round"\n              d="M4.5 12.75l6 6 9-13.5"\n              variants={{\n                checked: {\n                  pathLength: 1,\n                  opacity: 1,\n                  transition: {\n                    duration: 0.2,\n                    delay: 0.2,\n                  },\n                },\n                unchecked: {\n                  pathLength: 0,\n                  opacity: 0,\n                  transition: {\n                    duration: 0.2,\n                  },\n                },\n              }}\n            />\n          </motion.svg>\n        </CheckboxPrimitive.Indicator>\n      </motion.button>\n    </CheckboxPrimitive.Root>\n  );\n});\n\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\n\nexport { Checkbox, type CheckboxProps };',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport * as CheckboxPrimitive from \'@radix-ui/react-checkbox\';\nimport { motion, type HTMLMotionProps } from \'motion/react\';\n\nimport { cn } from \'@/lib/utils\';\n\ntype CheckboxProps = React.ComponentPropsWithoutRef<\n  typeof CheckboxPrimitive.Root\n> &\n  HTMLMotionProps<\'button\'>;\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(({ className, onCheckedChange, ...props }, ref) => {\n  const [isChecked, setIsChecked] = React.useState(\n    props?.checked ?? props?.defaultChecked ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.checked !== undefined) setIsChecked(props.checked);\n  }, [props?.checked]);\n\n  const handleCheckedChange = React.useCallback(\n    (checked: boolean) => {\n      setIsChecked(checked);\n      onCheckedChange?.(checked);\n    },\n    [onCheckedChange],\n  );\n\n  return (\n    <CheckboxPrimitive.Root\n      {...props}\n      onCheckedChange={handleCheckedChange}\n      asChild\n    >\n      <motion.button\n        className={cn(\n          \'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-input transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\',\n          className,\n        )}\n        ref={ref}\n        whileTap={{ scale: 0.95 }}\n        whileHover={{ scale: 1.05 }}\n        {...props}\n      >\n        <CheckboxPrimitive.Indicator forceMount asChild>\n          <motion.svg\n            xmlns="http://www.w3.org/2000/svg"\n            fill="none"\n            viewBox="0 0 24 24"\n            strokeWidth="3.5"\n            stroke="currentColor"\n            className="size-3.5"\n            initial="unchecked"\n            animate={isChecked ? \'checked\' : \'unchecked\'}\n          >\n            <motion.path\n              strokeLinecap="round"\n              strokeLinejoin="round"\n              d="M4.5 12.75l6 6 9-13.5"\n              variants={{\n                checked: {\n                  pathLength: 1,\n                  opacity: 1,\n                  transition: {\n                    duration: 0.2,\n                    delay: 0.2,\n                  },\n                },\n                unchecked: {\n                  pathLength: 0,\n                  opacity: 0,\n                  transition: {\n                    duration: 0.2,\n                  },\n                },\n              }}\n            />\n          </motion.svg>\n        </CheckboxPrimitive.Indicator>\n      </motion.button>\n    </CheckboxPrimitive.Root>\n  );\n});\n\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\n\nexport { Checkbox, type CheckboxProps };',
       },
     ],
     component: (function () {
