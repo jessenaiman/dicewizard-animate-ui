@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -72,9 +77,10 @@ const getInitialPosition = (side: 'top' | 'bottom' | 'left' | 'right') => {
 
 type HoverCardContentProps = React.ComponentPropsWithoutRef<
   typeof HoverCardPrimitive.Content
-> & {
-  transition?: Transition;
-};
+> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 
 const HoverCardContent = React.forwardRef<
   React.ElementRef<typeof HoverCardPrimitive.Content>,
@@ -117,6 +123,7 @@ const HoverCardContent = React.forwardRef<
                   'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
                   className,
                 )}
+                {...props}
               >
                 {children}
               </motion.div>

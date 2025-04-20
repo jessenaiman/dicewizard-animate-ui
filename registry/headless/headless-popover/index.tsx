@@ -8,7 +8,12 @@ import {
   PopoverBackdrop as PopoverBackdropPrimitive,
   PopoverGroup as PopoverGroupPrimitive,
 } from '@headlessui/react';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -61,9 +66,10 @@ const PopoverGroup = PopoverGroupPrimitive;
 
 type PopoverPanelProps = React.ComponentPropsWithoutRef<
   typeof PopoverPanelPrimitive<typeof motion.div>
-> & {
-  transition?: Transition;
-};
+> &
+  Omit<HTMLMotionProps<'div'>, 'children'> & {
+    transition?: Transition;
+  };
 const PopoverPanel = React.forwardRef<
   React.ElementRef<typeof PopoverPanelPrimitive>,
   PopoverPanelProps

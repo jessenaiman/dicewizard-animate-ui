@@ -151,6 +151,10 @@ new: true
 
 <ComponentInstallation name="my-component" />
 
+## Usage
+
+[Basic usage of the component]
+
 ## Props
 
 <TypeTable
