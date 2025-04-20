@@ -18,6 +18,22 @@ For a CSS-only version with a mask effect that blends seamlessly into any backgr
 
 <ComponentInstallation name="avatar-group" />
 
+### Usage
+
+```tsx
+<AvatarGroup>
+  {AVATARS.map((avatar, index) => (
+    <Avatar key={index}>
+      <AvatarImage src={avatar.src} />
+      <AvatarFallback>{avatar.fallback}</AvatarFallback>
+      <AvatarGroupTooltip>
+        <p>{avatar.tooltip}</p>
+      </AvatarGroupTooltip>
+    </Avatar>
+  ))}
+</AvatarGroup>
+```
+
 ### Examples
 
 #### Bottom translation
@@ -93,6 +109,22 @@ A sleek, CSS-only avatar group using TailwindCSS for the translate animation and
 ### Installation
 
 <ComponentInstallation name="avatar-group-mask" />
+
+### Usage
+
+```tsx
+<AvatarGroup>
+  {AVATARS.map((avatar, index) => (
+    <Avatar key={index}>
+      <AvatarImage src={avatar.src} />
+      <AvatarFallback>{avatar.fallback}</AvatarFallback>
+      <AvatarGroupTooltip>
+        <p>{avatar.tooltip}</p>
+      </AvatarGroupTooltip>
+    </Avatar>
+  ))}
+</AvatarGroup>
+```
 
 ### Examples
 

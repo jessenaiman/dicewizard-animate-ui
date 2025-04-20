@@ -205,6 +205,17 @@ const TooltipProvider: React.FC<TooltipProviderProps> = ({
     }, closeDelay);
   }, [closeDelay]);
 
+  const hideImmediate = React.useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setCurrentTooltip(null);
+    lastCloseTimeRef.current = Date.now();
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', hideImmediate, true);
+    return () => window.removeEventListener('scroll', hideImmediate, true);
+  }, [hideImmediate]);
+
   return (
     <GlobalTooltipContext.Provider
       value={{

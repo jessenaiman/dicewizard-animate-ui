@@ -934,7 +934,48 @@
           "type": "registry:ui",
           "target": "components/animate-ui/tooltip-demo.tsx"
         }
-      ]
+      ],
+      "demoProps": {
+        "Tooltip Provider": {
+          "openDelay": {
+            "value": 700,
+            "min": 0,
+            "max": 2000,
+            "step": 100
+          },
+          "closeDelay": {
+            "value": 300,
+            "min": 0,
+            "max": 2000,
+            "step": 100
+          }
+        },
+        "Tooltip": {
+          "side": {
+            "value": "top",
+            "options": {
+              "top": "top",
+              "bottom": "bottom",
+              "left": "left",
+              "right": "right"
+            }
+          },
+          "sideOffset": {
+            "value": 4
+          },
+          "align": {
+            "value": "center",
+            "options": {
+              "start": "start",
+              "center": "center",
+              "end": "end"
+            }
+          },
+          "alignOffset": {
+            "value": 0
+          }
+        }
+      }
     },
     {
       "name": "motion-effect-fade-blur-demo",

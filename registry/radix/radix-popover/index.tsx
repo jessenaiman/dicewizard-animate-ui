@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -72,9 +77,10 @@ const getInitialPosition = (side: 'top' | 'bottom' | 'left' | 'right') => {
 
 type PopoverContentProps = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
-> & {
-  transition?: Transition;
-};
+> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
@@ -117,6 +123,7 @@ const PopoverContent = React.forwardRef<
                   'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
                   className,
                 )}
+                {...props}
               >
                 {children}
               </motion.div>

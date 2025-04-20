@@ -86,9 +86,9 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           aria-hidden="true"
         >
           <Icon
-            className={`${
+            className={
               active ? 'fill-[var(--icon-button-color)]' : 'fill-transparent'
-            }`} // Fill on active
+            }
           />
         </motion.div>
 
