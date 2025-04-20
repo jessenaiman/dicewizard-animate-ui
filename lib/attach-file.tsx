@@ -25,11 +25,6 @@ const Badge = ({
   );
 };
 
-/**
- * Source API Integration
- *
- * Add this to page tree builder options
- */
 export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
   if (!file) return node;
   const data = file.data.data as object;
