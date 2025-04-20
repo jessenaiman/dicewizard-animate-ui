@@ -20,7 +20,6 @@ import { CopyButton } from '@/registry/buttons/copy-button';
 export type CodeBlockProps = HTMLAttributes<HTMLElement> & {
   icon?: ReactNode;
   allowCopy?: boolean;
-  keepBackground?: boolean;
   viewportProps?: ScrollAreaViewportProps;
   onCopy?: () => void;
 };

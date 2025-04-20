@@ -114,6 +114,23 @@
       ]
     },
     {
+      "name": "base-checkbox",
+      "type": "registry:ui",
+      "title": "Base Checkbox",
+      "description": "Base checkbox component",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base/base-checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/base-checkbox.tsx"
+        }
+      ]
+    },
+    {
       "name": "base-popover",
       "type": "registry:ui",
       "title": "Base Popover",
@@ -572,6 +589,22 @@
           "path": "registry/demo/backgrounds/stars-background-demo/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/stars-background-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "base-checkbox-demo",
+      "type": "registry:ui",
+      "title": "Base Checkbox Demo",
+      "description": "Demo showing a base checkbox.",
+      "registryDependencies": [
+        "https://base-ui-components.com/r/base-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/base/base-checkbox-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/base-checkbox-demo.tsx"
         }
       ]
     },

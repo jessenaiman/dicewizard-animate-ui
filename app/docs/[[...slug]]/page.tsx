@@ -48,7 +48,7 @@ export default async function Page(props: {
             Steps,
             Step,
             pre: (props: CodeBlockProps) => (
-              <CodeBlock {...props} keepBackground={false} className="">
+              <CodeBlock {...props} className="">
                 <Pre>{props.children}</Pre>
               </CodeBlock>
             ),

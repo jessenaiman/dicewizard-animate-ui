@@ -14,7 +14,7 @@ type CheckboxProps = React.ComponentPropsWithoutRef<
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
->(({ className, ...props }, ref) => {
+>(({ className, onCheckedChange, ...props }, ref) => {
   const [isChecked, setIsChecked] = React.useState(
     props?.checked ?? props?.defaultChecked ?? false,
   );
@@ -23,13 +23,18 @@ const Checkbox = React.forwardRef<
     if (props?.checked !== undefined) setIsChecked(props.checked);
   }, [props?.checked]);
 
+  const handleCheckedChange = React.useCallback(
+    (checked: boolean) => {
+      setIsChecked(checked);
+      onCheckedChange?.(checked);
+    },
+    [onCheckedChange],
+  );
+
   return (
     <CheckboxPrimitive.Root
       {...props}
-      onCheckedChange={(checked) => {
-        setIsChecked(checked);
-        props.onCheckedChange?.(checked);
-      }}
+      onCheckedChange={handleCheckedChange}
       asChild
     >
       <motion.button
