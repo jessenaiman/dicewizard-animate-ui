@@ -18,6 +18,8 @@
     "---Effects---",
     "effects/motion-effect",
     "effects/motion-highlight",
+    "---Base UI---",
+    "base/base-popover",
     "---Radix UI / Shadcn UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",

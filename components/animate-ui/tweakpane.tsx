@@ -133,8 +133,11 @@ const renderNumber = (
   if ('min' in bind && 'max' in bind) {
     return (
       <div key={key} className="flex flex-row gap-2.5">
-        <div className="w-[80px] flex items-center shrink-0">
-          <Label className="text-current/80" htmlFor={key}>
+        <div className="w-[80px] flex items-center shrink-0 min-w-0">
+          <Label
+            className="truncate text-current/80 block leading-[1.2]"
+            htmlFor={key}
+          >
             {key}
           </Label>
         </div>
@@ -163,8 +166,11 @@ const renderNumber = (
   if ('options' in bind) {
     return (
       <div key={key} className="flex flex-row gap-2.5">
-        <div className="w-[80px] truncate line-clamp-1 flex items-center shrink-0">
-          <Label className="text-current/80" htmlFor={key}>
+        <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+          <Label
+            className="truncate text-current/80 block leading-[1.2]"
+            htmlFor={key}
+          >
             {key}
           </Label>
         </div>
@@ -194,8 +200,11 @@ const renderNumber = (
 
   return (
     <div key={key} className="flex flex-row gap-2.5">
-      <div className="w-[80px] truncate flex items-center shrink-0">
-        <Label className="text-current/80" htmlFor={key}>
+      <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+        <Label
+          className="truncate text-current/80 block leading-[1.2]"
+          htmlFor={key}
+        >
           {key}
         </Label>
       </div>
@@ -218,8 +227,11 @@ const renderString = (
   if (bind?.options) {
     return (
       <div key={key} className="flex flex-row gap-2.5">
-        <div className="w-[80px] truncate line-clamp-1 flex items-center shrink-0">
-          <Label className="text-current/80" htmlFor={key}>
+        <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+          <Label
+            className="truncate text-current/80 block leading-[1.2]"
+            htmlFor={key}
+          >
             {key}
           </Label>
         </div>
@@ -246,8 +258,11 @@ const renderString = (
 
   return (
     <div key={key} className="flex flex-row gap-2.5">
-      <div className="w-[80px] truncate flex items-center shrink-0">
-        <Label className="text-current/80" htmlFor={key}>
+      <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+        <Label
+          className="truncate text-current/80 block leading-[1.2]"
+          htmlFor={key}
+        >
           {key}
         </Label>
       </div>
@@ -268,8 +283,11 @@ const renderBoolean = (
   onChange: (value: boolean) => void,
 ) => (
   <div key={key} className="flex flex-row gap-2.5 justify-between">
-    <div className="w-[80px] truncate flex items-center shrink-0">
-      <Label className="text-current/80" htmlFor={key}>
+    <div className="w-[80px] flex items-center shrink-0 min-w-0">
+      <Label
+        htmlFor={key}
+        className="truncate text-current/80 block leading-[1.2]"
+      >
         {key}
       </Label>
     </div>
@@ -322,7 +340,9 @@ const renderNestedBinds = (
       className="flex flex-col not-first:pt-1 first:-mt-0.5"
     >
       <CollapsibleTrigger className="cursor-pointer w-full truncate flex items-center justify-between rounded-md p-1.5">
-        <Label>{groupKey}</Label>
+        <Label className="truncate text-current/80 block leading-[1.2]">
+          {groupKey}
+        </Label>
         <ChevronsUpDown className="size-3.5 text-muted-foreground" />
       </CollapsibleTrigger>
 
@@ -369,7 +389,7 @@ const Tweakpane = ({ onBindsChange, ...props }: TweakpaneProps) => {
   }, [props]);
 
   return (
-    <div className="overflow-y-auto bg-muted md:rounded-r-[13px] rounded-b-[13px] md:rounded-bl-none md:border-l border-t md:border-t-0 p-1.5 size-full flex flex-col">
+    <div className="overflow-y-auto bg-muted md:rounded-r-[13px] rounded-b-[13px] md:rounded-bl-none md:border-l border-t border-border/75 dark:border-border/10 md:border-t-0 p-1.5 size-full flex flex-col">
       {renderBinds(localBinds, handleBindsChange, initial)}
     </div>
   );

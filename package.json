@@ -1,6 +1,6 @@
 {
   "name": "animate-ui",
-  "version": "1.0.1-beta.35",
+  "version": "1.0.1-beta.36",
   "description": "Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, Motion and Shadcn CLI. Browse a list of components you can install, modify, and use in your projects.",
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@base-ui-components/react": "1.0.0-alpha.8",
     "@bprogress/next": "^3.2.10",
     "@headlessui/react": "^2.2.1",
     "@radix-ui/react-accordion": "^1.2.3",

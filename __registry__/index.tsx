@@ -225,6 +225,38 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/stars-background',
   },
+  'base-popover': {
+    name: 'base-popover',
+    description: 'Base popover component',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/base/base-popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/base-popover.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Popover as PopoverPrimitive } from '@base-ui-components/react/popover';\nimport {\n  AnimatePresence,\n  HTMLMotionProps,\n  motion,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype Side = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Positioner\n>['side'];\ntype Align = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Positioner\n>['align'];\n\ninterface PopoverContextType {\n  isOpen: boolean;\n  side?: Side;\n  setSide?: (side: Side) => void;\n}\nconst PopoverContext = React.createContext<PopoverContextType>({\n  isOpen: false,\n});\n\nconst usePopover = (): PopoverContextType => {\n  const context = React.useContext(PopoverContext);\n  if (!context) {\n    throw new Error('usePopover must be used within a Popover');\n  }\n  return context;\n};\n\ntype PopoverProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Root\n>;\n\nconst Popover: React.FC<PopoverProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (\n      open: boolean,\n      event: Event | undefined,\n      reason: Parameters<NonNullable<PopoverProps['onOpenChange']>>[2],\n    ) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open, event, reason);\n    },\n    [props],\n  );\n\n  return (\n    <PopoverContext.Provider value={{ isOpen }}>\n      <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n        {children}\n      </PopoverPrimitive.Root>\n    </PopoverContext.Provider>\n  );\n};\n\ntype PopoverTriggerProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Trigger\n>;\n\nconst PopoverTrigger = PopoverPrimitive.Trigger;\n\nconst getInitialPosition = (side: Side) => {\n  switch (side) {\n    case 'top':\n      return { y: 15 };\n    case 'bottom':\n      return { y: -15 };\n    case 'left':\n    case 'inline-end':\n      return { x: 15 };\n    case 'right':\n    case 'inline-start':\n      return { x: -15 };\n  }\n};\n\ntype PopoverContentProps = Omit<\n  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Positioner>,\n  'render'\n> & {\n  transition?: Transition;\n  popupProps?: typeof PopoverPrimitive.Popup;\n  motionProps?: HTMLMotionProps<'div'>;\n  positionerClassName?: string;\n};\n\nconst PopoverContent = React.forwardRef<\n  React.ElementRef<typeof PopoverPrimitive.Positioner>,\n  PopoverContentProps\n>(\n  (\n    {\n      children,\n      align = 'center',\n      side = 'bottom',\n      sideOffset = 4,\n      className,\n      positionerClassName,\n      popupProps,\n      motionProps,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = usePopover();\n    const initialPosition = getInitialPosition(side);\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <PopoverPrimitive.Portal keepMounted>\n            <PopoverPrimitive.Positioner\n              align={align}\n              side={side}\n              sideOffset={sideOffset}\n              className={cn('z-50', positionerClassName)}\n              {...props}\n              ref={ref}\n            >\n              <PopoverPrimitive.Popup\n                {...popupProps}\n                className={cn(\n                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n                render={\n                  <motion.div\n                    key=\"popover\"\n                    initial={{ opacity: 0, scale: 0.5, ...initialPosition }}\n                    animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n                    exit={{ opacity: 0, scale: 0.5, ...initialPosition }}\n                    transition={transition}\n                    {...motionProps}\n                  />\n                }\n              >\n                {children}\n              </PopoverPrimitive.Popup>\n            </PopoverPrimitive.Positioner>\n          </PopoverPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nPopoverContent.displayName = 'PopoverContent';\n\nexport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n  usePopover,\n  type PopoverContextType,\n  type PopoverProps,\n  type PopoverTriggerProps,\n  type PopoverContentProps,\n  type Side,\n  type Align,\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/base-popover/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-popover';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-popover',
+  },
   'copy-button': {
     name: 'copy-button',
     description: 'A copy button component',
@@ -1098,6 +1130,65 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/stars-background-demo',
   },
+  'base-popover-demo': {
+    name: 'base-popover-demo',
+    description: 'Demo showing a base popover.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://base-ui-components.com/r/base-popover'],
+    files: [
+      {
+        path: 'registry/demo/base/base-popover-demo/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/base-popover-demo.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n  type Side,\n  type Align,\n} from \'@/components/animate-ui/base-popover\';\n\ninterface RadixPopoverDemoProps {\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n  openOnHover?: boolean;\n  delay?: number;\n  closeDelay?: number;\n}\n\nexport function RadixPopoverDemo({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  openOnHover,\n  delay,\n  closeDelay,\n}: RadixPopoverDemoProps) {\n  return (\n    <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>\n      <PopoverTrigger\n        render={<Button variant="outline">Open popover</Button>}\n      />\n      <PopoverContent\n        className="w-80"\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="font-medium leading-none">Dimensions</h4>\n            <p className="text-sm text-muted-foreground">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n}',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/base/base-popover-demo/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-popover-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Popover: {
+          openOnHover: { value: false },
+          delay: { value: 300 },
+          closeDelay: { value: 0 },
+        },
+        PopoverContent: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+              'inline-start': 'inline-start',
+              'inline-end': 'inline-end',
+            },
+          },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          sideOffset: { value: 4 },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-popover-demo',
+  },
   'copy-button-demo': {
     name: 'copy-button-demo',
     description:
@@ -1884,7 +1975,7 @@ export const index: Record<string, any> = {
         return { default: Comp };
       });
       LazyComp.demoProps = {
-        'Tooltip Provider': {
+        TooltipProvider: {
           openDelay: { value: 700, min: 0, max: 2000, step: 100 },
           closeDelay: { value: 300, min: 0, max: 2000, step: 100 },
         },

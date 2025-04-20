@@ -13,7 +13,7 @@
     }
   ],
   "demoProps": {
-    "Tooltip Provider": {
+    "TooltipProvider": {
       "openDelay": { "value": 700, "min": 0, "max": 2000, "step": 100 },
       "closeDelay": { "value": 300, "min": 0, "max": 2000, "step": 100 }
     },
