@@ -44,12 +44,9 @@ type ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {
   globalId: string;
 };
 
-const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({
-  size: 'default',
-  variant: 'default',
-  type: 'single',
-  globalId: '',
-});
+const ToggleGroupContext = React.createContext<
+  ToggleGroupContextProps | undefined
+>(undefined);
 
 const useToggleGroup = (): ToggleGroupContextProps => {
   const context = React.useContext(ToggleGroupContext);

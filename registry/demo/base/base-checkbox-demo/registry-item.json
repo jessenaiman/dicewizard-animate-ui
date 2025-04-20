@@ -4,7 +4,10 @@
   "type": "registry:ui",
   "title": "Base Checkbox Demo",
   "description": "Demo showing a base checkbox.",
-  "registryDependencies": ["https://base-ui-components.com/r/base-checkbox"],
+  "registryDependencies": [
+    "https://base-ui-components.com/r/base-checkbox",
+    "label"
+  ],
   "files": [
     {
       "path": "registry/demo/base/base-checkbox-demo/index.tsx",

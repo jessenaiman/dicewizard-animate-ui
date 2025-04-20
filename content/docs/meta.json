@@ -21,6 +21,7 @@
     "---Base UI---",
     "base/base-checkbox",
     "base/base-popover",
+    "base/base-switch",
     "---Radix UI / Shadcn UI---",
     "radix/radix-accordion",
     "radix/radix-checkbox",

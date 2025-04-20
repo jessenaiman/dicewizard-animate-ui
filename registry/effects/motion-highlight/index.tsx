@@ -26,6 +26,7 @@ interface MotionHighlightContextType {
   setActiveClassName: (className: string) => void;
   transition?: Transition;
   disabled?: boolean;
+  enabled?: boolean;
   exitDelay?: number;
   forceUpdateBounds?: boolean;
 }
@@ -53,6 +54,7 @@ interface BaseMotionHighlightProps {
   transition?: Transition;
   hover?: boolean;
   disabled?: boolean;
+  enabled?: boolean;
   exitDelay?: number;
 }
 
@@ -108,8 +110,9 @@ const MotionHighlight = React.forwardRef<HTMLDivElement, MotionHighlightProps>(
       defaultValue,
       onValueChange,
       className,
-      transition = { type: 'spring', stiffness: 200, damping: 25 },
+      transition = { type: 'spring', stiffness: 350, damping: 35 },
       hover = false,
+      enabled = true,
       controlledItems,
       disabled = false,
       exitDelay = 0.2,
@@ -251,6 +254,7 @@ const MotionHighlight = React.forwardRef<HTMLDivElement, MotionHighlightProps>(
           className,
           transition,
           disabled,
+          enabled,
           exitDelay,
           setBounds,
           clearBounds,
@@ -260,18 +264,20 @@ const MotionHighlight = React.forwardRef<HTMLDivElement, MotionHighlightProps>(
             ?.forceUpdateBounds,
         }}
       >
-        {controlledItems
-          ? render(children)
-          : render(
-              React.Children.map(children, (child, index) => (
-                <MotionHighlightItem
-                  key={index}
-                  className={props?.itemsClassName}
-                >
-                  {child}
-                </MotionHighlightItem>
-              )),
-            )}
+        {enabled
+          ? controlledItems
+            ? render(children)
+            : render(
+                React.Children.map(children, (child, index) => (
+                  <MotionHighlightItem
+                    key={index}
+                    className={props?.itemsClassName}
+                  >
+                    {child}
+                  </MotionHighlightItem>
+                )),
+              )
+          : children}
       </MotionHighlightContext.Provider>
     );
   },
@@ -284,7 +290,8 @@ interface ExtendedChildProps extends React.HTMLAttributes<HTMLElement> {
   ref?: React.Ref<HTMLElement>;
   'data-active'?: string;
   'data-value'?: string;
-  'data-disabled'?: string;
+  'data-disabled'?: boolean;
+  'data-highlight'?: boolean;
 }
 
 interface MotionHighlightItemProps
@@ -297,9 +304,23 @@ interface MotionHighlightItemProps
   activeClassName?: string;
   disabled?: boolean;
   exitDelay?: number;
-  withoutDataAttributes?: boolean;
   asChild?: boolean;
   forceUpdateBounds?: boolean;
+}
+
+function getNonOverridingDataAttributes(
+  element: React.ReactElement,
+  dataAttributes: Record<string, unknown>,
+): Record<string, unknown> {
+  return Object.keys(dataAttributes).reduce<Record<string, unknown>>(
+    (acc, key) => {
+      if ((element.props as Record<string, unknown>)[key] === undefined) {
+        acc[key] = dataAttributes[key];
+      }
+      return acc;
+    },
+    {},
+  );
 }
 
 const MotionHighlightItem = React.forwardRef<
@@ -316,7 +337,6 @@ const MotionHighlightItem = React.forwardRef<
       disabled = false,
       activeClassName,
       exitDelay,
-      withoutDataAttributes = false,
       asChild = false,
       forceUpdateBounds,
       ...props
@@ -331,6 +351,7 @@ const MotionHighlightItem = React.forwardRef<
       setBounds,
       clearBounds,
       hover,
+      enabled,
       className: contextClassName,
       transition: contextTransition,
       id: contextId,
@@ -405,6 +426,14 @@ const MotionHighlightItem = React.forwardRef<
 
     if (!React.isValidElement(children)) return children;
 
+    const dataAttributes = {
+      'data-active': isActive ? 'true' : 'false',
+      'aria-selected': isActive,
+      'data-disabled': isDisabled,
+      'data-value': childValue,
+      'data-highlight': true,
+    };
+
     if (asChild) {
       if (mode === 'children') {
         return React.cloneElement(
@@ -413,12 +442,7 @@ const MotionHighlightItem = React.forwardRef<
             key: childValue,
             ref: localRef,
             className: cn('relative', element.props.className),
-            ...(!withoutDataAttributes && {
-              'data-active': isActive ? 'true' : 'false',
-              'aria-selected': isActive,
-              'data-disabled': isDisabled ? 'true' : 'false',
-              'data-value': childValue,
-            }),
+            ...dataAttributes,
             ...(hover
               ? {
                   onMouseEnter: () => setActiveValue(childValue),
@@ -451,20 +475,14 @@ const MotionHighlightItem = React.forwardRef<
                         (exitDelay ?? contextExitDelay ?? 0),
                     },
                   }}
-                  data-active={isActive ? 'true' : 'false'}
-                  aria-selected={isActive}
-                  data-disabled={isDisabled ? 'true' : 'false'}
-                  data-value={childValue}
+                  {...dataAttributes}
                 />
               )}
             </AnimatePresence>
 
             <div
               className={cn('relative z-[1]', className)}
-              data-active={isActive ? 'true' : 'false'}
-              data-value={childValue}
-              aria-selected={isActive}
-              data-disabled={isDisabled ? 'true' : 'false'}
+              {...dataAttributes}
             >
               {children}
             </div>
@@ -474,6 +492,7 @@ const MotionHighlightItem = React.forwardRef<
 
       return React.cloneElement(element, {
         ref: localRef,
+        ...getNonOverridingDataAttributes(element, dataAttributes),
         ...(hover
           ? {
               onMouseEnter: (e) => {
@@ -491,24 +510,15 @@ const MotionHighlightItem = React.forwardRef<
                 element.props.onClick?.(e);
               },
             }),
-        ...(!withoutDataAttributes && {
-          'data-active': isActive ? 'true' : 'false',
-          'aria-selected': isActive,
-          'data-disabled': isDisabled ? 'true' : 'false',
-          'data-value': childValue,
-        }),
       });
     }
 
-    return (
+    return enabled ? (
       <div
         key={childValue}
         ref={localRef}
         className={cn(mode === 'children' && 'relative', className)}
-        data-active={isActive ? 'true' : 'false'}
-        data-value={childValue}
-        aria-selected={isActive}
-        data-disabled={isDisabled ? 'true' : 'false'}
+        {...dataAttributes}
         {...props}
         {...(hover
           ? {
@@ -550,10 +560,7 @@ const MotionHighlightItem = React.forwardRef<
                       (exitDelay ?? contextExitDelay ?? 0),
                   },
                 }}
-                data-active={isActive ? 'true' : 'false'}
-                aria-selected={isActive}
-                data-disabled={isDisabled ? 'true' : 'false'}
-                data-value={childValue}
+                {...dataAttributes}
               />
             )}
           </AnimatePresence>
@@ -561,14 +568,11 @@ const MotionHighlightItem = React.forwardRef<
 
         {React.cloneElement(element, {
           className: cn('relative z-[1]', element.props.className),
-          ...(!withoutDataAttributes && {
-            'data-active': isActive ? 'true' : 'false',
-            'aria-selected': isActive,
-            'data-disabled': isDisabled ? 'true' : 'false',
-            'data-value': childValue,
-          }),
+          ...getNonOverridingDataAttributes(element, dataAttributes),
         })}
       </div>
+    ) : (
+      children
     );
   },
 );

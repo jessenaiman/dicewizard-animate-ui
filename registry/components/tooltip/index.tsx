@@ -30,8 +30,9 @@ interface GlobalTooltipContextType {
   globalId: string;
 }
 
-const GlobalTooltipContext =
-  React.createContext<GlobalTooltipContextType | null>(null);
+const GlobalTooltipContext = React.createContext<
+  GlobalTooltipContextType | undefined
+>(undefined);
 
 const useGlobalTooltip = () => {
   const context = React.useContext(GlobalTooltipContext);
@@ -295,7 +296,9 @@ interface TooltipContextType {
   id: string;
 }
 
-const TooltipContext = React.createContext<TooltipContextType | null>(null);
+const TooltipContext = React.createContext<TooltipContextType | undefined>(
+  undefined,
+);
 
 const useTooltip = () => {
   const context = React.useContext(TooltipContext);

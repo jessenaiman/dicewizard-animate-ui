@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-switch",
+  "type": "registry:ui",
+  "title": "Base Switch",
+  "description": "Base switch component",
+  "dependencies": ["motion", "@base-ui-components/react"],
+  "files": [
+    {
+      "path": "registry/base/base-switch/index.tsx",
+      "type": "registry:ui",
+      "target": "components/base/base-switch.tsx"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ description: Motion highlight component that displays the motion highlight effec
 author:
   name: imskyleen
   url: https://github.com/imskyleen
+updated: true
 ---
 
 <ComponentPreview name="motion-highlight-cards-hover-demo" />
@@ -238,6 +239,12 @@ By using the `mode` property with the value `parent`, the `MotionHighlight` comp
       required: false,
       default: 'false',
     },
+    enabled: {
+      description: 'Whether the motion highlight is enabled',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
     disabled: {
       description: 'Whether the motion highlight items is disabled',
       type: 'boolean',
@@ -317,13 +324,6 @@ By using the `mode` property with the value `parent`, the `MotionHighlight` comp
       description: 'The delay of the exit of the motion highlight item',
       type: 'number',
       required: false,
-    },
-    withoutDataAttributes: {
-      description:
-        'Whether to not add data attributes to the component wrapped with the MotionHighlightItem',
-      type: 'boolean',
-      required: false,
-      default: 'false',
     },
     asChild: {
       description: 'Whether to use the child component as the component',

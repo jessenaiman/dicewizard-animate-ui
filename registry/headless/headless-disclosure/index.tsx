@@ -18,9 +18,9 @@ import { cn } from '@/lib/utils';
 interface DisclosureContextType {
   isOpen: boolean;
 }
-const DisclosureContext = React.createContext<DisclosureContextType>({
-  isOpen: false,
-});
+const DisclosureContext = React.createContext<
+  DisclosureContextType | undefined
+>(undefined);
 
 const useDisclosure = (): DisclosureContextType => {
   const context = React.useContext(DisclosureContext);

@@ -16,7 +16,9 @@ import { cn } from '@/lib/utils';
 interface SheetContextType {
   isOpen: boolean;
 }
-const SheetContext = React.createContext<SheetContextType>({ isOpen: false });
+const SheetContext = React.createContext<SheetContextType | undefined>(
+  undefined,
+);
 
 const useSheet = (): SheetContextType => {
   const context = React.useContext(SheetContext);

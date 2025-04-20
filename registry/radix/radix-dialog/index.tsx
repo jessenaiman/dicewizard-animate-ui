@@ -15,7 +15,9 @@ import { cn } from '@/lib/utils';
 interface DialogContextType {
   isOpen: boolean;
 }
-const DialogContext = React.createContext<DialogContextType>({ isOpen: false });
+const DialogContext = React.createContext<DialogContextType | undefined>(
+  undefined,
+);
 
 const useDialog = (): DialogContextType => {
   const context = React.useContext(DialogContext);

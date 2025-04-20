@@ -14,9 +14,9 @@ import { cn } from '@/lib/utils';
 interface HoverCardContextType {
   isOpen: boolean;
 }
-const HoverCardContext = React.createContext<HoverCardContextType>({
-  isOpen: false,
-});
+const HoverCardContext = React.createContext<HoverCardContextType | undefined>(
+  undefined,
+);
 
 const useHoverCard = (): HoverCardContextType => {
   const context = React.useContext(HoverCardContext);
