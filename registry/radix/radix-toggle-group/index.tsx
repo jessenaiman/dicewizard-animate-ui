@@ -56,148 +56,139 @@ const useToggleGroup = (): ToggleGroupContextProps => {
   return context;
 };
 
-type ToggleGroupProps = React.ComponentPropsWithoutRef<
-  typeof ToggleGroupPrimitive.Root
-> &
+type ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root> &
   Omit<VariantProps<typeof toggleVariants>, 'type'> & {
     transition?: Transition;
     activeClassName?: string;
   };
 
-const ToggleGroup = React.forwardRef<
-  React.ElementRef<typeof ToggleGroupPrimitive.Root>,
-  ToggleGroupProps
->(
-  (
-    {
-      className,
-      variant,
-      size,
-      children,
-      transition = { type: 'spring', bounce: 0, stiffness: 200, damping: 25 },
-      activeClassName,
-      ...props
-    },
-    ref,
-  ) => {
-    const globalId = React.useId();
+function ToggleGroup({
+  className,
+  variant,
+  size,
+  children,
+  transition = { type: 'spring', bounce: 0, stiffness: 200, damping: 25 },
+  activeClassName,
+  ...props
+}: ToggleGroupProps) {
+  const globalId = React.useId();
 
-    return (
-      <ToggleGroupContext.Provider
-        value={{
-          variant,
-          size,
-          type: props.type,
-          transition,
-          activeClassName,
-          globalId,
-        }}
+  return (
+    <ToggleGroupContext.Provider
+      value={{
+        variant,
+        size,
+        type: props.type,
+        transition,
+        activeClassName,
+        globalId,
+      }}
+    >
+      <ToggleGroupPrimitive.Root
+        data-slot="toggle-group"
+        className={cn(
+          'flex items-center justify-center gap-1 relative',
+          className,
+        )}
+        {...props}
       >
-        <ToggleGroupPrimitive.Root
-          ref={ref}
-          className={cn(
-            'flex items-center justify-center gap-1 relative',
-            className,
-          )}
-          {...props}
-        >
-          {children}
-        </ToggleGroupPrimitive.Root>
-      </ToggleGroupContext.Provider>
-    );
-  },
-);
-ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;
+        {children}
+      </ToggleGroupPrimitive.Root>
+    </ToggleGroupContext.Provider>
+  );
+}
 
-type ToggleGroupItemProps = React.ComponentPropsWithoutRef<
+type ToggleGroupItemProps = React.ComponentProps<
   typeof ToggleGroupPrimitive.Item
 > &
   Omit<VariantProps<typeof toggleVariants>, 'type'> & {
     children?: React.ReactNode;
     buttonProps?: HTMLMotionProps<'button'>;
-    spanProps?: React.HTMLAttributes<HTMLSpanElement>;
+    spanProps?: React.ComponentProps<'span'>;
   };
 
-const ToggleGroupItem = React.forwardRef<
-  React.ElementRef<typeof ToggleGroupPrimitive.Item>,
-  ToggleGroupItemProps
->(
-  (
-    { className, children, variant, size, buttonProps, spanProps, ...props },
-    ref,
-  ) => {
-    const {
-      activeClassName,
-      transition,
-      type,
-      variant: contextVariant,
-      size: contextSize,
-      globalId,
-    } = useToggleGroup();
-    const itemRef = React.useRef<HTMLButtonElement | null>(null);
-    React.useImperativeHandle(ref, () => itemRef.current as HTMLButtonElement);
-    const [isActive, setIsActive] = React.useState(false);
+function ToggleGroupItem({
+  ref,
+  className,
+  children,
+  variant,
+  size,
+  buttonProps,
+  spanProps,
+  ...props
+}: ToggleGroupItemProps) {
+  const {
+    activeClassName,
+    transition,
+    type,
+    variant: contextVariant,
+    size: contextSize,
+    globalId,
+  } = useToggleGroup();
+  const itemRef = React.useRef<HTMLButtonElement | null>(null);
+  React.useImperativeHandle(ref, () => itemRef.current as HTMLButtonElement);
+  const [isActive, setIsActive] = React.useState(false);
 
-    React.useEffect(() => {
-      const node = itemRef.current;
-      if (!node) return;
-      const observer = new MutationObserver(() => {
-        setIsActive(node.getAttribute('data-state') === 'on');
-      });
-      observer.observe(node, {
-        attributes: true,
-        attributeFilter: ['data-state'],
-      });
+  React.useEffect(() => {
+    const node = itemRef.current;
+    if (!node) return;
+    const observer = new MutationObserver(() => {
       setIsActive(node.getAttribute('data-state') === 'on');
-      return () => observer.disconnect();
-    }, []);
+    });
+    observer.observe(node, {
+      attributes: true,
+      attributeFilter: ['data-state'],
+    });
+    setIsActive(node.getAttribute('data-state') === 'on');
+    return () => observer.disconnect();
+  }, []);
 
-    return (
-      <ToggleGroupPrimitive.Item ref={itemRef} {...props} asChild>
-        <motion.button
-          initial={{ scale: 1 }}
-          whileTap={{ scale: 0.9 }}
-          {...buttonProps}
-          className={cn('relative', buttonProps?.className)}
+  return (
+    <ToggleGroupPrimitive.Item ref={itemRef} {...props} asChild>
+      <motion.button
+        data-slot="toggle-group-item"
+        initial={{ scale: 1 }}
+        whileTap={{ scale: 0.9 }}
+        {...buttonProps}
+        className={cn('relative', buttonProps?.className)}
+      >
+        <span
+          {...spanProps}
+          data-state={isActive ? 'on' : 'off'}
+          className={cn(
+            'relative z-[1]',
+            toggleVariants({
+              variant: variant || contextVariant,
+              size: size || contextSize,
+              type,
+            }),
+            className,
+            spanProps?.className,
+          )}
         >
-          <span
-            {...spanProps}
-            data-state={isActive ? 'on' : 'off'}
-            className={cn(
-              'relative z-[1]',
-              toggleVariants({
-                variant: variant || contextVariant,
-                size: size || contextSize,
-                type,
-              }),
-              className,
-              spanProps?.className,
-            )}
-          >
-            {children}
-          </span>
+          {children}
+        </span>
 
-          <AnimatePresence initial={false}>
-            {isActive && type === 'single' && (
-              <motion.span
-                layoutId={`active-toggle-group-item-${globalId}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={transition}
-                className={cn(
-                  'absolute inset-0 z-0 rounded-md bg-muted',
-                  activeClassName,
-                )}
-              />
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </ToggleGroupPrimitive.Item>
-    );
-  },
-);
-ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;
+        <AnimatePresence initial={false}>
+          {isActive && type === 'single' && (
+            <motion.span
+              layoutId={`active-toggle-group-item-${globalId}`}
+              data-slot="active-toggle-group-item"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={transition}
+              className={cn(
+                'absolute inset-0 z-0 rounded-md bg-muted',
+                activeClassName,
+              )}
+            />
+          )}
+        </AnimatePresence>
+      </motion.button>
+    </ToggleGroupPrimitive.Item>
+  );
+}
 
 export {
   ToggleGroup,

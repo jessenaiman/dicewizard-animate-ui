@@ -8,27 +8,19 @@ import { cn } from '@/lib/utils';
 
 const MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);
 
-type ProgressProps = React.ComponentPropsWithoutRef<
-  typeof ProgressPrimitive.Root
-> & {
+type ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root> & {
   transition?: Transition;
 };
 
-const Progress = React.forwardRef<
-  React.ElementRef<typeof ProgressPrimitive.Root>,
-  ProgressProps
->(
-  (
-    {
-      className,
-      value,
-      transition = { type: 'spring', stiffness: 100, damping: 30 },
-      ...props
-    },
-    ref,
-  ) => (
+function Progress({
+  className,
+  value,
+  transition = { type: 'spring', stiffness: 100, damping: 30 },
+  ...props
+}: ProgressProps) {
+  return (
     <ProgressPrimitive.Root
-      ref={ref}
+      data-slot="progress"
       className={cn(
         'relative h-2 w-full overflow-hidden rounded-full bg-secondary',
         className,
@@ -36,6 +28,7 @@ const Progress = React.forwardRef<
       {...props}
     >
       <MotionProgressIndicator
+        data-slot="progress-indicator"
         className="h-full w-full flex-1 bg-primary"
         animate={{
           translateX: `-${100 - (value || 0)}%`,
@@ -43,8 +36,7 @@ const Progress = React.forwardRef<
         transition={transition}
       />
     </ProgressPrimitive.Root>
-  ),
-);
-Progress.displayName = ProgressPrimitive.Root.displayName;
+  );
+}
 
 export { Progress, type ProgressProps };

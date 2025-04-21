@@ -11,9 +11,10 @@ import {
 
 import { cn } from '@/lib/utils';
 
-interface HoverCardContextType {
+type HoverCardContextType = {
   isOpen: boolean;
-}
+};
+
 const HoverCardContext = React.createContext<HoverCardContextType | undefined>(
   undefined,
 );
@@ -26,11 +27,24 @@ const useHoverCard = (): HoverCardContextType => {
   return context;
 };
 
-type HoverCardProps = React.ComponentPropsWithoutRef<
-  typeof HoverCardPrimitive.Root
->;
+type Side = 'top' | 'bottom' | 'left' | 'right';
 
-const HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {
+const getInitialPosition = (side: Side) => {
+  switch (side) {
+    case 'top':
+      return { y: 15 };
+    case 'bottom':
+      return { y: -15 };
+    case 'left':
+      return { x: 15 };
+    case 'right':
+      return { x: -15 };
+  }
+};
+
+type HoverCardProps = React.ComponentProps<typeof HoverCardPrimitive.Root>;
+
+function HoverCard({ children, ...props }: HoverCardProps) {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
@@ -49,92 +63,78 @@ const HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {
 
   return (
     <HoverCardContext.Provider value={{ isOpen }}>
-      <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>
+      <HoverCardPrimitive.Root
+        data-slot="hover-card"
+        {...props}
+        onOpenChange={handleOpenChange}
+      >
         {children}
       </HoverCardPrimitive.Root>
     </HoverCardContext.Provider>
   );
-};
+}
 
-type HoverCardTriggerProps = React.ComponentPropsWithoutRef<
+type HoverCardTriggerProps = React.ComponentProps<
   typeof HoverCardPrimitive.Trigger
 >;
 
-const HoverCardTrigger = HoverCardPrimitive.Trigger;
+function HoverCardTrigger(props: HoverCardTriggerProps) {
+  return (
+    <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
+  );
+}
 
-const getInitialPosition = (side: 'top' | 'bottom' | 'left' | 'right') => {
-  switch (side) {
-    case 'top':
-      return { y: 15 };
-    case 'bottom':
-      return { y: -15 };
-    case 'left':
-      return { x: 15 };
-    case 'right':
-      return { x: -15 };
-  }
-};
-
-type HoverCardContentProps = React.ComponentPropsWithoutRef<
+type HoverCardContentProps = React.ComponentProps<
   typeof HoverCardPrimitive.Content
 > &
   HTMLMotionProps<'div'> & {
     transition?: Transition;
   };
 
-const HoverCardContent = React.forwardRef<
-  React.ElementRef<typeof HoverCardPrimitive.Content>,
-  HoverCardContentProps
->(
-  (
-    {
-      className,
-      align = 'center',
-      side = 'bottom',
-      sideOffset = 4,
-      transition = { type: 'spring', stiffness: 300, damping: 25 },
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isOpen } = useHoverCard();
-    const initialPosition = getInitialPosition(side);
+function HoverCardContent({
+  className,
+  align = 'center',
+  side = 'bottom',
+  sideOffset = 4,
+  transition = { type: 'spring', stiffness: 300, damping: 25 },
+  children,
+  ...props
+}: HoverCardContentProps) {
+  const { isOpen } = useHoverCard();
+  const initialPosition = getInitialPosition(side);
 
-    return (
-      <AnimatePresence>
-        {isOpen && (
-          <HoverCardPrimitive.Portal forceMount>
-            <HoverCardPrimitive.Content
-              forceMount
-              align={align}
-              sideOffset={sideOffset}
-              className="z-50"
-              ref={ref}
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <HoverCardPrimitive.Portal forceMount data-slot="hover-card-portal">
+          <HoverCardPrimitive.Content
+            forceMount
+            align={align}
+            sideOffset={sideOffset}
+            className="z-50"
+            {...props}
+          >
+            <motion.div
+              key="hover-card-content"
+              data-slot="hover-card-content"
+              initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              transition={transition}
+              className={cn(
+                'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+                className,
+              )}
               {...props}
             >
-              <motion.div
-                key="hover-card"
-                initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
-                animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
-                transition={transition}
-                className={cn(
-                  'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
-                  className,
-                )}
-                {...props}
-              >
-                {children}
-              </motion.div>
-            </HoverCardPrimitive.Content>
-          </HoverCardPrimitive.Portal>
-        )}
-      </AnimatePresence>
-    );
-  },
-);
-HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
+              {children}
+            </motion.div>
+          </HoverCardPrimitive.Content>
+        </HoverCardPrimitive.Portal>
+      )}
+    </AnimatePresence>
+  );
+}
 
 export {
   HoverCard,

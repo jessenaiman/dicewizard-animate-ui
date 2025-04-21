@@ -5,6 +5,9 @@ import {
   Disclosure as DisclosurePrimitive,
   DisclosureButton as DisclosureButtonPrimitive,
   DisclosurePanel as DisclosurePanelPrimitive,
+  type DisclosureProps as DisclosurePrimitiveProps,
+  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,
+  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,
 } from '@headlessui/react';
 import {
   AnimatePresence,
@@ -15,9 +18,10 @@ import {
 
 import { cn } from '@/lib/utils';
 
-interface DisclosureContextType {
+type DisclosureContextType = {
   isOpen: boolean;
-}
+};
+
 const DisclosureContext = React.createContext<
   DisclosureContextType | undefined
 >(undefined);
@@ -30,15 +34,17 @@ const useDisclosure = (): DisclosureContextType => {
   return context;
 };
 
-type DisclosureProps = React.ComponentPropsWithoutRef<
-  typeof DisclosurePrimitive
->;
-const Disclosure = React.forwardRef<
-  React.ElementRef<typeof DisclosurePrimitive>,
-  DisclosureProps
->(({ children, ...props }, ref) => {
+type DisclosureProps<TTag extends React.ElementType = 'div'> =
+  DisclosurePrimitiveProps<TTag> & {
+    as?: TTag;
+  };
+
+function Disclosure<TTag extends React.ElementType = 'div'>({
+  children,
+  ...props
+}: DisclosureProps<TTag>) {
   return (
-    <DisclosurePrimitive {...props} ref={ref}>
+    <DisclosurePrimitive data-slot="disclosure" {...props}>
       {(bag) => (
         <DisclosureContext.Provider value={{ isOpen: bag.open }}>
           {typeof children === 'function' ? children(bag) : children}
@@ -46,65 +52,72 @@ const Disclosure = React.forwardRef<
       )}
     </DisclosurePrimitive>
   );
-});
-Disclosure.displayName = DisclosurePrimitive.displayName;
+}
 
-type DisclosureButtonProps = React.ComponentPropsWithoutRef<
-  typeof DisclosureButtonPrimitive
->;
-const DisclosureButton = DisclosureButtonPrimitive;
-
-type DisclosurePanelProps = React.ComponentPropsWithoutRef<
-  typeof DisclosurePanelPrimitive
-> &
-  Omit<HTMLMotionProps<'div'>, 'children'> & {
-    transition?: Transition;
+type DisclosureButtonProps<TTag extends React.ElementType = 'button'> =
+  DisclosureButtonPrimitiveProps<TTag> & {
+    as?: TTag;
   };
-const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
-  (
-    {
-      className,
-      children,
-      transition = { type: 'spring', stiffness: 150, damping: 22 },
-      as = motion.div,
-      unmount,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isOpen } = useDisclosure();
 
-    return (
-      <AnimatePresence>
-        {isOpen && (
-          <DisclosurePanelPrimitive static as={as} unmount={unmount}>
-            {(bag) => (
-              <motion.div
-                key="disclosure-panel"
-                initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
-                animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}
-                exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
-                transition={transition}
-                style={{
-                  maskImage:
-                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
-                  WebkitMaskImage:
-                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
-                }}
-                className={cn('overflow-hidden', className)}
-                ref={ref}
-                {...props}
-              >
-                {typeof children === 'function' ? children(bag) : children}
-              </motion.div>
-            )}
-          </DisclosurePanelPrimitive>
-        )}
-      </AnimatePresence>
-    );
-  },
-);
-DisclosurePanel.displayName = DisclosurePanelPrimitive.displayName;
+function DisclosureButton<TTag extends React.ElementType = 'button'>(
+  props: DisclosureButtonProps<TTag>,
+) {
+  return <DisclosureButtonPrimitive data-slot="disclosure-button" {...props} />;
+}
+
+type DisclosurePanelProps<TTag extends React.ElementType = typeof motion.div> =
+  Pick<DisclosurePanelPrimitiveProps<TTag>, 'static' | 'unmount' | 'children'> &
+    Omit<HTMLMotionProps<'div'>, 'children'> & {
+      transition?: Transition;
+      as?: TTag;
+    };
+
+function DisclosurePanel<TTag extends React.ElementType = typeof motion.div>(
+  props: DisclosurePanelProps<TTag>,
+) {
+  const {
+    className,
+    children,
+    transition = { type: 'spring', stiffness: 150, damping: 22 },
+    as = motion.div,
+    unmount,
+    ...rest
+  } = props;
+  const { isOpen } = useDisclosure();
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <DisclosurePanelPrimitive
+          static
+          as={as as React.ElementType}
+          unmount={unmount}
+        >
+          {(bag) => (
+            <motion.div
+              key="disclosure-panel"
+              data-slot="disclosure-panel"
+              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
+              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}
+              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
+              transition={transition}
+              style={{
+                maskImage:
+                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
+                WebkitMaskImage:
+                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
+              }}
+              className={cn('overflow-hidden', className)}
+              {...rest}
+            >
+              {typeof children === 'function' ? children(bag) : children}
+            </motion.div>
+          )}
+        </DisclosurePanelPrimitive>
+      )}
+    </AnimatePresence>
+  );
+}
 
 export {
   Disclosure,

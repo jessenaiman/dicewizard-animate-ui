@@ -14,15 +14,32 @@ import { cn } from '@/lib/utils';
 type Side = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Positioner
 >['side'];
+
 type Align = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Positioner
 >['align'];
 
-interface PopoverContextType {
+const getInitialPosition = (side: Side) => {
+  switch (side) {
+    case 'top':
+      return { y: 15 };
+    case 'bottom':
+      return { y: -15 };
+    case 'left':
+    case 'inline-end':
+      return { x: 15 };
+    case 'right':
+    case 'inline-start':
+      return { x: -15 };
+  }
+};
+
+type PopoverContextType = {
   isOpen: boolean;
   side?: Side;
   setSide?: (side: Side) => void;
-}
+};
+
 const PopoverContext = React.createContext<PopoverContextType | undefined>(
   undefined,
 );
@@ -35,11 +52,9 @@ const usePopover = (): PopoverContextType => {
   return context;
 };
 
-type PopoverProps = React.ComponentPropsWithoutRef<
-  typeof PopoverPrimitive.Root
->;
+type PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>;
 
-const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
+function Popover(props: PopoverProps) {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
@@ -62,36 +77,25 @@ const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
 
   return (
     <PopoverContext.Provider value={{ isOpen }}>
-      <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>
-        {children}
-      </PopoverPrimitive.Root>
+      <PopoverPrimitive.Root
+        data-slot="popover"
+        {...props}
+        onOpenChange={handleOpenChange}
+      />
     </PopoverContext.Provider>
   );
-};
+}
 
-type PopoverTriggerProps = React.ComponentPropsWithoutRef<
+type PopoverTriggerProps = React.ComponentProps<
   typeof PopoverPrimitive.Trigger
 >;
 
-const PopoverTrigger = PopoverPrimitive.Trigger;
-
-const getInitialPosition = (side: Side) => {
-  switch (side) {
-    case 'top':
-      return { y: 15 };
-    case 'bottom':
-      return { y: -15 };
-    case 'left':
-    case 'inline-end':
-      return { x: 15 };
-    case 'right':
-    case 'inline-start':
-      return { x: -15 };
-  }
-};
+function PopoverTrigger(props: PopoverTriggerProps) {
+  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />;
+}
 
 type PopoverContentProps = Omit<
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Positioner>,
+  React.ComponentProps<typeof PopoverPrimitive.Positioner>,
   'render'
 > & {
   transition?: Transition;
@@ -100,67 +104,59 @@ type PopoverContentProps = Omit<
   positionerClassName?: string;
 };
 
-const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Positioner>,
-  PopoverContentProps
->(
-  (
-    {
-      children,
-      align = 'center',
-      side = 'bottom',
-      sideOffset = 4,
-      className,
-      positionerClassName,
-      popupProps,
-      motionProps,
-      transition = { type: 'spring', stiffness: 300, damping: 25 },
-      ...props
-    },
-    ref,
-  ) => {
-    const { isOpen } = usePopover();
-    const initialPosition = getInitialPosition(side);
+function PopoverContent({
+  children,
+  align = 'center',
+  side = 'bottom',
+  sideOffset = 4,
+  className,
+  positionerClassName,
+  popupProps,
+  motionProps,
+  transition = { type: 'spring', stiffness: 300, damping: 25 },
+  ...props
+}: PopoverContentProps) {
+  const { isOpen } = usePopover();
+  const initialPosition = getInitialPosition(side);
 
-    return (
-      <AnimatePresence>
-        {isOpen && (
-          <PopoverPrimitive.Portal keepMounted>
-            <PopoverPrimitive.Positioner
-              align={align}
-              side={side}
-              sideOffset={sideOffset}
-              className={cn('z-50', positionerClassName)}
-              {...props}
-              ref={ref}
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <PopoverPrimitive.Portal keepMounted data-slot="popover-portal">
+          <PopoverPrimitive.Positioner
+            data-slot="popover-positioner"
+            align={align}
+            side={side}
+            sideOffset={sideOffset}
+            className={cn('z-50', positionerClassName)}
+            {...props}
+          >
+            <PopoverPrimitive.Popup
+              data-slot="popover-popup"
+              {...popupProps}
+              className={cn(
+                'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+                className,
+              )}
+              render={
+                <motion.div
+                  key="popover"
+                  initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
+                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+                  transition={transition}
+                  {...motionProps}
+                />
+              }
             >
-              <PopoverPrimitive.Popup
-                {...popupProps}
-                className={cn(
-                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
-                  className,
-                )}
-                render={
-                  <motion.div
-                    key="popover"
-                    initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
-                    animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
-                    transition={transition}
-                    {...motionProps}
-                  />
-                }
-              >
-                {children}
-              </PopoverPrimitive.Popup>
-            </PopoverPrimitive.Positioner>
-          </PopoverPrimitive.Portal>
-        )}
-      </AnimatePresence>
-    );
-  },
-);
-PopoverContent.displayName = 'PopoverContent';
+              {children}
+            </PopoverPrimitive.Popup>
+          </PopoverPrimitive.Positioner>
+        </PopoverPrimitive.Portal>
+      )}
+    </AnimatePresence>
+  );
+}
 
 export {
   Popover,

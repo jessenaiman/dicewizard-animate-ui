@@ -7,6 +7,11 @@ import {
   PopoverPanel as PopoverPanelPrimitive,
   PopoverBackdrop as PopoverBackdropPrimitive,
   PopoverGroup as PopoverGroupPrimitive,
+  type PopoverProps as PopoverPrimitiveProps,
+  type PopoverButtonProps as PopoverButtonPrimitiveProps,
+  type PopoverPanelProps as PopoverPanelPrimitiveProps,
+  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,
+  type PopoverGroupProps as PopoverGroupPrimitiveProps,
 } from '@headlessui/react';
 import {
   AnimatePresence,
@@ -17,9 +22,10 @@ import {
 
 import { cn } from '@/lib/utils';
 
-interface PopoverContextType {
+type PopoverContextType = {
   isOpen: boolean;
-}
+};
+
 const PopoverContext = React.createContext<PopoverContextType | undefined>(
   undefined,
 );
@@ -32,90 +38,103 @@ const usePopover = (): PopoverContextType => {
   return context;
 };
 
-type PopoverProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive>;
+type PopoverProps<TTag extends React.ElementType = 'div'> =
+  PopoverPrimitiveProps<TTag> & {
+    as?: TTag;
+  };
 
-const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <PopoverPrimitive ref={ref} {...props}>
-        {(bag) => (
-          <PopoverContext.Provider value={{ isOpen: bag.open }}>
-            {typeof children === 'function' ? children(bag) : children}
-          </PopoverContext.Provider>
-        )}
-      </PopoverPrimitive>
-    );
-  },
-);
-Popover.displayName = PopoverPrimitive.displayName;
+function Popover<TTag extends React.ElementType = 'div'>({
+  children,
+  ...props
+}: PopoverProps<TTag>) {
+  return (
+    <PopoverPrimitive data-slot="popover" {...props}>
+      {(bag) => (
+        <PopoverContext.Provider value={{ isOpen: bag.open }}>
+          {typeof children === 'function' ? children(bag) : children}
+        </PopoverContext.Provider>
+      )}
+    </PopoverPrimitive>
+  );
+}
 
-type PopoverButtonProps = React.ComponentPropsWithoutRef<
-  typeof PopoverButtonPrimitive
->;
-const PopoverButton = PopoverButtonPrimitive;
+type PopoverButtonProps<TTag extends React.ElementType = 'button'> =
+  PopoverButtonPrimitiveProps<TTag> & {
+    as?: TTag;
+  };
 
-type PopoverBackdropProps = React.ComponentPropsWithoutRef<
-  typeof PopoverBackdropPrimitive
->;
-const PopoverBackdrop = PopoverBackdropPrimitive;
+function PopoverButton<TTag extends React.ElementType = 'button'>(
+  props: PopoverButtonProps<TTag>,
+) {
+  return <PopoverButtonPrimitive data-slot="popover-button" {...props} />;
+}
 
-type PopoverGroupProps = React.ComponentPropsWithoutRef<
-  typeof PopoverGroupPrimitive
->;
-const PopoverGroup = PopoverGroupPrimitive;
+type PopoverBackdropProps<TTag extends React.ElementType = 'div'> =
+  PopoverBackdropPrimitiveProps<TTag> & {
+    as?: TTag;
+  };
 
-type PopoverPanelProps = React.ComponentPropsWithoutRef<
-  typeof PopoverPanelPrimitive<typeof motion.div>
+function PopoverBackdrop<TTag extends React.ElementType = 'div'>(
+  props: PopoverBackdropProps<TTag>,
+) {
+  return <PopoverBackdropPrimitive data-slot="popover-backdrop" {...props} />;
+}
+
+type PopoverGroupProps<TTag extends React.ElementType = 'div'> =
+  PopoverGroupPrimitiveProps<TTag> & {
+    as?: TTag;
+  };
+
+function PopoverGroup<TTag extends React.ElementType = 'div'>(
+  props: PopoverGroupProps<TTag>,
+) {
+  return <PopoverGroupPrimitive data-slot="popover-group" {...props} />;
+}
+
+type PopoverPanelProps<TTag extends React.ElementType = 'div'> = Omit<
+  PopoverPanelPrimitiveProps<TTag>,
+  'transition'
 > &
   Omit<HTMLMotionProps<'div'>, 'children'> & {
     transition?: Transition;
+    as?: TTag;
   };
-const PopoverPanel = React.forwardRef<
-  React.ElementRef<typeof PopoverPanelPrimitive>,
-  PopoverPanelProps
->(
-  (
-    {
-      children,
-      className,
-      transition = { type: 'spring', stiffness: 300, damping: 25 },
-      anchor = {
-        to: 'bottom',
-        gap: 4,
-      },
-      as = motion.div,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isOpen } = usePopover();
 
-    return (
-      <AnimatePresence>
-        {isOpen && (
-          <PopoverPanelPrimitive
-            key="popover"
-            ref={ref}
-            static
-            as={as}
-            initial={{ opacity: 0, scale: 0.5, transition }}
-            animate={{ opacity: 1, scale: 1, transition }}
-            exit={{ opacity: 0, scale: 0.5, transition }}
-            className={cn(
-              'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none z-50',
-              className,
-            )}
-            anchor={anchor}
-            {...props}
-          >
-            {children}
-          </PopoverPanelPrimitive>
-        )}
-      </AnimatePresence>
-    );
-  },
-);
-PopoverPanel.displayName = PopoverPanelPrimitive.displayName;
+function PopoverPanel(props: PopoverPanelProps) {
+  const {
+    children,
+    className,
+    transition = { type: 'spring', stiffness: 300, damping: 25 },
+    anchor = { to: 'bottom', gap: 4 },
+    as = motion.div,
+    ...rest
+  } = props;
+  const { isOpen } = usePopover();
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <PopoverPanelPrimitive
+          key="popover-panel"
+          data-slot="popover-panel"
+          static
+          as={as}
+          initial={{ opacity: 0, scale: 0.5, transition }}
+          animate={{ opacity: 1, scale: 1, transition }}
+          exit={{ opacity: 0, scale: 0.5, transition }}
+          className={cn(
+            'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none z-50',
+            className,
+          )}
+          anchor={anchor}
+          {...rest}
+        >
+          {children}
+        </PopoverPanelPrimitive>
+      )}
+    </AnimatePresence>
+  );
+}
 
 export {
   Popover,

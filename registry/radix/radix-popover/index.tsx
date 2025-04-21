@@ -11,9 +11,10 @@ import {
 
 import { cn } from '@/lib/utils';
 
-interface PopoverContextType {
+type PopoverContextType = {
   isOpen: boolean;
-}
+};
+
 const PopoverContext = React.createContext<PopoverContextType | undefined>(
   undefined,
 );
@@ -26,11 +27,24 @@ const usePopover = (): PopoverContextType => {
   return context;
 };
 
-type PopoverProps = React.ComponentPropsWithoutRef<
-  typeof PopoverPrimitive.Root
->;
+type Side = 'top' | 'bottom' | 'left' | 'right';
 
-const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
+const getInitialPosition = (side: Side) => {
+  switch (side) {
+    case 'top':
+      return { y: 15 };
+    case 'bottom':
+      return { y: -15 };
+    case 'left':
+      return { x: 15 };
+    case 'right':
+      return { x: -15 };
+  }
+};
+
+type PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>;
+
+function Popover({ children, ...props }: PopoverProps) {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
@@ -49,100 +63,92 @@ const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
 
   return (
     <PopoverContext.Provider value={{ isOpen }}>
-      <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>
+      <PopoverPrimitive.Root
+        data-slot="popover"
+        {...props}
+        onOpenChange={handleOpenChange}
+      >
         {children}
       </PopoverPrimitive.Root>
     </PopoverContext.Provider>
   );
-};
+}
 
-type PopoverTriggerProps = React.ComponentPropsWithoutRef<
+type PopoverTriggerProps = React.ComponentProps<
   typeof PopoverPrimitive.Trigger
 >;
 
-const PopoverTrigger = PopoverPrimitive.Trigger;
+function PopoverTrigger(props: PopoverTriggerProps) {
+  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />;
+}
 
-const getInitialPosition = (side: 'top' | 'bottom' | 'left' | 'right') => {
-  switch (side) {
-    case 'top':
-      return { y: 15 };
-    case 'bottom':
-      return { y: -15 };
-    case 'left':
-      return { x: 15 };
-    case 'right':
-      return { x: -15 };
-  }
-};
-
-type PopoverContentProps = React.ComponentPropsWithoutRef<
+type PopoverContentProps = React.ComponentProps<
   typeof PopoverPrimitive.Content
 > &
   HTMLMotionProps<'div'> & {
     transition?: Transition;
   };
 
-const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Content>,
-  PopoverContentProps
->(
-  (
-    {
-      className,
-      align = 'center',
-      side = 'bottom',
-      sideOffset = 4,
-      transition = { type: 'spring', stiffness: 300, damping: 25 },
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isOpen } = usePopover();
-    const initialPosition = getInitialPosition(side);
+function PopoverContent({
+  className,
+  align = 'center',
+  side = 'bottom',
+  sideOffset = 4,
+  transition = { type: 'spring', stiffness: 300, damping: 25 },
+  children,
+  ...props
+}: PopoverContentProps) {
+  const { isOpen } = usePopover();
+  const initialPosition = getInitialPosition(side);
 
-    return (
-      <AnimatePresence>
-        {isOpen && (
-          <PopoverPrimitive.Portal forceMount>
-            <PopoverPrimitive.Content
-              forceMount
-              align={align}
-              sideOffset={sideOffset}
-              ref={ref}
-              className="z-50"
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <PopoverPrimitive.Portal forceMount data-slot="popover-portal">
+          <PopoverPrimitive.Content
+            forceMount
+            align={align}
+            sideOffset={sideOffset}
+            className="z-50"
+            {...props}
+          >
+            <motion.div
+              key="popover-content"
+              data-slot="popover-content"
+              initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              transition={transition}
+              className={cn(
+                'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+                className,
+              )}
               {...props}
             >
-              <motion.div
-                key="popover"
-                initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
-                animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
-                transition={transition}
-                className={cn(
-                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
-                  className,
-                )}
-                {...props}
-              >
-                {children}
-              </motion.div>
-            </PopoverPrimitive.Content>
-          </PopoverPrimitive.Portal>
-        )}
-      </AnimatePresence>
-    );
-  },
-);
-PopoverContent.displayName = PopoverPrimitive.Content.displayName;
+              {children}
+            </motion.div>
+          </PopoverPrimitive.Content>
+        </PopoverPrimitive.Portal>
+      )}
+    </AnimatePresence>
+  );
+}
+
+type PopoverAnchorProps = React.ComponentProps<typeof PopoverPrimitive.Anchor>;
+
+function PopoverAnchor({ ...props }: PopoverAnchorProps) {
+  return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />;
+}
 
 export {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  PopoverAnchor,
   usePopover,
   type PopoverContextType,
   type PopoverProps,
   type PopoverTriggerProps,
   type PopoverContentProps,
+  type PopoverAnchorProps,
 };

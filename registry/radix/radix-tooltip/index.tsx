@@ -6,15 +6,10 @@ import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-type TooltipProviderProps = React.ComponentPropsWithoutRef<
-  typeof TooltipPrimitive.Provider
->;
-
-const TooltipProvider = TooltipPrimitive.Provider;
-
-interface TooltipContextType {
+type TooltipContextType = {
   isOpen: boolean;
-}
+};
+
 const TooltipContext = React.createContext<TooltipContextType | undefined>(
   undefined,
 );
@@ -27,11 +22,32 @@ const useTooltip = (): TooltipContextType => {
   return context;
 };
 
-type TooltipProps = React.ComponentPropsWithoutRef<
-  typeof TooltipPrimitive.Root
+type Side = 'top' | 'bottom' | 'left' | 'right';
+
+const getInitialPosition = (side: Side) => {
+  switch (side) {
+    case 'top':
+      return { y: 15 };
+    case 'bottom':
+      return { y: -15 };
+    case 'left':
+      return { x: 15 };
+    case 'right':
+      return { x: -15 };
+  }
+};
+
+type TooltipProviderProps = React.ComponentProps<
+  typeof TooltipPrimitive.Provider
 >;
 
-const Tooltip: React.FC<TooltipProps> = ({ children, ...props }) => {
+function TooltipProvider(props: TooltipProviderProps) {
+  return <TooltipPrimitive.Provider data-slot="tooltip-provider" {...props} />;
+}
+
+type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;
+
+function Tooltip({ children, ...props }: TooltipProps) {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
@@ -50,88 +66,81 @@ const Tooltip: React.FC<TooltipProps> = ({ children, ...props }) => {
 
   return (
     <TooltipContext.Provider value={{ isOpen }}>
-      <TooltipPrimitive.Root {...props} onOpenChange={handleOpenChange}>
+      <TooltipPrimitive.Root
+        data-slot="tooltip"
+        {...props}
+        onOpenChange={handleOpenChange}
+      >
         {children}
       </TooltipPrimitive.Root>
     </TooltipContext.Provider>
   );
-};
+}
 
-type TooltipTriggerProps = React.ComponentPropsWithoutRef<
+type TooltipTriggerProps = React.ComponentProps<
   typeof TooltipPrimitive.Trigger
 >;
 
-const TooltipTrigger = TooltipPrimitive.Trigger;
+function TooltipTrigger(props: TooltipTriggerProps) {
+  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
+}
 
-const getInitialPosition = (side: 'top' | 'bottom' | 'left' | 'right') => {
-  switch (side) {
-    case 'top':
-      return { y: 15 };
-    case 'bottom':
-      return { y: -15 };
-    case 'left':
-      return { x: 15 };
-    case 'right':
-      return { x: -15 };
-  }
-};
-
-type TooltipContentProps = React.ComponentPropsWithoutRef<
+type TooltipContentProps = React.ComponentProps<
   typeof TooltipPrimitive.Content
 > & {
   transition?: Transition;
+  arrow?: boolean;
 };
 
-const TooltipContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
-  TooltipContentProps
->(
-  (
-    {
-      className,
-      side = 'top',
-      sideOffset = 4,
-      transition = { type: 'spring', stiffness: 300, damping: 25 },
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const { isOpen } = useTooltip();
-    const initialPosition = getInitialPosition(side);
+function TooltipContent({
+  className,
+  side = 'top',
+  sideOffset = 4,
+  transition = { type: 'spring', stiffness: 300, damping: 25 },
+  arrow = true,
+  children,
+  ...props
+}: TooltipContentProps) {
+  const { isOpen } = useTooltip();
+  const initialPosition = getInitialPosition(side);
 
-    return (
-      <AnimatePresence>
-        {isOpen && (
-          <TooltipPrimitive.Portal forceMount>
-            <TooltipPrimitive.Content
-              forceMount
-              sideOffset={sideOffset}
-              className="z-50"
-              {...props}
-              ref={ref}
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <TooltipPrimitive.Portal forceMount data-slot="tooltip-portal">
+          <TooltipPrimitive.Content
+            forceMount
+            sideOffset={sideOffset}
+            className="z-50"
+            {...props}
+          >
+            <motion.div
+              key="tooltip-content"
+              data-slot="tooltip-content"
+              initial={{ opacity: 0, scale: 0, ...initialPosition }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0, ...initialPosition }}
+              transition={transition}
+              className={cn(
+                'relative bg-primary text-primary-foreground shadow-md w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance',
+                className,
+              )}
             >
-              <motion.div
-                key="tooltip"
-                initial={{ opacity: 0, scale: 0, ...initialPosition }}
-                animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, scale: 0, ...initialPosition }}
-                transition={transition}
-                className={cn(
-                  'relative overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md',
-                  className,
-                )}
-              >
-                {children}
-              </motion.div>
-            </TooltipPrimitive.Content>
-          </TooltipPrimitive.Portal>
-        )}
-      </AnimatePresence>
-    );
-  },
-);
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+              {children}
+
+              {arrow && (
+                <TooltipPrimitive.Arrow
+                  data-slot="tooltip-content-arrow"
+                  className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px]"
+                />
+              )}
+            </motion.div>
+          </TooltipPrimitive.Content>
+        </TooltipPrimitive.Portal>
+      )}
+    </AnimatePresence>
+  );
+}
 
 export {
   Tooltip,
