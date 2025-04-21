@@ -14,9 +14,9 @@ import { cn } from '@/lib/utils';
 interface PopoverContextType {
   isOpen: boolean;
 }
-const PopoverContext = React.createContext<PopoverContextType>({
-  isOpen: false,
-});
+const PopoverContext = React.createContext<PopoverContextType | undefined>(
+  undefined,
+);
 
 const usePopover = (): PopoverContextType => {
   const context = React.useContext(PopoverContext);

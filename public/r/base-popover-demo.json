@@ -5,7 +5,10 @@
   "title": "Base Popover Demo",
   "description": "Demo showing a base popover.",
   "registryDependencies": [
-    "https://base-ui-components.com/r/base-popover"
+    "https://base-ui-components.com/r/base-popover",
+    "button",
+    "input",
+    "label"
   ],
   "files": [
     {

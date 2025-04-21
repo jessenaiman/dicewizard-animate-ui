@@ -23,9 +23,9 @@ interface PopoverContextType {
   side?: Side;
   setSide?: (side: Side) => void;
 }
-const PopoverContext = React.createContext<PopoverContextType>({
-  isOpen: false,
-});
+const PopoverContext = React.createContext<PopoverContextType | undefined>(
+  undefined,
+);
 
 const usePopover = (): PopoverContextType => {
   const context = React.useContext(PopoverContext);

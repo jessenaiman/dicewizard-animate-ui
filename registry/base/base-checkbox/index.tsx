@@ -6,8 +6,9 @@ import { type HTMLMotionProps, motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
-type CheckboxProps = React.ComponentPropsWithoutRef<
-  typeof CheckboxPrimitive.Root
+type CheckboxProps = Omit<
+  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+  'render'
 > & {
   motionProps?: HTMLMotionProps<'button'>;
 };

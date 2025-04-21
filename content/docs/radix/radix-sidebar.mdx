@@ -4,7 +4,7 @@ description: A composable, themeable and customizable sidebar component. Created
 author:
   name: imskyleen
   url: https://github.com/imskyleen
-new: true
+updated: true
 ---
 
 <ComponentPreview name="radix-sidebar-demo" iframe bigScreen />
@@ -78,6 +78,18 @@ new: true
       description: 'The class name of the sidebar container',
       type: 'string',
       required: false,
+    },
+    animateOnHover: {
+      description: 'Whether to animate the sidebar on hover',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    transition: {
+      description: 'The transition of the sidebar',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", stiffness: 350, damping: 35 }',
     },
   }}
 />

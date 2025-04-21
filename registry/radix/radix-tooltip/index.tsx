@@ -15,9 +15,9 @@ const TooltipProvider = TooltipPrimitive.Provider;
 interface TooltipContextType {
   isOpen: boolean;
 }
-const TooltipContext = React.createContext<TooltipContextType>({
-  isOpen: false,
-});
+const TooltipContext = React.createContext<TooltipContextType | undefined>(
+  undefined,
+);
 
 const useTooltip = (): TooltipContextType => {
   const context = React.useContext(TooltipContext);

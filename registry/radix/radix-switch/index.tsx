@@ -32,7 +32,7 @@ const Switch = React.forwardRef<
       if (props?.checked !== undefined) setIsChecked(props.checked);
     }, [props?.checked]);
 
-    const handleChange = React.useCallback(
+    const handleCheckedChange = React.useCallback(
       (checked: boolean) => {
         setIsChecked(checked);
         onCheckedChange?.(checked);
@@ -41,7 +41,11 @@ const Switch = React.forwardRef<
     );
 
     return (
-      <SwitchPrimitives.Root {...props} onCheckedChange={handleChange} asChild>
+      <SwitchPrimitives.Root
+        {...props}
+        onCheckedChange={handleCheckedChange}
+        asChild
+      >
         <motion.button
           ref={ref}
           className={cn(

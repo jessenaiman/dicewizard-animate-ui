@@ -12,9 +12,9 @@ import {
 interface CollapsibleContextType {
   isOpen: boolean;
 }
-const CollapsibleContext = React.createContext<CollapsibleContextType>({
-  isOpen: false,
-});
+const CollapsibleContext = React.createContext<
+  CollapsibleContextType | undefined
+>(undefined);
 
 const useCollapsible = (): CollapsibleContextType => {
   const context = React.useContext(CollapsibleContext);
