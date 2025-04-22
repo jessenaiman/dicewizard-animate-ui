@@ -6,11 +6,13 @@ import {
   TooltipTrigger,
   type TooltipProviderProps,
   type TooltipProps,
+  type TooltipContentProps,
 } from '@/registry/components/tooltip';
 import React from 'react';
 
 type TooltipDemoProps = Pick<TooltipProviderProps, 'openDelay' | 'closeDelay'> &
-  Pick<TooltipProps, 'side' | 'sideOffset' | 'align' | 'alignOffset'>;
+  Pick<TooltipProps, 'side' | 'sideOffset' | 'align' | 'alignOffset'> &
+  Pick<TooltipContentProps, 'arrow'>;
 
 export const TooltipDemo = ({
   openDelay,
@@ -19,6 +21,7 @@ export const TooltipDemo = ({
   sideOffset,
   align,
   alignOffset,
+  arrow,
 }: TooltipDemoProps) => {
   return (
     <TooltipProvider openDelay={openDelay} closeDelay={closeDelay}>
@@ -33,7 +36,7 @@ export const TooltipDemo = ({
             <TooltipTrigger>
               <Button variant="outline">Docs</Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent arrow={arrow}>
               <p>Documentation</p>
             </TooltipContent>
           </Tooltip>
@@ -46,7 +49,7 @@ export const TooltipDemo = ({
             <TooltipTrigger>
               <Button variant="outline">API</Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent arrow={arrow}>
               <p>API Reference</p>
             </TooltipContent>
           </Tooltip>
@@ -59,7 +62,7 @@ export const TooltipDemo = ({
             <TooltipTrigger>
               <Button variant="outline">Guide</Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent arrow={arrow}>
               <p>User Guide</p>
             </TooltipContent>
           </Tooltip>
@@ -74,7 +77,7 @@ export const TooltipDemo = ({
             <TooltipTrigger>
               <Button variant="outline">Repo</Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent arrow={arrow}>
               <p>GitHub</p>
             </TooltipContent>
           </Tooltip>

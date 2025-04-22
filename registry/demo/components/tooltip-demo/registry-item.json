@@ -27,7 +27,7 @@
           "right": "right"
         }
       },
-      "sideOffset": { "value": 4 },
+      "sideOffset": { "value": 14 },
       "align": {
         "value": "center",
         "options": {
@@ -37,6 +37,9 @@
         }
       },
       "alignOffset": { "value": 0 }
+    },
+    "TooltipContent": {
+      "arrow": { "value": true }
     }
   }
 }

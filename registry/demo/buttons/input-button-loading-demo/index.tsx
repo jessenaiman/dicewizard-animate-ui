@@ -2,11 +2,11 @@
 
 import * as React from 'react';
 import {
-  Button,
-  Buttons,
-  Input,
   InputButton,
-  SubmitButton,
+  InputButtonAction,
+  InputButtonProvider,
+  InputButtonSubmit,
+  InputButtonInput,
 } from '@/registry/buttons/input-button';
 import { Check, Loader2 } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -45,10 +45,12 @@ export const InputButtonLoadingDemo = () => {
       onSubmit={handleSubmit}
       className="w-full flex items-center justify-center"
     >
-      <InputButton showInput={showInput} setShowInput={setShowInput}>
-        <Buttons>
-          <Button onClick={() => {}}>Join the newsletter</Button>
-          <SubmitButton
+      <InputButtonProvider showInput={showInput} setShowInput={setShowInput}>
+        <InputButton>
+          <InputButtonAction onClick={() => {}}>
+            Join the newsletter
+          </InputButtonAction>
+          <InputButtonSubmit
             onClick={() => {}}
             type="submit"
             disabled={pending}
@@ -75,9 +77,9 @@ export const InputButtonLoadingDemo = () => {
             ) : (
               'Subscribe'
             )}
-          </SubmitButton>
-        </Buttons>
-        <Input
+          </InputButtonSubmit>
+        </InputButton>
+        <InputButtonInput
           type="email"
           placeholder="your-email@example.com"
           value={value}
@@ -85,7 +87,7 @@ export const InputButtonLoadingDemo = () => {
           disabled={pending}
           autoFocus
         />
-      </InputButton>
+      </InputButtonProvider>
     </form>
   );
 };

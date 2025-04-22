@@ -4,104 +4,119 @@ import * as React from 'react';
 import { motion, type Transition } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
+  type DisclosureProps,
+  type DisclosureButtonProps,
+  type DisclosurePanelProps,
 } from '@/registry/headless/headless-disclosure';
-import { cn } from '@/lib/utils';
 
-type AccordionProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
-};
-const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
-  (props, ref) => <div ref={ref} {...props} />,
-);
-Accordion.displayName = 'Accordion';
+type AccordionProps<TTag extends React.ElementType = 'div'> =
+  React.ComponentProps<TTag> & {
+    children: React.ReactNode;
+    as?: TTag;
+  };
 
-type AccordionItemProps = React.ComponentPropsWithoutRef<typeof Disclosure>;
-const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
-  ({ className, as = 'div', ...props }, ref) => {
-    return (
-      <Disclosure
-        {...props}
-        ref={ref}
-        as={as}
-        className={cn('border-b', className)}
-      />
-    );
-  },
-);
-AccordionItem.displayName = 'AccordionItem';
+function Accordion<TTag extends React.ElementType = 'div'>({
+  as: Component = 'div',
+  ...props
+}: AccordionProps<TTag>) {
+  return <Component data-slot="accordion" {...props} />;
+}
 
-type AccordionButtonProps = React.ComponentPropsWithoutRef<
-  typeof DisclosureButton
-> & {
-  transition?: Transition;
-  chevron?: boolean;
-};
-const AccordionButton = React.forwardRef<
-  HTMLButtonElement,
-  AccordionButtonProps
->(
-  (
-    {
-      children,
-      className,
-      as = 'button',
-      transition = { type: 'spring', stiffness: 150, damping: 17 },
-      chevron = true,
-      ...props
-    },
-    ref,
-  ) => {
-    return (
-      <DisclosureButton
-        {...props}
-        className={cn(
-          'flex w-full text-start flex-1 items-center justify-between py-4 font-medium hover:underline',
-          className,
-        )}
-        as={as}
-        ref={ref}
-      >
-        {(bag) => (
-          <>
-            {typeof children === 'function' ? children(bag) : children}
+type AccordionItemProps<TTag extends React.ElementType = 'div'> =
+  DisclosureProps<TTag> & {
+    className?: string;
+    as?: TTag;
+  };
 
-            {chevron && (
-              <motion.div
-                animate={{ rotate: bag.open ? 180 : 0 }}
-                transition={transition}
-              >
-                <ChevronDown className="size-5 shrink-0" />
-              </motion.div>
-            )}
-          </>
-        )}
-      </DisclosureButton>
-    );
-  },
-);
-AccordionButton.displayName = 'AccordionButton';
+function AccordionItem<TTag extends React.ElementType = 'div'>({
+  className,
+  ...rest
+}: AccordionItemProps<TTag>) {
+  return (
+    <Disclosure
+      data-slot="accordion-item"
+      {...rest}
+      className={cn('border-b', className)}
+    />
+  );
+}
 
-type AccordionPanelProps = React.ComponentPropsWithoutRef<
-  typeof DisclosurePanel
->;
-const AccordionPanel = React.forwardRef<HTMLDivElement, AccordionPanelProps>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <DisclosurePanel {...props} ref={ref}>
-        {(bag) => (
-          <div className={cn('pb-4 pt-0 text-sm', className)}>
-            {typeof children === 'function' ? children(bag) : children}
-          </div>
-        )}
-      </DisclosurePanel>
-    );
-  },
-);
-AccordionPanel.displayName = 'AccordionPanel';
+type AccordionButtonProps<TTag extends React.ElementType = 'button'> =
+  DisclosureButtonProps<TTag> & {
+    transition?: Transition;
+    chevron?: boolean;
+    className?: string;
+    as?: TTag;
+  };
+
+function AccordionButton<TTag extends React.ElementType = 'button'>(
+  props: AccordionButtonProps<TTag>,
+) {
+  const {
+    children,
+    className,
+    transition = { type: 'spring', stiffness: 150, damping: 17 },
+    chevron = true,
+    ...rest
+  } = props;
+
+  return (
+    <DisclosureButton
+      data-slot="accordion-button"
+      {...rest}
+      className={cn(
+        'flex w-full text-start flex-1 items-center justify-between py-4 font-medium hover:underline',
+        className,
+      )}
+    >
+      {(bag) => (
+        <>
+          {typeof children === 'function' ? children(bag) : children}
+
+          {chevron && (
+            <motion.div
+              data-slot="accordion-button-chevron"
+              animate={{ rotate: bag.open ? 180 : 0 }}
+              transition={transition}
+            >
+              <ChevronDown className="size-5 shrink-0" />
+            </motion.div>
+          )}
+        </>
+      )}
+    </DisclosureButton>
+  );
+}
+
+type AccordionPanelProps<TTag extends React.ElementType = 'div'> =
+  DisclosurePanelProps<TTag> & {
+    as?: TTag;
+  };
+
+function AccordionPanel<TTag extends React.ElementType = 'div'>(
+  props: AccordionPanelProps<TTag>,
+) {
+  const { children, className, as = 'div', ...rest } = props;
+
+  return (
+    <DisclosurePanel
+      data-slot="accordion-panel"
+      {...rest}
+      as={as as React.ElementType}
+    >
+      {(bag) => (
+        <div className={cn('pb-4 pt-0 text-sm', className)}>
+          {typeof children === 'function' ? children(bag) : children}
+        </div>
+      )}
+    </DisclosurePanel>
+  );
+}
 
 export {
   Accordion,

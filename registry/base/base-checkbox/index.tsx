@@ -7,16 +7,18 @@ import { type HTMLMotionProps, motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 type CheckboxProps = Omit<
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+  React.ComponentProps<typeof CheckboxPrimitive.Root>,
   'render'
 > & {
   motionProps?: HTMLMotionProps<'button'>;
 };
 
-const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  CheckboxProps
->(({ className, onCheckedChange, motionProps, ...props }, ref) => {
+function Checkbox({
+  className,
+  onCheckedChange,
+  motionProps,
+  ...props
+}: CheckboxProps) {
   const [isChecked, setIsChecked] = React.useState(
     props?.checked ?? props?.defaultChecked ?? false,
   );
@@ -35,7 +37,7 @@ const Checkbox = React.forwardRef<
 
   return (
     <CheckboxPrimitive.Root
-      ref={ref}
+      data-slot="checkbox"
       className={cn(
         'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-input transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[checked]:text-primary-foreground',
         className,
@@ -50,7 +52,7 @@ const Checkbox = React.forwardRef<
         />
       }
     >
-      <CheckboxPrimitive.Indicator keepMounted>
+      <CheckboxPrimitive.Indicator keepMounted data-slot="checkbox-indicator">
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -87,7 +89,7 @@ const Checkbox = React.forwardRef<
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
-});
+}
 
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 

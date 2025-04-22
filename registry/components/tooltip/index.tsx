@@ -9,10 +9,13 @@ import {
   type Transition,
 } from 'motion/react';
 
+import { cn } from '@/lib/utils';
+
 type Side = 'top' | 'bottom' | 'left' | 'right';
+
 type Align = 'start' | 'center' | 'end';
 
-interface TooltipData {
+type TooltipData = {
   content: React.ReactNode;
   rect: DOMRect;
   side: Side;
@@ -20,15 +23,16 @@ interface TooltipData {
   align: Align;
   alignOffset: number;
   id: string;
-}
+  arrow: boolean;
+};
 
-interface GlobalTooltipContextType {
+type GlobalTooltipContextType = {
   showTooltip: (data: TooltipData) => void;
   hideTooltip: () => void;
   currentTooltip: TooltipData | null;
   transition: Transition;
   globalId: string;
-}
+};
 
 const GlobalTooltipContext = React.createContext<
   GlobalTooltipContextType | undefined
@@ -162,19 +166,19 @@ function getTooltipPosition({
   }
 }
 
-interface TooltipProviderProps {
+type TooltipProviderProps = {
   children: React.ReactNode;
   openDelay?: number;
   closeDelay?: number;
   transition?: Transition;
-}
+};
 
-const TooltipProvider: React.FC<TooltipProviderProps> = ({
+function TooltipProvider({
   children,
   openDelay = 700,
   closeDelay = 300,
   transition = { type: 'spring', stiffness: 300, damping: 25 },
-}) => {
+}: TooltipProviderProps) {
   const globalId = React.useId();
   const [currentTooltip, setCurrentTooltip] =
     React.useState<TooltipData | null>(null);
@@ -231,19 +235,39 @@ const TooltipProvider: React.FC<TooltipProviderProps> = ({
       <TooltipOverlay />
     </GlobalTooltipContext.Provider>
   );
+}
+
+type TooltipArrowProps = {
+  side: Side;
 };
+
+function TooltipArrow({ side }: TooltipArrowProps) {
+  return (
+    <div
+      className={cn(
+        'absolute bg-primary z-50 size-2.5 rotate-45 rounded-[2px]',
+        (side === 'top' || side === 'bottom') && 'left-1/2 -translate-x-1/2',
+        (side === 'left' || side === 'right') && 'top-1/2 -translate-y-1/2',
+        side === 'top' && '-bottom-[3px]',
+        side === 'bottom' && '-top-[3px]',
+        side === 'left' && '-right-[3px]',
+        side === 'right' && '-left-[3px]',
+      )}
+    />
+  );
+}
 
 type TooltipPortalProps = {
   children: React.ReactNode;
 };
 
-const TooltipPortal: React.FC<TooltipPortalProps> = ({ children }) => {
+function TooltipPortal({ children }: TooltipPortalProps) {
   const [isMounted, setIsMounted] = React.useState(false);
   React.useEffect(() => setIsMounted(true), []);
   return isMounted ? createPortal(children, document.body) : null;
-};
+}
 
-const TooltipOverlay: React.FC = () => {
+function TooltipOverlay() {
   const { currentTooltip, transition, globalId } = useGlobalTooltip();
 
   const position = React.useMemo(() => {
@@ -262,6 +286,7 @@ const TooltipOverlay: React.FC = () => {
       {currentTooltip && currentTooltip.content && position && (
         <TooltipPortal>
           <motion.div
+            data-slot="tooltip-overlay-container"
             className="fixed z-50"
             style={{
               top: position.y,
@@ -270,31 +295,38 @@ const TooltipOverlay: React.FC = () => {
             }}
           >
             <motion.div
+              data-slot="tooltip-overlay"
               layoutId={`tooltip-overlay-${globalId}`}
               initial={{ opacity: 0, scale: 0, ...position.initial }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, scale: 0, ...position.initial }}
               transition={transition}
-              className="relative overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md"
+              className="relative rounded-md bg-primary fill-primary px-3 py-1.5 text-xs text-primary-foreground shadow-md w-fit text-balance"
             >
               {currentTooltip.content}
+
+              {currentTooltip.arrow && (
+                <TooltipArrow side={currentTooltip.side} />
+              )}
             </motion.div>
           </motion.div>
         </TooltipPortal>
       )}
     </AnimatePresence>
   );
-};
+}
 
-interface TooltipContextType {
+type TooltipContextType = {
   content: React.ReactNode;
   setContent: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+  arrow: boolean;
+  setArrow: React.Dispatch<React.SetStateAction<boolean>>;
   side: Side;
   sideOffset: number;
   align: Align;
   alignOffset: number;
   id: string;
-}
+};
 
 const TooltipContext = React.createContext<TooltipContextType | undefined>(
   undefined,
@@ -308,49 +340,65 @@ const useTooltip = () => {
   return context;
 };
 
-interface TooltipProps {
+type TooltipProps = {
   children: React.ReactNode;
   side?: Side;
   sideOffset?: number;
   align?: Align;
   alignOffset?: number;
-}
+};
 
-const Tooltip: React.FC<TooltipProps> = ({
+function Tooltip({
   children,
   side = 'top',
-  sideOffset = 4,
+  sideOffset = 14,
   align = 'center',
   alignOffset = 0,
-}) => {
+}: TooltipProps) {
   const id = React.useId();
   const [content, setContent] = React.useState<React.ReactNode>(null);
+  const [arrow, setArrow] = React.useState(true);
 
   return (
     <TooltipContext.Provider
-      value={{ content, setContent, side, sideOffset, align, alignOffset, id }}
+      value={{
+        content,
+        setContent,
+        arrow,
+        setArrow,
+        side,
+        sideOffset,
+        align,
+        alignOffset,
+        id,
+      }}
     >
       {children}
     </TooltipContext.Provider>
   );
-};
+}
 
-interface TooltipContentProps {
+type TooltipContentProps = {
   children: React.ReactNode;
-}
-
-const TooltipContent: React.FC<TooltipContentProps> = ({ children }) => {
-  const { setContent } = useTooltip();
-  React.useEffect(() => setContent(children), [children, setContent]);
-  return null;
+  arrow?: boolean;
 };
 
-interface TooltipTriggerProps {
-  children: React.ReactElement;
+function TooltipContent({ children, arrow = true }: TooltipContentProps) {
+  const { setContent, setArrow } = useTooltip();
+  React.useEffect(() => {
+    setContent(children);
+    setArrow(arrow);
+  }, [children, setContent, setArrow, arrow]);
+  return null;
 }
 
-const TooltipTrigger: React.FC<TooltipTriggerProps> = ({ children }) => {
-  const { content, side, sideOffset, align, alignOffset, id } = useTooltip();
+type TooltipTriggerProps = {
+  children: React.ReactElement;
+};
+
+function TooltipTrigger({ children }: TooltipTriggerProps) {
+  const { content, side, sideOffset, align, alignOffset, id, arrow } =
+    useTooltip();
   const { showTooltip, hideTooltip, currentTooltip } = useGlobalTooltip();
   const triggerRef = React.useRef<HTMLElement>(null);
 
@@ -365,8 +413,9 @@ const TooltipTrigger: React.FC<TooltipTriggerProps> = ({ children }) => {
       align,
       alignOffset,
       id,
+      arrow,
     });
-  }, [showTooltip, content, side, sideOffset, align, alignOffset, id]);
+  }, [showTooltip, content, side, sideOffset, align, alignOffset, id, arrow]);
 
   const handleMouseEnter = React.useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
@@ -409,8 +458,9 @@ const TooltipTrigger: React.FC<TooltipTriggerProps> = ({ children }) => {
     'data-state': currentTooltip?.id === id ? 'open' : 'closed',
     'data-side': side,
     'data-align': align,
+    'data-slot': 'tooltip-trigger',
   } as React.HTMLAttributes<HTMLElement>);
-};
+}
 
 export {
   TooltipProvider,

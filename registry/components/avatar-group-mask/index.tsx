@@ -14,22 +14,23 @@ import {
 
 type Align = 'start' | 'center' | 'end';
 
-interface AvatarProps extends TooltipProps {
+type AvatarProps = TooltipProps & {
   children: React.ReactNode;
   align?: Align;
   invertOverlap?: boolean;
-}
+};
 
-const Avatar: React.FC<AvatarProps> = ({
+function AvatarContainer({
   children,
   align,
   invertOverlap,
   ...props
-}: AvatarProps) => {
+}: AvatarProps) {
   return (
     <Tooltip {...props}>
       <TooltipTrigger>
         <span
+          data-slot="avatar-container"
           className={cn(
             align === 'start'
               ? 'items-start'
@@ -64,20 +65,15 @@ const Avatar: React.FC<AvatarProps> = ({
       </TooltipTrigger>
     </Tooltip>
   );
-};
+}
 
 type AvatarGroupTooltipProps = TooltipContentProps;
 
-const AvatarGroupTooltip: React.FC<AvatarGroupTooltipProps> = ({
-  children,
-  ...props
-}) => {
-  return <TooltipContent {...props}>{children}</TooltipContent>;
-};
-AvatarGroupTooltip.displayName = 'AvatarGroupTooltip';
+function AvatarGroupTooltip(props: AvatarGroupTooltipProps) {
+  return <TooltipContent {...props} />;
+}
 
-interface AvatarGroupProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'translate'> {
+type AvatarGroupProps = Omit<React.ComponentProps<'div'>, 'translate'> & {
   children: React.ReactElement[];
   invertOverlap?: boolean;
   translate?: number;
@@ -86,78 +82,74 @@ interface AvatarGroupProps
   columnSize?: string | number;
   align?: Align;
   tooltipProps?: Omit<TooltipProps, 'children'>;
-}
+};
 
-const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
-  (
-    {
-      children,
-      className,
-      invertOverlap = false,
-      size = '43px',
-      border = '3px',
-      columnSize = '37px',
-      align = 'end',
-      translate = -30,
-      tooltipProps = { side: 'top', sideOffset: 10 },
-      ...props
-    },
-    ref,
-  ) => {
-    const maskRatio = Math.abs(translate / 100);
-    const alignOffset =
-      align === 'start' ? 0 : align === 'center' ? maskRatio / 2 : maskRatio;
-    const maskBase = alignOffset - maskRatio / 2;
-    const maskFactor = 1 - alignOffset + maskRatio / 2;
+function AvatarGroup({
+  ref,
+  children,
+  className,
+  invertOverlap = false,
+  size = '43px',
+  border = '3px',
+  columnSize = '37px',
+  align = 'end',
+  translate = -30,
+  tooltipProps = { side: 'top', sideOffset: 10 },
+  ...props
+}: AvatarGroupProps) {
+  const maskRatio = Math.abs(translate / 100);
+  const alignOffset =
+    align === 'start' ? 0 : align === 'center' ? maskRatio / 2 : maskRatio;
+  const maskBase = alignOffset - maskRatio / 2;
+  const maskFactor = 1 - alignOffset + maskRatio / 2;
 
-    return (
-      <TooltipProvider openDelay={0} closeDelay={0}>
-        <div
-          ref={ref}
-          style={
-            {
-              '--avatar-size': size,
-              '--avatar-border': border,
-              '--avatar-column-size': columnSize,
-              '--avatar-translate-pct': `${translate}%`,
-              '--avatar-mask-offset': -(translate / 100),
-              '--avatar-mask-ratio': maskRatio,
-              '--avatar-mask-base': maskBase,
-              '--avatar-mask-factor': maskFactor,
-              '--avatar-columns': React.Children.count(children),
-            } as React.CSSProperties
-          }
-          className="h-[var(--avatar-size)] w-[calc(var(--avatar-column-size)*(var(--avatar-columns))+calc(var(--avatar-size)-var(--avatar-column-size)))]"
+  return (
+    <TooltipProvider openDelay={0} closeDelay={0}>
+      <div
+        ref={ref}
+        data-slot="avatar-group"
+        style={
+          {
+            '--avatar-size': size,
+            '--avatar-border': border,
+            '--avatar-column-size': columnSize,
+            '--avatar-translate-pct': `${translate}%`,
+            '--avatar-mask-offset': -(translate / 100),
+            '--avatar-mask-ratio': maskRatio,
+            '--avatar-mask-base': maskBase,
+            '--avatar-mask-factor': maskFactor,
+            '--avatar-columns': React.Children.count(children),
+          } as React.CSSProperties
+        }
+        className="h-[var(--avatar-size)] w-[calc(var(--avatar-column-size)*(var(--avatar-columns))+calc(var(--avatar-size)-var(--avatar-column-size)))]"
+      >
+        <span
+          className={cn(
+            'grid h-[var(--avatar-size)] grid-cols-[repeat(var(--avatar-columns),var(--avatar-column-size))]',
+            align === 'start'
+              ? 'content-start'
+              : align === 'center'
+                ? 'content-center'
+                : 'content-end',
+            className,
+          )}
+          {...props}
         >
-          <span
-            className={cn(
-              'grid h-[var(--avatar-size)] grid-cols-[repeat(var(--avatar-columns),var(--avatar-column-size))]',
-              align === 'start'
-                ? 'content-start'
-                : align === 'center'
-                  ? 'content-center'
-                  : 'content-end',
-              className,
-            )}
-            {...props}
-          >
-            {children?.map((child, index) => (
-              <Avatar
-                key={index}
-                invertOverlap={invertOverlap}
-                {...tooltipProps}
-                align={align}
-              >
-                {child}
-              </Avatar>
-            ))}
-          </span>
-        </div>
-      </TooltipProvider>
-    );
-  },
-);
-AvatarGroup.displayName = 'AvatarGroup';
+          {children?.map((child, index) => (
+            <AvatarContainer
+              key={index}
+              invertOverlap={invertOverlap}
+              {...tooltipProps}
+              align={align}
+            >
+              {child}
+            </AvatarContainer>
+          ))}
+        </span>
+      </div>
+    </TooltipProvider>
+  );
+}
 
 export {
   AvatarGroup,
