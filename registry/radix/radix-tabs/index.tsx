@@ -150,13 +150,12 @@ type TabsContentsProps = HTMLMotionProps<'div'> & {
 };
 
 function TabsContents({
-  ref,
   children,
   className,
   transition = { type: 'spring', stiffness: 200, damping: 25 },
+  ...props
 }: TabsContentsProps) {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
-  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
 
   const [height, setHeight] = React.useState(0);
 
@@ -191,6 +190,7 @@ function TabsContents({
       animate={{ height: height }}
       transition={transition}
       className={className}
+      {...props}
     >
       <div ref={containerRef}>{children}</div>
     </motion.div>

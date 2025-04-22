@@ -45,6 +45,7 @@
     "headless/headless-disclosure",
     "headless/headless-popover",
     "headless/headless-switch",
+    "headless/headless-tabs",
     "---Buttons---",
     "buttons/copy-button",
     "buttons/flip-button",

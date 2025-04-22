@@ -1367,6 +1367,22 @@
       ]
     },
     {
+      "name": "headless-tabs-demo",
+      "type": "registry:ui",
+      "title": "Headless Tabs Demo",
+      "description": "Demo showing an animated headless tabs.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/headless-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/headless/headless-tabs-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-tabs-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "radix-accordion-demo",
       "type": "registry:ui",
       "title": "Radix Accordion Demo",
@@ -2029,6 +2045,26 @@
           "path": "registry/headless/headless-switch/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/headless-switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "headless-tabs",
+      "type": "registry:ui",
+      "title": "Headless Tabs",
+      "description": "Headless UI tabs component",
+      "dependencies": [
+        "motion",
+        "@headlessui/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/headless/headless-tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/headless-tabs.tsx"
         }
       ]
     },
