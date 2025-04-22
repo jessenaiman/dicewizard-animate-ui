@@ -74,7 +74,7 @@ function AvatarGroup({
   transition = { type: 'spring', stiffness: 300, damping: 17 },
   invertOverlap = false,
   translate = '-30%',
-  tooltipProps = { side: 'top', sideOffset: 20 },
+  tooltipProps = { side: 'top', sideOffset: 24 },
   ...props
 }: AvatarGroupProps) {
   return (

@@ -122,7 +122,7 @@ function TooltipContent({
               exit={{ opacity: 0, scale: 0, ...initialPosition }}
               transition={transition}
               className={cn(
-                'relative bg-primary text-primary-foreground shadow-md w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance',
+                'relative bg-primary text-primary-foreground shadow-md w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-sm text-balance',
                 className,
               )}
             >

@@ -94,7 +94,7 @@ function AvatarGroup({
   columnSize = '37px',
   align = 'end',
   translate = -30,
-  tooltipProps = { side: 'top', sideOffset: 10 },
+  tooltipProps = { side: 'top', sideOffset: 12 },
   ...props
 }: AvatarGroupProps) {
   const maskRatio = Math.abs(translate / 100);

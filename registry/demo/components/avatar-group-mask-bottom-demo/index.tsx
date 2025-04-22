@@ -40,7 +40,7 @@ export const AvatarGroupMaskBottomDemo = () => {
           invertOverlap
           align="start"
           translate={50}
-          tooltipProps={{ side: 'bottom', sideOffset: 10 }}
+          tooltipProps={{ side: 'bottom', sideOffset: 12 }}
         >
           {AVATARS.map((avatar, index) => (
             <Avatar key={index}>

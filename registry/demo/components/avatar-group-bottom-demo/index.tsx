@@ -37,7 +37,7 @@ export const AvatarGroupDemo = () => {
     <AvatarGroup
       invertOverlap
       className="h-12 -space-x-3"
-      tooltipProps={{ side: 'bottom', sideOffset: 20 }}
+      tooltipProps={{ side: 'bottom', sideOffset: 24 }}
       translate="30%"
     >
       {AVATARS.map((avatar, index) => (
