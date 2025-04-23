@@ -9,7 +9,7 @@
     {
       "path": "registry/components/tooltip/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/tooltip.tsx"
+      "target": "components/animate-ui/components/tooltip.tsx"
     }
   ]
 }

@@ -39,58 +39,80 @@ export const ComponentWrapper = ({
       )}
     >
       <motion.div className="relative size-full flex-1" layout>
-        <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
-          <OpenInV0Button url={`https://animate-ui.com/r/${name}.json`} />
+        {!iframe && (
+          <>
+            {/* {Object.keys(availableStyles).length > 1 && (
+              <div className="absolute top-3 left-3 z-[9] bg-background flex items-center justify-start gap-2 p-1 rounded-[11px]">
+                <Select value={style} onValueChange={setStyle}>
+                  <SelectTrigger className="sm:w-[190px] w-[135px]">
+                    <SelectValue placeholder="Select a style" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.entries(availableStyles).map(([name, style]) => (
+                      <SelectItem key={name} value={name}>
+                        {style.icon}
+                        {style.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )} */}
 
-          <Button
-            onClick={() => setKey((prev) => prev + 1)}
-            className="flex items-center rounded-lg"
-            variant="neutral"
-            size="icon-sm"
-            asChild
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <RotateCcw aria-label="restart-btn" size={14} />
-            </motion.button>
-          </Button>
+            <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
+              <OpenInV0Button url={`https://animate-ui.com/r/${name}.json`} />
 
-          {iframe && (
-            <Button
-              onClick={() => window.open(`/examples/${name}`, '_blank')}
-              className="flex items-center rounded-lg"
-              variant="neutral"
-              size="icon-sm"
-              asChild
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Button
+                onClick={() => setKey((prev) => prev + 1)}
+                className="flex items-center rounded-lg"
+                variant="neutral"
+                size="icon-sm"
+                asChild
               >
-                <Fullscreen aria-label="fullscreen-btn" size={14} />
-              </motion.button>
-            </Button>
-          )}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <RotateCcw aria-label="restart-btn" size={14} />
+                </motion.button>
+              </Button>
 
-          {tweakpane && (
-            <Button
-              onClick={() => setTweakMode((prev) => !prev)}
-              className="flex items-center rounded-lg"
-              variant="neutral"
-              size="icon-sm"
-              asChild
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <SlidersHorizontal aria-label="tweak-btn" size={14} />
-              </motion.button>
-            </Button>
-          )}
-        </div>
+              {iframe && (
+                <Button
+                  onClick={() => window.open(`/examples/${name}`, '_blank')}
+                  className="flex items-center rounded-lg"
+                  variant="neutral"
+                  size="icon-sm"
+                  asChild
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Fullscreen aria-label="fullscreen-btn" size={14} />
+                  </motion.button>
+                </Button>
+              )}
+
+              {tweakpane && (
+                <Button
+                  onClick={() => setTweakMode((prev) => !prev)}
+                  className="flex items-center rounded-lg"
+                  variant="neutral"
+                  size="icon-sm"
+                  asChild
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <SlidersHorizontal aria-label="tweak-btn" size={14} />
+                  </motion.button>
+                </Button>
+              )}
+            </div>
+          </>
+        )}
 
         {iframe ? (
           <Iframe key={key} name={name} bigScreen={bigScreen} />

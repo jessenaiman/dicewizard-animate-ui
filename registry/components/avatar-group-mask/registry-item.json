@@ -9,7 +9,7 @@
     {
       "path": "registry/components/avatar-group-mask/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/avatar-group-mask.tsx"
+      "target": "components/animate-ui/components/avatar-group-mask.tsx"
     }
   ]
 }

@@ -13,7 +13,7 @@
     {
       "path": "registry/components/install-tabs/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/install-tabs.tsx"
+      "target": "components/animate-ui/components/install-tabs.tsx"
     }
   ]
 }

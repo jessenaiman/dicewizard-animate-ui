@@ -10,7 +10,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/registry/radix/radix-collapsible';
+} from '@/registry/radix/collapsible';
 import {
   Select,
   SelectContent,
@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
-import { Switch } from '@/registry/radix/radix-switch';
+import { Switch } from '@/registry/radix/switch';
 import { ChevronsUpDown } from 'lucide-react';
 
 type BaseBindNumber = { value: number };

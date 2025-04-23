@@ -9,7 +9,7 @@
     {
       "path": "registry/effects/motion-effect/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/motion-effect.tsx"
+      "target": "components/animate-ui/effects/motion-effect.tsx"
     }
   ]
 }

@@ -13,7 +13,7 @@
     {
       "path": "registry/components/files/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/files.tsx"
+      "target": "components/animate-ui/components/files.tsx"
     }
   ]
 }

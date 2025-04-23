@@ -9,7 +9,7 @@
     {
       "path": "registry/text/counting-number/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/counting-number.tsx"
+      "target": "components/animate-ui/text/counting-number.tsx"
     }
   ]
 }
