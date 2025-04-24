@@ -1,4 +1,4 @@
-import { HexagonBackground } from '../../../backgrounds/hexagon';
+import { HexagonBackground } from '@/registry/backgrounds/hexagon';
 
 export const HexagonBackgroundDemo = () => {
   return (

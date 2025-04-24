@@ -39,7 +39,9 @@
       "alignOffset": { "value": 0 }
     },
     "TooltipContent": {
-      "arrow": { "value": true }
+      "arrow": { "value": true },
+      "arrow2": { "value": true },
+      "arrow3": { "value": true }
     }
   }
 }

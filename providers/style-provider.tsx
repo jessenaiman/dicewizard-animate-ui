@@ -3,18 +3,33 @@ import AnimateUIIcon from '@/components/icons/animateui-icon';
 import ShadcnIcon from '@/components/icons/shadcn-icon';
 import { Styles } from '@/constants';
 
-const STYLES_INFO = {
+export const STYLES_INFO: Record<
+  Styles,
+  { label: string; icon: React.ReactNode }
+> = {
   [Styles.Default]: {
     label: 'Default',
-    icon: <AnimateUIIcon className="size-3.5" />,
+    icon: (
+      <div className="bg-primary size-6 flex items-center justify-center rounded-md">
+        <AnimateUIIcon className="size-3.5 text-primary-foreground" />
+      </div>
+    ),
   },
   [Styles.ShadcnDefault]: {
     label: 'Shadcn Default',
-    icon: <ShadcnIcon className="size-3.5" />,
+    icon: (
+      <div className="bg-black dark:bg-white size-6 flex items-center justify-center rounded-md">
+        <ShadcnIcon className="size-4 text-white dark:text-black" />
+      </div>
+    ),
   },
   [Styles.ShadcnNewYork]: {
     label: 'Shadcn New York',
-    icon: <ShadcnIcon className="size-3.5" />,
+    icon: (
+      <div className="bg-black dark:bg-white size-6 flex items-center justify-center rounded-md">
+        <ShadcnIcon className="size-3.5 text-white dark:text-black" />
+      </div>
+    ),
   },
 };
 

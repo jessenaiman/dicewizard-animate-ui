@@ -8,9 +8,18 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import Iframe from './iframe';
 import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { STYLES_INFO, useStyle } from '@/providers/style-provider';
 
 interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
+  nameWithStyle: string;
   iframe?: boolean;
   bigScreen?: boolean;
   tweakpane?: React.ReactNode;
@@ -20,6 +29,7 @@ export const ComponentWrapper = ({
   className,
   children,
   name,
+  nameWithStyle,
   iframe = false,
   bigScreen = false,
   tweakpane,
@@ -28,28 +38,28 @@ export const ComponentWrapper = ({
   const [key, setKey] = useState(0);
 
   const isMobile = useIsMobile();
+  const { style, setStyle } = useStyle();
 
   return (
     <motion.div
-      layout
       className={cn(
         'max-w-screen relative rounded-xl border bg-background flex flex-col md:flex-row',
         bigScreen && 'overflow-hidden',
         className,
       )}
     >
-      <motion.div className="relative size-full flex-1" layout>
+      <motion.div className="relative size-full flex-1">
         {!iframe && (
           <>
-            {/* {Object.keys(availableStyles).length > 1 && (
+            {Object.keys(STYLES_INFO).length > 1 && (
               <div className="absolute top-3 left-3 z-[9] bg-background flex items-center justify-start gap-2 p-1 rounded-[11px]">
                 <Select value={style} onValueChange={setStyle}>
-                  <SelectTrigger className="sm:w-[190px] w-[135px]">
+                  <SelectTrigger className="sm:w-[190px] w-[135px] pl-2.5">
                     <SelectValue placeholder="Select a style" />
                   </SelectTrigger>
                   <SelectContent>
-                    {Object.entries(availableStyles).map(([name, style]) => (
-                      <SelectItem key={name} value={name}>
+                    {Object.entries(STYLES_INFO).map(([name, style]) => (
+                      <SelectItem key={name} value={name} className="pl-1.5">
                         {style.icon}
                         {style.label}
                       </SelectItem>
@@ -57,10 +67,12 @@ export const ComponentWrapper = ({
                   </SelectContent>
                 </Select>
               </div>
-            )} */}
+            )}
 
             <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
-              <OpenInV0Button url={`https://animate-ui.com/r/${name}.json`} />
+              <OpenInV0Button
+                url={`https://animate-ui.com/r/${nameWithStyle}.json`}
+              />
 
               <Button
                 onClick={() => setKey((prev) => prev + 1)}
@@ -139,8 +151,9 @@ export const ComponentWrapper = ({
           damping: 30,
           restDelta: 0.01,
         }}
+        className="relative"
       >
-        {tweakpane}
+        <div className="absolute inset-0 overflow-y-auto">{tweakpane}</div>
       </motion.div>
     </motion.div>
   );

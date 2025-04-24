@@ -1,4 +1,4 @@
-import { GradientBackground } from '../../../backgrounds/gradient';
+import { GradientBackground } from '@/registry/backgrounds/gradient';
 
 export const GradientBackgroundDemo = () => {
   return (
