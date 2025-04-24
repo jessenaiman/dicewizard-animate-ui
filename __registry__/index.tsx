@@ -2269,11 +2269,7 @@ export const index: Record<Styles, Record<string, any>> = {
             },
             alignOffset: { value: 0 },
           },
-          TooltipContent: {
-            arrow: { value: true },
-            arrow2: { value: true },
-            arrow3: { value: true },
-          },
+          TooltipContent: { arrow: { value: true } },
         };
         return LazyComp;
       })(),
@@ -7387,11 +7383,7 @@ export const index: Record<Styles, Record<string, any>> = {
             },
             alignOffset: { value: 0 },
           },
-          TooltipContent: {
-            arrow: { value: true },
-            arrow2: { value: true },
-            arrow3: { value: true },
-          },
+          TooltipContent: { arrow: { value: true } },
         };
         return LazyComp;
       })(),
@@ -12552,11 +12544,7 @@ export const index: Record<Styles, Record<string, any>> = {
             },
             alignOffset: { value: 0 },
           },
-          TooltipContent: {
-            arrow: { value: true },
-            arrow2: { value: true },
-            arrow3: { value: true },
-          },
+          TooltipContent: { arrow: { value: true } },
         };
         return LazyComp;
       })(),

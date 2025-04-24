@@ -50,9 +50,9 @@ export const ComponentWrapper = ({
       )}
     >
       <motion.div className="relative size-full flex-1">
-        {!iframe && hasStyles && (
+        {!iframe && (
           <>
-            {Object.keys(STYLES_INFO).length > 1 && (
+            {hasStyles && Object.keys(STYLES_INFO).length > 1 && (
               <div className="absolute top-3 left-3 z-[9] bg-background flex items-center justify-start gap-2 p-1 rounded-[11px]">
                 <Select value={style} onValueChange={setStyle}>
                   <SelectTrigger className="sm:w-[200px] w-[145px] pl-2.5">
