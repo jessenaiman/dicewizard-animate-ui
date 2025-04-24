@@ -3,10 +3,10 @@
 import { ArrowRightIcon, Moon, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { HighlightText } from '@/registry/text/highlight-text';
+import { HighlightText } from '@/registry/text/highlight';
 import { motion } from 'motion/react';
 import { Tabs, TabsList, TabsTrigger } from '@/registry/components/tabs';
-import { Switch } from '@/registry/radix/radix-switch';
+import { Switch } from '@/registry/radix/switch';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import {
@@ -14,11 +14,11 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@/registry/radix/radix-accordion';
-import { RadixProgressDemo } from '@/registry/demo/radix/radix-progress-demo';
+} from '@/registry/radix/accordion';
+import { RadixProgressDemo } from '@/registry/demo/radix/progress';
 import { InstallTabs } from '@/registry/components/install-tabs';
-import { Checkbox } from '@/registry/radix/radix-checkbox';
-import { GitHubStarsButton } from '@/registry/buttons/github-stars-button';
+import { Checkbox } from '@/registry/radix/checkbox';
+import { GitHubStarsButton } from '@/registry/buttons/github-stars';
 import ReactIcon from './icons/react-icon';
 import TSIcon from './icons/ts-icon';
 import TailwindIcon from './icons/tailwind-icon';

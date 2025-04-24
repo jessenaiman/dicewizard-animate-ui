@@ -1,6 +1,6 @@
 'use client';
 
-import { Switch } from '@/registry/radix/radix-switch';
+import { Switch } from '@/registry/radix/switch';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';

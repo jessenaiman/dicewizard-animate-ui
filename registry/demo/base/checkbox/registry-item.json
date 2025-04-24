@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-checkbox-demo",
+  "type": "registry:ui",
+  "title": "Base Checkbox Demo",
+  "description": "Demo showing a base checkbox.",
+  "registryDependencies": [
+    "https://base-ui-components.com/r/base-checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/base/checkbox/index.tsx",
+      "type": "registry:ui",
+      "target": "components/base/demo/checkbox.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-stars-button-demo",
+  "type": "registry:ui",
+  "title": "GitHub Stars Button Demo",
+  "description": "Demo showing a GitHub stars button.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/shadcn-new-york/github-stars-button"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/buttons/github-stars/shadcn-new-york/index.tsx",
+      "content": "import { GitHubStarsButton } from '@/components/animate-ui/buttons/github-stars';\n\nexport const GitHubStarsButtonDemo = () => {\n  return <GitHubStarsButton username=\"animate-ui\" repo=\"animate-ui\" />;\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/buttons/github-stars.tsx"
+    }
+  ]
+}

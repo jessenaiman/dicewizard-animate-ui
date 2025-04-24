@@ -8,9 +8,10 @@ import {
   TabsTrigger,
   TabsContent,
   TabsContents,
-} from '@/registry/radix/radix-tabs';
+} from '@/registry/radix/tabs';
 import { InstallTabs } from '@/registry/components/install-tabs';
 import { ComponentManualInstallation } from './component-manual-installation';
+import { useStyle } from '@/providers/style-provider';
 
 interface ComponentInstallationProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,7 +23,9 @@ export function ComponentInstallation({
   className,
   ...props
 }: ComponentInstallationProps) {
-  const component = index[name];
+  const { style } = useStyle();
+
+  const component = index[style][name];
 
   const commands = {
     npm: `npx shadcn@latest add "${component.command}"`,
@@ -64,7 +67,7 @@ export function ComponentInstallation({
           </TabsContent>
           <TabsContent value="manual">
             <ComponentManualInstallation
-              name={name}
+              path={component.files[0].target}
               dependencies={component.dependencies}
               devDependencies={component.devDependencies}
               registryDependencies={component.registryDependencies}

@@ -12,7 +12,7 @@ import {
   TabsContents,
   type TabsProps,
 } from '@/registry/components/tabs';
-import { CopyButton } from '@/registry/buttons/copy-button';
+import { CopyButton } from '@/registry/buttons/copy';
 
 type InstallTabsProps = {
   commands: Record<string, string>;

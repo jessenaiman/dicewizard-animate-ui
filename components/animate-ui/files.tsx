@@ -13,7 +13,7 @@ import {
   AccordionTrigger,
   AccordionTriggerProps,
   useAccordionItem,
-} from '@/registry/radix/radix-accordion';
+} from '@/registry/radix/accordion';
 import {
   MotionHighlight,
   MotionHighlightItem,

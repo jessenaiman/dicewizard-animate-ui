@@ -33,13 +33,13 @@ const getRegistryDepsCommands = (dependencies?: string[]) => {
 };
 
 export const ComponentManualInstallation = ({
-  name,
+  path,
   dependencies,
   devDependencies,
   registryDependencies,
   code,
 }: {
-  name: string;
+  path: string;
   dependencies?: string[];
   devDependencies?: string[];
   registryDependencies?: string[];
@@ -99,7 +99,7 @@ export const ComponentManualInstallation = ({
                 <DynamicCodeBlock
                   code={code}
                   lang="tsx"
-                  title={`${name}.tsx`}
+                  title={path}
                   icon={<ReactIcon />}
                 />
               </div>

@@ -4,10 +4,19 @@ import { OpenInV0Button } from '@/components/docs/open-in-v0-button';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Fullscreen, RotateCcw, SlidersHorizontal } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import Iframe from './iframe';
 import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { STYLES_INFO, useStyle } from '@/providers/style-provider';
+import { index } from '@/__registry__';
 
 interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -28,69 +37,95 @@ export const ComponentWrapper = ({
   const [key, setKey] = useState(0);
 
   const isMobile = useIsMobile();
+  const { style, setStyle } = useStyle();
+  const componentName = useMemo(() => name.replace('-demo', ''), [name]);
+  const hasStyles = index[style][componentName]?.styles;
 
   return (
     <motion.div
-      layout
       className={cn(
         'max-w-screen relative rounded-xl border bg-background flex flex-col md:flex-row',
         bigScreen && 'overflow-hidden',
         className,
       )}
     >
-      <motion.div className="relative size-full flex-1" layout>
-        <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
-          <OpenInV0Button url={`https://animate-ui.com/r/${name}.json`} />
+      <motion.div className="relative size-full flex-1">
+        {!iframe && (
+          <>
+            {hasStyles && Object.keys(STYLES_INFO).length > 1 && (
+              <div className="absolute top-3 left-3 z-[9] bg-background flex items-center justify-start gap-2 p-1 rounded-[11px]">
+                <Select value={style} onValueChange={setStyle}>
+                  <SelectTrigger className="sm:w-[200px] w-[145px] pl-2.5">
+                    <SelectValue placeholder="Select a style" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.entries(STYLES_INFO).map(([name, style]) => (
+                      <SelectItem key={name} value={name} className="pl-1.5">
+                        {style.icon}
+                        {style.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
 
-          <Button
-            onClick={() => setKey((prev) => prev + 1)}
-            className="flex items-center rounded-lg"
-            variant="neutral"
-            size="icon-sm"
-            asChild
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <RotateCcw aria-label="restart-btn" size={14} />
-            </motion.button>
-          </Button>
+            <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
+              <OpenInV0Button
+                url={`https://animate-ui.com/r/${style}/${name}.json`}
+              />
 
-          {iframe && (
-            <Button
-              onClick={() => window.open(`/examples/${name}`, '_blank')}
-              className="flex items-center rounded-lg"
-              variant="neutral"
-              size="icon-sm"
-              asChild
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Button
+                onClick={() => setKey((prev) => prev + 1)}
+                className="flex items-center rounded-lg"
+                variant="neutral"
+                size="icon-sm"
+                asChild
               >
-                <Fullscreen aria-label="fullscreen-btn" size={14} />
-              </motion.button>
-            </Button>
-          )}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <RotateCcw aria-label="restart-btn" size={14} />
+                </motion.button>
+              </Button>
 
-          {tweakpane && (
-            <Button
-              onClick={() => setTweakMode((prev) => !prev)}
-              className="flex items-center rounded-lg"
-              variant="neutral"
-              size="icon-sm"
-              asChild
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <SlidersHorizontal aria-label="tweak-btn" size={14} />
-              </motion.button>
-            </Button>
-          )}
-        </div>
+              {iframe && (
+                <Button
+                  onClick={() => window.open(`/examples/${name}`, '_blank')}
+                  className="flex items-center rounded-lg"
+                  variant="neutral"
+                  size="icon-sm"
+                  asChild
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Fullscreen aria-label="fullscreen-btn" size={14} />
+                  </motion.button>
+                </Button>
+              )}
+
+              {tweakpane && (
+                <Button
+                  onClick={() => setTweakMode((prev) => !prev)}
+                  className="flex items-center rounded-lg"
+                  variant="neutral"
+                  size="icon-sm"
+                  asChild
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <SlidersHorizontal aria-label="tweak-btn" size={14} />
+                  </motion.button>
+                </Button>
+              )}
+            </div>
+          </>
+        )}
 
         {iframe ? (
           <Iframe key={key} name={name} bigScreen={bigScreen} />
@@ -117,8 +152,9 @@ export const ComponentWrapper = ({
           damping: 30,
           restDelta: 0.01,
         }}
+        className="relative"
       >
-        {tweakpane}
+        <div className="absolute inset-0 overflow-y-auto">{tweakpane}</div>
       </motion.div>
     </motion.div>
   );

@@ -10,13 +10,14 @@ import {
   TabsList,
   TabsTrigger,
   TabsContents,
-} from '@/registry/radix/radix-tabs';
+} from '@/registry/radix/tabs';
 import { cn } from '@/lib/utils';
 import { Loader } from 'lucide-react';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
 import ReactIcon from '../icons/react-icon';
 import { type Binds, Tweakpane } from '../animate-ui/tweakpane';
+import { useStyle } from '@/providers/style-provider';
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -58,9 +59,10 @@ export function ComponentPreview({
     string,
     unknown
   > | null>(null);
+  const { style } = useStyle();
 
   const code = useMemo(() => {
-    const code = index[name]?.files?.[0]?.content;
+    const code = index[style][name]?.files?.[0]?.content;
 
     if (!code) {
       console.error(`Component with name "${name}" not found in registry.`);
@@ -68,10 +70,10 @@ export function ComponentPreview({
     }
 
     return code;
-  }, [name]);
+  }, [name, style]);
 
   const preview = useMemo(() => {
-    const Component = index[name]?.component;
+    const Component = index[style][name]?.component;
 
     if (Object.keys(Component?.demoProps ?? {}).length !== 0) {
       if (componentProps === null)
@@ -93,7 +95,7 @@ export function ComponentPreview({
     }
 
     return <Component {...flattenFirstLevel(componentProps ?? {})} />;
-  }, [name, componentProps, binds]);
+  }, [name, componentProps, binds, style]);
 
   useEffect(() => {
     if (!binds) return;

@@ -10,7 +10,7 @@
     {
       "path": "registry/components/tabs/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/tabs.tsx"
+      "target": "components/animate-ui/components/tabs.tsx"
     }
   ]
 }

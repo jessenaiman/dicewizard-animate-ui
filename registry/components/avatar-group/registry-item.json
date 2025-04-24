@@ -10,7 +10,7 @@
     {
       "path": "registry/components/avatar-group/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/avatar-group.tsx"
+      "target": "components/animate-ui/components/avatar-group.tsx"
     }
   ]
 }

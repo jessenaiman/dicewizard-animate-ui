@@ -1,4 +1,4 @@
-import { RadixSidebarDemo } from '@/registry/demo/radix/radix-sidebar-demo';
+import { RadixSidebarDemo } from '@/registry/demo/radix/sidebar';
 
 const RadixSidebarDemoPage = () => <RadixSidebarDemo />;
 
