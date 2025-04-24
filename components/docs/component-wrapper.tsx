@@ -4,7 +4,7 @@ import { OpenInV0Button } from '@/components/docs/open-in-v0-button';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Fullscreen, RotateCcw, SlidersHorizontal } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import Iframe from './iframe';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -16,10 +16,10 @@ import {
   SelectValue,
 } from '../ui/select';
 import { STYLES_INFO, useStyle } from '@/providers/style-provider';
+import { index } from '@/__registry__';
 
 interface ComponentWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
-  nameWithStyle: string;
   iframe?: boolean;
   bigScreen?: boolean;
   tweakpane?: React.ReactNode;
@@ -29,7 +29,6 @@ export const ComponentWrapper = ({
   className,
   children,
   name,
-  nameWithStyle,
   iframe = false,
   bigScreen = false,
   tweakpane,
@@ -39,6 +38,8 @@ export const ComponentWrapper = ({
 
   const isMobile = useIsMobile();
   const { style, setStyle } = useStyle();
+  const componentName = useMemo(() => name.replace('-demo', ''), [name]);
+  const hasStyles = index[style][componentName]?.styles;
 
   return (
     <motion.div
@@ -49,12 +50,12 @@ export const ComponentWrapper = ({
       )}
     >
       <motion.div className="relative size-full flex-1">
-        {!iframe && (
+        {!iframe && hasStyles && (
           <>
             {Object.keys(STYLES_INFO).length > 1 && (
               <div className="absolute top-3 left-3 z-[9] bg-background flex items-center justify-start gap-2 p-1 rounded-[11px]">
                 <Select value={style} onValueChange={setStyle}>
-                  <SelectTrigger className="sm:w-[190px] w-[135px] pl-2.5">
+                  <SelectTrigger className="sm:w-[200px] w-[145px] pl-2.5">
                     <SelectValue placeholder="Select a style" />
                   </SelectTrigger>
                   <SelectContent>
@@ -71,7 +72,7 @@ export const ComponentWrapper = ({
 
             <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
               <OpenInV0Button
-                url={`https://animate-ui.com/r/${nameWithStyle}.json`}
+                url={`https://animate-ui.com/r/${style}/${name}.json`}
               />
 
               <Button

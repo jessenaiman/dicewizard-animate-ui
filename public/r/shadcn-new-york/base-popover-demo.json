@@ -1,0 +1,63 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-popover-demo",
+  "type": "registry:ui",
+  "title": "Base Popover Demo",
+  "description": "Demo showing a base popover.",
+  "registryDependencies": [
+    "https://base-ui-components.com/r/base-popover",
+    "button",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/base/popover/shadcn-new-york/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n  type Side,\n  type Align,\n} from '@/components/animate-ui/base/popover';\n\ninterface RadixPopoverDemoProps {\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n  openOnHover?: boolean;\n  delay?: number;\n  closeDelay?: number;\n}\n\nexport const RadixPopoverDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  openOnHover,\n  delay,\n  closeDelay,\n}: RadixPopoverDemoProps) => {\n  return (\n    <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>\n      <PopoverTrigger\n        render={<Button variant=\"outline\">Open popover</Button>}\n      />\n      <PopoverContent\n        className=\"w-80\"\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <div className=\"grid gap-4\">\n          <div className=\"space-y-2\">\n            <h4 className=\"font-medium leading-none\">Dimensions</h4>\n            <p className=\"text-sm text-muted-foreground\">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className=\"grid gap-2\">\n            <div className=\"grid grid-cols-3 items-center gap-4\">\n              <Label htmlFor=\"width\">Width</Label>\n              <Input\n                id=\"width\"\n                defaultValue=\"100%\"\n                className=\"col-span-2 h-8\"\n              />\n            </div>\n            <div className=\"grid grid-cols-3 items-center gap-4\">\n              <Label htmlFor=\"maxWidth\">Max. width</Label>\n              <Input\n                id=\"maxWidth\"\n                defaultValue=\"300px\"\n                className=\"col-span-2 h-8\"\n              />\n            </div>\n            <div className=\"grid grid-cols-3 items-center gap-4\">\n              <Label htmlFor=\"height\">Height</Label>\n              <Input\n                id=\"height\"\n                defaultValue=\"25px\"\n                className=\"col-span-2 h-8\"\n              />\n            </div>\n            <div className=\"grid grid-cols-3 items-center gap-4\">\n              <Label htmlFor=\"maxHeight\">Max. height</Label>\n              <Input\n                id=\"maxHeight\"\n                defaultValue=\"none\"\n                className=\"col-span-2 h-8\"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/base/demo/popover.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "Popover": {
+        "openOnHover": {
+          "value": false
+        },
+        "delay": {
+          "value": 300
+        },
+        "closeDelay": {
+          "value": 0
+        }
+      },
+      "PopoverContent": {
+        "side": {
+          "value": "bottom",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right",
+            "inline-start": "inline-start",
+            "inline-end": "inline-end"
+          }
+        },
+        "align": {
+          "value": "center",
+          "options": {
+            "start": "start",
+            "center": "center",
+            "end": "end"
+          }
+        },
+        "sideOffset": {
+          "value": 4
+        },
+        "alignOffset": {
+          "value": 0
+        }
+      }
+    }
+  }
+}

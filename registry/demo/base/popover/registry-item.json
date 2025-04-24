@@ -17,43 +17,45 @@
       "target": "components/base/demo/popover.tsx"
     }
   ],
-  "demoProps": {
-    "Popover": {
-      "openOnHover": {
-        "value": false
-      },
-      "delay": {
-        "value": 300
-      },
-      "closeDelay": {
-        "value": 0
-      }
-    },
-    "PopoverContent": {
-      "side": {
-        "value": "bottom",
-        "options": {
-          "top": "top",
-          "bottom": "bottom",
-          "left": "left",
-          "right": "right",
-          "inline-start": "inline-start",
-          "inline-end": "inline-end"
+  "meta": {
+    "demoProps": {
+      "Popover": {
+        "openOnHover": {
+          "value": false
+        },
+        "delay": {
+          "value": 300
+        },
+        "closeDelay": {
+          "value": 0
         }
       },
-      "align": {
-        "value": "center",
-        "options": {
-          "start": "start",
-          "center": "center",
-          "end": "end"
+      "PopoverContent": {
+        "side": {
+          "value": "bottom",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right",
+            "inline-start": "inline-start",
+            "inline-end": "inline-end"
+          }
+        },
+        "align": {
+          "value": "center",
+          "options": {
+            "start": "start",
+            "center": "center",
+            "end": "end"
+          }
+        },
+        "sideOffset": {
+          "value": 4
+        },
+        "alignOffset": {
+          "value": 0
         }
-      },
-      "sideOffset": {
-        "value": 4
-      },
-      "alignOffset": {
-        "value": 0
       }
     }
   }

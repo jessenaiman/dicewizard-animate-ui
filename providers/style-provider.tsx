@@ -10,24 +10,26 @@ export const STYLES_INFO: Record<
   [Styles.Default]: {
     label: 'Default',
     icon: (
-      <div className="bg-primary size-6 flex items-center justify-center rounded-md">
-        <AnimateUIIcon className="size-3.5 text-primary-foreground" />
+      <div className="bg-blue-500 size-6 p-[3px] rounded-md shrink-0">
+        <div className="size-full bg-white/25 rounded-full flex items-center justify-center">
+          <AnimateUIIcon className="size-3 text-white pb-px" />
+        </div>
       </div>
     ),
   },
   [Styles.ShadcnDefault]: {
     label: 'Shadcn Default',
     icon: (
-      <div className="bg-black dark:bg-white size-6 flex items-center justify-center rounded-md">
-        <ShadcnIcon className="size-4 text-white dark:text-black" />
+      <div className="bg-background border border-border size-6 flex items-center justify-center rounded-sm shrink-0">
+        <ShadcnIcon className="size-4 text-foreground" />
       </div>
     ),
   },
   [Styles.ShadcnNewYork]: {
     label: 'Shadcn New York',
     icon: (
-      <div className="bg-black dark:bg-white size-6 flex items-center justify-center rounded-md">
-        <ShadcnIcon className="size-3.5 text-white dark:text-black" />
+      <div className="bg-black dark:bg-white size-6 p-0.5 flex items-center justify-center rounded-md shrink-0">
+        <ShadcnIcon className="size-4 text-white dark:text-black" />
       </div>
     ),
   },

@@ -8,10 +8,7 @@ import {
 } from '../constants';
 
 async function buildComponents() {
-  // 1. Delete the __registry__ folder
-  // await fs.rm(AUTO_REGISTRY_DIR, { recursive: true, force: true });
-
-  // 2. Process each folder under /registry
+  // Process each folder under /registry
   const entries = await fs.readdir(REGISTRY_DIR, { withFileTypes: true });
   await Promise.all(
     entries
@@ -53,12 +50,13 @@ async function processRegistryFolder(dir: string) {
   for (const [variant, styleObj] of variants) {
     // Generate the component
     const relDir = path.relative(REGISTRY_DIR, dir);
-
     const relCompOut = path.posix.join(AUTO_REGISTRY_DIR_NAME, relDir, variant);
     await fs.mkdir(path.join(process.cwd(), relCompOut), { recursive: true });
     let compContent = await fs.readFile(compTplAbs, 'utf-8');
 
     // 1) Replace the placeholders {{styles.xxx}}
+    compContent = applyConditionals(compContent, variant);
+
     for (const [key, classes] of Object.entries(styleObj)) {
       const re = new RegExp(`{{styles\\.${key}}}`, 'g');
       compContent = compContent.replace(re, classes);
@@ -70,6 +68,7 @@ async function processRegistryFolder(dir: string) {
       /@\/registry\/([^'";\n\r ]+)/g,
       `@/${AUTO_REGISTRY_DIR_NAME}/$1/${variant}`,
     );
+
     await fs.writeFile(
       path.join(process.cwd(), relCompOut, 'index.tsx'),
       compContent,
@@ -79,6 +78,9 @@ async function processRegistryFolder(dir: string) {
       const demoTplRel = compTplRel.replace(/^registry\//, 'registry/demo/');
       await fs.access(demoTplRel);
       let demoContent = await fs.readFile(demoTplRel, 'utf-8');
+
+      demoContent = applyConditionals(demoContent, variant);
+
       for (const [key, classes] of Object.entries(styleObj)) {
         const re = new RegExp(`{{styles\\.${key}}}`, 'g');
         demoContent = demoContent.replace(re, classes);
@@ -100,6 +102,62 @@ async function processRegistryFolder(dir: string) {
       );
     } catch {}
   }
+}
+
+function applyConditionals(content: string, variant: string): string {
+  const lines = content.split(/\r?\n/);
+  const result: string[] = [];
+  let include = true;
+  let branchTaken = false;
+
+  const jsIfRe = /^\s*\/\/\s*IF\s+styles\s*==\s*'([^']+)'\s*$/;
+  const jsElseIfRe = /^\s*\/\/\s*ELSE\s+IF\s+styles\s*==\s*'([^']+)'\s*$/;
+  const jsElseRe = /^\s*\/\/\s*ELSE\s*$/;
+  const jsEndIfRe = /^\s*\/\/\s*END\s+IF\s*$/;
+
+  const jsxIfRe =
+    /^\s*\{\s*\/\*\s*IF\s+styles\s*==\s*'([^']+)'\s*\*\/\s*\}\s*$/;
+  const jsxElseIfRe =
+    /^\s*\{\s*\/\*\s*ELSE\s+IF\s+styles\s*==\s*'([^']+)'\s*\*\/\s*\}\s*$/;
+  const jsxElseRe = /^\s*\{\s*\/\*\s*ELSE\s*\*\/\s*\}\s*$/;
+  const jsxEndIfRe = /^\s*\{\s*\/\*\s*END\s+IF\s*\*\/\s*\}\s*$/;
+
+  for (const line of lines) {
+    let m;
+    if ((m = line.match(jsIfRe)) || (m = line.match(jsxIfRe))) {
+      include = m[1] === variant;
+      branchTaken = include;
+      continue;
+    }
+    if ((m = line.match(jsElseIfRe)) || (m = line.match(jsxElseIfRe))) {
+      if (!branchTaken) {
+        include = m[1] === variant;
+        branchTaken = include;
+      } else {
+        include = false;
+      }
+      continue;
+    }
+    if (jsElseRe.test(line) || jsxElseRe.test(line)) {
+      if (!branchTaken) {
+        include = true;
+        branchTaken = true;
+      } else {
+        include = false;
+      }
+      continue;
+    }
+    if (jsEndIfRe.test(line) || jsxEndIfRe.test(line)) {
+      include = true;
+      branchTaken = false;
+      continue;
+    }
+    if (include) {
+      result.push(line);
+    }
+  }
+
+  return result.join('\n');
 }
 
 buildComponents().catch((err) => {

@@ -12,36 +12,38 @@
       "target": "components/animate-ui/demo/components/tooltip.tsx"
     }
   ],
-  "demoProps": {
-    "TooltipProvider": {
-      "openDelay": { "value": 700, "min": 0, "max": 2000, "step": 100 },
-      "closeDelay": { "value": 300, "min": 0, "max": 2000, "step": 100 }
-    },
-    "Tooltip": {
-      "side": {
-        "value": "top",
-        "options": {
-          "top": "top",
-          "bottom": "bottom",
-          "left": "left",
-          "right": "right"
-        }
+  "meta": {
+    "demoProps": {
+      "TooltipProvider": {
+        "openDelay": { "value": 700, "min": 0, "max": 2000, "step": 100 },
+        "closeDelay": { "value": 300, "min": 0, "max": 2000, "step": 100 }
       },
-      "sideOffset": { "value": 14 },
-      "align": {
-        "value": "center",
-        "options": {
-          "start": "start",
-          "center": "center",
-          "end": "end"
-        }
+      "Tooltip": {
+        "side": {
+          "value": "top",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right"
+          }
+        },
+        "sideOffset": { "value": 14 },
+        "align": {
+          "value": "center",
+          "options": {
+            "start": "start",
+            "center": "center",
+            "end": "end"
+          }
+        },
+        "alignOffset": { "value": 0 }
       },
-      "alignOffset": { "value": 0 }
-    },
-    "TooltipContent": {
-      "arrow": { "value": true },
-      "arrow2": { "value": true },
-      "arrow3": { "value": true }
+      "TooltipContent": {
+        "arrow": { "value": true },
+        "arrow2": { "value": true },
+        "arrow3": { "value": true }
+      }
     }
   }
 }

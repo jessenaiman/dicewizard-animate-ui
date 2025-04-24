@@ -60,23 +60,20 @@ export function ComponentPreview({
     unknown
   > | null>(null);
   const { style } = useStyle();
-  const nameWithStyle = useMemo(() => `${style}-${name}`, [name, style]);
 
   const code = useMemo(() => {
-    const code = index[nameWithStyle]?.files?.[0]?.content;
+    const code = index[style][name]?.files?.[0]?.content;
 
     if (!code) {
-      console.error(
-        `Component with name "${nameWithStyle}" not found in registry.`,
-      );
+      console.error(`Component with name "${name}" not found in registry.`);
       return null;
     }
 
     return code;
-  }, [nameWithStyle]);
+  }, [name, style]);
 
   const preview = useMemo(() => {
-    const Component = index[nameWithStyle]?.component;
+    const Component = index[style][name]?.component;
 
     if (Object.keys(Component?.demoProps ?? {}).length !== 0) {
       if (componentProps === null)
@@ -85,14 +82,12 @@ export function ComponentPreview({
     }
 
     if (!Component) {
-      console.error(
-        `Component with name "${nameWithStyle}" not found in registry.`,
-      );
+      console.error(`Component with name "${name}" not found in registry.`);
       return (
         <p className="text-sm text-muted-foreground">
           Component{' '}
           <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            {nameWithStyle}
+            {name}
           </code>{' '}
           not found in registry.
         </p>
@@ -100,7 +95,7 @@ export function ComponentPreview({
     }
 
     return <Component {...flattenFirstLevel(componentProps ?? {})} />;
-  }, [nameWithStyle, componentProps, binds]);
+  }, [name, componentProps, binds, style]);
 
   useEffect(() => {
     if (!binds) return;
@@ -146,7 +141,6 @@ export function ComponentPreview({
           >
             <ComponentWrapper
               name={name}
-              nameWithStyle={nameWithStyle}
               iframe={iframe}
               bigScreen={bigScreen}
               tweakpane={

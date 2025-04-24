@@ -2,8 +2,46 @@
 
 import * as React from 'react';
 import { type HTMLMotionProps, motion, type Transition } from 'motion/react';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
+
+const buttonVariants = cva(`{{styles.button}}`, {
+  variants: {
+    variant: {
+      default: '{{styles.variantDefault}}',
+      destructive: '{{styles.variantDestructive}}',
+      outline: '{{styles.variantOutline}}',
+      secondary: '{{styles.variantSecondary}}',
+      ghost: '{{styles.variantGhost}}',
+    },
+    size: {
+      default: '{{styles.sizeDefault}}',
+      sm: '{{styles.sizeSm}}',
+      lg: '{{styles.sizeLg}}',
+      icon: '{{styles.sizeIcon}}',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default',
+  },
+});
+
+const rippleVariants = cva('absolute rounded-full size-5 pointer-events-none', {
+  variants: {
+    variant: {
+      default: 'bg-primary-foreground',
+      destructive: 'bg-destructive',
+      outline: 'bg-input',
+      secondary: 'bg-secondary',
+      ghost: 'bg-accent',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
 
 type Ripple = {
   id: number;
@@ -16,7 +54,7 @@ type RippleButtonProps = HTMLMotionProps<'button'> & {
   rippleClassName?: string;
   scale?: number;
   transition?: Transition;
-};
+} & VariantProps<typeof buttonVariants>;
 
 function RippleButton({
   ref,
@@ -24,6 +62,8 @@ function RippleButton({
   onClick,
   className,
   rippleClassName,
+  variant,
+  size,
   scale = 10,
   transition = { duration: 0.6, ease: 'easeOut' },
   ...props
@@ -73,10 +113,7 @@ function RippleButton({
       onClick={handleClick}
       whileTap={{ scale: 0.95 }}
       whileHover={{ scale: 1.05 }}
-      className={cn(
-        'relative h-10 px-4 py-2 text-sm font-medium text-primary-foreground overflow-hidden bg-primary cursor-pointer rounded-lg focus:outline-none',
-        className,
-      )}
+      className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
       {children}
@@ -87,8 +124,7 @@ function RippleButton({
           animate={{ scale, opacity: 0 }}
           transition={transition}
           className={cn(
-            'absolute bg-primary-foreground rounded-full size-5 pointer-events-none',
-            rippleClassName,
+            rippleVariants({ variant, className: rippleClassName }),
           )}
           style={{
             top: ripple.y - 10,

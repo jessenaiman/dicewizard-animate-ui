@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-switch-demo",
+  "type": "registry:ui",
+  "title": "Base Switch Demo",
+  "description": "Demo showing a base switch.",
+  "registryDependencies": [
+    "https://base-ui-components.com/r/base-switch",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/base/switch/shadcn-new-york/index.tsx",
+      "content": "import { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/animate-ui/base/switch';\n\nexport const BaseSwitchDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"airplane-mode\">Airplane mode</Label>\n      <Switch defaultChecked id=\"airplane-mode\" />\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/base/demo/switch.tsx"
+    }
+  ]
+}
