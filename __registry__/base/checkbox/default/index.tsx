@@ -39,7 +39,8 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        'peer size-5 flex items-center justify-center shrink-0 rounded-sm bg-input transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[checked]:text-primary-foreground',
+        'peer shrink-0 flex items-center justify-center outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-500',
+        'size-5 rounded-sm bg-input focus-visible:ring-offset-2 data-[checked]:bg-primary data-[checked]:text-primary-foreground',
         className,
       )}
       {...props}
@@ -52,7 +53,11 @@ function Checkbox({
         />
       }
     >
-      <CheckboxPrimitive.Indicator keepMounted data-slot="checkbox-indicator">
+      <CheckboxPrimitive.Indicator
+        keepMounted
+        data-slot="checkbox-indicator"
+        className="flex items-center justify-center text-current transition-none"
+      >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

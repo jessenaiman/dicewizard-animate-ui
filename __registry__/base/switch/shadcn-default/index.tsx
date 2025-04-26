@@ -48,7 +48,7 @@ function Switch({
       {...props}
       onCheckedChange={handleCheckedChange}
       className={cn(
-        'relative flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start',
+        'peer relative inline-flex p-px h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-transparent shadow-xs transition-colors outline-none focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start',
         className,
       )}
       render={
@@ -69,7 +69,10 @@ function Switch({
             isChecked ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }
           }
           transition={{ type: 'spring', bounce: 0 }}
-          className="absolute [&_svg]:size-3 left-1 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400"
+          className={cn(
+            'absolute top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400',
+            '[&_svg]:size-3 left-[5px]',
+          )}
         >
           {typeof leftIcon !== 'string' ? leftIcon : null}
         </motion.div>
@@ -82,7 +85,10 @@ function Switch({
             isChecked ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }
           }
           transition={{ type: 'spring', bounce: 0 }}
-          className="absolute [&_svg]:size-3 right-1 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500"
+          className={cn(
+            'absolute top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500',
+            '[&_svg]:size-3 right-[5px]',
+          )}
         >
           {typeof rightIcon !== 'string' ? rightIcon : null}
         </motion.div>
@@ -93,19 +99,17 @@ function Switch({
         render={
           <motion.div
             whileTap="tab"
-            className={cn(
-              'relative z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500',
-            )}
+            className="relative pointer-events-none z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground shadow-lg ring-0 dark:text-neutral-400 text-neutral-500"
             layout
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            style={{
-              width: 18,
-              height: 18,
-            }}
+            style={{ width: '20px', height: '20px' }}
             animate={
               isTapped
-                ? { width: 21, transition: { duration: 0.1 } }
-                : { width: 18, transition: { duration: 0.1 } }
+                ? {
+                    width: '23px',
+                    transition: { duration: 0.1 },
+                  }
+                : { width: '20px', transition: { duration: 0.1 } }
             }
           />
         }

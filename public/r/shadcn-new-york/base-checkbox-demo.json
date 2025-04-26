@@ -5,7 +5,7 @@
   "title": "Base Checkbox Demo",
   "description": "Demo showing a base checkbox.",
   "registryDependencies": [
-    "https://base-ui-components.com/r/base-checkbox",
+    "https://animate-ui.com/r/shadcn-new-york/base-checkbox",
     "label"
   ],
   "files": [

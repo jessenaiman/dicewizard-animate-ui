@@ -122,6 +122,22 @@
         "motion",
         "@base-ui-components/react"
       ],
+      "meta": {
+        "styles": {
+          "default": {
+            "checkbox": "size-5 rounded-sm bg-input focus-visible:ring-offset-2 data-[checked]:bg-primary data-[checked]:text-primary-foreground",
+            "indicatorSize": "3.5"
+          },
+          "shadcn-default": {
+            "checkbox": "border-input dark:bg-input/30 data-[checked]:bg-primary data-[checked]:text-primary-foreground dark:data-[checked]:bg-primary data-[checked]:border-primary focus-visible:border-ring aria-invalid:border-destructive size-4 rounded-[4px] border",
+            "indicatorSize": "3"
+          },
+          "shadcn-new-york": {
+            "checkbox": "border-input dark:bg-input/30 data-[checked]:bg-primary data-[checked]:text-primary-foreground dark:data-[checked]:bg-primary data-[checked]:border-primary focus-visible:border-ring aria-invalid:border-destructive size-4 rounded-[4px] border shadow-xs transition-shadow",
+            "indicatorSize": "3"
+          }
+        }
+      },
       "files": [
         {
           "path": "__registry__/base/checkbox/default/index.tsx",
@@ -139,6 +155,19 @@
         "motion",
         "@base-ui-components/react"
       ],
+      "meta": {
+        "styles": {
+          "default": {
+            "content": "w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-hidden"
+          },
+          "shadcn-default": {
+            "content": "w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden"
+          },
+          "shadcn-new-york": {
+            "content": "w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-hidden"
+          }
+        }
+      },
       "files": [
         {
           "path": "__registry__/base/popover/default/index.tsx",
@@ -156,11 +185,71 @@
         "motion",
         "@base-ui-components/react"
       ],
+      "meta": {
+        "styles": {
+          "default": {
+            "switch": "peer relative inline-flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start",
+            "thumb": "relative pointer-events-none z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500",
+            "leftIcon": "[&_svg]:size-3 left-1",
+            "rightIcon": "[&_svg]:size-3 right-1",
+            "size": "18px",
+            "tappedSize": "21px"
+          },
+          "shadcn-default": {
+            "switch": "peer relative inline-flex p-px h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-transparent shadow-xs transition-colors outline-none focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start",
+            "thumb": "relative pointer-events-none z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground shadow-lg ring-0 dark:text-neutral-400 text-neutral-500",
+            "leftIcon": "[&_svg]:size-3 left-[5px]",
+            "rightIcon": "[&_svg]:size-3 right-[5px]",
+            "size": "20px",
+            "tappedSize": "23px"
+          },
+          "shadcn-new-york": {
+            "switch": "peer relative inline-flex p-px h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-transparent shadow-xs transition-colors outline-none focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start",
+            "thumb": "relative pointer-events-none z-[1] [&_svg]:size-2.5 flex items-center justify-center rounded-full bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground shadow-lg ring-0 dark:text-neutral-400 text-neutral-500",
+            "leftIcon": "[&_svg]:size-2.5 left-1",
+            "rightIcon": "[&_svg]:size-2.5 right-1",
+            "size": "16px",
+            "tappedSize": "19px"
+          }
+        }
+      },
       "files": [
         {
           "path": "__registry__/base/switch/default/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "base-tooltip",
+      "type": "registry:ui",
+      "title": "Base Tooltip",
+      "description": "Base tooltip component",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "meta": {
+        "styles": {
+          "default": {
+            "content": "relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-sm text-balance",
+            "arrow": "bg-primary fill-primary z-50 size-2.5 data-[side='bottom']:-top-[4px] data-[side='right']:-left-[4px] data-[side='left']:-right-[4px] data-[side='inline-start']:-right-[4px] data-[side='inline-end']:-left-[4px] rotate-45 rounded-[2px]"
+          },
+          "shadcn-default": {
+            "content": "relative bg-popover border text-popover-foreground shadow-md overflow-hidden w-fit rounded-md px-3 py-1.5 text-sm text-balance"
+          },
+          "shadcn-new-york": {
+            "content": "relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-xs text-balance",
+            "arrow": "bg-primary fill-primary z-50 size-2.5 data-[side='bottom']:-top-[4px] data-[side='right']:-left-[4px] data-[side='left']:-right-[4px] data-[side='inline-start']:-right-[4px] data-[side='inline-end']:-left-[4px] rotate-45 rounded-[2px]"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "__registry__/base/tooltip/default/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/base/tooltip.tsx"
         }
       ]
     },
@@ -691,7 +780,7 @@
       "title": "Base Checkbox Demo",
       "description": "Demo showing a base checkbox.",
       "registryDependencies": [
-        "https://base-ui-components.com/r/base-checkbox",
+        "https://animate-ui.com/r/default/base-checkbox",
         "label"
       ],
       "files": [
@@ -708,7 +797,7 @@
       "title": "Base Popover Demo",
       "description": "Demo showing a base popover.",
       "registryDependencies": [
-        "https://base-ui-components.com/r/base-popover",
+        "https://animate-ui.com/r/default/base-popover",
         "button",
         "input",
         "label"
@@ -721,6 +810,17 @@
         }
       ],
       "meta": {
+        "styles": {
+          "default": {
+            "button": ""
+          },
+          "shadcn-default": {
+            "button": "rounded-md"
+          },
+          "shadcn-new-york": {
+            "button": "rounded-md h-9"
+          }
+        },
         "demoProps": {
           "Popover": {
             "openOnHover": {
@@ -768,8 +868,11 @@
       "type": "registry:ui",
       "title": "Base Switch Demo",
       "description": "Demo showing a base switch.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://base-ui-components.com/r/base-switch",
+        "https://animate-ui.com/r/default/base-switch",
         "label"
       ],
       "files": [
@@ -778,7 +881,100 @@
           "type": "registry:ui",
           "target": "components/base/demo/switch.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "Switch": {
+            "leftIcon": {
+              "value": false
+            },
+            "rightIcon": {
+              "value": false
+            },
+            "thumbIcon": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "base-tooltip-demo",
+      "type": "registry:ui",
+      "title": "Base Tooltip Demo",
+      "description": "Demo showing a base tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/default/base-tooltip"
+      ],
+      "files": [
+        {
+          "path": "__registry__/demo/base/tooltip/default/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/demo/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "styles": {
+          "default": {
+            "button": ""
+          },
+          "shadcn-default": {
+            "button": "rounded-md"
+          },
+          "shadcn-new-york": {
+            "button": "rounded-md h-9"
+          }
+        },
+        "demoProps": {
+          "TooltipProvider": {
+            "delay": {
+              "value": 600,
+              "min": 0,
+              "max": 2000,
+              "step": 100
+            },
+            "closeDelay": {
+              "value": 0,
+              "min": 0,
+              "max": 2000,
+              "step": 100
+            }
+          },
+          "TooltipContent": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 10
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            },
+            "arrow": {
+              "value": true,
+              "disableVariants": [
+                "shadcn-default"
+              ]
+            }
+          }
+        }
+      }
     },
     {
       "name": "copy-button-demo",

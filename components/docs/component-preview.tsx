@@ -144,7 +144,13 @@ export function ComponentPreview({
               iframe={iframe}
               bigScreen={bigScreen}
               tweakpane={
-                binds && <Tweakpane binds={binds} onBindsChange={setBinds} />
+                binds && (
+                  <Tweakpane
+                    binds={binds}
+                    onBindsChange={setBinds}
+                    currentStyle={style}
+                  />
+                )
               }
             >
               <Suspense

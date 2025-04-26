@@ -14,10 +14,10 @@ type Bounds = {
   height: number;
 };
 
-type MotionHighlightContextType = {
+type MotionHighlightContextType<T extends string> = {
   mode: MotionHighlightMode;
-  activeValue: string | null;
-  setActiveValue: (value: string | null) => void;
+  activeValue: T | null;
+  setActiveValue: (value: T | null) => void;
   setBounds: (bounds: DOMRect) => void;
   clearBounds: () => void;
   id: string;
@@ -33,24 +33,25 @@ type MotionHighlightContextType = {
 };
 
 const MotionHighlightContext = React.createContext<
-  MotionHighlightContextType | undefined
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  MotionHighlightContextType<any> | undefined
 >(undefined);
 
-const useMotionHighlight = (): MotionHighlightContextType => {
+function useMotionHighlight<T extends string>(): MotionHighlightContextType<T> {
   const context = React.useContext(MotionHighlightContext);
   if (!context) {
     throw new Error(
       'useMotionHighlight must be used within a MotionHighlightProvider',
     );
   }
-  return context;
-};
+  return context as unknown as MotionHighlightContextType<T>;
+}
 
-type BaseMotionHighlightProps = {
+type BaseMotionHighlightProps<T extends string> = {
   mode?: MotionHighlightMode;
-  value?: string | null;
-  defaultValue?: string | null;
-  onValueChange?: (value: string | null) => void;
+  value?: T | null;
+  defaultValue?: T | null;
+  onValueChange?: (value: T | null) => void;
   className?: string;
   transition?: Transition;
   hover?: boolean;
@@ -65,43 +66,50 @@ type ParentModeMotionHighlightProps = {
   forceUpdateBounds?: boolean;
 };
 
-type ControlledParentModeMotionHighlightProps = BaseMotionHighlightProps &
-  ParentModeMotionHighlightProps & {
-    mode: 'parent';
+type ControlledParentModeMotionHighlightProps<T extends string> =
+  BaseMotionHighlightProps<T> &
+    ParentModeMotionHighlightProps & {
+      mode: 'parent';
+      controlledItems: true;
+      children: React.ReactNode;
+    };
+
+type ControlledChildrenModeMotionHighlightProps<T extends string> =
+  BaseMotionHighlightProps<T> & {
+    mode?: 'children' | undefined;
     controlledItems: true;
     children: React.ReactNode;
   };
 
-type ControlledChildrenModeMotionHighlightProps = BaseMotionHighlightProps & {
-  mode?: 'children' | undefined;
-  controlledItems: true;
-  children: React.ReactNode;
-};
+type UncontrolledParentModeMotionHighlightProps<T extends string> =
+  BaseMotionHighlightProps<T> &
+    ParentModeMotionHighlightProps & {
+      mode: 'parent';
+      controlledItems?: false;
+      itemsClassName?: string;
+      children: React.ReactElement | React.ReactElement[];
+    };
 
-type UncontrolledParentModeMotionHighlightProps = BaseMotionHighlightProps &
-  ParentModeMotionHighlightProps & {
-    mode: 'parent';
+type UncontrolledChildrenModeMotionHighlightProps<T extends string> =
+  BaseMotionHighlightProps<T> & {
+    mode?: 'children';
     controlledItems?: false;
     itemsClassName?: string;
     children: React.ReactElement | React.ReactElement[];
   };
 
-type UncontrolledChildrenModeMotionHighlightProps = BaseMotionHighlightProps & {
-  mode?: 'children';
-  controlledItems?: false;
-  itemsClassName?: string;
-  children: React.ReactElement | React.ReactElement[];
-};
-
-type MotionHighlightProps = React.ComponentProps<'div'> &
+type MotionHighlightProps<T extends string> = React.ComponentProps<'div'> &
   (
-    | ControlledParentModeMotionHighlightProps
-    | ControlledChildrenModeMotionHighlightProps
-    | UncontrolledParentModeMotionHighlightProps
-    | UncontrolledChildrenModeMotionHighlightProps
+    | ControlledParentModeMotionHighlightProps<T>
+    | ControlledChildrenModeMotionHighlightProps<T>
+    | UncontrolledParentModeMotionHighlightProps<T>
+    | UncontrolledChildrenModeMotionHighlightProps<T>
   );
 
-function MotionHighlight({ ref, ...props }: MotionHighlightProps) {
+function MotionHighlight<T extends string>({
+  ref,
+  ...props
+}: MotionHighlightProps<T>) {
   const {
     children,
     value,
@@ -120,7 +128,7 @@ function MotionHighlight({ ref, ...props }: MotionHighlightProps) {
   const localRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);
 
-  const [activeValue, setActiveValue] = React.useState<string | null>(
+  const [activeValue, setActiveValue] = React.useState<T | null>(
     value ?? defaultValue ?? null,
   );
   const [boundsState, setBoundsState] = React.useState<Bounds | null>(null);
@@ -128,9 +136,9 @@ function MotionHighlight({ ref, ...props }: MotionHighlightProps) {
     React.useState<string>('');
 
   const safeSetActiveValue = React.useCallback(
-    (id: string | null) => {
+    (id: T | null) => {
       setActiveValue((prev) => (prev === id ? prev : id));
-      if (id !== activeValue) onValueChange?.(id);
+      if (id !== activeValue) onValueChange?.(id as T);
     },
     [activeValue, onValueChange],
   );

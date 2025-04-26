@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-tooltip",
+  "type": "registry:ui",
+  "title": "Base Tooltip",
+  "description": "Base tooltip component",
+  "dependencies": [
+    "motion",
+    "@base-ui-components/react"
+  ],
+  "files": [
+    {
+      "path": "__registry__/base/tooltip/shadcn-default/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Tooltip as TooltipPrimitive } from '@base-ui-components/react/tooltip';\nimport {\n  AnimatePresence,\n  type HTMLMotionProps,\n  motion,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype TooltipContextType = {\n  isOpen: boolean;\n};\n\nconst TooltipContext = React.createContext<TooltipContextType | undefined>(\n  undefined,\n);\n\nconst useTooltip = (): TooltipContextType => {\n  const context = React.useContext(TooltipContext);\n  if (!context) {\n    throw new Error('useTooltip must be used within a Tooltip');\n  }\n  return context;\n};\n\ntype Side = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Positioner\n>['side'];\n\ntype Align = React.ComponentPropsWithoutRef<\n  typeof TooltipPrimitive.Positioner\n>['align'];\n\nconst getInitialPosition = (side: Side) => {\n  switch (side) {\n    case 'top':\n      return { y: 15 };\n    case 'bottom':\n      return { y: -15 };\n    case 'left':\n    case 'inline-start':\n      return { x: 15 };\n    case 'right':\n    case 'inline-end':\n      return { x: -15 };\n  }\n};\n\ntype TooltipProviderProps = React.ComponentProps<\n  typeof TooltipPrimitive.Provider\n>;\n\nfunction TooltipProvider(props: TooltipProviderProps) {\n  return <TooltipPrimitive.Provider data-slot=\"tooltip-provider\" {...props} />;\n}\n\ntype TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;\n\nfunction Tooltip(props: TooltipProps) {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (\n      open: boolean,\n      event: Event | undefined,\n      reason: Parameters<NonNullable<TooltipProps['onOpenChange']>>[2],\n    ) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open, event, reason);\n    },\n    [props],\n  );\n\n  return (\n    <TooltipContext.Provider value={{ isOpen }}>\n      <TooltipPrimitive.Root\n        data-slot=\"tooltip\"\n        {...props}\n        onOpenChange={handleOpenChange}\n      />\n    </TooltipContext.Provider>\n  );\n}\n\ntype TooltipTriggerProps = React.ComponentProps<\n  typeof TooltipPrimitive.Trigger\n>;\n\nfunction TooltipTrigger(props: TooltipTriggerProps) {\n  return <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" {...props} />;\n}\n\ntype TooltipContentProps = React.ComponentProps<\n  typeof TooltipPrimitive.Positioner\n> & {\n  transition?: Transition;\n  popupProps?: typeof TooltipPrimitive.Popup;\n  motionProps?: HTMLMotionProps<'div'>;\n  positionerClassName?: string;\n};\n\nfunction TooltipContent({\n  className,\n  popupProps,\n  motionProps,\n  positionerClassName,\n  side = 'top',\n  sideOffset = 10,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  children,\n  ...props\n}: TooltipContentProps) {\n  const { isOpen } = useTooltip();\n  const initialPosition = getInitialPosition(side);\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <TooltipPrimitive.Portal keepMounted data-slot=\"tooltip-portal\">\n          <TooltipPrimitive.Positioner\n            data-slot=\"tooltip-positioner\"\n            side={side}\n            sideOffset={sideOffset}\n            className={cn('z-50', positionerClassName)}\n            {...props}\n          >\n            <TooltipPrimitive.Popup\n              data-slot=\"tooltip-popup\"\n              {...popupProps}\n              className={cn('relative bg-popover border text-popover-foreground shadow-md overflow-hidden w-fit rounded-md px-3 py-1.5 text-sm text-balance', className)}\n              render={\n                <motion.div\n                  key=\"tooltip-content\"\n                  initial={{ opacity: 0, scale: 0.5, ...initialPosition }}\n                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n                  exit={{ opacity: 0, scale: 0.5, ...initialPosition }}\n                  transition={transition}\n                  {...motionProps}\n                />\n              }\n            >\n              {children}\n            </TooltipPrimitive.Popup>\n          </TooltipPrimitive.Positioner>\n        </TooltipPrimitive.Portal>\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  useTooltip,\n  type TooltipContextType,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipContentProps,\n  type Side,\n  type Align,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/base/tooltip.tsx"
+    }
+  ],
+  "meta": {
+    "styles": {
+      "default": {
+        "content": "relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-sm text-balance",
+        "arrow": "bg-primary fill-primary z-50 size-2.5 data-[side='bottom']:-top-[4px] data-[side='right']:-left-[4px] data-[side='left']:-right-[4px] data-[side='inline-start']:-right-[4px] data-[side='inline-end']:-left-[4px] rotate-45 rounded-[2px]"
+      },
+      "shadcn-default": {
+        "content": "relative bg-popover border text-popover-foreground shadow-md overflow-hidden w-fit rounded-md px-3 py-1.5 text-sm text-balance"
+      },
+      "shadcn-new-york": {
+        "content": "relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-xs text-balance",
+        "arrow": "bg-primary fill-primary z-50 size-2.5 data-[side='bottom']:-top-[4px] data-[side='right']:-left-[4px] data-[side='left']:-right-[4px] data-[side='inline-start']:-right-[4px] data-[side='inline-end']:-left-[4px] rotate-45 rounded-[2px]"
+      }
+    }
+  }
+}
