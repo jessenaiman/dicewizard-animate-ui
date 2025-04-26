@@ -28,7 +28,7 @@ export const STYLES_INFO: Record<
   [Styles.ShadcnNewYork]: {
     label: 'Shadcn New York',
     icon: (
-      <div className="bg-black dark:bg-white size-6 p-0.5 flex items-center justify-center rounded-md shrink-0">
+      <div className="bg-black dark:bg-white size-6 p-0.5 flex items-center justify-center rounded-sm shrink-0">
         <ShadcnIcon className="size-4 text-white dark:text-black" />
       </div>
     ),

@@ -4,16 +4,34 @@
   "type": "registry:ui",
   "title": "Base Switch Demo",
   "description": "Demo showing a base switch.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
-    "https://base-ui-components.com/r/base-switch",
+    "https://animate-ui.com/r/default/base-switch",
     "label"
   ],
   "files": [
     {
       "path": "__registry__/demo/base/switch/default/index.tsx",
-      "content": "import { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/animate-ui/base/switch';\n\nexport const BaseSwitchDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"airplane-mode\">Airplane mode</Label>\n      <Switch defaultChecked id=\"airplane-mode\" />\n    </div>\n  );\n};\n",
+      "content": "'use client';\n\nimport { useState } from 'react';\nimport { MoonIcon, SunIcon } from 'lucide-react';\n\nimport { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/animate-ui/base/switch';\n\ninterface BaseSwitchDemoProps {\n  leftIcon?: boolean;\n  rightIcon?: boolean;\n  thumbIcon?: boolean;\n}\n\nexport const BaseSwitchDemo = ({\n  leftIcon,\n  rightIcon,\n  thumbIcon,\n}: BaseSwitchDemoProps) => {\n  const [checked, setChecked] = useState(true);\n\n  const ThumbIcon = checked ? <MoonIcon /> : <SunIcon />;\n\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"switch-theme\">Switch theme</Label>\n      <Switch\n        checked={checked}\n        onCheckedChange={setChecked}\n        id=\"switch-theme\"\n        leftIcon={leftIcon ? <MoonIcon /> : null}\n        rightIcon={rightIcon ? <SunIcon /> : null}\n        thumbIcon={thumbIcon ? ThumbIcon : null}\n      />\n    </div>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/base/demo/switch.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "demoProps": {
+      "Switch": {
+        "leftIcon": {
+          "value": false
+        },
+        "rightIcon": {
+          "value": false
+        },
+        "thumbIcon": {
+          "value": false
+        }
+      }
+    }
+  }
 }

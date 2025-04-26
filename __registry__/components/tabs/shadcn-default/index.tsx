@@ -9,49 +9,56 @@ import {
   MotionHighlightItem,
 } from '@/__registry__/effects/motion-highlight/shadcn-default';
 
-type TabsContextType = {
-  activeValue: string;
-  handleValueChange: (value: string) => void;
-  registerTrigger: (value: string, node: HTMLElement | null) => void;
+type TabsContextType<T extends string> = {
+  activeValue: T;
+  handleValueChange: (value: T) => void;
+  registerTrigger: (value: T, node: HTMLElement | null) => void;
 };
 
-const TabsContext = React.createContext<TabsContextType | undefined>(undefined);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const TabsContext = React.createContext<TabsContextType<any> | undefined>(
+  undefined,
+);
 
-const useTabs = (): TabsContextType => {
+function useTabs<T extends string = string>(): TabsContextType<T> {
   const context = React.useContext(TabsContext);
   if (!context) {
     throw new Error('useTabs must be used within a TabsProvider');
   }
   return context;
-};
+}
 
 type BaseTabsProps = React.ComponentProps<'div'> & {
   children: React.ReactNode;
 };
 
-type UnControlledTabsProps = BaseTabsProps & {
-  defaultValue?: string;
+type UnControlledTabsProps<T extends string = string> = BaseTabsProps & {
+  defaultValue?: T;
   value?: never;
   onValueChange?: never;
 };
 
-type ControlledTabsProps = BaseTabsProps & {
-  value: string;
-  onValueChange?: (value: string) => void;
+type ControlledTabsProps<T extends string = string> = BaseTabsProps & {
+  value: T;
+  onValueChange?: (value: T) => void;
   defaultValue?: never;
 };
 
-type TabsProps = UnControlledTabsProps | ControlledTabsProps;
+type TabsProps<T extends string = string> =
+  | UnControlledTabsProps<T>
+  | ControlledTabsProps<T>;
 
-function Tabs({
+function Tabs<T extends string = string>({
   defaultValue,
   value,
   onValueChange,
   children,
   className,
   ...props
-}: TabsProps) {
-  const [activeValue, setActiveValue] = React.useState(defaultValue);
+}: TabsProps<T>) {
+  const [activeValue, setActiveValue] = React.useState<T | null>(
+    defaultValue ?? null,
+  );
   const triggersRef = React.useRef(new Map<string, HTMLElement>());
   const initialSet = React.useRef(false);
   const isControlled = value !== undefined;
@@ -64,7 +71,7 @@ function Tabs({
       !initialSet.current
     ) {
       const firstTab = Array.from(triggersRef.current.keys())[0];
-      setActiveValue(firstTab);
+      setActiveValue(firstTab as T);
       initialSet.current = true;
     }
   }, [activeValue, isControlled]);
@@ -73,7 +80,7 @@ function Tabs({
     if (node) {
       triggersRef.current.set(value, node);
       if (!isControlled && activeValue === undefined && !initialSet.current) {
-        setActiveValue(value);
+        setActiveValue(value as T);
         initialSet.current = true;
       }
     } else {
@@ -81,7 +88,7 @@ function Tabs({
     }
   };
 
-  const handleValueChange = (val: string) => {
+  const handleValueChange = (val: T) => {
     if (!isControlled) setActiveValue(val);
     else onValueChange?.(val);
   };

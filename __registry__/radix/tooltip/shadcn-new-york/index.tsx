@@ -47,7 +47,7 @@ function TooltipProvider(props: TooltipProviderProps) {
 
 type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;
 
-function Tooltip({ children, ...props }: TooltipProps) {
+function Tooltip(props: TooltipProps) {
   const [isOpen, setIsOpen] = React.useState(
     props?.open ?? props?.defaultOpen ?? false,
   );
@@ -70,9 +70,7 @@ function Tooltip({ children, ...props }: TooltipProps) {
         data-slot="tooltip"
         {...props}
         onOpenChange={handleOpenChange}
-      >
-        {children}
-      </TooltipPrimitive.Root>
+      />
     </TooltipContext.Provider>
   );
 }

@@ -26,10 +26,10 @@ const getInitialPosition = (side: Side) => {
     case 'bottom':
       return { y: -15 };
     case 'left':
-    case 'inline-end':
+    case 'inline-start':
       return { x: 15 };
     case 'right':
-    case 'inline-start':
+    case 'inline-end':
       return { x: -15 };
   }
 };
@@ -135,12 +135,12 @@ function PopoverContent({
               data-slot="popover-popup"
               {...popupProps}
               className={cn(
-                'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+                'w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden',
                 className,
               )}
               render={
                 <motion.div
-                  key="popover"
+                  key="popover-content"
                   initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
                   animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
                   exit={{ opacity: 0, scale: 0.5, ...initialPosition }}

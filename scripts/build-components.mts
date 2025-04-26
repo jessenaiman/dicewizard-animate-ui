@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { promises as fs } from 'fs';
 import path from 'path';
 import {
@@ -88,34 +91,6 @@ async function processRegistryFolder(dir: string) {
       path.join(process.cwd(), relCompOut, 'index.tsx'),
       compContent,
     );
-
-    try {
-      const demoTplRel = compTplRel.replace(/^registry\//, 'registry/demo/');
-      await fs.access(demoTplRel);
-      let demoContent = await fs.readFile(demoTplRel, 'utf-8');
-
-      demoContent = applyConditionals(demoContent, variant);
-
-      for (const [key, classes] of Object.entries(styleObj)) {
-        const re = new RegExp(`{{styles\\.${key}}}`, 'g');
-        demoContent = demoContent.replace(re, classes);
-      }
-      demoContent = demoContent.replace(
-        /@\/registry\/([^'";\n\r ]+)/g,
-        `@/${AUTO_REGISTRY_DIR_NAME}/$1/${variant}`,
-      );
-      const relDemoOut = path.posix.join(
-        AUTO_REGISTRY_DIR_NAME,
-        'demo',
-        relDir,
-        variant,
-      );
-      await fs.mkdir(path.join(process.cwd(), relDemoOut), { recursive: true });
-      await fs.writeFile(
-        path.join(process.cwd(), relDemoOut, 'index.tsx'),
-        demoContent,
-      );
-    } catch {}
   }
 }
 
@@ -125,28 +100,26 @@ function applyConditionals(content: string, variant: string): string {
   let include = true;
   let branchTaken = false;
 
-  const jsIfRe = /^\s*\/\/\s*IF\s+styles\s*==\s*'([^']+)'\s*$/;
-  const jsElseIfRe = /^\s*\/\/\s*ELSE\s+IF\s+styles\s*==\s*'([^']+)'\s*$/;
+  const jsIfRe = /^\s*\/\/\s*IF\s+(.+)\s*$/;
+  const jsElseIfRe = /^\s*\/\/\s*ELSE\s+IF\s+(.+)\s*$/;
   const jsElseRe = /^\s*\/\/\s*ELSE\s*$/;
   const jsEndIfRe = /^\s*\/\/\s*END\s+IF\s*$/;
 
-  const jsxIfRe =
-    /^\s*\{\s*\/\*\s*IF\s+styles\s*==\s*'([^']+)'\s*\*\/\s*\}\s*$/;
-  const jsxElseIfRe =
-    /^\s*\{\s*\/\*\s*ELSE\s+IF\s+styles\s*==\s*'([^']+)'\s*\*\/\s*\}\s*$/;
+  const jsxIfRe = /^\s*\{\s*\/\*\s*IF\s+(.+)\s*\*\/\s*\}\s*$/;
+  const jsxElseIfRe = /^\s*\{\s*\/\*\s*ELSE\s+IF\s+(.+)\s*\*\/\s*\}\s*$/;
   const jsxElseRe = /^\s*\{\s*\/\*\s*ELSE\s*\*\/\s*\}\s*$/;
   const jsxEndIfRe = /^\s*\{\s*\/\*\s*END\s+IF\s*\*\/\s*\}\s*$/;
 
   for (const line of lines) {
     let m;
     if ((m = line.match(jsIfRe)) || (m = line.match(jsxIfRe))) {
-      include = m[1] === variant;
+      include = evaluateCondition(m[1], variant);
       branchTaken = include;
       continue;
     }
     if ((m = line.match(jsElseIfRe)) || (m = line.match(jsxElseIfRe))) {
       if (!branchTaken) {
-        include = m[1] === variant;
+        include = evaluateCondition(m[1], variant);
         branchTaken = include;
       } else {
         include = false;
@@ -173,6 +146,13 @@ function applyConditionals(content: string, variant: string): string {
   }
 
   return result.join('\n');
+}
+
+function evaluateCondition(condition: string, variant: string): boolean {
+  return condition.split(/\s+OR\s+/i).some((part) => {
+    const m = part.match(/styles\s*==\s*'([^']+)'/);
+    return m?.[1] === variant;
+  });
 }
 
 buildComponents().catch((err) => {

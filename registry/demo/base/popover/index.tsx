@@ -31,7 +31,11 @@ export const RadixPopoverDemo = ({
   return (
     <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>
       <PopoverTrigger
-        render={<Button variant="outline">Open popover</Button>}
+        render={
+          <Button variant="outline" className="{{styles.button}}">
+            Open popover
+          </Button>
+        }
       />
       <PopoverContent
         className="w-80"

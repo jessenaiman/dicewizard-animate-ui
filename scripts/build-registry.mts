@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { exec } from 'child_process';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -335,6 +337,7 @@ try {
   await buildRegistryIndex();
   console.log('🏗️ Building registry...');
   await buildRegistry();
+  console.log('🎉 Registry build completed successfully!');
 } catch (error) {
   console.error(error);
   process.exit(1);

@@ -4,15 +4,28 @@
   "type": "registry:ui",
   "title": "Base Switch Demo",
   "description": "Demo showing a base switch.",
-  "registryDependencies": [
-    "https://base-ui-components.com/r/base-switch",
-    "label"
-  ],
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/base-switch", "label"],
   "files": [
     {
       "path": "registry/demo/base/switch/index.tsx",
       "type": "registry:ui",
       "target": "components/base/demo/switch.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "demoProps": {
+      "Switch": {
+        "leftIcon": {
+          "value": false
+        },
+        "rightIcon": {
+          "value": false
+        },
+        "thumbIcon": {
+          "value": false
+        }
+      }
+    }
+  }
 }

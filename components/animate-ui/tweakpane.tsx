@@ -20,8 +20,15 @@ import {
 } from '../ui/select';
 import { Switch } from '@/registry/radix/switch';
 import { ChevronsUpDown } from 'lucide-react';
+import { Styles } from '@/constants';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/registry/radix/tooltip';
 
-type BaseBindNumber = { value: number };
+type BaseBindNumber = { value: number; disableVariants?: Styles[] };
 type BindNumberSlider = BaseBindNumber & {
   min: number;
   max: number;
@@ -29,8 +36,12 @@ type BindNumberSlider = BaseBindNumber & {
 };
 type BindNumberOptions = BaseBindNumber & { options: Record<string, number> };
 type BindNumber = BindNumberSlider | BindNumberOptions | BaseBindNumber;
-type BindString = { value: string; options?: Record<string, string> };
-type BindBoolean = { value: boolean };
+type BindString = {
+  value: string;
+  options?: Record<string, string>;
+  disableVariants?: Styles[];
+};
+type BindBoolean = { value: boolean; disableVariants?: Styles[] };
 type Bind = BindNumber | BindString | BindBoolean;
 
 type FlatBinds = Record<string, Bind>;
@@ -40,11 +51,13 @@ type Binds = FlatBinds | NestedBinds;
 interface ControlledTweakpaneProps {
   binds: Binds;
   onBindsChange?: (binds: Binds) => void;
+  currentStyle: Styles;
 }
 
 interface UncontrolledTweakpaneProps {
   initialBinds: Binds;
   onBindsChange?: (binds: Binds) => void;
+  currentStyle: Styles;
 }
 
 type TweakpaneProps = ControlledTweakpaneProps | UncontrolledTweakpaneProps;
@@ -129,93 +142,110 @@ const renderNumber = (
   key: string,
   bind: BindNumber,
   onChange: (value: number) => void,
+  currentStyle: Styles,
 ) => {
-  if ('min' in bind && 'max' in bind) {
-    return (
-      <div key={key} className="flex flex-row gap-2.5">
-        <div className="w-[80px] flex items-center shrink-0 min-w-0">
-          <Label
-            className="truncate text-current/80 block leading-[1.2]"
-            htmlFor={key}
-          >
-            {key}
-          </Label>
-        </div>
-
-        <Slider
-          min={bind.min}
-          max={bind.max}
-          step={bind.step}
-          value={[bind.value]}
-          onValueChange={(v) => onChange(v[0])}
-        />
-
-        <NumericInput
-          id={key}
-          value={bind.value}
-          min={bind.min}
-          max={bind.max}
-          step={bind.step}
-          onValueChange={onChange}
-          className="w-[50px] h-8 rounded-md px-2 shrink-0"
-        />
-      </div>
-    );
-  }
-
-  if ('options' in bind) {
-    return (
-      <div key={key} className="flex flex-row gap-2.5">
-        <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
-          <Label
-            className="truncate text-current/80 block leading-[1.2]"
-            htmlFor={key}
-          >
-            {key}
-          </Label>
-        </div>
-
-        <Select
-          value={bind.value.toString()}
-          onValueChange={(v) => onChange(Number(v))}
-        >
-          <SelectTrigger
-            id={key}
-            className="flex-1 !h-8 rounded-md px-2 shrink-0"
-          >
-            <SelectValue placeholder="Select an option" />
-          </SelectTrigger>
-
-          <SelectContent>
-            {Object.entries(bind.options).map(([key, value]) => (
-              <SelectItem className="!h-8" key={key} value={value.toString()}>
-                {key}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    );
-  }
+  const disabled = bind.disableVariants?.includes(currentStyle);
 
   return (
-    <div key={key} className="flex flex-row gap-2.5">
-      <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
-        <Label
-          className="truncate text-current/80 block leading-[1.2]"
-          htmlFor={key}
-        >
-          {key}
-        </Label>
-      </div>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          {'min' in bind && 'max' in bind ? (
+            <div key={key} className="flex flex-row gap-2.5">
+              <div className="w-[80px] flex items-center shrink-0 min-w-0">
+                <Label
+                  className="truncate text-current/80 block leading-[1.2]"
+                  htmlFor={key}
+                >
+                  {key}
+                </Label>
+              </div>
 
-      <NumericInput
-        id={key}
-        value={bind.value}
-        onValueChange={onChange}
-        className="w-full h-8 rounded-md px-2"
-      />
-    </div>
+              <Slider
+                min={bind.min}
+                max={bind.max}
+                step={bind.step}
+                value={[bind.value]}
+                onValueChange={(v) => onChange(v[0])}
+                disabled={disabled}
+              />
+
+              <NumericInput
+                id={key}
+                value={bind.value}
+                min={bind.min}
+                max={bind.max}
+                step={bind.step}
+                onValueChange={onChange}
+                className="w-[50px] h-8 rounded-md px-2 shrink-0"
+                disabled={disabled}
+              />
+            </div>
+          ) : 'options' in bind ? (
+            <div key={key} className="flex flex-row gap-2.5">
+              <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+                <Label
+                  className="truncate text-current/80 block leading-[1.2]"
+                  htmlFor={key}
+                >
+                  {key}
+                </Label>
+              </div>
+
+              <Select
+                value={bind.value.toString()}
+                onValueChange={(v) => onChange(Number(v))}
+                disabled={disabled}
+              >
+                <SelectTrigger
+                  id={key}
+                  className="flex-1 !h-8 rounded-md px-2 shrink-0"
+                >
+                  <SelectValue placeholder="Select an option" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  {Object.entries(bind.options).map(([key, value]) => (
+                    <SelectItem
+                      className="!h-8"
+                      key={key}
+                      value={value.toString()}
+                    >
+                      {key}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          ) : (
+            <div key={key} className="flex flex-row gap-2.5">
+              <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+                <Label
+                  className="truncate text-current/80 block leading-[1.2]"
+                  htmlFor={key}
+                >
+                  {key}
+                </Label>
+              </div>
+
+              <NumericInput
+                id={key}
+                value={bind.value}
+                onValueChange={onChange}
+                className="w-full h-8 rounded-md px-2"
+                disabled={disabled}
+              />
+            </div>
+          )}
+        </TooltipTrigger>
+
+        {disabled && (
+          <TooltipContent sideOffset={0}>
+            <p>This functionnality is not available in this style.</p>
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
@@ -223,57 +253,75 @@ const renderString = (
   key: string,
   bind: BindString,
   onChange: (value: string) => void,
+  currentStyle: Styles,
 ) => {
-  if (bind?.options) {
-    return (
-      <div key={key} className="flex flex-row gap-2.5">
-        <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
-          <Label
-            className="truncate text-current/80 block leading-[1.2]"
-            htmlFor={key}
-          >
-            {key}
-          </Label>
-        </div>
-
-        <Select value={bind.value} onValueChange={onChange}>
-          <SelectTrigger
-            id={key}
-            className="flex-1 !h-8 rounded-md px-2 shrink-0"
-          >
-            <SelectValue placeholder="Select an option" />
-          </SelectTrigger>
-
-          <SelectContent>
-            {Object.entries(bind.options).map(([key, value]) => (
-              <SelectItem className="!h-8" key={key} value={value}>
-                {key}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    );
-  }
+  const disabled = bind.disableVariants?.includes(currentStyle);
 
   return (
-    <div key={key} className="flex flex-row gap-2.5">
-      <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
-        <Label
-          className="truncate text-current/80 block leading-[1.2]"
-          htmlFor={key}
-        >
-          {key}
-        </Label>
-      </div>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          {bind?.options ? (
+            <div key={key} className="flex flex-row gap-2.5">
+              <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+                <Label
+                  className="truncate text-current/80 block leading-[1.2]"
+                  htmlFor={key}
+                >
+                  {key}
+                </Label>
+              </div>
 
-      <Input
-        id={key}
-        value={bind.value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full h-8 rounded-md px-2"
-      />
-    </div>
+              <Select
+                value={bind.value}
+                onValueChange={onChange}
+                disabled={disabled}
+              >
+                <SelectTrigger
+                  id={key}
+                  className="flex-1 !h-8 rounded-md px-2 shrink-0"
+                >
+                  <SelectValue placeholder="Select an option" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  {Object.entries(bind.options).map(([key, value]) => (
+                    <SelectItem className="!h-8" key={key} value={value}>
+                      {key}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          ) : (
+            <div key={key} className="flex flex-row gap-2.5">
+              <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
+                <Label
+                  className="truncate text-current/80 block leading-[1.2]"
+                  htmlFor={key}
+                >
+                  {key}
+                </Label>
+              </div>
+
+              <Input
+                id={key}
+                value={bind.value}
+                onChange={(e) => onChange(e.target.value)}
+                className="w-full h-8 rounded-md px-2"
+                disabled={bind.disableVariants?.includes(currentStyle)}
+              />
+            </div>
+          )}
+        </TooltipTrigger>
+
+        {disabled && (
+          <TooltipContent sideOffset={0}>
+            <p>This functionnality is not available in this style.</p>
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
@@ -281,35 +329,58 @@ const renderBoolean = (
   key: string,
   bind: BindBoolean,
   onChange: (value: boolean) => void,
-) => (
-  <div key={key} className="flex flex-row gap-2.5 justify-between">
-    <div className="w-[80px] flex items-center shrink-0 min-w-0">
-      <Label
-        htmlFor={key}
-        className="truncate text-current/80 block leading-[1.2]"
-      >
-        {key}
-      </Label>
-    </div>
+  currentStyle: Styles,
+) => {
+  const disabled = bind.disableVariants?.includes(currentStyle);
 
-    <Switch id={key} checked={bind.value} onCheckedChange={onChange} />
-  </div>
-);
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <div key={key} className="flex flex-row gap-2.5 justify-between">
+            <div className="w-[80px] flex items-center shrink-0 min-w-0">
+              <Label
+                htmlFor={key}
+                className="truncate text-current/80 block leading-[1.2]"
+              >
+                {key}
+              </Label>
+            </div>
+
+            <Switch
+              id={key}
+              checked={bind.value}
+              onCheckedChange={onChange}
+              disabled={disabled}
+            />
+          </div>
+        </TooltipTrigger>
+
+        {disabled && (
+          <TooltipContent sideOffset={0}>
+            <p>This functionnality is not available in this style.</p>
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 const renderBind = (
   key: string,
   bind: Bind,
   onChange: (value: unknown) => void,
+  currentStyle: Styles,
 ) => {
   if ('value' in bind) {
     if (typeof bind.value === 'number') {
-      return renderNumber(key, bind as BindNumber, onChange);
+      return renderNumber(key, bind as BindNumber, onChange, currentStyle);
     }
     if (typeof bind.value === 'string') {
-      return renderString(key, bind as BindString, onChange);
+      return renderString(key, bind as BindString, onChange, currentStyle);
     }
     if (typeof bind.value === 'boolean') {
-      return renderBoolean(key, bind as BindBoolean, onChange);
+      return renderBoolean(key, bind as BindBoolean, onChange, currentStyle);
     }
   }
   return null;
@@ -318,13 +389,20 @@ const renderBind = (
 const renderFlatBinds = (
   binds: FlatBinds,
   onBindsChange: (binds: FlatBinds) => void,
+  currentStyle: Styles,
 ): React.ReactNode => (
   <div className="bg-background rounded-[7px] flex flex-col gap-2 pr-1.5 pl-2 py-[7px]">
-    {Object.entries(binds).map(([key, bind]) =>
-      renderBind(key, bind, (value) =>
-        onBindsChange({ ...binds, [key]: { ...bind, value } } as FlatBinds),
-      ),
-    )}
+    {Object.entries(binds).map(([key, bind]) => (
+      <React.Fragment key={key}>
+        {renderBind(
+          key,
+          bind,
+          (value) =>
+            onBindsChange({ ...binds, [key]: { ...bind, value } } as FlatBinds),
+          currentStyle,
+        )}
+      </React.Fragment>
+    ))}
   </div>
 );
 
@@ -332,6 +410,7 @@ const renderNestedBinds = (
   binds: NestedBinds,
   onBindsChange: (binds: NestedBinds) => void,
   initial: boolean,
+  currentStyle: Styles,
 ): React.ReactNode[] =>
   Object.entries(binds).map(([groupKey, groupBind]) => (
     <Collapsible
@@ -348,8 +427,11 @@ const renderNestedBinds = (
 
       <CollapsibleContent {...(!initial ? { initial: false } : {})}>
         <div className="mt-1">
-          {renderFlatBinds(groupBind, (updatedGroupBind) =>
-            onBindsChange({ ...binds, [groupKey]: updatedGroupBind }),
+          {renderFlatBinds(
+            groupBind,
+            (updatedGroupBind) =>
+              onBindsChange({ ...binds, [groupKey]: updatedGroupBind }),
+            currentStyle,
           )}
         </div>
       </CollapsibleContent>
@@ -360,16 +442,26 @@ const renderBinds = (
   binds: Binds,
   onBindsChange: (binds: Binds) => void,
   inital: boolean,
+  currentStyle: Styles,
 ) =>
   isNestedBinds(binds)
     ? renderNestedBinds(
         binds,
         onBindsChange as (b: NestedBinds) => void,
         inital,
+        currentStyle,
       )
-    : renderFlatBinds(binds, onBindsChange as (b: FlatBinds) => void);
+    : renderFlatBinds(
+        binds,
+        onBindsChange as (b: FlatBinds) => void,
+        currentStyle,
+      );
 
-const Tweakpane = ({ onBindsChange, ...props }: TweakpaneProps) => {
+const Tweakpane = ({
+  onBindsChange,
+  currentStyle,
+  ...props
+}: TweakpaneProps) => {
   const [localBinds, setLocalBinds] = React.useState<Binds>(
     'binds' in props ? props.binds : props.initialBinds,
   );
@@ -390,7 +482,7 @@ const Tweakpane = ({ onBindsChange, ...props }: TweakpaneProps) => {
 
   return (
     <div className="overflow-y-auto bg-muted md:rounded-r-[13px] rounded-b-[13px] md:rounded-bl-none md:border-l border-t border-border/75 dark:border-border/10 md:border-t-0 p-1.5 size-full flex flex-col">
-      {renderBinds(localBinds, handleBindsChange, initial)}
+      {renderBinds(localBinds, handleBindsChange, initial, currentStyle)}
     </div>
   );
 };

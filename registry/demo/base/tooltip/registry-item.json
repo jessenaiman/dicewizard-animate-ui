@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-tooltip-demo",
+  "type": "registry:ui",
+  "title": "Base Tooltip Demo",
+  "description": "Demo showing a base tooltip.",
+  "registryDependencies": ["https://animate-ui.com/r/base-tooltip"],
+  "files": [
+    {
+      "path": "registry/demo/base/tooltip/index.tsx",
+      "type": "registry:ui",
+      "target": "components/base/demo/tooltip.tsx"
+    }
+  ],
+  "meta": {
+    "styles": {
+      "default": {
+        "button": ""
+      },
+      "shadcn-default": {
+        "button": "rounded-md"
+      },
+      "shadcn-new-york": {
+        "button": "rounded-md h-9"
+      }
+    },
+    "demoProps": {
+      "TooltipProvider": {
+        "delay": { "value": 600, "min": 0, "max": 2000, "step": 100 },
+        "closeDelay": { "value": 0, "min": 0, "max": 2000, "step": 100 }
+      },
+      "TooltipContent": {
+        "side": {
+          "value": "top",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right",
+            "inline-start": "inline-start",
+            "inline-end": "inline-end"
+          }
+        },
+        "sideOffset": { "value": 10 },
+        "align": {
+          "value": "center",
+          "options": {
+            "start": "start",
+            "center": "center",
+            "end": "end"
+          }
+        },
+        "alignOffset": { "value": 0 },
+        "arrow": { "value": true, "disableVariants": ["shadcn-default"] }
+      }
+    }
+  }
+}
