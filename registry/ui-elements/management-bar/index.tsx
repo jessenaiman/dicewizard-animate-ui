@@ -38,7 +38,7 @@ function ManagementBar() {
           <ChevronLeft size={20} />
         </button>
         <div className="mx-2 flex items-center space-x-1 text-sm tabular-nums">
-          <SlidingNumber padStart number={currentPage} />
+          <SlidingNumber className="text-white" padStart number={currentPage} />
           <span className="text-gray-400">/ {totalPages}</span>
         </div>
         <button

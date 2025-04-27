@@ -2052,6 +2052,22 @@
       ]
     },
     {
+      "name": "management-bar-demo",
+      "type": "registry:ui",
+      "title": "Management Bar Demo",
+      "description": "Demo management Bar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/management-bar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui-elements/management-bar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/ui-elements/management-bar.tsx"
+        }
+      ]
+    },
+    {
       "name": "motion-effect",
       "type": "registry:ui",
       "title": "Motion Effect",
@@ -2598,6 +2614,26 @@
           "path": "registry/text/writing/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/text/writing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "management-bar",
+      "type": "registry:ui",
+      "title": "Management Bar",
+      "description": "Management Bar Component",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/sliding-number"
+      ],
+      "files": [
+        {
+          "path": "registry/ui-elements/management-bar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/management-bar/management-bar.tsx"
         }
       ]
     }
