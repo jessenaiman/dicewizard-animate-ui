@@ -56,8 +56,8 @@ function Tabs<T extends string = string>({
   className,
   ...props
 }: TabsProps<T>) {
-  const [activeValue, setActiveValue] = React.useState<T | null>(
-    defaultValue ?? null,
+  const [activeValue, setActiveValue] = React.useState<T | undefined>(
+    defaultValue ?? undefined,
   );
   const triggersRef = React.useRef(new Map<string, HTMLElement>());
   const initialSet = React.useRef(false);
