@@ -4,7 +4,7 @@ import { exec } from 'child_process';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { rimraf } from 'rimraf';
-import { AUTO_REGISTRY_DIR_NAME, REGISTRY_DIR, Styles } from '../constants';
+import { AUTO_REGISTRY_DIR_NAME, REGISTRY_DIR, Styles } from './constants.mts';
 
 /**
  * Replace registry paths with component paths.
@@ -162,7 +162,7 @@ async function buildRegistryFile() {
     const data = JSON.parse(raw);
 
     // replace items array
-    data.items = [baseIndexItem, ...(newItemsByStyle[style] || [])];
+    data.items = [baseIndexItem, ...(newItemsByStyle[style as Styles] || [])];
 
     // write back
     await fs.writeFile(filePath, JSON.stringify(data, null, 2));
@@ -208,7 +208,7 @@ export const index: Record<Styles, Record<string, any>> = {`;
         ? `@/${item.files[0].path}`
         : '';
       const filesWithContent = await Promise.all(
-        item.files.map(async (f) => {
+        item.files.map(async (f: any) => {
           const p = typeof f === 'string' ? f : f.path;
           try {
             const content = await fs.readFile(path.resolve(p), 'utf-8');
@@ -314,7 +314,7 @@ async function buildRegistry() {
         const fpath = path.join(outputDir, f);
         const raw = await fs.readFile(fpath, 'utf-8');
         const registryItem = JSON.parse(raw);
-        registryItem.files = registryItem.files?.map((item) => {
+        registryItem.files = registryItem.files?.map((item: any) => {
           if (item.content?.includes('@/__registry__/')) {
             item.content = replaceRegistryPaths(item.content);
           }

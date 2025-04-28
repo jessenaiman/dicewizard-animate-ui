@@ -8,7 +8,7 @@ import {
   AUTO_REGISTRY_DIR_NAME,
   REGISTRY_DIR,
   Styles,
-} from '../constants';
+} from './constants.mts';
 
 async function buildComponents() {
   // Delete all directories in AUTO_REGISTRY_DIR
