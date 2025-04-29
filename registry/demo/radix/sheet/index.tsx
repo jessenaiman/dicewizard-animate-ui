@@ -12,10 +12,10 @@ import {
   SheetTrigger,
 } from '@/registry/radix/sheet';
 
-interface RadixSheetDemoProps{
-  side: "right" | "left" | "top" | "bottom"
+interface RadixSheetDemoProps {
+  side: 'right' | 'left' | 'top' | 'bottom';
 }
-export const RadixSheetDemo = ({side}:RadixSheetDemoProps) => {
+export const RadixSheetDemo = ({ side }: RadixSheetDemoProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>

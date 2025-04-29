@@ -1912,7 +1912,22 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/radix/sheet.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "Sheet": {
+            "side": {
+              "value": "right",
+              "options": {
+                "right": "right",
+                "left": "left",
+                "top": "top",
+                "bottom": "bottom"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "radix-sidebar-demo",
