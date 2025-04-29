@@ -12,13 +12,16 @@ import {
   SheetTrigger,
 } from '@/__registry__/radix/sheet/shadcn-new-york';
 
-export const RadixSheetDemo = () => {
+interface RadixSheetDemoProps {
+  side: 'right' | 'left' | 'top' | 'bottom';
+}
+export const RadixSheetDemo = ({ side }: RadixSheetDemoProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline">Open</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent side={side}>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>

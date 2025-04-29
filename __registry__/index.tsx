@@ -3456,7 +3456,7 @@ export const index: Record<Styles, Record<string, any>> = {
           type: 'registry:ui',
           target: 'components/animate-ui/demo/radix/sheet.tsx',
           content:
-            'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Sheet,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from \'@/components/animate-ui/radix/sheet\';\n\nexport const RadixSheetDemo = () => {\n  return (\n    <Sheet>\n      <SheetTrigger asChild>\n        <Button variant="outline">Open</Button>\n      </SheetTrigger>\n      <SheetContent>\n        <SheetHeader>\n          <SheetTitle>Edit profile</SheetTitle>\n          <SheetDescription>\n            Make changes to your profile here. Click save when you&apos;re done.\n          </SheetDescription>\n        </SheetHeader>\n        <div className="grid gap-4 py-4">\n          <div className="grid grid-cols-4 items-center gap-4">\n            <Label htmlFor="name" className="text-right">\n              Name\n            </Label>\n            <Input id="name" value="Pedro Duarte" className="col-span-3" />\n          </div>\n          <div className="grid grid-cols-4 items-center gap-4">\n            <Label htmlFor="username" className="text-right">\n              Username\n            </Label>\n            <Input id="username" value="@peduarte" className="col-span-3" />\n          </div>\n        </div>\n        <SheetFooter>\n          <SheetClose asChild>\n            <Button type="submit">Save changes</Button>\n          </SheetClose>\n        </SheetFooter>\n      </SheetContent>\n    </Sheet>\n  );\n};',
+            'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Sheet,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from \'@/components/animate-ui/radix/sheet\';\n\ninterface RadixSheetDemoProps {\n  side: \'right\' | \'left\' | \'top\' | \'bottom\';\n}\nexport const RadixSheetDemo = ({ side }: RadixSheetDemoProps) => {\n  return (\n    <Sheet>\n      <SheetTrigger asChild>\n        <Button variant="outline">Open</Button>\n      </SheetTrigger>\n      <SheetContent side={side}>\n        <SheetHeader>\n          <SheetTitle>Edit profile</SheetTitle>\n          <SheetDescription>\n            Make changes to your profile here. Click save when you&apos;re done.\n          </SheetDescription>\n        </SheetHeader>\n        <div className="grid gap-4 py-4">\n          <div className="grid grid-cols-4 items-center gap-4">\n            <Label htmlFor="name" className="text-right">\n              Name\n            </Label>\n            <Input id="name" value="Pedro Duarte" className="col-span-3" />\n          </div>\n          <div className="grid grid-cols-4 items-center gap-4">\n            <Label htmlFor="username" className="text-right">\n              Username\n            </Label>\n            <Input id="username" value="@peduarte" className="col-span-3" />\n          </div>\n        </div>\n        <SheetFooter>\n          <SheetClose asChild>\n            <Button type="submit">Save changes</Button>\n          </SheetClose>\n        </SheetFooter>\n      </SheetContent>\n    </Sheet>\n  );\n};',
         },
       ],
       component: (function () {
@@ -3472,7 +3472,19 @@ export const index: Record<Styles, Record<string, any>> = {
           const Comp = mod.default || mod[exportName];
           return { default: Comp };
         });
-        LazyComp.demoProps = {};
+        LazyComp.demoProps = {
+          Sheet: {
+            side: {
+              value: 'right',
+              options: {
+                right: 'right',
+                left: 'left',
+                top: 'top',
+                bottom: 'bottom',
+              },
+            },
+          },
+        };
         return LazyComp;
       })(),
       command: 'https://animate-ui.com/r/default/radix-sheet-demo',
