@@ -48,7 +48,7 @@ export const metadata: Metadata = {
       url: 'https://github.com/imskyleen',
     },
   ],
-  creator: 'imskyleen',
+  publisher: 'Animate UI',
   openGraph: {
     title: 'Animate UI',
     description:

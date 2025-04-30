@@ -42,7 +42,9 @@ function TabsList({
   const localRef = React.useRef<HTMLDivElement | null>(null);
   React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);
 
-  const [activeValue, setActiveValue] = React.useState<string | null>(null);
+  const [activeValue, setActiveValue] = React.useState<string | undefined>(
+    undefined,
+  );
 
   const getActiveValue = React.useCallback(() => {
     if (!localRef.current) return;
@@ -50,7 +52,7 @@ function TabsList({
       '[data-state="active"]',
     );
     if (!activeTab) return;
-    setActiveValue(activeTab.getAttribute('data-value') ?? null);
+    setActiveValue(activeTab.getAttribute('data-value') ?? undefined);
   }, []);
 
   React.useEffect(() => {

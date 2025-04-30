@@ -20,7 +20,7 @@ export const TabsDemo = () => {
       <TabsContents className="mx-1 mb-1 -mt-2 rounded-sm h-full bg-background">
         <TabsContent value="account" className="space-y-6 p-6">
           <p className="text-sm text-muted-foreground">
-            Make changes to your account here. Click save when you're done.
+            Make changes to your account here. Click save when you&apos;re done.
           </p>
 
           <div className="space-y-3">
@@ -38,7 +38,7 @@ export const TabsDemo = () => {
         </TabsContent>
         <TabsContent value="password" className="space-y-6 p-6">
           <p className="text-sm text-muted-foreground">
-            Change your password here. After saving, you'll be logged out.
+            Change your password here. After saving, you&apos;ll be logged out.
           </p>
           <div className="space-y-3">
             <div className="space-y-1">
