@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-new-york-sliding-number-decimal-demo",
+  "type": "registry:ui",
+  "title": "Sliding Number Decimal Demo",
+  "description": "Demo showing an animated sliding number with a decimal separator with shadcn-new-york style.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/shadcn-new-york-sliding-number"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/text/sliding-number-decimal/shadcn-new-york/index.tsx",
+      "content": "import { SlidingNumber } from '@/components/animate-ui/text/sliding-number';\n\nexport const SlidingNumberDecimalDemo = () => {\n  return (\n    <SlidingNumber\n      number={12345.67}\n      decimalSeparator=\",\"\n      padStart\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/sliding-number-decimal.tsx"
+    }
+  ]
+}

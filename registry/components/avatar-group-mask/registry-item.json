@@ -3,7 +3,7 @@
   "name": "avatar-group-mask",
   "type": "registry:ui",
   "title": "Avatar Group Mask",
-  "description": "Avatar group mask component",
+  "description": "An animated avatar group that displays overlapping user images with a mask effect and smoothly shifts each avatar forward on hover to highlight it.",
   "registryDependencies": ["https://animate-ui.com/r/tooltip"],
   "files": [
     {

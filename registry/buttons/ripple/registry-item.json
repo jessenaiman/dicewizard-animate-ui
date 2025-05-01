@@ -3,7 +3,7 @@
   "name": "ripple-button",
   "type": "registry:ui",
   "title": "Ripple Button",
-  "description": "A ripple button component",
+  "description": "A clickable button featuring a ripple animation effect on click.",
   "dependencies": ["motion", "class-variance-authority"],
   "meta": {
     "styles": {

@@ -149,7 +149,7 @@ const renderNumber = (
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           {'min' in bind && 'max' in bind ? (
             <div key={key} className="flex flex-row gap-2.5">
               <div className="w-[80px] flex items-center shrink-0 min-w-0">
@@ -260,7 +260,7 @@ const renderString = (
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           {bind?.options ? (
             <div key={key} className="flex flex-row gap-2.5">
               <div className="w-[80px] truncate flex items-center shrink-0 min-w-0">
@@ -336,7 +336,7 @@ const renderBoolean = (
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <div key={key} className="flex flex-row gap-2.5 justify-between">
             <div className="w-[80px] flex items-center shrink-0 min-w-0">
               <Label

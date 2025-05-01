@@ -3,7 +3,7 @@
   "name": "highlight-text",
   "type": "registry:ui",
   "title": "Highlight Text",
-  "description": "Highlight text component",
+  "description": "A text component that smoothly reveals an animated highlight effect.",
   "dependencies": ["motion"],
   "files": [
     {

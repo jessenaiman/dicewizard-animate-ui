@@ -9,7 +9,7 @@ import {
   TabsContent,
   TabsContents,
 } from '@/registry/radix/tabs';
-import { InstallTabs } from '@/registry/components/install-tabs';
+import { CodeTabs } from '@/registry/components/code-tabs';
 import { ComponentManualInstallation } from './component-manual-installation';
 import { useStyle } from '@/providers/style-provider';
 
@@ -25,7 +25,8 @@ export function ComponentInstallation({
 }: ComponentInstallationProps) {
   const { style } = useStyle();
 
-  const component = index[style][name];
+  const styleName = `${style}-${name}`;
+  const component = index[styleName];
 
   const commands = {
     npm: `npx shadcn@latest add "${component.command}"`,
@@ -63,7 +64,7 @@ export function ComponentInstallation({
 
         <TabsContents>
           <TabsContent value="cli">
-            <InstallTabs commands={commands} />
+            <CodeTabs codes={commands} />
           </TabsContent>
           <TabsContent value="manual">
             <ComponentManualInstallation

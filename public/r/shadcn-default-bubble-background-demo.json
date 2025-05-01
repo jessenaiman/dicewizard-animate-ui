@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-default-bubble-background-demo",
+  "type": "registry:ui",
+  "title": "Bubble Background Demo",
+  "description": "Demo showing an animated bubble background with shadcn-default style.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/shadcn-default-bubble-background"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/backgrounds/bubble/shadcn-default/index.tsx",
+      "content": "import { BubbleBackground } from '@/components/animate-ui/backgrounds/bubble';\n\nexport const BubbleBackgroundDemo = () => {\n  return (\n    <BubbleBackground\n      interactive\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/backgrounds/bubble.tsx"
+    }
+  ]
+}

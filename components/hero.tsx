@@ -16,7 +16,7 @@ import {
   AccordionContent,
 } from '@/registry/radix/accordion';
 import { RadixProgressDemo } from '@/registry/demo/radix/progress';
-import { InstallTabs } from '@/registry/components/install-tabs';
+import { CodeTabs } from '@/registry/components/code-tabs';
 import { Checkbox } from '@/registry/radix/checkbox';
 import { GitHubStarsButton } from '@/registry/buttons/github-stars';
 import ReactIcon from './icons/react-icon';
@@ -138,10 +138,10 @@ export const Hero = () => {
         </div>
 
         <div className="absolute top-28 right-4">
-          <InstallTabs
+          <CodeTabs
             defaultValue="pnpm"
             className="max-w-[520px]"
-            commands={COMMANDS}
+            codes={COMMANDS}
           />
         </div>
 

@@ -3,7 +3,7 @@
   "name": "radix-collapsible",
   "type": "registry:ui",
   "title": "Collapsible",
-  "description": "Collapsible component",
+  "description": "An interactive component which expands/collapses a panel.",
   "dependencies": ["motion", "@radix-ui/react-collapsible"],
   "files": [
     {

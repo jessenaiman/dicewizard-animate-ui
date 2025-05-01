@@ -1,18 +1,14 @@
-import { InstallTabs } from '@/__registry__/components/install-tabs/shadcn-new-york';
+import { CodeTabs } from '@/__registry__/components/code-tabs/shadcn-new-york';
 
 const COMMANDS = {
-  npm: `npx shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
-  pnpm: `pnpm dlx shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
-  yarn: `npx shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
-  bun: `bun x --bun shadcn@latest add "https://animate-ui.com/r/install-tabs"`,
+  npm: `npx shadcn@latest add "https://animate-ui.com/r/code-tabs"`,
+  pnpm: `pnpm dlx shadcn@latest add "https://animate-ui.com/r/code-tabs"`,
+  yarn: `npx shadcn@latest add "https://animate-ui.com/r/code-tabs"`,
+  bun: `bun x --bun shadcn@latest add "https://animate-ui.com/r/code-tabs"`,
 };
 
 export const InstallTabsDemo = () => {
   return (
-    <InstallTabs
-      defaultValue="pnpm"
-      className="max-w-[650px]"
-      commands={COMMANDS}
-    />
+    <CodeTabs defaultValue="pnpm" className="max-w-[650px]" codes={COMMANDS} />
   );
 };

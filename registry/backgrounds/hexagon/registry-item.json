@@ -3,7 +3,7 @@
   "name": "hexagon-background",
   "type": "registry:ui",
   "title": "Hexagon Background",
-  "description": "Hexagon background component",
+  "description": "A background component featuring an interactive hexagon grid.",
   "files": [
     {
       "path": "registry/backgrounds/hexagon/index.tsx",

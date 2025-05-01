@@ -3,7 +3,7 @@
   "name": "counter",
   "type": "registry:ui",
   "title": "Counter",
-  "description": "Counter component",
+  "description": "A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.",
   "dependencies": ["motion"],
   "registryDependencies": ["button", "https://animate-ui.com/r/sliding-number"],
   "files": [

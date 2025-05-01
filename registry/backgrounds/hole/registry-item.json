@@ -3,7 +3,7 @@
   "name": "hole-background",
   "type": "registry:ui",
   "title": "Hole Background",
-  "description": "Hole background component",
+  "description": "A background with a hole animation effect.",
   "dependencies": ["motion"],
   "files": [
     {

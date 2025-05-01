@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-default-counting-number-demo",
+  "type": "registry:ui",
+  "title": "Counting Number Demo",
+  "description": "Demo showing a counting number with shadcn-default style.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/shadcn-default-counting-number"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/text/counting-number/shadcn-default/index.tsx",
+      "content": "import { CountingNumber } from '@/components/animate-ui/text/counting-number';\n\nexport const CountingNumberDemo = () => {\n  return (\n    <CountingNumber number={new Date().getFullYear()} className=\"text-4xl\" />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/counting-number.tsx"
+    }
+  ]
+}

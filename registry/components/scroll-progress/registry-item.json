@@ -3,7 +3,7 @@
   "name": "scroll-progress",
   "type": "registry:ui",
   "title": "Scroll Progress",
-  "description": "Scroll progress component",
+  "description": "A scroll progress component that displays the progress of the scroll.",
   "dependencies": ["motion"],
   "files": [
     {

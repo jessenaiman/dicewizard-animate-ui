@@ -3,7 +3,7 @@
   "name": "avatar-group",
   "type": "registry:ui",
   "title": "Avatar Group",
-  "description": "Avatar group component",
+  "description": "An animated avatar group that displays overlapping user images and smoothly shifts each avatar forward on hover to highlight it.",
   "dependencies": ["motion"],
   "registryDependencies": ["https://animate-ui.com/r/tooltip"],
   "files": [

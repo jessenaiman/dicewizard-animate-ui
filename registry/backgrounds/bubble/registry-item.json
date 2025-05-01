@@ -3,7 +3,7 @@
   "name": "bubble-background",
   "type": "registry:ui",
   "title": "Bubble Background",
-  "description": "Bubble background component",
+  "description": "An interactive background featuring smoothly animated gradient bubbles, creating a playful, dynamic, and visually engaging backdrop.",
   "dependencies": ["motion"],
   "files": [
     {

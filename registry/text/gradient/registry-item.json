@@ -3,7 +3,7 @@
   "name": "gradient-text",
   "type": "registry:ui",
   "title": "Gradient Text",
-  "description": "Gradient text component",
+  "description": "A text component featuring a smoothly animated gradient effect.",
   "dependencies": ["motion"],
   "files": [
     {

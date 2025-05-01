@@ -3,7 +3,7 @@
   "name": "typing-text",
   "type": "registry:ui",
   "title": "Typing Text",
-  "description": "Typing text component",
+  "description": "A text component that dynamically simulates a typing animation, progressively revealing characters as if typed in real-time.",
   "dependencies": ["motion"],
   "files": [
     {

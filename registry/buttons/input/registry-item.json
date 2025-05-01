@@ -3,7 +3,7 @@
   "name": "input-button",
   "type": "registry:ui",
   "title": "Input Button",
-  "description": "A input button component",
+  "description": "A button that shows an input when clicked.",
   "dependencies": ["motion"],
   "files": [
     {

@@ -39,7 +39,9 @@ export const ComponentWrapper = ({
   const isMobile = useIsMobile();
   const { style, setStyle } = useStyle();
   const componentName = useMemo(() => name.replace('-demo', ''), [name]);
-  const hasStyles = index[style][componentName]?.styles;
+
+  const styleName = `${style}-${componentName}`;
+  const hasStyles = index[styleName]?.styles;
 
   return (
     <motion.div
@@ -72,7 +74,7 @@ export const ComponentWrapper = ({
 
             <div className="absolute top-3 right-3 z-[9] bg-background flex items-center justify-end gap-2 p-1 rounded-[11px]">
               <OpenInV0Button
-                url={`https://animate-ui.com/r/${style}/${name}.json`}
+                url={`https://animate-ui.com/r/${style}-${name}.json`}
               />
 
               <Button

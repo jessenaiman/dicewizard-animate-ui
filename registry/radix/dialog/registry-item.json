@@ -3,7 +3,7 @@
   "name": "radix-dialog",
   "type": "registry:ui",
   "title": "Dialog",
-  "description": "Dialog component",
+  "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
   "dependencies": ["motion", "lucide-react", "@radix-ui/react-dialog"],
   "files": [
     {

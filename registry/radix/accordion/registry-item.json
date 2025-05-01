@@ -3,7 +3,7 @@
   "name": "radix-accordion",
   "type": "registry:ui",
   "title": "Radix Accordion",
-  "description": "Radix UI accordion component",
+  "description": "A vertically stacked set of interactive headings that each reveal an associated section of content.",
   "dependencies": ["motion", "@radix-ui/react-accordion"],
   "files": [
     {

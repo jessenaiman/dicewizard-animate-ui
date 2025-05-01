@@ -3,7 +3,7 @@
   "name": "counting-number",
   "type": "registry:ui",
   "title": "Counting Number",
-  "description": "Counting number component",
+  "description": "A numeric display component that smoothly animates number changes with a counting animation.",
   "dependencies": ["motion"],
   "files": [
     {

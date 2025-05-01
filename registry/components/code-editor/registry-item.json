@@ -3,7 +3,7 @@
   "name": "code-editor",
   "type": "registry:ui",
   "title": "Code Editor",
-  "description": "Code editor component",
+  "description": "A code editor component featuring syntax highlighting and animation.",
   "dependencies": ["motion", "shiki"],
   "registryDependencies": ["https://animate-ui.com/r/copy-button"],
   "files": [

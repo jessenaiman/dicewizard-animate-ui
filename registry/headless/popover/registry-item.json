@@ -3,7 +3,7 @@
   "name": "headless-popover",
   "type": "registry:ui",
   "title": "Headless Popover",
-  "description": "Headless UI popover component",
+  "description": "Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.",
   "dependencies": ["@headlessui/react", "motion"],
   "files": [
     {

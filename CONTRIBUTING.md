@@ -302,6 +302,74 @@ You must then specify the demo props information in your demo's `registry-item.j
 
 **You need to run `pnpm registry:build` to see the updated tweakpane in the demo.**
 
+#### How to use `demoProps`
+
+##### Number
+
+Simple number input:
+
+```json
+"myNumber": { "value": 10 }
+```
+
+Slider:
+
+```json
+"myNumber": { "value": 10, "min": 0, "max": 100, "step": 1 }
+```
+
+Select:
+
+```json
+"myNumber": {
+  "value": 10,
+  "options": {
+    "Big": 30,
+    "Medium": 20,
+    "Small": 10
+  }
+}
+```
+
+##### String
+
+Simple text input:
+
+```json
+"myString": { "value": "Hello World" }
+```
+
+Select:
+
+```json
+"myNumber": {
+  "value": "small",
+  "options": {
+    "Big": "big",
+    "Medium": "medium",
+    "Small": "small"
+  }
+}
+```
+
+##### Boolean
+
+```json
+"myBoolean": { "value": true }
+```
+
+##### Disable variants
+
+```json
+"myString": {
+  "value": "Hello World",
+  "disableVariants": [
+    "default",
+    "shadcn-default"
+  ]
+}
+```
+
 ### Update the Documentation Sidebar
 
 Add your component to the documentation sidebar by updating the file `content/docs/meta.json`.

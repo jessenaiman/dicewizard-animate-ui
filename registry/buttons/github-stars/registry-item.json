@@ -3,7 +3,7 @@
   "name": "github-stars-button",
   "type": "registry:ui",
   "title": "GitHub Stars Button",
-  "description": "A GitHub stars button component",
+  "description": "A clickable button that links to a GitHub repository and displays the number of stars.",
   "dependencies": ["motion", "lucide-react"],
   "registryDependencies": ["https://animate-ui.com/r/sliding-number"],
   "files": [

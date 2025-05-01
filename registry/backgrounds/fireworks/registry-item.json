@@ -3,7 +3,7 @@
   "name": "fireworks-background",
   "type": "registry:ui",
   "title": "Fireworks Background",
-  "description": "Fireworks background component",
+  "description": "A background component that displays a fireworks animation.",
   "files": [
     {
       "path": "registry/backgrounds/fireworks/index.tsx",

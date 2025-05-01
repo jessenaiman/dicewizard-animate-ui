@@ -3,7 +3,7 @@
   "name": "writing-text",
   "type": "registry:ui",
   "title": "Writing Text",
-  "description": "Writing text component",
+  "description": "A text component that smoothly reveals content word by word.",
   "dependencies": ["motion"],
   "files": [
     {

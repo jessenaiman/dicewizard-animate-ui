@@ -1,0 +1,47 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "default-base-switch",
+  "type": "registry:ui",
+  "title": "Base Switch",
+  "description": "A control that indicates whether a setting is on or off with default style.",
+  "dependencies": [
+    "motion",
+    "@base-ui-components/react"
+  ],
+  "files": [
+    {
+      "path": "__registry__/base/switch/default/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Switch as SwitchPrimitives } from '@base-ui-components/react/switch';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype SwitchProps = Omit<\n  React.ComponentProps<typeof SwitchPrimitives.Root>,\n  'render'\n> & {\n  motionProps?: HTMLMotionProps<'button'>;\n  leftIcon?: React.ReactNode;\n  rightIcon?: React.ReactNode;\n  thumbIcon?: React.ReactNode;\n};\n\nfunction Switch({\n  className,\n  leftIcon,\n  rightIcon,\n  thumbIcon,\n  onCheckedChange,\n  motionProps,\n  ...props\n}: SwitchProps) {\n  const [isChecked, setIsChecked] = React.useState(\n    props?.checked ?? props?.defaultChecked ?? false,\n  );\n  const [isTapped, setIsTapped] = React.useState(false);\n\n  React.useEffect(() => {\n    if (props?.checked !== undefined) setIsChecked(props.checked);\n  }, [props?.checked]);\n\n  const handleCheckedChange = React.useCallback(\n    (checked: boolean, event: Event) => {\n      setIsChecked(checked);\n      onCheckedChange?.(checked, event);\n    },\n    [onCheckedChange],\n  );\n\n  return (\n    <SwitchPrimitives.Root\n      data-slot=\"switch\"\n      {...props}\n      onCheckedChange={handleCheckedChange}\n      className={cn('peer relative inline-flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start', className)}\n      render={\n        <motion.button\n          whileTap=\"tap\"\n          initial={false}\n          onTapStart={() => setIsTapped(true)}\n          onTapCancel={() => setIsTapped(false)}\n          onTap={() => setIsTapped(false)}\n          {...motionProps}\n        />\n      }\n    >\n      {leftIcon && (\n        <motion.div\n          data-slot=\"switch-left-icon\"\n          animate={\n            isChecked ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }\n          }\n          transition={{ type: 'spring', bounce: 0 }}\n          className={cn(\n            'absolute top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400',\n            '[&_svg]:size-3 left-1',\n          )}\n        >\n          {typeof leftIcon !== 'string' ? leftIcon : null}\n        </motion.div>\n      )}\n\n      {rightIcon && (\n        <motion.div\n          data-slot=\"switch-right-icon\"\n          animate={\n            isChecked ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }\n          }\n          transition={{ type: 'spring', bounce: 0 }}\n          className={cn(\n            'absolute top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500',\n            '[&_svg]:size-3 right-1',\n          )}\n        >\n          {typeof rightIcon !== 'string' ? rightIcon : null}\n        </motion.div>\n      )}\n\n      <SwitchPrimitives.Thumb\n        data-slot=\"switch-thumb\"\n        render={\n          <motion.div\n            whileTap=\"tab\"\n            className=\"relative pointer-events-none z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500\"\n            layout\n            transition={{ type: 'spring', stiffness: 300, damping: 25 }}\n            style={{ width: '18px', height: '18px' }}\n            animate={\n              isTapped\n                ? {\n                    width: '21px',\n                    transition: { duration: 0.1 },\n                  }\n                : { width: '18px', transition: { duration: 0.1 } }\n            }\n          />\n        }\n      >\n        {thumbIcon && typeof thumbIcon !== 'string' ? thumbIcon : null}\n      </SwitchPrimitives.Thumb>\n    </SwitchPrimitives.Root>\n  );\n}\n\nSwitch.displayName = SwitchPrimitives.Root.displayName;\n\nexport { Switch, type SwitchProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/base/switch.tsx"
+    }
+  ],
+  "meta": {
+    "styles": {
+      "default": {
+        "switch": "peer relative inline-flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start",
+        "thumb": "relative pointer-events-none z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500",
+        "leftIcon": "[&_svg]:size-3 left-1",
+        "rightIcon": "[&_svg]:size-3 right-1",
+        "size": "18px",
+        "tappedSize": "21px"
+      },
+      "shadcn-default": {
+        "switch": "peer relative inline-flex p-px h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-transparent shadow-xs transition-colors outline-none focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start",
+        "thumb": "relative pointer-events-none z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground shadow-lg ring-0 dark:text-neutral-400 text-neutral-500",
+        "leftIcon": "[&_svg]:size-3 left-[5px]",
+        "rightIcon": "[&_svg]:size-3 right-[5px]",
+        "size": "20px",
+        "tappedSize": "23px"
+      },
+      "shadcn-new-york": {
+        "switch": "peer relative inline-flex p-px h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-transparent shadow-xs transition-colors outline-none focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[unchecked]:bg-input data-[checked]:justify-end data-[unchecked]:justify-start",
+        "thumb": "relative pointer-events-none z-[1] [&_svg]:size-2.5 flex items-center justify-center rounded-full bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground shadow-lg ring-0 dark:text-neutral-400 text-neutral-500",
+        "leftIcon": "[&_svg]:size-2.5 left-1",
+        "rightIcon": "[&_svg]:size-2.5 right-1",
+        "size": "16px",
+        "tappedSize": "19px"
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
   "name": "radix-radio-group",
   "type": "registry:ui",
   "title": "Radio Group",
-  "description": "Radio Group component",
+  "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
   "dependencies": ["motion", "lucide-react", "@radix-ui/react-radio-group"],
   "files": [
     {

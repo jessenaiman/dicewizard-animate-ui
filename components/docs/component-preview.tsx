@@ -61,19 +61,23 @@ export function ComponentPreview({
   > | null>(null);
   const { style } = useStyle();
 
+  const styleName = `${style}-${name}`;
+
   const code = useMemo(() => {
-    const code = index[style][name]?.files?.[0]?.content;
+    const code = index[styleName]?.files?.[0]?.content;
 
     if (!code) {
-      console.error(`Component with name "${name}" not found in registry.`);
+      console.error(
+        `Component with name "${styleName}" not found in registry.`,
+      );
       return null;
     }
 
     return code;
-  }, [name, style]);
+  }, [styleName]);
 
   const preview = useMemo(() => {
-    const Component = index[style][name]?.component;
+    const Component = index[styleName]?.component;
 
     if (Object.keys(Component?.demoProps ?? {}).length !== 0) {
       if (componentProps === null)
@@ -82,12 +86,14 @@ export function ComponentPreview({
     }
 
     if (!Component) {
-      console.error(`Component with name "${name}" not found in registry.`);
+      console.error(
+        `Component with name "${styleName}" not found in registry.`,
+      );
       return (
         <p className="text-sm text-muted-foreground">
           Component{' '}
           <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            {name}
+            {styleName}
           </code>{' '}
           not found in registry.
         </p>
@@ -95,7 +101,7 @@ export function ComponentPreview({
     }
 
     return <Component {...flattenFirstLevel(componentProps ?? {})} />;
-  }, [name, componentProps, binds, style]);
+  }, [styleName, componentProps, binds]);
 
   useEffect(() => {
     if (!binds) return;

@@ -3,7 +3,7 @@
   "name": "tabs",
   "type": "registry:ui",
   "title": "Tabs",
-  "description": "Tabs component",
+  "description": "A set of layered sections with the same height of content—known as tab panels—that are displayed one at a time.",
   "dependencies": ["motion"],
   "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
   "files": [

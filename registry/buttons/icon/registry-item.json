@@ -3,7 +3,7 @@
   "name": "icon-button",
   "type": "registry:ui",
   "title": "Icon Button",
-  "description": "An icon button component",
+  "description": "An icon button that displays particles when clicked.",
   "dependencies": ["motion"],
   "files": [
     {

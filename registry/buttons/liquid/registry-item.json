@@ -3,7 +3,7 @@
   "name": "liquid-button",
   "type": "registry:ui",
   "title": "Liquid Button",
-  "description": "A liquid button component",
+  "description": "A clickable button featuring a dynamic, fluid-like animation effect upon hover, creating an engaging, liquid-inspired interaction.",
   "dependencies": ["motion", "class-variance-authority"],
   "meta": {
     "styles": {

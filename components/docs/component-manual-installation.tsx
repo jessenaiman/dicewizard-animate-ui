@@ -1,7 +1,7 @@
 'use client';
 
 import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
-import { InstallTabs } from '@/registry/components/install-tabs';
+import { CodeTabs } from '@/registry/components/code-tabs';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { CollapsibleContent } from 'fumadocs-ui/components/ui/collapsible';
 import { Collapsible } from 'fumadocs-ui/components/ui/collapsible';
@@ -57,14 +57,14 @@ export const ComponentManualInstallation = ({
       {dependencies && depsCommands && (
         <Step>
           <h4 className="pt-1 pb-4">Install the following dependencies:</h4>
-          <InstallTabs commands={depsCommands} />
+          <CodeTabs codes={depsCommands} />
         </Step>
       )}
 
       {devDependencies && devDepsCommands && (
         <Step>
           <h4 className="pt-1 pb-4">Install the following dev dependencies:</h4>
-          <InstallTabs commands={devDepsCommands} />
+          <CodeTabs codes={devDepsCommands} />
         </Step>
       )}
 
@@ -73,7 +73,7 @@ export const ComponentManualInstallation = ({
           <h4 className="pt-1 pb-4">
             Install the following registry dependencies:
           </h4>
-          <InstallTabs commands={registryDepsCommands} />
+          <CodeTabs codes={registryDepsCommands} />
         </Step>
       )}
 

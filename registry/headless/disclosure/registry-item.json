@@ -3,7 +3,7 @@
   "name": "headless-disclosure",
   "type": "registry:ui",
   "title": "Headless Disclosure",
-  "description": "Headless UI disclosure component",
+  "description": "A simple, accessible foundation for building custom UIs that show and hide content, like togglable accordion panels.",
   "dependencies": ["@headlessui/react", "motion"],
   "files": [
     {

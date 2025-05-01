@@ -3,7 +3,7 @@
   "name": "gradient-background",
   "type": "registry:ui",
   "title": "Gradient Background",
-  "description": "Gradient background component",
+  "description": "A background component featuring a subtle yet engaging animated gradient effect, smoothly transitioning colors to enhance visual depth.",
   "dependencies": ["motion"],
   "files": [
     {

@@ -3,7 +3,7 @@
   "name": "sliding-number",
   "type": "registry:ui",
   "title": "Sliding Number",
-  "description": "Sliding number component",
+  "description": "A numeric display component that smoothly animates number changes with a sliding transition effect.",
   "dependencies": ["motion", "react-use-measure"],
   "files": [
     {

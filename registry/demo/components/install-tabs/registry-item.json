@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Install Tabs Demo",
   "description": "Demo showing an install tabs.",
-  "registryDependencies": ["https://animate-ui.com/r/install-tabs"],
+  "registryDependencies": ["https://animate-ui.com/r/code-tabs"],
   "files": [
     {
       "path": "registry/demo/components/install-tabs/index.tsx",

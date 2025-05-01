@@ -3,7 +3,7 @@
   "name": "flip-button",
   "type": "registry:ui",
   "title": "Flip Button",
-  "description": "A flip button component",
+  "description": "A clickable button featuring a smooth flipping animation triggered on hover.",
   "dependencies": ["motion"],
   "files": [
     {

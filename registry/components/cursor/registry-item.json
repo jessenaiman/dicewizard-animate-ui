@@ -3,7 +3,7 @@
   "name": "cursor",
   "type": "registry:ui",
   "title": "Cursor",
-  "description": "Cursor component",
+  "description": "An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.",
   "dependencies": ["motion"],
   "files": [
     {

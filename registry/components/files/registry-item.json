@@ -3,7 +3,7 @@
   "name": "files",
   "type": "registry:ui",
   "title": "Files",
-  "description": "Files component",
+  "description": "A component that allows you to display a list of files and folders.",
   "dependencies": ["motion", "lucide-react"],
   "registryDependencies": [
     "https://animate-ui.com/r/motion-highlight",

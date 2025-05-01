@@ -3,7 +3,7 @@
   "name": "motion-effect",
   "type": "registry:ui",
   "title": "Motion Effect",
-  "description": "Motion effect component that displays the motion effect.",
+  "description": "Motion effect component that displays the motion effect (fade in, slide in, etc.).",
   "dependencies": ["motion"],
   "files": [
     {

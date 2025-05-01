@@ -3,7 +3,7 @@
   "name": "rolling-text",
   "type": "registry:ui",
   "title": "Rolling Text",
-  "description": "Rolling text component",
+  "description": "A text component that reveals content through an engaging rolling animation.",
   "dependencies": ["motion"],
   "files": [
     {

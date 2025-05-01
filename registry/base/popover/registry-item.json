@@ -3,7 +3,7 @@
   "name": "base-popover",
   "type": "registry:ui",
   "title": "Base Popover",
-  "description": "Base popover component",
+  "description": "An accessible popup anchored to a button.",
   "dependencies": ["motion", "@base-ui-components/react"],
   "meta": {
     "styles": {

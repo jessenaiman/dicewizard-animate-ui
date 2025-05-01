@@ -3,7 +3,7 @@
   "name": "radix-checkbox",
   "type": "registry:ui",
   "title": "Checkbox",
-  "description": "Checkbox component",
+  "description": "A control that allows the user to toggle between checked and not checked.",
   "dependencies": ["motion", "@radix-ui/react-checkbox"],
   "files": [
     {

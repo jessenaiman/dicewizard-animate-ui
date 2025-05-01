@@ -3,7 +3,7 @@
   "name": "radix-progress",
   "type": "registry:ui",
   "title": "Progress",
-  "description": "Progress component",
+  "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   "dependencies": ["motion", "@radix-ui/react-progress"],
   "files": [
     {

@@ -3,7 +3,7 @@
   "name": "radix-sidebar",
   "type": "registry:ui",
   "title": "Radix Sidebar",
-  "description": "Radix Sidebar component",
+  "description": "A composable, themeable and customizable sidebar component. Created by Shadcn and animated by Animate UI.",
   "dependencies": [
     "@radix-ui/react-slot",
     "class-variance-authority",

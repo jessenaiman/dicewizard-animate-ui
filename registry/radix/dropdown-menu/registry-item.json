@@ -3,7 +3,7 @@
   "name": "radix-dropdown-menu",
   "type": "registry:ui",
   "title": "Dropdown Menu",
-  "description": "Dropdown Menu component",
+  "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
   "dependencies": ["motion", "lucide-react", "@radix-ui/react-dropdown-menu"],
   "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
   "files": [

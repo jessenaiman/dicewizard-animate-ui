@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-new-york-counting-from-number-demo",
+  "type": "registry:ui",
+  "title": "Counting From Number Demo",
+  "description": "Demo showing a counting number starting from a specific number with shadcn-new-york style.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/shadcn-new-york-counting-number"
+  ],
+  "files": [
+    {
+      "path": "__registry__/demo/text/counting-from-number/shadcn-new-york/index.tsx",
+      "content": "import { CountingNumber } from '@/components/animate-ui/text/counting-number';\n\nexport const CountingFromNumberDemo = () => {\n  return (\n    <CountingNumber\n      number={0}\n      fromNumber={new Date().getFullYear()}\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/counting-from-number.tsx"
+    }
+  ]
+}

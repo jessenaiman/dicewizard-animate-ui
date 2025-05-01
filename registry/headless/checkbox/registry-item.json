@@ -3,7 +3,7 @@
   "name": "headless-checkbox",
   "type": "registry:ui",
   "title": "Headless Checkbox",
-  "description": "Headless UI checkbox component",
+  "description": "Checkboxes provide the same functionality as native HTML checkboxes, without any of the styling, giving you a clean slate to design them however you'd like.",
   "dependencies": ["@headlessui/react", "motion"],
   "files": [
     {

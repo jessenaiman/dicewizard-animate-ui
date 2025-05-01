@@ -3,7 +3,7 @@
   "name": "base-tooltip",
   "type": "registry:ui",
   "title": "Base Tooltip",
-  "description": "Base tooltip component",
+  "description": "A popup that appears when an element is hovered or focused, showing a hint for sighted users.",
   "dependencies": ["motion", "@base-ui-components/react"],
   "meta": {
     "styles": {
