@@ -96,20 +96,20 @@ async function getRegistryItemsFromFolder(dir: string): Promise<any[]> {
           relDir,
           style,
         );
-        const newPath = path.posix.join(relOutDir, 'index.tsx');
 
         // Clone and adjust item
         const clone = {
           ...item,
           name: `${style}-${item.name}`,
           description: formatText(item.description, style),
-          files: [
-            {
-              path: newPath,
-              type: item.files[0].type,
-              target: item.files[0].target,
-            },
-          ],
+          files: item.files.map((f: any) => {
+            const name = path.basename(f.path as string);
+            return {
+              path: path.posix.join(relOutDir, name),
+              type: f.type,
+              target: f.target,
+            };
+          }),
         };
 
         if (Array.isArray(item.registryDependencies)) {
@@ -195,7 +195,9 @@ export const index: Record<string, any> = {`;
   for (const item of unique.values()) {
     if (!item.files) continue;
 
-    const componentPath = item.files[0]?.path ? `@/${item.files[0].path}` : '';
+    const entryFile =
+      item.files.find((f) => f.path.endsWith('index.tsx')) ?? item.files[0];
+    const componentPath = entryFile?.path ? `@/${entryFile.path}` : '';
 
     // read file contents for each entry
     const filesWithContent = await Promise.all(

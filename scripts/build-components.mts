@@ -59,38 +59,47 @@ async function processRegistryFolder(dir: string) {
     | undefined;
 
   // Component template
-  const compTplRel = item.files[0].path as string;
-  const compTplAbs = path.join(process.cwd(), compTplRel);
   const variants = Object.entries(Styles).map(([_, style]) =>
     styles?.[style] ? [style, styles[style]] : [style, styles?.default ?? {}],
   ) as [string, Record<string, string>][];
 
-  for (const [variant, styleObj] of variants) {
-    // Generate the component
-    const relDir = path.relative(REGISTRY_DIR, dir);
-    const relCompOut = path.posix.join(AUTO_REGISTRY_DIR_NAME, relDir, variant);
-    await fs.mkdir(path.join(process.cwd(), relCompOut), { recursive: true });
-    let compContent = await fs.readFile(compTplAbs, 'utf-8');
+  for (const file of item.files) {
+    const compTplRel = file.path as string;
+    const compTplAbs = path.join(process.cwd(), compTplRel);
 
-    // 1) Replace the placeholders {{styles.xxx}}
-    compContent = applyConditionals(compContent, variant);
+    for (const [variant, styleObj] of variants) {
+      // Generate the component
+      const relDir = path.relative(REGISTRY_DIR, dir);
+      const relCompOut = path.posix.join(
+        AUTO_REGISTRY_DIR_NAME,
+        relDir,
+        variant,
+      );
+      await fs.mkdir(path.join(process.cwd(), relCompOut), { recursive: true });
+      let compContent = await fs.readFile(compTplAbs, 'utf-8');
 
-    for (const [key, classes] of Object.entries(styleObj)) {
-      const re = new RegExp(`{{styles\\.${key}}}`, 'g');
-      compContent = compContent.replace(re, classes);
+      // 1) Replace the placeholders {{styles.xxx}}
+      compContent = applyConditionals(compContent, variant);
+
+      for (const [key, classes] of Object.entries(styleObj)) {
+        const re = new RegExp(`{{styles\\.${key}}}`, 'g');
+        compContent = compContent.replace(re, classes);
+      }
+
+      // 2) Update the imports and add "/[variant]" :
+      //    '@/registry/foo/bar'  →  '@/AUTO_REGISTRY_DIR_NAME/foo/bar/[variant]'
+      compContent = compContent.replace(
+        /@\/registry\/([^'";\n\r ]+)/g,
+        `@/${AUTO_REGISTRY_DIR_NAME}/$1/${variant}`,
+      );
+
+      // 3) Write the file
+      const outputName = path.basename(compTplRel);
+      await fs.writeFile(
+        path.join(process.cwd(), relCompOut, outputName),
+        compContent,
+      );
     }
-
-    // 2) Update the imports and add "/[variant]" :
-    //    '@/registry/foo/bar'  →  '@/AUTO_REGISTRY_DIR_NAME/foo/bar/[variant]'
-    compContent = compContent.replace(
-      /@\/registry\/([^'";\n\r ]+)/g,
-      `@/${AUTO_REGISTRY_DIR_NAME}/$1/${variant}`,
-    );
-
-    await fs.writeFile(
-      path.join(process.cwd(), relCompOut, 'index.tsx'),
-      compContent,
-    );
   }
 }
 
