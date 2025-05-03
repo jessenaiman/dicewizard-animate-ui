@@ -69,9 +69,6 @@ function CodeTabs({
           newHighlightedCodes[command] = highlighted;
         }
 
-        console.log('newHighlightedCodes', newHighlightedCodes);
-        console.log('codes', codes);
-
         setHighlightedCodes(newHighlightedCodes);
       } catch (error) {
         console.error('Error highlighting codes', error);

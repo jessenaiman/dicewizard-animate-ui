@@ -18,6 +18,8 @@ import {
   type CodeBlockProps,
   Pre,
 } from '@/components/docs/codeblock';
+import { DocsAuthor } from '@/components/docs/docs-author';
+import { DocsBreadcrumb } from '@/components/docs/docs-breadcrumb';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -35,8 +37,19 @@ export default async function Page(props: {
       footer={{ component: <Footer /> }}
       tableOfContent={{ style: 'clerk' }}
     >
+      <DocsBreadcrumb slug={params.slug} />
       <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <DocsDescription className="-my-1.5">
+        {page.data.description}
+      </DocsDescription>
+      <div className={page.data.author ? 'mb-6' : ''}>
+        {page.data.author && (
+          <DocsAuthor
+            name={page.data.author.name}
+            url={page.data.author?.url}
+          />
+        )}
+      </div>
       <DocsBody>
         <MDX
           components={{
