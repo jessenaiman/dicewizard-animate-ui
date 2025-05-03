@@ -3799,6 +3799,40 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/writing-text-demo',
   },
+  'management-bar-demo': {
+    name: 'management-bar-demo',
+    description: 'Demo management Bar.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/management-bar'],
+    files: [
+      {
+        path: 'registry/demo/ui-elements/management-bar/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/ui-elements/management-bar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { ManagementBar } from '@/components/animate-ui/management-bar';\n\nexport const ManagementBarDemo = () => {\n  return <ManagementBar />;\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/ui-elements/management-bar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'management-bar-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/management-bar-demo',
+  },
   'motion-effect': {
     name: 'motion-effect',
     description:
@@ -4843,5 +4877,39 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/writing-text',
+  },
+  'management-bar': {
+    name: 'management-bar',
+    description: 'Management Bar Component',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/sliding-number'],
+    files: [
+      {
+        path: 'registry/ui-elements/management-bar/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/management-bar/management-bar.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  ChevronLeft,\n  ChevronRight,\n  Ban,\n  X,\n  Command,\n  IdCard,\n} from \'lucide-react\';\nimport { SlidingNumber } from \'@/components/animate-ui/sliding-number\';\nimport { motion, Variants, Transition } from \'motion/react\';\n\nconst buttonMotionConfig = {\n  initial: { maxWidth: \'40px\' },\n  animate: \'rest\',\n  whileHover: \'hover\',\n  variants: {\n    rest: {\n      maxWidth: \'40px\',\n      transition: { type: \'spring\', stiffness: 200, damping: 25, delay: 0.1 },\n    },\n    hover: { maxWidth: \'140px\' },\n  },\n  transition: { type: \'spring\', stiffness: 200, damping: 25 },\n};\n\nconst labelVariants: Variants = {\n  rest: { opacity: 0, x: 4 },\n  hover: { opacity: 1, x: 0, visibility: \'visible\' },\n};\n\nconst labelTransition: Transition = {\n  type: \'spring\',\n  stiffness: 200,\n  damping: 25,\n};\n\nfunction ManagementBar() {\n  const [currentPage, setCurrentPage] = React.useState(1);\n  const totalPages = 10;\n\n  const handlePrevPage = () => {\n    if (currentPage > 1) setCurrentPage(currentPage - 1);\n  };\n\n  const handleNextPage = () => {\n    if (currentPage < totalPages) setCurrentPage(currentPage + 1);\n  };\n\n  return (\n    <div className="flex w-fit flex-wrap items-center gap-y-2 rounded-2xl border border-border bg-background p-2 shadow-lg">\n      <div className="mx-auto flex shrink-0 items-center">\n        <button\n          disabled={currentPage === 1}\n          className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"\n          onClick={handlePrevPage}\n        >\n          <ChevronLeft size={20} />\n        </button>\n        <div className="mx-2 flex items-center space-x-1 text-sm tabular-nums">\n          <SlidingNumber\n            className="text-foreground"\n            padStart\n            number={currentPage}\n          />\n          <span className="text-muted-foreground">/ {totalPages}</span>\n        </div>\n        <button\n          disabled={currentPage === totalPages}\n          className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"\n          onClick={handleNextPage}\n        >\n          <ChevronRight size={20} />\n        </button>\n      </div>\n\n      <div className="mx-3 h-5 w-px bg-border rounded-full" />\n\n      <motion.div\n        layout\n        layoutRoot\n        className="mx-auto flex flex-wrap space-x-2 sm:flex-nowrap"\n      >\n        <motion.button\n          {...buttonMotionConfig}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-neutral-500/80 dark:bg-neutral-600/80 px-2.5 py-2 text-white"\n          aria-label="Blacklist"\n        >\n          <Ban size={20} className="shrink-0" />\n          <motion.span\n            variants={labelVariants}\n            transition={labelTransition}\n            className="invisible text-sm"\n          >\n            Blacklist\n          </motion.span>\n        </motion.button>\n\n        <motion.button\n          {...buttonMotionConfig}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-red-500/80 dark:bg-red-800/80 px-2.5 py-2 text-white dark:text-red-300"\n          aria-label="Reject"\n        >\n          <X size={20} className="shrink-0" />\n          <motion.span\n            variants={labelVariants}\n            transition={labelTransition}\n            className="invisible text-sm"\n          >\n            Reject\n          </motion.span>\n        </motion.button>\n\n        <motion.button\n          {...buttonMotionConfig}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-green-500/80 dark:bg-green-800/80 px-2.5 py-2 text-white dark:text-green-300"\n          aria-label="Hire"\n        >\n          <IdCard size={20} className="shrink-0" />\n          <motion.span\n            variants={labelVariants}\n            transition={labelTransition}\n            className="invisible text-sm"\n          >\n            Hire\n          </motion.span>\n        </motion.button>\n      </motion.div>\n\n      <div className="mx-3 hidden h-5 w-px bg-border sm:block rounded-full" />\n\n      <button className="flex w-full h-10 text-sm cursor-pointer items-center justify-center rounded-lg bg-teal-500/80 dark:bg-teal-600/80 px-3 py-2 text-white transition-colors duration-300 hover:bg-teal-700 sm:w-auto">\n        <span className="mr-1 text-neutral-100 dark:text-neutral-200">\n          Move to:\n        </span>\n        <span>Interview I</span>\n        <div className="mx-3 h-5 w-px bg-white/40 rounded-full" />\n        <div className="flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 -mr-1">\n          <Command size={14} />E\n        </div>\n      </button>\n    </div>\n  );\n}\n\nexport { ManagementBar };',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/ui-elements/management-bar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'management-bar';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/management-bar',
   },
 };
