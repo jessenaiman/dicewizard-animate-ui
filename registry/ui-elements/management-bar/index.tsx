@@ -12,26 +12,30 @@ import {
 import { SlidingNumber } from '@/registry/text/sliding-number';
 import { motion, Variants, Transition } from 'motion/react';
 
-const buttonMotionConfig = {
-  initial: { maxWidth: '40px' },
-  animate: 'rest',
+const TOTAL_PAGES = 10;
+
+const BUTTON_MOTION_CONFIG = {
+  initial: 'rest',
   whileHover: 'hover',
+  whileTap: 'tap',
   variants: {
-    rest: {
-      maxWidth: '40px',
-      transition: { type: 'spring', stiffness: 200, damping: 25, delay: 0.1 },
+    rest: { maxWidth: '40px' },
+    hover: {
+      maxWidth: '140px',
+      transition: { type: 'spring', stiffness: 200, damping: 35, delay: 0.15 },
     },
-    hover: { maxWidth: '140px' },
+    tap: { scale: 0.95 },
   },
-  transition: { type: 'spring', stiffness: 200, damping: 25 },
+  transition: { type: 'spring', stiffness: 250, damping: 25 },
 };
 
-const labelVariants: Variants = {
+const LABEL_VARIANTS: Variants = {
   rest: { opacity: 0, x: 4 },
   hover: { opacity: 1, x: 0, visibility: 'visible' },
+  tap: { opacity: 1, x: 0, visibility: 'visible' },
 };
 
-const labelTransition: Transition = {
+const LABEL_TRANSITION: Transition = {
   type: 'spring',
   stiffness: 200,
   damping: 25,
@@ -39,15 +43,14 @@ const labelTransition: Transition = {
 
 function ManagementBar() {
   const [currentPage, setCurrentPage] = React.useState(1);
-  const totalPages = 10;
 
-  const handlePrevPage = () => {
+  const handlePrevPage = React.useCallback(() => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
+  }, [currentPage]);
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
+  const handleNextPage = React.useCallback(() => {
+    if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1);
+  }, [currentPage]);
 
   return (
     <div className="flex w-fit flex-wrap items-center gap-y-2 rounded-2xl border border-border bg-background p-2 shadow-lg">
@@ -65,10 +68,10 @@ function ManagementBar() {
             padStart
             number={currentPage}
           />
-          <span className="text-muted-foreground">/ {totalPages}</span>
+          <span className="text-muted-foreground">/ {TOTAL_PAGES}</span>
         </div>
         <button
-          disabled={currentPage === totalPages}
+          disabled={currentPage === TOTAL_PAGES}
           className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"
           onClick={handleNextPage}
         >
@@ -76,7 +79,7 @@ function ManagementBar() {
         </button>
       </div>
 
-      <div className="mx-3 h-5 w-px bg-border rounded-full" />
+      <div className="mx-3 h-6 w-px bg-border rounded-full" />
 
       <motion.div
         layout
@@ -84,14 +87,14 @@ function ManagementBar() {
         className="mx-auto flex flex-wrap space-x-2 sm:flex-nowrap"
       >
         <motion.button
-          {...buttonMotionConfig}
-          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-neutral-500/80 dark:bg-neutral-600/80 px-2.5 py-2 text-white"
+          {...BUTTON_MOTION_CONFIG}
+          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-neutral-200/60 dark:bg-neutral-600/80 px-2.5 py-2 text-neutral-600 dark:text-neutral-200"
           aria-label="Blacklist"
         >
           <Ban size={20} className="shrink-0" />
           <motion.span
-            variants={labelVariants}
-            transition={labelTransition}
+            variants={LABEL_VARIANTS}
+            transition={LABEL_TRANSITION}
             className="invisible text-sm"
           >
             Blacklist
@@ -99,14 +102,14 @@ function ManagementBar() {
         </motion.button>
 
         <motion.button
-          {...buttonMotionConfig}
-          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-red-500/80 dark:bg-red-800/80 px-2.5 py-2 text-white dark:text-red-300"
+          {...BUTTON_MOTION_CONFIG}
+          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-red-200/60 dark:bg-red-800/80 px-2.5 py-2 text-red-600 dark:text-red-300"
           aria-label="Reject"
         >
           <X size={20} className="shrink-0" />
           <motion.span
-            variants={labelVariants}
-            transition={labelTransition}
+            variants={LABEL_VARIANTS}
+            transition={LABEL_TRANSITION}
             className="invisible text-sm"
           >
             Reject
@@ -114,14 +117,14 @@ function ManagementBar() {
         </motion.button>
 
         <motion.button
-          {...buttonMotionConfig}
-          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-green-500/80 dark:bg-green-800/80 px-2.5 py-2 text-white dark:text-green-300"
+          {...BUTTON_MOTION_CONFIG}
+          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-green-200/60 dark:bg-green-800/80 px-2.5 py-2 text-green-600 dark:text-green-300"
           aria-label="Hire"
         >
           <IdCard size={20} className="shrink-0" />
           <motion.span
-            variants={labelVariants}
-            transition={labelTransition}
+            variants={LABEL_VARIANTS}
+            transition={LABEL_TRANSITION}
             className="invisible text-sm"
           >
             Hire
@@ -129,18 +132,19 @@ function ManagementBar() {
         </motion.button>
       </motion.div>
 
-      <div className="mx-3 hidden h-5 w-px bg-border sm:block rounded-full" />
+      <div className="mx-3 hidden h-6 w-px bg-border sm:block rounded-full" />
 
-      <button className="flex w-full h-10 text-sm cursor-pointer items-center justify-center rounded-lg bg-teal-500/80 dark:bg-teal-600/80 px-3 py-2 text-white transition-colors duration-300 hover:bg-teal-700 sm:w-auto">
-        <span className="mr-1 text-neutral-100 dark:text-neutral-200">
-          Move to:
-        </span>
+      <motion.button
+        whileTap={{ scale: 0.975 }}
+        className="flex w-full h-10 text-sm cursor-pointer items-center justify-center rounded-lg bg-teal-500 dark:bg-teal-600/80 px-3 py-2 text-white transition-colors duration-300 dark:hover:bg-teal-800 hover:bg-teal-600 sm:w-auto"
+      >
+        <span className="mr-1 text-neutral-200">Move to:</span>
         <span>Interview I</span>
         <div className="mx-3 h-5 w-px bg-white/40 rounded-full" />
         <div className="flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 -mr-1">
           <Command size={14} />E
         </div>
-      </button>
+      </motion.button>
     </div>
   );
 }
