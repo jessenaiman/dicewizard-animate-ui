@@ -33,14 +33,16 @@ type AccordionItemProps<TTag extends React.ElementType = 'div'> =
     as?: TTag;
   };
 
-function AccordionItem<TTag extends React.ElementType = 'div'>({
-  className,
-  ...rest
-}: AccordionItemProps<TTag>) {
+function AccordionItem<TTag extends React.ElementType = 'div'>(
+  props: AccordionItemProps<TTag>,
+) {
+  const { className, as = 'div', ...rest } = props;
+
   return (
     <Disclosure
       data-slot="accordion-item"
       {...rest}
+      as={as as React.ElementType}
       className={cn('border-b', className)}
     />
   );

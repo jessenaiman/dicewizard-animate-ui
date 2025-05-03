@@ -18,17 +18,6 @@
     }
   ],
   "meta": {
-    "styles": {
-      "default": {
-        "button": ""
-      },
-      "shadcn-default": {
-        "button": "rounded-md"
-      },
-      "shadcn-new-york": {
-        "button": "rounded-md h-9"
-      }
-    },
     "demoProps": {
       "Popover": {
         "openOnHover": {

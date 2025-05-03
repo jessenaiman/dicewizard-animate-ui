@@ -107,9 +107,7 @@ type TooltipContentProps = React.ComponentProps<
   popupProps?: typeof TooltipPrimitive.Popup;
   motionProps?: HTMLMotionProps<'div'>;
   positionerClassName?: string;
-  // IF styles == 'shadcn-new-york' OR styles == 'default'
   arrow?: boolean;
-  // END IF
 };
 
 function TooltipContent({
@@ -120,9 +118,7 @@ function TooltipContent({
   side = 'top',
   sideOffset = 10,
   transition = { type: 'spring', stiffness: 300, damping: 25 },
-  // IF styles == 'shadcn-new-york' OR styles == 'default'
   arrow = true,
-  // END IF
   children,
   ...props
 }: TooltipContentProps) {
@@ -143,7 +139,10 @@ function TooltipContent({
             <TooltipPrimitive.Popup
               data-slot="tooltip-popup"
               {...popupProps}
-              className={cn('{{styles.content}}', className)}
+              className={cn(
+                'relative bg-primary text-primary-foreground shadow-md w-fit rounded-md px-3 py-1.5 text-sm text-balance',
+                className,
+              )}
               render={
                 <motion.div
                   key="tooltip-content"
@@ -156,15 +155,13 @@ function TooltipContent({
               }
             >
               {children}
-              {/* IF styles == 'shadcn-new-york' OR styles == 'default' */}
 
               {arrow && (
                 <TooltipPrimitive.Arrow
                   data-slot="tooltip-content-arrow"
-                  className="{{styles.arrow}}"
+                  className="bg-primary fill-primary z-50 size-2.5 data-[side='bottom']:-top-[4px] data-[side='right']:-left-[4px] data-[side='left']:-right-[4px] data-[side='inline-start']:-right-[4px] data-[side='inline-end']:-left-[4px] rotate-45 rounded-[2px]"
                 />
               )}
-              {/* END IF */}
             </TooltipPrimitive.Popup>
           </TooltipPrimitive.Positioner>
         </TooltipPrimitive.Portal>

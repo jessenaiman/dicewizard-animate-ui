@@ -134,7 +134,10 @@ function PopoverContent({
             <PopoverPrimitive.Popup
               data-slot="popover-popup"
               {...popupProps}
-              className={cn('{{styles.content}}', className)}
+              className={cn(
+                'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-hidden',
+                className,
+              )}
               render={
                 <motion.div
                   key="popover-content"

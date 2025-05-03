@@ -13,17 +13,6 @@
     }
   ],
   "meta": {
-    "styles": {
-      "default": {
-        "button": ""
-      },
-      "shadcn-default": {
-        "button": "rounded-md"
-      },
-      "shadcn-new-york": {
-        "button": "rounded-md h-9"
-      }
-    },
     "demoProps": {
       "TooltipProvider": {
         "delay": { "value": 600, "min": 0, "max": 2000, "step": 100 },

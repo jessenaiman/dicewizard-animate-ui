@@ -16,8 +16,7 @@ import { Loader } from 'lucide-react';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
 import ReactIcon from '../icons/react-icon';
-import { type Binds, Tweakpane } from '../animate-ui/tweakpane';
-import { useStyle } from '@/providers/style-provider';
+import { type Binds, Tweakpane } from './tweakpane';
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -59,25 +58,20 @@ export function ComponentPreview({
     string,
     unknown
   > | null>(null);
-  const { style } = useStyle();
-
-  const styleName = `${style}-${name}`;
 
   const code = useMemo(() => {
-    const code = index[styleName]?.files?.[0]?.content;
+    const code = index[name]?.files?.[0]?.content;
 
     if (!code) {
-      console.error(
-        `Component with name "${styleName}" not found in registry.`,
-      );
+      console.error(`Component with name "${name}" not found in registry.`);
       return null;
     }
 
     return code;
-  }, [styleName]);
+  }, [name]);
 
   const preview = useMemo(() => {
-    const Component = index[styleName]?.component;
+    const Component = index[name]?.component;
 
     if (Object.keys(Component?.demoProps ?? {}).length !== 0) {
       if (componentProps === null)
@@ -86,14 +80,12 @@ export function ComponentPreview({
     }
 
     if (!Component) {
-      console.error(
-        `Component with name "${styleName}" not found in registry.`,
-      );
+      console.error(`Component with name "${name}" not found in registry.`);
       return (
         <p className="text-sm text-muted-foreground">
           Component{' '}
           <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            {styleName}
+            {name}
           </code>{' '}
           not found in registry.
         </p>
@@ -101,7 +93,7 @@ export function ComponentPreview({
     }
 
     return <Component {...flattenFirstLevel(componentProps ?? {})} />;
-  }, [styleName, componentProps, binds]);
+  }, [name, componentProps, binds]);
 
   useEffect(() => {
     if (!binds) return;
@@ -150,13 +142,7 @@ export function ComponentPreview({
               iframe={iframe}
               bigScreen={bigScreen}
               tweakpane={
-                binds && (
-                  <Tweakpane
-                    binds={binds}
-                    onBindsChange={setBinds}
-                    currentStyle={style}
-                  />
-                )
+                binds && <Tweakpane binds={binds} onBindsChange={setBinds} />
               }
             >
               <Suspense

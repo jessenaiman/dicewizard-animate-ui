@@ -11,13 +11,7 @@ import {
 type BaseTooltipDemoProps = Pick<TooltipProviderProps, 'delay' | 'closeDelay'> &
   Pick<
     TooltipContentProps,
-    | 'side'
-    | 'sideOffset'
-    | 'align'
-    | 'alignOffset'
-    // IF styles == 'shadcn-new-york' OR styles == 'default'
-    | 'arrow'
-    // END IF
+    'side' | 'sideOffset' | 'align' | 'alignOffset' | 'arrow'
   >;
 
 export const BaseTooltipDemo = ({
@@ -27,28 +21,18 @@ export const BaseTooltipDemo = ({
   sideOffset,
   align,
   alignOffset,
-  // IF styles == 'shadcn-new-york' OR styles == 'default'
   arrow,
-  // END IF
 }: BaseTooltipDemoProps) => {
   return (
     <TooltipProvider delay={delay} closeDelay={closeDelay}>
       <Tooltip defaultOpen>
-        <TooltipTrigger
-          render={
-            <Button variant="outline" className="{{styles.button}}">
-              Hover me
-            </Button>
-          }
-        />
+        <TooltipTrigger render={<Button variant="outline">Hover me</Button>} />
         <TooltipContent
           side={side}
           sideOffset={sideOffset}
           align={align}
           alignOffset={alignOffset}
-          // IF styles == 'shadcn-new-york' OR styles == 'default'
           arrow={arrow}
-          // END IF
         >
           <p>Add to library</p>
         </TooltipContent>

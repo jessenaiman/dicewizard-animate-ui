@@ -9,7 +9,7 @@ import {
   type Align,
 } from '@/registry/base/popover';
 
-interface RadixPopoverDemoProps {
+interface BasePopoverDemoProps {
   side?: Side;
   sideOffset?: number;
   align?: Align;
@@ -19,7 +19,7 @@ interface RadixPopoverDemoProps {
   closeDelay?: number;
 }
 
-export const RadixPopoverDemo = ({
+export const BasePopoverDemo = ({
   side,
   sideOffset,
   align,
@@ -27,15 +27,11 @@ export const RadixPopoverDemo = ({
   openOnHover,
   delay,
   closeDelay,
-}: RadixPopoverDemoProps) => {
+}: BasePopoverDemoProps) => {
   return (
     <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>
       <PopoverTrigger
-        render={
-          <Button variant="outline" className="{{styles.button}}">
-            Open popover
-          </Button>
-        }
+        render={<Button variant="outline">Open popover</Button>}
       />
       <PopoverContent
         className="w-80"

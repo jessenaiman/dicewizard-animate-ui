@@ -5,19 +5,6 @@
   "title": "Base Popover",
   "description": "An accessible popup anchored to a button.",
   "dependencies": ["motion", "@base-ui-components/react"],
-  "meta": {
-    "styles": {
-      "default": {
-        "content": "w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-hidden"
-      },
-      "shadcn-default": {
-        "content": "w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden"
-      },
-      "shadcn-new-york": {
-        "content": "w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-hidden"
-      }
-    }
-  },
   "files": [
     {
       "path": "registry/base/popover/index.tsx",

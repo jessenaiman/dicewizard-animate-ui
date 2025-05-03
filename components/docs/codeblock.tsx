@@ -77,11 +77,8 @@ export const CodeBlock = forwardRef<HTMLElement, CodeBlockProps>(
         ref={ref}
         {...props}
         className={cn(
-          'not-prose group fd-codeblock relative my-6 overflow-hidden rounded-xl border border-border bg-muted/50 text-sm',
-          props.className?.replace(
-            'shiki shiki-themes github-light github-dark',
-            '',
-          ),
+          'not-prose group fd-codeblock relative my-6 overflow-hidden rounded-xl border border-border text-sm [&.shiki]:!bg-muted/50',
+          props.className,
         )}
       >
         {title ? (

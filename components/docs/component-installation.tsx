@@ -11,7 +11,6 @@ import {
 } from '@/registry/radix/tabs';
 import { CodeTabs } from '@/registry/components/code-tabs';
 import { ComponentManualInstallation } from './component-manual-installation';
-import { useStyle } from '@/providers/style-provider';
 
 interface ComponentInstallationProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,10 +22,7 @@ export function ComponentInstallation({
   className,
   ...props
 }: ComponentInstallationProps) {
-  const { style } = useStyle();
-
-  const styleName = `${style}-${name}`;
-  const component = index[styleName];
+  const component = index[name];
 
   const commands = {
     npm: `npx shadcn@latest add "${component.command}"`,
