@@ -5,7 +5,7 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: false,
-  transpilePackages: ["@workspace/ui"],
+  transpilePackages: ['@workspace/ui'],
   async redirects() {
     return [
       {
