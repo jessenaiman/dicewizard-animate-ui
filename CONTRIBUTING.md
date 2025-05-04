@@ -79,7 +79,7 @@ To **add a new component to Animate UI**, you will need to update several files.
 
 #### Basics
 
-Create your main component in `registry/[category]/my-component/index.tsx`.
+Create your main component in `apps/www/registry/[category]/my-component/index.tsx`.
 
 ```tsx title="my-component/index.tsx"
 'use client';
@@ -99,7 +99,7 @@ export { MyComponent, type MyComponentProps };
 
 #### Update the Registry
 
-Create a `registry/[category]/my-component/registry-item.json` file to export your component :
+Create a `apps/www/registry/[category]/my-component/registry-item.json` file to export your component :
 
 ```json title="my-component/registry-item.json"
 {
