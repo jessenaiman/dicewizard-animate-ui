@@ -4,6 +4,7 @@ import {
   DocsBody,
   DocsDescription,
   DocsTitle,
+  EditOnGitHub,
 } from 'fumadocs-ui/page';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { notFound } from 'next/navigation';
@@ -27,7 +28,6 @@ export default async function Page(props: {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
-
   const MDX = page.data.body;
 
   return (
@@ -42,14 +42,17 @@ export default async function Page(props: {
       <DocsDescription className="-my-1.5">
         {page.data.description}
       </DocsDescription>
-      <div className={page.data.author ? 'mb-6' : ''}>
-        {page.data.author && (
-          <DocsAuthor
-            name={page.data.author.name}
-            url={page.data.author?.url}
-          />
-        )}
+
+      {page.data.author && (
+        <DocsAuthor name={page.data.author.name} url={page.data.author?.url} />
+      )}
+
+      <div className="flex flex-row gap-2 items-center">
+        <EditOnGitHub
+          href={`https://github.com/animate-ui/animate-ui/blob/main/apps/www/content/docs/${params.slug ? `${params.slug.join('/')}.mdx` : 'index.mdx'}`}
+        />
       </div>
+
       <DocsBody>
         <MDX
           components={{
