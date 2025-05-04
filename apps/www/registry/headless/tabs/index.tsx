@@ -177,7 +177,7 @@ function TabPanels<TTag extends React.ElementType = typeof motion.div>(
     if (!containerRef.current) return;
 
     const resizeObserver = new ResizeObserver((entries) => {
-      const newHeight = entries[0].contentRect.height;
+      const newHeight = entries[0]?.contentRect.height ?? 0;
       requestAnimationFrame(() => {
         setHeight(newHeight);
       });

@@ -119,13 +119,13 @@ function TypingText({
     };
 
     const animateTexts = (index: number) => {
-      typeText(texts[index], () => {
+      typeText(texts[index] ?? '', () => {
         const isLast = index === texts.length - 1;
         if (isLast && !loop) {
           return;
         }
         const id = setTimeout(() => {
-          eraseText(texts[index], () => {
+          eraseText(texts[index] ?? '', () => {
             const nextIndex = isLast ? 0 : index + 1;
             animateTexts(nextIndex);
           });

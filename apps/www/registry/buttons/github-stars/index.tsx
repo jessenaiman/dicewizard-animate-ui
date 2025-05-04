@@ -31,7 +31,7 @@ function formatNumber(num: number, formatted: boolean): FormatNumberResult {
       unitIndex++;
     }
     const finalNumber = Math.floor(n).toString();
-    return { number: [finalNumber], unit: units[unitIndex - 1] };
+    return { number: [finalNumber], unit: units[unitIndex - 1] ?? '' };
   } else {
     return { number: num.toLocaleString('en-US').split(','), unit: '' };
   }

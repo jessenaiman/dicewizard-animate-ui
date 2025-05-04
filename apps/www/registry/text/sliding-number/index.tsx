@@ -148,7 +148,7 @@ function SlidingNumber({
   const numberStr = formatNumber(effectiveNumber);
   const [newIntStrRaw, newDecStrRaw = ''] = numberStr.split('.');
   const newIntStr =
-    padStart && newIntStrRaw.length === 1 ? '0' + newIntStrRaw : newIntStrRaw;
+    padStart && newIntStrRaw?.length === 1 ? '0' + newIntStrRaw : newIntStrRaw;
 
   const prevFormatted = formatNumber(prevNumberRef.current);
   const [prevIntStrRaw = '', prevDecStrRaw = ''] = prevFormatted.split('.');
@@ -158,9 +158,9 @@ function SlidingNumber({
       : prevIntStrRaw;
 
   const adjustedPrevInt = React.useMemo(() => {
-    return prevIntStr.length > newIntStr.length
-      ? prevIntStr.slice(-newIntStr.length)
-      : prevIntStr.padStart(newIntStr.length, '0');
+    return prevIntStr.length > (newIntStr?.length ?? 0)
+      ? prevIntStr.slice(-(newIntStr?.length ?? 0))
+      : prevIntStr.padStart(newIntStr?.length ?? 0, '0');
   }, [prevIntStr, newIntStr]);
 
   const adjustedPrevDec = React.useMemo(() => {
@@ -174,7 +174,7 @@ function SlidingNumber({
     if (isInView) prevNumberRef.current = effectiveNumber;
   }, [effectiveNumber, isInView]);
 
-  const intDigitCount = newIntStr.length;
+  const intDigitCount = newIntStr?.length ?? 0;
   const intPlaces = React.useMemo(
     () =>
       Array.from({ length: intDigitCount }, (_, i) =>
@@ -208,7 +208,7 @@ function SlidingNumber({
         <SlidingNumberRoller
           key={`int-${place}`}
           prevValue={parseInt(adjustedPrevInt, 10)}
-          value={parseInt(newIntStr, 10)}
+          value={parseInt(newIntStr ?? '0', 10)}
           place={place}
           transition={transition}
         />

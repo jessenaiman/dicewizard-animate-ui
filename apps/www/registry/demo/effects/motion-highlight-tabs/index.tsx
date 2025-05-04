@@ -21,7 +21,7 @@ const TABS = [
 export const MotionHighlightTabsDemo = () => {
   return (
     <div className="flex border rounded-full p-1">
-      <MotionHighlight defaultValue={TABS[0].value} className="rounded-full">
+      <MotionHighlight defaultValue={TABS[0]?.value} className="rounded-full">
         {TABS.map((tab) => (
           <div
             key={tab.value}

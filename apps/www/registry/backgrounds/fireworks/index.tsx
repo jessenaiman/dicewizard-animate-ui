@@ -169,7 +169,7 @@ function createFirework(
       ctx.save();
       ctx.beginPath();
       if (this.trail.length > 1) {
-        ctx.moveTo(this.trail[0].x, this.trail[0].y);
+        ctx.moveTo(this.trail[0]?.x ?? this.x, this.trail[0]?.y ?? this.y);
         for (const point of this.trail) {
           ctx.lineTo(point.x, point.y);
         }
@@ -195,7 +195,7 @@ function getValueByRange(range: { min: number; max: number } | number): number {
 
 function getColor(color: string | string[] | undefined): string {
   if (Array.isArray(color)) {
-    return color[randInt(0, color.length)];
+    return color[randInt(0, color.length)] ?? randColor();
   }
   return color ?? randColor();
 }
@@ -287,7 +287,7 @@ function FireworksBackground({
 
       for (let i = fireworks.length - 1; i >= 0; i--) {
         const firework = fireworks[i];
-        if (!firework.update()) {
+        if (!firework?.update()) {
           fireworks.splice(i, 1);
         } else {
           firework.draw(ctx);
@@ -296,8 +296,8 @@ function FireworksBackground({
 
       for (let i = explosions.length - 1; i >= 0; i--) {
         const particle = explosions[i];
-        particle.update();
-        if (particle.isAlive()) {
+        particle?.update();
+        if (particle?.isAlive()) {
           particle.draw(ctx);
         } else {
           explosions.splice(i, 1);

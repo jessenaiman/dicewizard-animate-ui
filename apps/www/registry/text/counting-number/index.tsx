@@ -43,7 +43,7 @@ function CountingNumber({
     typeof decimalPlaces === 'number'
       ? decimalPlaces
       : numberStr.includes('.')
-        ? numberStr.split('.')[1].length
+        ? (numberStr.split('.')[1]?.length ?? 0)
         : 0;
 
   const motionVal = useMotionValue(fromNumber);
@@ -73,7 +73,7 @@ function CountingNumber({
         if (padStart) {
           const finalIntLength = Math.floor(Math.abs(number)).toString().length;
           const [intPart, fracPart] = formatted.split(decimalSeparator);
-          const paddedInt = intPart.padStart(finalIntLength, '0');
+          const paddedInt = intPart?.padStart(finalIntLength, '0') ?? '';
           formatted = fracPart
             ? `${paddedInt}${decimalSeparator}${fracPart}`
             : paddedInt;
