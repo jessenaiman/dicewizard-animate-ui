@@ -49,6 +49,7 @@ export default async function Page(props: {
 
       <div className="flex flex-row gap-2 items-center">
         <EditOnGitHub
+          className="border-0"
           href={`https://github.com/animate-ui/animate-ui/blob/main/apps/www/content/docs/${params.slug ? `${params.slug.join('/')}.mdx` : 'index.mdx'}`}
         />
       </div>
