@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/ui-elements/management-bar/index.tsx",
-      "content": "'use client';\n\nimport * as React from 'react';\n\nimport { ManagementBar } from '@/components/animate-ui/management-bar';\n\nexport const ManagementBarDemo = () => <ManagementBar />;\n",
+      "content": "'use client';\n\nimport * as React from 'react';\n\nimport { ManagementBar } from '@/components/animate-ui/ui-elements/management-bar';\n\nexport const ManagementBarDemo = () => <ManagementBar />;\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/ui-elements/management-bar.tsx"
     }

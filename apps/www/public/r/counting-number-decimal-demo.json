@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/counting-number-decimal/index.tsx",
-      "content": "import { CountingNumber } from '@/components/animate-ui/counting-number';\n\nexport const CountingNumberDecimalDemo = () => {\n  return (\n    <CountingNumber\n      number={12345.67}\n      decimalPlaces={2}\n      decimalSeparator=\",\"\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
+      "content": "import { CountingNumber } from '@/components/animate-ui/text/counting-number';\n\nexport const CountingNumberDecimalDemo = () => {\n  return (\n    <CountingNumber\n      number={12345.67}\n      decimalPlaces={2}\n      decimalSeparator=\",\"\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/text/counting-number-decimal.tsx"
     }

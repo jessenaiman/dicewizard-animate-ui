@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/rolling/index.tsx",
-      "content": "import { RollingText } from '@/components/animate-ui/rolling';\n\nexport const RollingTextDemo = () => {\n  return <RollingText className=\"text-4xl\" text=\"Rolling Text\" />;\n};\n",
+      "content": "import { RollingText } from '@/components/animate-ui/text/rolling';\n\nexport const RollingTextDemo = () => {\n  return <RollingText className=\"text-4xl\" text=\"Rolling Text\" />;\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/text/rolling.tsx"
     }

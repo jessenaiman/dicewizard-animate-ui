@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/buttons/copy/index.tsx",
-      "content": "import { CopyButton } from '@/components/animate-ui/copy';\n\nexport const CopyButtonDemo = () => {\n  return <CopyButton content=\"Content to copy\" size=\"md\" />;\n};\n",
+      "content": "import { CopyButton } from '@/components/animate-ui/buttons/copy';\n\nexport const CopyButtonDemo = () => {\n  return <CopyButton content=\"Content to copy\" size=\"md\" />;\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/buttons/copy.tsx"
     }

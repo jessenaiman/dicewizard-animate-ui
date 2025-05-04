@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/backgrounds/gradient/index.tsx",
-      "content": "import { GradientBackground } from '@/components/animate-ui/gradient';\n\nexport const GradientBackgroundDemo = () => {\n  return (\n    <GradientBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
+      "content": "import { GradientBackground } from '@/components/animate-ui/backgrounds/gradient';\n\nexport const GradientBackgroundDemo = () => {\n  return (\n    <GradientBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/backgrounds/gradient.tsx"
     }

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/buttons/flip-from/index.tsx",
-      "content": "import { FlipButton } from '@/components/animate-ui/flip';\n\nexport const FlipButtonFromDemo = () => {\n  return <FlipButton frontText=\"Front Text\" backText=\"Back Text\" from=\"left\" />;\n};\n",
+      "content": "import { FlipButton } from '@/components/animate-ui/buttons/flip';\n\nexport const FlipButtonFromDemo = () => {\n  return <FlipButton frontText=\"Front Text\" backText=\"Back Text\" from=\"left\" />;\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/buttons/flip-from.tsx"
     }

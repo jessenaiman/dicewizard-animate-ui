@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/buttons/liquid/index.tsx",
-      "content": "import { LiquidButton } from '@/components/animate-ui/liquid';\n\nexport const LiquidButtonDemo = () => {\n  return <LiquidButton>Liquid Button</LiquidButton>;\n};\n",
+      "content": "import { LiquidButton } from '@/components/animate-ui/buttons/liquid';\n\nexport const LiquidButtonDemo = () => {\n  return <LiquidButton>Liquid Button</LiquidButton>;\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/buttons/liquid.tsx"
     }

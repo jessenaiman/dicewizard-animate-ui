@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/buttons/ripple/index.tsx",
-      "content": "import { RippleButton } from '@/components/animate-ui/ripple';\n\nexport const RippleButtonDemo = () => {\n  return <RippleButton>Ripple Button</RippleButton>;\n};\n",
+      "content": "import { RippleButton } from '@/components/animate-ui/buttons/ripple';\n\nexport const RippleButtonDemo = () => {\n  return <RippleButton>Ripple Button</RippleButton>;\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/buttons/ripple.tsx"
     }

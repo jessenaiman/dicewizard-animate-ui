@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/typing/index.tsx",
-      "content": "import { TypingText } from '@/components/animate-ui/typing';\n\nexport const TypingTextDemo = () => {\n  return (\n    <TypingText\n      className=\"text-4xl\"\n      text=\"Typing Text\"\n      cursor\n      cursorClassName=\"h-9\"\n    />\n  );\n};\n",
+      "content": "import { TypingText } from '@/components/animate-ui/text/typing';\n\nexport const TypingTextDemo = () => {\n  return (\n    <TypingText\n      className=\"text-4xl\"\n      text=\"Typing Text\"\n      cursor\n      cursorClassName=\"h-9\"\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/text/typing.tsx"
     }

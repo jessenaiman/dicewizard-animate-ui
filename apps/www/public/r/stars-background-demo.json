@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/backgrounds/stars/index.tsx",
-      "content": "import { StarsBackground } from '@/components/animate-ui/stars';\n\nexport const StarsBackgroundDemo = () => {\n  return (\n    <StarsBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
+      "content": "import { StarsBackground } from '@/components/animate-ui/backgrounds/stars';\n\nexport const StarsBackgroundDemo = () => {\n  return (\n    <StarsBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/backgrounds/stars.tsx"
     }

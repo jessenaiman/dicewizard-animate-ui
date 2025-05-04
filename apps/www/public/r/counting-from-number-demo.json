@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/counting-from-number/index.tsx",
-      "content": "import { CountingNumber } from '@/components/animate-ui/counting-number';\n\nexport const CountingFromNumberDemo = () => {\n  return (\n    <CountingNumber\n      number={0}\n      fromNumber={new Date().getFullYear()}\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
+      "content": "import { CountingNumber } from '@/components/animate-ui/text/counting-number';\n\nexport const CountingFromNumberDemo = () => {\n  return (\n    <CountingNumber\n      number={0}\n      fromNumber={new Date().getFullYear()}\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/text/counting-from-number.tsx"
     }

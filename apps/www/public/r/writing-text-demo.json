@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/writing/index.tsx",
-      "content": "import { WritingText } from '@/components/animate-ui/writing';\n\nexport const WritingTextDemo = () => {\n  return (\n    <WritingText\n      className=\"text-4xl\"\n      text=\"Writing Text With Effect\"\n      spacing={9}\n    />\n  );\n};\n",
+      "content": "import { WritingText } from '@/components/animate-ui/text/writing';\n\nexport const WritingTextDemo = () => {\n  return (\n    <WritingText\n      className=\"text-4xl\"\n      text=\"Writing Text With Effect\"\n      spacing={9}\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/text/writing.tsx"
     }

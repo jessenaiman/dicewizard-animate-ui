@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/text/highlight/index.tsx",
-      "content": "import { HighlightText } from '@/components/animate-ui/highlight';\n\nexport const HighlightTextDemo = () => {\n  return (\n    <HighlightText className=\"text-4xl font-semibold\" text=\"Highlight Text\" />\n  );\n};\n",
+      "content": "import { HighlightText } from '@/components/animate-ui/text/highlight';\n\nexport const HighlightTextDemo = () => {\n  return (\n    <HighlightText className=\"text-4xl font-semibold\" text=\"Highlight Text\" />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/text/highlight.tsx"
     }
