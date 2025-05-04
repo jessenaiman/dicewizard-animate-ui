@@ -7,19 +7,4 @@ module.exports = {
   parserOptions: {
     project: true,
   },
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        'no-unused-expressions': 'off',
-        '@typescript-eslint/no-unused-expressions': [
-          'error',
-          {
-            allowShortCircuit: true,
-            allowTernary: true,
-          },
-        ],
-      },
-    },
-  ],
 };
