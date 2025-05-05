@@ -10,7 +10,7 @@
 
 </div>
 
-![hero](/public/og-image.png)
+![hero](https://animate-ui.com/og-image.png)
 
 ## Beta
 
