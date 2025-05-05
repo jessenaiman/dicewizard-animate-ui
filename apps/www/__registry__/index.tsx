@@ -3735,6 +3735,142 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/sliding-number-decimal-demo',
   },
+  'splitting-text-demo': {
+    name: 'splitting-text-demo',
+    description: 'Demo showing an animated splitting text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/splitting-text'],
+    files: [
+      {
+        path: 'registry/demo/text/splitting/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/text/splitting.tsx',
+        content:
+          'import { SplittingText } from \'@/components/animate-ui/text/splitting\';\n\nexport const SplittingTextDemo = () => {\n  return <SplittingText className="text-4xl" text="Splitting Text" />;\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/text/splitting/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'splitting-text-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/splitting-text-demo',
+  },
+  'splitting-lines-demo': {
+    name: 'splitting-lines-demo',
+    description: 'Demo showing an animated splitting lines.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/splitting-text'],
+    files: [
+      {
+        path: 'registry/demo/text/splitting-lines/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/text/splitting-lines.tsx',
+        content:
+          "import { SplittingText } from '@/components/animate-ui/text/splitting';\n\nexport const SplittingLinesDemo = () => {\n  return (\n    <SplittingText\n      className=\"text-lg\"\n      type=\"lines\"\n      inView\n      motionVariants={{\n        initial: { y: 50, opacity: 0, x: 0 },\n        animate: { y: 0, opacity: 1, x: 0 },\n      }}\n      text={[\n        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',\n        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',\n        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',\n      ]}\n    />\n  );\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/text/splitting-lines/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'splitting-lines-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/splitting-lines-demo',
+  },
+  'splitting-with-custom-variants-demo': {
+    name: 'splitting-with-custom-variants-demo',
+    description:
+      'Demo showing an animated splitting text with custom variants.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/splitting-text'],
+    files: [
+      {
+        path: 'registry/demo/text/splitting-with-custom-variants/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/text/splitting-with-custom-variants.tsx',
+        content:
+          'import { SplittingText } from \'@/components/animate-ui/text/splitting\';\n\nexport const SplittingWithCustomVariantsDemo = () => {\n  return (\n    <SplittingText\n      className="text-lg"\n      type="chars"\n      inView\n      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."\n      motionVariants={{\n        initial: { y: 50, scale: 0.5, opacity: 0, x: 50, rotate: 90 },\n        animate: { y: 0, scale: 1, opacity: 1, x: 0, rotate: 0 },\n        transition: { duration: 0.5, ease: \'easeOut\' },\n      }}\n    />\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/text/splitting-with-custom-variants/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'splitting-with-custom-variants-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/splitting-with-custom-variants-demo',
+  },
+  'splitting-words-demo': {
+    name: 'splitting-words-demo',
+    description: 'Demo showing an animated splitting words.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/splitting-text'],
+    files: [
+      {
+        path: 'registry/demo/text/splitting-words/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/text/splitting-words.tsx',
+        content:
+          'import { SplittingText } from \'@/components/animate-ui/text/splitting\';\n\nexport const SplittingWordsDemo = () => {\n  return (\n    <SplittingText\n      className="text-lg"\n      type="words"\n      inView\n      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."\n    />\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/text/splitting-words/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'splitting-words-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/splitting-words-demo',
+  },
   'typing-text-demo': {
     name: 'typing-text-demo',
     description: 'Demo showing an animated typing text.',
@@ -4808,6 +4944,39 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/sliding-number',
+  },
+  'splitting-text': {
+    name: 'splitting-text',
+    description:
+      'A text component that dynamically simulates a splitting animation, progressively revealing characters as if typed in real-time.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/text/splitting/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/text/splitting.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  type Variants,\n  type TargetAndTransition,\n  type HTMLMotionProps,\n  useInView,\n  type UseInViewOptions,\n} from 'motion/react';\n\ntype DefaultSplittingTextProps = {\n  motionVariants?: {\n    initial?: Record<string, any>;\n    animate?: Record<string, any>;\n    transition?: Record<string, any>;\n    stagger?: number;\n  };\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n} & HTMLMotionProps<'div'>;\n\ntype CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'chars' | 'words';\n  text: string;\n};\n\ntype LinesSplittingTextProps = DefaultSplittingTextProps & {\n  type: 'lines';\n  text: string[];\n};\n\ntype SplittingTextProps =\n  | CharsOrWordsSplittingTextProps\n  | LinesSplittingTextProps;\n\nconst defaultItemVariant: Variants = {\n  hidden: { x: 150, opacity: 0 },\n  visible: {\n    x: 0,\n    opacity: 1,\n    transition: { duration: 0.7, ease: 'easeOut' },\n  },\n};\n\nexport const SplittingText: React.FC<SplittingTextProps> = ({\n  ref,\n  text,\n  type = 'chars',\n  motionVariants = {},\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}) => {\n  const items = React.useMemo<React.ReactNode[]>(() => {\n    if (Array.isArray(text)) {\n      return text.flatMap((line, i) => [\n        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,\n        i < text.length - 1 ? <br key={`br-${i}`} /> : null,\n      ]);\n    }\n\n    if (type === 'words') {\n      const tokens = text.match(/\\S+\\s*/g) || [];\n      return tokens.map((token, i) => (\n        <React.Fragment key={i}>{token}</React.Fragment>\n      ));\n    }\n\n    return text\n      .split('')\n      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);\n  }, [text, type]);\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        staggerChildren:\n          motionVariants.stagger ??\n          (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: {\n      ...defaultItemVariant.hidden,\n      ...(motionVariants.initial || {}),\n    },\n    visible: {\n      ...defaultItemVariant.visible,\n      ...(motionVariants.animate || {}),\n      transition: {\n        ...((defaultItemVariant.visible as TargetAndTransition).transition ||\n          {}),\n        ...(motionVariants.transition || {}),\n      },\n    },\n  };\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const inViewResult = useInView(localRef, {\n    once: inViewOnce,\n    margin: inViewMargin,\n  });\n  const isInView = !inView || inViewResult;\n\n  return (\n    <motion.span\n      ref={localRef}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      variants={containerVariants}\n      {...props}\n    >\n      {items.map(\n        (item, index) =>\n          item && (\n            <React.Fragment key={index}>\n              <motion.span\n                key={index}\n                variants={itemVariants}\n                style={{\n                  display: 'inline-block',\n                  whiteSpace:\n                    type === 'chars'\n                      ? 'pre'\n                      : Array.isArray(text)\n                        ? 'normal'\n                        : 'normal',\n                }}\n              >\n                {item}\n              </motion.span>\n              {type === 'words' && ' '}\n            </React.Fragment>\n          ),\n      )}\n    </motion.span>\n  );\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/text/splitting/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'splitting-text';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/splitting-text',
   },
   'typing-text': {
     name: 'typing-text',
