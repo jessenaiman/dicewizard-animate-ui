@@ -2013,6 +2013,70 @@
       ]
     },
     {
+      "name": "splitting-text-demo",
+      "type": "registry:ui",
+      "title": "Splitting Text Demo",
+      "description": "Demo showing an animated splitting text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/splitting-text"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/splitting/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/text/splitting.tsx"
+        }
+      ]
+    },
+    {
+      "name": "splitting-lines-demo",
+      "type": "registry:ui",
+      "title": "Splitting Lines Demo",
+      "description": "Demo showing an animated splitting lines.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/splitting-text"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/splitting-lines/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/text/splitting-lines.tsx"
+        }
+      ]
+    },
+    {
+      "name": "splitting-with-custom-variants-demo",
+      "type": "registry:ui",
+      "title": "Splitting with Custom Variants Demo",
+      "description": "Demo showing an animated splitting text with custom variants.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/splitting-text"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/splitting-with-custom-variants/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/text/splitting-with-custom-variants.tsx"
+        }
+      ]
+    },
+    {
+      "name": "splitting-words-demo",
+      "type": "registry:ui",
+      "title": "Splitting Words Demo",
+      "description": "Demo showing an animated splitting words.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/splitting-text"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/splitting-words/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/text/splitting-words.tsx"
+        }
+      ]
+    },
+    {
       "name": "typing-text-demo",
       "type": "registry:ui",
       "title": "Typing Text Demo",
@@ -2575,6 +2639,22 @@
           "path": "registry/text/sliding-number/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/text/sliding-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "splitting-text",
+      "type": "registry:ui",
+      "title": "Splitting Text",
+      "description": "A text component that dynamically simulates a splitting animation, progressively revealing characters as if typed in real-time.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/text/splitting/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/text/splitting.tsx"
         }
       ]
     },
