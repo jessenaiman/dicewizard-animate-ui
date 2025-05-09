@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "maximize-icon",
+  "type": "registry:ui",
+  "title": "Maximize Icon",
+  "description": "Maximize icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/maximize/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/maximize.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": ["fullscreen", "expand", "dashed"]
+  }
+}

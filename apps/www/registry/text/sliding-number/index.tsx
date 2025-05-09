@@ -38,12 +38,12 @@ function SlidingNumberRoller({
   const [measureRef, { height }] = useMeasure();
 
   return (
-    <div
+    <span
       ref={measureRef}
       data-slot="sliding-number-roller"
       className="relative inline-block w-[1ch] overflow-x-visible overflow-y-clip leading-none tabular-nums"
     >
-      <div className="invisible">0</div>
+      <span className="invisible">0</span>
       {Array.from({ length: 10 }, (_, i) => (
         <SlidingNumberDisplay
           key={i}
@@ -53,7 +53,7 @@ function SlidingNumberRoller({
           transition={transition}
         />
       ))}
-    </div>
+    </span>
   );
 }
 

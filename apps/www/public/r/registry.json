@@ -2560,6 +2560,4122 @@
       ]
     },
     {
+      "name": "activity-icon",
+      "type": "registry:ui",
+      "title": "Activity Icon",
+      "description": "Activity icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/activity/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/activity.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "activity",
+          "pulse",
+          "action",
+          "motion",
+          "healthcare",
+          "fitness",
+          "medical",
+          "health",
+          "siesmic",
+          "magnitude",
+          "intensive care",
+          "hospital",
+          "emergency",
+          "ambulance",
+          "vitals",
+          "vital signs",
+          "heart rate monitor"
+        ]
+      }
+    },
+    {
+      "name": "alarm-clock-icon",
+      "type": "registry:ui",
+      "title": "Alarm Clock Icon",
+      "description": "Alarm clock icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/alarm-clock/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/alarm-clock.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "morning"
+        ]
+      }
+    },
+    {
+      "name": "arrow-down-icon",
+      "type": "registry:ui",
+      "title": "Arrow Down Icon",
+      "description": "Arrow down icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/arrow-down/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/arrow-down.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "arrow",
+          "down",
+          "backward",
+          "direction",
+          "south"
+        ]
+      }
+    },
+    {
+      "name": "arrow-left-icon",
+      "type": "registry:ui",
+      "title": "Arrow Left Icon",
+      "description": "Arrow left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/arrow-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/arrow-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "arrow",
+          "left",
+          "back",
+          "previous",
+          "direction",
+          "west",
+          "<-"
+        ]
+      }
+    },
+    {
+      "name": "arrow-right-icon",
+      "type": "registry:ui",
+      "title": "Arrow Right Icon",
+      "description": "Arrow right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/arrow-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/arrow-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "arrow",
+          "right",
+          "forward",
+          "next",
+          "direction",
+          "east",
+          "->"
+        ]
+      }
+    },
+    {
+      "name": "arrow-up-icon",
+      "type": "registry:ui",
+      "title": "Arrow Up Icon",
+      "description": "Arrow up icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/arrow-up/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/arrow-up.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "arrow",
+          "up",
+          "forward",
+          "direction",
+          "north"
+        ]
+      }
+    },
+    {
+      "name": "audio-lines-icon",
+      "type": "registry:ui",
+      "title": "Audio Lines Icon",
+      "description": "Audio Lines icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/audio-lines/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/audio-lines.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "graphic equaliser",
+          "sound",
+          "noise",
+          "listen",
+          "hearing",
+          "hertz",
+          "frequency",
+          "wavelength",
+          "vibrate",
+          "sine",
+          "synthesizer",
+          "synthesiser",
+          "levels",
+          "track",
+          "music",
+          "playback",
+          "radio",
+          "broadcast",
+          "airwaves",
+          "voice",
+          "vocals",
+          "singer",
+          "song"
+        ]
+      }
+    },
+    {
+      "name": "axe-icon",
+      "type": "registry:ui",
+      "title": "Axe Icon",
+      "description": "Axe icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/axe/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/axe.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "hatchet",
+          "weapon",
+          "chop",
+          "sharp",
+          "equipment",
+          "fireman",
+          "firefighter",
+          "brigade",
+          "lumberjack",
+          "woodcutter",
+          "logger",
+          "forestry"
+        ]
+      }
+    },
+    {
+      "name": "battery-charging-icon",
+      "type": "registry:ui",
+      "title": "Battery Charging Icon",
+      "description": "Battery Charging icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/battery-charging/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/battery-charging.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "power",
+          "electricity",
+          "energy",
+          "accumulator",
+          "charge"
+        ]
+      }
+    },
+    {
+      "name": "battery-full-icon",
+      "type": "registry:ui",
+      "title": "Battery Full Icon",
+      "description": "Battery Full icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/battery-full/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/battery-full.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "power",
+          "electricity",
+          "energy",
+          "accumulator",
+          "charge"
+        ]
+      }
+    },
+    {
+      "name": "battery-low-icon",
+      "type": "registry:ui",
+      "title": "Battery Low Icon",
+      "description": "Battery Low icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/battery-low/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/battery-low.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "power",
+          "electricity",
+          "energy",
+          "accumulator",
+          "charge"
+        ]
+      }
+    },
+    {
+      "name": "battery-medium-icon",
+      "type": "registry:ui",
+      "title": "Battery Medium Icon",
+      "description": "Battery Medium icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/battery-medium/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/battery-medium.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "power",
+          "electricity",
+          "energy",
+          "accumulator",
+          "charge"
+        ]
+      }
+    },
+    {
+      "name": "bell-icon",
+      "type": "registry:ui",
+      "title": "Bell Icon",
+      "description": "Bell icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/bell/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/bell.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "alarm",
+          "notification",
+          "sound",
+          "reminder"
+        ]
+      }
+    },
+    {
+      "name": "bell-off-icon",
+      "type": "registry:ui",
+      "title": "Bell Off Icon",
+      "description": "Bell off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/bell-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/bell-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "alarm",
+          "notification",
+          "sound",
+          "reminder"
+        ]
+      }
+    },
+    {
+      "name": "bell-ring-icon",
+      "type": "registry:ui",
+      "title": "Bell Ring Icon",
+      "description": "Bell ring icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/bell-ring/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/bell-ring.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "alarm",
+          "notification",
+          "sound",
+          "reminder"
+        ]
+      }
+    },
+    {
+      "name": "bot-icon",
+      "type": "registry:ui",
+      "title": "Bot Icon",
+      "description": "Bot icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/bot/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/bot.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "robot",
+          "ai",
+          "chat",
+          "assistant"
+        ]
+      }
+    },
+    {
+      "name": "bot-message-square-icon",
+      "type": "registry:ui",
+      "title": "Bot Message Square Icon",
+      "description": "Bot message square icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/bot-message-square/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/bot-message-square.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "robot",
+          "ai",
+          "chat",
+          "assistant"
+        ]
+      }
+    },
+    {
+      "name": "bot-off-icon",
+      "type": "registry:ui",
+      "title": "Bot Off Icon",
+      "description": "Bot off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/bot-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/bot-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "robot",
+          "ai",
+          "chat",
+          "assistant"
+        ]
+      }
+    },
+    {
+      "name": "brush-icon",
+      "type": "registry:ui",
+      "title": "Brush Icon",
+      "description": "Brush icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/brush/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/brush.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clean",
+          "sweep",
+          "refactor",
+          "remove",
+          "draw",
+          "paint",
+          "color",
+          "artist"
+        ]
+      }
+    },
+    {
+      "name": "brush-cleaning-icon",
+      "type": "registry:ui",
+      "title": "Brush Cleaning Icon",
+      "description": "Brush cleaning icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/brush-cleaning/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/brush-cleaning.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "cleaning",
+          "utensil",
+          "housekeeping",
+          "tool",
+          "sweeping",
+          "scrubbing",
+          "hygiene",
+          "maintenance",
+          "household",
+          "cleaner",
+          "chores",
+          "equipment",
+          "sanitation",
+          "bristles",
+          "handle",
+          "home care",
+          "sanitize",
+          "purify",
+          "wash",
+          "disinfect",
+          "sterilize",
+          "scrub",
+          "polish",
+          "decontaminate",
+          "wipe",
+          "spotless",
+          "remove",
+          "empty",
+          "erase",
+          "purge",
+          "eliminate"
+        ]
+      }
+    },
+    {
+      "name": "cherry-icon",
+      "type": "registry:ui",
+      "title": "Cherry Icon",
+      "description": "Cherry icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cherry/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cherry.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "fruit",
+          "food"
+        ]
+      }
+    },
+    {
+      "name": "chevron-down-icon",
+      "type": "registry:ui",
+      "title": "Chevron Down Icon",
+      "description": "Chevron down icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chevron-down/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chevron-down.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "backwards",
+          "reverse",
+          "slow",
+          "dropdown"
+        ]
+      }
+    },
+    {
+      "name": "chevron-left-icon",
+      "type": "registry:ui",
+      "title": "Chevron Left Icon",
+      "description": "Chevron left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chevron-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chevron-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "back",
+          "previous",
+          "less than",
+          "fewer",
+          "menu",
+          "<"
+        ]
+      }
+    },
+    {
+      "name": "chevron-left-right-icon",
+      "type": "registry:ui",
+      "title": "Chevron Left Right Icon",
+      "description": "Chevron left right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chevron-left-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chevron-left-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "expand",
+          "horizontal",
+          "unfold",
+          "<>"
+        ]
+      }
+    },
+    {
+      "name": "chevron-right-icon",
+      "type": "registry:ui",
+      "title": "Chevron Right Icon",
+      "description": "Chevron right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chevron-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chevron-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "forward",
+          "next",
+          "more than",
+          "greater",
+          "menu",
+          "code",
+          "coding",
+          "command line",
+          "terminal",
+          "prompt",
+          "shell",
+          ">"
+        ]
+      }
+    },
+    {
+      "name": "chevron-up-icon",
+      "type": "registry:ui",
+      "title": "Chevron Up Icon",
+      "description": "Chevron up icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chevron-up/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chevron-up.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "caret",
+          "keyboard",
+          "mac",
+          "control",
+          "ctrl",
+          "superscript",
+          "exponential",
+          "power",
+          "ahead",
+          "fast",
+          "^",
+          "dropdown"
+        ]
+      }
+    },
+    {
+      "name": "chevron-up-down-icon",
+      "type": "registry:ui",
+      "title": "Chevron Up Down Icon",
+      "description": "Chevron up down icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chevron-up-down/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chevron-up-down.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "expand",
+          "vertical",
+          "unfold"
+        ]
+      }
+    },
+    {
+      "name": "circle-plus-icon",
+      "type": "registry:ui",
+      "title": "Circle Plus Icon",
+      "description": "Circle plus icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/circle-plus/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/circle-plus.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "circle",
+          "plus",
+          "add",
+          "sum",
+          "addition",
+          "math",
+          "maths",
+          "new",
+          "+",
+          "increase",
+          "positive",
+          "calculate"
+        ]
+      }
+    },
+    {
+      "name": "circle-x-icon",
+      "type": "registry:ui",
+      "title": "Circle X Icon",
+      "description": "Circle x icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/circle-x/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/circle-x.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "x",
+          "circle",
+          "cross",
+          "delete",
+          "close",
+          "cancel",
+          "remove",
+          "clear",
+          "math",
+          "multiply",
+          "multiplication"
+        ]
+      }
+    },
+    {
+      "name": "clock-icon",
+      "type": "registry:ui",
+      "title": "Clock Icon",
+      "description": "Clock icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-1-icon",
+      "type": "registry:ui",
+      "title": "Clock 1 Icon",
+      "description": "Clock 1 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-1/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-1.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-10-icon",
+      "type": "registry:ui",
+      "title": "Clock 10 Icon",
+      "description": "Clock 10 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-10/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-10.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-11-icon",
+      "type": "registry:ui",
+      "title": "Clock 11 Icon",
+      "description": "Clock 11 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-11/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-11.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-12-icon",
+      "type": "registry:ui",
+      "title": "Clock 12 Icon",
+      "description": "Clock 12 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-12/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-12.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-2-icon",
+      "type": "registry:ui",
+      "title": "Clock 2 Icon",
+      "description": "Clock 2 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-2/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-2.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-3-icon",
+      "type": "registry:ui",
+      "title": "Clock 3 Icon",
+      "description": "Clock 3 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-3/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-3.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-4-icon",
+      "type": "registry:ui",
+      "title": "Clock 4 Icon",
+      "description": "Clock 4 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-4/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-4.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-5-icon",
+      "type": "registry:ui",
+      "title": "Clock 5 Icon",
+      "description": "Clock 5 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-5/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-5.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-6-icon",
+      "type": "registry:ui",
+      "title": "Clock 6 Icon",
+      "description": "Clock 6 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-6/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-6.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-7-icon",
+      "type": "registry:ui",
+      "title": "Clock 7 Icon",
+      "description": "Clock 7 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-7/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-7.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-8-icon",
+      "type": "registry:ui",
+      "title": "Clock 8 Icon",
+      "description": "Clock 8 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-8/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-8.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "clock-9-icon",
+      "type": "registry:ui",
+      "title": "Clock 9 Icon",
+      "description": "Clock 9 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clock-9/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clock-9.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clock",
+          "time",
+          "watch",
+          "alarm",
+          "timer"
+        ]
+      }
+    },
+    {
+      "name": "cloud-download-icon",
+      "type": "registry:ui",
+      "title": "Cloud Download Icon",
+      "description": "Cloud download icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-download/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-download.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "import"
+        ]
+      }
+    },
+    {
+      "name": "cloud-upload-icon",
+      "type": "registry:ui",
+      "title": "Cloud Upload Icon",
+      "description": "Cloud upload icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-upload/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-upload.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "file"
+        ]
+      }
+    },
+    {
+      "name": "cog-icon",
+      "type": "registry:ui",
+      "title": "Cog Icon",
+      "description": "Cog icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cog.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "computing",
+          "settings",
+          "cog",
+          "edit",
+          "gear",
+          "preferences",
+          "controls",
+          "configuration",
+          "fixed",
+          "build",
+          "construction",
+          "parts"
+        ]
+      }
+    },
+    {
+      "name": "compass-icon",
+      "type": "registry:ui",
+      "title": "Compass Icon",
+      "description": "Compass icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/compass/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/compass.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "direction",
+          "north",
+          "south",
+          "east",
+          "west",
+          "safari",
+          "browser"
+        ]
+      }
+    },
+    {
+      "name": "copy-icon",
+      "type": "registry:ui",
+      "title": "Copy Icon",
+      "description": "Copy icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/copy/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/copy.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "clone",
+          "duplicate",
+          "multiple"
+        ]
+      }
+    },
+    {
+      "name": "disc-3-icon",
+      "type": "registry:ui",
+      "title": "Disc 3 Icon",
+      "description": "Disc 3 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/disc-3/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/disc-3.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "album",
+          "album",
+          "vinyl",
+          "record",
+          "cd",
+          "dvd",
+          "format",
+          "dj",
+          "spin",
+          "rotate",
+          "rpm"
+        ]
+      }
+    },
+    {
+      "name": "download-icon",
+      "type": "registry:ui",
+      "title": "Download Icon",
+      "description": "Download icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/download/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/download.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "import",
+          "export",
+          "save"
+        ]
+      }
+    },
+    {
+      "name": "expand-icon",
+      "type": "registry:ui",
+      "title": "Expand Icon",
+      "description": "Expand icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/expand/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/expand.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "scale",
+          "fullscreen",
+          "maximize",
+          "minimize",
+          "contract"
+        ]
+      }
+    },
+    {
+      "name": "external-link-icon",
+      "type": "registry:ui",
+      "title": "External Link Icon",
+      "description": "External link icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/external-link/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/external-link.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "outbound",
+          "open",
+          "share"
+        ]
+      }
+    },
+    {
+      "name": "fingerprint-icon",
+      "type": "registry:ui",
+      "title": "Fingerprint Icon",
+      "description": "Fingerprint icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/fingerprint/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/fingerprint.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "2fa",
+          "authentication",
+          "biometric",
+          "identity",
+          "security"
+        ]
+      }
+    },
+    {
+      "name": "forklift-icon",
+      "type": "registry:ui",
+      "title": "Forklift Icon",
+      "description": "Forklift icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/forklift/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/forklift.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "vehicle",
+          "transport",
+          "logistics"
+        ]
+      }
+    },
+    {
+      "name": "gauge-icon",
+      "type": "registry:ui",
+      "title": "Gauge Icon",
+      "description": "Gauge icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/gauge/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/gauge.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "dashboard",
+          "dial",
+          "meter",
+          "speed",
+          "pressure",
+          "measure",
+          "level"
+        ]
+      }
+    },
+    {
+      "name": "gavel-icon",
+      "type": "registry:ui",
+      "title": "Gavel Icon",
+      "description": "Gavel icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/gavel/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/gavel.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "mallet",
+          "hammer"
+        ]
+      }
+    },
+    {
+      "name": "hammer-icon",
+      "type": "registry:ui",
+      "title": "Hammer Icon",
+      "description": "Hammer icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/hammer/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/hammer.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "mallet",
+          "nails",
+          "diy",
+          "toolbox",
+          "build",
+          "construction"
+        ]
+      }
+    },
+    {
+      "name": "heart-icon",
+      "type": "registry:ui",
+      "title": "Heart Icon",
+      "description": "Heart icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/heart/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/heart.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "like",
+          "love",
+          "emotion",
+          "suit",
+          "playing",
+          "cards"
+        ]
+      }
+    },
+    {
+      "name": "house-wifi-icon",
+      "type": "registry:ui",
+      "title": "House Wifi Icon",
+      "description": "House wifi icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/house-wifi/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/house-wifi.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "home",
+          "living",
+          "building",
+          "wifi",
+          "connectivity"
+        ]
+      }
+    },
+    {
+      "name": "icon",
+      "type": "registry:ui",
+      "title": "Icon",
+      "description": "Base component to use animated icons.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/icon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kanban-icon",
+      "type": "registry:ui",
+      "title": "Kanban Icon",
+      "description": "Kanban icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/kanban/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/kanban.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "projects",
+          "manage",
+          "overview",
+          "board",
+          "tickets",
+          "issues",
+          "roadmap",
+          "plan",
+          "intentions",
+          "productivity",
+          "work",
+          "agile",
+          "code",
+          "coding"
+        ]
+      }
+    },
+    {
+      "name": "layers-icon",
+      "type": "registry:ui",
+      "title": "Layers Icon",
+      "description": "Layers icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/layers/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/layers.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "stack",
+          "pile",
+          "pages",
+          "sheets",
+          "paperwork",
+          "copies",
+          "copy"
+        ]
+      }
+    },
+    {
+      "name": "layers-2-icon",
+      "type": "registry:ui",
+      "title": "Layers 2 Icon",
+      "description": "Layers 2 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/layers-2/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/layers-2.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "stack",
+          "pile",
+          "pages",
+          "sheets",
+          "paperwork",
+          "copies",
+          "copy",
+          "duplicate",
+          "double",
+          "shortcuts"
+        ]
+      }
+    },
+    {
+      "name": "layout-dashboard-icon",
+      "type": "registry:ui",
+      "title": "Layout Dashboard Icon",
+      "description": "Layout dashboard icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/layout-dashboard/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/layout-dashboard.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "masonry",
+          "brick"
+        ]
+      }
+    },
+    {
+      "name": "lightbulb-icon",
+      "type": "registry:ui",
+      "title": "Lightbulb Icon",
+      "description": "Lightbulb icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lightbulb/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lightbulb.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "idea",
+          "bright",
+          "lights"
+        ]
+      }
+    },
+    {
+      "name": "lightbulb-off-icon",
+      "type": "registry:ui",
+      "title": "Lightbulb Off Icon",
+      "description": "Lightbulb off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lightbulb-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lightbulb-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "lights"
+        ]
+      }
+    },
+    {
+      "name": "loader-icon",
+      "type": "registry:ui",
+      "title": "Loader Icon",
+      "description": "Loader icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/loader/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/loader.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "loading",
+          "wait",
+          "busy",
+          "progress",
+          "throbber",
+          "spinner",
+          "spinning"
+        ]
+      }
+    },
+    {
+      "name": "loader-circle-icon",
+      "type": "registry:ui",
+      "title": "Loader Circle Icon",
+      "description": "Loader circle icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/loader-circle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/loader-circle.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "loading",
+          "wait",
+          "busy",
+          "progress",
+          "throbber",
+          "spinner",
+          "spinning",
+          "circle"
+        ]
+      }
+    },
+    {
+      "name": "loader-pinwheel-icon",
+      "type": "registry:ui",
+      "title": "Loader Pinwheel Icon",
+      "description": "Loader pinwheel icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/loader-pinwheel/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/loader-pinwheel.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "loading",
+          "wait",
+          "busy",
+          "progress",
+          "throbber",
+          "spinner",
+          "spinning",
+          "beach ball",
+          "frozen",
+          "freeze"
+        ]
+      }
+    },
+    {
+      "name": "log-in-icon",
+      "type": "registry:ui",
+      "title": "Log In Icon",
+      "description": "Log in icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/log-in/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/log-in.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "sign in",
+          "arrow",
+          "enter",
+          "auth"
+        ]
+      }
+    },
+    {
+      "name": "log-out-icon",
+      "type": "registry:ui",
+      "title": "Log Out Icon",
+      "description": "Log out icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/log-out/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/log-out.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "sign out",
+          "arrow",
+          "exit",
+          "auth"
+        ]
+      }
+    },
+    {
+      "name": "map-pin-icon",
+      "type": "registry:ui",
+      "title": "Map Pin Icon",
+      "description": "Map pin icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/map-pin/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/map-pin.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "map",
+          "pin",
+          "location",
+          "waypoint",
+          "marker",
+          "drop"
+        ]
+      }
+    },
+    {
+      "name": "map-pin-off-icon",
+      "type": "registry:ui",
+      "title": "Map Pin Off Icon",
+      "description": "Map pin off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/map-pin-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/map-pin-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "location",
+          "waypoint",
+          "marker",
+          "remove"
+        ]
+      }
+    },
+    {
+      "name": "maximize-icon",
+      "type": "registry:ui",
+      "title": "Maximize Icon",
+      "description": "Maximize icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/maximize/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/maximize.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "fullscreen",
+          "expand",
+          "dashed"
+        ]
+      }
+    },
+    {
+      "name": "menu-icon",
+      "type": "registry:ui",
+      "title": "Menu Icon",
+      "description": "Menu icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/menu/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/menu.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "bars",
+          "navigation",
+          "hamburger",
+          "options"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Icon",
+      "description": "Message circle icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-code-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Code Icon",
+      "description": "Message circle code icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-code/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-code.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "code review",
+          "coding"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-dashed-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Dashed Icon",
+      "description": "Message circle dashed icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-dashed/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-dashed.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "draft"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-heart-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Heart Icon",
+      "description": "Message circle heart icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-heart/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-heart.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "positive",
+          "like",
+          "love",
+          "interest",
+          "valentine",
+          "dating",
+          "date",
+          "speech bubble"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-more-icon",
+      "type": "registry:ui",
+      "title": "Message Circle More Icon",
+      "description": "Message circle more icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-more/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-more.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "typing",
+          "writing",
+          "responding",
+          "ellipsis",
+          "etc",
+          "et cetera",
+          "..."
+        ]
+      }
+    },
+    {
+      "name": "message-circle-off-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Off Icon",
+      "description": "Message circle off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "clear",
+          "close",
+          "delete",
+          "remove",
+          "cancel",
+          "silence",
+          "mute",
+          "moderate"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-plus-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Plus Icon",
+      "description": "Message circle plus icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-plus/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-plus.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "add"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-question-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Question Icon",
+      "description": "Message circle question icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-question/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-question.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "help"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-warning-icon",
+      "type": "registry:ui",
+      "title": "Message Circle Warning Icon",
+      "description": "Message circle warning icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-warning/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-warning.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "report",
+          "abuse",
+          "offense",
+          "alert",
+          "danger",
+          "caution",
+          "protected",
+          "exclamation mark"
+        ]
+      }
+    },
+    {
+      "name": "message-circle-x-icon",
+      "type": "registry:ui",
+      "title": "Message Circle X Icon",
+      "description": "Message circle x icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-circle-x/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-circle-x.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "clear",
+          "close",
+          "delete",
+          "remove",
+          "cancel",
+          "silence",
+          "mute",
+          "moderate"
+        ]
+      }
+    },
+    {
+      "name": "message-square-icon",
+      "type": "registry:ui",
+      "title": "Message Square Icon",
+      "description": "Message square icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble"
+        ]
+      }
+    },
+    {
+      "name": "message-square-code-icon",
+      "type": "registry:ui",
+      "title": "Message Square Code Icon",
+      "description": "Message square code icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-code/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-code.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "code review",
+          "coding"
+        ]
+      }
+    },
+    {
+      "name": "message-square-dashed-icon",
+      "type": "registry:ui",
+      "title": "Message Square Dashed Icon",
+      "description": "Message square dashed icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-dashed/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-dashed.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "draft"
+        ]
+      }
+    },
+    {
+      "name": "message-square-diff-icon",
+      "type": "registry:ui",
+      "title": "Message Square Diff Icon",
+      "description": "Message square diff icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-diff/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-diff.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "add",
+          "patch",
+          "difference",
+          "plus",
+          "minus",
+          "plus-minus",
+          "math",
+          "code review",
+          "coding",
+          "version control",
+          "git"
+        ]
+      }
+    },
+    {
+      "name": "message-square-dot-icon",
+      "type": "registry:ui",
+      "title": "Message Square Dot Icon",
+      "description": "Message square dot icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-dot/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-dot.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "unread",
+          "unresolved",
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble"
+        ]
+      }
+    },
+    {
+      "name": "message-square-heart-icon",
+      "type": "registry:ui",
+      "title": "Message Square Heart Icon",
+      "description": "Message square heart icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-heart/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-heart.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "positive",
+          "like",
+          "love",
+          "interest",
+          "valentine",
+          "dating",
+          "date",
+          "speech bubble"
+        ]
+      }
+    },
+    {
+      "name": "message-square-more-icon",
+      "type": "registry:ui",
+      "title": "Message Square More Icon",
+      "description": "Message square more icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-more/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-more.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "typing",
+          "writing",
+          "responding",
+          "ellipsis",
+          "etc",
+          "et cetera",
+          "..."
+        ]
+      }
+    },
+    {
+      "name": "message-square-off-icon",
+      "type": "registry:ui",
+      "title": "Message Square Off Icon",
+      "description": "Message square off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "clear",
+          "close",
+          "delete",
+          "remove",
+          "cancel",
+          "silence",
+          "mute",
+          "moderate"
+        ]
+      }
+    },
+    {
+      "name": "message-square-plus-icon",
+      "type": "registry:ui",
+      "title": "Message Square Plus Icon",
+      "description": "Message square plus icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-plus/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-plus.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "add"
+        ]
+      }
+    },
+    {
+      "name": "message-square-quote-icon",
+      "type": "registry:ui",
+      "title": "Message Square Quote Icon",
+      "description": "Message square quote icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-quote/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-quote.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "blockquote",
+          "quotation",
+          "indent",
+          "reply",
+          "response"
+        ]
+      }
+    },
+    {
+      "name": "message-square-share-icon",
+      "type": "registry:ui",
+      "title": "Message Square Share Icon",
+      "description": "Message square share icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-share/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-share.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "network",
+          "forward"
+        ]
+      }
+    },
+    {
+      "name": "message-square-text-icon",
+      "type": "registry:ui",
+      "title": "Message Square Text Icon",
+      "description": "Message square text icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-text/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-text.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble"
+        ]
+      }
+    },
+    {
+      "name": "message-square-warning-icon",
+      "type": "registry:ui",
+      "title": "Message Square Warning Icon",
+      "description": "Message square warning icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-warning/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-warning.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "report",
+          "abuse",
+          "offense",
+          "alert",
+          "danger",
+          "caution",
+          "protected",
+          "exclamation mark"
+        ]
+      }
+    },
+    {
+      "name": "message-square-x-icon",
+      "type": "registry:ui",
+      "title": "Message Square X Icon",
+      "description": "Message square x icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/message-square-x/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/message-square-x.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "comment",
+          "chat",
+          "conversation",
+          "dialog",
+          "feedback",
+          "speech bubble",
+          "clear",
+          "close",
+          "delete",
+          "remove",
+          "cancel",
+          "silence",
+          "mute",
+          "moderate"
+        ]
+      }
+    },
+    {
+      "name": "minimize-icon",
+      "type": "registry:ui",
+      "title": "Minimize Icon",
+      "description": "Minimize icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/minimize/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/minimize.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "exit fullscreen",
+          "close",
+          "shrink"
+        ]
+      }
+    },
+    {
+      "name": "move-down-icon",
+      "type": "registry:ui",
+      "title": "Move Down Icon",
+      "description": "Move down icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/move-down/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/move-down.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "move",
+          "arrow",
+          "down",
+          "direction",
+          "south",
+          "↓"
+        ]
+      }
+    },
+    {
+      "name": "move-left-icon",
+      "type": "registry:ui",
+      "title": "Move Left Icon",
+      "description": "Move left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/move-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/move-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "move",
+          "arrow",
+          "left",
+          "back",
+          "previous",
+          "direction",
+          "east",
+          "<-"
+        ]
+      }
+    },
+    {
+      "name": "move-right-icon",
+      "type": "registry:ui",
+      "title": "Move Right Icon",
+      "description": "Move right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/move-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/move-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "move",
+          "arrow",
+          "right",
+          "forward",
+          "next",
+          "direction",
+          "east",
+          "->"
+        ]
+      }
+    },
+    {
+      "name": "move-up-icon",
+      "type": "registry:ui",
+      "title": "Move Up Icon",
+      "description": "Move up icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/move-up/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/move-up.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "move",
+          "arrow",
+          "up",
+          "direction",
+          "north",
+          "↑"
+        ]
+      }
+    },
+    {
+      "name": "paintbrush-icon",
+      "type": "registry:ui",
+      "title": "Paintbrush Icon",
+      "description": "Paintbrush icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/paintbrush/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/paintbrush.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "brush",
+          "paintbrush",
+          "design",
+          "color",
+          "colour",
+          "decoration",
+          "diy"
+        ]
+      }
+    },
+    {
+      "name": "panel-bottom-icon",
+      "type": "registry:ui",
+      "title": "Panel Bottom Icon",
+      "description": "Panel bottom icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/panel-bottom/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/panel-bottom.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "sidebar",
+          "panel",
+          "bottom",
+          "menu",
+          "drawer",
+          "navigation"
+        ]
+      }
+    },
+    {
+      "name": "panel-left-icon",
+      "type": "registry:ui",
+      "title": "Panel Left Icon",
+      "description": "Panel left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/panel-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/panel-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "sidebar",
+          "panel",
+          "left",
+          "menu",
+          "drawer",
+          "navigation"
+        ]
+      }
+    },
+    {
+      "name": "panel-right-icon",
+      "type": "registry:ui",
+      "title": "Panel Right Icon",
+      "description": "Panel right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/panel-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/panel-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "sidebar",
+          "panel",
+          "right",
+          "menu",
+          "drawer",
+          "navigation"
+        ]
+      }
+    },
+    {
+      "name": "panel-top-icon",
+      "type": "registry:ui",
+      "title": "Panel Top Icon",
+      "description": "Panel top icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/panel-top/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/panel-top.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "sidebar",
+          "panel",
+          "top",
+          "menu",
+          "drawer",
+          "navigation"
+        ]
+      }
+    },
+    {
+      "name": "pause-icon",
+      "type": "registry:ui",
+      "title": "Pause Icon",
+      "description": "Pause icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/pause/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/pause.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "music",
+          "stop"
+        ]
+      }
+    },
+    {
+      "name": "pickaxe-icon",
+      "type": "registry:ui",
+      "title": "Pickaxe Icon",
+      "description": "Pickaxe icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/pickaxe/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/pickaxe.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "mining",
+          "mine",
+          "land worker",
+          "extraction",
+          "labor",
+          "construction",
+          "progress",
+          "advancement",
+          "crafting"
+        ]
+      }
+    },
+    {
+      "name": "pin-icon",
+      "type": "registry:ui",
+      "title": "Pin Icon",
+      "description": "Pin icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/pin/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/pin.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "pin",
+          "map",
+          "location",
+          "lock",
+          "fixed",
+          "anchor"
+        ]
+      }
+    },
+    {
+      "name": "pin-off-icon",
+      "type": "registry:ui",
+      "title": "Pin Off Icon",
+      "description": "Pin off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/pin-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/pin-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "unpin",
+          "map",
+          "unlock",
+          "unfix",
+          "unsave",
+          "remove"
+        ]
+      }
+    },
+    {
+      "name": "play-icon",
+      "type": "registry:ui",
+      "title": "Play Icon",
+      "description": "Play icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/play/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/play.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "music",
+          "audio",
+          "video",
+          "start",
+          "run"
+        ]
+      }
+    },
+    {
+      "name": "plus-icon",
+      "type": "registry:ui",
+      "title": "Plus Icon",
+      "description": "Plus icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/plus/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/plus.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "plus",
+          "add",
+          "sum",
+          "addition",
+          "math",
+          "maths",
+          "new",
+          "+",
+          "increase",
+          "positive",
+          "calculate"
+        ]
+      }
+    },
+    {
+      "name": "refresh-ccw-icon",
+      "type": "registry:ui",
+      "title": "Refresh Ccw Icon",
+      "description": "Refresh ccw icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/refresh-ccw/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/refresh-ccw.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrows",
+          "synchronise",
+          "reload",
+          "rerun",
+          "circular",
+          "cycle"
+        ]
+      }
+    },
+    {
+      "name": "refresh-ccw-dot-icon",
+      "type": "registry:ui",
+      "title": "Refresh Ccw Dot Icon",
+      "description": "Refresh ccw dot icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/refresh-ccw-dot/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/refresh-ccw-dot.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrows",
+          "synchronise",
+          "reload",
+          "rerun",
+          "circular",
+          "cycle",
+          "issue",
+          "code",
+          "coding",
+          "version control"
+        ]
+      }
+    },
+    {
+      "name": "refresh-cw-icon",
+      "type": "registry:ui",
+      "title": "Refresh Cw Icon",
+      "description": "Refresh cw icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/refresh-cw/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/refresh-cw.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrows",
+          "synchronise",
+          "reload",
+          "rerun",
+          "circular",
+          "cycle"
+        ]
+      }
+    },
+    {
+      "name": "refresh-cw-off-icon",
+      "type": "registry:ui",
+      "title": "Refresh Cw Off Icon",
+      "description": "Refresh cw off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/refresh-cw-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/refresh-cw-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrows",
+          "synchronise",
+          "reload",
+          "rerun",
+          "circular",
+          "cycle",
+          "cancel",
+          "no",
+          "stop",
+          "error",
+          "disconnect",
+          "ignore"
+        ]
+      }
+    },
+    {
+      "name": "rotate-ccw-icon",
+      "type": "registry:ui",
+      "title": "Rotate Ccw Icon",
+      "description": "Rotate ccw icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/rotate-ccw/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/rotate-ccw.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrow",
+          "left",
+          "counter-clockwise",
+          "restart",
+          "reload",
+          "rerun",
+          "refresh",
+          "backup",
+          "undo",
+          "replay",
+          "redo",
+          "retry",
+          "rewind",
+          "reverse"
+        ]
+      }
+    },
+    {
+      "name": "rotate-cw-icon",
+      "type": "registry:ui",
+      "title": "Rotate Cw Icon",
+      "description": "Rotate cw icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/rotate-cw/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/rotate-cw.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrow",
+          "right",
+          "clockwise",
+          "refresh",
+          "reload",
+          "rerun",
+          "redo"
+        ]
+      }
+    },
+    {
+      "name": "search-icon",
+      "type": "registry:ui",
+      "title": "Search Icon",
+      "description": "Search icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/search/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/search.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "find",
+          "scan",
+          "magnifier",
+          "magnifying glass",
+          "lens"
+        ]
+      }
+    },
+    {
+      "name": "send-icon",
+      "type": "registry:ui",
+      "title": "Send Icon",
+      "description": "Send icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/send/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/send.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "send",
+          "email",
+          "message",
+          "mail",
+          "paper aeroplane",
+          "submit"
+        ]
+      }
+    },
+    {
+      "name": "send-horizontal-icon",
+      "type": "registry:ui",
+      "title": "Send Horizontal Icon",
+      "description": "Send horizontal icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/send-horizontal/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/send-horizontal.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "send",
+          "email",
+          "message",
+          "mail",
+          "paper aeroplane",
+          "submit"
+        ]
+      }
+    },
+    {
+      "name": "settings-icon",
+      "type": "registry:ui",
+      "title": "Settings Icon",
+      "description": "Settings icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/settings/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/settings.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "cog",
+          "edit",
+          "gear",
+          "preferences"
+        ]
+      }
+    },
+    {
+      "name": "shrink-icon",
+      "type": "registry:ui",
+      "title": "Shrink Icon",
+      "description": "Shrink icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/shrink/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/shrink.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "scale",
+          "fullscreen",
+          "maximize",
+          "minimize",
+          "contract"
+        ]
+      }
+    },
+    {
+      "name": "square-arrow-out-down-left-icon",
+      "type": "registry:ui",
+      "title": "Square Arrow Out Down Left Icon",
+      "description": "Square arrow out down left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-arrow-out-down-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-arrow-out-down-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "outwards",
+          "direction",
+          "south-west",
+          "diagonal"
+        ]
+      }
+    },
+    {
+      "name": "square-arrow-out-down-right-icon",
+      "type": "registry:ui",
+      "title": "Square Arrow Out Down Right Icon",
+      "description": "Square arrow out down right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-arrow-out-down-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-arrow-out-down-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "outwards",
+          "direction",
+          "south-east",
+          "diagonal"
+        ]
+      }
+    },
+    {
+      "name": "square-arrow-out-up-left-icon",
+      "type": "registry:ui",
+      "title": "Square Arrow Out Up Left Icon",
+      "description": "Square arrow out up left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-arrow-out-up-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-arrow-out-up-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "outwards",
+          "direction",
+          "north-west",
+          "diagonal"
+        ]
+      }
+    },
+    {
+      "name": "square-arrow-out-up-right-icon",
+      "type": "registry:ui",
+      "title": "Square Arrow Out Up Right Icon",
+      "description": "Square arrow out up right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-arrow-out-up-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-arrow-out-up-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "outwards",
+          "direction",
+          "north-east",
+          "diagonal",
+          "share",
+          "open",
+          "external",
+          "link"
+        ]
+      }
+    },
+    {
+      "name": "square-dashed-kanban-icon",
+      "type": "registry:ui",
+      "title": "Square Dashed Kanban Icon",
+      "description": "Square Dashed Kanban icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-dashed-kanban/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-dashed-kanban.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "projects",
+          "manage",
+          "overview",
+          "board",
+          "tickets",
+          "issues",
+          "roadmap",
+          "plan",
+          "intentions",
+          "productivity",
+          "work",
+          "agile",
+          "code",
+          "coding"
+        ]
+      }
+    },
+    {
+      "name": "square-kanban-icon",
+      "type": "registry:ui",
+      "title": "Square Kanban Icon",
+      "description": "Square Kanban icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-kanban/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-kanban.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "projects",
+          "manage",
+          "overview",
+          "board",
+          "tickets",
+          "issues",
+          "roadmap",
+          "plan",
+          "intentions",
+          "productivity",
+          "work",
+          "agile",
+          "code",
+          "coding"
+        ]
+      }
+    },
+    {
+      "name": "square-plus-icon",
+      "type": "registry:ui",
+      "title": "Square Plus Icon",
+      "description": "Square plus icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-plus/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-plus.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "square",
+          "rect",
+          "plus",
+          "add",
+          "sum",
+          "addition",
+          "math",
+          "maths",
+          "new",
+          "+",
+          "increase",
+          "positive",
+          "calculate"
+        ]
+      }
+    },
+    {
+      "name": "square-x-icon",
+      "type": "registry:ui",
+      "title": "Square X Icon",
+      "description": "Square x icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/square-x/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/square-x.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "square",
+          "x",
+          "cross",
+          "delete",
+          "close",
+          "cancel",
+          "remove",
+          "clear",
+          "math",
+          "multiply",
+          "multiplication"
+        ]
+      }
+    },
+    {
+      "name": "star-icon",
+      "type": "registry:ui",
+      "title": "Star Icon",
+      "description": "Star icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/star/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/star.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "bookmark",
+          "favorite",
+          "like",
+          "review",
+          "rating"
+        ]
+      }
+    },
+    {
+      "name": "thumbs-down-icon",
+      "type": "registry:ui",
+      "title": "Thumbs Down Icon",
+      "description": "Thumbs down icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/thumbs-down/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/thumbs-down.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "dislike",
+          "bad",
+          "emotion"
+        ]
+      }
+    },
+    {
+      "name": "thumbs-up-icon",
+      "type": "registry:ui",
+      "title": "Thumbs Up Icon",
+      "description": "Thumbs up icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/thumbs-up/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/thumbs-up.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "like",
+          "good",
+          "emotion"
+        ]
+      }
+    },
+    {
+      "name": "timer-icon",
+      "type": "registry:ui",
+      "title": "Timer Icon",
+      "description": "Timer icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/timer/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/timer.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "time",
+          "timer",
+          "stopwatch"
+        ]
+      }
+    },
+    {
+      "name": "timer-off-icon",
+      "type": "registry:ui",
+      "title": "Timer Off Icon",
+      "description": "Timer off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/timer-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/timer-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "time",
+          "timer",
+          "stopwatch"
+        ]
+      }
+    },
+    {
+      "name": "toggle-left-icon",
+      "type": "registry:ui",
+      "title": "Toggle Left Icon",
+      "description": "Toggle left icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/toggle-left/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/toggle-left.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "on",
+          "off",
+          "switch",
+          "boolean"
+        ]
+      }
+    },
+    {
+      "name": "toggle-right-icon",
+      "type": "registry:ui",
+      "title": "Toggle Right Icon",
+      "description": "Toggle right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/toggle-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/toggle-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "on",
+          "off",
+          "switch",
+          "boolean"
+        ]
+      }
+    },
+    {
+      "name": "trash-icon",
+      "type": "registry:ui",
+      "title": "Trash Icon",
+      "description": "Trash icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/trash/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/trash.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "garbage",
+          "delete",
+          "remove",
+          "bin"
+        ]
+      }
+    },
+    {
+      "name": "trash-2-icon",
+      "type": "registry:ui",
+      "title": "Trash 2 Icon",
+      "description": "Trash 2 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/trash-2/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/trash-2.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "garbage",
+          "delete",
+          "remove",
+          "bin"
+        ]
+      }
+    },
+    {
+      "name": "upload-icon",
+      "type": "registry:ui",
+      "title": "Upload Icon",
+      "description": "Upload icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/upload/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/upload.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "file"
+        ]
+      }
+    },
+    {
+      "name": "user-icon",
+      "type": "registry:ui",
+      "title": "User Icon",
+      "description": "User icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/user/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/user.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "person",
+          "account",
+          "contact"
+        ]
+      }
+    },
+    {
+      "name": "user-round-icon",
+      "type": "registry:ui",
+      "title": "User Round Icon",
+      "description": "User round icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/user-round/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/user-round.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "person",
+          "account",
+          "contact"
+        ]
+      }
+    },
+    {
+      "name": "users-icon",
+      "type": "registry:ui",
+      "title": "Users Icon",
+      "description": "Users icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/users/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/users.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "group",
+          "people"
+        ]
+      }
+    },
+    {
+      "name": "users-round-icon",
+      "type": "registry:ui",
+      "title": "Users Round Icon",
+      "description": "Users round icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/users-round/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/users-round.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "group",
+          "people"
+        ]
+      }
+    },
+    {
+      "name": "volume-1-icon",
+      "type": "registry:ui",
+      "title": "Volume 1 Icon",
+      "description": "Volume 1 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/volume-1/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/volume-1.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "music",
+          "sound",
+          "speaker"
+        ]
+      }
+    },
+    {
+      "name": "volume-2-icon",
+      "type": "registry:ui",
+      "title": "Volume 2 Icon",
+      "description": "Volume 2 icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/volume-2/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/volume-2.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "music",
+          "sound",
+          "speaker"
+        ]
+      }
+    },
+    {
+      "name": "volume-off-icon",
+      "type": "registry:ui",
+      "title": "Volume Off Icon",
+      "description": "Volume off icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/volume-off/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/volume-off.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "music",
+          "sound",
+          "mute",
+          "speaker"
+        ]
+      }
+    },
+    {
+      "name": "wifi-icon",
+      "type": "registry:ui",
+      "title": "Wifi Icon",
+      "description": "Wifi icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/wifi/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/wifi.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "connection",
+          "signal",
+          "wireless"
+        ]
+      }
+    },
+    {
+      "name": "wifi-high-icon",
+      "type": "registry:ui",
+      "title": "Wifi High Icon",
+      "description": "Wifi high icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/wifi-high/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/wifi-high.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "connection",
+          "signal",
+          "wireless"
+        ]
+      }
+    },
+    {
+      "name": "wifi-low-icon",
+      "type": "registry:ui",
+      "title": "Wifi Low Icon",
+      "description": "Wifi low icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/wifi-low/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/wifi-low.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "connection",
+          "signal",
+          "wireless"
+        ]
+      }
+    },
+    {
+      "name": "x-icon",
+      "type": "registry:ui",
+      "title": "X Icon",
+      "description": "X icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/x/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/x.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "cross",
+          "x",
+          "delete",
+          "close",
+          "cancel",
+          "remove",
+          "clear",
+          "math",
+          "multiply",
+          "multiplication"
+        ]
+      }
+    },
+    {
       "name": "radix-accordion",
       "type": "registry:ui",
       "title": "Radix Accordion",

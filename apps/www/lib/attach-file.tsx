@@ -37,6 +37,17 @@ export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
     );
   }
 
+  if ('alpha' in data && typeof data.alpha === 'boolean' && data.alpha) {
+    node.name = (
+      <Badge
+        name={node.name}
+        className="bg-gradient-to-br from-purple-500 to-fuchsia-500"
+      >
+        alpha
+      </Badge>
+    );
+  }
+
   if (
     'deprecated' in data &&
     typeof data.deprecated === 'boolean' &&

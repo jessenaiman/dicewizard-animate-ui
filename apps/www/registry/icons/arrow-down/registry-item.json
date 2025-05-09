@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "arrow-down-icon",
+  "type": "registry:ui",
+  "title": "Arrow Down Icon",
+  "description": "Arrow down icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/arrow-down/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/arrow-down.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": ["arrow", "down", "backward", "direction", "south"]
+  }
+}

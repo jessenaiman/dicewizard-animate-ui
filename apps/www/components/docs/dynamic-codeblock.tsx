@@ -12,10 +12,12 @@ const getComponents = ({
   title,
   icon,
   onCopy,
+  className,
 }: {
   title?: string;
   icon?: React.ReactNode;
   onCopy?: () => void;
+  className?: string;
 }) =>
   ({
     pre(props) {
@@ -25,7 +27,7 @@ const getComponents = ({
           title={title}
           icon={icon}
           onCopy={onCopy}
-          className={cn('my-0', props.className)}
+          className={cn('my-0', props.className, className)}
         >
           <Pre>{props.children}</Pre>
         </CodeBlock>
@@ -40,6 +42,7 @@ export function DynamicCodeBlock({
   title,
   icon,
   onCopy,
+  className,
 }: {
   lang: string;
   code: string;
@@ -47,8 +50,9 @@ export function DynamicCodeBlock({
   icon?: React.ReactNode;
   onCopy?: () => void;
   options?: Omit<HighlightOptionsCommon, 'lang'> & HighlightOptionsThemes;
+  className?: string;
 }) {
-  const components = getComponents({ title, icon, onCopy });
+  const components = getComponents({ title, icon, onCopy, className });
 
   return useShiki(code, {
     lang,
