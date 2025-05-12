@@ -8,7 +8,7 @@
     "radix-ui",
     "class-variance-authority",
     "lucide-react",
-    "motion/react"
+    "motion"
   ],
   "registryDependencies": [
     "https://animate-ui.com/r/radix-sheet",
