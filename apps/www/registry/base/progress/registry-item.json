@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-progress",
+  "type": "registry:ui",
+  "title": "Base Progress",
+  "description": "Displays the status of a task that takes a long time.",
+  "dependencies": ["motion", "@base-ui-components/react"],
+  "registryDependencies": ["https://animate-ui.com/r/counting-number"],
+  "files": [
+    {
+      "path": "registry/base/progress/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/base/progress.tsx"
+    }
+  ]
+}

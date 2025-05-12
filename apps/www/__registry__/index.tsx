@@ -281,6 +281,71 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/base-popover',
   },
+  'base-preview-card': {
+    name: 'base-preview-card',
+    description:
+      'A popup that appears when a link is hovered, showing a preview for sighted users.',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/base/preview-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/base/preview-card.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { PreviewCard as PreviewCardPrimitives } from '@base-ui-components/react/preview-card';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype PreviewCardContextType = {\n  isOpen: boolean;\n};\n\nconst PreviewCardContext = React.createContext<\n  PreviewCardContextType | undefined\n>(undefined);\n\nconst usePreviewCard = (): PreviewCardContextType => {\n  const context = React.useContext(PreviewCardContext);\n  if (!context) {\n    throw new Error('usePreviewCard must be used within a PreviewCard');\n  }\n  return context;\n};\n\ntype Side = React.ComponentPropsWithoutRef<\n  typeof PreviewCardPrimitives.Positioner\n>['side'];\n\ntype Align = React.ComponentPropsWithoutRef<\n  typeof PreviewCardPrimitives.Positioner\n>['align'];\n\nconst getInitialPosition = (side: Side) => {\n  switch (side) {\n    case 'top':\n      return { y: 15 };\n    case 'bottom':\n      return { y: -15 };\n    case 'left':\n    case 'inline-start':\n      return { x: 15 };\n    case 'right':\n    case 'inline-end':\n      return { x: -15 };\n  }\n};\n\ntype PreviewCardProps = React.ComponentProps<typeof PreviewCardPrimitives.Root>;\n\nfunction PreviewCard(props: PreviewCardProps) {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (\n      open: boolean,\n      event: Event | undefined,\n      reason: Parameters<NonNullable<PreviewCardProps['onOpenChange']>>[2],\n    ) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open, event, reason);\n    },\n    [props],\n  );\n\n  return (\n    <PreviewCardContext.Provider value={{ isOpen }}>\n      <PreviewCardPrimitives.Root\n        data-slot=\"preview-card\"\n        {...props}\n        onOpenChange={handleOpenChange}\n      />\n    </PreviewCardContext.Provider>\n  );\n}\n\ntype PreviewCardTriggerProps = React.ComponentProps<\n  typeof PreviewCardPrimitives.Trigger\n>;\n\nfunction PreviewCardTrigger(props: PreviewCardTriggerProps) {\n  return (\n    <PreviewCardPrimitives.Trigger\n      data-slot=\"preview-card-trigger\"\n      {...props}\n    />\n  );\n}\n\ntype PreviewCardContentProps = React.ComponentProps<\n  typeof PreviewCardPrimitives.Positioner\n> & {\n  transition?: Transition;\n  popupProps?: typeof PreviewCardPrimitives.Popup;\n  motionProps?: HTMLMotionProps<'div'>;\n  positionerClassName?: string;\n};\n\nfunction PreviewCardContent({\n  className,\n  popupProps,\n  motionProps,\n  positionerClassName,\n  side = 'bottom',\n  sideOffset = 10,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  children,\n  ...props\n}: PreviewCardContentProps) {\n  const { isOpen } = usePreviewCard();\n  const initialPosition = getInitialPosition(side);\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <PreviewCardPrimitives.Portal\n          keepMounted\n          data-slot=\"preview-card-portal\"\n        >\n          <PreviewCardPrimitives.Positioner\n            data-slot=\"preview-card-positioner\"\n            side={side}\n            sideOffset={sideOffset}\n            className={cn('z-50', positionerClassName)}\n            {...props}\n          >\n            <PreviewCardPrimitives.Popup\n              data-slot=\"preview-card-popup\"\n              {...popupProps}\n              className={cn(\n                'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                className,\n              )}\n              render={\n                <motion.div\n                  key=\"preview-card-content\"\n                  initial={{ opacity: 0, scale: 0.5, ...initialPosition }}\n                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n                  exit={{ opacity: 0, scale: 0.5, ...initialPosition }}\n                  transition={transition}\n                  {...motionProps}\n                />\n              }\n            >\n              {children}\n            </PreviewCardPrimitives.Popup>\n          </PreviewCardPrimitives.Positioner>\n        </PreviewCardPrimitives.Portal>\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  PreviewCard,\n  PreviewCardTrigger,\n  PreviewCardContent,\n  usePreviewCard,\n  type PreviewCardProps,\n  type PreviewCardTriggerProps,\n  type PreviewCardContentProps,\n  type Side,\n  type Align,\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/preview-card/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-preview-card';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-preview-card',
+  },
+  'base-progress': {
+    name: 'base-progress',
+    description: 'Displays the status of a task that takes a long time.',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/counting-number'],
+    files: [
+      {
+        path: 'registry/base/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/base/progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitives } from '@base-ui-components/react/progress';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  CountingNumber,\n  type CountingNumberProps,\n} from '@/components/animate-ui/text/counting-number';\n\ntype ProgressContextType = {\n  value: number | null;\n};\n\nconst ProgressContext = React.createContext<ProgressContextType | undefined>(\n  undefined,\n);\n\nconst useProgress = (): ProgressContextType => {\n  const context = React.useContext(ProgressContext);\n  if (!context) {\n    throw new Error('useProgress must be used within a Progress');\n  }\n  return context;\n};\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitives.Root>;\n\nconst Progress = ({ value, ...props }: ProgressProps) => {\n  return (\n    <ProgressContext.Provider value={{ value }}>\n      <ProgressPrimitives.Root data-slot=\"progress\" value={value} {...props}>\n        {props.children}\n      </ProgressPrimitives.Root>\n    </ProgressContext.Provider>\n  );\n};\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitives.Indicator);\n\ntype ProgressTrackProps = React.ComponentProps<\n  typeof ProgressPrimitives.Track\n> & {\n  transition?: Transition;\n};\n\nfunction ProgressTrack({\n  className,\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressTrackProps) {\n  const { value } = useProgress();\n\n  return (\n    <ProgressPrimitives.Track\n      data-slot=\"progress-track\"\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      {...props}\n    >\n      <MotionProgressIndicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary rounded-full\"\n        animate={{ width: `${value}%` }}\n        transition={transition}\n      />\n    </ProgressPrimitives.Track>\n  );\n}\n\ntype ProgressLabelProps = React.ComponentProps<typeof ProgressPrimitives.Label>;\n\nfunction ProgressLabel(props: ProgressLabelProps) {\n  return <ProgressPrimitives.Label data-slot=\"progress-label\" {...props} />;\n}\n\ntype ProgressValueProps = Omit<\n  React.ComponentProps<typeof ProgressPrimitives.Value>,\n  'render'\n> & {\n  countingNumberProps?: CountingNumberProps;\n};\n\nfunction ProgressValue({ countingNumberProps, ...props }: ProgressValueProps) {\n  const { value } = useProgress();\n\n  return (\n    <ProgressPrimitives.Value\n      data-slot=\"progress-value\"\n      render={\n        <CountingNumber\n          number={value ?? 0}\n          transition={{ stiffness: 80, damping: 20 }}\n          {...countingNumberProps}\n        />\n      }\n      {...props}\n    />\n  );\n}\n\nexport {\n  Progress,\n  ProgressTrack,\n  ProgressLabel,\n  ProgressValue,\n  useProgress,\n  type ProgressProps,\n  type ProgressTrackProps,\n  type ProgressLabelProps,\n  type ProgressValueProps,\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/progress/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-progress';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-progress',
+  },
   'base-switch': {
     name: 'base-switch',
     description: 'A control that indicates whether a setting is on or off.',
@@ -1317,6 +1382,94 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/base-popover-demo',
+  },
+  'base-preview-card-demo': {
+    name: 'base-preview-card-demo',
+    description: 'Demo showing a base preview card.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/base-preview-card'],
+    files: [
+      {
+        path: 'registry/demo/base/preview-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/demo/preview-card.tsx',
+        content:
+          'import {\n  PreviewCard,\n  PreviewCardTrigger,\n  PreviewCardContent,\n  type PreviewCardProps,\n  type PreviewCardContentProps,\n} from \'@/components/animate-ui/base/preview-card\';\n\ntype BasePreviewCardDemoProps = Pick<PreviewCardProps, \'delay\' | \'closeDelay\'> &\n  Pick<\n    PreviewCardContentProps,\n    \'side\' | \'sideOffset\' | \'align\' | \'alignOffset\'\n  >;\n\nexport const BasePreviewCardDemo = ({\n  delay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BasePreviewCardDemoProps) => {\n  return (\n    <PreviewCard delay={delay} closeDelay={closeDelay} defaultOpen>\n      <PreviewCardTrigger\n        render={\n          <a\n            className="size-12 rounded-full overflow-hidden border"\n            href="https://twitter.com/animate_ui"\n            target="_blank"\n            rel="noreferrer noopener"\n          >\n            <img\n              src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n              alt="Animate UI"\n            />\n          </a>\n        }\n      />\n      <PreviewCardContent\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className="w-80"\n      >\n        <div className="flex flex-col gap-4">\n          <img\n            className="size-16 rounded-full overflow-hidden border"\n            src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n            alt="Animate UI"\n          />\n          <div className="flex flex-col gap-4">\n            <div>\n              <div className="font-bold">Animate UI</div>\n              <div className="text-sm text-muted-foreground">@animate_ui</div>\n            </div>\n            <div className="text-sm text-muted-foreground">\n              A fully animated, open-source component distribution built with\n              React, TypeScript, Tailwind CSS, and Motion.\n            </div>\n            <div className="flex gap-4">\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">0</div>{\' \'}\n                <div className="text-muted-foreground">Following</div>\n              </div>\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">2,900</div>{\' \'}\n                <div className="text-muted-foreground">Followers</div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </PreviewCardContent>\n    </PreviewCard>\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/base/preview-card/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-preview-card-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        PreviewCard: {
+          delay: { value: 600, min: 0, max: 2000, step: 100 },
+          closeDelay: { value: 300, min: 0, max: 2000, step: 100 },
+        },
+        PreviewCardContent: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+              'inline-start': 'inline-start',
+              'inline-end': 'inline-end',
+            },
+          },
+          sideOffset: { value: 10 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-preview-card-demo',
+  },
+  'base-progress-demo': {
+    name: 'base-progress-demo',
+    description: 'Demo showing a base progress.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/base-progress'],
+    files: [
+      {
+        path: 'registry/demo/base/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/demo/progress.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  Progress,\n  ProgressLabel,\n  ProgressTrack,\n  ProgressValue,\n} from \'@/components/animate-ui/base/progress\';\n\nexport const BaseProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return (\n    <Progress value={progress} className="w-[300px] space-y-2">\n      <div className="flex items-center justify-between gap-1">\n        <ProgressLabel className="text-sm font-medium">\n          Export data\n        </ProgressLabel>\n        <span className="text-sm">\n          <ProgressValue /> %\n        </span>\n      </div>\n      <ProgressTrack />\n    </Progress>\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/base/progress/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-progress-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-progress-demo',
   },
   'base-switch-demo': {
     name: 'base-switch-demo',
@@ -3748,7 +3901,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/text/splitting.tsx',
         content:
-          'import { SplittingText } from \'@/components/animate-ui/text/splitting\';\n\nexport const SplittingTextDemo = () => {\n  return <SplittingText className="text-4xl" text="Splitting Text" />;\n};',
+          'import { SplittingText } from \'@/components/animate-ui/text/splitting\';\n\nexport const SplittingTextDemo = () => {\n  return (\n    <div className="flex flex-col gap-2 justify-center text-center">\n      <SplittingText\n        className="text-2xl"\n        text="Introducing Splitting Text component"\n      />\n      <SplittingText\n        className="text-base text-muted-foreground"\n        text="Made with Motion. Highly customizable and easy to use."\n        delay={2200}\n        type="words"\n      />\n    </div>\n  );\n};',
       },
     ],
     component: (function () {
@@ -4511,7 +4664,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix/progress.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root> & {\n  transition?: Transition;\n};\n\nfunction Progress({\n  className,\n  value,\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressProps) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      {...props}\n    >\n      <MotionProgressIndicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary\"\n        animate={{\n          translateX: `-${100 - (value || 0)}%`,\n        }}\n        transition={transition}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress, type ProgressProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root> & {\n  transition?: Transition;\n};\n\nfunction Progress({\n  className,\n  value,\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressProps) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      value={value}\n      {...props}\n    >\n      <MotionProgressIndicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary rounded-full\"\n        animate={{ translateX: `-${100 - (value || 0)}%` }}\n        transition={transition}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress, type ProgressProps };",
       },
     ],
     component: (function () {
@@ -4959,7 +5112,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/text/splitting.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  type Variants,\n  type TargetAndTransition,\n  type HTMLMotionProps,\n  useInView,\n  type UseInViewOptions,\n} from 'motion/react';\n\ntype DefaultSplittingTextProps = {\n  motionVariants?: {\n    initial?: Record<string, any>;\n    animate?: Record<string, any>;\n    transition?: Record<string, any>;\n    stagger?: number;\n  };\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n} & HTMLMotionProps<'div'>;\n\ntype CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'chars' | 'words';\n  text: string;\n};\n\ntype LinesSplittingTextProps = DefaultSplittingTextProps & {\n  type: 'lines';\n  text: string[];\n};\n\ntype SplittingTextProps =\n  | CharsOrWordsSplittingTextProps\n  | LinesSplittingTextProps;\n\nconst defaultItemVariant: Variants = {\n  hidden: { x: 150, opacity: 0 },\n  visible: {\n    x: 0,\n    opacity: 1,\n    transition: { duration: 0.7, ease: 'easeOut' },\n  },\n};\n\nexport const SplittingText: React.FC<SplittingTextProps> = ({\n  ref,\n  text,\n  type = 'chars',\n  motionVariants = {},\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}) => {\n  const items = React.useMemo<React.ReactNode[]>(() => {\n    if (Array.isArray(text)) {\n      return text.flatMap((line, i) => [\n        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,\n        i < text.length - 1 ? <br key={`br-${i}`} /> : null,\n      ]);\n    }\n\n    if (type === 'words') {\n      const tokens = text.match(/\\S+\\s*/g) || [];\n      return tokens.map((token, i) => (\n        <React.Fragment key={i}>{token}</React.Fragment>\n      ));\n    }\n\n    return text\n      .split('')\n      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);\n  }, [text, type]);\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        staggerChildren:\n          motionVariants.stagger ??\n          (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: {\n      ...defaultItemVariant.hidden,\n      ...(motionVariants.initial || {}),\n    },\n    visible: {\n      ...defaultItemVariant.visible,\n      ...(motionVariants.animate || {}),\n      transition: {\n        ...((defaultItemVariant.visible as TargetAndTransition).transition ||\n          {}),\n        ...(motionVariants.transition || {}),\n      },\n    },\n  };\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const inViewResult = useInView(localRef, {\n    once: inViewOnce,\n    margin: inViewMargin,\n  });\n  const isInView = !inView || inViewResult;\n\n  return (\n    <motion.span\n      ref={localRef}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      variants={containerVariants}\n      {...props}\n    >\n      {items.map(\n        (item, index) =>\n          item && (\n            <React.Fragment key={index}>\n              <motion.span\n                key={index}\n                variants={itemVariants}\n                style={{\n                  display: 'inline-block',\n                  whiteSpace:\n                    type === 'chars'\n                      ? 'pre'\n                      : Array.isArray(text)\n                        ? 'normal'\n                        : 'normal',\n                }}\n              >\n                {item}\n              </motion.span>\n              {type === 'words' && ' '}\n            </React.Fragment>\n          ),\n      )}\n    </motion.span>\n  );\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  type Variants,\n  type TargetAndTransition,\n  type HTMLMotionProps,\n  useInView,\n  type UseInViewOptions,\n} from 'motion/react';\n\ntype DefaultSplittingTextProps = {\n  motionVariants?: {\n    initial?: Record<string, any>;\n    animate?: Record<string, any>;\n    transition?: Record<string, any>;\n    stagger?: number;\n  };\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n  delay?: number;\n} & HTMLMotionProps<'div'>;\n\ntype CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'chars' | 'words';\n  text: string;\n};\n\ntype LinesSplittingTextProps = DefaultSplittingTextProps & {\n  type: 'lines';\n  text: string[];\n};\n\ntype SplittingTextProps =\n  | CharsOrWordsSplittingTextProps\n  | LinesSplittingTextProps;\n\nconst defaultItemVariant: Variants = {\n  hidden: { x: 150, opacity: 0 },\n  visible: {\n    x: 0,\n    opacity: 1,\n    transition: { duration: 0.7, ease: 'easeOut' },\n  },\n};\n\nexport const SplittingText: React.FC<SplittingTextProps> = ({\n  ref,\n  text,\n  type = 'chars',\n  motionVariants = {},\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  delay = 0,\n  ...props\n}) => {\n  const items = React.useMemo<React.ReactNode[]>(() => {\n    if (Array.isArray(text)) {\n      return text.flatMap((line, i) => [\n        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,\n        i < text.length - 1 ? <br key={`br-${i}`} /> : null,\n      ]);\n    }\n\n    if (type === 'words') {\n      const tokens = text.match(/\\S+\\s*/g) || [];\n      return tokens.map((token, i) => (\n        <React.Fragment key={i}>{token}</React.Fragment>\n      ));\n    }\n\n    return text\n      .split('')\n      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);\n  }, [text, type]);\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        delayChildren: delay / 1000,\n        staggerChildren:\n          motionVariants.stagger ??\n          (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: {\n      ...defaultItemVariant.hidden,\n      ...(motionVariants.initial || {}),\n    },\n    visible: {\n      ...defaultItemVariant.visible,\n      ...(motionVariants.animate || {}),\n      transition: {\n        ...((defaultItemVariant.visible as TargetAndTransition).transition ||\n          {}),\n        ...(motionVariants.transition || {}),\n      },\n    },\n  };\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const inViewResult = useInView(localRef, {\n    once: inViewOnce,\n    margin: inViewMargin,\n  });\n  const isInView = !inView || inViewResult;\n\n  return (\n    <motion.span\n      ref={localRef}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      variants={containerVariants}\n      {...props}\n    >\n      {items.map(\n        (item, index) =>\n          item && (\n            <React.Fragment key={index}>\n              <motion.span\n                key={index}\n                variants={itemVariants}\n                style={{\n                  display: 'inline-block',\n                  whiteSpace:\n                    type === 'chars'\n                      ? 'pre'\n                      : Array.isArray(text)\n                        ? 'normal'\n                        : 'normal',\n                }}\n              >\n                {item}\n              </motion.span>\n              {type === 'words' && ' '}\n            </React.Fragment>\n          ),\n      )}\n    </motion.span>\n  );\n};",
       },
     ],
     component: (function () {

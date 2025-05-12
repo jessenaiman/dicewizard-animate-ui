@@ -142,6 +142,43 @@
       ]
     },
     {
+      "name": "base-preview-card",
+      "type": "registry:ui",
+      "title": "Base Preview Card",
+      "description": "A popup that appears when a link is hovered, showing a preview for sighted users.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base/preview-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/base/preview-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "base-progress",
+      "type": "registry:ui",
+      "title": "Base Progress",
+      "description": "Displays the status of a task that takes a long time.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/counting-number"
+      ],
+      "files": [
+        {
+          "path": "registry/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/base/progress.tsx"
+        }
+      ]
+    },
+    {
       "name": "base-switch",
       "type": "registry:ui",
       "title": "Base Switch",
@@ -699,6 +736,83 @@
           }
         }
       }
+    },
+    {
+      "name": "base-preview-card-demo",
+      "type": "registry:ui",
+      "title": "Base Preview Card Demo",
+      "description": "Demo showing a base preview card.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/base-preview-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/base/preview-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/demo/preview-card.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PreviewCard": {
+            "delay": {
+              "value": 600,
+              "min": 0,
+              "max": 2000,
+              "step": 100
+            },
+            "closeDelay": {
+              "value": 300,
+              "min": 0,
+              "max": 2000,
+              "step": 100
+            }
+          },
+          "PreviewCardContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 10
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "base-progress-demo",
+      "type": "registry:ui",
+      "title": "Base Progress Demo",
+      "description": "Demo showing a base progress.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/base-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/demo/progress.tsx"
+        }
+      ]
     },
     {
       "name": "base-switch-demo",

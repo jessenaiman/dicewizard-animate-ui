@@ -25,14 +25,13 @@ function Progress({
         'relative h-2 w-full overflow-hidden rounded-full bg-secondary',
         className,
       )}
+      value={value}
       {...props}
     >
       <MotionProgressIndicator
         data-slot="progress-indicator"
-        className="h-full w-full flex-1 bg-primary"
-        animate={{
-          translateX: `-${100 - (value || 0)}%`,
-        }}
+        className="h-full w-full flex-1 bg-primary rounded-full"
+        animate={{ translateX: `-${100 - (value || 0)}%` }}
         transition={transition}
       />
     </ProgressPrimitive.Root>
