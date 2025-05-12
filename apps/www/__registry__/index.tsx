@@ -281,6 +281,38 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/base-popover',
   },
+  'base-progress': {
+    name: 'base-progress',
+    description: 'Displays the status of a task that takes a long time.',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/base/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/base/progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitives } from '@base-ui-components/react/progress';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  CountingNumber,\n  type CountingNumberProps,\n} from '@/components/animate-ui/text/counting-number';\n\ntype ProgressContextType = {\n  value: number | null;\n};\n\nconst ProgressContext = React.createContext<ProgressContextType | undefined>(\n  undefined,\n);\n\nconst useProgress = (): ProgressContextType => {\n  const context = React.useContext(ProgressContext);\n  if (!context) {\n    throw new Error('useProgress must be used within a Progress');\n  }\n  return context;\n};\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitives.Root>;\n\nconst Progress = ({ value, ...props }: ProgressProps) => {\n  return (\n    <ProgressContext.Provider value={{ value }}>\n      <ProgressPrimitives.Root data-slot=\"progress\" value={value} {...props}>\n        {props.children}\n      </ProgressPrimitives.Root>\n    </ProgressContext.Provider>\n  );\n};\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitives.Indicator);\n\ntype ProgressTrackProps = React.ComponentProps<\n  typeof ProgressPrimitives.Track\n> & {\n  transition?: Transition;\n};\n\nfunction ProgressTrack({\n  className,\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressTrackProps) {\n  const { value } = useProgress();\n\n  return (\n    <ProgressPrimitives.Track\n      data-slot=\"progress-track\"\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      {...props}\n    >\n      <MotionProgressIndicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary rounded-full\"\n        animate={{ width: `${value}%` }}\n        transition={transition}\n      />\n    </ProgressPrimitives.Track>\n  );\n}\n\ntype ProgressLabelProps = React.ComponentProps<typeof ProgressPrimitives.Label>;\n\nfunction ProgressLabel(props: ProgressLabelProps) {\n  return <ProgressPrimitives.Label data-slot=\"progress-label\" {...props} />;\n}\n\ntype ProgressValueProps = Omit<\n  React.ComponentProps<typeof ProgressPrimitives.Value>,\n  'render'\n> & {\n  countingNumberProps?: CountingNumberProps;\n};\n\nfunction ProgressValue({ countingNumberProps, ...props }: ProgressValueProps) {\n  const { value } = useProgress();\n\n  return (\n    <ProgressPrimitives.Value\n      data-slot=\"progress-value\"\n      render={\n        <CountingNumber\n          number={value ?? 0}\n          transition={{ stiffness: 80, damping: 20 }}\n          {...countingNumberProps}\n        />\n      }\n      {...props}\n    />\n  );\n}\n\nexport {\n  Progress,\n  ProgressTrack,\n  ProgressLabel,\n  ProgressValue,\n  type ProgressProps,\n  type ProgressTrackProps,\n  type ProgressLabelProps,\n  type ProgressValueProps,\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/progress/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-progress';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-progress',
+  },
   'base-switch': {
     name: 'base-switch',
     description: 'A control that indicates whether a setting is on or off.',
@@ -1317,6 +1349,38 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/base-popover-demo',
+  },
+  'base-progress-demo': {
+    name: 'base-progress-demo',
+    description: 'Demo showing a base progress.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/base-progress'],
+    files: [
+      {
+        path: 'registry/demo/base/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/demo/progress.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  Progress,\n  ProgressLabel,\n  ProgressTrack,\n  ProgressValue,\n} from \'@/components/animate-ui/base/progress\';\n\nexport const BaseProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return (\n    <Progress value={progress} className="w-[300px] space-y-2">\n      <div className="flex items-center justify-between gap-1">\n        <ProgressLabel className="text-sm font-medium">\n          Export data\n        </ProgressLabel>\n        <span className="text-sm">\n          <ProgressValue /> %\n        </span>\n      </div>\n      <ProgressTrack />\n    </Progress>\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/base/progress/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-progress-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-progress-demo',
   },
   'base-switch-demo': {
     name: 'base-switch-demo',
@@ -4511,7 +4575,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/radix/progress.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root> & {\n  transition?: Transition;\n};\n\nfunction Progress({\n  className,\n  value,\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressProps) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      {...props}\n    >\n      <MotionProgressIndicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary\"\n        animate={{\n          translateX: `-${100 - (value || 0)}%`,\n        }}\n        transition={transition}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress, type ProgressProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root> & {\n  transition?: Transition;\n};\n\nfunction Progress({\n  className,\n  value,\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressProps) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      value={value}\n      {...props}\n    >\n      <MotionProgressIndicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary rounded-full\"\n        animate={{ translateX: `-${100 - (value || 0)}%` }}\n        transition={transition}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress, type ProgressProps };",
       },
     ],
     component: (function () {

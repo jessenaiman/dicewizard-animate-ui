@@ -142,6 +142,23 @@
       ]
     },
     {
+      "name": "base-progress",
+      "type": "registry:ui",
+      "title": "Base Progress",
+      "description": "Displays the status of a task that takes a long time.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/base/progress.tsx"
+        }
+      ]
+    },
+    {
       "name": "base-switch",
       "type": "registry:ui",
       "title": "Base Switch",
@@ -699,6 +716,22 @@
           }
         }
       }
+    },
+    {
+      "name": "base-progress-demo",
+      "type": "registry:ui",
+      "title": "Base Progress Demo",
+      "description": "Demo showing a base progress.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/base-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/demo/progress.tsx"
+        }
+      ]
     },
     {
       "name": "base-switch-demo",
