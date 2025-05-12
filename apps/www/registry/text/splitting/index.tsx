@@ -20,6 +20,7 @@ type DefaultSplittingTextProps = {
   inView?: boolean;
   inViewMargin?: UseInViewOptions['margin'];
   inViewOnce?: boolean;
+  delay?: number;
 } & HTMLMotionProps<'div'>;
 
 type CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {
@@ -53,6 +54,7 @@ export const SplittingText: React.FC<SplittingTextProps> = ({
   inView = false,
   inViewMargin = '0px',
   inViewOnce = true,
+  delay = 0,
   ...props
 }) => {
   const items = React.useMemo<React.ReactNode[]>(() => {
@@ -79,6 +81,7 @@ export const SplittingText: React.FC<SplittingTextProps> = ({
     hidden: {},
     visible: {
       transition: {
+        delayChildren: delay / 1000,
         staggerChildren:
           motionVariants.stagger ??
           (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),
