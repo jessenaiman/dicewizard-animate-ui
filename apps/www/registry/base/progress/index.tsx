@@ -108,6 +108,7 @@ export {
   ProgressTrack,
   ProgressLabel,
   ProgressValue,
+  useProgress,
   type ProgressProps,
   type ProgressTrackProps,
   type ProgressLabelProps,

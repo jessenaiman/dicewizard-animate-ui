@@ -1,44 +1,43 @@
 ---
-title: Tooltip
-description: A popup that appears when an element is hovered or focused, showing a hint for sighted users.
+title: Preview Card
+description: A popup that appears when a link is hovered, showing a preview for sighted users.
 author:
   name: imskyleen
   url: https://github.com/imskyleen
+new: true
 ---
 
-<ComponentPreview name="base-tooltip-demo" />
+<ComponentPreview name="base-preview-card-demo" />
 
 ## Installation
 
-<ComponentInstallation name="base-tooltip" />
+<ComponentInstallation name="base-preview-card" />
 
 ## Usage
 
 ```tsx
-<TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger>Hover me</TooltipTrigger>
-    <TooltipContent>Tooltip content</TooltipContent>
-  </Tooltip>
-</TooltipProvider>
+<PreviewCard>
+  <PreviewCardTrigger>Hover me</PreviewCardTrigger>
+  <PreviewCardContent>Preview card content</PreviewCardContent>
+</PreviewCard>
 ```
 
 ## Props
 
 <div className="flex flex-row gap-x-3">
   <ExternalLink
-    href="https://base-ui.com/react/components/tooltip"
+    href="https://base-ui.com/react/components/preview-card"
     text="Docs"
   />
   <ExternalLink
-    href="https://base-ui.com/react/components/tooltip#api-reference"
+    href="https://base-ui.com/react/components/preview-card#api-reference"
     text="API Reference"
   />
 </div>
 
 ### Animate UI Props
 
-#### TooltipContent
+#### PreviewCardContent
 
 <TypeTable
   type={{
@@ -63,17 +62,10 @@ author:
       required: false,
       default: '{ type: "spring", stiffness: 300, damping: 25 }',
     },
-    arrow: {
-      description:
-        'Whether to show the arrow. (only available in shadcn-new-york or default style)',
-      type: 'boolean',
-      required: false,
-      default: 'true',
-    },
   }}
 />
 
 ## Credits
 
-- We use [Base UI](https://base-ui.com/react/components/tooltip) for the tooltip component.
-- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/tooltip) for the tooltip style.
+- We use [Base UI](https://base-ui.com/react/components/preview-card) for the preview card component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/preview-card) for the preview card style.
