@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-toggle-group-demo",
+  "type": "registry:ui",
+  "title": "Base Toggle Group Demo",
+  "description": "Demo showing a base toggle group.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/base-toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/base/toggle-group/index.tsx",
+      "content": "import { ToggleGroup, ToggleGroupItem } from '@/components/animate-ui/base/toggle-group';\nimport { Bold, Italic, Underline } from 'lucide-react';\n\ninterface BaseToggleGroupDemoProps {\n  multiple: boolean;\n  size: 'default' | 'sm' | 'lg';\n  variant: 'default' | 'outline';\n}\n\nexport const BaseToggleGroupDemo = ({\n  multiple,\n  size,\n  variant,\n}: BaseToggleGroupDemoProps) => {\n  return (\n    <ToggleGroup\n      defaultValue={['bold']}\n      toggleMultiple={multiple}\n      size={size}\n      variant={variant}\n    >\n      <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n        <Bold className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n        <Italic className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n        <Underline className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/base/demo/toggle-group.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "ToggleGroup": {
+        "multiple": {
+          "value": false
+        },
+        "size": {
+          "value": "default",
+          "options": {
+            "default": "default",
+            "sm": "sm",
+            "lg": "lg"
+          }
+        },
+        "variant": {
+          "value": "default",
+          "options": {
+            "default": "default",
+            "outline": "outline"
+          }
+        }
+      }
+    }
+  }
+}

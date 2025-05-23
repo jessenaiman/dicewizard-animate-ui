@@ -217,6 +217,38 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/stars-background',
   },
+  'base-accordion': {
+    name: 'base-accordion',
+    description: 'An easily stylable accordion component.',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/base/accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/base/accordion.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Accordion as AccordionPrimitive } from '@base-ui-components/react/accordion';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport { ChevronDown } from 'lucide-react';\n\ntype AccordionItemContextType = {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n};\n\nconst AccordionItemContext = React.createContext<\n  AccordionItemContextType | undefined\n>(undefined);\n\nconst useAccordionItem = (): AccordionItemContextType => {\n  const context = React.useContext(AccordionItemContext);\n  if (!context) {\n    throw new Error('useAccordionItem must be used within an AccordionItem');\n  }\n  return context;\n};\n\ntype AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;\n\nfunction Accordion(props: AccordionProps) {\n  return <AccordionPrimitive.Root data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps = React.ComponentProps<\n  typeof AccordionPrimitive.Item\n> & {\n  children: React.ReactNode;\n};\n\nfunction AccordionItem({ className, children, ...props }: AccordionItemProps) {\n  const [isOpen, setIsOpen] = React.useState(false);\n\n  return (\n    <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>\n      <AccordionPrimitive.Item\n        data-slot=\"accordion-item\"\n        className={cn('border-b', className)}\n        {...props}\n      >\n        {children}\n      </AccordionPrimitive.Item>\n    </AccordionItemContext.Provider>\n  );\n}\n\ntype AccordionTriggerProps = React.ComponentProps<\n  typeof AccordionPrimitive.Trigger\n> & {\n  transition?: Transition;\n  chevron?: boolean;\n};\n\nfunction AccordionTrigger({\n  ref,\n  className,\n  children,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  chevron = true,\n  ...props\n}: AccordionTriggerProps) {\n  const triggerRef = React.useRef<HTMLButtonElement | null>(null);\n  React.useImperativeHandle(ref, () => triggerRef.current as HTMLButtonElement);\n  const { isOpen, setIsOpen } = useAccordionItem();\n\n  React.useEffect(() => {\n    const node = triggerRef.current;\n    if (!node) return;\n    const observer = new MutationObserver((mutationsList) => {\n      mutationsList.forEach((mutation) => {\n        if (mutation.attributeName === 'data-panel-open') {\n          const currentState = node.getAttribute('data-panel-open');\n          setIsOpen(currentState === '');\n        }\n      });\n    });\n    observer.observe(node, {\n      attributes: true,\n      attributeFilter: ['data-panel-open'],\n    });\n    const initialState = node.getAttribute('data-panel-open');\n    setIsOpen(initialState === '');\n    return () => observer.disconnect();\n  }, [setIsOpen]);\n\n  return (\n    <AccordionPrimitive.Header data-slot=\"accordion-header\" className=\"flex\">\n      <AccordionPrimitive.Trigger\n        ref={triggerRef}\n        data-slot=\"accordion-trigger\"\n        className={cn(\n          'flex flex-1 text-start items-center justify-between py-4 font-medium hover:underline',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n\n        {chevron && (\n          <motion.div\n            data-slot=\"accordion-trigger-chevron\"\n            animate={{ rotate: isOpen ? 180 : 0 }}\n            transition={transition}\n          >\n            <ChevronDown className=\"size-5 shrink-0\" />\n          </motion.div>\n        )}\n      </AccordionPrimitive.Trigger>\n    </AccordionPrimitive.Header>\n  );\n}\n\ntype AccordionPanelProps = React.ComponentProps<\n  typeof AccordionPrimitive.Panel\n> & {\n  motionProps?: HTMLMotionProps<'div'>;\n  transition?: Transition;\n};\n\nfunction AccordionPanel({\n  className,\n  children,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  motionProps,\n  ...props\n}: AccordionPanelProps) {\n  const { isOpen } = useAccordionItem();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <AccordionPrimitive.Panel\n          hidden={false}\n          keepMounted\n          render={\n            <motion.div\n              key=\"accordion-panel\"\n              data-slot=\"accordion-panel\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              }}\n              className=\"overflow-hidden\"\n              {...motionProps}\n            >\n              <div className={cn('pb-4 pt-0 text-sm', className)}>\n                {children}\n              </div>\n            </motion.div>\n          }\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionPanel,\n  useAccordionItem,\n  type AccordionItemContextType,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionPanelProps,\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/accordion/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-accordion';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-accordion',
+  },
   'base-checkbox': {
     name: 'base-checkbox',
     description: 'An easily stylable checkbox component.',
@@ -377,6 +409,38 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/base-switch',
+  },
+  'base-toggle-group': {
+    name: 'base-toggle-group',
+    description: 'Provides a shared state to a series of toggle buttons.',
+    type: 'registry:ui',
+    dependencies: ['motion', '@base-ui-components/react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/base/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/base/toggle-group.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { ToggleGroup as ToggleGroupPrimitive } from '@base-ui-components/react/toggle-group';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport {\n  type HTMLMotionProps,\n  type Transition,\n  motion,\n  AnimatePresence,\n} from 'motion/react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport { cn } from '@/lib/utils';\n\nconst toggleVariants = cva(\n  \"cursor-pointer inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:text-muted-foreground text-accent-foreground transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 data-[pressed]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none focus:outline-none aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap\",\n  {\n    variants: {\n      type: {\n        single: '',\n        multiple: 'data-[pressed]:bg-accent',\n      },\n      variant: {\n        default: 'bg-transparent',\n        outline: 'border border-input bg-transparent shadow-xs',\n      },\n      size: {\n        default: 'h-9 px-2 min-w-9',\n        sm: 'h-8 px-1.5 min-w-8',\n        lg: 'h-10 px-2.5 min-w-10',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {\n  type?: 'single' | 'multiple';\n  transition?: Transition;\n  activeClassName?: string;\n  globalId: string;\n};\n\nconst ToggleGroupContext = React.createContext<\n  ToggleGroupContextProps | undefined\n>(undefined);\n\nconst useToggleGroup = (): ToggleGroupContextProps => {\n  const context = React.useContext(ToggleGroupContext);\n  if (!context) {\n    throw new Error('useToggleGroup must be used within a ToggleGroup');\n  }\n  return context;\n};\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive> &\n  Omit<VariantProps<typeof toggleVariants>, 'type'> & {\n    transition?: Transition;\n    activeClassName?: string;\n  };\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  children,\n  transition = { type: 'spring', bounce: 0, stiffness: 200, damping: 25 },\n  activeClassName,\n  ...props\n}: ToggleGroupProps) {\n  const globalId = React.useId();\n\n  return (\n    <ToggleGroupContext.Provider\n      value={{\n        variant,\n        size,\n        type: props.toggleMultiple ? 'multiple' : 'single',\n        transition,\n        activeClassName,\n        globalId,\n      }}\n    >\n      <ToggleGroupPrimitive\n        data-slot=\"toggle-group\"\n        className={cn(\n          'flex items-center justify-center gap-1 relative',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </ToggleGroupPrimitive>\n    </ToggleGroupContext.Provider>\n  );\n}\n\ntype ToggleGroupItemProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  Omit<VariantProps<typeof toggleVariants>, 'type'> & {\n    children?: React.ReactNode;\n    buttonProps?: HTMLMotionProps<'button'>;\n    spanProps?: React.ComponentProps<'span'>;\n  };\n\nfunction ToggleGroupItem({\n  ref,\n  className,\n  children,\n  variant,\n  size,\n  buttonProps,\n  spanProps,\n  ...props\n}: ToggleGroupItemProps) {\n  const {\n    activeClassName,\n    transition,\n    type,\n    variant: contextVariant,\n    size: contextSize,\n    globalId,\n  } = useToggleGroup();\n  const itemRef = React.useRef<HTMLButtonElement | null>(null);\n  React.useImperativeHandle(ref, () => itemRef.current as HTMLButtonElement);\n  const [isActive, setIsActive] = React.useState(false);\n\n  React.useEffect(() => {\n    const node = itemRef.current;\n    if (!node) return;\n    const observer = new MutationObserver(() => {\n      setIsActive(node.getAttribute('data-pressed') === '');\n    });\n    observer.observe(node, {\n      attributes: true,\n      attributeFilter: ['data-pressed'],\n    });\n    setIsActive(node.getAttribute('data-pressed') === '');\n    return () => observer.disconnect();\n  }, [setIsActive]);\n\n  return (\n    <TogglePrimitive\n      ref={itemRef}\n      {...props}\n      render={\n        <motion.button\n          data-slot=\"toggle-group-item\"\n          initial={{ scale: 1 }}\n          whileTap={{ scale: 0.9 }}\n          {...buttonProps}\n          className={cn('relative', buttonProps?.className)}\n        >\n          <span\n            {...spanProps}\n            {...(isActive ? { 'data-pressed': '' } : {})}\n            className={cn(\n              'relative z-[1]',\n              toggleVariants({\n                variant: variant || contextVariant,\n                size: size || contextSize,\n                type,\n              }),\n              className,\n              spanProps?.className,\n            )}\n          >\n            {children}\n          </span>\n\n          <AnimatePresence initial={false}>\n            {isActive && type === 'single' && (\n              <motion.span\n                layoutId={`active-toggle-group-item-${globalId}`}\n                data-slot=\"active-toggle-group-item\"\n                initial={{ opacity: 0 }}\n                animate={{ opacity: 1 }}\n                exit={{ opacity: 0 }}\n                transition={transition}\n                className={cn(\n                  'absolute inset-0 z-0 rounded-md bg-muted',\n                  activeClassName,\n                )}\n              />\n            )}\n          </AnimatePresence>\n        </motion.button>\n      }\n    />\n  );\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n};",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/base/toggle-group/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-toggle-group',
   },
   'base-tooltip': {
     name: 'base-tooltip',
@@ -1289,6 +1353,38 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/stars-background-demo',
   },
+  'base-accordion-demo': {
+    name: 'base-accordion-demo',
+    description: 'Demo showing a base accordion.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/base-accordion'],
+    files: [
+      {
+        path: 'registry/demo/base/accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/demo/accordion.tsx',
+        content:
+          'import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionPanel,\n} from \'@/components/animate-ui/base/accordion\';\n\ninterface BaseAccordionDemoProps {\n  multiple: boolean;\n}\n\nexport const BaseAccordionDemo = ({ multiple }: BaseAccordionDemoProps) => {\n  return (\n    <Accordion\n      defaultValue={[\'item-1\']}\n      openMultiple={multiple}\n      className="max-w-[400px] w-full"\n    >\n      <AccordionItem value="item-1">\n        <AccordionTrigger>What is Animate UI?</AccordionTrigger>\n        <AccordionPanel>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionPanel>\n      </AccordionItem>\n\n      <AccordionItem value="item-2">\n        <AccordionTrigger>\n          How is it different from other libraries?\n        </AccordionTrigger>\n        <AccordionPanel>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionPanel>\n      </AccordionItem>\n\n      <AccordionItem value="item-3">\n        <AccordionTrigger>Is Animate UI free to use?</AccordionTrigger>\n        <AccordionPanel>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionPanel>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/base/accordion/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-accordion-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = { Accordion: { multiple: { value: false } } };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-accordion-demo',
+  },
   'base-checkbox-demo': {
     name: 'base-checkbox-demo',
     description: 'Demo showing a base checkbox.',
@@ -1508,6 +1604,50 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/base-switch-demo',
+  },
+  'base-toggle-group-demo': {
+    name: 'base-toggle-group-demo',
+    description: 'Demo showing a base toggle group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/base-toggle-group'],
+    files: [
+      {
+        path: 'registry/demo/base/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/base/demo/toggle-group.tsx',
+        content:
+          'import { ToggleGroup, ToggleGroupItem } from \'@/components/animate-ui/base/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\ninterface BaseToggleGroupDemoProps {\n  multiple: boolean;\n  size: \'default\' | \'sm\' | \'lg\';\n  variant: \'default\' | \'outline\';\n}\n\nexport const BaseToggleGroupDemo = ({\n  multiple,\n  size,\n  variant,\n}: BaseToggleGroupDemoProps) => {\n  return (\n    <ToggleGroup\n      defaultValue={[\'bold\']}\n      toggleMultiple={multiple}\n      size={size}\n      variant={variant}\n    >\n      <ToggleGroupItem value="bold" aria-label="Toggle bold">\n        <Bold className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="italic" aria-label="Toggle italic">\n        <Italic className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="underline" aria-label="Toggle underline">\n        <Underline className="h-4 w-4" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n};',
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/base/toggle-group/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'base-toggle-group-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        ToggleGroup: {
+          multiple: { value: false },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg' },
+          },
+          variant: {
+            value: 'default',
+            options: { default: 'default', outline: 'outline' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/base-toggle-group-demo',
   },
   'base-tooltip-demo': {
     name: 'base-tooltip-demo',

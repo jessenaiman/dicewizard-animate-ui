@@ -108,6 +108,23 @@
       ]
     },
     {
+      "name": "base-accordion",
+      "type": "registry:ui",
+      "title": "Base Accordion",
+      "description": "An easily stylable accordion component.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/base/accordion.tsx"
+        }
+      ]
+    },
+    {
       "name": "base-checkbox",
       "type": "registry:ui",
       "title": "Base Checkbox",
@@ -192,6 +209,23 @@
           "path": "registry/base/switch/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "base-toggle-group",
+      "type": "registry:ui",
+      "title": "Base Toggle Group",
+      "description": "Provides a shared state to a series of toggle buttons.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/base/toggle-group.tsx"
         }
       ]
     },
@@ -660,6 +694,31 @@
       ]
     },
     {
+      "name": "base-accordion-demo",
+      "type": "registry:ui",
+      "title": "Base Accordion Demo",
+      "description": "Demo showing a base accordion.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/base-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/base/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/demo/accordion.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Accordion": {
+            "multiple": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "base-checkbox-demo",
       "type": "registry:ui",
       "title": "Base Checkbox Demo",
@@ -844,6 +903,46 @@
             },
             "thumbIcon": {
               "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "base-toggle-group-demo",
+      "type": "registry:ui",
+      "title": "Base Toggle Group Demo",
+      "description": "Demo showing a base toggle group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/base-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/base/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/base/demo/toggle-group.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ToggleGroup": {
+            "multiple": {
+              "value": false
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg"
+              }
+            },
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "outline": "outline"
+              }
             }
           }
         }
