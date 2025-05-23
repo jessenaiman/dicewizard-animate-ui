@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-accordion-demo",
+  "type": "registry:ui",
+  "title": "Base Accordion Demo",
+  "description": "Demo showing a base accordion.",
+  "registryDependencies": ["https://animate-ui.com/r/base-accordion"],
+  "files": [
+    {
+      "path": "registry/demo/base/accordion/index.tsx",
+      "type": "registry:ui",
+      "target": "components/base/demo/accordion.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "Accordion": {
+        "multiple": {
+          "value": false
+        }
+      }
+    }
+  }
+}
