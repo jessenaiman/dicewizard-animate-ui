@@ -2338,6 +2338,22 @@
       ]
     },
     {
+      "name": "user-presence-avatar-demo",
+      "type": "registry:ui",
+      "title": "User Presence Avatar Demo",
+      "description": "Demo User Presence Avatar Demo.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/user-presence-avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui-elements/user-presence-avatar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/ui-elements/user-presence-avatar.tsx"
+        }
+      ]
+    },
+    {
       "name": "motion-effect",
       "type": "registry:ui",
       "title": "Motion Effect",
@@ -2920,6 +2936,25 @@
           "path": "registry/ui-elements/management-bar/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/management-bar/management-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "user-presence-avatar",
+      "type": "registry:ui",
+      "title": "User Presence Avatar",
+      "description": "User Presence Avatar Component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/ui-elements/user-presence-avatar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/user-presence-avatar/user-presence-avatar.tsx"
         }
       ]
     }

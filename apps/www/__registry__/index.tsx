@@ -4262,6 +4262,41 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/management-bar-demo',
   },
+  'user-presence-avatar-demo': {
+    name: 'user-presence-avatar-demo',
+    description: 'Demo User Presence Avatar Demo.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/user-presence-avatar'],
+    files: [
+      {
+        path: 'registry/demo/ui-elements/user-presence-avatar/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/ui-elements/user-presence-avatar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { UserPresenceAvatar } from '@/components/animate-ui/ui-elements/user-presence-avatar';\n\nexport const UserPresenceAvatarDemo = () => <UserPresenceAvatar />;",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/ui-elements/user-presence-avatar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'user-presence-avatar-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/user-presence-avatar-demo',
+  },
   'motion-effect': {
     name: 'motion-effect',
     description:
@@ -5369,5 +5404,40 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/management-bar',
+  },
+  'user-presence-avatar': {
+    name: 'user-presence-avatar',
+    description: 'User Presence Avatar Component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/avatar-group'],
+    files: [
+      {
+        path: 'registry/ui-elements/user-presence-avatar/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/user-presence-avatar/user-presence-avatar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, LayoutGroup } from 'motion/react';\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from '@/components/ui/avatar';\nimport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n} from '@/components/animate-ui/components/avatar-group';\n\nconst USERS = [\n  {\n    id: 1,\n    src: 'https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg',\n    fallback: 'AK',\n    tooltip: 'Arhamkhnz',\n    online: true,\n  },\n  {\n    id: 2,\n    src: 'https://pbs.twimg.com/profile_images/1909615404789506048/MTqvRsjo_400x400.jpg',\n    fallback: 'SK',\n    tooltip: 'Skyleen',\n    online: true,\n  },\n  {\n    id: 3,\n    src: 'https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg',\n    fallback: 'CN',\n    tooltip: 'Shadcn',\n    online: true,\n  },\n  {\n    id: 4,\n    src: 'https://pbs.twimg.com/profile_images/1677042510839857154/Kq4tpySA_400x400.jpg',\n    fallback: 'AW',\n    tooltip: 'Adam Wathan',\n    online: false,\n  },\n  {\n    id: 5,\n    src: 'https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg',\n    fallback: 'GR',\n    tooltip: 'Guillermo Rauch',\n    online: false,\n  },\n  {\n    id: 6,\n    src: 'https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg',\n    fallback: 'JH',\n    tooltip: 'Jhey',\n    online: false,\n  },\n];\n\nconst AVATAR_MOTION_TRANSITION = {\n  type: 'spring',\n  stiffness: 200,\n  damping: 50,\n};\n\nconst GROUP_CONTAINER_TRANSITION = {\n  type: 'spring',\n  stiffness: 150,\n  damping: 40,\n};\n\nfunction UserPresenceAvatar() {\n  const [users, setUsers] = React.useState(USERS);\n\n  const online = users.filter((u) => u.online);\n  const offline = users.filter((u) => !u.online);\n\n  const toggleStatus = (id: number) =>\n    setUsers((prev) => {\n      const idx = prev.findIndex((u) => u.id === id);\n      if (idx === -1) return prev;\n      const updated = [...prev];\n      const target = updated[idx];\n      if (!target) return prev;\n      updated.splice(idx, 1);\n      updated.push({ ...target, online: !target.online });\n      return updated;\n    });\n\n  return (\n    <div className=\"flex items-center gap-5\">\n      <LayoutGroup>\n        {online.length > 0 && (\n          <motion.div\n            layout\n            className=\"bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full\"\n            transition={GROUP_CONTAINER_TRANSITION}\n          >\n            <AvatarGroup\n              key={online.map((u) => u.id).join('_') + '-online'}\n              translate=\"0\"\n              className=\"h-12 -space-x-3\"\n            >\n              {online.map((user) => (\n                <motion.div\n                  key={user.id}\n                  layoutId={`avatar-${user.id}`}\n                  className=\"cursor-pointer\"\n                  onClick={() => toggleStatus(user.id)}\n                  animate={{\n                    filter: 'grayscale(0)',\n                    scale: 1,\n                  }}\n                  transition={AVATAR_MOTION_TRANSITION}\n                  title=\"Click to go offline\"\n                  initial={false}\n                >\n                  <Avatar className=\"size-12 border-3 border-neutral-300 dark:border-neutral-700\">\n                    <AvatarImage src={user.src} />\n                    <AvatarFallback>{user.fallback}</AvatarFallback>\n                    <AvatarGroupTooltip>\n                      <p>{user.tooltip}</p>\n                    </AvatarGroupTooltip>\n                  </Avatar>\n                </motion.div>\n              ))}\n            </AvatarGroup>\n          </motion.div>\n        )}\n\n        {offline.length > 0 && (\n          <motion.div\n            layout\n            className=\"bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full\"\n            transition={GROUP_CONTAINER_TRANSITION}\n          >\n            <AvatarGroup\n              key={offline.map((u) => u.id).join('_') + '-offline'}\n              translate=\"0\"\n              className=\"h-12 -space-x-3\"\n            >\n              {offline.map((user) => (\n                <motion.div\n                  key={user.id}\n                  layoutId={`avatar-${user.id}`}\n                  className=\"cursor-pointer\"\n                  onClick={() => toggleStatus(user.id)}\n                  animate={{\n                    filter: 'grayscale(1)',\n                    scale: 1,\n                  }}\n                  transition={AVATAR_MOTION_TRANSITION}\n                  title=\"Click to go online\"\n                  initial={false}\n                >\n                  <Avatar className=\"size-12 border-3 border-neutral-300 dark:border-neutral-700\">\n                    <AvatarImage src={user.src} />\n                    <AvatarFallback>{user.fallback}</AvatarFallback>\n                    <AvatarGroupTooltip>\n                      <p>{user.tooltip}</p>\n                    </AvatarGroupTooltip>\n                  </Avatar>\n                </motion.div>\n              ))}\n            </AvatarGroup>\n          </motion.div>\n        )}\n      </LayoutGroup>\n    </div>\n  );\n}\n\nexport { UserPresenceAvatar };",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/ui-elements/user-presence-avatar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'user-presence-avatar';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/user-presence-avatar',
   },
 };
