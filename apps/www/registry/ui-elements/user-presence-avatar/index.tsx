@@ -60,13 +60,13 @@ const USERS = [
 const AVATAR_MOTION_TRANSITION = {
   type: 'spring',
   stiffness: 200,
-  damping: 50,
+  damping: 25,
 };
 
 const GROUP_CONTAINER_TRANSITION = {
   type: 'spring',
   stiffness: 150,
-  damping: 40,
+  damping: 20,
 };
 
 function UserPresenceAvatar() {
@@ -100,6 +100,7 @@ function UserPresenceAvatar() {
               key={online.map((u) => u.id).join('_') + '-online'}
               translate="0"
               className="h-12 -space-x-3"
+              tooltipProps={{ side: 'top', sideOffset: 14 }}
             >
               {online.map((user) => (
                 <motion.div
@@ -138,6 +139,7 @@ function UserPresenceAvatar() {
               key={offline.map((u) => u.id).join('_') + '-offline'}
               translate="0"
               className="h-12 -space-x-3"
+              tooltipProps={{ side: 'top', sideOffset: 14 }}
             >
               {offline.map((user) => (
                 <motion.div
