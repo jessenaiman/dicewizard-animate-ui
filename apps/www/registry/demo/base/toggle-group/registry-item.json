@@ -9,7 +9,7 @@
     {
       "path": "registry/demo/base/toggle-group/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/toggle-group.tsx"
+      "target": "components/animate-ui/demo/base/toggle-group.tsx"
     }
   ],
   "meta": {

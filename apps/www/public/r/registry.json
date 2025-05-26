@@ -705,7 +705,7 @@
         {
           "path": "registry/demo/base/accordion/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/accordion.tsx"
+          "target": "components/animate-ui/demo/base/accordion.tsx"
         }
       ],
       "meta": {
@@ -731,7 +731,7 @@
         {
           "path": "registry/demo/base/checkbox/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/checkbox.tsx"
+          "target": "components/animate-ui/demo/base/checkbox.tsx"
         }
       ]
     },
@@ -750,7 +750,7 @@
         {
           "path": "registry/demo/base/popover/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/popover.tsx"
+          "target": "components/animate-ui/demo/base/popover.tsx"
         }
       ],
       "meta": {
@@ -808,7 +808,7 @@
         {
           "path": "registry/demo/base/preview-card/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/preview-card.tsx"
+          "target": "components/animate-ui/demo/base/preview-card.tsx"
         }
       ],
       "meta": {
@@ -869,7 +869,7 @@
         {
           "path": "registry/demo/base/progress/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/progress.tsx"
+          "target": "components/animate-ui/demo/base/progress.tsx"
         }
       ]
     },
@@ -889,7 +889,7 @@
         {
           "path": "registry/demo/base/switch/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/switch.tsx"
+          "target": "components/animate-ui/demo/base/switch.tsx"
         }
       ],
       "meta": {
@@ -920,7 +920,7 @@
         {
           "path": "registry/demo/base/toggle-group/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/toggle-group.tsx"
+          "target": "components/animate-ui/demo/base/toggle-group.tsx"
         }
       ],
       "meta": {
@@ -960,7 +960,7 @@
         {
           "path": "registry/demo/base/tooltip/index.tsx",
           "type": "registry:ui",
-          "target": "components/base/demo/tooltip.tsx"
+          "target": "components/animate-ui/demo/base/tooltip.tsx"
         }
       ],
       "meta": {

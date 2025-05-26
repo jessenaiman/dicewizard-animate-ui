@@ -1364,7 +1364,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/accordion/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/accordion.tsx',
+        target: 'components/animate-ui/demo/base/accordion.tsx',
         content:
           'import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionPanel,\n} from \'@/components/animate-ui/base/accordion\';\n\ninterface BaseAccordionDemoProps {\n  multiple: boolean;\n}\n\nexport const BaseAccordionDemo = ({ multiple }: BaseAccordionDemoProps) => {\n  return (\n    <Accordion\n      defaultValue={[\'item-1\']}\n      openMultiple={multiple}\n      className="max-w-[400px] w-full"\n    >\n      <AccordionItem value="item-1">\n        <AccordionTrigger>What is Animate UI?</AccordionTrigger>\n        <AccordionPanel>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionPanel>\n      </AccordionItem>\n\n      <AccordionItem value="item-2">\n        <AccordionTrigger>\n          How is it different from other libraries?\n        </AccordionTrigger>\n        <AccordionPanel>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionPanel>\n      </AccordionItem>\n\n      <AccordionItem value="item-3">\n        <AccordionTrigger>Is Animate UI free to use?</AccordionTrigger>\n        <AccordionPanel>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionPanel>\n      </AccordionItem>\n    </Accordion>\n  );\n};',
       },
@@ -1396,7 +1396,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/checkbox/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/checkbox.tsx',
+        target: 'components/animate-ui/demo/base/checkbox.tsx',
         content:
           'import { Label } from \'@/components/ui/label\';\nimport { Checkbox } from \'@/components/animate-ui/base/checkbox\';\n\nexport const BaseCheckboxDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <Checkbox defaultChecked id="terms" />\n      <Label htmlFor="terms">Accept terms and conditions</Label>\n    </div>\n  );\n};',
       },
@@ -1433,7 +1433,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/popover/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/popover.tsx',
+        target: 'components/animate-ui/demo/base/popover.tsx',
         content:
           'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n  type Side,\n  type Align,\n} from \'@/components/animate-ui/base/popover\';\n\ninterface BasePopoverDemoProps {\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n  openOnHover?: boolean;\n  delay?: number;\n  closeDelay?: number;\n}\n\nexport const BasePopoverDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  openOnHover,\n  delay,\n  closeDelay,\n}: BasePopoverDemoProps) => {\n  return (\n    <Popover openOnHover={openOnHover} delay={delay} closeDelay={closeDelay}>\n      <PopoverTrigger\n        render={<Button variant="outline">Open popover</Button>}\n      />\n      <PopoverContent\n        className="w-80"\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="font-medium leading-none">Dimensions</h4>\n            <p className="text-sm text-muted-foreground">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n};',
       },
@@ -1490,7 +1490,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/preview-card/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/preview-card.tsx',
+        target: 'components/animate-ui/demo/base/preview-card.tsx',
         content:
           'import {\n  PreviewCard,\n  PreviewCardTrigger,\n  PreviewCardContent,\n  type PreviewCardProps,\n  type PreviewCardContentProps,\n} from \'@/components/animate-ui/base/preview-card\';\n\ntype BasePreviewCardDemoProps = Pick<PreviewCardProps, \'delay\' | \'closeDelay\'> &\n  Pick<\n    PreviewCardContentProps,\n    \'side\' | \'sideOffset\' | \'align\' | \'alignOffset\'\n  >;\n\nexport const BasePreviewCardDemo = ({\n  delay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BasePreviewCardDemoProps) => {\n  return (\n    <PreviewCard delay={delay} closeDelay={closeDelay} defaultOpen>\n      <PreviewCardTrigger\n        render={\n          <a\n            className="size-12 rounded-full overflow-hidden border"\n            href="https://twitter.com/animate_ui"\n            target="_blank"\n            rel="noreferrer noopener"\n          >\n            <img\n              src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n              alt="Animate UI"\n            />\n          </a>\n        }\n      />\n      <PreviewCardContent\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className="w-80"\n      >\n        <div className="flex flex-col gap-4">\n          <img\n            className="size-16 rounded-full overflow-hidden border"\n            src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n            alt="Animate UI"\n          />\n          <div className="flex flex-col gap-4">\n            <div>\n              <div className="font-bold">Animate UI</div>\n              <div className="text-sm text-muted-foreground">@animate_ui</div>\n            </div>\n            <div className="text-sm text-muted-foreground">\n              A fully animated, open-source component distribution built with\n              React, TypeScript, Tailwind CSS, and Motion.\n            </div>\n            <div className="flex gap-4">\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">0</div>{\' \'}\n                <div className="text-muted-foreground">Following</div>\n              </div>\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">2,900</div>{\' \'}\n                <div className="text-muted-foreground">Followers</div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </PreviewCardContent>\n    </PreviewCard>\n  );\n};',
       },
@@ -1546,7 +1546,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/progress/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/progress.tsx',
+        target: 'components/animate-ui/demo/base/progress.tsx',
         content:
           '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  Progress,\n  ProgressLabel,\n  ProgressTrack,\n  ProgressValue,\n} from \'@/components/animate-ui/base/progress\';\n\nexport const BaseProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return (\n    <Progress value={progress} className="w-[300px] space-y-2">\n      <div className="flex items-center justify-between gap-1">\n        <ProgressLabel className="text-sm font-medium">\n          Export data\n        </ProgressLabel>\n        <span className="text-sm">\n          <ProgressValue /> %\n        </span>\n      </div>\n      <ProgressTrack />\n    </Progress>\n  );\n};',
       },
@@ -1578,7 +1578,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/switch/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/switch.tsx',
+        target: 'components/animate-ui/demo/base/switch.tsx',
         content:
           "'use client';\n\nimport { useState } from 'react';\nimport { MoonIcon, SunIcon } from 'lucide-react';\n\nimport { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/animate-ui/base/switch';\n\ninterface BaseSwitchDemoProps {\n  leftIcon?: boolean;\n  rightIcon?: boolean;\n  thumbIcon?: boolean;\n}\n\nexport const BaseSwitchDemo = ({\n  leftIcon,\n  rightIcon,\n  thumbIcon,\n}: BaseSwitchDemoProps) => {\n  const [checked, setChecked] = useState(true);\n\n  const ThumbIcon = checked ? <MoonIcon /> : <SunIcon />;\n\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"switch-theme\">Switch theme</Label>\n      <Switch\n        checked={checked}\n        onCheckedChange={setChecked}\n        id=\"switch-theme\"\n        leftIcon={leftIcon ? <MoonIcon /> : null}\n        rightIcon={rightIcon ? <SunIcon /> : null}\n        thumbIcon={thumbIcon ? ThumbIcon : null}\n      />\n    </div>\n  );\n};",
       },
@@ -1616,7 +1616,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/toggle-group/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/toggle-group.tsx',
+        target: 'components/animate-ui/demo/base/toggle-group.tsx',
         content:
           'import { ToggleGroup, ToggleGroupItem } from \'@/components/animate-ui/base/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\ninterface BaseToggleGroupDemoProps {\n  multiple: boolean;\n  size: \'default\' | \'sm\' | \'lg\';\n  variant: \'default\' | \'outline\';\n}\n\nexport const BaseToggleGroupDemo = ({\n  multiple,\n  size,\n  variant,\n}: BaseToggleGroupDemoProps) => {\n  return (\n    <ToggleGroup\n      defaultValue={[\'bold\']}\n      toggleMultiple={multiple}\n      size={size}\n      variant={variant}\n    >\n      <ToggleGroupItem value="bold" aria-label="Toggle bold">\n        <Bold className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="italic" aria-label="Toggle italic">\n        <Italic className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="underline" aria-label="Toggle underline">\n        <Underline className="h-4 w-4" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n};',
       },
@@ -1660,7 +1660,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/demo/base/tooltip/index.tsx',
         type: 'registry:ui',
-        target: 'components/base/demo/tooltip.tsx',
+        target: 'components/animate-ui/demo/base/tooltip.tsx',
         content:
           "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProviderProps,\n  type TooltipContentProps,\n} from '@/components/animate-ui/base/tooltip';\n\ntype BaseTooltipDemoProps = Pick<TooltipProviderProps, 'delay' | 'closeDelay'> &\n  Pick<\n    TooltipContentProps,\n    'side' | 'sideOffset' | 'align' | 'alignOffset' | 'arrow'\n  >;\n\nexport const BaseTooltipDemo = ({\n  delay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  arrow,\n}: BaseTooltipDemoProps) => {\n  return (\n    <TooltipProvider delay={delay} closeDelay={closeDelay}>\n      <Tooltip defaultOpen>\n        <TooltipTrigger render={<Button variant=\"outline\">Hover me</Button>} />\n        <TooltipContent\n          side={side}\n          sideOffset={sideOffset}\n          align={align}\n          alignOffset={alignOffset}\n          arrow={arrow}\n        >\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};",
       },

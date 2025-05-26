@@ -14,7 +14,7 @@
     {
       "path": "registry/demo/base/popover/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/popover.tsx"
+      "target": "components/animate-ui/demo/base/popover.tsx"
     }
   ],
   "meta": {

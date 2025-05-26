@@ -90,14 +90,14 @@ type MyComponentProps = {
   myProps: string;
 } & React.ComponentProps<'div'>;
 
-function MyComponent({ myProps, ...props }, ref) {
+function MyComponent({ myProps, ...props }) {
   return <div {...props}>{/* Your component */}</div>;
 }
 
 export { MyComponent, type MyComponentProps };
 ```
 
-#### Update the Registry
+#### Registry item
 
 Create a `apps/www/registry/[category]/my-component/registry-item.json` file to export your component :
 
@@ -114,7 +114,50 @@ Create a `apps/www/registry/[category]/my-component/registry-item.json` file to 
     {
       "path": "registry/[category]/my-component/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/my-component.tsx"
+      "target": "components/animate-ui/demo/[category]/my-component.tsx"
+    }
+  ]
+}
+```
+
+### Create a demo
+
+#### Basics
+
+Create your demo in `apps/www/registry/demo/[category]/my-component/index.tsx`.
+
+```tsx title="my-component/index.tsx"
+'use client';
+
+import {
+  MyComponent,
+  type MyComponentProps,
+} from '@/registry/[category]/my-component';
+
+type MyComponentDemoProps = {
+  myProps: string;
+} & MyComponentProps;
+
+export const MyComponentDemo = ({ myProps }) => {
+  return <MyComponent myProps={myProps} />;
+};
+```
+
+#### Registry item
+
+```json title="my-component/registry-item.json"
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-component-demo",
+  "type": "registry:ui",
+  "title": "My Component Deo",
+  "description": "Demo showing my component",
+  "registryDependencies": ["https://animate-ui.com/r/my-component"],
+  "files": [
+    {
+      "path": "registry/demo/[category]/my-component/index.tsx",
+      "type": "registry:ui",
+      "target": "components/[category]/demo/my-component.tsx"
     }
   ]
 }

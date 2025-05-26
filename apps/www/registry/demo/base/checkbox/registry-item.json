@@ -9,7 +9,7 @@
     {
       "path": "registry/demo/base/checkbox/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/checkbox.tsx"
+      "target": "components/animate-ui/demo/base/checkbox.tsx"
     }
   ]
 }
