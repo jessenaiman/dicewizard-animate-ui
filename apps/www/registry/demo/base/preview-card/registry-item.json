@@ -9,7 +9,7 @@
     {
       "path": "registry/demo/base/preview-card/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/preview-card.tsx"
+      "target": "components/animate-ui/demo/base/preview-card.tsx"
     }
   ],
   "meta": {

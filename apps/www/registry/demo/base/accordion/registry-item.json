@@ -9,7 +9,7 @@
     {
       "path": "registry/demo/base/accordion/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/accordion.tsx"
+      "target": "components/animate-ui/demo/base/accordion.tsx"
     }
   ],
   "meta": {

@@ -10,7 +10,7 @@
     {
       "path": "registry/demo/base/switch/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/switch.tsx"
+      "target": "components/animate-ui/demo/base/switch.tsx"
     }
   ],
   "meta": {

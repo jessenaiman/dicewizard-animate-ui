@@ -9,7 +9,7 @@
     {
       "path": "registry/demo/base/progress/index.tsx",
       "type": "registry:ui",
-      "target": "components/base/demo/progress.tsx"
+      "target": "components/animate-ui/demo/base/progress.tsx"
     }
   ]
 }
