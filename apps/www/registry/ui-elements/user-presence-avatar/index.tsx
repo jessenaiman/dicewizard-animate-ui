@@ -11,6 +11,7 @@ import {
   AvatarGroup,
   AvatarGroupTooltip,
 } from '@/registry/components/avatar-group';
+import { cn } from '@workspace/ui/lib/utils';
 
 const USERS = [
   {
@@ -71,11 +72,18 @@ const GROUP_CONTAINER_TRANSITION = {
 
 function UserPresenceAvatar() {
   const [users, setUsers] = React.useState(USERS);
+  const [togglingGroup, setTogglingGroup] = React.useState<
+    'online' | 'offline' | null
+  >(null);
 
   const online = users.filter((u) => u.online);
   const offline = users.filter((u) => !u.online);
 
-  const toggleStatus = (id: number) =>
+  const toggleStatus = (id: number) => {
+    const user = users.find((u) => u.id === id);
+    if (!user) return;
+
+    setTogglingGroup(user.online ? 'online' : 'offline');
     setUsers((prev) => {
       const idx = prev.findIndex((u) => u.id === id);
       if (idx === -1) return prev;
@@ -86,6 +94,9 @@ function UserPresenceAvatar() {
       updated.push({ ...target, online: !target.online });
       return updated;
     });
+    // Reset group z-index after the animation duration (keep in sync with animation timing)
+    setTimeout(() => setTogglingGroup(null), 500);
+  };
 
   return (
     <div className="flex items-center gap-5">
@@ -93,7 +104,10 @@ function UserPresenceAvatar() {
         {online.length > 0 && (
           <motion.div
             layout
-            className="bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full"
+            className={cn(
+              'bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full',
+              togglingGroup === 'online' ? 'z-5' : 'z-10',
+            )}
             transition={GROUP_CONTAINER_TRANSITION}
           >
             <AvatarGroup
@@ -132,7 +146,10 @@ function UserPresenceAvatar() {
         {offline.length > 0 && (
           <motion.div
             layout
-            className="bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full"
+            className={cn(
+              'bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full',
+              togglingGroup === 'offline' ? 'z-5' : 'z-10',
+            )}
             transition={GROUP_CONTAINER_TRANSITION}
           >
             <AvatarGroup
