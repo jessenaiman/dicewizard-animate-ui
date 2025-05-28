@@ -4262,6 +4262,41 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/management-bar-demo',
   },
+  'user-presence-avatar-demo': {
+    name: 'user-presence-avatar-demo',
+    description: 'Demo User Presence Avatar Demo.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/user-presence-avatar'],
+    files: [
+      {
+        path: 'registry/demo/ui-elements/user-presence-avatar/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/ui-elements/user-presence-avatar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { UserPresenceAvatar } from '@/components/animate-ui/ui-elements/user-presence-avatar';\n\nexport const UserPresenceAvatarDemo = () => <UserPresenceAvatar />;",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/ui-elements/user-presence-avatar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'user-presence-avatar-demo';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/user-presence-avatar-demo',
+  },
   'motion-effect': {
     name: 'motion-effect',
     description:
@@ -5347,7 +5382,7 @@ export const index: Record<string, any> = {
       {
         path: 'registry/ui-elements/management-bar/index.tsx',
         type: 'registry:ui',
-        target: 'components/animate-ui/management-bar/management-bar.tsx',
+        target: 'components/animate-ui/ui-elements/management-bar.tsx',
         content:
           '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  ChevronLeft,\n  ChevronRight,\n  Ban,\n  X,\n  Command,\n  IdCard,\n} from \'lucide-react\';\nimport { SlidingNumber } from \'@/components/animate-ui/text/sliding-number\';\nimport { motion, Variants, Transition } from \'motion/react\';\n\nconst TOTAL_PAGES = 10;\n\nconst BUTTON_MOTION_CONFIG = {\n  initial: \'rest\',\n  whileHover: \'hover\',\n  whileTap: \'tap\',\n  variants: {\n    rest: { maxWidth: \'40px\' },\n    hover: {\n      maxWidth: \'140px\',\n      transition: { type: \'spring\', stiffness: 200, damping: 35, delay: 0.15 },\n    },\n    tap: { scale: 0.95 },\n  },\n  transition: { type: \'spring\', stiffness: 250, damping: 25 },\n};\n\nconst LABEL_VARIANTS: Variants = {\n  rest: { opacity: 0, x: 4 },\n  hover: { opacity: 1, x: 0, visibility: \'visible\' },\n  tap: { opacity: 1, x: 0, visibility: \'visible\' },\n};\n\nconst LABEL_TRANSITION: Transition = {\n  type: \'spring\',\n  stiffness: 200,\n  damping: 25,\n};\n\nfunction ManagementBar() {\n  const [currentPage, setCurrentPage] = React.useState(1);\n\n  const handlePrevPage = React.useCallback(() => {\n    if (currentPage > 1) setCurrentPage(currentPage - 1);\n  }, [currentPage]);\n\n  const handleNextPage = React.useCallback(() => {\n    if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1);\n  }, [currentPage]);\n\n  return (\n    <div className="flex w-fit flex-wrap items-center gap-y-2 rounded-2xl border border-border bg-background p-2 shadow-lg">\n      <div className="mx-auto flex shrink-0 items-center">\n        <button\n          disabled={currentPage === 1}\n          className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"\n          onClick={handlePrevPage}\n        >\n          <ChevronLeft size={20} />\n        </button>\n        <div className="mx-2 flex items-center space-x-1 text-sm tabular-nums">\n          <SlidingNumber\n            className="text-foreground"\n            padStart\n            number={currentPage}\n          />\n          <span className="text-muted-foreground">/ {TOTAL_PAGES}</span>\n        </div>\n        <button\n          disabled={currentPage === TOTAL_PAGES}\n          className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"\n          onClick={handleNextPage}\n        >\n          <ChevronRight size={20} />\n        </button>\n      </div>\n\n      <div className="mx-3 h-6 w-px bg-border rounded-full" />\n\n      <motion.div\n        layout\n        layoutRoot\n        className="mx-auto flex flex-wrap space-x-2 sm:flex-nowrap"\n      >\n        <motion.button\n          {...BUTTON_MOTION_CONFIG}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-neutral-200/60 dark:bg-neutral-600/80 px-2.5 py-2 text-neutral-600 dark:text-neutral-200"\n          aria-label="Blacklist"\n        >\n          <Ban size={20} className="shrink-0" />\n          <motion.span\n            variants={LABEL_VARIANTS}\n            transition={LABEL_TRANSITION}\n            className="invisible text-sm"\n          >\n            Blacklist\n          </motion.span>\n        </motion.button>\n\n        <motion.button\n          {...BUTTON_MOTION_CONFIG}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-red-200/60 dark:bg-red-800/80 px-2.5 py-2 text-red-600 dark:text-red-300"\n          aria-label="Reject"\n        >\n          <X size={20} className="shrink-0" />\n          <motion.span\n            variants={LABEL_VARIANTS}\n            transition={LABEL_TRANSITION}\n            className="invisible text-sm"\n          >\n            Reject\n          </motion.span>\n        </motion.button>\n\n        <motion.button\n          {...BUTTON_MOTION_CONFIG}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-green-200/60 dark:bg-green-800/80 px-2.5 py-2 text-green-600 dark:text-green-300"\n          aria-label="Hire"\n        >\n          <IdCard size={20} className="shrink-0" />\n          <motion.span\n            variants={LABEL_VARIANTS}\n            transition={LABEL_TRANSITION}\n            className="invisible text-sm"\n          >\n            Hire\n          </motion.span>\n        </motion.button>\n      </motion.div>\n\n      <div className="mx-3 hidden h-6 w-px bg-border sm:block rounded-full" />\n\n      <motion.button\n        whileTap={{ scale: 0.975 }}\n        className="flex w-full h-10 text-sm cursor-pointer items-center justify-center rounded-lg bg-teal-500 dark:bg-teal-600/80 px-3 py-2 text-white transition-colors duration-300 dark:hover:bg-teal-800 hover:bg-teal-600 sm:w-auto"\n      >\n        <span className="mr-1 text-neutral-200">Move to:</span>\n        <span>Interview I</span>\n        <div className="mx-3 h-5 w-px bg-white/40 rounded-full" />\n        <div className="flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 -mr-1">\n          <Command size={14} />E\n        </div>\n      </motion.button>\n    </div>\n  );\n}\n\nexport { ManagementBar };',
       },
@@ -5369,5 +5404,39 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/management-bar',
+  },
+  'user-presence-avatar': {
+    name: 'user-presence-avatar',
+    description: 'User Presence Avatar Component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/avatar-group'],
+    files: [
+      {
+        path: 'registry/ui-elements/user-presence-avatar/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/ui-elements/user-presence-avatar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, LayoutGroup } from 'motion/react';\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from '@/components/ui/avatar';\nimport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n} from '@/components/animate-ui/components/avatar-group';\nimport { cn } from '@/lib/utils';\n\nconst USERS = [\n  {\n    id: 1,\n    src: 'https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg',\n    fallback: 'AK',\n    tooltip: 'Arhamkhnz',\n    online: true,\n  },\n  {\n    id: 2,\n    src: 'https://pbs.twimg.com/profile_images/1909615404789506048/MTqvRsjo_400x400.jpg',\n    fallback: 'SK',\n    tooltip: 'Skyleen',\n    online: true,\n  },\n  {\n    id: 3,\n    src: 'https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg',\n    fallback: 'CN',\n    tooltip: 'Shadcn',\n    online: true,\n  },\n  {\n    id: 4,\n    src: 'https://pbs.twimg.com/profile_images/1677042510839857154/Kq4tpySA_400x400.jpg',\n    fallback: 'AW',\n    tooltip: 'Adam Wathan',\n    online: false,\n  },\n  {\n    id: 5,\n    src: 'https://pbs.twimg.com/profile_images/1783856060249595904/8TfcCN0r_400x400.jpg',\n    fallback: 'GR',\n    tooltip: 'Guillermo Rauch',\n    online: false,\n  },\n  {\n    id: 6,\n    src: 'https://pbs.twimg.com/profile_images/1534700564810018816/anAuSfkp_400x400.jpg',\n    fallback: 'JH',\n    tooltip: 'Jhey',\n    online: false,\n  },\n];\n\nconst AVATAR_MOTION_TRANSITION = {\n  type: 'spring',\n  stiffness: 200,\n  damping: 25,\n};\n\nconst GROUP_CONTAINER_TRANSITION = {\n  type: 'spring',\n  stiffness: 150,\n  damping: 20,\n};\n\nfunction UserPresenceAvatar() {\n  const [users, setUsers] = React.useState(USERS);\n  const [togglingGroup, setTogglingGroup] = React.useState<\n    'online' | 'offline' | null\n  >(null);\n\n  const online = users.filter((u) => u.online);\n  const offline = users.filter((u) => !u.online);\n\n  const toggleStatus = (id: number) => {\n    const user = users.find((u) => u.id === id);\n    if (!user) return;\n\n    setTogglingGroup(user.online ? 'online' : 'offline');\n    setUsers((prev) => {\n      const idx = prev.findIndex((u) => u.id === id);\n      if (idx === -1) return prev;\n      const updated = [...prev];\n      const target = updated[idx];\n      if (!target) return prev;\n      updated.splice(idx, 1);\n      updated.push({ ...target, online: !target.online });\n      return updated;\n    });\n    // Reset group z-index after the animation duration (keep in sync with animation timing)\n    setTimeout(() => setTogglingGroup(null), 500);\n  };\n\n  return (\n    <div className=\"flex items-center gap-5\">\n      <LayoutGroup>\n        {online.length > 0 && (\n          <motion.div\n            layout\n            className={cn(\n              'bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full',\n              togglingGroup === 'online' ? 'z-5' : 'z-10',\n            )}\n            transition={GROUP_CONTAINER_TRANSITION}\n          >\n            <AvatarGroup\n              key={online.map((u) => u.id).join('_') + '-online'}\n              translate=\"0\"\n              className=\"h-12 -space-x-3\"\n              tooltipProps={{ side: 'top', sideOffset: 14 }}\n            >\n              {online.map((user) => (\n                <motion.div\n                  key={user.id}\n                  layoutId={`avatar-${user.id}`}\n                  className=\"cursor-pointer\"\n                  onClick={() => toggleStatus(user.id)}\n                  animate={{\n                    filter: 'grayscale(0)',\n                    scale: 1,\n                  }}\n                  transition={AVATAR_MOTION_TRANSITION}\n                  title=\"Click to go offline\"\n                  initial={false}\n                >\n                  <Avatar className=\"size-12 border-3 border-neutral-300 dark:border-neutral-700\">\n                    <AvatarImage src={user.src} />\n                    <AvatarFallback>{user.fallback}</AvatarFallback>\n                    <AvatarGroupTooltip>\n                      <p>{user.tooltip}</p>\n                    </AvatarGroupTooltip>\n                  </Avatar>\n                </motion.div>\n              ))}\n            </AvatarGroup>\n          </motion.div>\n        )}\n\n        {offline.length > 0 && (\n          <motion.div\n            layout\n            className={cn(\n              'bg-neutral-300 dark:bg-neutral-700 p-0.5 rounded-full',\n              togglingGroup === 'offline' ? 'z-5' : 'z-10',\n            )}\n            transition={GROUP_CONTAINER_TRANSITION}\n          >\n            <AvatarGroup\n              key={offline.map((u) => u.id).join('_') + '-offline'}\n              translate=\"0\"\n              className=\"h-12 -space-x-3\"\n              tooltipProps={{ side: 'top', sideOffset: 14 }}\n            >\n              {offline.map((user) => (\n                <motion.div\n                  key={user.id}\n                  layoutId={`avatar-${user.id}`}\n                  className=\"cursor-pointer\"\n                  onClick={() => toggleStatus(user.id)}\n                  animate={{\n                    filter: 'grayscale(1)',\n                    scale: 1,\n                  }}\n                  transition={AVATAR_MOTION_TRANSITION}\n                  title=\"Click to go online\"\n                  initial={false}\n                >\n                  <Avatar className=\"size-12 border-3 border-neutral-300 dark:border-neutral-700\">\n                    <AvatarImage src={user.src} />\n                    <AvatarFallback>{user.fallback}</AvatarFallback>\n                    <AvatarGroupTooltip>\n                      <p>{user.tooltip}</p>\n                    </AvatarGroupTooltip>\n                  </Avatar>\n                </motion.div>\n              ))}\n            </AvatarGroup>\n          </motion.div>\n        )}\n      </LayoutGroup>\n    </div>\n  );\n}\n\nexport { UserPresenceAvatar };",
+      },
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/ui-elements/user-presence-avatar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'user-presence-avatar';
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/user-presence-avatar',
   },
 };

@@ -18,6 +18,7 @@
     "components/tooltip",
     "---UI Elements---",
     "ui-elements/management-bar",
+    "ui-elements/user-presence-avatar",
     "---Effects---",
     "effects/motion-effect",
     "effects/motion-highlight",

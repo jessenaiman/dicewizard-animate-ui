@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "user-presence-avatar",
+  "type": "registry:ui",
+  "title": "User Presence Avatar",
+  "description": "User Presence Avatar Component",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/avatar-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ui-elements/user-presence-avatar/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/ui-elements/user-presence-avatar.tsx"
+    }
+  ]
+}
