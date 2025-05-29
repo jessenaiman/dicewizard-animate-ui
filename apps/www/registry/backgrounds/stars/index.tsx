@@ -76,6 +76,7 @@ type StarsBackgroundProps = React.ComponentProps<'div'> & {
   speed?: number;
   transition?: SpringOptions;
   starColor?: string;
+  pointerEvents?: boolean;
 };
 
 function StarsBackground({
@@ -85,6 +86,7 @@ function StarsBackground({
   speed = 50,
   transition = { stiffness: 50, damping: 20 },
   starColor = '#fff',
+  pointerEvents = true,
   ...props
 }: StarsBackgroundProps) {
   const offsetX = useMotionValue(1);
@@ -115,7 +117,10 @@ function StarsBackground({
       onMouseMove={handleMouseMove}
       {...props}
     >
-      <motion.div style={{ x: springX, y: springY }}>
+      <motion.div
+        style={{ x: springX, y: springY }}
+        className={cn({ 'pointer-events-none': !pointerEvents })}
+      >
         <StarLayer
           count={1000}
           size={1}
