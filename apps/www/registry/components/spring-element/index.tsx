@@ -165,7 +165,7 @@ function SpringElement({
           strokeLinecap="round"
           strokeLinejoin="round"
           className={cn(
-            'stroke-2 stroke-neutral-900 fill-none',
+            'stroke-2 stroke-neutral-900 dark:stroke-neutral-100 fill-none',
             springClassName,
           )}
         />
