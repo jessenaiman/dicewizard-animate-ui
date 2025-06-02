@@ -63,6 +63,7 @@ interface DefaultIconProps<T = string> {
 }
 
 interface AnimateIconProps<T = string> extends DefaultIconProps<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: React.ReactElement<any, any>;
 }
 
@@ -128,6 +129,7 @@ function AnimateIcon({
     currentAnimation.current =
       typeof animate === 'string' ? animate : animation;
     setLocalAnimate(!!animate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animate]);
 
   React.useEffect(
@@ -136,11 +138,11 @@ function AnimateIcon({
   );
 
   React.useEffect(() => {
-    localAnimate && onAnimateStart?.();
+    if (localAnimate) onAnimateStart?.();
     controls.start(localAnimate ? 'animate' : 'initial').then(() => {
-      localAnimate && onAnimateEnd?.();
+      if (localAnimate) onAnimateEnd?.();
     });
-  }, [localAnimate, controls]);
+  }, [localAnimate, controls, onAnimateStart, onAnimateEnd]);
 
   const handleMouseEnter = (e: MouseEvent) => {
     if (animateOnHover) startAnimation(animateOnHover);
@@ -283,6 +285,7 @@ function getVariants<
   V extends { default: T; [key: string]: T },
   T extends Record<string, Variants>,
 >(animations: V): T {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { animation: animationType, loop, loopDelay } = useAnimateIconContext();
 
   let result: T;
@@ -304,6 +307,7 @@ function getVariants<
 
   if (loop) {
     for (const key in result) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const state = result[key] as any;
       const transition = state.animate?.transition;
       if (!transition) continue;
