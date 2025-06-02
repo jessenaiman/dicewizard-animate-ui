@@ -515,6 +515,23 @@
       ]
     },
     {
+      "name": "spring-element",
+      "type": "registry:ui",
+      "title": "Spring Element",
+      "description": "A flexible, animated spring component that attaches a draggable element (avatar, text, icon, or any React node) to its origin with a spring line.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/components/spring-element/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/spring-element.tsx"
+        }
+      ]
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
@@ -1371,6 +1388,22 @@
           "path": "registry/demo/components/scroll-progress/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/components/scroll-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spring-element-demo",
+      "type": "registry:ui",
+      "title": "Spring Element Demo",
+      "description": "Demo showing a Spring Element attached to an avatar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/spring-element"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/spring-element/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/spring-element.tsx"
         }
       ]
     },

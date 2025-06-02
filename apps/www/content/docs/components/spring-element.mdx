@@ -1,0 +1,83 @@
+---
+title: Spring Element
+description: A flexible, animated spring component that attaches a draggable element (avatar, text, icon, or any React node) to its origin with a spring line.
+author:
+  name: arhamkhnz
+  url: https://github.com/arhamkhnz
+new: true
+---
+
+<ComponentPreview name="spring-element-demo" />
+
+## Installation
+
+<ComponentInstallation name="spring-element" />
+
+## Usage
+
+```tsx
+<SpringElement>
+  <Avatar className="size-12">
+    <AvatarImage draggable={false} src={USER.src} />
+    <AvatarFallback>{USER.fallback}</AvatarFallback>
+  </Avatar>
+</SpringElement>
+```
+
+<Callout type="info">
+  **Note:** Add <code>draggable=&#123;false&#125;</code> to your element
+  (avatar, image, etc.) when passing it as children. This prevents the browser's
+  native drag image from interfering with the spring drag animation.
+</Callout>
+
+## Props
+
+### SpringElement
+
+<TypeTable
+  type={{
+    children: {
+      description:
+        'The element to attach the spring to. Can be any React node (avatar, text, icon, etc.).',
+      type: 'React.ReactElement',
+      required: true,
+    },
+    className: {
+      description: 'ClassName for the element.',
+      type: 'string',
+      required: false,
+    },
+    springClassName: {
+      description:
+        'ClassName for the spring path (to control stroke color, thickness, etc.). Default is "stroke-2 stroke-neutral-900 fill-none".',
+      type: 'string',
+      required: false,
+    },
+    dragElastic: {
+      description:
+        'How elastic the drag interaction feels. Lower values = less stretch. (Framer Motion prop)',
+      type: 'number',
+      required: false,
+      default: '0.4',
+    },
+    springConfig: {
+      description:
+        'Spring physics config for the element motion. (stiffness, damping)',
+      type: '{ stiffness?: number; damping?: number }',
+      required: false,
+      default: '{ stiffness: 200, damping: 16 }',
+    },
+    springPathConfig: {
+      description:
+        'Config for the spring path itself: number of coils, amplitude, curve ratios, etc.',
+      type: '{ coilCount?: number; amplitudeMin?: number; amplitudeMax?: number; curveRatioMin?: number; curveRatioMax?: number; bezierOffset?: number; }',
+      required: false,
+      default:
+        '{ coilCount: 8, amplitudeMin: 8, amplitudeMax: 20, curveRatioMin: 0.5, curveRatioMax: 1, bezierOffset: 8 }',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Anh](https://x.com/pwign) for [this X post](https://x.com/pwign/status/1927760004183970067) as inspiration
