@@ -1,7 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import {
+  type HTMLMotionProps,
+  motion,
+  useMotionValue,
+  useSpring,
+} from 'motion/react';
 import { cn } from '@workspace/ui/lib/utils';
 
 const generateSpringPath = (
@@ -88,6 +93,7 @@ function useMotionValueValue(mv: any) {
 
 type SpringAvatarProps = {
   children: React.ReactElement;
+  className?: string;
   springClassName?: string;
   dragElastic?: number;
   springConfig?: { stiffness?: number; damping?: number };
@@ -99,14 +105,17 @@ type SpringAvatarProps = {
     curveRatioMax?: number;
     bezierOffset?: number;
   };
-};
+} & HTMLMotionProps<'div'>;
 
 function SpringElement({
+  ref,
   children,
+  className,
   springClassName,
-  dragElastic = 0.4,
+  dragElastic = 0.2,
   springConfig = { stiffness: 200, damping: 16 },
   springPathConfig = {},
+  ...props
 }: SpringAvatarProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -124,7 +133,9 @@ function SpringElement({
   const sy = useMotionValueValue(springY);
 
   const childRef = React.useRef<HTMLDivElement>(null);
+  React.useImperativeHandle(ref, () => childRef.current as HTMLDivElement);
   const [center, setCenter] = React.useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = React.useState(false);
 
   React.useLayoutEffect(() => {
     function update() {
@@ -144,6 +155,14 @@ function SpringElement({
       window.removeEventListener('scroll', update, true);
     };
   }, []);
+
+  React.useEffect(() => {
+    if (isDragging) {
+      document.body.style.cursor = 'grabbing';
+    } else {
+      document.body.style.cursor = 'default';
+    }
+  }, [isDragging]);
 
   const path = generateSpringPath(
     center.x,
@@ -172,7 +191,11 @@ function SpringElement({
       </svg>
       <motion.div
         ref={childRef}
-        className="z-50"
+        className={cn(
+          'z-50',
+          isDragging ? 'cursor-grabbing' : 'cursor-grab',
+          className,
+        )}
         style={{
           x: springX,
           y: springY,
@@ -180,14 +203,19 @@ function SpringElement({
         drag
         dragElastic={dragElastic}
         dragMomentum={false}
-        onDrag={(e, info) => {
+        onDragStart={() => {
+          setIsDragging(true);
+        }}
+        onDrag={(_, info) => {
           x.set(info.offset.x);
           y.set(info.offset.y);
         }}
         onDragEnd={() => {
           x.set(0);
           y.set(0);
+          setIsDragging(false);
         }}
+        {...props}
       >
         {children}
       </motion.div>

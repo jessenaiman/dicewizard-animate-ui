@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/components/spring-element/index.tsx",
-      "content": "import { SpringElement } from '@/components/animate-ui/components/spring-element';\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from '@/components/ui/avatar';\n\nexport default function SpringElementDemo() {\n  return (\n    <SpringElement>\n      <Avatar className=\"size-12\">\n        <AvatarImage\n          draggable={false}\n          src=\"https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg\"\n        />\n        <AvatarFallback>AK</AvatarFallback>\n      </Avatar>\n    </SpringElement>\n  );\n}\n",
+      "content": "import { SpringElement } from '@/components/animate-ui/components/spring-element';\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from '@/components/ui/avatar';\n\nexport default function SpringElementDemo() {\n  return (\n    <SpringElement>\n      <Avatar className=\"size-20\">\n        <AvatarImage\n          draggable={false}\n          src=\"https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg\"\n        />\n        <AvatarFallback>AK</AvatarFallback>\n      </Avatar>\n    </SpringElement>\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/components/spring-element.tsx"
     }

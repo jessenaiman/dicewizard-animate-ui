@@ -8,7 +8,7 @@ import {
 export default function SpringElementDemo() {
   return (
     <SpringElement>
-      <Avatar className="size-12">
+      <Avatar className="size-20">
         <AvatarImage
           draggable={false}
           src="https://pbs.twimg.com/profile_images/1897311929028255744/otxpL-ke_400x400.jpg"
