@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thumbs-up-icon",
+  "type": "registry:ui",
+  "title": "Thumbs Up Icon",
+  "description": "Thumbs up icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/thumbs-up/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/thumbs-up.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": ["like", "good", "emotion"]
+  }
+}

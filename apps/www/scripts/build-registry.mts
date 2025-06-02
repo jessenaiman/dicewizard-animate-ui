@@ -171,6 +171,7 @@ export const index: Record<string, any> = {`;
     devDependencies: ${JSON.stringify(item.devDependencies)},
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: ${JSON.stringify(filesWithContent, null, 2)},
+    keywords: ${JSON.stringify(item.meta?.keywords ?? [])},
     component: ${
       componentPath
         ? `(function() {
@@ -180,6 +181,9 @@ export const index: Record<string, any> = {`;
           key => typeof mod[key] === 'function' || typeof mod[key] === 'object'
         ) || "${item.name}";
         const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
         return { default: Comp };
       });
       LazyComp.demoProps = ${JSON.stringify(item?.meta?.demoProps ?? {})};

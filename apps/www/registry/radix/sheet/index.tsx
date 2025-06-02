@@ -109,12 +109,14 @@ type SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &
   VariantProps<typeof sheetVariants> &
   HTMLMotionProps<'div'> & {
     transition?: Transition;
+    overlay?: boolean;
   };
 
 function SheetContent({
   side = 'right',
   className,
   transition = { type: 'spring', stiffness: 150, damping: 25 },
+  overlay = true,
   children,
   ...props
 }: SheetContentProps) {
@@ -124,16 +126,18 @@ function SheetContent({
     <AnimatePresence>
       {isOpen && (
         <SheetPortal forceMount data-slot="sheet-portal">
-          <SheetOverlay asChild forceMount>
-            <motion.div
-              key="sheet-overlay"
-              data-slot="sheet-overlay"
-              initial={{ opacity: 0, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, filter: 'blur(4px)' }}
-              transition={{ duration: 0.2, ease: 'easeInOut' }}
-            />
-          </SheetOverlay>
+          {overlay && (
+            <SheetOverlay asChild forceMount>
+              <motion.div
+                key="sheet-overlay"
+                data-slot="sheet-overlay"
+                initial={{ opacity: 0, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, filter: 'blur(4px)' }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+              />
+            </SheetOverlay>
+          )}
           <SheetPrimitive.Content asChild forceMount {...props}>
             <motion.div
               key="sheet-content"

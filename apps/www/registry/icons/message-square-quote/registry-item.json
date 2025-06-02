@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message-square-quote-icon",
+  "type": "registry:ui",
+  "title": "Message Square Quote Icon",
+  "description": "Message square quote icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/message-square-quote/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/message-square-quote.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": [
+      "comment",
+      "chat",
+      "conversation",
+      "dialog",
+      "feedback",
+      "speech bubble",
+      "blockquote",
+      "quotation",
+      "indent",
+      "reply",
+      "response"
+    ]
+  }
+}

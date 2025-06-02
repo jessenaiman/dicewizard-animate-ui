@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kanban-icon",
+  "type": "registry:ui",
+  "title": "Kanban Icon",
+  "description": "Kanban icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/kanban/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/kanban.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": [
+      "projects",
+      "manage",
+      "overview",
+      "board",
+      "tickets",
+      "issues",
+      "roadmap",
+      "plan",
+      "intentions",
+      "productivity",
+      "work",
+      "agile",
+      "code",
+      "coding"
+    ]
+  }
+}
