@@ -11934,7 +11934,7 @@ export const index: Record<string, any> = {
       'radix-ui',
       'class-variance-authority',
       'lucide-react',
-      'motion/react',
+      'motion',
     ],
     devDependencies: undefined,
     registryDependencies: [
