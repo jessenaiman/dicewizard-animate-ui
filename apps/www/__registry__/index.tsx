@@ -1056,6 +1056,45 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/files',
   },
+  'liquid-glass': {
+    name: 'liquid-glass',
+    description:
+      'A component that allows you to display a liquid glass effect, inspired by iOS26.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/components/liquid-glass/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/liquid-glass.tsx',
+        content:
+          'import * as React from \'react\';\nimport { cn } from \'@/lib/utils\';\n\nconst DEFAULT_COMPONENT = \'div\';\n\ntype LiquidGlassProps<T extends React.ElementType = typeof DEFAULT_COMPONENT> =\n  {\n    as?: T;\n    radius?: number;\n    blur?: number;\n    childClassName?: string;\n  } & React.ComponentProps<T>;\n\nfunction LiquidGlass<T extends React.ElementType = typeof DEFAULT_COMPONENT>({\n  as,\n  children,\n  className,\n  radius = 25,\n  blur = 0,\n  childClassName,\n  ref,\n  ...props\n}: LiquidGlassProps<T>) {\n  const Component = as || DEFAULT_COMPONENT;\n\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const rx = radius;\n  const [size, setSize] = React.useState<{ width: string; height: string }>({\n    width: \'0\',\n    height: \'0\',\n  });\n\n  const viewBox = React.useMemo(\n    () => `0 0 ${size.width} ${size.height}`,\n    [size.width, size.height],\n  );\n\n  const calculateSize = React.useCallback(() => {\n    if (containerRef.current) {\n      const rect = containerRef.current.getBoundingClientRect();\n      setSize({\n        width: rect.width.toString(),\n        height: rect.height.toString(),\n      });\n    }\n  }, []);\n\n  React.useEffect(() => {\n    calculateSize();\n  }, [calculateSize, children, className, childClassName, radius]);\n\n  return (\n    <Component\n      className={cn(\'relative overflow-hidden\', className)}\n      style={{ borderRadius: `${rx}px` }}\n      ref={containerRef}\n      {...props}\n    >\n      <svg className="hidden">\n        <filter\n          id="glass-distortion"\n          x="0%"\n          y="0%"\n          width={size.width}\n          height={size.height}\n          filterUnits="objectBoundingBox"\n        >\n          <feTurbulence\n            type="fractalNoise"\n            baseFrequency="0.001 0.005"\n            numOctaves="1"\n            seed="17"\n            result="turbulence"\n          />\n\n          <feComponentTransfer in="turbulence" result="mapped">\n            <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />\n            <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />\n            <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />\n          </feComponentTransfer>\n\n          <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />\n\n          <feSpecularLighting\n            in="softMap"\n            surfaceScale="5"\n            specularConstant="1"\n            specularExponent="100"\n            lightingColor="white"\n            result="specLight"\n          >\n            <fePointLight x="-200" y="-200" z="300" />\n          </feSpecularLighting>\n\n          <feComposite\n            in="specLight"\n            operator="arithmetic"\n            k1="0"\n            k2="1"\n            k3="1"\n            k4="0"\n            result="litImage"\n          />\n\n          <feDisplacementMap\n            in="SourceGraphic"\n            in2="softMap"\n            scale="200"\n            xChannelSelector="R"\n            yChannelSelector="G"\n          />\n        </filter>\n      </svg>\n\n      <span\n        className="flex items-center justify-center w-full h-full"\n        style={{\n          backdropFilter: `blur(${blur}px) url(#displacementFilter4)`,\n          boxShadow: \'inset 0 0 1px 0 rgba(255, 255, 255, 0.5)\',\n          borderRadius: `${rx}px`,\n        }}\n      >\n        <span\n          className="relative flex overflow-hidden transition-all duration-400 ease-in-out"\n          style={{\n            borderRadius: `${rx}px`,\n          }}\n        >\n          <span\n            className="absolute z-0 inset-0 overflow-hidden isolate [filter:url(#glass-distortion)]"\n            style={{\n              borderRadius: `${rx}px`,\n            }}\n          />\n          <span\n            className="z-[1] absolute inset-0"\n            style={{\n              borderRadius: `${rx}px`,\n            }}\n          />\n          <span className="relative z-[3] w-full h-full">\n            <span\n              className={cn(\n                \'flex items-center justify-center gap-2 w-full p-2\',\n                childClassName,\n              )}\n            >\n              {children}\n            </span>\n            <svg\n              width={size.width}\n              height={size.height}\n              viewBox={viewBox}\n              xmlns="http://www.w3.org/2000/svg"\n              className="hidden"\n            >\n              <filter\n                id="displacementFilter4"\n                x="0"\n                y="0"\n                width={size.width}\n                height={size.height}\n                filterUnits="userSpaceOnUse"\n              >\n                <feImage\n                  href={`data:image/svg+xml,%3Csvg width=\'${size.width}\' height=\'${size.height}\' viewBox=\'${viewBox}\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%230001\' /%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%23FFF\' style=\'filter:blur(5px)\' /%3E%3C/svg%3E`}\n                  x="0%"\n                  y="0%"\n                  width={size.width}\n                  height={size.height}\n                  result="thing9"\n                />\n                <feImage\n                  href={`data:image/svg+xml,%3Csvg width=\'${size.width}\' height=\'${size.height}\' viewBox=\'${viewBox}\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%23FFF1\' style=\'filter:blur(15px)\' /%3E%3C/svg%3E`}\n                  x="0%"\n                  y="0%"\n                  width={size.width}\n                  height={size.height}\n                  result="thing0"\n                />\n                <feImage\n                  href={`data:image/svg+xml,%3Csvg width=\'${size.width}\' height=\'${size.height}\' viewBox=\'${viewBox}\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%23000\' /%3E%3C/svg%3E`}\n                  x="0%"\n                  y="0%"\n                  width={size.width}\n                  height={size.height}\n                  result="thing1"\n                />\n                <feImage\n                  href={`data:image/svg+xml,%3Csvg width=\'${size.width}\' height=\'${size.height}\' viewBox=\'${viewBox}\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cdefs%3E%3ClinearGradient id=\'gradient1\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'0%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23000\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%2300F\'/%3E%3C/linearGradient%3E%3ClinearGradient id=\'gradient2\' x1=\'0%25\' y1=\'0%25\' x2=\'0%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23000\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%230F0\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=\'0\' y=\'0\' width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%237F7F7F\' /%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%23000\' /%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'url(%23gradient1)\' style=\'mix-blend-mode: screen\' /%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'url(%23gradient2)\' style=\'mix-blend-mode: screen\' /%3E%3Crect width=\'${size.width}\' height=\'${size.height}\' rx=\'${rx}\' fill=\'%237F7F7FBB\' style=\'filter:blur(5px)\' /%3E%3C/svg%3E`}\n                  x="0%"\n                  y="0%"\n                  width={size.width}\n                  height={size.height}\n                  result="thing2"\n                />\n                <feDisplacementMap\n                  in2="thing2"\n                  in="SourceGraphic"\n                  scale="-148"\n                  xChannelSelector="B"\n                  yChannelSelector="G"\n                />\n                <feColorMatrix\n                  type="matrix"\n                  values="1 0 0 0 0\n                      0 0 0 0 0\n                      0 0 0 0 0\n                      0 0 0 1 0"\n                  result="disp1"\n                />\n                <feDisplacementMap\n                  in2="thing2"\n                  in="SourceGraphic"\n                  scale="-150"\n                  xChannelSelector="B"\n                  yChannelSelector="G"\n                />\n                <feColorMatrix\n                  type="matrix"\n                  values="0 0 0 0 0\n                      0 1 0 0 0\n                      0 0 0 0 0\n                      0 0 0 1 0"\n                  result="disp2"\n                />\n                <feDisplacementMap\n                  in2="thing2"\n                  in="SourceGraphic"\n                  scale="-152"\n                  xChannelSelector="B"\n                  yChannelSelector="G"\n                />\n                <feColorMatrix\n                  type="matrix"\n                  values="0 0 0 0 0\n                      0 0 0 0 0\n                      0 0 1 0 0\n                      0 0 0 1 0"\n                  result="disp3"\n                />\n                <feBlend in2="disp2" mode="screen" />\n                <feBlend in2="disp1" mode="screen" />\n                <feGaussianBlur stdDeviation="0.7" />\n                <feBlend in2="thing0" mode="screen" />\n                <feBlend in2="thing9" mode="multiply" />\n                <feComposite in2="thing1" operator="in" />\n              </filter>\n            </svg>\n          </span>\n        </span>\n      </span>\n    </Component>\n  );\n}\n\nLiquidGlass.displayName = \'LiquidGlass\';\n\nexport { LiquidGlass, type LiquidGlassProps };',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/liquid-glass/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'liquid-glass';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/liquid-glass',
+  },
   'scroll-progress': {
     name: 'scroll-progress',
     description:
@@ -2721,6 +2760,44 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/install-tabs-demo',
+  },
+  'liquid-glass-demo': {
+    name: 'liquid-glass-demo',
+    description: 'Demo showing a liquid glass effect.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/liquid-glass'],
+    files: [
+      {
+        path: 'registry/demo/components/liquid-glass/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/liquid-glass.tsx',
+        content:
+          "import { LiquidGlass } from '@/components/animate-ui/components/liquid-glass';\nimport { GlassesIcon } from 'lucide-react';\nimport { motion } from 'motion/react';\n\nexport default function LiquidGlassDemo() {\n  return (\n    <div className=\"absolute inset-0\">\n      <div className=\"relative h-full w-full overflow-hidden rounded-xl\">\n        <div className=\"overflow-y-auto h-full\">\n          <LiquidGlass\n            className=\"absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer\"\n            radius={10}\n            blur={1}\n            childClassName=\"flex items-center gap-2 text-white font-medium px-3\"\n            as={motion.button}\n            whileHover={{\n              scale: 1.05,\n            }}\n            whileTap={{\n              scale: 0.95,\n            }}\n          >\n            <GlassesIcon className=\"size-5\" />\n            <span>Liquid Glass</span>\n          </LiquidGlass>\n          <div\n            className=\"size-full dark:bg-neutral-900 bg-neutral-100\"\n            style={{\n              backgroundImage:\n                'url(https://upload.wikimedia.org/wikipedia/commons/9/93/Rainbow_on_Rara_Lake.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n          <div\n            className=\"size-full dark:bg-neutral-950 bg-white\"\n            style={{\n              backgroundImage:\n                'url(https://www.terdav.com/Content/img/mag/vignettes/grande/1515.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n          <div\n            className=\"size-full dark:bg-neutral-900 bg-neutral-100\"\n            style={{\n              backgroundImage:\n                'url(https://www.amplitudes.com/blog/wp-content/uploads/2019/07/iStock-1014791492-1.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n          <div\n            className=\"size-full dark:bg-neutral-950 bg-white\"\n            style={{\n              backgroundImage:\n                'url(https://m.media-amazon.com/images/I/714N8vbkr6L._AC_UF1000,1000_QL80_.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n        </div>\n      </div>\n    </div>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/liquid-glass/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'liquid-glass-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/liquid-glass-demo',
   },
   'scroll-progress-demo': {
     name: 'scroll-progress-demo',
