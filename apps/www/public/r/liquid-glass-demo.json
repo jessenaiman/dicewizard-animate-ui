@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-glass-demo",
+  "type": "registry:ui",
+  "title": "Liquid Glass Demo",
+  "description": "Demo showing a liquid glass effect.",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/liquid-glass"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/liquid-glass/index.tsx",
+      "content": "import { LiquidGlass } from '@/components/animate-ui/components/liquid-glass';\nimport { GlassesIcon } from 'lucide-react';\nimport { motion } from 'motion/react';\n\nexport default function LiquidGlassDemo() {\n  return (\n    <div className=\"absolute inset-0\">\n      <div className=\"relative h-full w-full overflow-hidden rounded-xl\">\n        <div className=\"overflow-y-auto h-full\">\n          <LiquidGlass\n            className=\"absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer\"\n            radius={10}\n            blur={1}\n            childClassName=\"flex items-center gap-2 text-white font-medium px-3\"\n            as={motion.button}\n            whileHover={{\n              scale: 1.05,\n            }}\n            whileTap={{\n              scale: 0.95,\n            }}\n          >\n            <GlassesIcon className=\"size-5\" />\n            <span>Liquid Glass</span>\n          </LiquidGlass>\n          <div\n            className=\"size-full dark:bg-neutral-900 bg-neutral-100\"\n            style={{\n              backgroundImage:\n                'url(https://upload.wikimedia.org/wikipedia/commons/9/93/Rainbow_on_Rara_Lake.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n          <div\n            className=\"size-full dark:bg-neutral-950 bg-white\"\n            style={{\n              backgroundImage:\n                'url(https://www.terdav.com/Content/img/mag/vignettes/grande/1515.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n          <div\n            className=\"size-full dark:bg-neutral-900 bg-neutral-100\"\n            style={{\n              backgroundImage:\n                'url(https://www.amplitudes.com/blog/wp-content/uploads/2019/07/iStock-1014791492-1.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n          <div\n            className=\"size-full dark:bg-neutral-950 bg-white\"\n            style={{\n              backgroundImage:\n                'url(https://m.media-amazon.com/images/I/714N8vbkr6L._AC_UF1000,1000_QL80_.jpg)',\n              backgroundSize: 'cover',\n              backgroundPosition: 'center',\n            }}\n          />\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/components/liquid-glass.tsx"
+    }
+  ]
+}
