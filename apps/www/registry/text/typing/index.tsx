@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { motion, useInView, type UseInViewOptions } from 'motion/react';
 
-import { cn } from '@workspace/ui/lib/utils';
+import { cn } from '@/lib/utils';
 
 function CursorBlinker({ className }: { className?: string }) {
   return (
@@ -16,15 +16,15 @@ function CursorBlinker({ className }: { className?: string }) {
             duration: 1,
             repeat: Infinity,
             repeatDelay: 0,
-            ease: 'linear',
+            ease: "linear",
             times: [0, 0.5, 0.5, 1],
           },
         },
       }}
       animate="blinking"
       className={cn(
-        'inline-block h-5 w-[1px] translate-y-1 bg-black dark:bg-white',
-        className,
+        "inline-block h-5 w-[1px] translate-y-1 bg-black dark:bg-white",
+        className
       )}
     />
   );
@@ -41,6 +41,7 @@ type TypingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   holdDelay?: number;
   text: string | string[];
   cursorClassName?: string;
+  animateOnChange?: boolean;
 };
 
 function TypingText({
@@ -55,6 +56,7 @@ function TypingText({
   holdDelay = 1000,
   text,
   cursorClassName,
+  animateOnChange = true,
   ...props
 }: TypingTextProps) {
   const localRef = React.useRef<HTMLSpanElement>(null);
@@ -70,6 +72,12 @@ function TypingText({
   const [displayedText, setDisplayedText] = React.useState<string>('');
 
   React.useEffect(() => {
+    // Reset animation when text changes (if animateOnChange is true)
+    if (animateOnChange) {
+      setStarted(false);
+      setDisplayedText('');
+    }
+
     if (isInView) {
       const timeoutId = setTimeout(() => {
         setStarted(true);
@@ -81,7 +89,7 @@ function TypingText({
       }, delay);
       return () => clearTimeout(timeoutId);
     }
-  }, [isInView, delay]);
+  }, [isInView, delay, ...(animateOnChange ? [text] : [])]);
 
   React.useEffect(() => {
     if (!started) return;
