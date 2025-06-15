@@ -159,7 +159,7 @@ function StarsScrollingWheel({
 
       <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
         <div
-          className="w-full bg-neutral-100 rounded-xl flex items-center justify-start px-6"
+          className="w-full bg-muted rounded-xl flex items-center justify-start px-6"
           style={{ height: itemHeight }}
         >
           <div className="relative inline-flex size-[28px] shrink-0">
