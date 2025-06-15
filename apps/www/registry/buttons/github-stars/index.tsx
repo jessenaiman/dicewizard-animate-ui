@@ -163,7 +163,6 @@ function GitHubStarsButton({
           {Array.from(segment).map((digit, digitIndex) => (
             <SlidingNumber key={`${index}-${digitIndex}`} number={+digit} />
           ))}
-          {index < segments.length - 1 && <span>,</span>}
         </React.Fragment>
       ))}
 

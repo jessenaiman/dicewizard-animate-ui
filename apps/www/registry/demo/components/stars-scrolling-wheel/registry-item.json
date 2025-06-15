@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars-scrolling-wheel-demo",
+  "type": "registry:ui",
+  "title": "Stars Scrolling Wheel Demo",
+  "description": "Demo showing a Stars Scrolling Wheel.",
+  "registryDependencies": ["https://animate-ui.com/r/stars-scrolling-wheel"],
+  "files": [
+    {
+      "path": "registry/demo/components/stars-scrolling-wheel/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/components/stars-scrolling-wheel.tsx"
+    }
+  ]
+}
