@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars-scrolling-wheel-demo",
+  "type": "registry:ui",
+  "title": "Stars Scrolling Wheel Demo",
+  "description": "Demo showing a Stars Scrolling Wheel.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/stars-scrolling-wheel"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/stars-scrolling-wheel/index.tsx",
+      "content": "import { StarsScrollingWheel } from '@/components/animate-ui/components/stars-scrolling-wheel';\n\nexport const StarsScrollingWheelDemo = () => {\n  return (\n    <div className=\"size-full flex items-center justify-center\">\n      <StarsScrollingWheel stars={1000} delay={1000} />\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/components/stars-scrolling-wheel.tsx"
+    }
+  ]
+}

@@ -545,6 +545,25 @@
       ]
     },
     {
+      "name": "stars-scrolling-wheel",
+      "type": "registry:ui",
+      "title": "Stars Scrolling Wheel",
+      "description": "A scrolling wheel that displays stars count.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/star-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/components/stars-scrolling-wheel/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/stars-scrolling-wheel.tsx"
+        }
+      ]
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
@@ -1437,6 +1456,22 @@
           "path": "registry/demo/components/spring-element/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/components/spring-element.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stars-scrolling-wheel-demo",
+      "type": "registry:ui",
+      "title": "Stars Scrolling Wheel Demo",
+      "description": "Demo showing a Stars Scrolling Wheel.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/stars-scrolling-wheel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/stars-scrolling-wheel/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/stars-scrolling-wheel.tsx"
         }
       ]
     },

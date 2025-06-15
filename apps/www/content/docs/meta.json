@@ -16,6 +16,7 @@
     "components/files",
     "components/scroll-progress",
     "components/spring-element",
+    "components/stars-scrolling-wheel",
     "components/tabs",
     "components/tooltip",
     "---UI Elements---",
