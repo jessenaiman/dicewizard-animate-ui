@@ -14,6 +14,7 @@
     "components/counter",
     "components/cursor",
     "components/files",
+    "components/pin-list",
     "components/scroll-progress",
     "components/spring-element",
     "components/stars-scrolling-wheel",

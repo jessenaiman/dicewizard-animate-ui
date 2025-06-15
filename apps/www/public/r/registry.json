@@ -512,6 +512,23 @@
       ]
     },
     {
+      "name": "pin-list",
+      "type": "registry:ui",
+      "title": "Pin List",
+      "description": "Pin List Component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/components/pin-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/pin-list.tsx"
+        }
+      ]
+    },
+    {
       "name": "scroll-progress",
       "type": "registry:ui",
       "title": "Scroll Progress",
@@ -1420,6 +1437,22 @@
           "path": "registry/demo/components/liquid-glass/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/components/liquid-glass.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pin-list-demo",
+      "type": "registry:ui",
+      "title": "Pin List Demo",
+      "description": "Demo Pin List.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/pin-list"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/pin-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/pin-list.tsx"
         }
       ]
     },
