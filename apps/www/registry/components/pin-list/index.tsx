@@ -7,15 +7,9 @@ import {
   LayoutGroup,
   AnimatePresence,
   type HTMLMotionProps,
+  type Transition,
 } from 'motion/react';
 import { cn } from '@workspace/ui/lib/utils';
-
-type LabelMotionProps = {
-  initial?: Record<string, any> | string | undefined;
-  animate?: Record<string, any> | string | false | undefined;
-  exit?: Record<string, any> | string | undefined;
-  transition?: any;
-};
 
 type PinListItem = {
   id: number;
@@ -25,19 +19,14 @@ type PinListItem = {
   pinned: boolean;
 };
 
-type AnimatedPinListProps = {
+type PinListProps = {
   items: PinListItem[];
   labels?: {
     pinned?: string;
     unpinned?: string;
   };
-  motionConfig?: {
-    stiffness?: number;
-    damping?: number;
-    mass?: number;
-    type?: string;
-  };
-  labelMotionProps?: LabelMotionProps;
+  transition?: Transition;
+  labelMotionProps?: HTMLMotionProps<'p'>;
   className?: string;
   labelClassName?: string;
   pinnedSectionClassName?: string;
@@ -45,10 +34,10 @@ type AnimatedPinListProps = {
   zIndexResetDelay?: number;
 } & HTMLMotionProps<'div'>;
 
-function AnimatedPinList({
+function PinList({
   items,
   labels = { pinned: 'Pinned Items', unpinned: 'All Items' },
-  motionConfig = { stiffness: 320, damping: 20, mass: 0.8, type: 'spring' },
+  transition = { stiffness: 320, damping: 20, mass: 0.8, type: 'spring' },
   labelMotionProps = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -61,7 +50,7 @@ function AnimatedPinList({
   unpinnedSectionClassName,
   zIndexResetDelay = 500,
   ...props
-}: AnimatedPinListProps) {
+}: PinListProps) {
   const [listItems, setListItems] = React.useState(items);
   const [togglingGroup, setTogglingGroup] = React.useState<
     'pinned' | 'unpinned' | null
@@ -82,7 +71,8 @@ function AnimatedPinList({
       const [item] = updated.splice(idx, 1);
       if (!item) return prev;
       const toggled = { ...item, pinned: !item.pinned };
-      toggled.pinned ? updated.push(toggled) : updated.unshift(toggled);
+      if (toggled.pinned) updated.push(toggled);
+      else updated.unshift(toggled);
       return updated;
     });
     // Reset group z-index after the animation duration (keep in sync with animation timing)
@@ -121,7 +111,7 @@ function AnimatedPinList({
                   key={item.id}
                   layoutId={`item-${item.id}`}
                   onClick={() => toggleStatus(item.id)}
-                  transition={motionConfig}
+                  transition={transition}
                   className="flex items-center justify-between gap-5 rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-2"
                 >
                   <div className="flex items-center gap-2">
@@ -173,7 +163,7 @@ function AnimatedPinList({
                   key={item.id}
                   layoutId={`item-${item.id}`}
                   onClick={() => toggleStatus(item.id)}
-                  transition={motionConfig}
+                  transition={transition}
                   className="flex items-center justify-between gap-5 rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-2 group"
                 >
                   <div className="flex items-center gap-2">
@@ -200,4 +190,4 @@ function AnimatedPinList({
   );
 }
 
-export { AnimatedPinList };
+export { PinList, type PinListProps, type PinListItem };

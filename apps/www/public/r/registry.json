@@ -367,23 +367,6 @@
       ]
     },
     {
-      "name": "animated-pin-list",
-      "type": "registry:ui",
-      "title": "Animated Pin List",
-      "description": "Animated Pin List Component",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/components/animated-pin-list/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/components/animated-pin-list.tsx"
-        }
-      ]
-    },
-    {
       "name": "avatar-group",
       "type": "registry:ui",
       "title": "Avatar Group",
@@ -525,6 +508,23 @@
           "path": "registry/components/liquid-glass/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/components/liquid-glass.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pin-list",
+      "type": "registry:ui",
+      "title": "Pin List",
+      "description": "Pin List Component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/components/pin-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/pin-list.tsx"
         }
       ]
     },
@@ -1229,22 +1229,6 @@
       ]
     },
     {
-      "name": "animated-pin-list-demo",
-      "type": "registry:ui",
-      "title": "Animated Pin List Demo",
-      "description": "Demo Animated Pin List.",
-      "registryDependencies": [
-        "https://animate-ui.com/r/animated-pin-list"
-      ],
-      "files": [
-        {
-          "path": "registry/demo/components/animated-pin-list/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/demo/components/animated-pin-list.tsx"
-        }
-      ]
-    },
-    {
       "name": "avatar-group-demo",
       "type": "registry:ui",
       "title": "Avatar Group Demo",
@@ -1453,6 +1437,22 @@
           "path": "registry/demo/components/liquid-glass/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/components/liquid-glass.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pin-list-demo",
+      "type": "registry:ui",
+      "title": "Pin List Demo",
+      "description": "Demo Pin List.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/pin-list"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/pin-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/pin-list.tsx"
         }
       ]
     },

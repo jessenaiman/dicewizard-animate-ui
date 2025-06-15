@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { AnimatedPinList } from '@/registry/components/animated-pin-list';
+import { PinList } from '@/registry/components/pin-list';
 
 import { GitCommit, AlertTriangle, Box, KeyRound, Regex } from 'lucide-react';
 
@@ -44,4 +44,4 @@ const ITEMS = [
   },
 ];
 
-export const AnimatedPinListDemo = () => <AnimatedPinList items={ITEMS} />;
+export const PinListDemo = () => <PinList items={ITEMS} />;

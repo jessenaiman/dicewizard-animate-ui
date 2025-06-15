@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pin-list-demo",
+  "type": "registry:ui",
+  "title": "Pin List Demo",
+  "description": "Demo Pin List.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/pin-list"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/pin-list/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/components/pin-list.tsx"
+    }
+  ]
+}

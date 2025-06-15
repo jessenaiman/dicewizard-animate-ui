@@ -1,5 +1,5 @@
 ---
-title: Animated Pin List
+title: Pin List
 description: A playful list for pinning and unpinning items, with smooth animated transitions as items move between groups.
 author:
   name: arhamkhnz
@@ -7,21 +7,21 @@ author:
 new: true
 ---
 
-<ComponentPreview name="animated-pin-list-demo" />
+<ComponentPreview name="pin-list-demo" />
 
 ## Installation
 
-<ComponentInstallation name="animated-pin-list" />
+<ComponentInstallation name="pin-list" />
 
 ## Usage
 
 ```tsx
-<AnimatedPinList items={ITEMS} />
+<PinList items={ITEMS} />
 ```
 
 ## Props
 
-### AnimatedPinList
+### PinList
 
 <TypeTable
   type={{
@@ -38,7 +38,7 @@ new: true
       required: false,
       default: '{ pinned: "Pinned Items", unpinned: "All Items" }',
     },
-    motionConfig: {
+    transition: {
       description:
         'Spring animation config for item transitions. Controls the movement physics. Example: { stiffness: 320, damping: 20, mass: 0.8, type: "spring" }',
       type: '{ stiffness?: number; damping?: number; mass?: number; type?: string; }',
