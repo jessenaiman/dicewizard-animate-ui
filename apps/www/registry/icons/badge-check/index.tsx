@@ -10,62 +10,36 @@ import {
   type IconProps,
 } from '@/registry/icons/icon';
 
-type BinaryProps = IconProps<keyof typeof animations>;
+type BadgeCheckProps = IconProps<keyof typeof animations>;
 
 const animations = {
   default: {
-    rect1: {
-      initial: {
-        x: 0,
-      },
-      animate: {
-        x: -8,
-        transition: {
-          duration: 0.4,
-          ease: 'easeInOut',
-        },
-      },
-    },
-    rect2: {
-      initial: {
-        x: 0,
-      },
-      animate: {
-        x: 8,
-        transition: {
-          duration: 0.4,
-          ease: 'easeInOut',
-        },
-      },
-    },
     path1: {
-      initial: {
-        y: 0,
-      },
+      initial: { scale: 1 },
       animate: {
-        y: -10,
+        scale: [1, 0.9, 1],
         transition: {
-          duration: 0.4,
+          duration: 0.8,
           ease: 'easeInOut',
         },
       },
     },
     path2: {
-      initial: {
-        y: 0,
-      },
+      initial: { pathLength: 1, opacity: 1 },
       animate: {
-        y: 10,
+        pathLength: [1, 0.05, 1],
+        opacity: [1, 0, 1],
         transition: {
-          duration: 0.4,
+          duration: 0.8,
           ease: 'easeInOut',
+          opacity: { duration: 0.01 },
         },
       },
     },
   } satisfies Record<string, Variants>,
 } as const;
 
-function IconComponent({ size, ...props }: BinaryProps) {
+function IconComponent({ size, ...props }: BadgeCheckProps) {
   const { controls } = useAnimateIconContext();
   const variants = getVariants(animations);
 
@@ -82,34 +56,14 @@ function IconComponent({ size, ...props }: BinaryProps) {
       strokeLinejoin="round"
       {...props}
     >
-      <motion.rect
-        x={14}
-        y={14}
-        width={4}
-        height={6}
-        rx={2}
-        variants={variants.rect1}
-        initial="initial"
-        animate={controls}
-      />
-      <motion.rect
-        x={6}
-        y={4}
-        width={4}
-        height={6}
-        rx={2}
-        variants={variants.rect2}
-        initial="initial"
-        animate={controls}
-      />
       <motion.path
-        d="M6 20h4 M6 14h2v6"
+        d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
         variants={variants.path1}
         initial="initial"
         animate={controls}
       />
       <motion.path
-        d="M14 4h2v6 M14 10h4"
+        d="m9 12 2 2 4-4"
         variants={variants.path2}
         initial="initial"
         animate={controls}
@@ -118,14 +72,14 @@ function IconComponent({ size, ...props }: BinaryProps) {
   );
 }
 
-function Binary(props: BinaryProps) {
+function BadgeCheck(props: BadgeCheckProps) {
   return <IconWrapper icon={IconComponent} {...props} />;
 }
 
 export {
   animations,
-  Binary,
-  Binary as BinaryIcon,
-  type BinaryProps,
-  type BinaryProps as BinaryIconProps,
+  BadgeCheck,
+  BadgeCheck as BadgeCheckIcon,
+  type BadgeCheckProps,
+  type BadgeCheckProps as BadgeCheckIconProps,
 };

@@ -2949,6 +2949,28 @@
       }
     },
     {
+      "name": "badge-check-icon",
+      "type": "registry:ui",
+      "title": "Badge Check Icon",
+      "description": "Badge check icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/badge-check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/badge-check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "verified",
+          "check"
+        ]
+      }
+    },
+    {
       "name": "battery-charging-icon",
       "type": "registry:ui",
       "title": "Battery Charging Icon",
@@ -6382,6 +6404,30 @@
           "like",
           "review",
           "rating"
+        ]
+      }
+    },
+    {
+      "name": "terminal-icon",
+      "type": "registry:ui",
+      "title": "Terminal Icon",
+      "description": "Terminal icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/terminal/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/terminal.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "code",
+          "command line",
+          "prompt",
+          "shell"
         ]
       }
     },

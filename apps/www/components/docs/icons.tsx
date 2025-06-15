@@ -37,7 +37,13 @@ import { RotateCcw } from '@/registry/icons/rotate-ccw';
 
 const staticAnimationsLength = Object.keys(staticAnimations).length;
 
-const NEW_ICONS = ['accessibility-icon', 'airplay-icon'];
+const NEW_ICONS = [
+  'accessibility-icon',
+  'airplay-icon',
+  'binary-icon',
+  'terminal-icon',
+  'badge-check-icon',
+];
 
 export const Icons = () => {
   const [search, setSearch] = useState('');

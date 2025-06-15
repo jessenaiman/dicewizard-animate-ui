@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "terminal-icon",
+  "type": "registry:ui",
+  "title": "Terminal Icon",
+  "description": "Terminal icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/terminal/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/terminal.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": ["code", "command line", "prompt", "shell"]
+  }
+}

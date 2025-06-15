@@ -5891,6 +5891,42 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/axe-icon',
   },
+  'badge-check-icon': {
+    name: 'badge-check-icon',
+    description: 'Badge check icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/badge-check/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/badge-check.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BadgeCheckProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: {\n        opacity: 1,\n      },\n      animate: {\n        opacity: [1, 0, 1, 0, 1],\n        transition: {\n          duration: 1.5,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BadgeCheckProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m9 12 2 2 4-4"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction BadgeCheck(props: BadgeCheckProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  BadgeCheck,\n  BadgeCheck as BadgeCheckIcon,\n  type BadgeCheckProps,\n  type BadgeCheckProps as BadgeCheckIconProps,\n};',
+      },
+    ],
+    keywords: ['verified', 'check'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/badge-check/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'badge-check-icon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/badge-check-icon',
+  },
   'battery-charging-icon': {
     name: 'battery-charging-icon',
     description: 'Battery Charging icon component.',
@@ -6156,7 +6192,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/binary.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BinaryProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: {\n        y: 0,\n      },\n      animate: {\n        y: 4,\n        transition: {\n          duration: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path3: {},\n    path4: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BinaryProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M6 20h4"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M14 10h4"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M6 14h2v6"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M14 4h2v6"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Binary(props: BinaryProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Binary,\n  Binary as BinaryIcon,\n  type BinaryProps,\n  type BinaryProps as BinaryIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BinaryProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    rect1: {\n      initial: {\n        x: 0,\n      },\n      animate: {\n        x: -8,\n        transition: {\n          duration: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    rect2: {\n      initial: {\n        x: 0,\n      },\n      animate: {\n        x: 8,\n        transition: {\n          duration: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path1: {\n      initial: {\n        y: 0,\n      },\n      animate: {\n        y: -10,\n        transition: {\n          duration: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {\n      initial: {\n        y: 0,\n      },\n      animate: {\n        y: 10,\n        transition: {\n          duration: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BinaryProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.rect\n        x={14}\n        y={14}\n        width={4}\n        height={6}\n        rx={2}\n        variants={variants.rect1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.rect\n        x={6}\n        y={4}\n        width={4}\n        height={6}\n        rx={2}\n        variants={variants.rect2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M6 20h4 M6 14h2v6"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M14 4h2v6 M14 10h4"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Binary(props: BinaryProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Binary,\n  Binary as BinaryIcon,\n  type BinaryProps,\n  type BinaryProps as BinaryIconProps,\n};',
       },
     ],
     keywords: ['code', 'digits', 'computer', 'zero', 'one', 'boolean'],
@@ -11164,6 +11200,42 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/star-icon',
+  },
+  'terminal-icon': {
+    name: 'terminal-icon',
+    description: 'Terminal icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/terminal/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/terminal.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype TerminalProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: {\n        opacity: 1,\n      },\n      animate: {\n        opacity: [1, 0, 1, 0, 1],\n        transition: {\n          duration: 1.5,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: TerminalProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M12 19h8"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m4 17 6-6-6-6"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Terminal(props: TerminalProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Terminal,\n  Terminal as TerminalIcon,\n  type TerminalProps,\n  type TerminalProps as TerminalIconProps,\n};',
+      },
+    ],
+    keywords: ['code', 'command line', 'prompt', 'shell'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/terminal/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'terminal-icon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/terminal-icon',
   },
   'thumbs-down-icon': {
     name: 'thumbs-down-icon',
