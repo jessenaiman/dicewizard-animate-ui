@@ -5468,44 +5468,31 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/headless-tabs',
   },
-  'axe-icon': {
-    name: 'axe-icon',
-    description: 'Axe icon component.',
+  'accessibility-icon': {
+    name: 'accessibility-icon',
+    description: 'Accessibility icon component.',
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: undefined,
     files: [
       {
-        path: 'registry/icons/axe/index.tsx',
+        path: 'registry/icons/accessibility/index.tsx',
         type: 'registry:ui',
-        target: 'components/animate-ui/icons/axe.tsx',
+        target: 'components/animate-ui/icons/accessibility.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype AxeProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    group: {\n      initial: {\n        rotate: 0,\n      },\n      animate: {\n        transformOrigin: \'bottom left\',\n        rotate: [0, 25, -5, 0],\n      },\n    },\n    path1: {},\n    path2: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: AxeProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      variants={variants.group}\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="m14 12-8.381 8.38a1 1 0 0 1-3.001-3L11 9"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M15 15.5a.5.5 0 0 0 .5.5A6.5 6.5 0 0 0 22 9.5a.5.5 0 0 0-.5-.5h-1.672a2 2 0 0 1-1.414-.586l-5.062-5.062a1.205 1.205 0 0 0-1.704 0L9.352 5.648a1.205 1.205 0 0 0 0 1.704l5.062 5.062A2 2 0 0 1 15 13.828z"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Axe(props: AxeProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Axe,\n  Axe as AxeIcon,\n  type AxeProps,\n  type AxeProps as AxeIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype AccessibilityProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    group1: {\n      initial: {\n        rotate: 0,\n      },\n      animate: {\n        rotate: [0, 5, -5, 0],\n        transition: {\n          duration: 0.8,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    group2: {\n      initial: {\n        rotate: 0,\n      },\n      animate: {\n        rotate: -360,\n        transition: {\n          duration: 1,\n          delay: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    circle: {\n      initial: {\n        y: 0,\n        x: 0,\n      },\n      animate: {\n        y: [0, 1, -1, 0],\n        x: [0, 1, -1, 0],\n        transition: {\n          duration: 0.8,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path1: {},\n    path2: {},\n    path3: {\n      initial: {\n        rotate: 0,\n        d: \'M8 5 L5 8\',\n      },\n      animate: {\n        rotate: [0, -60, 0],\n        d: [\'M8 5 L5 8\', \'M8 5 L4 9\', \'M8 5 L5 8\'],\n        transition: {\n          duration: 0.4,\n          delay: 0.2,\n          ease: \'easeInOut\',\n        },\n        transformOrigin: \'top right\',\n      },\n    },\n    path4: {},\n    path5: {},\n    path6: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: AccessibilityProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.circle\n        cx="16"\n        cy="4"\n        r="1"\n        variants={variants.circle}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group1} initial="initial" animate={controls}>\n        <motion.path\n          d="M18,19l1-7-6,1"\n          variants={variants.path1}\n          initial="initial"\n          animate={controls}\n        />\n        <motion.path\n          d="M8,5l5.5,3-2.4,3.5"\n          variants={variants.path2}\n          initial="initial"\n          animate={controls}\n        />\n        <motion.path\n          d="M8 5 L5 8"\n          variants={variants.path3}\n          initial="initial"\n          animate={controls}\n        />\n      </motion.g>\n      <motion.g variants={variants.group2} initial="initial" animate={controls}>\n        <motion.path\n          d="M4.2,14.5c-.8,2.6.7,5.4,3.3,6.2,1.2.4,2.4.3,3.6-.2"\n          variants={variants.path4}\n          initial="initial"\n          animate={controls}\n        />\n        <motion.path\n          d="M13.8,17.5c.8-2.6-.7-5.4-3.3-6.2-1.2-.4-2.4-.3-3.6.2"\n          variants={variants.path5}\n          initial="initial"\n          animate={controls}\n        />\n      </motion.g>\n      <motion.path\n        d="M13,13.1c-.5-.7-1.1-1.2-1.9-1.6"\n        variants={variants.path6}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Accessibility(props: AccessibilityProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Accessibility,\n  Accessibility as AccessibilityIcon,\n  type AccessibilityProps,\n  type AccessibilityProps as AccessibilityIconProps,\n};',
       },
     ],
-    keywords: [
-      'hatchet',
-      'weapon',
-      'chop',
-      'sharp',
-      'equipment',
-      'fireman',
-      'firefighter',
-      'brigade',
-      'lumberjack',
-      'woodcutter',
-      'logger',
-      'forestry',
-    ],
+    keywords: ['disability', 'disabled', 'dda', 'wheelchair'],
     component: (function () {
       const LazyComp = React.lazy(async () => {
-        const mod = await import('@/registry/icons/axe/index.tsx');
+        const mod = await import('@/registry/icons/accessibility/index.tsx');
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === 'function' || typeof mod[key] === 'object',
-          ) || 'axe-icon';
+          ) || 'accessibility-icon';
         const Comp = mod.default || mod[exportName];
         if (mod.animations) {
           (LazyComp as any).animations = mod.animations;
@@ -5515,7 +5502,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/axe-icon',
+    command: 'https://animate-ui.com/r/accessibility-icon',
   },
   'activity-icon': {
     name: 'activity-icon',
@@ -5570,6 +5557,50 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/activity-icon',
+  },
+  'airplay-icon': {
+    name: 'airplay-icon',
+    description: 'Airplay icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/airplay/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/airplay.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype AirplayProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: {\n        y: 0,\n      },\n      animate: {\n        y: 2,\n        transition: {\n          duration: 0.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  \'default-loop\': {\n    path1: {},\n    path2: {\n      initial: {\n        y: 0,\n      },\n      animate: {\n        y: [0, 2, -2, 0],\n        transition: {\n          duration: 0.8,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: AirplayProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m12 15 5 6H7Z"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Airplay(props: AirplayProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Airplay,\n  Airplay as AirplayIcon,\n  type AirplayProps,\n  type AirplayProps as AirplayIconProps,\n};',
+      },
+    ],
+    keywords: [
+      'stream',
+      'cast',
+      'mirroring',
+      'screen',
+      'monitor',
+      'macos',
+      'osx',
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/airplay/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'airplay-icon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/airplay-icon',
   },
   'alarm-clock-icon': {
     name: 'alarm-clock-icon',
@@ -5810,6 +5841,55 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/audio-lines-icon',
+  },
+  'axe-icon': {
+    name: 'axe-icon',
+    description: 'Axe icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/axe/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/axe.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype AxeProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    group: {\n      initial: {\n        rotate: 0,\n      },\n      animate: {\n        transformOrigin: \'bottom left\',\n        rotate: [0, 25, -5, 0],\n      },\n    },\n    path1: {},\n    path2: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: AxeProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      variants={variants.group}\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="m14 12-8.381 8.38a1 1 0 0 1-3.001-3L11 9"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M15 15.5a.5.5 0 0 0 .5.5A6.5 6.5 0 0 0 22 9.5a.5.5 0 0 0-.5-.5h-1.672a2 2 0 0 1-1.414-.586l-5.062-5.062a1.205 1.205 0 0 0-1.704 0L9.352 5.648a1.205 1.205 0 0 0 0 1.704l5.062 5.062A2 2 0 0 1 15 13.828z"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Axe(props: AxeProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Axe,\n  Axe as AxeIcon,\n  type AxeProps,\n  type AxeProps as AxeIconProps,\n};',
+      },
+    ],
+    keywords: [
+      'hatchet',
+      'weapon',
+      'chop',
+      'sharp',
+      'equipment',
+      'fireman',
+      'firefighter',
+      'brigade',
+      'lumberjack',
+      'woodcutter',
+      'logger',
+      'forestry',
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/axe/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'axe-icon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/axe-icon',
   },
   'battery-charging-icon': {
     name: 'battery-charging-icon',
