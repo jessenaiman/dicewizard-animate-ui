@@ -3121,6 +3121,32 @@
       }
     },
     {
+      "name": "binary-icon",
+      "type": "registry:ui",
+      "title": "Binary Icon",
+      "description": "Binary icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/binary/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/binary.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "code",
+          "digits",
+          "computer",
+          "zero",
+          "one",
+          "boolean"
+        ]
+      }
+    },
+    {
       "name": "bot-icon",
       "type": "registry:ui",
       "title": "Bot Icon",
