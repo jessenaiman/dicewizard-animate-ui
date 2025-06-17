@@ -43,6 +43,14 @@ const NEW_ICONS = [
   'binary-icon',
   'terminal-icon',
   'badge-check-icon',
+  'cast-icon',
+  'cctv-icon',
+  'chart-line-icon',
+  'chart-spline-icon',
+  'contrast-icon',
+  'cross-icon',
+  'ellipsis-icon',
+  'ellipsis-vertical-icon',
 ];
 
 export const Icons = () => {

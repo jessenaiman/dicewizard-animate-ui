@@ -10,7 +10,7 @@ import {
   type IconProps,
 } from '@/registry/icons/icon';
 
-type HouseWifiProps = IconProps<keyof typeof animations>;
+type CastProps = IconProps<keyof typeof animations>;
 
 const animations = {
   default: (() => {
@@ -50,9 +50,7 @@ const animations = {
   })() satisfies Record<string, Variants>,
 } as const;
 
-console.log('animations', animations);
-
-function IconComponent({ size, ...props }: HouseWifiProps) {
+function IconComponent({ size, ...props }: CastProps) {
   const { controls } = useAnimateIconContext();
   const variants = getVariants(animations);
 
@@ -70,25 +68,25 @@ function IconComponent({ size, ...props }: HouseWifiProps) {
       {...props}
     >
       <motion.path
-        d="M12 17h.01"
+        d="M2 20 L2 20"
         variants={variants.path1}
         initial="initial"
         animate={controls}
       />
       <motion.path
-        d="M9.5 13.866a4 4 0 0 1 5 .01"
+        d="M2 16a5 5 0 0 1 4 4"
         variants={variants.path2}
         initial="initial"
         animate={controls}
       />
       <motion.path
-        d="M7 10.754a8 8 0 0 1 10 0"
+        d="M2 12a9 9 0 0 1 8 8"
         variants={variants.path3}
         initial="initial"
         animate={controls}
       />
       <motion.path
-        d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+        d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"
         variants={variants.path4}
         initial="initial"
         animate={controls}
@@ -97,14 +95,14 @@ function IconComponent({ size, ...props }: HouseWifiProps) {
   );
 }
 
-function HouseWifi(props: HouseWifiProps) {
+function Cast(props: CastProps) {
   return <IconWrapper icon={IconComponent} {...props} />;
 }
 
 export {
   animations,
-  HouseWifi,
-  HouseWifi as HouseWifiIcon,
-  type HouseWifiProps,
-  type HouseWifiProps as HouseWifiIconProps,
+  Cast,
+  Cast as CastIcon,
+  type CastProps,
+  type CastProps as CastIconProps,
 };

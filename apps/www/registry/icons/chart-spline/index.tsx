@@ -10,39 +10,16 @@ import {
   type IconProps,
 } from '@/registry/icons/icon';
 
-type BadgeCheckProps = IconProps<keyof typeof animations>;
+type ChartSplineProps = IconProps<keyof typeof animations>;
 
 const animations = {
   default: {
-    path1: {
-      initial: { scale: 1 },
-      animate: {
-        scale: [1, 0.9, 1],
-        transition: {
-          duration: 1.2,
-          ease: 'easeInOut',
-        },
-      },
-    },
+    path1: {},
     path2: {
-      initial: { pathLength: 1, opacity: 1 },
+      initial: { opacity: 1, pathLength: 1 },
       animate: {
-        pathLength: [1, 0, 1],
-        opacity: [1, 0, 1],
-        transition: {
-          duration: 1.2,
-          ease: 'easeInOut',
-          opacity: { duration: 0.01 },
-        },
-      },
-    },
-  } satisfies Record<string, Variants>,
-  check: {
-    path2: {
-      initial: { pathLength: 1, opacity: 1 },
-      animate: {
-        pathLength: [0, 1],
         opacity: [0, 1],
+        pathLength: [0.05, 1],
         transition: {
           duration: 0.6,
           ease: 'easeInOut',
@@ -51,9 +28,24 @@ const animations = {
       },
     },
   } satisfies Record<string, Variants>,
+  'default-loop': {
+    path1: {},
+    path2: {
+      initial: { opacity: 1, pathLength: 1 },
+      animate: {
+        opacity: [1, 0, 1],
+        pathLength: [1, 0.05, 1],
+        transition: {
+          duration: 1.2,
+          ease: 'easeInOut',
+          opacity: { duration: 0.01 },
+        },
+      },
+    },
+  } satisfies Record<string, Variants>,
 } as const;
 
-function IconComponent({ size, ...props }: BadgeCheckProps) {
+function IconComponent({ size, ...props }: ChartSplineProps) {
   const { controls } = useAnimateIconContext();
   const variants = getVariants(animations);
 
@@ -71,13 +63,13 @@ function IconComponent({ size, ...props }: BadgeCheckProps) {
       {...props}
     >
       <motion.path
-        d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+        d="M3 3v16a2 2 0 0 0 2 2h16"
         variants={variants.path1}
         initial="initial"
         animate={controls}
       />
       <motion.path
-        d="m9 12 2 2 4-4"
+        d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7"
         variants={variants.path2}
         initial="initial"
         animate={controls}
@@ -86,14 +78,14 @@ function IconComponent({ size, ...props }: BadgeCheckProps) {
   );
 }
 
-function BadgeCheck(props: BadgeCheckProps) {
+function ChartSpline(props: ChartSplineProps) {
   return <IconWrapper icon={IconComponent} {...props} />;
 }
 
 export {
   animations,
-  BadgeCheck,
-  BadgeCheck as BadgeCheckIcon,
-  type BadgeCheckProps,
-  type BadgeCheckProps as BadgeCheckIconProps,
+  ChartSpline,
+  ChartSpline as ChartSplineIcon,
+  type ChartSplineProps,
+  type ChartSplineProps as ChartSplineIconProps,
 };

@@ -3320,6 +3320,111 @@
       }
     },
     {
+      "name": "cast-icon",
+      "type": "registry:ui",
+      "title": "Cast Icon",
+      "description": "Cast icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cast/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cast.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "chromecast",
+          "airplay",
+          "screen"
+        ]
+      }
+    },
+    {
+      "name": "cctv-icon",
+      "type": "registry:ui",
+      "title": "CCTV Icon",
+      "description": "CCTV icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cctv/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cctv.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "camera",
+          "surveillance",
+          "recording",
+          "film",
+          "videotape",
+          "crime",
+          "watching"
+        ]
+      }
+    },
+    {
+      "name": "chart-line-icon",
+      "type": "registry:ui",
+      "title": "Chart Line Icon",
+      "description": "Chart line icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-line/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-line.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph"
+        ]
+      }
+    },
+    {
+      "name": "chart-spline-icon",
+      "type": "registry:ui",
+      "title": "Chart Spline Icon",
+      "description": "Chart spline icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-spline/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-spline.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "curve",
+          "continuous",
+          "smooth",
+          "polynomial",
+          "quadratic",
+          "function",
+          "interpolation"
+        ]
+      }
+    },
+    {
       "name": "cherry-icon",
       "type": "registry:ui",
       "title": "Cherry Icon",
@@ -3992,6 +4097,28 @@
       }
     },
     {
+      "name": "contrast-icon",
+      "type": "registry:ui",
+      "title": "Contrast Icon",
+      "description": "Contrast icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/contrast/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/contrast.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "display",
+          "accessibility"
+        ]
+      }
+    },
+    {
       "name": "copy-icon",
       "type": "registry:ui",
       "title": "Copy Icon",
@@ -4011,6 +4138,28 @@
           "clone",
           "duplicate",
           "multiple"
+        ]
+      }
+    },
+    {
+      "name": "cross-icon",
+      "type": "registry:ui",
+      "title": "Cross Icon",
+      "description": "Cross icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cross/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cross.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "healthcare",
+          "first aid"
         ]
       }
     },
@@ -4065,6 +4214,77 @@
           "import",
           "export",
           "save"
+        ]
+      }
+    },
+    {
+      "name": "ellipsis-icon",
+      "type": "registry:ui",
+      "title": "Ellipsis Icon",
+      "description": "Ellipsis icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/ellipsis/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/ellipsis.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "et cetera",
+          "etc",
+          "loader",
+          "loading",
+          "progress",
+          "pending",
+          "throbber",
+          "menu",
+          "options",
+          "operator",
+          "code",
+          "coding",
+          "spread",
+          "rest",
+          "more",
+          "further",
+          "extra",
+          "overflow",
+          "dots",
+          "…",
+          "..."
+        ]
+      }
+    },
+    {
+      "name": "ellipsis-vertical-icon",
+      "type": "registry:ui",
+      "title": "Ellipsis Vertical Icon",
+      "description": "Ellipsis vertical icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/ellipsis-vertical/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/ellipsis-vertical.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "menu",
+          "options",
+          "spread",
+          "more",
+          "further",
+          "extra",
+          "overflow",
+          "dots",
+          "…",
+          "..."
         ]
       }
     },
