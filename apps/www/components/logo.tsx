@@ -16,7 +16,7 @@ const pathVariants = {
       ease: 'easeInOut',
     },
   },
-};
+} as const;
 
 const sizes = {
   sm: {

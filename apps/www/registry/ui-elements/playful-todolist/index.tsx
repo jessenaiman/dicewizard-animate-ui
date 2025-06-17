@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 import { Label } from '@workspace/ui/components/ui/label';
 import { Checkbox } from '@/registry/radix/checkbox';
 
@@ -28,7 +28,7 @@ const getPathAnimate = (isChecked: boolean) => ({
   opacity: isChecked ? 1 : 0,
 });
 
-const getPathTransition = (isChecked: boolean) => ({
+const getPathTransition = (isChecked: boolean): Transition => ({
   pathLength: { duration: 1, ease: 'easeInOut' },
   opacity: {
     duration: 0.01,

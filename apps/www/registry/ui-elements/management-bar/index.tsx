@@ -10,7 +10,7 @@ import {
   IdCard,
 } from 'lucide-react';
 import { SlidingNumber } from '@/registry/text/sliding-number';
-import { motion, Variants, Transition } from 'motion/react';
+import { motion, type Variants, type Transition } from 'motion/react';
 
 const TOTAL_PAGES = 10;
 
@@ -27,7 +27,7 @@ const BUTTON_MOTION_CONFIG = {
     tap: { scale: 0.95 },
   },
   transition: { type: 'spring', stiffness: 250, damping: 25 },
-};
+} as const;
 
 const LABEL_VARIANTS: Variants = {
   rest: { opacity: 0, x: 4 },

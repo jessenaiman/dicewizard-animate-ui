@@ -21,7 +21,7 @@ const CONTENT_VARIANTS = {
     opacity: 1,
     transition: { type: 'spring', stiffness: 100, damping: 30 },
   },
-};
+} as const;
 
 export default function HomePage() {
   const [transition, setTransition] = useState(false);

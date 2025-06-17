@@ -17,29 +17,6 @@ const sizes = {
   lg: 'size-12 [&_svg]:size-7',
 };
 
-const animations = {
-  pulse: {
-    initial: { scale: 1.2, opacity: 0 },
-    animate: { scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] },
-    transition: { duration: 1.2, ease: 'easeInOut' },
-  },
-  glow: {
-    initial: { scale: 1, opacity: 0 },
-    animate: { scale: [1, 1.5], opacity: [0.8, 0] },
-    transition: { duration: 0.8, ease: 'easeOut' },
-  },
-  particle: (index: number) => ({
-    initial: { x: '50%', y: '50%', scale: 0, opacity: 0 },
-    animate: {
-      x: `calc(50% + ${Math.cos((index * Math.PI) / 3) * 30}px)`,
-      y: `calc(50% + ${Math.sin((index * Math.PI) / 3) * 30}px)`,
-      scale: [0, 1, 0],
-      opacity: [0, 1, 0],
-    },
-    transition: { duration: 0.8, delay: index * 0.05, ease: 'easeOut' },
-  }),
-};
-
 type IconButtonProps = Omit<HTMLMotionProps<'button'>, 'color'> & {
   icon: React.ElementType;
   active?: boolean;
@@ -111,22 +88,31 @@ function IconButton({
               style={{
                 background: `radial-gradient(circle, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.4) 0%, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0) 70%)`,
               }}
-              {...animations.pulse}
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
             />
             <motion.div
               className="absolute inset-0 z-10 rounded-full"
               style={{
                 boxShadow: `0 0 10px 2px rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.6)`,
               }}
-              {...animations.glow}
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{ scale: [1, 1.5], opacity: [0.8, 0] }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
             />
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute w-1 h-1 rounded-full bg-[var(--icon-button-color)]"
-                initial={animations.particle(i).initial}
-                animate={animations.particle(i).animate}
-                transition={animations.particle(i).transition}
+                initial={{ x: '50%', y: '50%', scale: 0, opacity: 0 }}
+                animate={{
+                  x: `calc(50% + ${Math.cos((i * Math.PI) / 3) * 30}px)`,
+                  y: `calc(50% + ${Math.sin((i * Math.PI) / 3) * 30}px)`,
+                  scale: [0, 1, 0],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{ duration: 0.8, delay: i * 0.05, ease: 'easeOut' }}
               />
             ))}
           </>

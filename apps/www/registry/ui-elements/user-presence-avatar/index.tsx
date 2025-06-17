@@ -62,13 +62,13 @@ const AVATAR_MOTION_TRANSITION = {
   type: 'spring',
   stiffness: 200,
   damping: 25,
-};
+} as const;
 
 const GROUP_CONTAINER_TRANSITION = {
   type: 'spring',
   stiffness: 150,
   damping: 20,
-};
+} as const;
 
 function UserPresenceAvatar() {
   const [users, setUsers] = React.useState(USERS);
