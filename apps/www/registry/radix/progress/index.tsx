@@ -31,7 +31,7 @@ function Progress({
       <MotionProgressIndicator
         data-slot="progress-indicator"
         className="h-full w-full flex-1 bg-primary rounded-full"
-        animate={{ translateX: `-${100 - (value || 0)}%` }}
+        animate={{ x: `-${100 - (value || 0)}%` }}
         transition={transition}
       />
     </ProgressPrimitive.Root>

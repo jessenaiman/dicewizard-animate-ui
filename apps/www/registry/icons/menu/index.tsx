@@ -39,7 +39,7 @@ const animations = {
       animate: {
         opacity: 0,
         transition: {
-          type: 'easeInOut',
+          ease: 'easeInOut',
           duration: 0.2,
         },
       },
