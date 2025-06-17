@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Stars Scrolling Wheel",
   "description": "A scrolling wheel that displays stars count.",
-  "dependencies": ["motion"],
-  "registryDependencies": ["https://animate-ui.com/r/star-icon"],
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/star-icon"
+  ],
   "files": [
     {
       "path": "registry/components/stars-scrolling-wheel/index.tsx",
