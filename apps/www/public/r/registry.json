@@ -1592,6 +1592,40 @@
       }
     },
     {
+      "name": "magnetic-demo",
+      "type": "registry:ui",
+      "title": "Magnetic Demo",
+      "description": "Demo showing the magnetic effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/magnetic"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/effects/magnetic/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/effects/magnetic.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Magnetic": {
+            "onlyOnHover": {
+              "value": false
+            },
+            "strength": {
+              "value": 0.5,
+              "min": 0,
+              "max": 1,
+              "step": 0.05
+            },
+            "range": {
+              "value": 120
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "motion-effect-fade-blur-demo",
       "type": "registry:ui",
       "title": "Motion Effect Fade Blur Demo",
@@ -2500,6 +2534,22 @@
           "path": "registry/demo/ui-elements/user-presence-avatar/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/ui-elements/user-presence-avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:ui",
+      "title": "Magnetic",
+      "description": "A magnetic effect that clings to the cursor, creating a magnetic attraction effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magnetic/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/effects/magnetic.tsx"
         }
       ]
     },

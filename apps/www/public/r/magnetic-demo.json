@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-demo",
+  "type": "registry:ui",
+  "title": "Magnetic Demo",
+  "description": "Demo showing the magnetic effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/magnetic"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/magnetic/index.tsx",
+      "content": "import { Magnetic } from '@/components/animate-ui/effects/magnetic';\n\ninterface MagneticDemoProps {\n  onlyOnHover: boolean;\n  strength: number;\n  range: number;\n}\n\nexport const MagneticDemo = (props: MagneticDemoProps) => {\n  return (\n    <div className=\"size-full flex items-center justify-center\">\n      <Magnetic {...props}>\n        <div className=\"size-32 rounded-2xl bg-emerald-500\" />\n      </Magnetic>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/effects/magnetic.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "Magnetic": {
+        "onlyOnHover": {
+          "value": false
+        },
+        "strength": {
+          "value": 0.5,
+          "min": 0,
+          "max": 1,
+          "step": 0.05
+        },
+        "range": {
+          "value": 120
+        }
+      }
+    }
+  }
+}
