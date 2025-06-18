@@ -16,15 +16,15 @@ function CursorBlinker({ className }: { className?: string }) {
             duration: 1,
             repeat: Infinity,
             repeatDelay: 0,
-            ease: "linear",
+            ease: 'linear',
             times: [0, 0.5, 0.5, 1],
           },
         },
       }}
       animate="blinking"
       className={cn(
-        "inline-block h-5 w-[1px] translate-y-1 bg-black dark:bg-white",
-        className
+        'inline-block h-5 w-[1px] translate-y-1 bg-black dark:bg-white',
+        className,
       )}
     />
   );
