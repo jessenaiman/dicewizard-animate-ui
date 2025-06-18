@@ -26,3 +26,9 @@ body:
       label: Additional context
       description: |
         Any extra information that might help us investigate.
+  - type: checkboxes
+    attributes:
+      label: Troubleshooting
+      options:
+        - label: I have reviewed the "Troubleshooting" section (https://animate-ui.com/docs/troubleshooting) and did not find the answer to my problem
+          required: true
