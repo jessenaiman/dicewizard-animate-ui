@@ -41,6 +41,7 @@ type TypingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   holdDelay?: number;
   text: string | string[];
   cursorClassName?: string;
+  animateOnChange?: boolean;
 };
 
 function TypingText({
@@ -55,6 +56,7 @@ function TypingText({
   holdDelay = 1000,
   text,
   cursorClassName,
+  animateOnChange = true,
   ...props
 }: TypingTextProps) {
   const localRef = React.useRef<HTMLSpanElement>(null);
@@ -70,6 +72,12 @@ function TypingText({
   const [displayedText, setDisplayedText] = React.useState<string>('');
 
   React.useEffect(() => {
+    // Reset animation when text changes (if animateOnChange is true)
+    if (animateOnChange) {
+      setStarted(false);
+      setDisplayedText('');
+    }
+
     if (isInView) {
       const timeoutId = setTimeout(() => {
         setStarted(true);
@@ -81,7 +89,7 @@ function TypingText({
       }, delay);
       return () => clearTimeout(timeoutId);
     }
-  }, [isInView, delay]);
+  }, [isInView, delay, ...(animateOnChange ? [text] : [])]);
 
   React.useEffect(() => {
     if (!started) return;
