@@ -3128,6 +3128,48 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/tooltip-demo',
   },
+  'magnetic-demo': {
+    name: 'magnetic-demo',
+    description: 'Demo showing the magnetic effect.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/magnetic'],
+    files: [
+      {
+        path: 'registry/demo/effects/magnetic/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/effects/magnetic.tsx',
+        content:
+          'import { Magnetic } from \'@/components/animate-ui/effects/magnetic\';\n\ninterface MagneticDemoProps {\n  onlyOnHover: boolean;\n  strength: number;\n  range: number;\n}\n\nexport const MagneticDemo = (props: MagneticDemoProps) => {\n  return (\n    <div className="size-full flex items-center justify-center">\n      <Magnetic {...props}>\n        <div className="size-32 rounded-2xl bg-emerald-500" />\n      </Magnetic>\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/effects/magnetic/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'magnetic-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Magnetic: {
+          onlyOnHover: { value: false },
+          strength: { value: 0.5, min: 0, max: 1, step: 0.05 },
+          range: { value: 120 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/magnetic-demo',
+  },
   'motion-effect-fade-blur-demo': {
     name: 'motion-effect-fade-blur-demo',
     description: 'Demo showing the motion effect fade blur.',
@@ -5132,6 +5174,43 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/user-presence-avatar-demo',
+  },
+  magnetic: {
+    name: 'magnetic',
+    description:
+      'A magnetic effect that clings to the cursor, creating a magnetic attraction effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/effects/magnetic/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/effects/magnetic.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  HTMLMotionProps,\n  motion,\n  useMotionValue,\n  useSpring,\n  type SpringOptions,\n} from 'motion/react';\n\ntype MagneticProps = {\n  children: React.ReactElement;\n  strength?: number;\n  range?: number;\n  springOptions?: SpringOptions;\n  onlyOnHover?: boolean;\n  disableOnTouch?: boolean;\n} & HTMLMotionProps<'div'>;\n\nfunction Magnetic({\n  ref,\n  children,\n  strength = 0.5,\n  range = 120,\n  springOptions = { stiffness: 100, damping: 10, mass: 0.5 },\n  onlyOnHover = false,\n  disableOnTouch = true,\n  style,\n  onMouseEnter,\n  onMouseLeave,\n  onMouseMove,\n  ...props\n}: MagneticProps) {\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const isTouchDevice = React.useMemo(() => {\n    if (typeof window === 'undefined') return false;\n    return window.matchMedia('(pointer:coarse)').matches;\n  }, []);\n\n  const [active, setActive] = React.useState(!onlyOnHover);\n\n  const rawX = useMotionValue(0);\n  const rawY = useMotionValue(0);\n  const x = useSpring(rawX, springOptions);\n  const y = useSpring(rawY, springOptions);\n\n  const compute = React.useCallback(\n    (e: MouseEvent | React.MouseEvent) => {\n      if (!localRef.current) return;\n      const { left, top, width, height } =\n        localRef.current.getBoundingClientRect();\n      const cx = left + width / 2;\n      const cy = top + height / 2;\n      const dx = e.clientX - cx;\n      const dy = e.clientY - cy;\n      const dist = Math.hypot(dx, dy);\n\n      if ((active || !onlyOnHover) && dist <= range) {\n        const factor = (1 - dist / range) * strength;\n        rawX.set(dx * factor);\n        rawY.set(dy * factor);\n      } else {\n        rawX.set(0);\n        rawY.set(0);\n      }\n    },\n    [active, onlyOnHover, range, strength, rawX, rawY],\n  );\n\n  React.useEffect(() => {\n    if (disableOnTouch && isTouchDevice) return;\n    const handle = (e: MouseEvent) => compute(e);\n    window.addEventListener('mousemove', handle);\n    return () => window.removeEventListener('mousemove', handle);\n  }, [compute, disableOnTouch, isTouchDevice]);\n\n  return (\n    <motion.div\n      ref={localRef}\n      style={{ display: 'inline-block', ...style, x, y }}\n      onMouseEnter={(e) => {\n        if (onlyOnHover) setActive(true);\n        onMouseEnter?.(e);\n      }}\n      onMouseLeave={(e) => {\n        if (onlyOnHover) setActive(false);\n        rawX.set(0);\n        rawY.set(0);\n        onMouseLeave?.(e);\n      }}\n      onMouseMove={(e) => {\n        if (onlyOnHover) compute(e);\n        onMouseMove?.(e);\n      }}\n      {...props}\n    >\n      {children}\n    </motion.div>\n  );\n}\n\nexport { Magnetic, type MagneticProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/effects/magnetic/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'magnetic';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/magnetic',
   },
   'motion-effect': {
     name: 'motion-effect',

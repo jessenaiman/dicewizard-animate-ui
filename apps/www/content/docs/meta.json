@@ -25,6 +25,7 @@
     "ui-elements/user-presence-avatar",
     "ui-elements/playful-todolist",
     "---Effects---",
+    "effects/magnetic",
     "effects/motion-effect",
     "effects/motion-highlight",
     "---Base UI---",

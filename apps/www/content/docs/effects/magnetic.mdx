@@ -1,0 +1,64 @@
+---
+title: Magnetic
+description: A magnetic effect that clings to the cursor, creating a magnetic attraction effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="magnetic-demo" />
+
+## Installation
+
+<ComponentInstallation name="magnetic" />
+
+## Usage
+
+```tsx
+<Magnetic>
+  <p>Magnetic</p>
+</Magnetic>
+```
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the magnetic',
+      type: 'React.ReactElement',
+      required: true,
+    },
+    disableOnTouch: {
+      description: 'Whether the magnetic effect should be disabled on touch',
+      type: 'boolean',
+      required: false,
+      defaultValue: 'true',
+    },
+    onlyOnHover: {
+      description: 'Whether the magnetic effect should only be active on hover',
+      type: 'boolean',
+      required: false,
+      defaultValue: 'false',
+    },
+    strength: {
+      description: 'The strength of the magnetic effect',
+      type: 'number',
+      required: false,
+      defaultValue: '0.5',
+    },
+    range: {
+      description: 'The range of the magnetic effect',
+      type: 'number',
+      required: false,
+      defaultValue: '120',
+    },
+    springOptions: {
+      description: 'The spring options of the magnetic effect',
+      type: 'SpringOptions',
+      required: false,
+      defaultValue: '{ stiffness: 100, damping: 10, mass: 0.5 }',
+    },
+  }}
+/>
