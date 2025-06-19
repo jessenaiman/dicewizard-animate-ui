@@ -1,0 +1,57 @@
+---
+title: Rotating Text
+description: A text component that smoothly animates text changes with a rotating transition effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="rotating-text-demo" />
+
+## Installation
+
+<ComponentInstallation name="rotating-text" />
+
+## Usage
+
+```tsx
+<RotatingText text={['Rotating', 'Text']} />
+```
+
+## Props
+
+### RotatingText
+
+<TypeTable
+  type={{
+    text: {
+      description: 'The text(s) to rotate.',
+      type: 'string | string[]',
+      required: true,
+    },
+    duration: {
+      description: 'The duration of the animation in milliseconds.',
+      type: 'number',
+      required: false,
+      default: '2000',
+    },
+    transition: {
+      description: 'The transition to use for the animation.',
+      type: 'Transition',
+      required: false,
+      default: 'duration: 0.3, ease: "easeOut"',
+    },
+    y: {
+      description: 'The y-offset of the text animation.',
+      type: 'number',
+      required: false,
+      default: '-50',
+    },
+    containerClassName: {
+      description: 'The class name for the container of the text.',
+      type: 'string',
+      required: false,
+    },
+  }}
+/>

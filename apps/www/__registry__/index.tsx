@@ -1095,6 +1095,42 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/liquid-glass',
   },
+  'motion-grid': {
+    name: 'motion-grid',
+    description: 'A grid that displays animations in a grid.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/components/motion-grid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/motion-grid.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype Coordinate = [number, number];\ntype Coordinates = Coordinate[][];\n\ntype MotionGridProps = {\n  gridSize: Coordinate;\n  frames: Coordinates;\n  duration?: number;\n  animate?: boolean;\n  cellClassName?: string;\n  cellActiveClassName?: string;\n  cellInactiveClassName?: string;\n} & React.ComponentProps<'div'>;\n\nconst MotionGrid = ({\n  gridSize,\n  frames,\n  duration = 200,\n  animate = true,\n  cellClassName,\n  cellActiveClassName,\n  cellInactiveClassName,\n  className,\n  style,\n  ...props\n}: MotionGridProps) => {\n  const [index, setIndex] = React.useState(0);\n  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);\n\n  React.useEffect(() => {\n    if (!animate || frames.length === 0) return;\n    intervalRef.current = setInterval(\n      () => setIndex((i) => (i + 1) % frames.length),\n      duration,\n    );\n    return () => clearInterval(intervalRef.current!);\n  }, [frames.length, duration, animate]);\n\n  const [cols, rows] = gridSize;\n\n  const active = new Set<number>(\n    frames[index]?.map(([x, y]) => y * cols + x) ?? [],\n  );\n\n  return (\n    <div\n      className={cn('grid w-fit gap-0.5', className)}\n      style={{\n        ...style,\n        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,\n      }}\n      {...props}\n    >\n      {Array.from({ length: cols * rows }).map((_, i) => (\n        <motion.div\n          key={i}\n          className={cn(\n            'size-3 rounded-sm',\n            active.has(i)\n              ? cn('bg-primary scale-110', cellActiveClassName)\n              : cn('bg-muted scale-100', cellInactiveClassName),\n            cellClassName,\n          )}\n          transition={{ duration, ease: 'easeInOut' }}\n        />\n      ))}\n    </div>\n  );\n};\n\nexport { MotionGrid, type MotionGridProps, type Coordinate, type Coordinates };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/components/motion-grid/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'motion-grid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/motion-grid',
+  },
   'pin-list': {
     name: 'pin-list',
     description: 'Pin List Component',
@@ -2872,6 +2908,44 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/liquid-glass-demo',
+  },
+  'motion-grid-demo': {
+    name: 'motion-grid-demo',
+    description: 'Demo Motion Grid.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/motion-grid'],
+    files: [
+      {
+        path: 'registry/demo/components/motion-grid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/motion-grid.tsx',
+        content:
+          "import { useEffect, useState } from 'react';\nimport { motion } from 'motion/react';\n\nimport { Button } from '@/components/ui/button';\nimport {\n  type Coordinates,\n  MotionGrid,\n} from '@/components/animate-ui/components/motion-grid';\nimport { RotatingText } from '@/components/animate-ui/text/rotating';\n\nconst importingCoordinates = [\n  [[2, 2]],\n  [\n    [1, 2],\n    [2, 1],\n    [2, 3],\n    [3, 2],\n  ],\n  [\n    [2, 2],\n    [0, 2],\n    [1, 1],\n    [1, 3],\n    [2, 0],\n    [2, 4],\n    [3, 1],\n    [3, 3],\n    [4, 2],\n  ],\n  [\n    [0, 1],\n    [0, 3],\n    [1, 0],\n    [1, 2],\n    [1, 4],\n    [2, 1],\n    [2, 3],\n    [3, 0],\n    [3, 2],\n    [3, 4],\n    [4, 1],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 2],\n    [0, 4],\n    [1, 1],\n    [1, 3],\n    [2, 0],\n    [2, 2],\n    [2, 4],\n    [3, 1],\n    [3, 3],\n    [4, 0],\n    [4, 2],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [0, 3],\n    [1, 0],\n    [1, 2],\n    [1, 4],\n    [2, 1],\n    [2, 3],\n    [3, 0],\n    [3, 2],\n    [3, 4],\n    [4, 1],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 2],\n    [0, 4],\n    [1, 1],\n    [1, 3],\n    [2, 0],\n    [2, 4],\n    [3, 1],\n    [3, 3],\n    [4, 0],\n    [4, 2],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [1, 0],\n    [3, 0],\n    [4, 1],\n    [0, 3],\n    [1, 4],\n    [3, 4],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 4],\n    [4, 0],\n    [4, 4],\n  ],\n  [],\n] as Coordinates;\n\nconst arrowDownCoordinates = [\n  [[2, 0]],\n  [\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [2, 1],\n  ],\n  [\n    [2, 0],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [2, 2],\n  ],\n  [\n    [2, 0],\n    [2, 1],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [2, 3],\n  ],\n  [\n    [2, 1],\n    [2, 2],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n    [2, 4],\n  ],\n  [\n    [2, 2],\n    [2, 3],\n    [1, 4],\n    [2, 4],\n    [3, 4],\n  ],\n  [\n    [2, 3],\n    [2, 4],\n  ],\n  [[2, 4]],\n  [],\n] as Coordinates;\n\nconst arrowUpCoordinates = [\n  [[2, 4]],\n  [\n    [1, 4],\n    [2, 4],\n    [3, 4],\n    [2, 3],\n  ],\n  [\n    [2, 4],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n    [2, 2],\n  ],\n  [\n    [2, 4],\n    [2, 3],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [2, 1],\n  ],\n  [\n    [2, 3],\n    [2, 2],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [2, 0],\n  ],\n  [\n    [2, 2],\n    [2, 1],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n  ],\n  [\n    [2, 1],\n    [2, 0],\n  ],\n  [[2, 0]],\n  [],\n] as Coordinates;\n\nconst syncingCoordinates = [\n  ...arrowDownCoordinates,\n  ...arrowUpCoordinates,\n] as Coordinates;\n\nconst searchingCoordinates = [\n  [\n    [1, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [1, 2],\n  ],\n  [\n    [2, 0],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [2, 2],\n  ],\n  [\n    [3, 0],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [3, 2],\n  ],\n  [\n    [3, 1],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n    [3, 3],\n  ],\n  [\n    [3, 2],\n    [2, 3],\n    [3, 3],\n    [4, 3],\n    [3, 4],\n  ],\n  [\n    [1, 2],\n    [0, 3],\n    [1, 3],\n    [2, 3],\n    [1, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [1, 0],\n    [1, 2],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n  ],\n  [],\n] as Coordinates;\n\nconst busyCoordinates = [\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [1, 2],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [2, 3],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [3, 4],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [2, 3],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [1, 2],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [2, 1],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [2, 1],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n  ],\n] as Coordinates;\n\nconst savingCoordinates = [\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [0, 4],\n    [1, 0],\n    [1, 1],\n    [1, 2],\n    [1, 3],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n    [2, 3],\n    [2, 4],\n    [3, 0],\n    [3, 1],\n    [3, 2],\n    [3, 3],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [1, 0],\n    [1, 1],\n    [1, 2],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n    [2, 3],\n    [3, 0],\n    [3, 1],\n    [3, 2],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [1, 0],\n    [1, 1],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n    [3, 0],\n    [3, 1],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [1, 0],\n    [2, 0],\n    [2, 1],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [2, 0],\n    [4, 0],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [3, 1],\n    [2, 1],\n    [1, 1],\n    [0, 1],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [3, 1],\n    [2, 1],\n    [1, 1],\n    [0, 1],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [3, 1],\n    [2, 1],\n    [1, 1],\n    [0, 1],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n] as Coordinates;\n\nconst initializingCoordinates = [\n  [],\n  [\n    [1, 0],\n    [3, 0],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [0, 2],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [0, 2],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [0, 2],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n    [2, 4],\n  ],\n  [\n    [1, 2],\n    [2, 1],\n    [2, 2],\n    [2, 3],\n    [3, 2],\n  ],\n  [[2, 2]],\n  [],\n] as Coordinates;\n\nconst states = {\n  importing: {\n    frames: importingCoordinates,\n    label: 'Importing',\n  },\n  syncing: {\n    frames: syncingCoordinates,\n    label: 'Syncing',\n  },\n  searching: {\n    frames: searchingCoordinates,\n    label: 'Searching',\n  },\n  busy: {\n    frames: busyCoordinates,\n    label: 'Busy',\n  },\n  saving: {\n    frames: savingCoordinates,\n    label: 'Saving',\n  },\n  initializing: {\n    frames: initializingCoordinates,\n    label: 'Initializing',\n  },\n};\n\nconst sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));\n\nexport const MotionGridDemo = () => {\n  const [state, setState] = useState<keyof typeof states>('importing');\n\n  const runStates = async () => {\n    while (true) {\n      for (const state of Object.keys(states) as (keyof typeof states)[]) {\n        setState(state);\n        await sleep(3000);\n      }\n    }\n  };\n\n  useEffect(() => {\n    runStates();\n  }, []);\n\n  return (\n    <Button size=\"lg\" className=\"px-3 h-11 gap-x-3 relative\" asChild>\n      <motion.button\n        layout\n        whileHover={{ scale: 1.05 }}\n        whileTap={{ scale: 0.95 }}\n      >\n        <motion.div layout=\"preserve-aspect\">\n          <MotionGrid\n            gridSize={[5, 5]}\n            frames={states[state].frames}\n            cellClassName=\"size-[3px]\"\n            cellActiveClassName=\"bg-white/70\"\n            cellInactiveClassName=\"bg-white/20\"\n          />\n        </motion.div>\n\n        <RotatingText\n          text={states[state].label}\n          containerClassName=\"absolute left-[46px] top-1/2 -translate-y-1/2\"\n          layout=\"preserve-aspect\"\n        />\n\n        <span className=\"invisible opacity-0\" aria-hidden>\n          {states[state].label}\n        </span>\n      </motion.button>\n    </Button>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/motion-grid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'motion-grid-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/motion-grid-demo',
   },
   'pin-list-demo': {
     name: 'pin-list-demo',
@@ -4758,6 +4832,42 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/rolling-text-demo',
+  },
+  'rotating-text-demo': {
+    name: 'rotating-text-demo',
+    description: 'Demo showing an animated rotating text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/rotating-text'],
+    files: [
+      {
+        path: 'registry/demo/text/rotating/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/text/rotating.tsx',
+        content:
+          "import { RotatingText } from '@/components/animate-ui/text/rotating';\n\nexport const RotatingTextDemo = () => {\n  return (\n    <RotatingText\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    />\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/text/rotating/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'rotating-text-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/rotating-text-demo',
   },
   'sliding-number-demo': {
     name: 'sliding-number-demo',
@@ -12578,6 +12688,43 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/rolling-text',
+  },
+  'rotating-text': {
+    name: 'rotating-text',
+    description:
+      'A text component that smoothly animates text changes with a rotating transition effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/text/rotating/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/text/rotating.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype RotatingTextProps = {\n  text: string | string[];\n  duration?: number;\n  transition?: Transition;\n  y?: number;\n  containerClassName?: string;\n} & HTMLMotionProps<'div'>;\n\nfunction RotatingText({\n  text,\n  y = -50,\n  duration = 2000,\n  transition = { duration: 0.3, ease: 'easeOut' },\n  containerClassName,\n  ...props\n}: RotatingTextProps) {\n  const [index, setIndex] = React.useState(0);\n\n  React.useEffect(() => {\n    if (!Array.isArray(text)) return;\n    const interval = setInterval(() => {\n      setIndex((prevIndex) => (prevIndex + 1) % text.length);\n    }, duration);\n    return () => clearInterval(interval);\n  }, [text, duration]);\n\n  const currentText = Array.isArray(text) ? text[index] : text;\n\n  return (\n    <div className={cn('overflow-hidden py-1', containerClassName)}>\n      <AnimatePresence mode=\"wait\">\n        <motion.div\n          key={currentText}\n          transition={transition}\n          initial={{ opacity: 0, y: -y }}\n          animate={{ opacity: 1, y: 0 }}\n          exit={{ opacity: 0, y }}\n          {...props}\n        >\n          {currentText}\n        </motion.div>\n      </AnimatePresence>\n    </div>\n  );\n}\n\nexport { RotatingText, type RotatingTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/text/rotating/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'rotating-text';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/rotating-text',
   },
   'sliding-number': {
     name: 'sliding-number',
