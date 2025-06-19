@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-grid",
+  "type": "registry:ui",
+  "title": "Motion Grid",
+  "description": "A grid that displays animations in a grid.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/components/motion-grid/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype Coordinate = [number, number];\ntype Coordinates = Coordinate[][];\n\ntype MotionGridProps = {\n  gridSize: Coordinate;\n  frames: Coordinates;\n  duration?: number;\n  animate?: boolean;\n  cellClassName?: string;\n  cellActiveClassName?: string;\n  cellInactiveClassName?: string;\n} & React.ComponentProps<'div'>;\n\nconst MotionGrid = ({\n  gridSize,\n  frames,\n  duration = 200,\n  animate = true,\n  cellClassName,\n  cellActiveClassName,\n  cellInactiveClassName,\n  className,\n  style,\n  ...props\n}: MotionGridProps) => {\n  const [index, setIndex] = React.useState(0);\n  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);\n\n  React.useEffect(() => {\n    if (!animate || frames.length === 0) return;\n    intervalRef.current = setInterval(\n      () => setIndex((i) => (i + 1) % frames.length),\n      duration,\n    );\n    return () => clearInterval(intervalRef.current!);\n  }, [frames.length, duration, animate]);\n\n  const [cols, rows] = gridSize;\n\n  const active = new Set<number>(\n    frames[index]?.map(([x, y]) => y * cols + x) ?? [],\n  );\n\n  return (\n    <div\n      className={cn('grid w-fit gap-0.5', className)}\n      style={{\n        ...style,\n        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,\n      }}\n      {...props}\n    >\n      {Array.from({ length: cols * rows }).map((_, i) => (\n        <motion.div\n          key={i}\n          className={cn(\n            'size-3 rounded-sm',\n            active.has(i)\n              ? cn('bg-primary scale-110', cellActiveClassName)\n              : cn('bg-muted scale-100', cellInactiveClassName),\n            cellClassName,\n          )}\n          transition={{ duration, ease: 'easeInOut' }}\n        />\n      ))}\n    </div>\n  );\n};\n\nexport { MotionGrid, type MotionGridProps, type Coordinate, type Coordinates };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/components/motion-grid.tsx"
+    }
+  ]
+}

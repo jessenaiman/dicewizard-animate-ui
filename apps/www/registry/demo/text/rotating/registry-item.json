@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-text-demo",
+  "type": "registry:ui",
+  "title": "Rotating Text Demo",
+  "description": "Demo showing an animated rotating text.",
+  "registryDependencies": ["https://animate-ui.com/r/rotating-text"],
+  "files": [
+    {
+      "path": "registry/demo/text/rotating/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/rotating.tsx"
+    }
+  ]
+}

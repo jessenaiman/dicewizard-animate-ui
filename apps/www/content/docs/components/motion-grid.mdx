@@ -1,0 +1,70 @@
+---
+title: Motion Grid
+description: A grid that displays animations in a grid.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="motion-grid-demo" />
+
+## Installation
+
+<ComponentInstallation name="motion-grid" />
+
+## Usage
+
+```tsx
+<MotionGrid gridSize={[5, 5]} frames={frames} />
+```
+
+## Props
+
+### MotionGrid
+
+<TypeTable
+  type={{
+    gridSize: {
+      description: 'The size of the grid as [rows, columns].',
+      type: '[number, number]',
+      required: true,
+    },
+    frames: {
+      description: 'Array of frame data for the grid.',
+      type: '[number, number][][]',
+      required: true,
+    },
+    duration: {
+      description: 'The duration of the animation in milliseconds.',
+      type: 'number',
+      required: false,
+      default: '200',
+    },
+    animate: {
+      description: 'Whether to animate the grid.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    cellClassName: {
+      description: 'Class name for the cells.',
+      type: 'string',
+      required: false,
+    },
+    cellActiveClassName: {
+      description: 'Class name for the active cell.',
+      type: 'string',
+      required: false,
+    },
+    cellInactiveClassName: {
+      description: 'Class name for the inactive cell.',
+      type: 'string',
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Adrien Griveau](https://x.com/Griveau) for [this X post](https://x.com/Griveau/status/1932832554354163804) as inspiration

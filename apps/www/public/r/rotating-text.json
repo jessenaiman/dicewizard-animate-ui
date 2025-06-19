@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-text",
+  "type": "registry:ui",
+  "title": "Rotating Text",
+  "description": "A text component that smoothly animates text changes with a rotating transition effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/text/rotating/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype RotatingTextProps = {\n  text: string | string[];\n  duration?: number;\n  transition?: Transition;\n  y?: number;\n  containerClassName?: string;\n} & HTMLMotionProps<'div'>;\n\nfunction RotatingText({\n  text,\n  y = -50,\n  duration = 2000,\n  transition = { duration: 0.3, ease: 'easeOut' },\n  containerClassName,\n  ...props\n}: RotatingTextProps) {\n  const [index, setIndex] = React.useState(0);\n\n  React.useEffect(() => {\n    if (!Array.isArray(text)) return;\n    const interval = setInterval(() => {\n      setIndex((prevIndex) => (prevIndex + 1) % text.length);\n    }, duration);\n    return () => clearInterval(interval);\n  }, [text, duration]);\n\n  const currentText = Array.isArray(text) ? text[index] : text;\n\n  return (\n    <div className={cn('overflow-hidden py-1', containerClassName)}>\n      <AnimatePresence mode=\"wait\">\n        <motion.div\n          key={currentText}\n          transition={transition}\n          initial={{ opacity: 0, y: -y }}\n          animate={{ opacity: 1, y: 0 }}\n          exit={{ opacity: 0, y }}\n          {...props}\n        >\n          {currentText}\n        </motion.div>\n      </AnimatePresence>\n    </div>\n  );\n}\n\nexport { RotatingText, type RotatingTextProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/text/rotating.tsx"
+    }
+  ]
+}

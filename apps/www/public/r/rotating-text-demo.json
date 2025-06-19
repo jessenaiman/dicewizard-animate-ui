@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-text-demo",
+  "type": "registry:ui",
+  "title": "Rotating Text Demo",
+  "description": "Demo showing an animated rotating text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/rotating-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/rotating/index.tsx",
+      "content": "import { RotatingText } from '@/components/animate-ui/text/rotating';\n\nexport const RotatingTextDemo = () => {\n  return (\n    <RotatingText\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/rotating.tsx"
+    }
+  ]
+}

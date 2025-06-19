@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-grid",
+  "type": "registry:ui",
+  "title": "Motion Grid",
+  "description": "A grid that displays animations in a grid.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/components/motion-grid/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/components/motion-grid.tsx"
+    }
+  ]
+}

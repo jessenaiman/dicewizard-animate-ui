@@ -512,6 +512,22 @@
       ]
     },
     {
+      "name": "motion-grid",
+      "type": "registry:ui",
+      "title": "Motion Grid",
+      "description": "A grid that displays animations in a grid.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/motion-grid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/motion-grid.tsx"
+        }
+      ]
+    },
+    {
       "name": "pin-list",
       "type": "registry:ui",
       "title": "Pin List",
@@ -1441,6 +1457,22 @@
       ]
     },
     {
+      "name": "motion-grid-demo",
+      "type": "registry:ui",
+      "title": "Motion Grid Demo",
+      "description": "Demo Motion Grid.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/motion-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/motion-grid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/motion-grid.tsx"
+        }
+      ]
+    },
+    {
       "name": "pin-list-demo",
       "type": "registry:ui",
       "title": "Pin List Demo",
@@ -2358,6 +2390,22 @@
           "path": "registry/demo/text/rolling/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/text/rolling.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rotating-text-demo",
+      "type": "registry:ui",
+      "title": "Rotating Text Demo",
+      "description": "Demo showing an animated rotating text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/rotating-text"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/rotating/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/text/rotating.tsx"
         }
       ]
     },
@@ -7167,6 +7215,22 @@
           "path": "registry/text/rolling/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/text/rolling.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rotating-text",
+      "type": "registry:ui",
+      "title": "Rotating Text",
+      "description": "A text component that smoothly animates text changes with a rotating transition effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/text/rotating/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/text/rotating.tsx"
         }
       ]
     },
