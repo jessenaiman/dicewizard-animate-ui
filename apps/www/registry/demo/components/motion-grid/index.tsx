@@ -652,8 +652,8 @@ export const MotionGridDemo = () => {
             gridSize={[5, 5]}
             frames={states[state].frames}
             cellClassName="size-[3px]"
-            cellActiveClassName="bg-white/70"
-            cellInactiveClassName="bg-white/20"
+            cellActiveClassName="bg-white/70 dark:bg-black/70"
+            cellInactiveClassName="bg-white/20 dark:bg-black/20"
           />
         </motion.div>
 
