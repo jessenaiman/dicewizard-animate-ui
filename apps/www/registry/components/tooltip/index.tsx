@@ -449,6 +449,27 @@ function TooltipTrigger({ children }: TooltipTriggerProps) {
     [hideTooltip, children.props],
   );
 
+  React.useEffect(() => {
+    if (currentTooltip?.id !== id) return;
+    if (!triggerRef.current) return;
+
+    if (currentTooltip.content === content && currentTooltip.arrow === arrow)
+      return;
+
+    const rect = triggerRef.current.getBoundingClientRect();
+    showTooltip({
+      content,
+      rect,
+      side,
+      sideOffset,
+      align,
+      alignOffset,
+      id,
+      arrow,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content, arrow, currentTooltip?.id]);
+
   return React.cloneElement(children, {
     ref: triggerRef,
     onMouseEnter: handleMouseEnter,

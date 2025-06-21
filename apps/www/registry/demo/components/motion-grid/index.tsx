@@ -2,13 +2,10 @@ import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 
 import { Button } from '@workspace/ui/components/ui/button';
-import {
-  type Coordinates,
-  MotionGrid,
-} from '@/registry/components/motion-grid';
+import { type Frames, MotionGrid } from '@/registry/components/motion-grid';
 import { RotatingText } from '@/registry/text/rotating';
 
-const importingCoordinates = [
+const importingFrames = [
   [[2, 2]],
   [
     [1, 2],
@@ -101,9 +98,9 @@ const importingCoordinates = [
     [4, 4],
   ],
   [],
-] as Coordinates;
+] as Frames;
 
-const arrowDownCoordinates = [
+const arrowDownFrames = [
   [[2, 0]],
   [
     [1, 0],
@@ -147,9 +144,9 @@ const arrowDownCoordinates = [
   ],
   [[2, 4]],
   [],
-] as Coordinates;
+] as Frames;
 
-const arrowUpCoordinates = [
+const arrowUpFrames = [
   [[2, 4]],
   [
     [1, 4],
@@ -193,14 +190,11 @@ const arrowUpCoordinates = [
   ],
   [[2, 0]],
   [],
-] as Coordinates;
+] as Frames;
 
-const syncingCoordinates = [
-  ...arrowDownCoordinates,
-  ...arrowUpCoordinates,
-] as Coordinates;
+const syncingFrames = [...arrowDownFrames, ...arrowUpFrames] as Frames;
 
-const searchingCoordinates = [
+const searchingFrames = [
   [
     [1, 0],
     [0, 1],
@@ -254,9 +248,9 @@ const searchingCoordinates = [
     [2, 2],
   ],
   [],
-] as Coordinates;
+] as Frames;
 
-const busyCoordinates = [
+const busyFrames = [
   [
     [0, 1],
     [0, 2],
@@ -329,9 +323,9 @@ const busyCoordinates = [
     [4, 1],
     [4, 2],
   ],
-] as Coordinates;
+] as Frames;
 
-const savingCoordinates = [
+const savingFrames = [
   [
     [0, 0],
     [0, 1],
@@ -518,9 +512,9 @@ const savingCoordinates = [
     [1, 4],
     [0, 4],
   ],
-] as Coordinates;
+] as Frames;
 
-const initializingCoordinates = [
+const initializingFrames = [
   [],
   [
     [1, 0],
@@ -593,31 +587,31 @@ const initializingCoordinates = [
   ],
   [[2, 2]],
   [],
-] as Coordinates;
+] as Frames;
 
 const states = {
   importing: {
-    frames: importingCoordinates,
+    frames: importingFrames,
     label: 'Importing',
   },
   syncing: {
-    frames: syncingCoordinates,
+    frames: syncingFrames,
     label: 'Syncing',
   },
   searching: {
-    frames: searchingCoordinates,
+    frames: searchingFrames,
     label: 'Searching',
   },
   busy: {
-    frames: busyCoordinates,
+    frames: busyFrames,
     label: 'Busy',
   },
   saving: {
-    frames: savingCoordinates,
+    frames: savingFrames,
     label: 'Saving',
   },
   initializing: {
-    frames: initializingCoordinates,
+    frames: initializingFrames,
     label: 'Initializing',
   },
 };
