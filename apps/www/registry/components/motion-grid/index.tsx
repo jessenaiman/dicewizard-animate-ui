@@ -1,19 +1,21 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'motion/react';
+import { type HTMLMotionProps, motion } from 'motion/react';
 
 import { cn } from '@workspace/ui/lib/utils';
 
-type Coordinate = [number, number];
-type Coordinates = Coordinate[][];
+type FrameDot = [number, number];
+type Frame = FrameDot[];
+type Frames = Frame[];
 
 type MotionGridProps = {
-  gridSize: Coordinate;
-  frames: Coordinates;
+  gridSize: [number, number];
+  frames: Frames;
   duration?: number;
   animate?: boolean;
   cellClassName?: string;
+  cellProps?: HTMLMotionProps<'div'>;
   cellActiveClassName?: string;
   cellInactiveClassName?: string;
 } & React.ComponentProps<'div'>;
@@ -24,6 +26,7 @@ const MotionGrid = ({
   duration = 200,
   animate = true,
   cellClassName,
+  cellProps,
   cellActiveClassName,
   cellInactiveClassName,
   className,
@@ -54,6 +57,7 @@ const MotionGrid = ({
       style={{
         ...style,
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        gridAutoRows: '1fr',
       }}
       {...props}
     >
@@ -61,12 +65,13 @@ const MotionGrid = ({
         <motion.div
           key={i}
           className={cn(
-            'size-3 rounded-sm',
+            'size-3 rounded-full aspect-square',
             active.has(i)
               ? cn('bg-primary scale-110', cellActiveClassName)
               : cn('bg-muted scale-100', cellInactiveClassName),
             cellClassName,
           )}
+          {...cellProps}
           transition={{ duration, ease: 'easeInOut' }}
         />
       ))}
@@ -74,4 +79,10 @@ const MotionGrid = ({
   );
 };
 
-export { MotionGrid, type MotionGridProps, type Coordinate, type Coordinates };
+export {
+  MotionGrid,
+  type MotionGridProps,
+  type FrameDot,
+  type Frame,
+  type Frames,
+};
