@@ -4869,6 +4869,42 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/rotating-text-demo',
   },
+  'shimmering-text-demo': {
+    name: 'shimmering-text-demo',
+    description: 'Demo showing an animated shimmering text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/shimmering-text'],
+    files: [
+      {
+        path: 'registry/demo/text/shimmering/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/text/shimmering.tsx',
+        content:
+          'import { ShimmeringText } from \'@/components/animate-ui/text/shimmering\';\n\nexport const ShimmeringTextDemo = () => (\n  <ShimmeringText\n    className="text-4xl font-semibold"\n    text="Shimmering Text"\n    wave\n  />\n);',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/text/shimmering/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'shimmering-text-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/shimmering-text-demo',
+  },
   'sliding-number-demo': {
     name: 'sliding-number-demo',
     description: 'Demo showing an animated sliding number.',
@@ -12725,6 +12761,43 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/rotating-text',
+  },
+  'shimmering-text': {
+    name: 'shimmering-text',
+    description:
+      'A text component that smoothly animates text with a shimmering effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/text/shimmering/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/text/shimmering.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { type HTMLMotionProps, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype ShimmeringTextProps = {\n  text: string;\n  duration?: number;\n  transition?: Transition;\n  wave?: boolean;\n  color?: string;\n  shimmeringColor?: string;\n} & Omit<HTMLMotionProps<'span'>, 'children'>;\n\nfunction ShimmeringText({\n  text,\n  duration = 1,\n  transition,\n  wave = false,\n  className,\n  color = 'var(--color-neutral-500)',\n  shimmeringColor = 'var(--color-neutral-300)',\n  ...props\n}: ShimmeringTextProps) {\n  return (\n    <motion.span\n      className={cn('relative inline-block [perspective:500px]', className)}\n      style={\n        {\n          '--shimmering-color': shimmeringColor,\n          '--color': color,\n          color: 'var(--color)',\n        } as React.CSSProperties\n      }\n      {...props}\n    >\n      {text?.split('')?.map((char, i) => (\n        <motion.span\n          key={i}\n          className=\"inline-block whitespace-pre [transform-style:preserve-3d]\"\n          initial={{\n            ...(wave\n              ? {\n                  scale: 1,\n                  rotateY: 0,\n                }\n              : {}),\n            color: 'var(--color)',\n          }}\n          animate={{\n            ...(wave\n              ? {\n                  x: [0, 5, 0],\n                  y: [0, -5, 0],\n                  scale: [1, 1.1, 1],\n                  rotateY: [0, 15, 0],\n                }\n              : {}),\n            color: ['var(--color)', 'var(--shimmering-color)', 'var(--color)'],\n          }}\n          transition={{\n            duration,\n            repeat: Infinity,\n            repeatType: 'loop',\n            repeatDelay: text.length * 0.05,\n            delay: (i * duration) / text.length,\n            ease: 'easeInOut',\n            ...transition,\n          }}\n        >\n          {char}\n        </motion.span>\n      ))}\n    </motion.span>\n  );\n}\n\nexport { ShimmeringText, type ShimmeringTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/text/shimmering/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'shimmering-text';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/shimmering-text',
   },
   'sliding-number': {
     name: 'sliding-number',

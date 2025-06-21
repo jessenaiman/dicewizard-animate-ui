@@ -1,0 +1,57 @@
+---
+title: Shimmering Text
+description: A text component that smoothly animates text with a shimmering effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="shimmering-text-demo" />
+
+## Installation
+
+<ComponentInstallation name="shimmering-text" />
+
+## Usage
+
+```tsx
+<ShimmeringText text="Shimmering Text" />
+```
+
+## Props
+
+### ShimmeringText
+
+<TypeTable
+  type={{
+    text: {
+      description: 'The text to shimmer.',
+      type: 'string',
+      required: true,
+    },
+    duration: {
+      description: 'The duration of the animation in milliseconds.',
+      type: 'number',
+      required: false,
+      default: '1',
+    },
+    wave: {
+      description: 'Whether to wave the text.',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    color: {
+      description: 'The color of the text.',
+      type: 'string',
+      required: false,
+      default: 'var(--color-neutral-500)',
+    },
+    shimmeringColor: {
+      description: 'The color of the shimmering effect.',
+      type: 'string',
+      required: false,
+      default: 'var(--color-neutral-300)',
+    },
+  }}
+/>

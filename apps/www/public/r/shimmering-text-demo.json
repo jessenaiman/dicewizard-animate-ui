@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmering-text-demo",
+  "type": "registry:ui",
+  "title": "Shimmering Text Demo",
+  "description": "Demo showing an animated shimmering text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/shimmering-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/shimmering/index.tsx",
+      "content": "import { ShimmeringText } from '@/components/animate-ui/text/shimmering';\n\nexport const ShimmeringTextDemo = () => (\n  <ShimmeringText\n    className=\"text-4xl font-semibold\"\n    text=\"Shimmering Text\"\n    wave\n  />\n);\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/shimmering.tsx"
+    }
+  ]
+}

@@ -2410,6 +2410,22 @@
       ]
     },
     {
+      "name": "shimmering-text-demo",
+      "type": "registry:ui",
+      "title": "Shimmering Text Demo",
+      "description": "Demo showing an animated shimmering text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/shimmering-text"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/shimmering/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/text/shimmering.tsx"
+        }
+      ]
+    },
+    {
       "name": "sliding-number-demo",
       "type": "registry:ui",
       "title": "Sliding Number Demo",
@@ -7231,6 +7247,22 @@
           "path": "registry/text/rotating/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/text/rotating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmering-text",
+      "type": "registry:ui",
+      "title": "Shimmering Text",
+      "description": "A text component that smoothly animates text with a shimmering effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/text/shimmering/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/text/shimmering.tsx"
         }
       ]
     },

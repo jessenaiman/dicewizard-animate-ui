@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmering-text",
+  "type": "registry:ui",
+  "title": "Shimmering Text",
+  "description": "A text component that smoothly animates text with a shimmering effect.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/text/shimmering/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/text/shimmering.tsx"
+    }
+  ]
+}
