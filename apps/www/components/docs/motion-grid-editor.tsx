@@ -8,6 +8,12 @@ import {
   TooltipTrigger,
 } from '@/registry/components/tooltip';
 import { Trash2Icon } from '@/registry/icons/trash-2';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/registry/radix/dropdown-menu';
 import { Button } from '@workspace/ui/components/ui/button';
 import { Input } from '@workspace/ui/components/ui/input';
 import { Label } from '@workspace/ui/components/ui/label';
@@ -22,12 +28,18 @@ import {
   SaveIcon,
   CheckIcon,
   XIcon,
+  Timer,
+  SquareRoundCorner,
 } from 'lucide-react';
 import * as React from 'react';
 
 const GRID_SIZE = [7, 7] as [number, number];
 const GRID_SIZE_MAX = 20;
 const GRID_SIZE_MIN = 4;
+const DEFAULT_DURATION = '200';
+const DEFAULT_BORDER_RADIUS = '100';
+const DEFAULT_BORDER_RADIUS_UNIT = '%';
+const BORDER_RADIUS_UNITS = ['px', 'rem', 'em', '%'];
 
 const formatGridSizeNumber = (value: number) => {
   if (value < GRID_SIZE_MIN) return GRID_SIZE_MIN;
@@ -43,7 +55,13 @@ const MyAnimation = ({
   active,
 }: {
   name: string;
-  value: { gridSize: [number, number]; frames: Frames };
+  value: {
+    gridSize: [number, number];
+    frames: Frames;
+    duration: string;
+    borderRadius: string;
+    borderRadiusUnit: string;
+  };
   selectAnimation: () => void;
   deleteAnimation: () => void;
   active: boolean;
@@ -69,10 +87,16 @@ const MyAnimation = ({
             value.gridSize[0] > value.gridSize[1]
               ? 'w-20 h-auto'
               : 'h-20 w-auto',
-            Math.max(value.gridSize[0], value.gridSize[1]) > 15
+            Math.max(value.gridSize[0], value.gridSize[1]) > 10
               ? 'gap-px'
               : 'gap-0.5',
           )}
+          cellProps={{
+            style: {
+              borderRadius: `${value.borderRadius}${value.borderRadiusUnit}`,
+            },
+          }}
+          duration={Number(value.duration)}
           animate={isHovering}
           cellClassName="!size-full"
           cellActiveClassName="bg-neutral-800 dark:bg-neutral-200"
@@ -135,6 +159,14 @@ const MyAnimation = ({
   );
 };
 
+interface Animation {
+  gridSize: [number, number];
+  frames: Frames;
+  duration: string;
+  borderRadius: string;
+  borderRadiusUnit: string;
+}
+
 export const MotionGridEditor = () => {
   const [gridSizeInput, setGridSizeInput] = React.useState<[string, string]>(
     GRID_SIZE.map((n) => n.toString()) as [string, string],
@@ -148,19 +180,18 @@ export const MotionGridEditor = () => {
   const [selectedAnimation, setSelectedAnimation] = React.useState<
     string | null
   >(null);
-  const [animations, setAnimations] = React.useState<
-    Record<
-      string,
-      {
-        gridSize: [number, number];
-        frames: Frames;
-      }
-    >
-  >({});
+  const [animations, setAnimations] = React.useState<Record<string, Animation>>(
+    {},
+  );
   const [isDrawing, setIsDrawing] = React.useState(false);
   const [drawAction, setDrawAction] = React.useState<'add' | 'remove' | null>(
     null,
   );
+  const [duration, setDuration] = React.useState<string>(DEFAULT_DURATION);
+  const [borderRadius, setBorderRadius] = React.useState<string>(
+    DEFAULT_BORDER_RADIUS,
+  );
+  const [borderRadiusUnit, setBorderRadiusUnit] = React.useState<string>('px');
 
   React.useEffect(() => {
     const handleUp = () => {
@@ -172,8 +203,30 @@ export const MotionGridEditor = () => {
     return () => window.removeEventListener('mouseup', handleUp);
   }, []);
 
+  const normalizeAnimation = (anim: Partial<Animation>): Animation =>
+    ({
+      ...anim,
+      duration: anim.duration ?? DEFAULT_DURATION,
+      borderRadius: anim.borderRadius ?? DEFAULT_BORDER_RADIUS,
+      borderRadiusUnit: anim.borderRadiusUnit ?? DEFAULT_BORDER_RADIUS_UNIT,
+    }) as Animation;
+
   React.useEffect(() => {
-    setAnimations(JSON.parse(localStorage.getItem('animations') ?? '{}'));
+    const raw = localStorage.getItem('animations');
+    const parsed: Record<string, Partial<Animation>> = raw
+      ? JSON.parse(raw)
+      : {};
+
+    const fixed: Record<string, Animation> = Object.fromEntries(
+      Object.entries(parsed).map(([key, value]) => [
+        key,
+        normalizeAnimation(value),
+      ]),
+    );
+
+    setAnimations(fixed);
+
+    localStorage.setItem('animations', JSON.stringify(fixed));
   }, []);
 
   const activeFrameDots = new Set<number>(
@@ -225,6 +278,9 @@ export const MotionGridEditor = () => {
   const createNewAnimation = () => {
     setGridSize(GRID_SIZE);
     setGridSizeInput(GRID_SIZE.map((n) => n.toString()) as [string, string]);
+    setDuration(DEFAULT_DURATION);
+    setBorderRadius(DEFAULT_BORDER_RADIUS);
+    setBorderRadiusUnit(DEFAULT_BORDER_RADIUS_UNIT);
     setFrames([[]]);
     setActiveFrame(0);
     setAnimationName('');
@@ -234,8 +290,8 @@ export const MotionGridEditor = () => {
   };
 
   return (
-    <div className="grid grid-cols-12 gap-4 lg:h-[450px]">
-      <div className="lg:col-span-5 col-span-12 border rounded-xl overflow-hidden flex flex-col min-h-0 h-[450px]">
+    <div className="grid grid-cols-12 gap-4 lg:h-[506px]">
+      <div className="lg:col-span-5 col-span-12 border rounded-xl overflow-hidden flex flex-col min-h-0 h-[506px]">
         <div className="relative flex flex-row p-4 bg-muted border-b border-border/75 dark:border-border/50">
           <Label>My Animations</Label>
           <Button
@@ -257,6 +313,9 @@ export const MotionGridEditor = () => {
                 selectAnimation={() => {
                   setGridSize(value.gridSize);
                   setFrames(value.frames);
+                  setDuration(value.duration);
+                  setBorderRadius(value.borderRadius);
+                  setBorderRadiusUnit(value.borderRadiusUnit);
                   setActiveFrame(0);
                   setAnimationName(name);
                   setIsSaved(false);
@@ -342,10 +401,16 @@ export const MotionGridEditor = () => {
                 className={cn(
                   'dark:bg-neutral-900 bg-neutral-100 rounded-md p-1.5',
                   gridSize[0] > gridSize[1] ? 'w-20 h-auto' : 'h-20 w-auto',
-                  Math.max(gridSize[0], gridSize[1]) > 15
+                  Math.max(gridSize[0], gridSize[1]) > 10
                     ? 'gap-px'
                     : 'gap-0.5',
                 )}
+                cellProps={{
+                  style: {
+                    borderRadius: `${borderRadius}${borderRadiusUnit}`,
+                  },
+                }}
+                duration={Number(duration)}
                 cellClassName="!size-full"
                 cellActiveClassName="bg-neutral-800 dark:bg-neutral-200"
                 cellInactiveClassName="bg-neutral-200 dark:bg-neutral-800"
@@ -361,9 +426,9 @@ export const MotionGridEditor = () => {
                   gridSize[0] > gridSize[1]
                     ? 'w-[150px] sm:w-[200px]'
                     : 'h-[150px] sm:h-[200px]',
-                  Math.max(gridSize[0], gridSize[1]) > 15
+                  Math.max(gridSize[0], gridSize[1]) > 10
                     ? 'gap-0.5'
-                    : Math.max(gridSize[0], gridSize[1]) > 15
+                    : Math.max(gridSize[0], gridSize[1]) > 10
                       ? 'gap-1'
                       : 'gap-1.5',
                 )}
@@ -394,11 +459,14 @@ export const MotionGridEditor = () => {
                         applyDot(x, y, drawAction);
                       }}
                       className={cn(
-                        'rounded-full aspect-square size-full hover:ring hover:ring-neutral-300 dark:hover:ring-neutral-700',
+                        'rounded-full aspect-square hover:ring hover:ring-neutral-300 dark:hover:ring-neutral-700',
                         activeFrameDots.has(i)
                           ? 'bg-neutral-800 dark:bg-neutral-200'
                           : 'bg-neutral-200 dark:bg-neutral-800',
                       )}
+                      style={{
+                        borderRadius: `${borderRadius}${borderRadiusUnit}`,
+                      }}
                     />
                   ),
                 )}
@@ -407,7 +475,7 @@ export const MotionGridEditor = () => {
           </div>
 
           <TooltipProvider>
-            <div className="p-4 pt-0">
+            <div className="p-4 space-y-4 pt-0">
               <div className="h-20 w-full flex flex-row items-center gap-2">
                 <ScrollArea className="w-full h-full flex-1 bg-neutral-100 dark:bg-neutral-900 rounded-2xl overflow-x-auto">
                   <div className="w-max p-2 h-full">
@@ -433,11 +501,11 @@ export const MotionGridEditor = () => {
                             <div
                               className={cn(
                                 'grid p-[5px] h-full',
-                                Math.max(gridSize[0], gridSize[1]) > 15
-                                  ? 'gap-px'
-                                  : Math.max(gridSize[0], gridSize[1]) > 15
-                                    ? 'gap-0.5'
-                                    : 'gap-[3px]',
+                                Math.max(gridSize[0], gridSize[1]) > 10
+                                  ? 'gap-[0.5px]'
+                                  : Math.max(gridSize[0], gridSize[1]) > 10
+                                    ? 'gap-px'
+                                    : 'gap-[1.5px]',
                               )}
                               style={{
                                 gridTemplateColumns: `repeat(${gridSize[0]}, minmax(0, 1fr))`,
@@ -449,11 +517,14 @@ export const MotionGridEditor = () => {
                                 <div
                                   key={i}
                                   className={cn(
-                                    'bg-neutral-200 dark:bg-neutral-800 rounded-full aspect-square w-full',
+                                    'bg-neutral-200 dark:bg-neutral-800 aspect-square w-full',
                                     activeDot.has(i)
                                       ? 'bg-neutral-800 dark:bg-neutral-200'
                                       : 'bg-neutral-200 dark:bg-neutral-800',
                                   )}
+                                  style={{
+                                    borderRadius: `${borderRadius}${borderRadiusUnit}`,
+                                  }}
                                 />
                               ))}
                             </div>
@@ -539,6 +610,78 @@ export const MotionGridEditor = () => {
                   </Tooltip>
                 </div>
               </div>
+
+              <div className="h-10 flex flex-row gap-4 items-center">
+                <div className="relative flex-1 h-full bg-neutral-100 dark:bg-neutral-900 rounded-lg">
+                  <div className="absolute inset-y-0 left-0 h-full aspect-square bg-neutral-200 dark:bg-neutral-800 rounded-l-lg flex items-center justify-center">
+                    <Timer className="size-5 text-neutral-400 dark:text-neutral-600" />
+                  </div>
+                  <Input
+                    type="number"
+                    className="size-full px-13 border-none bg-transparent shadow-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    value={duration}
+                    placeholder="Duration"
+                    step={10}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      if (v === '') {
+                        setDuration('');
+                        return;
+                      }
+                      const n = Number(v);
+                      if (!Number.isNaN(n) && n >= 0) {
+                        setDuration(v);
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-y-0 right-0 h-full aspect-square bg-neutral-200 dark:bg-neutral-800 rounded-r-lg flex items-center justify-center">
+                    <span className="text-neutral-400 dark:text-neutral-600 text-sm">
+                      ms
+                    </span>
+                  </div>
+                </div>
+                <div className="relative flex-1 h-full bg-neutral-100 dark:bg-neutral-900 rounded-lg">
+                  <div className="absolute inset-y-0 left-0 h-full aspect-square bg-neutral-200 dark:bg-neutral-800 rounded-l-lg flex items-center justify-center">
+                    <SquareRoundCorner className="size-5 text-neutral-400 dark:text-neutral-600" />
+                  </div>
+                  <Input
+                    type="number"
+                    className="size-full px-13 border-none bg-transparent shadow-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    value={borderRadius}
+                    placeholder="Border Radius"
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      if (v === '') {
+                        setBorderRadius('');
+                        return;
+                      }
+                      const n = Number(v);
+                      if (!Number.isNaN(n) && n >= 0) {
+                        setBorderRadius(v);
+                      }
+                    }}
+                  />
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <div className="absolute inset-y-0 right-0 h-full aspect-square bg-neutral-200 dark:bg-neutral-800 rounded-r-lg flex items-center justify-center">
+                        <button className="text-neutral-400 dark:text-neutral-600 text-sm">
+                          {borderRadiusUnit}
+                        </button>
+                      </div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {BORDER_RADIUS_UNITS.map((unit) => (
+                        <DropdownMenuItem
+                          key={unit}
+                          onClick={() => setBorderRadiusUnit(unit)}
+                        >
+                          {unit}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
             </div>
 
             <div className="flex p-4 flex-row gap-2 border-t">
@@ -608,7 +751,13 @@ export const MotionGridEditor = () => {
                         }
                       }
 
-                      newAnimations[animationName] = { gridSize, frames };
+                      newAnimations[animationName] = {
+                        gridSize,
+                        frames,
+                        duration,
+                        borderRadius,
+                        borderRadiusUnit,
+                      };
 
                       setAnimations(newAnimations);
                       setSelectedAnimation(animationName);
