@@ -1,6 +1,10 @@
 'use client';
 
-import { type Frames, MotionGrid } from '@/registry/components/motion-grid';
+import {
+  type Frame,
+  type Frames,
+  MotionGrid,
+} from '@/registry/components/motion-grid';
 import {
   Tooltip,
   TooltipContent,
@@ -542,8 +546,15 @@ export const MotionGridEditor = () => {
                         size="icon"
                         onClick={() => {
                           setFrames((prev) => {
-                            setActiveFrame(prev.length);
-                            return [...prev, []];
+                            const currentIndex = activeFrame;
+                            const currentFrame = prev[currentIndex] ?? [];
+                            const newFrame: Frame = currentFrame.map(
+                              ([x, y]) => [x, y],
+                            );
+                            const updatedFrames = [...prev];
+                            updatedFrames.splice(currentIndex + 1, 0, newFrame);
+                            setActiveFrame(currentIndex + 1);
+                            return updatedFrames;
                           });
                         }}
                       >
