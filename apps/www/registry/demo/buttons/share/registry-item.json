@@ -17,11 +17,14 @@
     "meta": {
         "demoProps": {
             "ShareButtonDemo": {
-                "props1": {
+                "children": {
                     "value": "Share"
                 },
-                "props2": {
+                "className": {
                     "value": "bg-primary text-primary-foreground hover:bg-primary/90"
+                },
+                "size": {
+                    "value": "lg"
                 }
             }
         }

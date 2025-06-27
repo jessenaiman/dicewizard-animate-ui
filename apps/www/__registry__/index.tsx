@@ -801,7 +801,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/buttons/share.tsx',
         content:
-          "'use client';\nimport * as React from 'react';\nimport {} from 'lucide-react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\nimport { HTMLMotionProps } from 'motion/react';\n\ntype ShareButtonProps = {\n  children: React.ReactNode;\n  className?: string;\n} & React.ComponentProps<'button'>;\n\nfunction ShareButton({ children, className, ...props }: ShareButtonProps) {\n  return (\n    <button className={cn(className)} {...props}>\n      {children}\n    </button>\n  );\n}\n\nexport { ShareButton, type ShareButtonProps };",
+          "'use client';\nimport * as React from 'react';\nimport {} from 'lucide-react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\nimport { HTMLMotionProps, motion } from 'motion/react';\n\nconst buttonVariants = cva(\n  \"relative overflow-hidden cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default: 'bg-primary text-primary-foreground hover:bg-primary/90',\n      },\n      size: {\n        default: 'h-10 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-9 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-11 px-8 has-[>svg]:px-6',\n        icon: 'size-10',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ShareButtonProps = HTMLMotionProps<'button'> & {\n  children: React.ReactNode;\n  className?: string;\n  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost';\n  size?: 'default' | 'sm' | 'lg' | 'icon';\n} & VariantProps<typeof buttonVariants>;\n\nfunction ShareButton({\n  children,\n  className,\n  variant,\n  size,\n  ...props\n}: ShareButtonProps) {\n  return (\n    <motion.button\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    >\n      {children}\n    </motion.button>\n  );\n}\n\nexport { ShareButton, type ShareButtonProps };",
       },
     ],
     keywords: [],
@@ -2465,7 +2465,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/buttons/share.tsx',
         content:
-          "'use client';\nimport { ShareButton, type ShareButtonProps } from '@/components/animate-ui/buttons/share';\nimport { cn } from '@/lib/utils';\n\ntype ShareButtonDemoProps = {\n  props1: React.ReactNode;\n  props2?: string;\n} & ShareButtonProps;\n\nexport const ShareButtonDemo = ({\n  props1,\n  props2,\n  ...props\n}: ShareButtonDemoProps) => {\n  return (\n    <ShareButton {...props} className={cn(props2)}>\n      {props1}\n    </ShareButton>\n  );\n};",
+          "'use client';\nimport { ShareButton, type ShareButtonProps } from '@/components/animate-ui/buttons/share';\nimport { cn } from '@/lib/utils';\n\ntype ShareButtonDemoProps = {\n  children: React.ReactNode;\n  className?: string;\n} & ShareButtonProps;\n\nexport const ShareButtonDemo = ({\n  children,\n  className,\n  size,\n  ...props\n}: ShareButtonDemoProps) => {\n  return (\n    <ShareButton {...props} className={cn(className)} size={size}>\n      {children}\n    </ShareButton>\n  );\n};",
       },
     ],
     keywords: [],
@@ -2485,10 +2485,11 @@ export const index: Record<string, any> = {
       });
       LazyComp.demoProps = {
         ShareButtonDemo: {
-          props1: { value: 'Share' },
-          props2: {
+          children: { value: 'Share' },
+          className: {
             value: 'bg-primary text-primary-foreground hover:bg-primary/90',
           },
+          size: { value: 'lg' },
         },
       };
       return LazyComp;
