@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "share-button",
+  "type": "registry:ui",
+  "title": "Share Button",
+  "description": "This is a button for sharing",
+  "dependencies": [
+    "motion",
+    "lucide-react",
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "registry/buttons/share/index.tsx",
+      "content": "'use client';\nimport * as React from 'react';\nimport {} from 'lucide-react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\nimport { HTMLMotionProps } from 'motion/react';\n\ntype ShareButtonProps = {\n  children: React.ReactNode;\n  className?: string;\n} & React.ComponentProps<'button'>;\n\nfunction ShareButton({ children, className, ...props }: ShareButtonProps) {\n  return (\n    <button className={cn(className)} {...props}>\n      {children}\n    </button>\n  );\n}\n\nexport { ShareButton, type ShareButtonProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/buttons/share.tsx"
+    }
+  ]
+}

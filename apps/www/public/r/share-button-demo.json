@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "share-button-demo",
+  "type": "registry:ui",
+  "title": "Share Button Demo",
+  "description": "Demo showing share button",
+  "registryDependencies": [
+    "https://animate-ui.com/r/share-button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/buttons/share/index.tsx",
+      "content": "'use client';\nimport { ShareButton, type ShareButtonProps } from '@/components/animate-ui/buttons/share';\nimport { cn } from '@/lib/utils';\n\ntype ShareButtonDemoProps = {\n  props1: React.ReactNode;\n  props2?: string;\n} & ShareButtonProps;\n\nexport const ShareButtonDemo = ({\n  props1,\n  props2,\n  ...props\n}: ShareButtonDemoProps) => {\n  return (\n    <ShareButton {...props} className={cn(props2)}>\n      {props1}\n    </ShareButton>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/buttons/share.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "ShareButtonDemo": {
+        "props1": {
+          "value": "Share"
+        },
+        "props2": {
+          "value": "bg-primary text-primary-foreground hover:bg-primary/90"
+        }
+      }
+    }
+  }
+}

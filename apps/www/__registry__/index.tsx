@@ -788,6 +788,42 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/ripple-button',
   },
+  'share-button': {
+    name: 'share-button',
+    description: 'This is a button for sharing',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react', 'class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/buttons/share/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/buttons/share.tsx',
+        content:
+          "'use client';\nimport * as React from 'react';\nimport {} from 'lucide-react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\nimport { HTMLMotionProps } from 'motion/react';\n\ntype ShareButtonProps = {\n  children: React.ReactNode;\n  className?: string;\n} & React.ComponentProps<'button'>;\n\nfunction ShareButton({ children, className, ...props }: ShareButtonProps) {\n  return (\n    <button className={cn(className)} {...props}>\n      {children}\n    </button>\n  );\n}\n\nexport { ShareButton, type ShareButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/buttons/share/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'share-button';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/share-button',
+  },
   'avatar-group': {
     name: 'avatar-group',
     description:
@@ -2415,6 +2451,49 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/ripple-button-demo',
+  },
+  'share-button-demo': {
+    name: 'share-button-demo',
+    description: 'Demo showing share button',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/share-button'],
+    files: [
+      {
+        path: 'registry/demo/buttons/share/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/buttons/share.tsx',
+        content:
+          "'use client';\nimport { ShareButton, type ShareButtonProps } from '@/components/animate-ui/buttons/share';\nimport { cn } from '@/lib/utils';\n\ntype ShareButtonDemoProps = {\n  props1: React.ReactNode;\n  props2?: string;\n} & ShareButtonProps;\n\nexport const ShareButtonDemo = ({\n  props1,\n  props2,\n  ...props\n}: ShareButtonDemoProps) => {\n  return (\n    <ShareButton {...props} className={cn(props2)}>\n      {props1}\n    </ShareButton>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/demo/buttons/share/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'share-button-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        ShareButtonDemo: {
+          props1: { value: 'Share' },
+          props2: {
+            value: 'bg-primary text-primary-foreground hover:bg-primary/90',
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/share-button-demo',
   },
   'avatar-group-demo': {
     name: 'avatar-group-demo',
