@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/buttons/share/index.tsx",
-      "content": "'use client';\nimport { ShareButton, type ShareButtonProps } from '@/components/animate-ui/buttons/share';\nimport { cn } from '@/lib/utils';\n\ntype ShareButtonDemoProps = {\n  children: React.ReactNode;\n  className?: string;\n} & ShareButtonProps;\n\nexport const ShareButtonDemo = ({\n  children,\n  className,\n  size,\n  ...props\n}: ShareButtonDemoProps) => {\n  return (\n    <ShareButton {...props} className={cn(className)} size={size}>\n      {children}\n    </ShareButton>\n  );\n};\n",
+      "content": "'use client';\nimport { ShareButton, type ShareButtonProps } from '@/components/animate-ui/buttons/share';\nimport { cn } from '@/lib/utils';\n\ntype ShareButtonDemoProps = {\n  children: React.ReactNode;\n  className?: string;\n  size?: 'default' | 'sm' | 'lg';\n  icon?: 'suffix' | 'prefix';\n} & ShareButtonProps;\n\nexport const ShareButtonDemo = ({\n  children,\n  className,\n  size,\n  icon,\n  ...props\n}: ShareButtonDemoProps) => {\n  return (\n    <ShareButton {...props} className={cn(className)} size={size} icon={icon}>\n      {children}\n    </ShareButton>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/buttons/share.tsx"
     }
@@ -28,7 +28,7 @@
           "value": "default"
         },
         "icon": {
-          "value": "suffix"
+          "value": "prefix"
         }
       }
     }

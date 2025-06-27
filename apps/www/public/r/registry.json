@@ -1290,7 +1290,7 @@
               "value": "default"
             },
             "icon": {
-              "value": "suffix"
+              "value": "prefix"
             }
           }
         }

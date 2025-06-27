@@ -117,11 +117,14 @@ type ShareIconGroupProps = {
 function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
   const iconSize = iconSizeMap[size];
   return (
-    <motion.div className={cn(shareIconGroupVariants({ size }), className)}>
+    <motion.div
+      className={cn(shareIconGroupVariants({ size }), 'group', className)}
+    >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5, type: 'spring', bounce: 0.4 }}
+        className="group-hover:opacity-100 hover:text-primary hover:scale-110"
       >
         <Github size={iconSize} />
       </motion.div>
@@ -129,6 +132,7 @@ function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5, type: 'spring', bounce: 0.4 }}
+        className="group-hover:opacity-100 hover:text-primary hover:scale-110"
       >
         <X size={iconSize} />
       </motion.div>
@@ -136,6 +140,7 @@ function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, type: 'spring', bounce: 0.4 }}
+        className="group-hover:opacity-100 hover:text-primary hover:scale-110"
       >
         <Facebook size={iconSize} />
       </motion.div>
