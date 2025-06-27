@@ -1287,7 +1287,10 @@
               "value": "bg-primary text-primary-foreground hover:bg-primary/90"
             },
             "size": {
-              "value": "lg"
+              "value": "default"
+            },
+            "icon": {
+              "value": "suffix"
             }
           }
         }
