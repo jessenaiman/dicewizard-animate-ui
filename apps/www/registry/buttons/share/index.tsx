@@ -42,6 +42,7 @@ type ShareButtonProps = HTMLMotionProps<'button'> & {
   variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost';
   size?: 'default' | 'sm' | 'lg';
   icon?: 'suffix' | 'prefix';
+  onIconClick?: (platform: 'github' | 'x' | 'facebook') => void;
 } & VariantProps<typeof buttonVariants>;
 
 function ShareButton({
@@ -50,6 +51,7 @@ function ShareButton({
   variant,
   size = 'default',
   icon,
+  onIconClick,
   ...props
 }: ShareButtonProps) {
   const [hovered, setHovered] = React.useState(false);
@@ -87,7 +89,7 @@ function ShareButton({
             transition={{ duration: 0.3 }}
             className=" absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center gap-2"
           >
-            <ShareIconGroup size={size} />
+            <ShareIconGroup size={size} onIconClick={onIconClick} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -109,13 +111,32 @@ const shareIconGroupVariants = cva('flex items-center justify-center gap-3', {
   },
 });
 
-type ShareIconGroupProps = {
+type ShareIconGroupProps = HTMLMotionProps<'div'> & {
   size?: 'sm' | 'md' | 'lg' | 'default';
   className?: string;
+  onIconClick?: (
+    platform: 'github' | 'x' | 'facebook',
+    event: React.MouseEvent<HTMLDivElement>,
+  ) => void;
 } & VariantProps<typeof shareIconGroupVariants>;
 
-function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
+function ShareIconGroup({
+  size = 'default',
+  className,
+  onIconClick,
+}: ShareIconGroupProps) {
   const iconSize = iconSizeMap[size];
+
+  const handleIconClick = React.useCallback(
+    (
+      platform: 'github' | 'x' | 'facebook',
+      event: React.MouseEvent<HTMLDivElement>,
+    ) => {
+      onIconClick?.(platform, event);
+    },
+    [onIconClick],
+  );
+
   return (
     <motion.div
       className={cn(shareIconGroupVariants({ size }), 'group', className)}
@@ -125,6 +146,7 @@ function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5, type: 'spring', bounce: 0.4 }}
         className="group-hover:opacity-100 hover:text-primary hover:scale-110"
+        onClick={(event) => handleIconClick('github', event)}
       >
         <Github size={iconSize} />
       </motion.div>
@@ -133,6 +155,7 @@ function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5, type: 'spring', bounce: 0.4 }}
         className="group-hover:opacity-100 hover:text-primary hover:scale-110"
+        onClick={(event) => handleIconClick('x', event)}
       >
         <X size={iconSize} />
       </motion.div>
@@ -141,6 +164,7 @@ function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, type: 'spring', bounce: 0.4 }}
         className="group-hover:opacity-100 hover:text-primary hover:scale-110"
+        onClick={(event) => handleIconClick('facebook', event)}
       >
         <Facebook size={iconSize} />
       </motion.div>
