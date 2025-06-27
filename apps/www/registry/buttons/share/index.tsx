@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { Share2 } from 'lucide-react';
+import { Share2, Github, X, Facebook } from 'lucide-react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@workspace/ui/lib/utils';
 import { HTMLMotionProps, motion } from 'motion/react';
@@ -50,11 +50,59 @@ function ShareButton({
       className={cn(buttonVariants({ variant, size, className, icon }))}
       {...props}
     >
-      {icon === 'prefix' && <Share2 className="size-4" />}
+      {/* {icon === 'prefix' && <Share2 className="size-4" />}
       {children}
-      {icon === 'suffix' && <Share2 className="size-4" />}
+      {icon === 'suffix' && <Share2 className="size-4" />} */}
+      <ShareIconGroup size={size} />
     </motion.button>
   );
 }
 
-export { ShareButton, type ShareButtonProps };
+const shareIconGroupVariants = cva('flex items-center justify-center gap-3', {
+  variants: {
+    size: {
+      sm: 'text-[16px]',
+      md: 'text-[20px]',
+      lg: 'text-[28px]',
+      default: 'text-[16px]',
+    },
+  },
+  defaultVariants: {
+    size: 'default',
+  },
+});
+
+type ShareIconGroupProps = {
+  size?: 'sm' | 'md' | 'lg' | 'default';
+  className?: string;
+} & VariantProps<typeof shareIconGroupVariants>;
+
+function ShareIconGroup({ size = 'default', className }: ShareIconGroupProps) {
+  return (
+    <motion.div className={cn(shareIconGroupVariants({ size }), className)}>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0, duration: 0.5, type: 'spring', bounce: 0.4 }}
+      >
+        <Github size={size} />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.5, type: 'spring', bounce: 0.4 }}
+      >
+        <X size={size} />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5, type: 'spring', bounce: 0.4 }}
+      >
+        <Facebook size={size} />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export { ShareButton, type ShareButtonProps, ShareIconGroup };
