@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-list-demo",
+  "type": "registry:ui",
+  "title": "Notification List Demo",
+  "description": "Demo Notification List",
+  "registryDependencies": [
+    "https://animate-ui.com/r/notification-list"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/ui-elements/notification-list/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\n\nimport { NotificationList } from '@/components/animate-ui/ui-elements/notification-list';\n\nexport const NotificationListDemo = () => <NotificationList />;\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/ui-elements/notification-list.tsx"
+    }
+  ]
+}

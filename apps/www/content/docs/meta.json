@@ -24,6 +24,7 @@
     "components/tooltip",
     "---UI Elements---",
     "ui-elements/management-bar",
+    "ui-elements/notification-list",
     "ui-elements/user-presence-avatar",
     "ui-elements/playful-todolist",
     "---Effects---",
