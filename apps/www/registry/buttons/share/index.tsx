@@ -145,7 +145,11 @@ function ShareIconGroup({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5, type: 'spring', bounce: 0.4 }}
-        className="group-hover:opacity-100 hover:text-primary hover:scale-110"
+        whileHover={{
+          y: [0, -8, 0, -8, 0],
+          transition: { duration: 0.6, ease: 'easeOut' },
+        }}
+        className="group-hover:opacity-100 cursor-pointer"
         onClick={(event) => handleIconClick('github', event)}
       >
         <Github size={iconSize} />
@@ -154,7 +158,11 @@ function ShareIconGroup({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5, type: 'spring', bounce: 0.4 }}
-        className="group-hover:opacity-100 hover:text-primary hover:scale-110"
+        whileHover={{
+          y: [0, -8, 0, -8, 0],
+          transition: { duration: 0.6, ease: 'easeOut' },
+        }}
+        className="group-hover:opacity-100 cursor-pointer"
         onClick={(event) => handleIconClick('x', event)}
       >
         <X size={iconSize} />
@@ -163,7 +171,11 @@ function ShareIconGroup({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, type: 'spring', bounce: 0.4 }}
-        className="group-hover:opacity-100 hover:text-primary hover:scale-110"
+        whileHover={{
+          y: [0, -8, 0, -8, 0],
+          transition: { duration: 0.6, ease: 'easeOut' },
+        }}
+        className="group-hover:opacity-100 cursor-pointer"
         onClick={(event) => handleIconClick('facebook', event)}
       >
         <Facebook size={iconSize} />
