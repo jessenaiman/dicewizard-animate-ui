@@ -146,10 +146,10 @@ function ShareIconGroup({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5, type: 'spring', bounce: 0.4 }}
         whileHover={{
-          y: [0, -8, 0, -8, 0],
-          transition: { duration: 0.6, ease: 'easeOut' },
+          y: -8,
+          transition: { duration: 0.2, ease: 'easeOut' },
         }}
-        className="group-hover:opacity-100 cursor-pointer"
+        className="group-hover:opacity-100 cursor-pointer py-3 rounded-lg box-border"
         onClick={(event) => handleIconClick('github', event)}
       >
         <Github size={iconSize} />
@@ -159,10 +159,10 @@ function ShareIconGroup({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5, type: 'spring', bounce: 0.4 }}
         whileHover={{
-          y: [0, -8, 0, -8, 0],
-          transition: { duration: 0.6, ease: 'easeOut' },
+          y: -8,
+          transition: { duration: 0.2, ease: 'easeOut' },
         }}
-        className="group-hover:opacity-100 cursor-pointer"
+        className="group-hover:opacity-100 cursor-pointer py-3 rounded-lg box-border"
         onClick={(event) => handleIconClick('x', event)}
       >
         <X size={iconSize} />
@@ -172,10 +172,10 @@ function ShareIconGroup({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, type: 'spring', bounce: 0.4 }}
         whileHover={{
-          y: [0, -8, 0, -8, 0],
-          transition: { duration: 0.6, ease: 'easeOut' },
+          y: -8,
+          transition: { duration: 0.2, ease: 'easeOut' },
         }}
-        className="group-hover:opacity-100 cursor-pointer"
+        className="group-hover:opacity-100 cursor-pointer py-3 rounded-lg box-border"
         onClick={(event) => handleIconClick('facebook', event)}
       >
         <Facebook size={iconSize} />
