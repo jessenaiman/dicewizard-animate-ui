@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import '@workspace/ui/globals.css';
+import './globals.css';
 import { Providers } from './providers';
 import { jsonLd } from '@/lib/json-ld';
 

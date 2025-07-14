@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev --port 3001",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
     "registry:build": "pnpm format:write && tsx ./scripts/build-registry.mts && pnpm format:write",

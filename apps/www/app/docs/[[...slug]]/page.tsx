@@ -21,6 +21,7 @@ import {
 } from '@/components/docs/codeblock';
 import { DocsAuthor } from '@/components/docs/docs-author';
 import { DocsBreadcrumb } from '@/components/docs/docs-breadcrumb';
+import { Metadata } from 'next';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -55,22 +56,24 @@ export default async function Page(props: {
       </div>
 
       <DocsBody>
-        <MDX
-          components={{
-            ...defaultMdxComponents,
-            ComponentPreview,
-            ComponentInstallation,
-            TypeTable,
-            ExternalLink,
-            Steps,
-            Step,
-            pre: (props: CodeBlockProps) => (
-              <CodeBlock {...props} className="">
-                <Pre>{props.children}</Pre>
-              </CodeBlock>
-            ),
-          }}
-        />
+        {MDX ? (
+          <MDX
+            components={{
+              ...defaultMdxComponents,
+              ComponentPreview,
+              ComponentInstallation,
+              TypeTable,
+              ExternalLink,
+              Steps,
+              Step,
+              pre: (props: CodeBlockProps) => (
+                <CodeBlock {...props} className="">
+                  <Pre>{props.children}</Pre>
+                </CodeBlock>
+              ),
+            }}
+          />
+        ) : null}
       </DocsBody>
     </DocsPage>
   );
@@ -82,7 +85,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
-}) {
+}): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();

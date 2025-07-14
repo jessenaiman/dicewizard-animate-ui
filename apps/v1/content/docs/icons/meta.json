@@ -1,0 +1,7 @@
+{
+  "title": "Icons",
+  "description": "Animated Icons",
+  "icon": "LucideIcons",
+  "root": true,
+  "pages": ["---Guide---", "index"]
+}
