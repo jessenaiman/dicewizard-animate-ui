@@ -1,9 +1,11 @@
+import { MotionEffect } from './effects/motion-effect';
+
 export const Footer = () => {
   return (
-    <div className="h-[55px] border-t">
+    <div className="h-16">
       <div className="max-w-7xl mx-auto h-full">
-        <div className="size-full px-4 md:px-6 flex items-center justify-start prose prose-sm text-sm text-muted-foreground">
-          <p className="text-start truncate">
+        <div className="size-full px-4 md:px-6 flex items-center justify-center prose prose-sm text-sm text-muted-foreground">
+          <p className="text-center truncate">
             Built by{' '}
             <a
               href="https://x.com/imskyleen"

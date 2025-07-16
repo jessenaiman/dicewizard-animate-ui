@@ -1,0 +1,65 @@
+---
+title: Collapsible
+description: An interactive component which expands/collapses a panel.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="demo-primitives-radix-collapsible" />
+
+## Installation
+
+<ComponentInstallation name="primitives-radix-collapsible" />
+
+## Usage
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>Collapsible Trigger</CollapsibleTrigger>
+  <CollapsibleContent>
+    <div>Collapsible Content</div>
+  </CollapsibleContent>
+</Collapsible>
+```
+
+## API Reference
+
+### Collapsible
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/collapsible#root"
+  text="Radix UI API Reference - Collapsible.Root"
+/>
+
+### CollapsibleTrigger
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/collapsible#trigger"
+  text="Radix UI API Reference - Collapsible.Trigger"
+/>
+
+### CollapsibleContent
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/collapsible#content"
+  text="Radix UI API Reference - Collapsible.Content"
+/>
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the collapsible content',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 22 }",
+    },
+    keepRendered: {
+      description:
+        'Whether to keep the accordion content rendered (useful for SEO)',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+  }}
+/>

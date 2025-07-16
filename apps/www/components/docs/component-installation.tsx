@@ -8,8 +8,8 @@ import {
   TabsTrigger,
   TabsContent,
   TabsContents,
-} from '@/registry/radix/tabs';
-import { CodeTabs } from '@/registry/components/code-tabs';
+} from '@/components/radix/tabs';
+import { CodeTabs } from '@/components/animate/code-tabs';
 import { ComponentManualInstallation } from './component-manual-installation';
 
 interface ComponentInstallationProps

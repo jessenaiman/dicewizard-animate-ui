@@ -4,32 +4,7 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
-  reactStrictMode: false,
-  transpilePackages: ['@workspace/ui'],
-  async redirects() {
-    return [
-      {
-        source: '/components',
-        destination: '/docs/components/avatar-group',
-        permanent: true,
-      },
-      {
-        source: '/components/:path*',
-        destination: '/docs/components/:path*',
-        permanent: true,
-      },
-      {
-        source: '/docs/components',
-        destination: '/docs/components/avatar-group',
-        permanent: true,
-      },
-      {
-        source: '/r/:path([^.]*)',
-        destination: '/r/:path.json',
-        permanent: true,
-      },
-    ];
-  },
+  reactStrictMode: true,
 };
 
 export default withMDX(config);

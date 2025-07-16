@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @source "../../../apps/**/*.{ts,tsx}";
 @source "../../../components/**/*.{ts,tsx}";
+@source "../../../packages/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
 
 @import 'tw-animate-css';
@@ -25,7 +26,7 @@
 
   --popover-foreground: oklch(0.145 0 0);
 
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.145 0 0);
 
   --primary-foreground: oklch(0.985 0 0);
 
@@ -79,7 +80,7 @@
 
   --sidebar-ring: oklch(0.708 0 0);
 
-  --color-fd-primary: oklch(0.62 0.188 259.81);
+  --color-fd-primary: oklch(0 0 0);
 }
 
 .dark {
@@ -95,9 +96,9 @@
 
   --popover-foreground: oklch(0.985 0 0);
 
-  --primary: oklch(0.922 0 0);
+  --primary: oklch(0.985 0 0);
 
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.145 0 0);
 
   --secondary: oklch(0.269 0 0);
 
@@ -147,7 +148,7 @@
 
   --sidebar-ring: oklch(0.556 0 0);
 
-  --color-fd-primary: oklch(0.62 0.188 259.81);
+  --color-fd-primary: oklch(1 0 0);
 }
 
 @theme inline {
@@ -236,7 +237,10 @@
     overscroll-behavior: none;
   }
 
-  a[href^='/docs/installation'] > svg[data-icon='true'] {
+  #nd-sidebar div div div a[href^='/docs/components'] > svg[data-icon='true'],
+  #nd-sidebar div div div a[href^='/docs/primitives'] > svg[data-icon='true'],
+  #nd-sidebar div div div a[href^='/docs/icons'] > svg[data-icon='true'],
+  #nd-sidebar div div div a + div[data-state='open'] {
     @apply !hidden;
   }
 

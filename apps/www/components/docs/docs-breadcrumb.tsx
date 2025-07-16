@@ -11,7 +11,7 @@ import { cn } from '@workspace/ui/lib/utils';
 
 export const DocsBreadcrumb = ({ slug }: { slug?: string[] }) => {
   return (
-    <Breadcrumb>
+    <Breadcrumb className="mb-6">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
@@ -29,7 +29,11 @@ export const DocsBreadcrumb = ({ slug }: { slug?: string[] }) => {
                     index === slug.length - 1 && 'text-foreground',
                   )}
                   href={
-                    index === slug.length - 1 ? `/docs/${slug.join('/')}` : `#`
+                    index === slug.length - 1
+                      ? `/docs/${slug.join('/')}`
+                      : index === 0
+                        ? `/docs/${item}`
+                        : `#`
                   }
                 >
                   {item.replace(/-/g, ' ')}

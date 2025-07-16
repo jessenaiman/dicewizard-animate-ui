@@ -1,29 +1,45 @@
-<div align="center">
-  <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0">Animate UI</h1>
-  <p align="center">
-    A fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, and Motion.
-</p>
+# v2
 
-<a href="https://github.com/animate-ui/animate-ui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/animate-ui/animate-ui?style=for-the-badge"></a>
-<a href="https://twitter.com/animate_ui"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/animate_ui?style=for-the-badge&logo=x"></a>
-<a href="https://github.com/animate-ui/animate-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge"></a>
+This is a Next.js application generated with
+[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
 
-</div>
+Run development server:
 
-![hero](https://animate-ui.com/og-image.png)
+```bash
+npm run dev
+# or
+pnpm dev
+# or
+yarn dev
+```
 
-## Beta
+Open http://localhost:3000 with your browser to see the result.
 
-Animate UI is currently in **Beta phase**, so it's possible that the components contain **bugs** and that these will be **modified regularly**.
+## Explore
 
-## Documentation
+In the project, you can see:
 
-Visit [animate-ui.com](https://animate-ui.com/docs) to view the documentation.
+- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
+- `app/layout.config.tsx`: Shared options for layouts, optional but preferred to keep.
 
-## Contributing
+| Route                     | Description                                            |
+| ------------------------- | ------------------------------------------------------ |
+| `app/(home)`              | The route group for your landing page and other pages. |
+| `app/docs`                | The documentation layout and pages.                    |
+| `app/api/search/route.ts` | The Route Handler for search.                          |
 
-Visit our [contributing guide](https://github.com/animate-ui/animate-ui/blob/main/CONTRIBUTING.md) to learn how to contribute.
+### Fumadocs MDX
 
-## License
+A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
 
-Licensed under the [MIT license](https://github.com/animate-ui/animate-ui/blob/main/LICENSE.md).
+Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+
+## Learn More
+
+To learn more about Next.js and Fumadocs, take a look at the following
+resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
+  features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs

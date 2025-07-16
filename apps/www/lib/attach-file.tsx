@@ -1,5 +1,8 @@
 import type { BuildPageTreeOptions } from 'fumadocs-core/source';
 import { cn } from '@workspace/ui/lib/utils';
+import { Dancing_Script } from 'next/font/google';
+
+const dancing = Dancing_Script({ subsets: ['latin'] });
 
 const Badge = ({
   name,
@@ -11,15 +14,15 @@ const Badge = ({
   children: React.ReactNode;
 }) => {
   return (
-    <span className="flex items-center gap-3 w-full">
+    <span className="flex items-center gap-3 w-full justify-between">
       {name}{' '}
       <span
         className={cn(
-          'ms-auto text-[10px] text-nowrap text-white rounded-sm leading-1 px-1 py-0.5 h-4.5 font-semibold flex items-center justify-center',
+          'text-[17px] text-nowrap text-white leading-1 font-black',
           className,
         )}
       >
-        <span className="uppercase">{children}</span>
+        <span className={cn(dancing.className, 'leading-1')}>{children}</span>
       </span>
     </span>
   );
@@ -27,23 +30,27 @@ const Badge = ({
 
 export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
   if (!file) return node;
-  const data = file.data.data as object;
+  const data = file.data;
 
   if ('new' in data && typeof data.new === 'boolean' && data.new) {
-    node.name = (
-      <Badge name={node.name} className="bg-blue-500">
-        new
-      </Badge>
-    );
+    node.name = <Badge name={node.name}>new</Badge>;
   }
 
   if ('alpha' in data && typeof data.alpha === 'boolean' && data.alpha) {
     node.name = (
       <Badge
         name={node.name}
-        className="bg-gradient-to-br from-purple-500 to-fuchsia-500"
+        className="bg-gradient-to-br text-pink-600 dark:text-pink-400"
       >
         alpha
+      </Badge>
+    );
+  }
+
+  if ('beta' in data && typeof data.beta === 'boolean' && data.beta) {
+    node.name = (
+      <Badge name={node.name} className="text-blue-600 dark:text-blue-400">
+        beta
       </Badge>
     );
   }
@@ -54,7 +61,7 @@ export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
     data.deprecated
   ) {
     node.name = (
-      <Badge name={node.name} className="bg-red-500">
+      <Badge name={node.name} className="text-red-600 dark:text-red-400">
         deprecated
       </Badge>
     );
@@ -62,7 +69,10 @@ export const attachFile: BuildPageTreeOptions['attachFile'] = (node, file) => {
 
   if ('updated' in data && typeof data.updated === 'boolean' && data.updated) {
     node.name = (
-      <Badge name={node.name} className="bg-emerald-500">
+      <Badge
+        name={node.name}
+        className="text-emerald-600 dark:text-emerald-400"
+      >
         updated
       </Badge>
     );

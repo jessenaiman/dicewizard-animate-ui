@@ -1,7 +1,7 @@
 'use client';
 
 import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
-import { CodeTabs } from '@/registry/components/code-tabs';
+import { CodeTabs } from '@/components/animate/code-tabs';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { CollapsibleContent } from 'fumadocs-ui/components/ui/collapsible';
 import { Collapsible } from 'fumadocs-ui/components/ui/collapsible';

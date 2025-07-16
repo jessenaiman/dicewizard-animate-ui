@@ -15,7 +15,7 @@ import {
   ScrollViewport,
 } from '@workspace/ui/components/ui/scroll-area';
 import type { ScrollArea as ScrollAreaPrimitive } from 'radix-ui';
-import { CopyButton } from '@/registry/buttons/copy';
+import { CopyButton } from '@/components/buttons/copy';
 
 export type CodeBlockProps = HTMLAttributes<HTMLElement> & {
   icon?: ReactNode;

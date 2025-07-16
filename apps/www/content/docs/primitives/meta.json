@@ -1,0 +1,16 @@
+{
+  "title": "Primitives",
+  "description": "Animated Primitives",
+  "icon": "Cuboid",
+  "root": true,
+  "pages": [
+    "---Animate UI---",
+    "animate/tabs",
+    "---Radix UI---",
+    "radix/accordion",
+    "radix/checkbox",
+    "radix/collapsible",
+    "radix/dialog",
+    "radix/dropdown-menu"
+  ]
+}

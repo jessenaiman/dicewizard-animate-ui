@@ -1,0 +1,129 @@
+---
+title: Dialog
+description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="demo-primitives-radix-dialog" />
+
+## Installation
+
+<ComponentInstallation name="primitives-radix-dialog" />
+
+## Usage
+
+```tsx
+<Dialog>
+  <DialogTrigger>Open Dialog</DialogTrigger>
+  <DialogPortal>
+    <DialogOverlay />
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Dialog Title</DialogTitle>
+        <DialogDescription>Dialog Description</DialogDescription>
+      </DialogHeader>
+      <p>Dialog Content</p>
+      <DialogFooter>
+        <button>Accept</button>
+      </DialogFooter>
+      <DialogClose>Close</DialogClose>
+    </DialogContent>
+  </DialogPortal>
+</Dialog>
+```
+
+## API Reference
+
+### Dialog
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#root"
+  text="Radix UI API Reference - Dialog.Root"
+/>
+
+### DialogTrigger
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#trigger"
+  text="Radix UI API Reference - Dialog.Trigger"
+/>
+
+### DialogPortal
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#portal"
+  text="Radix UI API Reference - Dialog.Portal"
+/>
+
+### DialogOverlay
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#overlay"
+  text="Radix UI API Reference - Dialog.Overlay"
+/>
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the dialog overlay',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 0.2, ease: 'easeInOut' }",
+    },
+  }}
+/>
+
+### DialogContent
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#content"
+  text="Radix UI API Reference - Dialog.Content"
+/>
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The direction the dialog should flip from',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 25 }",
+    },
+    from: {
+      description: 'The direction the dialog should flip from',
+      type: "'top' | 'bottom' | 'left' | 'right'",
+      required: false,
+      default: 'top',
+    },
+  }}
+/>
+
+### DialogClose
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#close"
+  text="Radix UI API Reference - Dialog.Close"
+/>
+
+### DialogHeader
+
+`React.ComponentProps<'div'>`
+
+### DialogTitle
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#title"
+  text="Radix UI API Reference - Dialog.Title"
+/>
+
+### DialogDescription
+
+<ExternalLink
+  href="https://www.radix-ui.com/primitives/docs/components/dialog#description"
+  text="Radix UI API Reference - Dialog.Description"
+/>
+
+### DialogFooter
+
+`React.ComponentProps<'div'>`

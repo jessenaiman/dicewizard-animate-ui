@@ -1,5 +1,4 @@
 {
-  "extends": "@workspace/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",
@@ -7,7 +6,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "allowImportingTsExtensions": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -19,8 +17,7 @@
     "incremental": true,
     "paths": {
       "@/.source": ["./.source/index.ts"],
-      "@/*": ["./*"],
-      "@workspace/ui/*": ["../../packages/ui/src/*"]
+      "@/*": ["./*"]
     },
     "plugins": [
       {

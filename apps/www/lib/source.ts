@@ -1,9 +1,11 @@
 import { docs } from '@/.source';
+import { LucideIcons } from '@/components/icons/lucide-icons';
+import { attachFile } from '@/lib/attach-file';
+import { attachSeparator } from '@/lib/attach-separator';
+import AnimateUIIcon from '@workspace/ui/components/icons/animateui-icon';
 import { loader } from 'fumadocs-core/source';
-import { createElement } from 'react';
 import { icons } from 'lucide-react';
-import { attachFile } from './attach-file';
-import { attachSeparator } from './attach-separator';
+import { createElement } from 'react';
 
 export const source = loader({
   baseUrl: '/docs',
@@ -13,10 +15,9 @@ export const source = loader({
     attachSeparator,
   },
   icon(icon) {
-    if (!icon) {
-      return;
-    }
-
+    if (!icon) return;
     if (icon in icons) return createElement(icons[icon as keyof typeof icons]);
+    if (icon === 'AnimateUIIcon') return createElement(AnimateUIIcon);
+    if (icon === 'LucideIcons') return createElement(LucideIcons);
   },
 });

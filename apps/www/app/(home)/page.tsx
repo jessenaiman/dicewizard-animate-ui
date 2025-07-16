@@ -1,23 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
-
+import { Features } from '@/components/features';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 import { cn } from '@workspace/ui/lib/utils';
-import { Header } from '@/components/header';
-import { Cards } from '@/components/cards';
-import { ComponentsSection } from '@/components/components-section';
-import { DistributionSection } from '@/components/distribution-section';
-import { Footer } from '@/components/footer';
+import { useMediaQuery } from 'fumadocs-core/utils/use-media-query';
+import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
 
 const CONTENT_VARIANTS = {
   hidden: {
-    y: 2000,
     opacity: 0,
   },
   visible: {
-    y: 0,
     opacity: 1,
     transition: { type: 'spring', stiffness: 100, damping: 30 },
   },
@@ -36,30 +32,28 @@ export default function HomePage() {
     };
   }, []);
 
+  const isMobile = useMediaQuery('(max-width: 640px)');
+
   return (
     <main className={cn('relative h-dvh', !isLoaded && 'overflow-y-hidden')}>
       <Header transition={transition} />
 
       <div className="h-dvh w-full flex items-center">
-        <motion.div
-          variants={CONTENT_VARIANTS}
-          initial="hidden"
-          animate={transition ? 'visible' : 'hidden'}
-          className="w-full"
-        >
-          <Hero key={String(transition)} />
-        </motion.div>
+        {transition && (
+          <motion.div
+            variants={CONTENT_VARIANTS}
+            initial="hidden"
+            animate={transition ? 'visible' : 'hidden'}
+            className="w-full"
+          >
+            {isMobile !== null && (
+              <Hero key={String(transition)} isMobile={isMobile} />
+            )}
+          </motion.div>
+        )}
       </div>
 
-      <div className="w-full max-w-7xl mx-auto pb-30 px-6">
-        <Cards />
-
-        <div className="relative overflow-hidden">
-          <ComponentsSection />
-
-          <DistributionSection />
-        </div>
-      </div>
+      <Features />
 
       <Footer />
     </main>

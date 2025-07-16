@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 'use client';
 
 import { index } from '@/__registry__';
@@ -10,7 +8,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContents,
-} from '@/registry/radix/tabs';
+} from '@/components/radix/tabs';
 import { cn } from '@workspace/ui/lib/utils';
 import { Loader } from 'lucide-react';
 import { Suspense, useEffect, useMemo, useState } from 'react';

@@ -4,24 +4,14 @@ import {
   DocsBody,
   DocsDescription,
   DocsTitle,
-  EditOnGitHub,
 } from 'fumadocs-ui/page';
-import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { notFound } from 'next/navigation';
-import defaultMdxComponents from 'fumadocs-ui/mdx';
-import { ComponentPreview } from '@/components/docs/component-preview';
-import { ComponentInstallation } from '@/components/docs/component-installation';
-import { ExternalLink } from '@/components/docs/external-link';
-import { Steps, Step } from 'fumadocs-ui/components/steps';
-import { Footer } from '@workspace/ui/components/docs/footer';
-import {
-  CodeBlock,
-  type CodeBlockProps,
-  Pre,
-} from '@/components/docs/codeblock';
-import { DocsAuthor } from '@/components/docs/docs-author';
-import { DocsBreadcrumb } from '@/components/docs/docs-breadcrumb';
+import { createRelativeLink } from 'fumadocs-ui/mdx';
+import { getMDXComponents } from '@/mdx-components';
 import { Metadata } from 'next';
+import { Footer } from '@workspace/ui/components/docs/footer';
+import { DocsBreadcrumb } from '@/components/docs/docs-breadcrumb';
+import { DocsAuthor } from '@/components/docs/docs-author';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -29,7 +19,8 @@ export default async function Page(props: {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
-  const MDX = page.data.body;
+
+  const MDXContent = page.data.body;
 
   return (
     <DocsPage
@@ -40,40 +31,19 @@ export default async function Page(props: {
     >
       <DocsBreadcrumb slug={params.slug} />
       <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription className="-my-1.5">
+      <DocsDescription className="mb-1">
         {page.data.description}
       </DocsDescription>
-
       {page.data.author && (
         <DocsAuthor name={page.data.author.name} url={page.data.author?.url} />
       )}
-
-      <div className="flex flex-row gap-2 items-center">
-        <EditOnGitHub
-          className="border-0"
-          href={`https://github.com/animate-ui/animate-ui/blob/main/apps/www/content/docs/${params.slug ? `${params.slug.join('/')}.mdx` : 'index.mdx'}`}
+      <DocsBody className="pb-10 pt-4">
+        <MDXContent
+          components={getMDXComponents({
+            // this allows you to link to other pages with relative file paths
+            a: createRelativeLink(source, page),
+          })}
         />
-      </div>
-
-      <DocsBody>
-        {MDX ? (
-          <MDX
-            components={{
-              ...defaultMdxComponents,
-              ComponentPreview,
-              ComponentInstallation,
-              TypeTable,
-              ExternalLink,
-              Steps,
-              Step,
-              pre: (props: CodeBlockProps) => (
-                <CodeBlock {...props} className="">
-                  <Pre>{props.children}</Pre>
-                </CodeBlock>
-              ),
-            }}
-          />
-        ) : null}
       </DocsBody>
     </DocsPage>
   );
