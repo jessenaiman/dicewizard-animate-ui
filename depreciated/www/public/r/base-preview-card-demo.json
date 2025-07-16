@@ -1,0 +1,63 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-preview-card-demo",
+  "type": "registry:ui",
+  "title": "Base Preview Card Demo",
+  "description": "Demo showing a base preview card.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/base-preview-card"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/base/preview-card/index.tsx",
+      "content": "import {\n  PreviewCard,\n  PreviewCardTrigger,\n  PreviewCardContent,\n  type PreviewCardProps,\n  type PreviewCardContentProps,\n} from '@/components/animate-ui/base/preview-card';\n\ntype BasePreviewCardDemoProps = Pick<PreviewCardProps, 'delay' | 'closeDelay'> &\n  Pick<\n    PreviewCardContentProps,\n    'side' | 'sideOffset' | 'align' | 'alignOffset'\n  >;\n\nexport const BasePreviewCardDemo = ({\n  delay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BasePreviewCardDemoProps) => {\n  return (\n    <PreviewCard delay={delay} closeDelay={closeDelay} defaultOpen>\n      <PreviewCardTrigger\n        render={\n          <a\n            className=\"size-12 rounded-full overflow-hidden border\"\n            href=\"https://twitter.com/animate_ui\"\n            target=\"_blank\"\n            rel=\"noreferrer noopener\"\n          >\n            <img\n              src=\"https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg\"\n              alt=\"Animate UI\"\n            />\n          </a>\n        }\n      />\n      <PreviewCardContent\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className=\"w-80\"\n      >\n        <div className=\"flex flex-col gap-4\">\n          <img\n            className=\"size-16 rounded-full overflow-hidden border\"\n            src=\"https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg\"\n            alt=\"Animate UI\"\n          />\n          <div className=\"flex flex-col gap-4\">\n            <div>\n              <div className=\"font-bold\">Animate UI</div>\n              <div className=\"text-sm text-muted-foreground\">@animate_ui</div>\n            </div>\n            <div className=\"text-sm text-muted-foreground\">\n              A fully animated, open-source component distribution built with\n              React, TypeScript, Tailwind CSS, and Motion.\n            </div>\n            <div className=\"flex gap-4\">\n              <div className=\"flex gap-1 text-sm items-center\">\n                <div className=\"font-bold\">0</div>{' '}\n                <div className=\"text-muted-foreground\">Following</div>\n              </div>\n              <div className=\"flex gap-1 text-sm items-center\">\n                <div className=\"font-bold\">2,900</div>{' '}\n                <div className=\"text-muted-foreground\">Followers</div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </PreviewCardContent>\n    </PreviewCard>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/base/preview-card.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "PreviewCard": {
+        "delay": {
+          "value": 600,
+          "min": 0,
+          "max": 2000,
+          "step": 100
+        },
+        "closeDelay": {
+          "value": 300,
+          "min": 0,
+          "max": 2000,
+          "step": 100
+        }
+      },
+      "PreviewCardContent": {
+        "side": {
+          "value": "bottom",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right",
+            "inline-start": "inline-start",
+            "inline-end": "inline-end"
+          }
+        },
+        "sideOffset": {
+          "value": 10
+        },
+        "align": {
+          "value": "center",
+          "options": {
+            "start": "start",
+            "center": "center",
+            "end": "end"
+          }
+        },
+        "alignOffset": {
+          "value": 0
+        }
+      }
+    }
+  }
+}

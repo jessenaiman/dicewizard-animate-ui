@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-tooltip-demo",
+  "type": "registry:ui",
+  "title": "Base Tooltip Demo",
+  "description": "Demo showing a base tooltip.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/base-tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/base/tooltip/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProviderProps,\n  type TooltipContentProps,\n} from '@/components/animate-ui/base/tooltip';\n\ntype BaseTooltipDemoProps = Pick<TooltipProviderProps, 'delay' | 'closeDelay'> &\n  Pick<\n    TooltipContentProps,\n    'side' | 'sideOffset' | 'align' | 'alignOffset' | 'arrow'\n  >;\n\nexport const BaseTooltipDemo = ({\n  delay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  arrow,\n}: BaseTooltipDemoProps) => {\n  return (\n    <TooltipProvider delay={delay} closeDelay={closeDelay}>\n      <Tooltip defaultOpen>\n        <TooltipTrigger render={<Button variant=\"outline\">Hover me</Button>} />\n        <TooltipContent\n          side={side}\n          sideOffset={sideOffset}\n          align={align}\n          alignOffset={alignOffset}\n          arrow={arrow}\n        >\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/base/tooltip.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "TooltipProvider": {
+        "delay": {
+          "value": 600,
+          "min": 0,
+          "max": 2000,
+          "step": 100
+        },
+        "closeDelay": {
+          "value": 0,
+          "min": 0,
+          "max": 2000,
+          "step": 100
+        }
+      },
+      "TooltipContent": {
+        "side": {
+          "value": "top",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right",
+            "inline-start": "inline-start",
+            "inline-end": "inline-end"
+          }
+        },
+        "sideOffset": {
+          "value": 10
+        },
+        "align": {
+          "value": "center",
+          "options": {
+            "start": "start",
+            "center": "center",
+            "end": "end"
+          }
+        },
+        "alignOffset": {
+          "value": 0
+        },
+        "arrow": {
+          "value": true,
+          "disableVariants": [
+            "shadcn-default"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+---
+title: Tooltip
+description: A popup that appears when an element is hovered or focused, showing a hint for sighted users.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="base-tooltip-demo" />
+
+## Installation
+
+<ComponentInstallation name="base-tooltip" />
+
+## Usage
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger>Hover me</TooltipTrigger>
+    <TooltipContent>Tooltip content</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://base-ui.com/react/components/tooltip"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://base-ui.com/react/components/tooltip#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI Props
+
+#### TooltipContent
+
+<TypeTable
+  type={{
+    positionerClassName: {
+      description: 'The class name to apply to the positioner.',
+      type: 'string',
+      required: false,
+    },
+    motionProps: {
+      description: 'The props to pass to the motion component.',
+      type: "HTMLMotionProps<'div'>",
+      required: false,
+    },
+    popupProps: {
+      description: 'The props to pass to the popup component.',
+      type: 'typeof PopoverPrimitive.Popup',
+      required: false,
+    },
+    transition: {
+      description: 'The transition to use for the popover.',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", stiffness: 300, damping: 25 }',
+    },
+    arrow: {
+      description:
+        'Whether to show the arrow. (only available in shadcn-new-york or default style)',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Base UI](https://base-ui.com/react/components/tooltip) for the tooltip component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/tooltip) for the tooltip style.

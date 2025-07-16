@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accessibility-icon",
+  "type": "registry:ui",
+  "title": "Accessibility Icon",
+  "description": "Accessibility icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/accessibility/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/accessibility.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": ["disability", "disabled", "dda", "wheelchair"]
+  }
+}

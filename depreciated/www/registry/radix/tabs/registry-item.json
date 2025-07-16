@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-tabs",
+  "type": "registry:ui",
+  "title": "Radix Tabs",
+  "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+  "dependencies": ["motion", "radix-ui"],
+  "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
+  "files": [
+    {
+      "path": "registry/radix/tabs/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix/tabs.tsx"
+    }
+  ]
+}

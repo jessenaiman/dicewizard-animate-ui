@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-button",
+  "type": "registry:ui",
+  "title": "Icon Button",
+  "description": "An icon button that displays particles when clicked.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/buttons/icon/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/buttons/icon.tsx"
+    }
+  ]
+}

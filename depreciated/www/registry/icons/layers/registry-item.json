@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layers-icon",
+  "type": "registry:ui",
+  "title": "Layers Icon",
+  "description": "Layers icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/layers/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/layers.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": [
+      "stack",
+      "pile",
+      "pages",
+      "sheets",
+      "paperwork",
+      "copies",
+      "copy"
+    ]
+  }
+}

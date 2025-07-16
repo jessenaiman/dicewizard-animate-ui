@@ -1,0 +1,65 @@
+---
+title: Liquid Glass
+description: A component that allows you to display a liquid glass effect, inspired by iOS26.
+author:
+  name: lucasporrini
+  url: https://github.com/lucasporrini
+new: true
+---
+
+<ComponentPreview name="liquid-glass-demo" />
+
+## Installation
+
+<ComponentInstallation name="liquid-glass" />
+
+## Usage
+
+```tsx
+<LiquidGlass>Hello world</LiquidGlass>
+```
+
+## Props
+
+<TypeTable
+  type={{
+    as: {
+      description: 'The element or component the liquid glass should render as',
+      type: 'String | Component',
+      default: 'div',
+      required: false,
+    },
+    radius: {
+      description: 'The radius of the liquid glass',
+      type: 'Number',
+      default: '25',
+      required: false,
+    },
+    blur: {
+      description: 'The blur of the liquid glass background',
+      type: 'Number',
+      default: '0',
+      required: false,
+    },
+    childClassName: {
+      description: 'The class name of the child element',
+      type: 'String',
+      required: false,
+    },
+    className: {
+      description: 'The class name of the liquid glass',
+      type: 'String',
+      required: false,
+    },
+    children: {
+      description: 'The children of the liquid glass',
+      type: 'React.ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Lucas Porrini](https://github.com/lucasporrini) for creating the component
+- Credits to [@rebane2001](https://x.com/rebane2001/status/1932451851523264749?s=46&t=SBwgWoAagRgIPNE-RF4R9w) for effect inspiration

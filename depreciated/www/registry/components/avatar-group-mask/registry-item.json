@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group-mask",
+  "type": "registry:ui",
+  "title": "Avatar Group Mask",
+  "description": "An animated avatar group that displays overlapping user images with a mask effect and smoothly shifts each avatar forward on hover to highlight it.",
+  "registryDependencies": ["https://animate-ui.com/r/tooltip"],
+  "files": [
+    {
+      "path": "registry/components/avatar-group-mask/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/components/avatar-group-mask.tsx"
+    }
+  ]
+}

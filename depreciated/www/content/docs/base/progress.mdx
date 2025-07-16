@@ -1,0 +1,68 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="base-progress-demo" />
+
+## Installation
+
+<ComponentInstallation name="base-progress" />
+
+## Usage
+
+```tsx
+<Progress value={50}>
+  <ProgressLabel />
+  <ProgressValue />
+  <ProgressTrack />
+</Progress>
+```
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://base-ui.com/react/components/progress"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://base-ui.com/react/components/progress#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI Props
+
+#### ProgressTrack
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition to use for the progress track.',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 100, damping: 30 }",
+    },
+  }}
+/>
+
+#### ProgressLabel
+
+<TypeTable
+  type={{
+    countingNumberProps: {
+      description: 'The props to pass to the counting number.',
+      type: 'CountingNumberProps',
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Base UI](https://base-ui.com/react/components/progress) for the progress component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/progress) for the progress style.

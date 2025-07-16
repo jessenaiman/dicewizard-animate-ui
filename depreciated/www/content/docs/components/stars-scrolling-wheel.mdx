@@ -1,0 +1,80 @@
+---
+title: Stars Scrolling Wheel
+description: A scrolling wheel that displays stars count.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="stars-scrolling-wheel-demo" />
+
+## Installation
+
+<ComponentInstallation name="stars-scrolling-wheel" />
+
+## Usage
+
+```tsx
+<StarsScrollingWheel stars={1000} />
+```
+
+## Props
+
+<TypeTable
+  type={{
+    stars: {
+      description: 'The number of stars to display',
+      type: 'number',
+      required: true,
+    },
+    step: {
+      description: 'The step of the stars',
+      type: 'number',
+      required: false,
+      default: '100',
+    },
+    itemHeight: {
+      description: 'The height of the item',
+      type: 'number',
+      required: false,
+      default: '48',
+    },
+    sideItemsCount: {
+      description: 'The number of side items',
+      type: 'number',
+      required: false,
+      default: '2',
+    },
+    transition: {
+      description: 'The spring transition of the stars scrolling wheel',
+      type: 'SpringOptions',
+      required: false,
+      default: '{ stiffness: 90, damping: 30 }',
+    },
+    inView: {
+      description: 'Whether the component is in view',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    inViewOnce: {
+      description: 'Whether the component should only animate once',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    inViewMargin: {
+      description: 'The margin of the component',
+      type: 'string',
+      required: false,
+      default: '0px',
+    },
+    delay: {
+      description: 'The delay of the component',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+  }}
+/>

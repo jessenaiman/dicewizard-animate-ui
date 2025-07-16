@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chevron-up-icon",
+  "type": "registry:ui",
+  "title": "Chevron Up Icon",
+  "description": "Chevron up icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/chevron-up/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/chevron-up.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": [
+      "caret",
+      "keyboard",
+      "mac",
+      "control",
+      "ctrl",
+      "superscript",
+      "exponential",
+      "power",
+      "ahead",
+      "fast",
+      "^",
+      "dropdown"
+    ]
+  }
+}

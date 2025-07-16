@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-accordion",
+  "type": "registry:ui",
+  "title": "Base Accordion",
+  "description": "An easily stylable accordion component.",
+  "dependencies": ["motion", "@base-ui-components/react"],
+  "files": [
+    {
+      "path": "registry/base/accordion/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/base/accordion.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button-from-demo",
+  "type": "registry:ui",
+  "title": "Flip Button From Demo",
+  "description": "Demo showing an animated button with flip effect.",
+  "registryDependencies": ["https://animate-ui.com/r/flip-button"],
+  "files": [
+    {
+      "path": "registry/demo/buttons/flip-from/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/buttons/flip-from.tsx"
+    }
+  ]
+}

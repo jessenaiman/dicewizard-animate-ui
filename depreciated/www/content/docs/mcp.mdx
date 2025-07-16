@@ -1,0 +1,38 @@
+---
+title: MCP
+description: How to use the Registry MCP with Animate UI.
+---
+
+import { CodeTabs } from '@/registry/components/code-tabs';
+
+Use the code below to configure the registry MCP in your IDE.
+
+<CodeTabs
+  lang="json"
+  codes={{
+    Cursor: `// Copy and paste the code into .cursor/mcp.json
+  {
+    "mcpServers": {
+      "shadcn": {
+        "command": "npx",
+        "args": ["-y", "shadcn@canary", "registry:mcp"],
+        "env": {
+          "REGISTRY_URL": "https://animate-ui.com/r/registry.json"
+        }
+      }
+    }
+  }`,
+    Windsurf: `// Copy and paste the code into .codeium/windsurf/mcp_config.json
+  {
+    "mcpServers": {
+      "shadcn": {
+        "command": "npx",
+        "args": ["-y", "shadcn@canary", "registry:mcp"],
+        "env": {
+          "REGISTRY_URL": "https://animate-ui.com/r/registry.json"
+        }
+      }
+    }
+  }`,
+  }}
+/>

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-switch-demo",
+  "type": "registry:ui",
+  "title": "Base Switch Demo",
+  "description": "Demo showing a base switch.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/base-switch", "label"],
+  "files": [
+    {
+      "path": "registry/demo/base/switch/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/base/switch.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "Switch": {
+        "leftIcon": {
+          "value": false
+        },
+        "rightIcon": {
+          "value": false
+        },
+        "thumbIcon": {
+          "value": false
+        }
+      }
+    }
+  }
+}

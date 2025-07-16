@@ -6,6 +6,10 @@
       "env": {
         "REGISTRY_URL": "https://animate-ui.com/r/registry.json"
       }
+    },
+    "motion": {
+      "command": "npx",
+      "args": ["-y", "motion-ai"]
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "splitting-text-demo",
+  "type": "registry:ui",
+  "title": "Splitting Text Demo",
+  "description": "Demo showing an animated splitting text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/splitting-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/splitting/index.tsx",
+      "content": "import { SplittingText } from '@/components/animate-ui/text/splitting';\n\nexport const SplittingTextDemo = () => {\n  return (\n    <div className=\"flex flex-col gap-2 justify-center text-center\">\n      <SplittingText\n        className=\"text-2xl\"\n        text=\"Introducing Splitting Text component\"\n      />\n      <SplittingText\n        className=\"text-base text-muted-foreground\"\n        text=\"Made with Motion. Highly customizable and easy to use.\"\n        delay={2200}\n        type=\"words\"\n      />\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/text/splitting.tsx"
+    }
+  ]
+}
