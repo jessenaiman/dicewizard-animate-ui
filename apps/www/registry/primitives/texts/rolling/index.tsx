@@ -51,7 +51,7 @@ function RollingText({
   return (
     <span ref={localRef} data-slot="rolling-text" {...props}>
       {characters.map((char, idx) => {
-        const charDelay = delay + idx * stepDelay;
+        const charDelay = delay / 1000 + idx * stepDelay;
         return (
           <span
             key={idx}

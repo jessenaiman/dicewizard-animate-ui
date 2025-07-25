@@ -5,17 +5,27 @@ import {
 
 interface TypingTextDemoProps {
   delay: number;
+  holdDelay: number;
+  loop: boolean;
+  cursor: boolean;
 }
 
-export const TypingTextDemo = ({ delay }: TypingTextDemoProps) => {
+export const TypingTextDemo = ({
+  delay,
+  holdDelay,
+  loop,
+  cursor,
+}: TypingTextDemoProps) => {
   return (
     <TypingText
-      key={delay}
+      key={`${delay}-${holdDelay}-${loop}-${cursor}`}
       delay={delay}
+      holdDelay={holdDelay}
       className="text-4xl font-semibold"
       text="Typing Text"
+      loop={loop}
     >
-      <TypingTextCursor className="!h-8 !w-1 rounded-full ml-1" />
+      {cursor && <TypingTextCursor className="!h-8 !w-1 rounded-full ml-1" />}
     </TypingText>
   );
 };

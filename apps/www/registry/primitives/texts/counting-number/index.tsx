@@ -55,7 +55,7 @@ function CountingNumber({
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
       if ((isInView && inView) || !inView) motionVal.set(number);
-    }, delay * 1000);
+    }, delay);
 
     return () => clearTimeout(timeoutId);
   }, [isInView, number, motionVal, inView, delay]);

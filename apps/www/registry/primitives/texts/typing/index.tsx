@@ -55,17 +55,19 @@ function TypingText({
     if ((isInView && inView) || !inView) {
       const timeoutId = setTimeout(() => {
         setStarted(true);
-      }, delay * 1000);
+      }, delay);
       return () => clearTimeout(timeoutId);
     }
   }, [isInView, inView, delay]);
 
   React.useEffect(() => {
     if (!started) return;
+
     const timeoutIds: Array<ReturnType<typeof setTimeout>> = [];
     const texts: string[] = typeof text === 'string' ? [text] : text;
 
     const typeText = (str: string, onComplete: () => void) => {
+      setIsTyping(true);
       let currentIndex = 0;
       const type = () => {
         if (currentIndex <= str.length) {
@@ -74,6 +76,7 @@ function TypingText({
           const id = setTimeout(type, duration);
           timeoutIds.push(id);
         } else {
+          setIsTyping(false);
           onComplete();
         }
       };
@@ -81,6 +84,7 @@ function TypingText({
     };
 
     const eraseText = (str: string, onComplete: () => void) => {
+      setIsTyping(true);
       let currentIndex = str.length;
       const erase = () => {
         if (currentIndex >= 0) {
@@ -89,6 +93,7 @@ function TypingText({
           const id = setTimeout(erase, duration);
           timeoutIds.push(id);
         } else {
+          setIsTyping(false);
           onComplete();
         }
       };
@@ -151,9 +156,12 @@ function TypingTextCursor({
             times: [0, 0.5, 0.5, 1],
           },
         },
+        visible: {
+          opacity: 1,
+        },
         ...variants,
       }}
-      animate={isTyping ? 'blinking' : undefined}
+      animate={isTyping ? 'visible' : 'blinking'}
       style={{
         display: 'inline-block',
         height: '16px',

@@ -50,16 +50,19 @@ author:
       description: 'The initial state to use.',
       type: 'Variant',
       required: false,
+      default: '{ x: 150, opacity: 0 }',
     },
     animate: {
       description: 'The animate state to use.',
       type: 'Variant',
       required: false,
+      default: '{ x: 0, opacity: 1 }',
     },
     transition: {
       description: 'The transition to use.',
       type: 'Transition',
       required: false,
+      default: '{ duration: 0.7, ease: "easeOut" }',
     },
     inView: {
       description: 'Whether the text is in view.',

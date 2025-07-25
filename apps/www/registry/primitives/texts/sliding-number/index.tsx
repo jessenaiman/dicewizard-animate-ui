@@ -37,7 +37,7 @@ function SlidingNumberRoller({
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
       animatedValue.set(targetNumber);
-    }, delay * 1000);
+    }, delay);
     return () => clearTimeout(timeoutId);
   }, [targetNumber, animatedValue, delay]);
 

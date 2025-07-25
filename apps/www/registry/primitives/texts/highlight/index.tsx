@@ -45,7 +45,7 @@ function HighlightText({
       }
       transition={{
         ...transition,
-        delay: (transition?.delay ?? 0) + delay,
+        delay: (transition?.delay ?? 0) + delay / 1000,
       }}
       style={{
         position: 'relative',

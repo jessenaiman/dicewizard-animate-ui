@@ -39,22 +39,13 @@ type SplittingTextProps =
   | CharsOrWordsSplittingTextProps
   | LinesSplittingTextProps;
 
-const defaultItemVariant: Variants = {
-  hidden: { x: 150, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.7, ease: 'easeOut' },
-  },
-};
-
 const SplittingText: React.FC<SplittingTextProps> = ({
   ref,
   text,
   type = 'chars',
-  initial,
-  animate,
-  transition,
+  initial = { x: 150, opacity: 0 },
+  animate = { x: 0, opacity: 1 },
+  transition = { duration: 0.7, ease: 'easeOut' },
   stagger,
   delay = 0,
   inView = false,
@@ -86,7 +77,7 @@ const SplittingText: React.FC<SplittingTextProps> = ({
     hidden: {},
     visible: {
       transition: {
-        delayChildren: delay,
+        delayChildren: delay / 1000,
         staggerChildren:
           stagger ?? (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),
       },
@@ -94,18 +85,10 @@ const SplittingText: React.FC<SplittingTextProps> = ({
   };
 
   const itemVariants: Variants = {
-    hidden: {
-      ...defaultItemVariant.hidden,
-      ...(initial || {}),
-    },
+    hidden: initial,
     visible: {
-      ...defaultItemVariant.visible,
-      ...(animate || {}),
-      transition: {
-        ...((defaultItemVariant.visible as TargetAndTransition).transition ||
-          {}),
-        ...(transition || {}),
-      },
+      ...animate,
+      transition,
     },
   };
 
