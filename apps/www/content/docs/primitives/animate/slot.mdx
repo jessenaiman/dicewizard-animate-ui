@@ -15,7 +15,9 @@ The `Slot` component is a wrapper component that allows you to use motion compon
 ## Usage
 
 ```tsx
-<Slot as="div" />
+<Slot>
+  <div>Hello</div>
+</Slot>
 ```
 
 ## API Reference
@@ -24,11 +26,10 @@ The `Slot` component is a wrapper component that allows you to use motion compon
 
 <TypeTable
   type={{
-    as: {
-      description: 'The element to render as',
-      type: 'keyof HTMLElementTagNameMap',
+    '...props': {
+      description: 'The props of the slot',
+      type: 'HTMLMotionProps',
       required: false,
-      default: 'div',
     },
   }}
 />
