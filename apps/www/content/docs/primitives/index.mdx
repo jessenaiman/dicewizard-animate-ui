@@ -3,29 +3,24 @@ title: Primitives
 description: Animated, unstyled components to let you express your creativity.
 ---
 
-import {
-  SparklesIcon,
-  RectangleHorizontalIcon,
-  TypeOutlineIcon,
-} from 'lucide-react';
+import { SparklesIcon, RectangleHorizontalIcon, TypeIcon } from 'lucide-react';
 
 <Cards>
   <Card
     icon={
-       <svg
-      role="img"
-      fill="currentColor"
-      aria-label="Animate UI"
-      viewBox="0 0 40 40"
-    >
-      <path d="M28.38,37.05H11.61c-1.79,0-3.58-.47-5.09-1.41-1.41-.85-2.64-2.07-3.49-3.58s-1.32-3.11-1.32-4.8c0-1.79.47-3.58,1.32-5.09L11.42,7.85c.94-1.51,2.17-2.83,3.77-3.67,1.41-.85,3.11-1.22,4.8-1.22s3.3.38,4.8,1.22c1.51.85,2.83,2.17,3.77,3.67l8.38,14.32c.94,1.6,1.41,3.3,1.32,5.09,0,1.7-.47,3.3-1.32,4.8-.85,1.51-2.07,2.73-3.49,3.58-1.51.94-3.3,1.41-5.09,1.41M18.96,12.28l-8.38,14.32c-.28.47-.19.94,0,1.22s.47.57,1.04.57h16.77c.57,0,.85-.28,1.04-.57s.28-.66,0-1.22l-8.38-14.32c-.28-.47-.75-.57-1.04-.57s-.75.09-1.04.57"></path>
-    </svg>
+      <svg
+        role="img"
+        fill="currentColor"
+        aria-label="Animate UI"
+        viewBox="0 0 40 40"
+      >
+        <path d="M28.38,37.05H11.61c-1.79,0-3.58-.47-5.09-1.41-1.41-.85-2.64-2.07-3.49-3.58s-1.32-3.11-1.32-4.8c0-1.79.47-3.58,1.32-5.09L11.42,7.85c.94-1.51,2.17-2.83,3.77-3.67,1.41-.85,3.11-1.22,4.8-1.22s3.3.38,4.8,1.22c1.51.85,2.83,2.17,3.77,3.67l8.38,14.32c.94,1.6,1.41,3.3,1.32,5.09,0,1.7-.47,3.3-1.32,4.8-.85,1.51-2.07,2.73-3.49,3.58-1.51.94-3.3,1.41-5.09,1.41M18.96,12.28l-8.38,14.32c-.28.47-.19.94,0,1.22s.47.57,1.04.57h16.77c.57,0,.85-.28,1.04-.57s.28-.66,0-1.22l-8.38-14.32c-.28-.47-.75-.57-1.04-.57s-.75.09-1.04.57"></path>
+      </svg>
     }
     href="/docs/primitives/animate/tabs"
     title="Animate UI"
-
-/>
-
+    accent
+  />
   <Card
     icon={
       <svg
@@ -39,10 +34,30 @@ import {
     }
     href="/docs/primitives/radix/accordion"
     title="Radix UI"
-
-/>
-
-<Card
+    accent
+  />
+  <Card
+    icon={
+      <svg
+        role="img"
+        fill="none"
+        stroke="currentColor"
+        aria-label="Shadcn UI"
+        viewBox="0 0 256 256"
+        strokeWidth="35"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="m208 128-80 80M192 40 40 192"
+        ></path>
+      </svg>
+    }
+    href="/docs/primitives/shadcn/sheet"
+    title="Shadcn UI"
+    accent
+  />
+  <Card
     icon={
       <svg
         role="img"
@@ -56,10 +71,9 @@ import {
     }
     href="/docs/primitives/base/accordion"
     title="Base UI"
-
-/>
-
- <Card
+    accent
+  />
+  <Card
     icon={
       <svg
         role="img"
@@ -75,34 +89,24 @@ import {
     }
     href="/docs/primitives/headlessui/accordion"
     title="Headless UI"
-
-/>
-
- <Card
-    icon={
-      <SparklesIcon fill='currentColor' strokeWidth={1.5} />
-    }
+    accent
+  />
+  <Card
+    icon={<SparklesIcon fill="currentColor" strokeWidth={1.5} />}
     href="/docs/primitives/effects/effect"
     title="Effects"
-
-/>
-
- <Card
-    icon={
-      <RectangleHorizontalIcon fill='currentColor' strokeWidth={1.5} />
-    }
+    accent
+  />
+  <Card
+    icon={<RectangleHorizontalIcon fill="currentColor" strokeWidth={1.5} />}
     href="/docs/primitives/buttons/button"
     title="Buttons"
-
-/>
-
- <Card
-    icon={
-      <TypeOutlineIcon fill='currentColor' strokeWidth={0} />
-    }
-    href="/docs/primitives/texts/text"
+    accent
+  />
+  <Card
+    icon={<TypeIcon strokeWidth={3} />}
+    href="/docs/primitives/texts/counting-number"
     title="Texts"
-
-/>
-
+    accent
+  />
 </Cards>

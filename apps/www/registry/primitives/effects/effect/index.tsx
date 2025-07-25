@@ -2,42 +2,44 @@
 
 import * as React from 'react';
 import {
+  motion,
   AnimatePresence,
-  useInView,
-  type HTMLMotionProps,
-  type UseInViewOptions,
+  HTMLMotionProps,
   type Variant,
 } from 'motion/react';
-import { Slot } from '../../animate/slot';
+
+import {
+  useIsInView,
+  type UseIsInViewOptions,
+} from '@/registry/hooks/use-is-in-view';
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type SlideDirection = 'up' | 'down' | 'left' | 'right';
-type Slide =
-  | {
-      direction?: SlideDirection;
-      offset?: number;
-    }
-  | boolean;
 
-type Fade = { initialOpacity?: number; opacity?: number } | boolean;
-
-type Zoom =
-  | {
-      initialScale?: number;
-      scale?: number;
-    }
-  | boolean;
-
-type EffectProps = HTMLMotionProps<'div'> & {
-  children: React.ReactNode;
-  delay?: number;
-  inView?: boolean;
-  inViewMargin?: UseInViewOptions['margin'];
-  inViewOnce?: boolean;
-  blur?: string | boolean;
-  slide?: Slide;
-  fade?: Fade;
-  zoom?: Zoom;
+type Slide = {
+  direction?: SlideDirection;
+  offset?: number;
 };
+
+type Fade = { initialOpacity?: number; opacity?: number };
+
+type Zoom = {
+  initialScale?: number;
+  scale?: number;
+};
+
+type EffectProps = WithAsChild<
+  {
+    children?: React.ReactNode;
+    delay?: number;
+    blur?: string | boolean;
+    slide?: Slide | boolean;
+    fade?: Fade | boolean;
+    zoom?: Zoom | boolean;
+    ref?: React.Ref<HTMLElement>;
+  } & UseIsInViewOptions,
+  HTMLMotionProps<'div'>
+>;
 
 function Effect({
   ref,
@@ -50,16 +52,17 @@ function Effect({
   slide = false,
   fade = false,
   zoom = false,
+  asChild = false,
   ...props
 }: EffectProps) {
-  const localRef = React.useRef<HTMLDivElement>(null);
-  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);
-
-  const inViewResult = useInView(localRef, {
-    once: inViewOnce,
-    margin: inViewMargin,
-  });
-  const isInView = !inView || inViewResult;
+  const { ref: localRef, isInView } = useIsInView(
+    ref as React.Ref<HTMLElement>,
+    {
+      inView,
+      inViewOnce,
+      inViewMargin,
+    },
+  );
 
   const hiddenVariant: Variant = {};
   const visibleVariant: Variant = {};
@@ -93,11 +96,12 @@ function Effect({
     visibleVariant.filter = 'blur(0px)';
   }
 
+  const Component = asChild ? Slot : motion.div;
+
   return (
     <AnimatePresence>
-      <Slot
-        ref={localRef}
-        data-slot="effect"
+      <Component
+        ref={localRef as React.Ref<HTMLDivElement>}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
         exit="hidden"

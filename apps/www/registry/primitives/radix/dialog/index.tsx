@@ -2,56 +2,36 @@
 
 import * as React from 'react';
 import { Dialog as DialogPrimitive } from 'radix-ui';
-import {
-  AnimatePresence,
-  motion,
-  type HTMLMotionProps,
-  type Transition,
-} from 'motion/react';
+import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
+
+import { useControlledState } from '@/registry/hooks/use-controlled-state';
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
 
 type DialogContextType = {
   isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 };
 
-const DialogContext = React.createContext<DialogContextType | undefined>(
-  undefined,
-);
-
-const useDialog = (): DialogContextType => {
-  const context = React.useContext(DialogContext);
-  if (!context) {
-    throw new Error('useDialog must be used within a Dialog');
-  }
-  return context;
-};
+const [DialogProvider, useDialog] =
+  useStrictContext<DialogContextType>('DialogContext');
 
 type DialogProps = React.ComponentProps<typeof DialogPrimitive.Root>;
 
-function Dialog({ onOpenChange, ...props }: DialogProps) {
-  const [isOpen, setIsOpen] = React.useState(
-    props?.open ?? props?.defaultOpen ?? false,
-  );
-
-  React.useEffect(() => {
-    if (props?.open !== undefined) setIsOpen(props.open);
-  }, [props?.open]);
-
-  const handleOpenChange = React.useCallback(
-    (open: boolean) => {
-      setIsOpen(open);
-      onOpenChange?.(open);
-    },
-    [props],
-  );
+function Dialog(props: DialogProps) {
+  const [isOpen, setIsOpen] = useControlledState({
+    value: props?.open,
+    defaultValue: props?.defaultOpen,
+    onChange: props?.onOpenChange,
+  });
 
   return (
-    <DialogContext.Provider value={{ isOpen }}>
+    <DialogProvider value={{ isOpen, setIsOpen }}>
       <DialogPrimitive.Root
         data-slot="dialog"
-        onOpenChange={handleOpenChange}
         {...props}
+        onOpenChange={setIsOpen}
       />
-    </DialogContext.Provider>
+    </DialogProvider>
   );
 }
 
@@ -82,7 +62,11 @@ function DialogPortal(props: DialogPortalProps) {
   );
 }
 
-type DialogOverlayProps = HTMLMotionProps<'div'>;
+type DialogOverlayProps = Omit<
+  React.ComponentProps<typeof DialogPrimitive.Overlay>,
+  'forceMount' | 'asChild'
+> &
+  HTMLMotionProps<'div'>;
 
 function DialogOverlay({
   transition = { duration: 0.2, ease: 'easeInOut' },
@@ -104,13 +88,21 @@ function DialogOverlay({
 
 type DialogFlipDirection = 'top' | 'bottom' | 'left' | 'right';
 
-type DialogContentProps = React.ComponentProps<typeof DialogPrimitive.Content> &
+type DialogContentProps = Omit<
+  React.ComponentProps<typeof DialogPrimitive.Content>,
+  'forceMount' | 'asChild'
+> &
   HTMLMotionProps<'div'> & {
     from?: DialogFlipDirection;
   };
 
 function DialogContent({
   from = 'top',
+  onOpenAutoFocus,
+  onCloseAutoFocus,
+  onEscapeKeyDown,
+  onPointerDownOutside,
+  onInteractOutside,
   transition = { type: 'spring', stiffness: 150, damping: 25 },
   ...props
 }: DialogContentProps) {
@@ -120,7 +112,15 @@ function DialogContent({
   const rotateAxis = isVertical ? 'rotateX' : 'rotateY';
 
   return (
-    <DialogPrimitive.Content asChild forceMount {...props}>
+    <DialogPrimitive.Content
+      asChild
+      forceMount
+      onOpenAutoFocus={onOpenAutoFocus}
+      onCloseAutoFocus={onCloseAutoFocus}
+      onEscapeKeyDown={onEscapeKeyDown}
+      onPointerDownOutside={onPointerDownOutside}
+      onInteractOutside={onInteractOutside}
+    >
       <motion.div
         key="dialog-content"
         data-slot="dialog-content"

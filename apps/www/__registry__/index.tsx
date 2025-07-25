@@ -22,6 +22,337 @@ export const index: Record<string, any> = {
     component: null,
     command: 'https://animate-ui.com/r/index',
   },
+  'demo-primitives-buttons-button': {
+    name: 'demo-primitives-buttons-button',
+    description: 'Demo showing a button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-button',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/buttons/button/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/buttons/button.tsx',
+        content:
+          'import { Button } from \'@/components/animate-ui/primitives/buttons/button\';\n\ninterface ButtonDemoProps {\n  hoverScale: number;\n  tapScale: number;\n}\n\nexport default function ButtonDemo({ hoverScale, tapScale }: ButtonDemoProps) {\n  return (\n    <Button\n      key={`${hoverScale}-${tapScale}`}\n      hoverScale={hoverScale}\n      tapScale={tapScale}\n      className="bg-primary text-primary-foreground text-sm font-medium px-4 py-2 h-10"\n    >\n      Button\n    </Button>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/buttons/button/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-buttons-button';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Button: {
+          hoverScale: { value: 1.05, min: 0, max: 2, step: 0.05 },
+          tapScale: { value: 0.95, min: 0, max: 2, step: 0.05 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-buttons-button',
+  },
+  'demo-primitives-buttons-flip': {
+    name: 'demo-primitives-buttons-flip',
+    description: 'Demo showing an animated flip button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-buttons-flip'],
+    files: [
+      {
+        path: 'registry/demo/primitives/buttons/flip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/buttons/flip.tsx',
+        content:
+          "import {\n  FlipButton,\n  FlipButtonBack,\n  FlipButtonFront,\n} from '@/components/animate-ui/primitives/buttons/flip';\n\ntype FlipButtonDemoProps = {\n  from?: 'top' | 'right' | 'bottom' | 'left';\n  tapScale?: number;\n};\n\nexport default function FlipButtonDemo({\n  from,\n  tapScale,\n}: FlipButtonDemoProps) {\n  return (\n    <FlipButton\n      key={`${from}-${tapScale}`}\n      from={from}\n      tapScale={tapScale}\n      className=\"text-sm font-medium\"\n    >\n      <FlipButtonFront className=\"px-4 py-2 h-10 bg-primary text-primary-foreground flex items-center justify-center\">\n        Front\n      </FlipButtonFront>\n      <FlipButtonBack className=\"px-4 py-2 h-10 bg-accent text-accent-foreground flex items-center justify-center\">\n        Back Button\n      </FlipButtonBack>\n    </FlipButton>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/buttons/flip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-buttons-flip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        FlipButton: {
+          from: {
+            value: 'top',
+            options: {
+              top: 'top',
+              right: 'right',
+              bottom: 'bottom',
+              left: 'left',
+            },
+          },
+          tapScale: { value: 0.95, min: 0, max: 2, step: 0.05 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-buttons-flip',
+  },
+  'demo-primitives-buttons-liquid': {
+    name: 'demo-primitives-buttons-liquid',
+    description: 'Demo showing an animated liquid button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-liquid',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/buttons/liquid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/buttons/liquid.tsx',
+        content:
+          'import { LiquidButton } from \'@/components/animate-ui/primitives/buttons/liquid\';\n\ninterface LiquidButtonDemoProps {\n  delay?: string;\n  fillHeight?: string;\n  hoverScale?: number;\n  tapScale?: number;\n}\n\nexport default function LiquidButtonDemo({\n  delay,\n  fillHeight,\n  hoverScale,\n  tapScale,\n}: LiquidButtonDemoProps) {\n  return (\n    <LiquidButton\n      key={`${delay}-${fillHeight}-${hoverScale}-${tapScale}`}\n      delay={`${delay}s`}\n      fillHeight={`${fillHeight}px`}\n      hoverScale={hoverScale}\n      tapScale={tapScale}\n      className="text-sm font-medium px-4 py-2 h-10 overflow-hidden [--liquid-button-color:var(--primary)] [--liquid-button-background-color:var(--accent)] text-primary hover:text-primary-foreground"\n    >\n      Liquid Button\n    </LiquidButton>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/buttons/liquid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-buttons-liquid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        LiquidButton: {
+          delay: { value: 0.3, min: 0.1, max: 0.5, step: 0.05 },
+          fillHeight: { value: 3, min: 0, max: 10, step: 1 },
+          hoverScale: { value: 1.05, min: 0, max: 2, step: 0.05 },
+          tapScale: { value: 0.95, min: 0, max: 2, step: 0.05 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-buttons-liquid',
+  },
+  'demo-primitives-buttons-ripple': {
+    name: 'demo-primitives-buttons-ripple',
+    description: 'Demo showing a ripple button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-ripple',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/buttons/ripple/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/buttons/ripple.tsx',
+        content:
+          'import {\n  RippleButton,\n  RippleButtonRipples,\n} from \'@/components/animate-ui/primitives/buttons/ripple\';\n\ninterface RippleButtonDemoProps {\n  hoverScale: number;\n  tapScale: number;\n}\n\nexport default function RippleButtonDemo({\n  hoverScale,\n  tapScale,\n}: RippleButtonDemoProps) {\n  return (\n    <RippleButton\n      key={`${hoverScale}-${tapScale}`}\n      hoverScale={hoverScale}\n      tapScale={tapScale}\n      className="bg-primary text-primary-foreground text-sm font-medium px-4 py-2 h-10 [--ripple-button-ripple-color:var(--primary-foreground)]"\n    >\n      Ripple Button\n      <RippleButtonRipples />\n    </RippleButton>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/buttons/ripple/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-buttons-ripple';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        RippleButton: {
+          hoverScale: { value: 1.05, min: 0, max: 2, step: 0.05 },
+          tapScale: { value: 0.95, min: 0, max: 2, step: 0.05 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-buttons-ripple',
+  },
+  'demo-primitives-effects-effect': {
+    name: 'demo-primitives-effects-effect',
+    description: 'Demo showing an animated effect.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-effects-effect',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/effects/effect/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/effects/effect.tsx',
+        content:
+          "import { Effect } from '@/components/animate-ui/primitives/effects/effect';\n\nexport default function EffectDemo() {\n  return (\n    <Effect\n      slide={{\n        direction: 'down',\n      }}\n      fade\n      zoom\n      inView\n      className=\"px-6 py-4 bg-accent\"\n    >\n      Hello\n    </Effect>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/effects/effect/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-effects-effect';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Effect: {
+          delay: { value: 0 },
+          blur: { value: true },
+          slide: { value: true },
+          fade: { value: true },
+          zoom: { value: true },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-effects-effect',
+  },
+  'demo-primitives-effects-highlight': {
+    name: 'demo-primitives-effects-highlight',
+    description: 'Demo showing an animated highlight.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-effects-highlight',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/effects/highlight/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/effects/highlight.tsx',
+        content:
+          "import { Highlight } from '@/components/animate-ui/primitives/effects/highlight';\n\nconst TABS = [\n  {\n    value: 'tab-1',\n    title: 'Tab 1',\n    description: 'Tab 1 description',\n  },\n  {\n    value: 'tab-2',\n    title: 'Tab 2',\n    description: 'Tab 2 description',\n  },\n  {\n    value: 'tab-3',\n    title: 'Tab 3',\n    description: 'Tab 3 description',\n  },\n];\n\ntype HighlightDemoProps = {\n  mode?: 'children' | 'parent';\n  exitDelay?: number;\n  hover?: boolean;\n};\n\nexport const HighlightDemo = ({\n  mode = 'children',\n  exitDelay = 0.2,\n  hover = false,\n}: HighlightDemoProps) => {\n  return (\n    <div className=\"flex border rounded-full p-1\">\n      {/* @ts-ignore */}\n      <Highlight\n        defaultValue={TABS[0]?.value}\n        className=\"rounded-full bg-accent inset-0\"\n        {...(mode === 'parent' && {\n          containerClassName: 'flex',\n        })}\n        mode={mode}\n        exitDelay={exitDelay}\n        hover={hover}\n      >\n        {TABS.map((tab) => (\n          <div\n            key={tab.value}\n            data-value={tab.value}\n            className=\"px-3 h-8 flex items-center cursor-pointer justify-center rounded-full text-sm data-[active=true]:text-current data-[active=true]:font-medium text-muted-foreground transition-all duration-300\"\n          >\n            {tab.title}\n          </div>\n        ))}\n      </Highlight>\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/effects/highlight/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-effects-highlight';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Highlight: {
+          mode: {
+            value: 'children',
+            options: { children: 'children', parent: 'parent' },
+          },
+          exitDelay: { value: 0.2 },
+          hover: { value: false },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-effects-highlight',
+  },
+  'demo-primitives-effects-magnetic': {
+    name: 'demo-primitives-effects-magnetic',
+    description: 'Demo showing a magnetic effect.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-effects-magnetic',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/effects/magnetic/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/effects/magnetic.tsx',
+        content:
+          'import { Magnetic } from \'@/components/animate-ui/primitives/effects/magnetic\';\n\ninterface MagneticDemoProps {\n  onlyOnHover: boolean;\n  strength: number;\n  range: number;\n}\n\nexport const MagneticDemo = (props: MagneticDemoProps) => {\n  return (\n    <div className="size-full flex items-center justify-center">\n      <Magnetic className="size-20 bg-primary" {...props} />\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/effects/magnetic/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-effects-magnetic';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Magnetic: {
+          onlyOnHover: { value: false },
+          strength: { value: 0.5, min: 0, max: 1, step: 0.05 },
+          range: { value: 120 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-effects-magnetic',
+  },
   'demo-primitives-radix-accordion': {
     name: 'demo-primitives-radix-accordion',
     description: 'Demo showing an animated radix accordion.',
@@ -208,6 +539,1250 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-radix-dialog',
   },
+  'demo-primitives-radix-dropdown-menu': {
+    name: 'demo-primitives-radix-dropdown-menu',
+    description: 'Demo showing an animated radix dropdown menu.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-dropdown-menu',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/dropdown-menu/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/dropdown-menu.tsx',
+        content:
+          "'use client';\n\nimport {\n  ChevronRight,\n  CreditCard,\n  Keyboard,\n  LogOut,\n  Mail,\n  MessageSquare,\n  Plus,\n  PlusCircle,\n  Settings,\n  User,\n  UserPlus,\n  Users,\n} from 'lucide-react';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuHighlight,\n  DropdownMenuHighlightItem,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuSub,\n  DropdownMenuSubContent,\n  DropdownMenuSubTrigger,\n  DropdownMenuTrigger,\n} from '@/components/animate-ui/primitives/radix/dropdown-menu';\n\nconst itemClassName =\n  'relative z-[1] focus:text-accent-foreground select-none flex items-center gap-2 px-2 py-1.5 text-sm outline-none [&_svg]:size-4 [&_span]:data-[slot=dropdown-menu-shortcut]:text-xs [&_span]:data-[slot=dropdown-menu-shortcut]:ml-auto';\nconst separatorClassName = '-mx-1 my-1 h-px bg-border';\n\ninterface RadixDropdownMenuDemoProps {\n  side?: 'top' | 'bottom' | 'left' | 'right';\n  sideOffset?: number;\n  align?: 'start' | 'center' | 'end';\n  alignOffset?: number;\n}\n\nexport const RadixDropdownMenuDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: RadixDropdownMenuDemoProps) => {\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger>Open</DropdownMenuTrigger>\n      <DropdownMenuContent\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className=\"w-56 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden border bg-background p-1\"\n      >\n        <DropdownMenuHighlight className=\"absolute inset-0 bg-accent z-0\">\n          <DropdownMenuLabel className=\"px-2 py-1.5 text-sm font-semibold\">\n            My Account\n          </DropdownMenuLabel>\n          <DropdownMenuSeparator className={separatorClassName} />\n          <DropdownMenuGroup>\n            <DropdownMenuHighlightItem>\n              <DropdownMenuItem className={itemClassName}>\n                <User />\n                <span>Profile</span>\n                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>\n              </DropdownMenuItem>\n            </DropdownMenuHighlightItem>\n            <DropdownMenuHighlightItem>\n              <DropdownMenuItem className={itemClassName}>\n                <CreditCard />\n                <span>Billing</span>\n                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>\n              </DropdownMenuItem>\n            </DropdownMenuHighlightItem>\n            <DropdownMenuHighlightItem>\n              <DropdownMenuItem className={itemClassName}>\n                <Settings />\n                <span>Settings</span>\n                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>\n              </DropdownMenuItem>\n            </DropdownMenuHighlightItem>\n            <DropdownMenuHighlightItem>\n              <DropdownMenuItem className={itemClassName}>\n                <Keyboard />\n                <span>Keyboard shortcuts</span>\n                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>\n              </DropdownMenuItem>\n            </DropdownMenuHighlightItem>\n          </DropdownMenuGroup>\n          <DropdownMenuSeparator className={separatorClassName} />\n          <DropdownMenuGroup>\n            <DropdownMenuHighlightItem>\n              <DropdownMenuItem className={itemClassName}>\n                <Users />\n                <span>Team</span>\n              </DropdownMenuItem>\n            </DropdownMenuHighlightItem>\n            <DropdownMenuSub>\n              <DropdownMenuHighlightItem>\n                <DropdownMenuSubTrigger className={itemClassName}>\n                  <UserPlus />\n                  <span>Invite users</span>\n                  <ChevronRight data-chevron className=\"ml-auto size-4\" />\n                </DropdownMenuSubTrigger>\n              </DropdownMenuHighlightItem>\n\n              <DropdownMenuSubContent className=\"overflow-hidden min-w-[8rem] overflow-y-auto overflow-x-hidden border bg-background p-1\">\n                <DropdownMenuHighlightItem>\n                  <DropdownMenuItem className={itemClassName}>\n                    <Mail />\n                    <span>Email</span>\n                  </DropdownMenuItem>\n                </DropdownMenuHighlightItem>\n                <DropdownMenuHighlightItem>\n                  <DropdownMenuItem className={itemClassName}>\n                    <MessageSquare />\n                    <span>Message</span>\n                  </DropdownMenuItem>\n                </DropdownMenuHighlightItem>\n                <DropdownMenuSeparator className={separatorClassName} />\n                <DropdownMenuHighlightItem>\n                  <DropdownMenuItem className={itemClassName}>\n                    <PlusCircle />\n                    <span>More...</span>\n                  </DropdownMenuItem>\n                </DropdownMenuHighlightItem>\n              </DropdownMenuSubContent>\n            </DropdownMenuSub>\n            <DropdownMenuHighlightItem>\n              <DropdownMenuItem className={itemClassName}>\n                <Plus />\n                <span>New Team</span>\n                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>\n              </DropdownMenuItem>\n            </DropdownMenuHighlightItem>\n          </DropdownMenuGroup>\n          <DropdownMenuSeparator className={separatorClassName} />\n          <DropdownMenuHighlightItem>\n            <DropdownMenuItem className={itemClassName}>\n              <LogOut />\n              <span>Log out</span>\n              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>\n            </DropdownMenuItem>\n          </DropdownMenuHighlightItem>\n        </DropdownMenuHighlight>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/dropdown-menu/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-dropdown-menu';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        DropdownMenuContent: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          sideOffset: { value: 4 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-dropdown-menu',
+  },
+  'demo-primitives-radix-hover-card': {
+    name: 'demo-primitives-radix-hover-card',
+    description: 'Demo showing an animated radix hover card.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-hover-card',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/hover-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/hover-card.tsx',
+        content:
+          'import {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardPortal,\n  HoverCardContent,\n} from \'@/components/animate-ui/primitives/radix/hover-card\';\n\ninterface RadixHoverCardDemoProps {\n  side?: \'top\' | \'bottom\' | \'left\' | \'right\';\n  sideOffset?: number;\n  align?: \'start\' | \'center\' | \'end\';\n  alignOffset?: number;\n  transitionOffset?: number;\n}\n\nexport const RadixHoverCardDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  transitionOffset,\n}: RadixHoverCardDemoProps) => {\n  return (\n    <HoverCard>\n      <HoverCardTrigger asChild>\n        <a\n          className="size-12 border"\n          href="https://twitter.com/animate_ui"\n          target="_blank"\n          rel="noreferrer noopener"\n        >\n          <img\n            src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n            alt="Animate UI"\n          />\n        </a>\n      </HoverCardTrigger>\n      <HoverCardPortal>\n        <HoverCardContent\n          side={side}\n          sideOffset={sideOffset}\n          align={align}\n          alignOffset={alignOffset}\n          transitionOffset={transitionOffset}\n          className="w-80 bg-background border p-4"\n        >\n          <div className="flex flex-col gap-4">\n            <img\n              className="size-16 rounded-full overflow-hidden border"\n              src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n              alt="Animate UI"\n            />\n            <div className="flex flex-col gap-4">\n              <div>\n                <div className="font-bold">Animate UI</div>\n                <div className="text-sm text-muted-foreground">@animate_ui</div>\n              </div>\n              <div className="text-sm text-muted-foreground">\n                A fully animated, open-source component distribution built with\n                React, TypeScript, Tailwind CSS, and Motion.\n              </div>\n              <div className="flex gap-4">\n                <div className="flex gap-1 text-sm items-center">\n                  <div className="font-bold">0</div>{\' \'}\n                  <div className="text-muted-foreground">Following</div>\n                </div>\n                <div className="flex gap-1 text-sm items-center">\n                  <div className="font-bold">2,900</div>{\' \'}\n                  <div className="text-muted-foreground">Followers</div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </HoverCardContent>\n      </HoverCardPortal>\n    </HoverCard>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/hover-card/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-hover-card';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        HoverCardContent: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          sideOffset: { value: 4 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+          transitionOffset: { value: 15 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-hover-card',
+  },
+  'demo-primitives-radix-popover': {
+    name: 'demo-primitives-radix-popover',
+    description: 'Demo showing an animated radix popover.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-popover'],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/popover.tsx',
+        content:
+          'import { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverPortal,\n  PopoverTrigger,\n} from \'@/components/animate-ui/primitives/radix/popover\';\n\ninterface RadixPopoverDemoProps {\n  side?: \'top\' | \'bottom\' | \'left\' | \'right\';\n  sideOffset?: number;\n  align?: \'start\' | \'center\' | \'end\';\n  alignOffset?: number;\n  transitionOffset?: number;\n}\n\nexport function RadixPopoverDemo({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  transitionOffset,\n}: RadixPopoverDemoProps) {\n  return (\n    <Popover>\n      <PopoverTrigger>Open popover</PopoverTrigger>\n      <PopoverPortal>\n        <PopoverContent\n          side={side}\n          sideOffset={sideOffset}\n          align={align}\n          alignOffset={alignOffset}\n          transitionOffset={transitionOffset}\n          className="w-80 bg-background border p-4"\n        >\n          <div className="grid gap-4">\n            <div className="space-y-2">\n              <h4 className="font-medium leading-none">Dimensions</h4>\n              <p className="text-sm text-muted-foreground">\n                Set the dimensions for the layer.\n              </p>\n            </div>\n            <div className="grid gap-2">\n              <div className="grid grid-cols-3 items-center gap-4">\n                <Label htmlFor="width">Width</Label>\n                <Input\n                  id="width"\n                  defaultValue="100%"\n                  className="col-span-2 h-8"\n                />\n              </div>\n              <div className="grid grid-cols-3 items-center gap-4">\n                <Label htmlFor="maxWidth">Max. width</Label>\n                <Input\n                  id="maxWidth"\n                  defaultValue="300px"\n                  className="col-span-2 h-8"\n                />\n              </div>\n              <div className="grid grid-cols-3 items-center gap-4">\n                <Label htmlFor="height">Height</Label>\n                <Input\n                  id="height"\n                  defaultValue="25px"\n                  className="col-span-2 h-8"\n                />\n              </div>\n              <div className="grid grid-cols-3 items-center gap-4">\n                <Label htmlFor="maxHeight">Max. height</Label>\n                <Input\n                  id="maxHeight"\n                  defaultValue="none"\n                  className="col-span-2 h-8"\n                />\n              </div>\n            </div>\n          </div>\n        </PopoverContent>\n      </PopoverPortal>\n    </Popover>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/popover/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-popover';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        PopoverContent: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          sideOffset: { value: 4 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+          transitionOffset: { value: 15 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-popover',
+  },
+  'demo-primitives-radix-progress': {
+    name: 'demo-primitives-radix-progress',
+    description: 'Demo showing an animated radix progress.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-progress',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Progress,\n  ProgressIndicator,\n} from '@/components/animate-ui/primitives/radix/progress';\n\nexport const RadixProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return (\n    <Progress value={progress} className=\"w-[300px] h-2 border overflow-hidden\">\n      <ProgressIndicator className=\"size-full flex-1 bg-primary\" />\n    </Progress>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/progress/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-progress';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-progress',
+  },
+  'demo-primitives-radix-radio-group': {
+    name: 'demo-primitives-radix-radio-group',
+    description: 'Demo showing an animated radix radio group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-radio-group',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/radio-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/radio-group.tsx',
+        content:
+          'import { Label } from \'@/components/ui/label\';\nimport {\n  RadioGroup,\n  RadioGroupItem,\n  RadioGroupIndicator,\n} from \'@/components/animate-ui/primitives/radix/radio-group\';\n\nconst itemClassName =\n  \'size-5 rounded-full flex items-center justify-center border\';\nconst indicatorClassName = \'size-3 bg-primary rounded-full\';\n\nexport function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue="default" className="flex flex-col gap-2">\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="default" id="r1" className={itemClassName}>\n          <RadioGroupIndicator className={indicatorClassName} />\n        </RadioGroupItem>\n        <Label htmlFor="r1">Default</Label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="comfortable" id="r2" className={itemClassName}>\n          <RadioGroupIndicator className={indicatorClassName} />\n        </RadioGroupItem>\n        <Label htmlFor="r2">Comfortable</Label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="compact" id="r3" className={itemClassName}>\n          <RadioGroupIndicator className={indicatorClassName} />\n        </RadioGroupItem>\n        <Label htmlFor="r3">Compact</Label>\n      </div>\n    </RadioGroup>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/radio-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-radio-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-radio-group',
+  },
+  'demo-primitives-radix-switch': {
+    name: 'demo-primitives-radix-switch',
+    description: 'Demo showing an animated radix switch.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-switch'],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/switch.tsx',
+        content:
+          'import { Switch, SwitchThumb } from \'@/components/animate-ui/primitives/radix/switch\';\nimport { cn } from \'@/lib/utils\';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className="flex items-center space-x-2">\n      <label htmlFor="airplane-mode">Airplane mode</label>\n      <Switch\n        className={cn(\n          \'relative flex p-0.5 h-6 w-10 items-center justify-start rounded-full border transition-colors\',\n          \'data-[state=checked]:bg-primary data-[state=checked]:justify-end\',\n        )}\n        defaultChecked\n        id="airplane-mode"\n      >\n        <SwitchThumb\n          className="rounded-full bg-accent h-full aspect-square"\n          pressedAnimation={{ width: 22 }}\n        />\n      </Switch>\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-switch',
+  },
+  'demo-primitives-radix-tabs': {
+    name: 'demo-primitives-radix-tabs',
+    description: 'Demo showing an animated radix tabs.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tabs'],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/tabs.tsx',
+        content:
+          'import {\n  Tabs,\n  TabsContent,\n  TabsContents,\n  TabsHighlight,\n  TabsHighlightItem,\n  TabsList,\n  TabsTrigger,\n} from \'@/components/animate-ui/primitives/radix/tabs\';\n\nexport function RadixTabsDemo() {\n  return (\n    <Tabs defaultValue="account" className="w-[500px]">\n      <TabsHighlight\n        className="bg-background absolute z-0 inset-0"\n        defaultValue="account"\n      >\n        <TabsList className="h-10 inline-flex p-1 bg-accent w-full">\n          <TabsHighlightItem value="account" className="flex-1">\n            <TabsTrigger\n              value="account"\n              className="h-full px-4 py-2 leading-0 w-full text-sm"\n            >\n              Account\n            </TabsTrigger>\n          </TabsHighlightItem>\n          <TabsHighlightItem value="password" className="flex-1">\n            <TabsTrigger\n              value="password"\n              className="h-full px-4 py-2 leading-0 w-full text-sm"\n            >\n              Password\n            </TabsTrigger>\n          </TabsHighlightItem>\n        </TabsList>\n      </TabsHighlight>\n      <TabsContents className="bg-background p-3 border border-t-0">\n        <TabsContent value="account" className="space-y-4">\n          <p className="text-sm text-muted-foreground">\n            Make changes to your account here. Click save when you&apos;re done.\n          </p>\n\n          <div className="space-y-3">\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="name" className="text-sm">\n                Name\n              </label>\n              <input\n                id="name"\n                defaultValue="Pedro Duarte"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="username" className="text-sm">\n                Username\n              </label>\n              <input\n                id="username"\n                defaultValue="@peduarte"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n          </div>\n\n          <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm">\n            Save changes\n          </button>\n        </TabsContent>\n        <TabsContent value="password" className="space-y-4">\n          <p className="text-sm text-muted-foreground">\n            Change your password here. After saving, you&apos;ll be logged out.\n          </p>\n          <div className="space-y-3">\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="current" className="text-sm">\n                Current password\n              </label>\n              <input\n                id="current"\n                type="password"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="new" className="text-sm">\n                New password\n              </label>\n              <input\n                id="new"\n                type="password"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="confirm" className="text-sm">\n                Confirm password\n              </label>\n              <input\n                id="confirm"\n                type="password"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n          </div>\n\n          <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm">\n            Save password\n          </button>\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/tabs/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-tabs',
+  },
+  'demo-primitives-radix-toggle-group': {
+    name: 'demo-primitives-radix-toggle-group',
+    description: 'Demo showing an animated radix toggle group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-toggle-group',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/toggle-group.tsx',
+        content:
+          'import {\n  ToggleGroup,\n  ToggleGroupItem,\n  ToggleGroupHighlight,\n  ToggleGroupHighlightItem,\n} from \'@/components/animate-ui/primitives/radix/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\nexport const RadixToggleGroupDemo = () => {\n  return (\n    <ToggleGroup type="single" defaultValue="bold" className="flex gap-2">\n      <ToggleGroupHighlight className="bg-accent absolute z-0 inset-0">\n        <ToggleGroupHighlightItem value="bold">\n          <ToggleGroupItem\n            value="bold"\n            aria-label="Toggle bold"\n            className="size-8 flex items-center justify-center"\n          >\n            <Bold className="h-4 w-4" />\n          </ToggleGroupItem>\n        </ToggleGroupHighlightItem>\n        <ToggleGroupHighlightItem value="italic">\n          <ToggleGroupItem\n            value="italic"\n            aria-label="Toggle italic"\n            className="size-8 flex items-center justify-center"\n          >\n            <Italic className="h-4 w-4" />\n          </ToggleGroupItem>\n        </ToggleGroupHighlightItem>\n        <ToggleGroupHighlightItem value="underline">\n          <ToggleGroupItem\n            value="underline"\n            aria-label="Toggle underline"\n            className="size-8 flex items-center justify-center"\n          >\n            <Underline className="h-4 w-4" />\n          </ToggleGroupItem>\n        </ToggleGroupHighlightItem>\n      </ToggleGroupHighlight>\n    </ToggleGroup>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/toggle-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-toggle-group',
+  },
+  'demo-primitives-radix-tooltip': {
+    name: 'demo-primitives-radix-tooltip',
+    description: 'Demo showing an animated radix tooltip.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tooltip'],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/tooltip.tsx',
+        content:
+          "import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipPortal,\n  TooltipTrigger,\n} from '@/components/animate-ui/primitives/radix/tooltip';\n\ninterface RadixTooltipDemoProps {\n  side?: 'top' | 'bottom' | 'left' | 'right';\n  sideOffset?: number;\n  align?: 'start' | 'center' | 'end';\n  alignOffset?: number;\n  transitionOffset?: number;\n}\n\nexport const RadixTooltipDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  transitionOffset,\n}: RadixTooltipDemoProps) => {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger>Hover</TooltipTrigger>\n        <TooltipPortal>\n          <TooltipContent\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n            transitionOffset={transitionOffset}\n            className=\"bg-primary text-primary-foreground px-2 py-1 text-sm\"\n          >\n            <p>Add to library</p>\n          </TooltipContent>\n        </TooltipPortal>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        TooltipContent: {
+          side: {
+            value: 'top',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          sideOffset: { value: 4 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+          transitionOffset: { value: 15 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-tooltip',
+  },
+  'demo-primitives-shadcn-sheet': {
+    name: 'demo-primitives-shadcn-sheet',
+    description: 'Demo showing an animated shadcn sheet.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-shadcn-sheet'],
+    files: [
+      {
+        path: 'registry/demo/primitives/shadcn/sheet/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/shadcn/sheet.tsx',
+        content:
+          'import {\n  Sheet,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetOverlay,\n  SheetPortal,\n  SheetTitle,\n  SheetTrigger,\n} from \'@/components/animate-ui/primitives/shadcn/sheet\';\n\ninterface RadixSheetDemoProps {\n  side: \'right\' | \'left\' | \'top\' | \'bottom\';\n}\nexport const RadixSheetDemo = ({ side }: RadixSheetDemoProps) => {\n  return (\n    <Sheet>\n      <SheetTrigger>Open</SheetTrigger>\n      <SheetPortal>\n        <SheetOverlay className="fixed inset-0 z-50 bg-black/80" />\n\n        <SheetContent\n          side={side}\n          className="gap-4 bg-background p-6 w-full size-full data-[side=right]:w-[350px] data-[side=left]:w-[350px] data-[side=top]:h-[350px] data-[side=bottom]:h-[350px]"\n        >\n          <SheetHeader>\n            <SheetTitle className="text-xl">Edit profile</SheetTitle>\n            <SheetDescription className="text-sm text-muted-foreground">\n              Make changes to your profile here. Click save when you&apos;re\n              done.\n            </SheetDescription>\n          </SheetHeader>\n          <div className="grid gap-4 py-4">\n            <div className="flex flex-col gap-2">\n              <label htmlFor="name">Name</label>\n              <input\n                id="name"\n                placeholder="Pedro Duarte"\n                className="p-2 border"\n              />\n            </div>\n            <div className="flex flex-col gap-2">\n              <label htmlFor="username">Username</label>\n              <input\n                id="username"\n                placeholder="@peduarte"\n                className="p-2 border"\n              />\n            </div>\n          </div>\n          <SheetFooter>\n            <SheetClose\n              type="submit"\n              className="w-full p-2 text-center bg-primary text-primary-foreground"\n            >\n              Save changes\n            </SheetClose>\n          </SheetFooter>\n        </SheetContent>\n      </SheetPortal>\n    </Sheet>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/shadcn/sheet/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-shadcn-sheet';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        SheetContent: {
+          side: {
+            value: 'right',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-shadcn-sheet',
+  },
+  'demo-primitives-texts-counting-number': {
+    name: 'demo-primitives-texts-counting-number',
+    description: 'Demo showing an animated counting number.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-counting-number',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/counting-number/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/primitives/texts/counting-number.tsx',
+        content:
+          'import { CountingNumber } from \'@/components/animate-ui/primitives/texts/counting-number\';\n\ninterface CountingFromNumberDemoProps {\n  number: number;\n  fromNumber: number;\n  padStart: boolean;\n  decimalSeparator: string;\n  decimalPlaces: number;\n}\n\nexport const CountingFromNumberDemo = ({\n  number,\n  fromNumber,\n  padStart,\n  decimalSeparator,\n  decimalPlaces,\n}: CountingFromNumberDemoProps) => {\n  return (\n    <CountingNumber\n      number={number}\n      fromNumber={fromNumber}\n      padStart={padStart}\n      decimalSeparator={decimalSeparator}\n      decimalPlaces={decimalPlaces}\n      className="text-4xl font-semibold"\n    />\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/counting-number/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-counting-number';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        CountingNumber: {
+          number: { value: 2025 },
+          fromNumber: { value: 0 },
+          padStart: { value: false },
+          decimalSeparator: { value: '.' },
+          decimalPlaces: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-counting-number',
+  },
+  'demo-primitives-texts-gradient': {
+    name: 'demo-primitives-texts-gradient',
+    description: 'Demo showing an animated gradient text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-gradient',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/gradient/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/texts/gradient.tsx',
+        content:
+          'import { GradientText } from \'@/components/animate-ui/primitives/texts/gradient\';\n\ninterface GradientTextDemoProps {\n  neon: boolean;\n}\n\nexport const GradientTextDemo = ({ neon }: GradientTextDemoProps) => {\n  return (\n    <GradientText\n      className="text-4xl font-semibold"\n      text="Gradient Text"\n      neon={neon}\n    />\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/gradient/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-gradient';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = { GradientText: { neon: { value: false } } };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-gradient',
+  },
+  'demo-primitives-texts-highlight': {
+    name: 'demo-primitives-texts-highlight',
+    description: 'Demo showing an animated highlight text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-highlight',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/highlight/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/texts/highlight.tsx',
+        content:
+          'import { HighlightText } from \'@/components/animate-ui/primitives/texts/highlight\';\n\nexport const HighlightTextDemo = () => {\n  return (\n    <HighlightText\n      className="text-4xl font-semibold bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-500 dark:to-purple-500"\n      text="Highlight Text"\n    />\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/highlight/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-highlight';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-highlight',
+  },
+  'demo-primitives-texts-rolling': {
+    name: 'demo-primitives-texts-rolling',
+    description: 'Demo showing an animated rolling text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-texts-rolling'],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/rolling/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/texts/rolling.tsx',
+        content:
+          'import { RollingText } from \'@/components/animate-ui/primitives/texts/rolling\';\n\nexport const RollingTextDemo = () => {\n  return <RollingText className="text-4xl font-semibold" text="Rolling Text" />;\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/rolling/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-rolling';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-rolling',
+  },
+  'demo-primitives-texts-shimmering': {
+    name: 'demo-primitives-texts-shimmering',
+    description: 'Demo showing an animated shimmering text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-shimmering',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/shimmering/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/texts/shimmering.tsx',
+        content:
+          'import { ShimmeringText } from \'@/components/animate-ui/primitives/texts/shimmering\';\n\ninterface ShimmeringTextDemoProps {\n  wave: boolean;\n  duration: number;\n}\n\nexport const ShimmeringTextDemo = ({\n  wave,\n  duration,\n}: ShimmeringTextDemoProps) => {\n  return (\n    <ShimmeringText\n      key={`${wave}-${duration}`}\n      className="text-4xl font-semibold"\n      wave={wave}\n      duration={duration}\n      text="Shimmering Text"\n    />\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/shimmering/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-shimmering';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        ShimmeringText: {
+          wave: { value: false },
+          duration: { value: 1, min: 0.1, max: 3, step: 0.1 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-shimmering',
+  },
+  'demo-primitives-texts-sliding-number': {
+    name: 'demo-primitives-texts-sliding-number',
+    description: 'Demo showing an animated sliding number.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-sliding-number',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/sliding-number/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/primitives/texts/sliding-number.tsx',
+        content:
+          'import { SlidingNumber } from \'@/components/animate-ui/primitives/texts/sliding-number\';\n\ninterface SlidingNumberDemoProps {\n  number: number;\n  padStart: boolean;\n  decimalSeparator: string;\n  decimalPlaces: number;\n}\n\nexport const SlidingNumberDemo = ({\n  number,\n  padStart,\n  decimalSeparator,\n  decimalPlaces,\n}: SlidingNumberDemoProps) => {\n  return (\n    <SlidingNumber\n      number={number}\n      padStart={padStart}\n      decimalSeparator={decimalSeparator}\n      decimalPlaces={decimalPlaces}\n      className="text-4xl font-semibold"\n    />\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/sliding-number/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-sliding-number';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        CountingNumber: {
+          number: { value: 2025 },
+          padStart: { value: false },
+          decimalSeparator: { value: '.' },
+          decimalPlaces: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-sliding-number',
+  },
+  'demo-primitives-texts-splitting': {
+    name: 'demo-primitives-texts-splitting',
+    description: 'Demo showing an animated splitting text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-splitting',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/splitting/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/texts/splitting.tsx',
+        content:
+          "import {\n  SplittingText,\n  type SplittingTextProps,\n} from '@/components/animate-ui/primitives/texts/splitting';\n\ninterface SplittingTextDemoProps {\n  type: SplittingTextProps['type'];\n  delay: number;\n  stagger: number;\n}\n\nexport const SplittingTextDemo = ({\n  type,\n  delay,\n  stagger,\n}: SplittingTextDemoProps) => {\n  return (\n    // @ts-expect-error\n    <SplittingText\n      key={`${type}-${delay}-${stagger}`}\n      className=\"text-4xl font-semibold\"\n      type={type}\n      delay={delay}\n      stagger={stagger}\n      text={\n        type === 'lines'\n          ? [\n              'Introducing Splitting Text component',\n              'Made with Motion. Highly customizable and easy to use.',\n            ]\n          : 'Splitting Text'\n      }\n    />\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/splitting/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-splitting';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        SplittingTextDemo: {
+          type: {
+            value: 'chars',
+            options: { chars: 'chars', words: 'words', lines: 'lines' },
+          },
+          delay: { value: 0, min: 0, max: 3, step: 0.1 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-splitting',
+  },
+  'hooks-use-controlled-state': {
+    name: 'hooks-use-controlled-state',
+    description: 'A hook that allows you to control a state.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/hooks/use-controlled-state/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/hooks/use-controlled-state.tsx',
+        content:
+          "import * as React from 'react';\n\ninterface UseControlledStateProps<T> {\n  value?: T;\n  defaultValue?: T;\n  onChange?: (value: T) => void;\n}\n\ntype UseControlledStateReturn<T> = readonly [T, (next: T) => void];\n\nfunction useControlledState<T>(\n  props: UseControlledStateProps<T>,\n): UseControlledStateReturn<T> {\n  const { value, defaultValue, onChange } = props;\n\n  const [state, setInternalState] = React.useState<T>(\n    value !== undefined ? value! : defaultValue!,\n  );\n\n  React.useEffect(() => {\n    if (value !== undefined) {\n      setInternalState(value);\n    }\n  }, [value]);\n\n  const setState = React.useCallback(\n    (next: T) => {\n      setInternalState(next);\n      onChange?.(next);\n    },\n    [onChange],\n  );\n\n  return [state, setState] as const;\n}\n\nexport {\n  useControlledState,\n  type UseControlledStateProps,\n  type UseControlledStateReturn,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/hooks/use-controlled-state/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'hooks-use-controlled-state';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/hooks-use-controlled-state',
+  },
+  'hooks-use-data-state': {
+    name: 'hooks-use-data-state',
+    description: 'A hook that allows you to get the data-state of an element.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/hooks/use-data-state/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/hooks/use-data-state.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\ntype DataStateValue = string | boolean | null;\n\nfunction parseDatasetValue(value: string | null): DataStateValue {\n  if (value === null) return null;\n  if (value === '' || value === 'true') return true;\n  if (value === 'false') return false;\n  return value;\n}\n\nfunction useDataState<T extends HTMLElement = HTMLElement>(\n  key: string,\n  forwardedRef?: React.Ref<T | null>,\n  onChange?: (value: DataStateValue) => void,\n): [DataStateValue, React.RefObject<T | null>] {\n  const localRef = React.useRef<T | null>(null);\n  React.useImperativeHandle(forwardedRef, () => localRef.current as T);\n\n  const getSnapshot = (): DataStateValue => {\n    const el = localRef.current;\n    return el ? parseDatasetValue(el.getAttribute(`data-${key}`)) : null;\n  };\n\n  const subscribe = (callback: () => void) => {\n    const el = localRef.current;\n    if (!el) return () => {};\n    const observer = new MutationObserver((records) => {\n      for (const record of records) {\n        if (record.attributeName === `data-${key}`) {\n          callback();\n          break;\n        }\n      }\n    });\n    observer.observe(el, {\n      attributes: true,\n      attributeFilter: [`data-${key}`],\n    });\n    return () => observer.disconnect();\n  };\n\n  const value = React.useSyncExternalStore(subscribe, getSnapshot);\n\n  React.useEffect(() => {\n    if (onChange) onChange(value);\n  }, [value, onChange]);\n\n  return [value, localRef];\n}\n\nexport { useDataState, type DataStateValue };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/hooks/use-data-state/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'hooks-use-data-state';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/hooks-use-data-state',
+  },
+  'hooks-use-is-in-view': {
+    name: 'hooks-use-is-in-view',
+    description: 'A hook that allows you to check if an element is in view.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/hooks/use-is-in-view/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/hooks/use-is-in-view.tsx',
+        content:
+          "import * as React from 'react';\nimport { useInView, type UseInViewOptions } from 'motion/react';\n\ninterface UseIsInViewOptions {\n  inView?: boolean;\n  inViewOnce?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n}\n\nfunction useIsInView<T extends HTMLElement = HTMLElement>(\n  ref: React.Ref<T>,\n  options: UseIsInViewOptions = {},\n) {\n  const { inView, inViewOnce = false, inViewMargin = '0px' } = options;\n  const localRef = React.useRef<T>(null);\n  React.useImperativeHandle(ref, () => localRef.current as T);\n  const inViewResult = useInView(localRef, {\n    once: inViewOnce,\n    margin: inViewMargin,\n  });\n  const isInView = inView ?? inViewResult;\n  return { ref: localRef, isInView };\n}\n\nexport { useIsInView, type UseIsInViewOptions };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/hooks/use-is-in-view/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'hooks-use-is-in-view';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/hooks-use-is-in-view',
+  },
+  'hooks-use-strict-context': {
+    name: 'hooks-use-strict-context',
+    description: 'A hook that allows you to create a strict context.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/hooks/use-strict-context/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/hooks/use-strict-context.tsx',
+        content:
+          "import * as React from 'react';\n\nfunction useStrictContext<T>(\n  name?: string,\n): readonly [\n  ({\n    value,\n    children,\n  }: {\n    value: T;\n    children: React.ReactNode;\n  }) => React.JSX.Element,\n  () => T,\n] {\n  const Context = React.createContext<T | undefined>(undefined);\n\n  const Provider = ({\n    value,\n    children,\n  }: {\n    value: T;\n    children: React.ReactNode;\n  }) => <Context.Provider value={value}>{children}</Context.Provider>;\n\n  const useSafeContext = () => {\n    const ctx = React.useContext(Context);\n    if (ctx === undefined) {\n      throw new Error(\n        `${name ?? 'useContext'} must be used within ${name ?? 'a Provider'}`,\n      );\n    }\n    return ctx;\n  };\n\n  return [Provider, useSafeContext] as const;\n}\n\nexport { useStrictContext };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/hooks/use-strict-context/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'hooks-use-strict-context';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/hooks-use-strict-context',
+  },
+  'primitives-animate-slot': {
+    name: 'primitives-animate-slot',
+    description:
+      'A slot component that allows you to use motion components with any element.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/primitives/animate/slot/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/slot.tsx',
+        content:
+          "import * as React from 'react';\nimport { motion, isMotionComponent, type HTMLMotionProps } from 'motion/react';\n\ntype AnyProps = Record<string, unknown>;\n\ntype DOMMotionProps<T extends HTMLElement = HTMLElement> = Omit<\n  HTMLMotionProps<'div'>,\n  'ref'\n> & {\n  ref?: React.Ref<T>;\n};\n\ntype WithAsChild<Base extends object, Default extends object> =\n  | (Base & Default & { asChild: true; children: React.ReactElement })\n  | (Base &\n      Default & {\n        asChild?: false | undefined;\n      });\n\ntype SlotProps<T extends HTMLElement = HTMLElement> = {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  children?: any;\n} & DOMMotionProps<T>;\n\nfunction Slot<T extends HTMLElement = HTMLElement>({\n  children,\n  ref: outerRef,\n  ...motionProps\n}: SlotProps<T>) {\n  if (!React.isValidElement(children)) return null;\n\n  const isAlreadyMotion =\n    typeof children.type === 'object' &&\n    children.type !== null &&\n    isMotionComponent(children.type);\n\n  const Base = isAlreadyMotion\n    ? (children.type as React.ElementType)\n    : motion(children.type as React.ElementType);\n\n  const { ref: childRef, ...childProps } = children.props as AnyProps;\n  const ref = React.useImperativeHandle(outerRef, () => childRef as T);\n\n  return <Base {...childProps} {...motionProps} ref={ref} />;\n}\n\nexport {\n  Slot,\n  type SlotProps,\n  type WithAsChild,\n  type DOMMotionProps,\n  type AnyProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/slot/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-slot';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-slot',
+  },
+  'primitives-buttons-button': {
+    name: 'primitives-buttons-button',
+    description: 'A simple button that animates on hover and tap.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/primitives/buttons/button/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/buttons/button.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\ntype ButtonProps = HTMLMotionProps<'button'> & {\n  hoverScale?: number;\n  tapScale?: number;\n};\n\nfunction Button({ hoverScale = 1.05, tapScale = 0.95, ...props }: ButtonProps) {\n  return (\n    <motion.button\n      whileTap={{ scale: tapScale }}\n      whileHover={{ scale: hoverScale }}\n      {...props}\n    />\n  );\n}\n\nexport { Button, type ButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/buttons/button/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-buttons-button';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-buttons-button',
+  },
+  'primitives-buttons-flip': {
+    name: 'primitives-buttons-flip',
+    description: 'A button that flips between two states on hover.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-strict-context'],
+    files: [
+      {
+        path: 'registry/primitives/buttons/flip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/buttons/flip.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Variant } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\nconst buildVariant = ({\n  opacity,\n  rotation,\n  offset,\n  isVertical,\n  rotateAxis,\n}: {\n  opacity: number;\n  rotation: number;\n  offset: string | null;\n  isVertical: boolean;\n  rotateAxis: string;\n}): Variant => ({\n  opacity,\n  [rotateAxis]: rotation,\n  ...(isVertical && offset !== null ? { y: offset } : {}),\n  ...(!isVertical && offset !== null ? { x: offset } : {}),\n});\n\ntype FlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ntype FlipButtonContextType = {\n  from: FlipDirection;\n  isVertical: boolean;\n  rotateAxis: string;\n};\n\nconst [FlipButtonProvider, useFlipButton] =\n  useStrictContext<FlipButtonContextType>('FlipButtonContext');\n\ntype FlipButtonProps = HTMLMotionProps<'button'> & {\n  from?: FlipDirection;\n  tapScale?: number;\n};\n\nfunction FlipButton({\n  from = 'top',\n  tapScale = 0.95,\n  style,\n  ...props\n}: FlipButtonProps) {\n  const isVertical = from === 'top' || from === 'bottom';\n  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n  return (\n    <FlipButtonProvider value={{ from, isVertical, rotateAxis }}>\n      <motion.button\n        data-slot=\"flip-button\"\n        initial=\"initial\"\n        whileHover=\"hover\"\n        whileTap={{ scale: tapScale }}\n        style={{\n          display: 'inline-grid',\n          placeItems: 'center',\n          perspective: '1000px',\n          ...style,\n        }}\n        {...props}\n      />\n    </FlipButtonProvider>\n  );\n}\n\ntype FlipButtonFaceProps = HTMLMotionProps<'span'>;\n\nfunction FlipButtonFront({\n  transition = { type: 'spring', stiffness: 280, damping: 20 },\n  style,\n  ...props\n}: FlipButtonFaceProps) {\n  const { from, isVertical, rotateAxis } = useFlipButton();\n\n  const frontOffset = from === 'top' || from === 'left' ? '50%' : '-50%';\n\n  const frontVariants = {\n    initial: buildVariant({\n      opacity: 1,\n      rotation: 0,\n      offset: '0%',\n      isVertical,\n      rotateAxis,\n    }),\n    hover: buildVariant({\n      opacity: 0,\n      rotation: 90,\n      offset: frontOffset,\n      isVertical,\n      rotateAxis,\n    }),\n  };\n\n  return (\n    <motion.span\n      data-slot=\"flip-button-front\"\n      variants={frontVariants}\n      transition={transition}\n      style={{\n        gridArea: '1 / 1',\n        display: 'inline-flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n        ...style,\n      }}\n      {...props}\n    />\n  );\n}\n\nfunction FlipButtonBack({\n  transition = { type: 'spring', stiffness: 280, damping: 20 },\n  style,\n  ...props\n}: FlipButtonFaceProps) {\n  const { from, isVertical, rotateAxis } = useFlipButton();\n\n  const backOffset = from === 'top' || from === 'left' ? '-50%' : '50%';\n\n  const backVariants = {\n    initial: buildVariant({\n      opacity: 0,\n      rotation: 90,\n      offset: backOffset,\n      isVertical,\n      rotateAxis,\n    }),\n    hover: buildVariant({\n      opacity: 1,\n      rotation: 0,\n      offset: '0%',\n      isVertical,\n      rotateAxis,\n    }),\n  };\n\n  return (\n    <motion.span\n      data-slot=\"flip-button-back\"\n      variants={backVariants}\n      transition={transition}\n      style={{\n        gridArea: '1 / 1',\n        display: 'inline-flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n        ...style,\n      }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  FlipButton,\n  FlipButtonFront,\n  FlipButtonBack,\n  useFlipButton,\n  type FlipButtonProps,\n  type FlipButtonFaceProps as FlipButtonFrontProps,\n  type FlipButtonFaceProps as FlipButtonBackProps,\n  type FlipDirection,\n  type FlipButtonContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/buttons/flip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-buttons-flip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-buttons-flip',
+  },
+  'primitives-buttons-liquid': {
+    name: 'primitives-buttons-liquid',
+    description: 'A button that fills on hover.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-strict-context'],
+    files: [
+      {
+        path: 'registry/primitives/buttons/liquid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/buttons/liquid.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\ntype LiquidButtonProps = HTMLMotionProps<'button'> & {\n  delay?: string;\n  fillHeight?: string;\n  hoverScale?: number;\n  tapScale?: number;\n};\n\nfunction LiquidButton({\n  delay = '0.3s',\n  fillHeight = '3px',\n  hoverScale = 1.05,\n  tapScale = 0.95,\n  ...props\n}: LiquidButtonProps) {\n  return (\n    <motion.button\n      whileTap={{ scale: tapScale }}\n      whileHover={{\n        scale: hoverScale,\n        '--liquid-button-fill-width': '100%',\n        '--liquid-button-fill-height': '100%',\n        '--liquid-button-delay': delay,\n        transition: {\n          '--liquid-button-fill-width': { duration: 0 },\n          '--liquid-button-fill-height': { duration: 0 },\n          '--liquid-button-delay': { duration: 0 },\n        },\n      }}\n      style={\n        {\n          '--liquid-button-fill-width': '-1%',\n          '--liquid-button-fill-height': fillHeight,\n          '--liquid-button-delay': '0s',\n          background:\n            'linear-gradient(var(--liquid-button-color) 0 0) no-repeat calc(200% - var(--liquid-button-fill-width, -1%)) 100% / 200% var(--liquid-button-fill-height, 0.2em)',\n          backgroundColor: 'var(--liquid-button-background-color)',\n          transition: `background ${delay} var(--liquid-button-delay, 0s), color ${delay} ${delay}, background-position ${delay} calc(${delay} - var(--liquid-button-delay, 0s))`,\n        } as React.CSSProperties\n      }\n      {...props}\n    />\n  );\n}\n\nexport { LiquidButton, type LiquidButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/buttons/liquid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-buttons-liquid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-buttons-liquid',
+  },
+  'primitives-buttons-ripple': {
+    name: 'primitives-buttons-ripple',
+    description: 'A button that animates on tap with a ripple effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-strict-context'],
+    files: [
+      {
+        path: 'registry/primitives/buttons/ripple/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/buttons/ripple.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype Ripple = {\n  id: number;\n  x: number;\n  y: number;\n};\n\ntype RippleButtonContextType = {\n  ripples: Ripple[];\n  setRipples: (ripples: Ripple[]) => void;\n};\n\nconst [RippleButtonProvider, useRippleButton] =\n  useStrictContext<RippleButtonContextType>('RippleButtonContext');\n\ntype RippleButtonProps = HTMLMotionProps<'button'> & {\n  hoverScale?: number;\n  tapScale?: number;\n};\n\nfunction RippleButton({\n  ref,\n  onClick,\n  hoverScale = 1.05,\n  tapScale = 0.95,\n  style,\n  ...props\n}: RippleButtonProps) {\n  const [ripples, setRipples] = React.useState<Ripple[]>([]);\n  const buttonRef = React.useRef<HTMLButtonElement>(null);\n  React.useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement);\n\n  const createRipple = React.useCallback(\n    (event: React.MouseEvent<HTMLButtonElement>) => {\n      const button = buttonRef.current;\n      if (!button) return;\n\n      const rect = button.getBoundingClientRect();\n      const x = event.clientX - rect.left;\n      const y = event.clientY - rect.top;\n\n      const newRipple: Ripple = {\n        id: Date.now(),\n        x,\n        y,\n      };\n\n      setRipples((prev) => [...prev, newRipple]);\n\n      setTimeout(() => {\n        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));\n      }, 600);\n    },\n    [],\n  );\n\n  const handleClick = React.useCallback(\n    (event: React.MouseEvent<HTMLButtonElement>) => {\n      createRipple(event);\n      if (onClick) {\n        onClick(event);\n      }\n    },\n    [createRipple, onClick],\n  );\n\n  return (\n    <RippleButtonProvider value={{ ripples, setRipples }}>\n      <motion.button\n        ref={buttonRef}\n        data-slot=\"ripple-button\"\n        onClick={handleClick}\n        whileTap={{ scale: tapScale }}\n        whileHover={{ scale: hoverScale }}\n        style={{\n          position: 'relative',\n          overflow: 'hidden',\n          ...style,\n        }}\n        {...props}\n      />\n    </RippleButtonProvider>\n  );\n}\n\ntype RippleButtonRipplesProps = HTMLMotionProps<'span'> & {\n  color?: string;\n  scale?: number;\n};\n\nfunction RippleButtonRipples({\n  color = 'var(--ripple-button-ripple-color)',\n  scale = 10,\n  transition = { duration: 0.6, ease: 'easeOut' },\n  style,\n  ...props\n}: RippleButtonRipplesProps) {\n  const { ripples } = useRippleButton();\n\n  return ripples.map((ripple) => (\n    <motion.span\n      key={ripple.id}\n      initial={{ scale: 0, opacity: 0.5 }}\n      animate={{ scale, opacity: 0 }}\n      transition={transition}\n      style={{\n        position: 'absolute',\n        borderRadius: '50%',\n        pointerEvents: 'none',\n        width: '20px',\n        height: '20px',\n        backgroundColor: color,\n        top: ripple.y - 10,\n        left: ripple.x - 10,\n        ...style,\n      }}\n      {...props}\n    />\n  ));\n}\n\nexport {\n  RippleButton,\n  RippleButtonRipples,\n  type RippleButtonProps,\n  type RippleButtonRipplesProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/buttons/ripple/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-buttons-ripple';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-buttons-ripple',
+  },
+  'primitives-effects-effect': {
+    name: 'primitives-effects-effect',
+    description:
+      'An effect that allows you to animate elements on first view or load.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-slot',
+      'https://animate-ui.com/r/hooks-use-is-in-view',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/effects/effect/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/effects/effect.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  AnimatePresence,\n  HTMLMotionProps,\n  type Variant,\n} from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SlideDirection = 'up' | 'down' | 'left' | 'right';\n\ntype Slide = {\n  direction?: SlideDirection;\n  offset?: number;\n};\n\ntype Fade = { initialOpacity?: number; opacity?: number };\n\ntype Zoom = {\n  initialScale?: number;\n  scale?: number;\n};\n\ntype EffectProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    delay?: number;\n    blur?: string | boolean;\n    slide?: Slide | boolean;\n    fade?: Fade | boolean;\n    zoom?: Zoom | boolean;\n    ref?: React.Ref<HTMLElement>;\n  } & UseIsInViewOptions,\n  HTMLMotionProps<'div'>\n>;\n\nfunction Effect({\n  ref,\n  transition = { type: 'spring', stiffness: 200, damping: 20 },\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  blur = false,\n  slide = false,\n  fade = false,\n  zoom = false,\n  asChild = false,\n  ...props\n}: EffectProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const hiddenVariant: Variant = {};\n  const visibleVariant: Variant = {};\n\n  if (slide) {\n    const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);\n    const direction =\n      typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');\n    const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';\n    hiddenVariant[axis] =\n      direction === 'left' || direction === 'up' ? -offset : offset;\n    visibleVariant[axis] = 0;\n  }\n\n  if (fade) {\n    hiddenVariant.opacity =\n      typeof fade === 'boolean' ? 0 : (fade.initialOpacity ?? 0);\n    visibleVariant.opacity =\n      typeof fade === 'boolean' ? 1 : (fade.opacity ?? 1);\n  }\n\n  if (zoom) {\n    hiddenVariant.scale =\n      typeof zoom === 'boolean' ? 0.5 : (zoom.initialScale ?? 0.5);\n    visibleVariant.scale = typeof zoom === 'boolean' ? 1 : (zoom.scale ?? 1);\n  }\n\n  if (blur) {\n    hiddenVariant.filter =\n      typeof blur === 'boolean' ? 'blur(10px)' : `blur(${blur})`;\n    visibleVariant.filter = 'blur(0px)';\n  }\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      <Component\n        ref={localRef as React.Ref<HTMLDivElement>}\n        initial=\"hidden\"\n        animate={isInView ? 'visible' : 'hidden'}\n        exit=\"hidden\"\n        variants={{\n          hidden: hiddenVariant,\n          visible: visibleVariant,\n        }}\n        transition={{\n          ...transition,\n          delay: (transition?.delay ?? 0) + delay,\n        }}\n        {...props}\n      />\n    </AnimatePresence>\n  );\n}\n\nexport { Effect, type EffectProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/effects/effect/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-effects-effect';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-effects-effect',
+  },
+  'primitives-effects-highlight': {
+    name: 'primitives-effects-highlight',
+    description:
+      'A highlight effect that allows you to highlight elements on hover, click or with a controlled value.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/primitives/effects/highlight/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/effects/highlight.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, Transition, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype HighlightMode = 'children' | 'parent';\n\ntype Bounds = {\n  top: number;\n  left: number;\n  width: number;\n  height: number;\n};\n\ntype HighlightContextType<T extends string> = {\n  as?: keyof HTMLElementTagNameMap;\n  mode: HighlightMode;\n  activeValue: T | null;\n  setActiveValue: (value: T | null) => void;\n  setBounds: (bounds: DOMRect) => void;\n  clearBounds: () => void;\n  id: string;\n  hover: boolean;\n  className?: string;\n  activeClassName?: string;\n  setActiveClassName: (className: string) => void;\n  transition?: Transition;\n  disabled?: boolean;\n  enabled?: boolean;\n  exitDelay?: number;\n  forceUpdateBounds?: boolean;\n};\n\nconst HighlightContext = React.createContext<\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  HighlightContextType<any> | undefined\n>(undefined);\n\nfunction useHighlight<T extends string>(): HighlightContextType<T> {\n  const context = React.useContext(HighlightContext);\n  if (!context) {\n    throw new Error('useHighlight must be used within a HighlightProvider');\n  }\n  return context as unknown as HighlightContextType<T>;\n}\n\ntype BaseHighlightProps<T extends React.ElementType = 'div'> = {\n  as?: T;\n  ref?: React.Ref<HTMLDivElement>;\n  mode?: HighlightMode;\n  value?: string | null;\n  defaultValue?: string | null;\n  onValueChange?: (value: string | null) => void;\n  className?: string;\n  transition?: Transition;\n  hover?: boolean;\n  disabled?: boolean;\n  enabled?: boolean;\n  exitDelay?: number;\n};\n\ntype ParentModeHighlightProps = {\n  boundsOffset?: Partial<Bounds>;\n  containerClassName?: string;\n  forceUpdateBounds?: boolean;\n};\n\ntype ControlledParentModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> &\n    ParentModeHighlightProps & {\n      mode: 'parent';\n      controlledItems: true;\n      children: React.ReactNode;\n    };\n\ntype ControlledChildrenModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> & {\n    mode?: 'children' | undefined;\n    controlledItems: true;\n    children: React.ReactNode;\n  };\n\ntype UncontrolledParentModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> &\n    ParentModeHighlightProps & {\n      mode: 'parent';\n      controlledItems?: false;\n      itemsClassName?: string;\n      children: React.ReactElement | React.ReactElement[];\n    };\n\ntype UncontrolledChildrenModeHighlightProps<\n  T extends React.ElementType = 'div',\n> = BaseHighlightProps<T> & {\n  mode?: 'children';\n  controlledItems?: false;\n  itemsClassName?: string;\n  children: React.ReactElement | React.ReactElement[];\n};\n\ntype HighlightProps<T extends React.ElementType = 'div'> =\n  | ControlledParentModeHighlightProps<T>\n  | ControlledChildrenModeHighlightProps<T>\n  | UncontrolledParentModeHighlightProps<T>\n  | UncontrolledChildrenModeHighlightProps<T>;\n\nfunction Highlight<T extends React.ElementType = 'div'>({\n  ref,\n  ...props\n}: HighlightProps<T>) {\n  const {\n    as: Component = 'div',\n    children,\n    value,\n    defaultValue,\n    onValueChange,\n    className,\n    transition = { type: 'spring', stiffness: 350, damping: 35 },\n    hover = false,\n    enabled = true,\n    controlledItems,\n    disabled = false,\n    exitDelay = 0.2,\n    mode = 'children',\n  } = props;\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const [activeValue, setActiveValue] = React.useState<string | null>(\n    value ?? defaultValue ?? null,\n  );\n  const [boundsState, setBoundsState] = React.useState<Bounds | null>(null);\n  const [activeClassNameState, setActiveClassNameState] =\n    React.useState<string>('');\n\n  const safeSetActiveValue = React.useCallback(\n    (id: string | null) => {\n      setActiveValue((prev) => (prev === id ? prev : id));\n      if (id !== activeValue) onValueChange?.(id);\n    },\n    [activeValue, onValueChange],\n  );\n\n  const safeSetBounds = React.useCallback(\n    (bounds: DOMRect) => {\n      if (!localRef.current) return;\n\n      const boundsOffset = (props as ParentModeHighlightProps)\n        ?.boundsOffset ?? {\n        top: 0,\n        left: 0,\n        width: 0,\n        height: 0,\n      };\n\n      const containerRect = localRef.current.getBoundingClientRect();\n      const newBounds: Bounds = {\n        top: bounds.top - containerRect.top + (boundsOffset.top ?? 0),\n        left: bounds.left - containerRect.left + (boundsOffset.left ?? 0),\n        width: bounds.width + (boundsOffset.width ?? 0),\n        height: bounds.height + (boundsOffset.height ?? 0),\n      };\n\n      setBoundsState((prev) => {\n        if (\n          prev &&\n          prev.top === newBounds.top &&\n          prev.left === newBounds.left &&\n          prev.width === newBounds.width &&\n          prev.height === newBounds.height\n        ) {\n          return prev;\n        }\n        return newBounds;\n      });\n    },\n    [props],\n  );\n\n  const clearBounds = React.useCallback(() => {\n    setBoundsState((prev) => (prev === null ? prev : null));\n  }, []);\n\n  React.useEffect(() => {\n    if (value !== undefined) setActiveValue(value);\n    else if (defaultValue !== undefined) setActiveValue(defaultValue);\n  }, [value, defaultValue]);\n\n  const id = React.useId();\n\n  React.useEffect(() => {\n    if (mode !== 'parent') return;\n    const container = localRef.current;\n    if (!container) return;\n\n    const onScroll = () => {\n      if (!activeValue) return;\n      const activeEl = container.querySelector<HTMLElement>(\n        `[data-value=\"${activeValue}\"][data-highlight=\"true\"]`,\n      );\n      if (activeEl) safeSetBounds(activeEl.getBoundingClientRect());\n    };\n\n    container.addEventListener('scroll', onScroll, { passive: true });\n    return () => container.removeEventListener('scroll', onScroll);\n  }, [mode, activeValue, safeSetBounds]);\n\n  const render = React.useCallback(\n    (children: React.ReactNode) => {\n      if (mode === 'parent') {\n        return (\n          <Component\n            ref={localRef}\n            data-slot=\"motion-highlight-container\"\n            style={{ position: 'relative', zIndex: 1 }}\n            className={(props as ParentModeHighlightProps)?.containerClassName}\n          >\n            <AnimatePresence initial={false} mode=\"wait\">\n              {boundsState && (\n                <motion.div\n                  data-slot=\"motion-highlight\"\n                  animate={{\n                    top: boundsState.top,\n                    left: boundsState.left,\n                    width: boundsState.width,\n                    height: boundsState.height,\n                    opacity: 1,\n                  }}\n                  initial={{\n                    top: boundsState.top,\n                    left: boundsState.left,\n                    width: boundsState.width,\n                    height: boundsState.height,\n                    opacity: 0,\n                  }}\n                  exit={{\n                    opacity: 0,\n                    transition: {\n                      ...transition,\n                      delay: (transition?.delay ?? 0) + (exitDelay ?? 0),\n                    },\n                  }}\n                  transition={transition}\n                  style={{ position: 'absolute', zIndex: 0 }}\n                  className={cn(className, activeClassNameState)}\n                />\n              )}\n            </AnimatePresence>\n            {children}\n          </Component>\n        );\n      }\n\n      return children;\n    },\n    [\n      mode,\n      props,\n      boundsState,\n      transition,\n      exitDelay,\n      className,\n      activeClassNameState,\n    ],\n  );\n\n  return (\n    <HighlightContext.Provider\n      value={{\n        mode,\n        activeValue,\n        setActiveValue: safeSetActiveValue,\n        id,\n        hover,\n        className,\n        transition,\n        disabled,\n        enabled,\n        exitDelay,\n        setBounds: safeSetBounds,\n        clearBounds,\n        activeClassName: activeClassNameState,\n        setActiveClassName: setActiveClassNameState,\n        forceUpdateBounds: (props as ParentModeHighlightProps)\n          ?.forceUpdateBounds,\n      }}\n    >\n      {enabled\n        ? controlledItems\n          ? render(children)\n          : render(\n              React.Children.map(children, (child, index) => (\n                <HighlightItem key={index} className={props?.itemsClassName}>\n                  {child}\n                </HighlightItem>\n              )),\n            )\n        : children}\n    </HighlightContext.Provider>\n  );\n}\n\nfunction getNonOverridingDataAttributes(\n  element: React.ReactElement,\n  dataAttributes: Record<string, unknown>,\n): Record<string, unknown> {\n  return Object.keys(dataAttributes).reduce<Record<string, unknown>>(\n    (acc, key) => {\n      if ((element.props as Record<string, unknown>)[key] === undefined) {\n        acc[key] = dataAttributes[key];\n      }\n      return acc;\n    },\n    {},\n  );\n}\n\ntype ExtendedChildProps = React.ComponentProps<'div'> & {\n  id?: string;\n  ref?: React.Ref<HTMLElement>;\n  'data-active'?: string;\n  'data-value'?: string;\n  'data-disabled'?: boolean;\n  'data-highlight'?: boolean;\n  'data-slot'?: string;\n};\n\ntype HighlightItemProps<T extends React.ElementType = 'div'> =\n  React.ComponentProps<T> & {\n    as?: T;\n    children: React.ReactElement;\n    id?: string;\n    value?: string;\n    className?: string;\n    transition?: Transition;\n    activeClassName?: string;\n    disabled?: boolean;\n    exitDelay?: number;\n    asChild?: boolean;\n    forceUpdateBounds?: boolean;\n  };\n\nfunction HighlightItem<T extends React.ElementType>({\n  ref,\n  as,\n  children,\n  id,\n  value,\n  className,\n  transition,\n  disabled = false,\n  activeClassName,\n  exitDelay,\n  asChild = false,\n  forceUpdateBounds,\n  ...props\n}: HighlightItemProps<T>) {\n  const itemId = React.useId();\n  const {\n    activeValue,\n    setActiveValue,\n    mode,\n    setBounds,\n    clearBounds,\n    hover,\n    enabled,\n    className: contextClassName,\n    transition: contextTransition,\n    id: contextId,\n    disabled: contextDisabled,\n    exitDelay: contextExitDelay,\n    forceUpdateBounds: contextForceUpdateBounds,\n    setActiveClassName,\n  } = useHighlight();\n\n  const Component = as ?? 'div';\n  const element = children as React.ReactElement<ExtendedChildProps>;\n  const childValue =\n    id ?? value ?? element.props?.['data-value'] ?? element.props?.id ?? itemId;\n  const isActive = activeValue === childValue;\n  const isDisabled = disabled === undefined ? contextDisabled : disabled;\n  const itemTransition = transition ?? contextTransition;\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  React.useEffect(() => {\n    if (mode !== 'parent') return;\n    let rafId: number;\n    let previousBounds: Bounds | null = null;\n    const shouldUpdateBounds =\n      forceUpdateBounds === true ||\n      (contextForceUpdateBounds && forceUpdateBounds !== false);\n\n    const updateBounds = () => {\n      if (!localRef.current) return;\n\n      const bounds = localRef.current.getBoundingClientRect();\n\n      if (shouldUpdateBounds) {\n        if (\n          previousBounds &&\n          previousBounds.top === bounds.top &&\n          previousBounds.left === bounds.left &&\n          previousBounds.width === bounds.width &&\n          previousBounds.height === bounds.height\n        ) {\n          rafId = requestAnimationFrame(updateBounds);\n          return;\n        }\n        previousBounds = bounds;\n        rafId = requestAnimationFrame(updateBounds);\n      }\n\n      setBounds(bounds);\n    };\n\n    if (isActive) {\n      updateBounds();\n      setActiveClassName(activeClassName ?? '');\n    } else if (!activeValue) clearBounds();\n\n    if (shouldUpdateBounds) return () => cancelAnimationFrame(rafId);\n  }, [\n    mode,\n    isActive,\n    activeValue,\n    setBounds,\n    clearBounds,\n    activeClassName,\n    setActiveClassName,\n    forceUpdateBounds,\n    contextForceUpdateBounds,\n  ]);\n\n  if (!React.isValidElement(children)) return children;\n\n  const dataAttributes = {\n    'data-active': isActive ? 'true' : 'false',\n    'aria-selected': isActive,\n    'data-disabled': isDisabled,\n    'data-value': childValue,\n    'data-highlight': true,\n  };\n\n  const commonHandlers = hover\n    ? {\n        onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(childValue);\n          element.props.onMouseEnter?.(e);\n        },\n        onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(null);\n          element.props.onMouseLeave?.(e);\n        },\n      }\n    : {\n        onClick: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(childValue);\n          element.props.onClick?.(e);\n        },\n      };\n\n  if (asChild) {\n    if (mode === 'children') {\n      return React.cloneElement(\n        element,\n        {\n          key: childValue,\n          ref: localRef,\n          className: cn('relative', element.props.className),\n          ...getNonOverridingDataAttributes(element, {\n            ...dataAttributes,\n            'data-slot': 'motion-highlight-item-container',\n          }),\n          ...commonHandlers,\n          ...props,\n        },\n        <>\n          <AnimatePresence initial={false} mode=\"wait\">\n            {isActive && !isDisabled && (\n              <motion.div\n                layoutId={`transition-background-${contextId}`}\n                data-slot=\"motion-highlight\"\n                style={{ position: 'absolute', zIndex: 0 }}\n                className={cn(contextClassName, activeClassName)}\n                transition={itemTransition}\n                initial={{ opacity: 0 }}\n                animate={{ opacity: 1 }}\n                exit={{\n                  opacity: 0,\n                  transition: {\n                    ...itemTransition,\n                    delay:\n                      (itemTransition?.delay ?? 0) +\n                      (exitDelay ?? contextExitDelay ?? 0),\n                  },\n                }}\n                {...dataAttributes}\n              />\n            )}\n          </AnimatePresence>\n\n          <Component\n            data-slot=\"motion-highlight-item\"\n            style={{ position: 'relative', zIndex: 1 }}\n            className={className}\n            {...dataAttributes}\n          >\n            {children}\n          </Component>\n        </>,\n      );\n    }\n\n    return React.cloneElement(element, {\n      ref: localRef,\n      ...getNonOverridingDataAttributes(element, {\n        ...dataAttributes,\n        'data-slot': 'motion-highlight-item',\n      }),\n      ...commonHandlers,\n    });\n  }\n\n  return enabled ? (\n    <Component\n      key={childValue}\n      ref={localRef}\n      data-slot=\"motion-highlight-item-container\"\n      className={cn(mode === 'children' && 'relative', className)}\n      {...dataAttributes}\n      {...props}\n      {...commonHandlers}\n    >\n      {mode === 'children' && (\n        <AnimatePresence initial={false} mode=\"wait\">\n          {isActive && !isDisabled && (\n            <motion.div\n              layoutId={`transition-background-${contextId}`}\n              data-slot=\"motion-highlight\"\n              style={{ position: 'absolute', zIndex: 0 }}\n              className={cn(contextClassName, activeClassName)}\n              transition={itemTransition}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{\n                opacity: 0,\n                transition: {\n                  ...itemTransition,\n                  delay:\n                    (itemTransition?.delay ?? 0) +\n                    (exitDelay ?? contextExitDelay ?? 0),\n                },\n              }}\n              {...dataAttributes}\n            />\n          )}\n        </AnimatePresence>\n      )}\n\n      {React.cloneElement(element, {\n        style: { position: 'relative', zIndex: 1 },\n        className: element.props.className,\n        ...getNonOverridingDataAttributes(element, {\n          ...dataAttributes,\n          'data-slot': 'motion-highlight-item',\n        }),\n      })}\n    </Component>\n  ) : (\n    children\n  );\n}\n\nexport {\n  Highlight,\n  HighlightItem,\n  useHighlight,\n  type HighlightProps,\n  type HighlightItemProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/effects/highlight/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-effects-highlight';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-effects-highlight',
+  },
+  'primitives-effects-magnetic': {
+    name: 'primitives-effects-magnetic',
+    description:
+      'A magnetic effect that clings to the cursor, creating a magnetic attraction effect.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-animate-slot'],
+    files: [
+      {
+        path: 'registry/primitives/effects/magnetic/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/effects/magnetic.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  type SpringOptions,\n  type HTMLMotionProps,\n} from 'motion/react';\n\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype MagneticProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    strength?: number;\n    range?: number;\n    springOptions?: SpringOptions;\n    onlyOnHover?: boolean;\n    disableOnTouch?: boolean;\n    ref?: React.Ref<HTMLElement>;\n  },\n  HTMLMotionProps<'div'>\n>;\n\nfunction Magnetic({\n  ref,\n  strength = 0.5,\n  range = 120,\n  springOptions = { stiffness: 100, damping: 10, mass: 0.5 },\n  onlyOnHover = false,\n  disableOnTouch = true,\n  style,\n  onMouseEnter,\n  onMouseLeave,\n  onMouseMove,\n  asChild = false,\n  ...props\n}: MagneticProps) {\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const isTouchDevice = React.useMemo(() => {\n    if (typeof window === 'undefined') return false;\n    return window.matchMedia('(pointer:coarse)').matches;\n  }, []);\n\n  const [active, setActive] = React.useState(!onlyOnHover);\n\n  const rawX = useMotionValue(0);\n  const rawY = useMotionValue(0);\n  const x = useSpring(rawX, springOptions);\n  const y = useSpring(rawY, springOptions);\n\n  const compute = React.useCallback(\n    (e: MouseEvent | React.MouseEvent) => {\n      if (!localRef.current) return;\n      const { left, top, width, height } =\n        localRef.current.getBoundingClientRect();\n      const cx = left + width / 2;\n      const cy = top + height / 2;\n      const dx = e.clientX - cx;\n      const dy = e.clientY - cy;\n      const dist = Math.hypot(dx, dy);\n\n      if ((active || !onlyOnHover) && dist <= range) {\n        const factor = (1 - dist / range) * strength;\n        rawX.set(dx * factor);\n        rawY.set(dy * factor);\n      } else {\n        rawX.set(0);\n        rawY.set(0);\n      }\n    },\n    [active, onlyOnHover, range, strength, rawX, rawY],\n  );\n\n  React.useEffect(() => {\n    if (disableOnTouch && isTouchDevice) return;\n    const handle = (e: MouseEvent) => compute(e);\n    window.addEventListener('mousemove', handle);\n    return () => window.removeEventListener('mousemove', handle);\n  }, [compute, disableOnTouch, isTouchDevice]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={localRef}\n      style={{ display: 'inline-block', ...style, x, y }}\n      onMouseEnter={(e) => {\n        if (onlyOnHover) setActive(true);\n        onMouseEnter?.(e);\n      }}\n      onMouseLeave={(e) => {\n        if (onlyOnHover) setActive(false);\n        rawX.set(0);\n        rawY.set(0);\n        onMouseLeave?.(e);\n      }}\n      onMouseMove={(e) => {\n        if (onlyOnHover) compute(e);\n        onMouseMove?.(e);\n      }}\n      {...props}\n    />\n  );\n}\n\nexport { Magnetic, type MagneticProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/effects/magnetic/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-effects-magnetic';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-effects-magnetic',
+  },
   'primitives-radix-accordion': {
     name: 'primitives-radix-accordion',
     description:
@@ -215,14 +1790,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-data-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
     files: [
       {
         path: 'registry/primitives/radix/accordion/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/accordion.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Accordion as AccordionPrimitive } from 'radix-ui';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\ntype AccordionItemContextType = {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n};\n\nconst AccordionItemContext = React.createContext<\n  AccordionItemContextType | undefined\n>(undefined);\n\nconst useAccordionItem = (): AccordionItemContextType => {\n  const context = React.useContext(AccordionItemContext);\n  if (!context) {\n    throw new Error('useAccordionItem must be used within an AccordionItem');\n  }\n  return context;\n};\n\ntype AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;\n\nfunction Accordion(props: AccordionProps) {\n  return <AccordionPrimitive.Root data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps = React.ComponentProps<\n  typeof AccordionPrimitive.Item\n> & {\n  children: React.ReactNode;\n};\n\nfunction AccordionItem(props: AccordionItemProps) {\n  const [isOpen, setIsOpen] = React.useState(false);\n\n  return (\n    <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>\n      <AccordionPrimitive.Item data-slot=\"accordion-item\" {...props} />\n    </AccordionItemContext.Provider>\n  );\n}\n\ntype AccordionHeaderProps = React.ComponentProps<\n  typeof AccordionPrimitive.Header\n>;\n\nfunction AccordionHeader(props: AccordionHeaderProps) {\n  return <AccordionPrimitive.Header data-slot=\"accordion-header\" {...props} />;\n}\n\ntype AccordionTriggerProps = React.ComponentProps<\n  typeof AccordionPrimitive.Trigger\n>;\n\nfunction AccordionTrigger({ ref, ...props }: AccordionTriggerProps) {\n  const triggerRef = React.useRef<HTMLButtonElement | null>(null);\n  React.useImperativeHandle(ref, () => triggerRef.current as HTMLButtonElement);\n  const { setIsOpen } = useAccordionItem();\n\n  React.useEffect(() => {\n    const node = triggerRef.current;\n    if (!node) return;\n\n    const observer = new MutationObserver((mutationsList) => {\n      mutationsList.forEach((mutation) => {\n        if (mutation.attributeName === 'data-state') {\n          const currentState = node.getAttribute('data-state');\n          setIsOpen(currentState === 'open');\n        }\n      });\n    });\n    observer.observe(node, {\n      attributes: true,\n      attributeFilter: ['data-state'],\n    });\n    const initialState = node.getAttribute('data-state');\n    setIsOpen(initialState === 'open');\n    return () => {\n      observer.disconnect();\n    };\n  }, [setIsOpen]);\n\n  return (\n    <AccordionPrimitive.Trigger\n      ref={triggerRef}\n      data-slot=\"accordion-trigger\"\n      {...props}\n    />\n  );\n}\n\ntype AccordionContentProps = HTMLMotionProps<'div'> & {\n  keepRendered?: boolean;\n};\n\nfunction AccordionContent({\n  children,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  keepRendered = false,\n  ...props\n}: AccordionContentProps) {\n  const { isOpen } = useAccordionItem();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <AccordionPrimitive.Content forceMount>\n          <motion.div\n            key=\"accordion-content\"\n            initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n            animate={\n              isOpen\n                ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }\n                : { height: 0, opacity: 0, '--mask-stop': '0%' }\n            }\n            transition={transition}\n            style={{\n              maskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              WebkitMaskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              overflow: 'hidden',\n            }}\n            {...props}\n          >\n            {children}\n          </motion.div>\n        </AccordionPrimitive.Content>\n      ) : (\n        isOpen && (\n          <AccordionPrimitive.Content forceMount>\n            <motion.div\n              key=\"accordion-content\"\n              data-slot=\"accordion-content\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                overflow: 'hidden',\n              }}\n              {...props}\n            >\n              {children}\n            </motion.div>\n          </AccordionPrimitive.Content>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionHeader,\n  AccordionTrigger,\n  AccordionContent,\n  useAccordionItem,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionHeaderProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n  type AccordionItemContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Accordion as AccordionPrimitive } from 'radix-ui';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype AccordionContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n};\n\ntype AccordionItemContextType = {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n};\n\nconst [AccordionProvider, useAccordion] =\n  useStrictContext<AccordionContextType>('AccordionContext');\n\nconst [AccordionItemProvider, useAccordionItem] =\n  useStrictContext<AccordionItemContextType>('AccordionItemContext');\n\ntype AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;\n\nfunction Accordion(props: AccordionProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props?.value,\n    defaultValue: props?.defaultValue,\n    onChange: props?.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <AccordionProvider value={{ value, setValue }}>\n      <AccordionPrimitive.Root\n        data-slot=\"accordion\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </AccordionProvider>\n  );\n}\n\ntype AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>;\n\nfunction AccordionItem(props: AccordionItemProps) {\n  const { value } = useAccordion();\n  const [isOpen, setIsOpen] = React.useState(\n    value?.includes(props?.value) ?? false,\n  );\n\n  React.useEffect(() => {\n    setIsOpen(value?.includes(props?.value) ?? false);\n  }, [value, props?.value]);\n\n  return (\n    <AccordionItemProvider value={{ isOpen, setIsOpen }}>\n      <AccordionPrimitive.Item data-slot=\"accordion-item\" {...props} />\n    </AccordionItemProvider>\n  );\n}\n\ntype AccordionHeaderProps = React.ComponentProps<\n  typeof AccordionPrimitive.Header\n>;\n\nfunction AccordionHeader(props: AccordionHeaderProps) {\n  return <AccordionPrimitive.Header data-slot=\"accordion-header\" {...props} />;\n}\n\ntype AccordionTriggerProps = React.ComponentProps<\n  typeof AccordionPrimitive.Trigger\n>;\n\nfunction AccordionTrigger(props: AccordionTriggerProps) {\n  return (\n    <AccordionPrimitive.Trigger data-slot=\"accordion-trigger\" {...props} />\n  );\n}\n\ntype AccordionContentProps = Omit<\n  React.ComponentProps<typeof AccordionPrimitive.Content>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'> & {\n    keepRendered?: boolean;\n  };\n\nfunction AccordionContent({\n  keepRendered = false,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  ...props\n}: AccordionContentProps) {\n  const { isOpen } = useAccordionItem();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <AccordionPrimitive.Content asChild forceMount>\n          <motion.div\n            key=\"accordion-content\"\n            initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n            animate={\n              isOpen\n                ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }\n                : { height: 0, opacity: 0, '--mask-stop': '0%' }\n            }\n            transition={transition}\n            style={{\n              maskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              WebkitMaskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              overflow: 'hidden',\n            }}\n            {...props}\n          />\n        </AccordionPrimitive.Content>\n      ) : (\n        isOpen && (\n          <AccordionPrimitive.Content asChild forceMount>\n            <motion.div\n              key=\"accordion-content\"\n              data-slot=\"accordion-content\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                overflow: 'hidden',\n              }}\n              {...props}\n            />\n          </AccordionPrimitive.Content>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionHeader,\n  AccordionTrigger,\n  AccordionContent,\n  useAccordionItem,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionHeaderProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n  type AccordionItemContextType,\n};",
       },
     ],
     keywords: [],
@@ -254,14 +1832,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
     files: [
       {
         path: 'registry/primitives/radix/checkbox/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/checkbox.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { Checkbox as CheckboxPrimitive } from \'radix-ui\';\nimport { motion, SVGMotionProps, type HTMLMotionProps } from \'motion/react\';\n\ntype CheckboxContextType = {\n  isChecked: boolean | \'indeterminate\';\n  setIsChecked: (checked: boolean | \'indeterminate\') => void;\n};\n\nconst CheckboxContext = React.createContext<CheckboxContextType | undefined>(\n  undefined,\n);\n\nconst useCheckbox = (): CheckboxContextType => {\n  const context = React.useContext(CheckboxContext);\n  if (!context) {\n    throw new Error(\'useCheckbox must be used within a Checkbox\');\n  }\n  return context;\n};\n\ntype CheckboxProps = HTMLMotionProps<\'button\'> &\n  Omit<React.ComponentProps<typeof CheckboxPrimitive.Root>, \'asChild\'>;\n\nfunction Checkbox({\n  defaultChecked,\n  checked,\n  onCheckedChange,\n  disabled,\n  required,\n  name,\n  value,\n  ...props\n}: CheckboxProps) {\n  const [isChecked, setIsChecked] = React.useState(\n    checked ?? defaultChecked ?? false,\n  );\n\n  React.useEffect(() => {\n    if (checked !== undefined) setIsChecked(checked);\n  }, [checked]);\n\n  const handleCheckedChange = React.useCallback(\n    (checked: boolean | \'indeterminate\') => {\n      setIsChecked(checked);\n      onCheckedChange?.(checked);\n    },\n    [onCheckedChange],\n  );\n\n  return (\n    <CheckboxContext.Provider value={{ isChecked, setIsChecked }}>\n      <CheckboxPrimitive.Root\n        defaultChecked={defaultChecked}\n        checked={checked}\n        onCheckedChange={handleCheckedChange}\n        disabled={disabled}\n        required={required}\n        name={name}\n        value={value}\n        asChild\n      >\n        <motion.button\n          data-slot="checkbox"\n          whileTap={{ scale: 0.95 }}\n          whileHover={{ scale: 1.05 }}\n          {...props}\n        />\n      </CheckboxPrimitive.Root>\n    </CheckboxContext.Provider>\n  );\n}\n\ntype CheckboxIndicatorProps = SVGMotionProps<SVGSVGElement>;\n\nfunction CheckboxIndicator(props: CheckboxIndicatorProps) {\n  const { isChecked } = useCheckbox();\n\n  return (\n    <CheckboxPrimitive.Indicator forceMount asChild>\n      <motion.svg\n        data-slot="checkbox-indicator"\n        xmlns="http://www.w3.org/2000/svg"\n        fill="none"\n        viewBox="0 0 24 24"\n        strokeWidth="3.5"\n        stroke="currentColor"\n        initial="unchecked"\n        animate={isChecked ? \'checked\' : \'unchecked\'}\n        {...props}\n      >\n        {isChecked === \'indeterminate\' ? (\n          <motion.line\n            x1="5"\n            y1="12"\n            x2="19"\n            y2="12"\n            strokeLinecap="round"\n            initial={{ pathLength: 0, opacity: 0 }}\n            animate={{\n              pathLength: 1,\n              opacity: 1,\n              transition: { duration: 0.2 },\n            }}\n          />\n        ) : (\n          <motion.path\n            strokeLinecap="round"\n            strokeLinejoin="round"\n            d="M4.5 12.75l6 6 9-13.5"\n            variants={{\n              checked: {\n                pathLength: 1,\n                opacity: 1,\n                transition: {\n                  duration: 0.2,\n                  delay: 0.2,\n                },\n              },\n              unchecked: {\n                pathLength: 0,\n                opacity: 0,\n                transition: {\n                  duration: 0.2,\n                },\n              },\n            }}\n          />\n        )}\n      </motion.svg>\n    </CheckboxPrimitive.Indicator>\n  );\n}\n\nexport {\n  Checkbox,\n  CheckboxIndicator,\n  useCheckbox,\n  type CheckboxProps,\n  type CheckboxIndicatorProps,\n  type CheckboxContextType,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { Checkbox as CheckboxPrimitive } from \'radix-ui\';\nimport { motion, SVGMotionProps, type HTMLMotionProps } from \'motion/react\';\n\nimport { useStrictContext } from \'@/components/animate-ui/hooks/use-strict-context\';\nimport { useControlledState } from \'@/components/animate-ui/hooks/use-controlled-state\';\n\ntype CheckboxContextType = {\n  isChecked: boolean | \'indeterminate\';\n  setIsChecked: (checked: boolean | \'indeterminate\') => void;\n};\n\nconst [CheckboxProvider, useCheckbox] =\n  useStrictContext<CheckboxContextType>(\'CheckboxContext\');\n\ntype CheckboxProps = HTMLMotionProps<\'button\'> &\n  Omit<React.ComponentProps<typeof CheckboxPrimitive.Root>, \'asChild\'>;\n\nfunction Checkbox({\n  defaultChecked,\n  checked,\n  onCheckedChange,\n  disabled,\n  required,\n  name,\n  value,\n  ...props\n}: CheckboxProps) {\n  const [isChecked, setIsChecked] = useControlledState({\n    value: checked,\n    defaultValue: defaultChecked,\n    onChange: onCheckedChange,\n  });\n\n  return (\n    <CheckboxProvider value={{ isChecked, setIsChecked }}>\n      <CheckboxPrimitive.Root\n        defaultChecked={defaultChecked}\n        checked={checked}\n        onCheckedChange={setIsChecked}\n        disabled={disabled}\n        required={required}\n        name={name}\n        value={value}\n        asChild\n      >\n        <motion.button\n          data-slot="checkbox"\n          whileTap={{ scale: 0.95 }}\n          whileHover={{ scale: 1.05 }}\n          {...props}\n        />\n      </CheckboxPrimitive.Root>\n    </CheckboxProvider>\n  );\n}\n\ntype CheckboxIndicatorProps = SVGMotionProps<SVGSVGElement>;\n\nfunction CheckboxIndicator(props: CheckboxIndicatorProps) {\n  const { isChecked } = useCheckbox();\n\n  return (\n    <CheckboxPrimitive.Indicator forceMount asChild>\n      <motion.svg\n        data-slot="checkbox-indicator"\n        xmlns="http://www.w3.org/2000/svg"\n        fill="none"\n        viewBox="0 0 24 24"\n        strokeWidth="3.5"\n        stroke="currentColor"\n        initial="unchecked"\n        animate={isChecked ? \'checked\' : \'unchecked\'}\n        {...props}\n      >\n        {isChecked === \'indeterminate\' ? (\n          <motion.line\n            x1="5"\n            y1="12"\n            x2="19"\n            y2="12"\n            strokeLinecap="round"\n            initial={{ pathLength: 0, opacity: 0 }}\n            animate={{\n              pathLength: 1,\n              opacity: 1,\n              transition: { duration: 0.2 },\n            }}\n          />\n        ) : (\n          <motion.path\n            strokeLinecap="round"\n            strokeLinejoin="round"\n            d="M4.5 12.75l6 6 9-13.5"\n            variants={{\n              checked: {\n                pathLength: 1,\n                opacity: 1,\n                transition: {\n                  duration: 0.2,\n                  delay: 0.2,\n                },\n              },\n              unchecked: {\n                pathLength: 0,\n                opacity: 0,\n                transition: {\n                  duration: 0.2,\n                },\n              },\n            }}\n          />\n        )}\n      </motion.svg>\n    </CheckboxPrimitive.Indicator>\n  );\n}\n\nexport {\n  Checkbox,\n  CheckboxIndicator,\n  useCheckbox,\n  type CheckboxProps,\n  type CheckboxIndicatorProps,\n  type CheckboxContextType,\n};',
       },
     ],
     keywords: [],
@@ -292,14 +1873,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-boolean',
+    ],
     files: [
       {
         path: 'registry/primitives/radix/collapsible/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/collapsible.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Collapsible as CollapsiblePrimitive } from 'radix-ui';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\ntype CollapsibleContextType = {\n  isOpen: boolean;\n};\n\nconst CollapsibleContext = React.createContext<\n  CollapsibleContextType | undefined\n>(undefined);\n\nconst useCollapsible = (): CollapsibleContextType => {\n  const context = React.useContext(CollapsibleContext);\n  if (!context) {\n    throw new Error('useCollapsible must be used within a Collapsible');\n  }\n  return context;\n};\n\ntype CollapsibleProps = React.ComponentProps<typeof CollapsiblePrimitive.Root>;\n\nfunction Collapsible({ children, onOpenChange, ...props }: CollapsibleProps) {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      onOpenChange?.(open);\n    },\n    [onOpenChange],\n  );\n\n  return (\n    <CollapsibleContext.Provider value={{ isOpen }}>\n      <CollapsiblePrimitive.Root\n        data-slot=\"collapsible\"\n        onOpenChange={handleOpenChange}\n        {...props}\n      >\n        {children}\n      </CollapsiblePrimitive.Root>\n    </CollapsibleContext.Provider>\n  );\n}\n\ntype CollapsibleTriggerProps = React.ComponentProps<\n  typeof CollapsiblePrimitive.Trigger\n>;\n\nfunction CollapsibleTrigger(props: CollapsibleTriggerProps) {\n  return (\n    <CollapsiblePrimitive.Trigger data-slot=\"collapsible-trigger\" {...props} />\n  );\n}\n\ntype CollapsibleContentProps = React.ComponentProps<\n  typeof CollapsiblePrimitive.Content\n> &\n  HTMLMotionProps<'div'> & {\n    transition?: Transition;\n    keepRendered?: boolean;\n  };\n\nfunction CollapsibleContent({\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  keepRendered = false,\n  ...props\n}: CollapsibleContentProps) {\n  const { isOpen } = useCollapsible();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <CollapsiblePrimitive.Content asChild forceMount>\n          <motion.div\n            key=\"collapsible-content\"\n            data-slot=\"collapsible-content\"\n            layout\n            initial={{ opacity: 0, height: 0, overflow: 'hidden' }}\n            animate={\n              isOpen\n                ? { opacity: 1, height: 'auto', overflow: 'hidden' }\n                : { opacity: 0, height: 0, overflow: 'hidden' }\n            }\n            transition={transition}\n            {...props}\n          />\n        </CollapsiblePrimitive.Content>\n      ) : (\n        isOpen && (\n          <CollapsiblePrimitive.Content asChild forceMount>\n            <motion.div\n              key=\"collapsible-content\"\n              data-slot=\"collapsible-content\"\n              layout\n              initial={{ opacity: 0, height: 0, overflow: 'hidden' }}\n              animate={{ opacity: 1, height: 'auto', overflow: 'hidden' }}\n              exit={{ opacity: 0, height: 0, overflow: 'hidden' }}\n              transition={transition}\n              {...props}\n            />\n          </CollapsiblePrimitive.Content>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Collapsible,\n  CollapsibleTrigger,\n  CollapsibleContent,\n  useCollapsible,\n  type CollapsibleProps,\n  type CollapsibleTriggerProps,\n  type CollapsibleContentProps,\n  type CollapsibleContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Collapsible as CollapsiblePrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype CollapsibleContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [CollapsibleProvider, useCollapsible] =\n  useStrictContext<CollapsibleContextType>('CollapsibleContext');\n\ntype CollapsibleProps = React.ComponentProps<typeof CollapsiblePrimitive.Root>;\n\nfunction Collapsible(props: CollapsibleProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <CollapsibleProvider value={{ isOpen, setIsOpen }}>\n      <CollapsiblePrimitive.Root\n        data-slot=\"collapsible\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </CollapsibleProvider>\n  );\n}\n\ntype CollapsibleTriggerProps = React.ComponentProps<\n  typeof CollapsiblePrimitive.Trigger\n>;\n\nfunction CollapsibleTrigger(props: CollapsibleTriggerProps) {\n  return (\n    <CollapsiblePrimitive.Trigger data-slot=\"collapsible-trigger\" {...props} />\n  );\n}\n\ntype CollapsibleContentProps = Omit<\n  React.ComponentProps<typeof CollapsiblePrimitive.Content>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'> & {\n    keepRendered?: boolean;\n  };\n\nfunction CollapsibleContent({\n  keepRendered = false,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  ...props\n}: CollapsibleContentProps) {\n  const { isOpen } = useCollapsible();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <CollapsiblePrimitive.Content asChild forceMount>\n          <motion.div\n            key=\"collapsible-content\"\n            data-slot=\"collapsible-content\"\n            layout\n            initial={{ opacity: 0, height: 0, overflow: 'hidden' }}\n            animate={\n              isOpen\n                ? { opacity: 1, height: 'auto', overflow: 'hidden' }\n                : { opacity: 0, height: 0, overflow: 'hidden' }\n            }\n            transition={transition}\n            {...props}\n          />\n        </CollapsiblePrimitive.Content>\n      ) : (\n        isOpen && (\n          <CollapsiblePrimitive.Content asChild forceMount>\n            <motion.div\n              key=\"collapsible-content\"\n              data-slot=\"collapsible-content\"\n              layout\n              initial={{ opacity: 0, height: 0, overflow: 'hidden' }}\n              animate={{ opacity: 1, height: 'auto', overflow: 'hidden' }}\n              exit={{ opacity: 0, height: 0, overflow: 'hidden' }}\n              transition={transition}\n              {...props}\n            />\n          </CollapsiblePrimitive.Content>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Collapsible,\n  CollapsibleTrigger,\n  CollapsibleContent,\n  useCollapsible,\n  type CollapsibleProps,\n  type CollapsibleTriggerProps,\n  type CollapsibleContentProps,\n  type CollapsibleContextType,\n};",
       },
     ],
     keywords: [],
@@ -331,14 +1915,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
     files: [
       {
         path: 'registry/primitives/radix/dialog/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/dialog.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Dialog as DialogPrimitive } from 'radix-ui';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\ntype DialogContextType = {\n  isOpen: boolean;\n};\n\nconst DialogContext = React.createContext<DialogContextType | undefined>(\n  undefined,\n);\n\nconst useDialog = (): DialogContextType => {\n  const context = React.useContext(DialogContext);\n  if (!context) {\n    throw new Error('useDialog must be used within a Dialog');\n  }\n  return context;\n};\n\ntype DialogProps = React.ComponentProps<typeof DialogPrimitive.Root>;\n\nfunction Dialog({ onOpenChange, ...props }: DialogProps) {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <DialogContext.Provider value={{ isOpen }}>\n      <DialogPrimitive.Root\n        data-slot=\"dialog\"\n        onOpenChange={handleOpenChange}\n        {...props}\n      />\n    </DialogContext.Provider>\n  );\n}\n\ntype DialogTriggerProps = React.ComponentProps<typeof DialogPrimitive.Trigger>;\n\nfunction DialogTrigger(props: DialogTriggerProps) {\n  return <DialogPrimitive.Trigger data-slot=\"dialog-trigger\" {...props} />;\n}\n\ntype DialogPortalProps = Omit<\n  React.ComponentProps<typeof DialogPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction DialogPortal(props: DialogPortalProps) {\n  const { isOpen } = useDialog();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <DialogPrimitive.Portal\n          data-slot=\"dialog-portal\"\n          forceMount\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype DialogOverlayProps = HTMLMotionProps<'div'>;\n\nfunction DialogOverlay({\n  transition = { duration: 0.2, ease: 'easeInOut' },\n  ...props\n}: DialogOverlayProps) {\n  return (\n    <DialogPrimitive.Overlay data-slot=\"dialog-overlay\" asChild forceMount>\n      <motion.div\n        key=\"dialog-overlay\"\n        initial={{ opacity: 0, filter: 'blur(4px)' }}\n        animate={{ opacity: 1, filter: 'blur(0px)' }}\n        exit={{ opacity: 0, filter: 'blur(4px)' }}\n        transition={transition}\n        {...props}\n      />\n    </DialogPrimitive.Overlay>\n  );\n}\n\ntype DialogFlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ntype DialogContentProps = React.ComponentProps<typeof DialogPrimitive.Content> &\n  HTMLMotionProps<'div'> & {\n    from?: DialogFlipDirection;\n  };\n\nfunction DialogContent({\n  from = 'top',\n  transition = { type: 'spring', stiffness: 150, damping: 25 },\n  ...props\n}: DialogContentProps) {\n  const initialRotation =\n    from === 'bottom' || from === 'left' ? '20deg' : '-20deg';\n  const isVertical = from === 'top' || from === 'bottom';\n  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n  return (\n    <DialogPrimitive.Content asChild forceMount {...props}>\n      <motion.div\n        key=\"dialog-content\"\n        data-slot=\"dialog-content\"\n        initial={{\n          opacity: 0,\n          filter: 'blur(4px)',\n          transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        }}\n        animate={{\n          opacity: 1,\n          filter: 'blur(0px)',\n          transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,\n        }}\n        exit={{\n          opacity: 0,\n          filter: 'blur(4px)',\n          transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        }}\n        transition={transition}\n        {...props}\n      />\n    </DialogPrimitive.Content>\n  );\n}\n\ntype DialogCloseProps = React.ComponentProps<typeof DialogPrimitive.Close>;\n\nfunction DialogClose(props: DialogCloseProps) {\n  return <DialogPrimitive.Close data-slot=\"dialog-close\" {...props} />;\n}\n\ntype DialogHeaderProps = React.ComponentProps<'div'>;\n\nfunction DialogHeader(props: DialogHeaderProps) {\n  return <div data-slot=\"dialog-header\" {...props} />;\n}\n\ntype DialogFooterProps = React.ComponentProps<'div'>;\n\nfunction DialogFooter(props: DialogFooterProps) {\n  return <div data-slot=\"dialog-footer\" {...props} />;\n}\n\ntype DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title>;\n\nfunction DialogTitle(props: DialogTitleProps) {\n  return <DialogPrimitive.Title data-slot=\"dialog-title\" {...props} />;\n}\n\ntype DialogDescriptionProps = React.ComponentProps<\n  typeof DialogPrimitive.Description\n>;\n\nfunction DialogDescription(props: DialogDescriptionProps) {\n  return (\n    <DialogPrimitive.Description data-slot=\"dialog-description\" {...props} />\n  );\n}\n\nexport {\n  Dialog,\n  DialogPortal,\n  DialogOverlay,\n  DialogClose,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  useDialog,\n  type DialogProps,\n  type DialogTriggerProps,\n  type DialogPortalProps,\n  type DialogCloseProps,\n  type DialogOverlayProps,\n  type DialogContentProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n  type DialogContextType,\n  type DialogFlipDirection,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Dialog as DialogPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype DialogContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [DialogProvider, useDialog] =\n  useStrictContext<DialogContextType>('DialogContext');\n\ntype DialogProps = React.ComponentProps<typeof DialogPrimitive.Root>;\n\nfunction Dialog(props: DialogProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <DialogProvider value={{ isOpen, setIsOpen }}>\n      <DialogPrimitive.Root\n        data-slot=\"dialog\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </DialogProvider>\n  );\n}\n\ntype DialogTriggerProps = React.ComponentProps<typeof DialogPrimitive.Trigger>;\n\nfunction DialogTrigger(props: DialogTriggerProps) {\n  return <DialogPrimitive.Trigger data-slot=\"dialog-trigger\" {...props} />;\n}\n\ntype DialogPortalProps = Omit<\n  React.ComponentProps<typeof DialogPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction DialogPortal(props: DialogPortalProps) {\n  const { isOpen } = useDialog();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <DialogPrimitive.Portal\n          data-slot=\"dialog-portal\"\n          forceMount\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype DialogOverlayProps = Omit<\n  React.ComponentProps<typeof DialogPrimitive.Overlay>,\n  'forceMount' | 'asChild'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction DialogOverlay({\n  transition = { duration: 0.2, ease: 'easeInOut' },\n  ...props\n}: DialogOverlayProps) {\n  return (\n    <DialogPrimitive.Overlay data-slot=\"dialog-overlay\" asChild forceMount>\n      <motion.div\n        key=\"dialog-overlay\"\n        initial={{ opacity: 0, filter: 'blur(4px)' }}\n        animate={{ opacity: 1, filter: 'blur(0px)' }}\n        exit={{ opacity: 0, filter: 'blur(4px)' }}\n        transition={transition}\n        {...props}\n      />\n    </DialogPrimitive.Overlay>\n  );\n}\n\ntype DialogFlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ntype DialogContentProps = Omit<\n  React.ComponentProps<typeof DialogPrimitive.Content>,\n  'forceMount' | 'asChild'\n> &\n  HTMLMotionProps<'div'> & {\n    from?: DialogFlipDirection;\n  };\n\nfunction DialogContent({\n  from = 'top',\n  onOpenAutoFocus,\n  onCloseAutoFocus,\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  onInteractOutside,\n  transition = { type: 'spring', stiffness: 150, damping: 25 },\n  ...props\n}: DialogContentProps) {\n  const initialRotation =\n    from === 'bottom' || from === 'left' ? '20deg' : '-20deg';\n  const isVertical = from === 'top' || from === 'bottom';\n  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n  return (\n    <DialogPrimitive.Content\n      asChild\n      forceMount\n      onOpenAutoFocus={onOpenAutoFocus}\n      onCloseAutoFocus={onCloseAutoFocus}\n      onEscapeKeyDown={onEscapeKeyDown}\n      onPointerDownOutside={onPointerDownOutside}\n      onInteractOutside={onInteractOutside}\n    >\n      <motion.div\n        key=\"dialog-content\"\n        data-slot=\"dialog-content\"\n        initial={{\n          opacity: 0,\n          filter: 'blur(4px)',\n          transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        }}\n        animate={{\n          opacity: 1,\n          filter: 'blur(0px)',\n          transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,\n        }}\n        exit={{\n          opacity: 0,\n          filter: 'blur(4px)',\n          transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        }}\n        transition={transition}\n        {...props}\n      />\n    </DialogPrimitive.Content>\n  );\n}\n\ntype DialogCloseProps = React.ComponentProps<typeof DialogPrimitive.Close>;\n\nfunction DialogClose(props: DialogCloseProps) {\n  return <DialogPrimitive.Close data-slot=\"dialog-close\" {...props} />;\n}\n\ntype DialogHeaderProps = React.ComponentProps<'div'>;\n\nfunction DialogHeader(props: DialogHeaderProps) {\n  return <div data-slot=\"dialog-header\" {...props} />;\n}\n\ntype DialogFooterProps = React.ComponentProps<'div'>;\n\nfunction DialogFooter(props: DialogFooterProps) {\n  return <div data-slot=\"dialog-footer\" {...props} />;\n}\n\ntype DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title>;\n\nfunction DialogTitle(props: DialogTitleProps) {\n  return <DialogPrimitive.Title data-slot=\"dialog-title\" {...props} />;\n}\n\ntype DialogDescriptionProps = React.ComponentProps<\n  typeof DialogPrimitive.Description\n>;\n\nfunction DialogDescription(props: DialogDescriptionProps) {\n  return (\n    <DialogPrimitive.Description data-slot=\"dialog-description\" {...props} />\n  );\n}\n\nexport {\n  Dialog,\n  DialogPortal,\n  DialogOverlay,\n  DialogClose,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  useDialog,\n  type DialogProps,\n  type DialogTriggerProps,\n  type DialogPortalProps,\n  type DialogCloseProps,\n  type DialogOverlayProps,\n  type DialogContentProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n  type DialogContextType,\n  type DialogFlipDirection,\n};",
       },
     ],
     keywords: [],
@@ -362,5 +1949,687 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/primitives-radix-dialog',
+  },
+  'primitives-radix-dropdown-menu': {
+    name: 'primitives-radix-dropdown-menu',
+    description:
+      'Displays a menu to the user — such as a set of actions or functions — triggered by a button.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-effects-highlight',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/dropdown-menu/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/dropdown-menu.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype DropdownMenuContextType = {\n  isOpen: boolean;\n  setIsOpen: (o: boolean) => void;\n};\n\nconst [DropdownMenuProvider, useDropdownMenu] =\n  useStrictContext<DropdownMenuContextType>('DropdownMenuContext');\n\nconst [DropdownMenuSubProvider, useDropdownMenuSub] =\n  useStrictContext<DropdownMenuContextType>('DropdownMenuSubContext');\n\ntype DropdownMenuProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Root\n>;\n\nfunction DropdownMenu(props: DropdownMenuProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <DropdownMenuProvider value={{ isOpen, setIsOpen }}>\n      <DropdownMenuPrimitive.Root\n        data-slot=\"dropdown-menu\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </DropdownMenuProvider>\n  );\n}\n\ntype DropdownMenuTriggerProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Trigger\n>;\n\nfunction DropdownMenuTrigger(props: DropdownMenuTriggerProps) {\n  return (\n    <DropdownMenuPrimitive.Trigger\n      data-slot=\"dropdown-menu-trigger\"\n      {...props}\n    />\n  );\n}\n\ntype DropdownMenuPortalProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Portal\n>;\n\nfunction DropdownMenuPortal(props: DropdownMenuPortalProps) {\n  return (\n    <DropdownMenuPrimitive.Portal data-slot=\"dropdown-menu-portal\" {...props} />\n  );\n}\n\ntype DropdownMenuGroupProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Group\n>;\n\nfunction DropdownMenuGroup(props: DropdownMenuGroupProps) {\n  return (\n    <DropdownMenuPrimitive.Group data-slot=\"dropdown-menu-group\" {...props} />\n  );\n}\n\ntype DropdownMenuSubProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Sub\n>;\n\nfunction DropdownMenuSub(props: DropdownMenuSubProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <DropdownMenuSubProvider value={{ isOpen, setIsOpen }}>\n      <DropdownMenuPrimitive.Sub\n        data-slot=\"dropdown-menu-sub\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </DropdownMenuSubProvider>\n  );\n}\n\ntype DropdownMenuRadioGroupProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.RadioGroup\n>;\n\nfunction DropdownMenuRadioGroup(props: DropdownMenuRadioGroupProps) {\n  return (\n    <DropdownMenuPrimitive.RadioGroup\n      data-slot=\"dropdown-menu-radio-group\"\n      {...props}\n    />\n  );\n}\n\ntype DropdownMenuSubTriggerProps = Omit<\n  React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger>,\n  'asChild'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction DropdownMenuSubTrigger({\n  disabled,\n  textValue,\n  ...props\n}: DropdownMenuSubTriggerProps) {\n  return (\n    <DropdownMenuPrimitive.SubTrigger\n      disabled={disabled}\n      textValue={textValue}\n      asChild\n    >\n      <motion.div\n        data-slot=\"dropdown-menu-sub-trigger\"\n        data-disabled={disabled}\n        whileTap={{ scale: 0.95 }}\n        {...props}\n      />\n    </DropdownMenuPrimitive.SubTrigger>\n  );\n}\n\ntype DropdownMenuSubContentProps = Omit<\n  React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>,\n  'forceMount' | 'asChild'\n> &\n  Omit<\n    React.ComponentProps<typeof DropdownMenuPrimitive.Portal>,\n    'forceMount'\n  > &\n  HTMLMotionProps<'div'>;\n\nfunction DropdownMenuSubContent({\n  loop,\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  onFocusOutside,\n  onInteractOutside,\n  sideOffset = 4,\n  alignOffset,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { duration: 0.2 },\n  style,\n  container,\n  ...props\n}: DropdownMenuSubContentProps) {\n  const { isOpen } = useDropdownMenuSub();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <DropdownMenuPortal forceMount container={container}>\n          <DropdownMenuPrimitive.SubContent\n            asChild\n            forceMount\n            loop={loop}\n            onEscapeKeyDown={onEscapeKeyDown}\n            onPointerDownOutside={onPointerDownOutside}\n            onFocusOutside={onFocusOutside}\n            onInteractOutside={onInteractOutside}\n            sideOffset={sideOffset}\n            alignOffset={alignOffset}\n            avoidCollisions={avoidCollisions}\n            collisionBoundary={collisionBoundary}\n            collisionPadding={collisionPadding}\n            arrowPadding={arrowPadding}\n            sticky={sticky}\n            hideWhenDetached={hideWhenDetached}\n          >\n            <motion.div\n              key=\"dropdown-menu-sub-content\"\n              data-slot=\"dropdown-menu-sub-content\"\n              initial={{ opacity: 0, scale: 0.95 }}\n              animate={{ opacity: 1, scale: 1 }}\n              exit={{ opacity: 0, scale: 0.95 }}\n              transition={transition}\n              style={{ willChange: 'opacity, transform', zIndex: 50, ...style }}\n              {...props}\n            />\n          </DropdownMenuPrimitive.SubContent>\n        </DropdownMenuPortal>\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype DropdownMenuHighlightProps = Omit<\n  HighlightProps,\n  'controlledItems' | 'enabled' | 'hover'\n> & {\n  animateOnHover?: boolean;\n};\n\nfunction DropdownMenuHighlight({\n  transition = { type: 'spring', stiffness: 350, damping: 35 },\n  animateOnHover = true,\n  ...props\n}: DropdownMenuHighlightProps) {\n  return (\n    <Highlight\n      hover\n      controlledItems\n      enabled={animateOnHover}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype DropdownMenuContentProps = Omit<\n  React.ComponentProps<typeof DropdownMenuPrimitive.Content>,\n  'forceMount' | 'asChild'\n> &\n  Omit<\n    React.ComponentProps<typeof DropdownMenuPrimitive.Portal>,\n    'forceMount'\n  > &\n  HTMLMotionProps<'div'>;\n\nfunction DropdownMenuContent({\n  loop,\n  onCloseAutoFocus,\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  onFocusOutside,\n  onInteractOutside,\n  side,\n  sideOffset = 4,\n  align,\n  alignOffset,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { duration: 0.2 },\n  style,\n  container,\n  ...props\n}: DropdownMenuContentProps) {\n  const { isOpen } = useDropdownMenu();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <DropdownMenuPortal forceMount container={container}>\n          <DropdownMenuPrimitive.Content\n            asChild\n            loop={loop}\n            onCloseAutoFocus={onCloseAutoFocus}\n            onEscapeKeyDown={onEscapeKeyDown}\n            onPointerDownOutside={onPointerDownOutside}\n            onFocusOutside={onFocusOutside}\n            onInteractOutside={onInteractOutside}\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n            avoidCollisions={avoidCollisions}\n            collisionBoundary={collisionBoundary}\n            collisionPadding={collisionPadding}\n            arrowPadding={arrowPadding}\n            sticky={sticky}\n            hideWhenDetached={hideWhenDetached}\n          >\n            <motion.div\n              key=\"dropdown-menu-content\"\n              data-slot=\"dropdown-menu-content\"\n              initial={{ opacity: 0, scale: 0.95 }}\n              animate={{ opacity: 1, scale: 1 }}\n              exit={{ opacity: 0, scale: 0.95 }}\n              transition={transition}\n              style={{ willChange: 'opacity, transform', zIndex: 50, ...style }}\n              {...props}\n            />\n          </DropdownMenuPrimitive.Content>\n        </DropdownMenuPortal>\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype DropdownMenuHighlightItemProps = HighlightItemProps;\n\nfunction DropdownMenuHighlightItem(props: DropdownMenuHighlightItemProps) {\n  return <HighlightItem data-slot=\"dropdown-menu-highlight-item\" {...props} />;\n}\n\ntype DropdownMenuItemProps = Omit<\n  React.ComponentProps<typeof DropdownMenuPrimitive.Item>,\n  'asChild'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction DropdownMenuItem({\n  disabled,\n  onSelect,\n  textValue,\n  ...props\n}: DropdownMenuItemProps) {\n  return (\n    <DropdownMenuPrimitive.Item\n      disabled={disabled}\n      onSelect={onSelect}\n      textValue={textValue}\n      asChild\n    >\n      <motion.div\n        data-slot=\"dropdown-menu-item\"\n        data-disabled={disabled}\n        whileTap={{ scale: 0.95 }}\n        {...props}\n      />\n    </DropdownMenuPrimitive.Item>\n  );\n}\n\ntype DropdownMenuCheckboxItemProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.CheckboxItem\n> &\n  HTMLMotionProps<'div'>;\n\nfunction DropdownMenuCheckboxItem({\n  checked,\n  onCheckedChange,\n  disabled,\n  onSelect,\n  textValue,\n  ...props\n}: DropdownMenuCheckboxItemProps) {\n  return (\n    <DropdownMenuPrimitive.CheckboxItem\n      checked={checked}\n      onCheckedChange={onCheckedChange}\n      disabled={disabled}\n      onSelect={onSelect}\n      textValue={textValue}\n      asChild\n    >\n      <motion.div\n        data-slot=\"dropdown-menu-checkbox-item\"\n        data-disabled={disabled}\n        whileTap={{ scale: 0.95 }}\n        {...props}\n      />\n    </DropdownMenuPrimitive.CheckboxItem>\n  );\n}\n\ntype DropdownMenuRadioItemProps = Omit<\n  React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>,\n  'asChild'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction DropdownMenuRadioItem({\n  value,\n  disabled,\n  onSelect,\n  textValue,\n  ...props\n}: DropdownMenuRadioItemProps) {\n  return (\n    <DropdownMenuPrimitive.RadioItem\n      value={value}\n      disabled={disabled}\n      onSelect={onSelect}\n      textValue={textValue}\n      asChild\n    >\n      <motion.div\n        data-slot=\"dropdown-menu-radio-item\"\n        data-disabled={disabled}\n        whileTap={{ scale: 0.95 }}\n        {...props}\n      />\n    </DropdownMenuPrimitive.RadioItem>\n  );\n}\n\ntype DropdownMenuLabelProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Label\n>;\n\nfunction DropdownMenuLabel(props: DropdownMenuLabelProps) {\n  return (\n    <DropdownMenuPrimitive.Label data-slot=\"dropdown-menu-label\" {...props} />\n  );\n}\n\ntype DropdownMenuSeparatorProps = React.ComponentProps<\n  typeof DropdownMenuPrimitive.Separator\n>;\n\nfunction DropdownMenuSeparator(props: DropdownMenuSeparatorProps) {\n  return (\n    <DropdownMenuPrimitive.Separator\n      data-slot=\"dropdown-menu-separator\"\n      {...props}\n    />\n  );\n}\n\ntype DropdownMenuShortcutProps = React.ComponentProps<'span'>;\n\nfunction DropdownMenuShortcut(props: DropdownMenuShortcutProps) {\n  return <span data-slot=\"dropdown-menu-shortcut\" {...props} />;\n}\n\nexport {\n  DropdownMenu,\n  DropdownMenuTrigger,\n  DropdownMenuHighlight,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuHighlightItem,\n  DropdownMenuCheckboxItem,\n  DropdownMenuRadioItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuGroup,\n  DropdownMenuPortal,\n  DropdownMenuSub,\n  DropdownMenuSubContent,\n  DropdownMenuSubTrigger,\n  DropdownMenuRadioGroup,\n  useDropdownMenu,\n  useDropdownMenuSub,\n  type DropdownMenuProps,\n  type DropdownMenuTriggerProps,\n  type DropdownMenuHighlightProps,\n  type DropdownMenuContentProps,\n  type DropdownMenuItemProps,\n  type DropdownMenuHighlightItemProps,\n  type DropdownMenuCheckboxItemProps,\n  type DropdownMenuRadioItemProps,\n  type DropdownMenuLabelProps,\n  type DropdownMenuSeparatorProps,\n  type DropdownMenuShortcutProps,\n  type DropdownMenuGroupProps,\n  type DropdownMenuPortalProps,\n  type DropdownMenuSubProps,\n  type DropdownMenuSubContentProps,\n  type DropdownMenuSubTriggerProps,\n  type DropdownMenuRadioGroupProps,\n  type DropdownMenuContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/dropdown-menu/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-dropdown-menu';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-dropdown-menu',
+  },
+  'primitives-radix-hover-card': {
+    name: 'primitives-radix-hover-card',
+    description:
+      'For sighted users to preview content available behind a link.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/hover-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/hover-card.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { HoverCard as HoverCardPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype HoverCardContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [HoverCardProvider, useHoverCard] =\n  useStrictContext<HoverCardContextType>('HoverCardContext');\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\nconst getInitialPosition = (side: Side, offset: number) => {\n  const axisMap = { top: 'y', bottom: 'y', left: 'x', right: 'x' } as const;\n  const sign = side === 'top' || side === 'left' ? 1 : -1;\n  return { [axisMap[side]]: sign * offset };\n};\n\ntype HoverCardProps = React.ComponentProps<typeof HoverCardPrimitive.Root>;\n\nfunction HoverCard(props: HoverCardProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <HoverCardProvider value={{ isOpen, setIsOpen }}>\n      <HoverCardPrimitive.Root\n        data-slot=\"hover-card\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </HoverCardProvider>\n  );\n}\n\ntype HoverCardTriggerProps = React.ComponentProps<\n  typeof HoverCardPrimitive.Trigger\n>;\n\nfunction HoverCardTrigger(props: HoverCardTriggerProps) {\n  return (\n    <HoverCardPrimitive.Trigger data-slot=\"hover-card-trigger\" {...props} />\n  );\n}\n\ntype HoverCardPortalProps = Omit<\n  React.ComponentProps<typeof HoverCardPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction HoverCardPortal(props: HoverCardPortalProps) {\n  const { isOpen } = useHoverCard();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <HoverCardPrimitive.Portal\n          forceMount\n          data-slot=\"hover-card-portal\"\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype HoverCardContentProps = React.ComponentProps<\n  typeof HoverCardPrimitive.Content\n> &\n  HTMLMotionProps<'div'> & {\n    transitionOffset?: number;\n  };\n\nfunction HoverCardContent({\n  align,\n  alignOffset,\n  side = 'bottom',\n  sideOffset = 4,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  transitionOffset = 15,\n  ...props\n}: HoverCardContentProps) {\n  const initialPosition = getInitialPosition(side, transitionOffset);\n\n  return (\n    <HoverCardPrimitive.Content\n      asChild\n      forceMount\n      align={align}\n      alignOffset={alignOffset}\n      side={side}\n      sideOffset={sideOffset}\n      avoidCollisions={avoidCollisions}\n      collisionBoundary={collisionBoundary}\n      collisionPadding={collisionPadding}\n      arrowPadding={arrowPadding}\n      sticky={sticky}\n      hideWhenDetached={hideWhenDetached}\n    >\n      <motion.div\n        key=\"hover-card-content\"\n        data-slot=\"hover-card-content\"\n        initial={{ opacity: 0, scale: 0.5, ...initialPosition }}\n        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n        exit={{ opacity: 0, scale: 0.5, ...initialPosition }}\n        transition={transition}\n        {...props}\n      />\n    </HoverCardPrimitive.Content>\n  );\n}\n\ntype HoverCardArrowProps = React.ComponentProps<\n  typeof HoverCardPrimitive.Arrow\n>;\n\nfunction HoverCardArrow(props: HoverCardArrowProps) {\n  return <HoverCardPrimitive.Arrow data-slot=\"hover-card-arrow\" {...props} />;\n}\n\nexport {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardPortal,\n  HoverCardContent,\n  HoverCardArrow,\n  useHoverCard,\n  type HoverCardProps,\n  type HoverCardTriggerProps,\n  type HoverCardPortalProps,\n  type HoverCardContentProps,\n  type HoverCardArrowProps,\n  type HoverCardContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/hover-card/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-hover-card';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-hover-card',
+  },
+  'primitives-radix-popover': {
+    name: 'primitives-radix-popover',
+    description: 'Displays rich content in a portal, triggered by a button.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/popover.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Popover as PopoverPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype PopoverContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [PopoverProvider, usePopover] =\n  useStrictContext<PopoverContextType>('PopoverContext');\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\nconst getInitialPosition = (side: Side, offset: number) => {\n  const axisMap = { top: 'y', bottom: 'y', left: 'x', right: 'x' } as const;\n  const sign = side === 'top' || side === 'left' ? 1 : -1;\n  return { [axisMap[side]]: sign * offset };\n};\n\ntype PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>;\n\nfunction Popover(props: PopoverProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <PopoverProvider value={{ isOpen, setIsOpen }}>\n      <PopoverPrimitive.Root\n        data-slot=\"popover\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </PopoverProvider>\n  );\n}\n\ntype PopoverTriggerProps = React.ComponentProps<\n  typeof PopoverPrimitive.Trigger\n>;\n\nfunction PopoverTrigger(props: PopoverTriggerProps) {\n  return <PopoverPrimitive.Trigger data-slot=\"popover-trigger\" {...props} />;\n}\n\ntype PopoverPortalProps = Omit<\n  React.ComponentProps<typeof PopoverPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction PopoverPortal(props: PopoverPortalProps) {\n  const { isOpen } = usePopover();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <PopoverPrimitive.Portal\n          forceMount\n          data-slot=\"popover-portal\"\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype PopoverContentProps = Omit<\n  React.ComponentProps<typeof PopoverPrimitive.Content>,\n  'forceMount' | 'asChild'\n> &\n  HTMLMotionProps<'div'> & {\n    transitionOffset?: number;\n  };\n\nfunction PopoverContent({\n  onOpenAutoFocus,\n  onCloseAutoFocus,\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  onFocusOutside,\n  onInteractOutside,\n  align,\n  alignOffset,\n  side = 'bottom',\n  sideOffset = 4,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  transitionOffset = 15,\n  ...props\n}: PopoverContentProps) {\n  const initialPosition = getInitialPosition(side, transitionOffset);\n\n  return (\n    <PopoverPrimitive.Content\n      asChild\n      forceMount\n      align={align}\n      alignOffset={alignOffset}\n      side={side}\n      sideOffset={sideOffset}\n      avoidCollisions={avoidCollisions}\n      collisionBoundary={collisionBoundary}\n      collisionPadding={collisionPadding}\n      arrowPadding={arrowPadding}\n      sticky={sticky}\n      hideWhenDetached={hideWhenDetached}\n      onOpenAutoFocus={onOpenAutoFocus}\n      onCloseAutoFocus={onCloseAutoFocus}\n      onEscapeKeyDown={onEscapeKeyDown}\n      onPointerDownOutside={onPointerDownOutside}\n      onInteractOutside={onInteractOutside}\n      onFocusOutside={onFocusOutside}\n    >\n      <motion.div\n        key=\"popover-content\"\n        data-slot=\"popover-content\"\n        initial={{ opacity: 0, scale: 0.5, ...initialPosition }}\n        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n        exit={{ opacity: 0, scale: 0.5, ...initialPosition }}\n        transition={transition}\n        {...props}\n      />\n    </PopoverPrimitive.Content>\n  );\n}\n\ntype PopoverAnchorProps = React.ComponentProps<typeof PopoverPrimitive.Anchor>;\n\nfunction PopoverAnchor({ ...props }: PopoverAnchorProps) {\n  return <PopoverPrimitive.Anchor data-slot=\"popover-anchor\" {...props} />;\n}\n\ntype PopoverArrowProps = React.ComponentProps<typeof PopoverPrimitive.Arrow>;\n\nfunction PopoverArrow(props: PopoverArrowProps) {\n  return <PopoverPrimitive.Arrow data-slot=\"popover-arrow\" {...props} />;\n}\n\ntype PopoverCloseProps = React.ComponentProps<typeof PopoverPrimitive.Close>;\n\nfunction PopoverClose(props: PopoverCloseProps) {\n  return <PopoverPrimitive.Close data-slot=\"popover-close\" {...props} />;\n}\n\nexport {\n  Popover,\n  PopoverTrigger,\n  PopoverPortal,\n  PopoverContent,\n  PopoverAnchor,\n  PopoverClose,\n  PopoverArrow,\n  usePopover,\n  type PopoverProps,\n  type PopoverTriggerProps,\n  type PopoverPortalProps,\n  type PopoverContentProps,\n  type PopoverAnchorProps,\n  type PopoverCloseProps,\n  type PopoverArrowProps,\n  type PopoverContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/popover/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-popover';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-popover',
+  },
+  'primitives-radix-progress': {
+    name: 'primitives-radix-progress',
+    description:
+      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-strict-context'],
+    files: [
+      {
+        path: 'registry/primitives/radix/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport { motion } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype ProgressContextType = {\n  value: number;\n};\n\nconst [ProgressProvider, useProgress] =\n  useStrictContext<ProgressContextType>('ProgressContext');\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root>;\n\nfunction Progress(props: ProgressProps) {\n  return (\n    <ProgressProvider value={{ value: props.value ?? 0 }}>\n      <ProgressPrimitive.Root data-slot=\"progress\" {...props} />\n    </ProgressProvider>\n  );\n}\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressIndicatorProps = React.ComponentProps<\n  typeof MotionProgressIndicator\n>;\n\nfunction ProgressIndicator({\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressIndicatorProps) {\n  const { value } = useProgress();\n\n  return (\n    <MotionProgressIndicator\n      data-slot=\"progress-indicator\"\n      animate={{ x: `-${100 - (value || 0)}%` }}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Progress,\n  ProgressIndicator,\n  useProgress,\n  type ProgressProps,\n  type ProgressIndicatorProps,\n  type ProgressContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/progress/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-progress';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-progress',
+  },
+  'primitives-radix-radio-group': {
+    name: 'primitives-radix-radio-group',
+    description:
+      'A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/progress.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport { motion } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype ProgressContextType = {\n  value: number;\n};\n\nconst [ProgressProvider, useProgress] =\n  useStrictContext<ProgressContextType>('ProgressContext');\n\ntype ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root>;\n\nfunction Progress(props: ProgressProps) {\n  return (\n    <ProgressProvider value={{ value: props.value ?? 0 }}>\n      <ProgressPrimitive.Root data-slot=\"progress\" {...props} />\n    </ProgressProvider>\n  );\n}\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressIndicatorProps = React.ComponentProps<\n  typeof MotionProgressIndicator\n>;\n\nfunction ProgressIndicator({\n  transition = { type: 'spring', stiffness: 100, damping: 30 },\n  ...props\n}: ProgressIndicatorProps) {\n  const { value } = useProgress();\n\n  return (\n    <MotionProgressIndicator\n      data-slot=\"progress-indicator\"\n      animate={{ x: `-${100 - (value || 0)}%` }}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Progress,\n  ProgressIndicator,\n  useProgress,\n  type ProgressProps,\n  type ProgressIndicatorProps,\n  type ProgressContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/progress/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-radio-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-radio-group',
+  },
+  'primitives-radix-switch': {
+    name: 'primitives-radix-switch',
+    description:
+      'A control that allows the user to toggle between checked and not checked.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/switch.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Switch as SwitchPrimitives } from 'radix-ui';\nimport {\n  motion,\n  type TargetAndTransition,\n  type VariantLabels,\n  type HTMLMotionProps,\n  type LegacyAnimationControls,\n} from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype SwitchContextType = {\n  isChecked: boolean;\n  setIsChecked: (isChecked: boolean) => void;\n  isPressed: boolean;\n  setIsPressed: (isPressed: boolean) => void;\n};\n\nconst [SwitchProvider, useSwitch] =\n  useStrictContext<SwitchContextType>('SwitchContext');\n\ntype SwitchProps = Omit<\n  React.ComponentProps<typeof SwitchPrimitives.Root>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Switch(props: SwitchProps) {\n  const [isPressed, setIsPressed] = React.useState(false);\n  const [isChecked, setIsChecked] = useControlledState({\n    value: props.checked,\n    defaultValue: props.defaultChecked,\n    onChange: props.onCheckedChange,\n  });\n\n  return (\n    <SwitchProvider\n      value={{ isChecked, setIsChecked, isPressed, setIsPressed }}\n    >\n      <SwitchPrimitives.Root {...props} onCheckedChange={setIsChecked} asChild>\n        <motion.button\n          data-slot=\"switch\"\n          whileTap=\"tap\"\n          initial={false}\n          onTapStart={() => setIsPressed(true)}\n          onTapCancel={() => setIsPressed(false)}\n          onTap={() => setIsPressed(false)}\n          {...props}\n        />\n      </SwitchPrimitives.Root>\n    </SwitchProvider>\n  );\n}\n\ntype SwitchThumbProps = Omit<\n  React.ComponentProps<typeof SwitchPrimitives.Thumb>,\n  'asChild'\n> &\n  HTMLMotionProps<'div'> & {\n    pressedAnimation?:\n      | TargetAndTransition\n      | VariantLabels\n      | boolean\n      | LegacyAnimationControls;\n  };\n\nfunction SwitchThumb({\n  pressedAnimation,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  ...props\n}: SwitchThumbProps) {\n  const { isPressed } = useSwitch();\n\n  return (\n    <SwitchPrimitives.Thumb asChild>\n      <motion.div\n        data-slot=\"switch-thumb\"\n        whileTap=\"tab\"\n        layout\n        transition={transition}\n        animate={isPressed ? pressedAnimation : undefined}\n        {...props}\n      />\n    </SwitchPrimitives.Thumb>\n  );\n}\n\ntype SwitchIconPosition = 'left' | 'right' | 'thumb';\n\ntype SwitchIconProps = HTMLMotionProps<'div'> & {\n  position: SwitchIconPosition;\n};\n\nfunction SwitchIcon({\n  position,\n  transition = { type: 'spring', bounce: 0 },\n  ...props\n}: SwitchIconProps) {\n  const { isChecked } = useSwitch();\n\n  const isAnimated = React.useMemo(() => {\n    if (position === 'right') return !isChecked;\n    if (position === 'left') return isChecked;\n    if (position === 'thumb') return true;\n    return false;\n  }, [position, isChecked]);\n\n  return (\n    <motion.div\n      data-slot={`switch-${position}-icon`}\n      animate={isAnimated ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Switch,\n  SwitchThumb,\n  SwitchIcon,\n  type SwitchProps,\n  type SwitchThumbProps,\n  type SwitchIconProps,\n  type SwitchIconPosition,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-switch',
+  },
+  'primitives-radix-tabs': {
+    name: 'primitives-radix-tabs',
+    description:
+      'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-effects-highlight',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/tabs.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Tabs as TabsPrimitive } from 'radix-ui';\nimport {\n  motion,\n  AnimatePresence,\n  LayoutGroup,\n  type HTMLMotionProps,\n} from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightProps,\n  type HighlightItemProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype TabsContextType = {\n  value: string | undefined;\n  setValue: (value: string) => void;\n};\n\nconst [TabsProvider, useTabs] =\n  useStrictContext<TabsContextType>('TabsContext');\n\ntype TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;\n\nfunction Tabs(props: TabsProps) {\n  const [value, setValue] = useControlledState({\n    value: props.value,\n    defaultValue: props.defaultValue,\n    onChange: props.onValueChange,\n  });\n\n  return (\n    <TabsProvider value={{ value, setValue }}>\n      <TabsPrimitive.Root data-slot=\"tabs\" {...props} />\n    </TabsProvider>\n  );\n}\n\ntype TabsHighlightProps = Omit<HighlightProps, 'controlledItems' | 'value'>;\n\nfunction TabsHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: TabsHighlightProps) {\n  const { value } = useTabs();\n\n  return (\n    <Highlight\n      data-slot=\"tabs-highlight\"\n      controlledItems\n      value={value}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype TabsListProps = React.ComponentProps<typeof TabsPrimitive.List>;\n\nfunction TabsList(props: TabsListProps) {\n  return <TabsPrimitive.List data-slot=\"tabs-list\" {...props} />;\n}\n\ntype TabsHighlightItemProps = HighlightItemProps & {\n  value: string;\n};\n\nfunction TabsHighlightItem(props: TabsHighlightItemProps) {\n  return <HighlightItem data-slot=\"tabs-highlight-item\" {...props} />;\n}\n\ntype TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>;\n\nfunction TabsTrigger(props: TabsTriggerProps) {\n  return <TabsPrimitive.Trigger data-slot=\"tabs-trigger\" {...props} />;\n}\n\ntype TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content> &\n  HTMLMotionProps<'div'>;\n\nfunction TabsContent({\n  value,\n  forceMount,\n  transition = { duration: 0.5, ease: 'easeInOut' },\n  ...props\n}: TabsContentProps) {\n  return (\n    <AnimatePresence mode=\"wait\">\n      <TabsPrimitive.Content asChild forceMount={forceMount} value={value}>\n        <motion.div\n          data-slot=\"tabs-content\"\n          layout\n          initial={{ opacity: 0, filter: 'blur(4px)' }}\n          animate={{ opacity: 1, filter: 'blur(0px)' }}\n          exit={{ opacity: 0, filter: 'blur(4px)' }}\n          transition={transition}\n          {...props}\n        />\n      </TabsPrimitive.Content>\n    </AnimatePresence>\n  );\n}\n\ntype TabsContentsProps = HTMLMotionProps<'div'> & {\n  children: React.ReactNode;\n};\n\nfunction TabsContents({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: TabsContentsProps) {\n  return (\n    <LayoutGroup id=\"tabs-contents-group\">\n      <motion.div\n        data-slot=\"tabs-contents\"\n        layout=\"size\"\n        style={{ overflow: 'hidden' }}\n        transition={{ layout: transition }}\n        {...props}\n      />\n    </LayoutGroup>\n  );\n}\n\nexport {\n  Tabs,\n  TabsHighlight,\n  TabsHighlightItem,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n  TabsContents,\n  type TabsProps,\n  type TabsHighlightProps,\n  type TabsHighlightItemProps,\n  type TabsListProps,\n  type TabsTriggerProps,\n  type TabsContentProps,\n  type TabsContentsProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/primitives/radix/tabs/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-tabs',
+  },
+  'primitives-radix-toggle-group': {
+    name: 'primitives-radix-toggle-group',
+    description: 'A set of two-state buttons that can be toggled on or off.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-effects-highlight',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/toggle-group.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';\nimport { type HTMLMotionProps, motion } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  useStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props.value,\n    defaultValue: props.defaultValue,\n    onChange: props.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <ToggleGroupProvider value={{ value, setValue }}>\n      <ToggleGroupPrimitive.Root\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleGroupItemProps = Omit<\n  React.ComponentProps<typeof ToggleGroupPrimitive.Item>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction ToggleGroupItem({ value, disabled, ...props }: ToggleGroupItemProps) {\n  return (\n    <ToggleGroupPrimitive.Item value={value} disabled={disabled} asChild>\n      <motion.button\n        data-slot=\"toggle-group-item\"\n        whileTap={{ scale: 0.9 }}\n        {...props}\n      />\n    </ToggleGroupPrimitive.Item>\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={typeof value === 'string' ? value : undefined}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleGroupHighlightItemProps = HighlightItemProps;\n\nfunction ToggleGroupHighlightItem(props: ToggleGroupHighlightItemProps) {\n  return <HighlightItem data-slot=\"toggle-group-highlight-item\" {...props} />;\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  ToggleGroupHighlight,\n  ToggleGroupHighlightItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n  type ToggleGroupHighlightProps,\n  type ToggleGroupHighlightItemProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/toggle-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-toggle-group',
+  },
+  'primitives-radix-tooltip': {
+    name: 'primitives-radix-tooltip',
+    description:
+      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/tooltip.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Tooltip as TooltipPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype TooltipContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [LocalTooltipProvider, useTooltip] =\n  useStrictContext<TooltipContextType>('TooltipContext');\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\nconst getInitialPosition = (side: Side, offset: number) => {\n  const axisMap = { top: 'y', bottom: 'y', left: 'x', right: 'x' } as const;\n  const sign = side === 'top' || side === 'left' ? 1 : -1;\n  return { [axisMap[side]]: sign * offset };\n};\n\ntype TooltipProviderProps = React.ComponentProps<\n  typeof TooltipPrimitive.Provider\n>;\n\nfunction TooltipProvider(props: TooltipProviderProps) {\n  return <TooltipPrimitive.Provider data-slot=\"tooltip-provider\" {...props} />;\n}\n\ntype TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;\n\nfunction Tooltip(props: TooltipProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <LocalTooltipProvider value={{ isOpen, setIsOpen }}>\n      <TooltipPrimitive.Root\n        data-slot=\"tooltip\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </LocalTooltipProvider>\n  );\n}\n\ntype TooltipTriggerProps = React.ComponentProps<\n  typeof TooltipPrimitive.Trigger\n>;\n\nfunction TooltipTrigger(props: TooltipTriggerProps) {\n  return <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" {...props} />;\n}\n\ntype TooltipPortalProps = Omit<\n  React.ComponentProps<typeof TooltipPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction TooltipPortal(props: TooltipPortalProps) {\n  const { isOpen } = useTooltip();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <TooltipPrimitive.Portal\n          forceMount\n          data-slot=\"tooltip-portal\"\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype TooltipContentProps = Omit<\n  React.ComponentProps<typeof TooltipPrimitive.Content>,\n  'forceMount' | 'asChild'\n> &\n  HTMLMotionProps<'div'> & {\n    transitionOffset?: number;\n  };\n\nfunction TooltipContent({\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  side = 'top',\n  sideOffset = 4,\n  align,\n  alignOffset,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  transitionOffset = 15,\n  ...props\n}: TooltipContentProps) {\n  const initialPosition = getInitialPosition(side, transitionOffset);\n\n  return (\n    <TooltipPrimitive.Content\n      asChild\n      forceMount\n      align={align}\n      alignOffset={alignOffset}\n      side={side}\n      sideOffset={sideOffset}\n      avoidCollisions={avoidCollisions}\n      collisionBoundary={collisionBoundary}\n      collisionPadding={collisionPadding}\n      arrowPadding={arrowPadding}\n      sticky={sticky}\n      hideWhenDetached={hideWhenDetached}\n    >\n      <motion.div\n        key=\"popover-content\"\n        data-slot=\"popover-content\"\n        initial={{ opacity: 0, scale: 0.5, ...initialPosition }}\n        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n        exit={{ opacity: 0, scale: 0.5, ...initialPosition }}\n        transition={transition}\n        {...props}\n      />\n    </TooltipPrimitive.Content>\n  );\n}\n\ntype TooltipArrowProps = React.ComponentProps<typeof TooltipPrimitive.Arrow>;\n\nfunction TooltipArrow(props: TooltipArrowProps) {\n  return <TooltipPrimitive.Arrow data-slot=\"tooltip-arrow\" {...props} />;\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipTrigger,\n  TooltipPortal,\n  TooltipContent,\n  TooltipArrow,\n  useTooltip,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipPortalProps,\n  type TooltipContentProps,\n  type TooltipArrowProps,\n  type TooltipContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/radix/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-tooltip',
+  },
+  'primitives-shadcn-sheet': {
+    name: 'primitives-shadcn-sheet',
+    description:
+      'Extends the Dialog component to display content that complements the main content of the screen.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'radix-ui'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/shadcn/sheet/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/shadcn/sheet.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Dialog as SheetPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype SheetContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [SheetProvider, useSheet] =\n  useStrictContext<SheetContextType>('SheetContext');\n\ntype SheetProps = React.ComponentProps<typeof SheetPrimitive.Root>;\n\nfunction Sheet(props: SheetProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props.open,\n    defaultValue: props.defaultOpen,\n    onChange: props.onOpenChange,\n  });\n\n  return (\n    <SheetProvider value={{ isOpen, setIsOpen }}>\n      <SheetPrimitive.Root\n        data-slot=\"sheet\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </SheetProvider>\n  );\n}\n\ntype SheetTriggerProps = React.ComponentProps<typeof SheetPrimitive.Trigger>;\n\nfunction SheetTrigger(props: SheetTriggerProps) {\n  return <SheetPrimitive.Trigger data-slot=\"sheet-trigger\" {...props} />;\n}\n\ntype SheetCloseProps = React.ComponentProps<typeof SheetPrimitive.Close>;\n\nfunction SheetClose(props: SheetCloseProps) {\n  return <SheetPrimitive.Close data-slot=\"sheet-close\" {...props} />;\n}\n\ntype SheetPortalProps = React.ComponentProps<typeof SheetPrimitive.Portal>;\n\nfunction SheetPortal(props: SheetPortalProps) {\n  const { isOpen } = useSheet();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <SheetPrimitive.Portal forceMount data-slot=\"sheet-portal\" {...props} />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype SheetOverlayProps = Omit<\n  React.ComponentProps<typeof SheetPrimitive.Overlay>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction SheetOverlay({\n  transition = { duration: 0.2, ease: 'easeInOut' },\n  ...props\n}: SheetOverlayProps) {\n  return (\n    <SheetPrimitive.Overlay asChild forceMount>\n      <motion.div\n        key=\"sheet-overlay\"\n        data-slot=\"sheet-overlay\"\n        initial={{ opacity: 0, filter: 'blur(4px)' }}\n        animate={{ opacity: 1, filter: 'blur(0px)' }}\n        exit={{ opacity: 0, filter: 'blur(4px)' }}\n        transition={transition}\n        {...props}\n      />\n    </SheetPrimitive.Overlay>\n  );\n}\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\ntype SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &\n  HTMLMotionProps<'div'> & {\n    side?: Side;\n  };\n\nfunction SheetContent({\n  side = 'right',\n  transition = { type: 'spring', stiffness: 150, damping: 25 },\n  style,\n  ...props\n}: SheetContentProps) {\n  const axis = side === 'left' || side === 'right' ? 'x' : 'y';\n\n  const offscreen: Record<Side, { x?: string; y?: string; opacity: number }> = {\n    right: { x: '100%', opacity: 0 },\n    left: { x: '-100%', opacity: 0 },\n    top: { y: '-100%', opacity: 0 },\n    bottom: { y: '100%', opacity: 0 },\n  };\n\n  const positionStyle: Record<Side, React.CSSProperties> = {\n    right: { insetBlock: 0, right: 0 },\n    left: { insetBlock: 0, left: 0 },\n    top: { insetInline: 0, top: 0 },\n    bottom: { insetInline: 0, bottom: 0 },\n  };\n\n  return (\n    <SheetPrimitive.Content asChild forceMount {...props}>\n      <motion.div\n        key=\"sheet-content\"\n        data-slot=\"sheet-content\"\n        data-side={side}\n        initial={offscreen[side]}\n        animate={{ [axis]: 0, opacity: 1 }}\n        exit={offscreen[side]}\n        style={{\n          position: 'fixed',\n          zIndex: 50,\n          ...positionStyle[side],\n          ...style,\n        }}\n        transition={transition}\n        {...props}\n      />\n    </SheetPrimitive.Content>\n  );\n}\n\ntype SheetHeaderProps = React.ComponentProps<'div'>;\n\nfunction SheetHeader(props: SheetHeaderProps) {\n  return <div data-slot=\"sheet-header\" {...props} />;\n}\n\ntype SheetFooterProps = React.ComponentProps<'div'>;\n\nfunction SheetFooter(props: SheetFooterProps) {\n  return <div data-slot=\"sheet-footer\" {...props} />;\n}\n\ntype SheetTitleProps = React.ComponentProps<typeof SheetPrimitive.Title>;\n\nfunction SheetTitle(props: SheetTitleProps) {\n  return <SheetPrimitive.Title data-slot=\"sheet-title\" {...props} />;\n}\n\ntype SheetDescriptionProps = React.ComponentProps<\n  typeof SheetPrimitive.Description\n>;\n\nfunction SheetDescription(props: SheetDescriptionProps) {\n  return (\n    <SheetPrimitive.Description data-slot=\"sheet-description\" {...props} />\n  );\n}\n\nexport {\n  useSheet,\n  Sheet,\n  SheetPortal,\n  SheetOverlay,\n  SheetTrigger,\n  SheetClose,\n  SheetContent,\n  SheetHeader,\n  SheetFooter,\n  SheetTitle,\n  SheetDescription,\n  type SheetProps,\n  type SheetPortalProps,\n  type SheetOverlayProps,\n  type SheetTriggerProps,\n  type SheetCloseProps,\n  type SheetContentProps,\n  type SheetHeaderProps,\n  type SheetFooterProps,\n  type SheetTitleProps,\n  type SheetDescriptionProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/shadcn/sheet/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-shadcn-sheet';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-shadcn-sheet',
+  },
+  'primitives-texts-counting-number': {
+    name: 'primitives-texts-counting-number',
+    description: 'A counting number animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/counting-number/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/counting-number.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { useMotionValue, useSpring, type SpringOptions } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype CountingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  number: number;\n  fromNumber?: number;\n  padStart?: boolean;\n  decimalSeparator?: string;\n  decimalPlaces?: number;\n  transition?: SpringOptions;\n} & UseIsInViewOptions;\n\nfunction CountingNumber({\n  ref,\n  number,\n  fromNumber = 0,\n  padStart = false,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  decimalSeparator = '.',\n  transition = { stiffness: 90, damping: 50 },\n  decimalPlaces = 0,\n  ...props\n}: CountingNumberProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const numberStr = number.toString();\n  const decimals =\n    typeof decimalPlaces === 'number'\n      ? decimalPlaces\n      : numberStr.includes('.')\n        ? (numberStr.split('.')[1]?.length ?? 0)\n        : 0;\n\n  const motionVal = useMotionValue(fromNumber);\n  const springVal = useSpring(motionVal, transition);\n\n  React.useEffect(() => {\n    if ((isInView && inView) || !inView) motionVal.set(number);\n  }, [isInView, number, motionVal, inView]);\n\n  React.useEffect(() => {\n    const unsubscribe = springVal.on('change', (latest) => {\n      if (localRef.current) {\n        let formatted =\n          decimals > 0\n            ? latest.toFixed(decimals)\n            : Math.round(latest).toString();\n\n        if (decimals > 0) {\n          formatted = formatted.replace('.', decimalSeparator);\n        }\n\n        if (padStart) {\n          const finalIntLength = Math.floor(Math.abs(number)).toString().length;\n          const [intPart, fracPart] = formatted.split(decimalSeparator);\n          const paddedInt = intPart?.padStart(finalIntLength, '0') ?? '';\n          formatted = fracPart\n            ? `${paddedInt}${decimalSeparator}${fracPart}`\n            : paddedInt;\n        }\n\n        localRef.current.textContent = formatted;\n      }\n    });\n    return () => unsubscribe();\n  }, [springVal, decimals, padStart, number, decimalSeparator]);\n\n  const finalIntLength = Math.floor(Math.abs(number)).toString().length;\n  const initialText = padStart\n    ? '0'.padStart(finalIntLength, '0') +\n      (decimals > 0 ? decimalSeparator + '0'.repeat(decimals) : '')\n    : '0' + (decimals > 0 ? decimalSeparator + '0'.repeat(decimals) : '');\n\n  return (\n    <span ref={localRef} data-slot=\"counting-number\" {...props}>\n      {initialText}\n    </span>\n  );\n}\n\nexport { CountingNumber, type CountingNumberProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/counting-number/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-counting-number';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-counting-number',
+  },
+  'primitives-texts-gradient': {
+    name: 'primitives-texts-gradient',
+    description: 'A gradient text animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/primitives/texts/gradient/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/gradient.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\ntype GradientTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string;\n  gradient?: string;\n  neon?: boolean;\n  transition?: Transition;\n};\n\nfunction GradientText({\n  text,\n  style,\n  gradient = 'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',\n  neon = false,\n  transition = { duration: 50, repeat: Infinity, ease: 'linear' },\n  ...props\n}: GradientTextProps) {\n  const baseStyle: React.CSSProperties = {\n    backgroundImage: gradient,\n    margin: 0,\n    color: 'transparent',\n    backgroundClip: 'text',\n    backgroundSize: '700% 100%',\n    backgroundPosition: '0% 0%',\n  };\n\n  return (\n    <span\n      data-slot=\"gradient-text\"\n      style={{ position: 'relative', display: 'inline-block', ...style }}\n      {...props}\n    >\n      <motion.span\n        style={baseStyle}\n        initial={{ backgroundPosition: '0% 0%' }}\n        animate={{ backgroundPosition: '500% 100%' }}\n        transition={transition}\n      >\n        {text}\n      </motion.span>\n\n      {neon && (\n        <motion.span\n          style={{\n            position: 'absolute',\n            top: 0,\n            left: 0,\n            mixBlendMode: 'plus-lighter',\n            filter: 'blur(8px)',\n            ...baseStyle,\n          }}\n          initial={{ backgroundPosition: '0% 0%' }}\n          animate={{ backgroundPosition: '500% 100%' }}\n          transition={transition}\n        >\n          {text}\n        </motion.span>\n      )}\n    </span>\n  );\n}\n\nexport { GradientText, type GradientTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/gradient/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-gradient';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-gradient',
+  },
+  'primitives-texts-highlight': {
+    name: 'primitives-texts-highlight',
+    description: 'A highlight text animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/highlight/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/highlight.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype HighlightTextProps = Omit<HTMLMotionProps<'span'>, 'children'> & {\n  text: string;\n} & UseIsInViewOptions;\n\nfunction HighlightText({\n  ref,\n  text,\n  style,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  transition = { duration: 2, ease: 'easeInOut' },\n  ...props\n}: HighlightTextProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  return (\n    <motion.span\n      ref={localRef}\n      data-slot=\"highlight-text\"\n      initial={{ backgroundSize: '0% 100%' }}\n      animate={\n        (isInView && inView) || !inView\n          ? { backgroundSize: '100% 100%' }\n          : undefined\n      }\n      transition={transition}\n      style={{\n        position: 'relative',\n        backgroundRepeat: 'no-repeat',\n        backgroundPosition: 'left center',\n        display: 'inline-block',\n        ...style,\n      }}\n      {...props}\n    >\n      {text}\n    </motion.span>\n  );\n}\n\nexport { HighlightText, type HighlightTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/highlight/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-highlight';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-highlight',
+  },
+  'primitives-texts-rolling': {
+    name: 'primitives-texts-rolling',
+    description: 'A rolling text animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/rolling/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/rolling.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\nconst formatCharacter = (char: string) => (char === ' ' ? '\\u00A0' : char);\n\nconst CHAR_STYLE: React.CSSProperties = {\n  position: 'absolute',\n  display: 'inline-block',\n  backfaceVisibility: 'hidden',\n};\n\ntype RollingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string;\n  transition?: Transition;\n} & UseIsInViewOptions;\n\nfunction RollingText({\n  ref,\n  text,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },\n  ...props\n}: RollingTextProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n  const start = React.useMemo(\n    () => (isInView && inView) || !inView,\n    [isInView, inView],\n  );\n  const characters = React.useMemo(() => text.split(''), [text]);\n\n  return (\n    <span ref={localRef} data-slot=\"rolling-text\" {...props}>\n      {characters.map((char, idx) => (\n        <span\n          key={idx}\n          style={{\n            position: 'relative',\n            display: 'inline-block',\n            perspective: '9999999px',\n            transformStyle: 'preserve-3d',\n            width: 'auto',\n          }}\n          aria-hidden=\"true\"\n        >\n          <motion.span\n            style={{\n              ...CHAR_STYLE,\n              transformOrigin: '50% 25%',\n            }}\n            initial={{ rotateX: 0 }}\n            animate={start ? { rotateX: 90 } : undefined}\n            transition={{\n              ...transition,\n              delay: idx * (transition?.delay ?? 0),\n            }}\n          >\n            {formatCharacter(char)}\n          </motion.span>\n          <motion.span\n            style={{\n              ...CHAR_STYLE,\n              transformOrigin: '50% 100%',\n            }}\n            initial={{ rotateX: 90 }}\n            animate={start ? { rotateX: 0 } : undefined}\n            transition={{\n              ...transition,\n              delay: idx * (transition?.delay ?? 0) + 0.3,\n            }}\n          >\n            {formatCharacter(char)}\n          </motion.span>\n          <span style={{ visibility: 'hidden' }}>{formatCharacter(char)}</span>\n        </span>\n      ))}\n\n      <span className=\"sr-only\">{text}</span>\n    </span>\n  );\n}\n\nexport { RollingText, type RollingTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/rolling/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-rolling';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-rolling',
+  },
+  'primitives-texts-shimmering': {
+    name: 'primitives-texts-shimmering',
+    description: 'A shimmering text animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/shimmering/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/shimmering.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\ntype ShimmeringTextProps = Omit<HTMLMotionProps<'span'>, 'children'> & {\n  text: string;\n  duration?: number;\n  wave?: boolean;\n  color?: string;\n  shimmeringColor?: string;\n};\n\nfunction ShimmeringText({\n  text,\n  duration = 1,\n  transition,\n  wave = false,\n  color = 'var(--color-neutral-500)',\n  shimmeringColor = 'var(--color-neutral-300)',\n  ...props\n}: ShimmeringTextProps) {\n  return (\n    <motion.span\n      style={\n        {\n          '--shimmering-color': shimmeringColor,\n          '--color': color,\n          color: 'var(--color)',\n          position: 'relative',\n          display: 'inline-block',\n          perspective: '500px',\n        } as React.CSSProperties\n      }\n      {...props}\n    >\n      {text?.split('')?.map((char, i) => (\n        <motion.span\n          key={i}\n          style={{\n            display: 'inline-block',\n            whiteSpace: 'pre',\n            transformStyle: 'preserve-3d',\n          }}\n          initial={{\n            ...(wave\n              ? {\n                  scale: 1,\n                  rotateY: 0,\n                }\n              : {}),\n            color: 'var(--color)',\n          }}\n          animate={{\n            ...(wave\n              ? {\n                  x: [0, 5, 0],\n                  y: [0, -5, 0],\n                  scale: [1, 1.1, 1],\n                  rotateY: [0, 15, 0],\n                }\n              : {}),\n            color: ['var(--color)', 'var(--shimmering-color)', 'var(--color)'],\n          }}\n          transition={{\n            duration,\n            repeat: Infinity,\n            repeatType: 'loop',\n            repeatDelay: text.length * 0.05,\n            delay: (i * duration) / text.length,\n            ease: 'easeInOut',\n            ...transition,\n          }}\n        >\n          {char}\n        </motion.span>\n      ))}\n    </motion.span>\n  );\n}\n\nexport { ShimmeringText, type ShimmeringTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/shimmering/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-shimmering';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-shimmering',
+  },
+  'primitives-texts-sliding-number': {
+    name: 'primitives-texts-sliding-number',
+    description: 'A sliding number animation.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'react-use-measure'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/sliding-number/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/sliding-number.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  useSpring,\n  useTransform,\n  motion,\n  type MotionValue,\n  type SpringOptions,\n} from 'motion/react';\nimport useMeasure from 'react-use-measure';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype SlidingNumberRollerProps = {\n  prevValue: number;\n  value: number;\n  place: number;\n  transition: SpringOptions;\n};\n\nfunction SlidingNumberRoller({\n  prevValue,\n  value,\n  place,\n  transition,\n}: SlidingNumberRollerProps) {\n  const startNumber = Math.floor(prevValue / place) % 10;\n  const targetNumber = Math.floor(value / place) % 10;\n  const animatedValue = useSpring(startNumber, transition);\n\n  React.useEffect(() => {\n    animatedValue.set(targetNumber);\n  }, [targetNumber, animatedValue]);\n\n  const [measureRef, { height }] = useMeasure();\n\n  return (\n    <span\n      ref={measureRef}\n      data-slot=\"sliding-number-roller\"\n      style={{\n        position: 'relative',\n        display: 'inline-block',\n        width: '1ch',\n        overflowX: 'visible',\n        overflowY: 'clip',\n        lineHeight: 1,\n        fontVariantNumeric: 'tabular-nums',\n      }}\n    >\n      <span style={{ visibility: 'hidden' }}>0</span>\n      {Array.from({ length: 10 }, (_, i) => (\n        <SlidingNumberDisplay\n          key={i}\n          motionValue={animatedValue}\n          number={i}\n          height={height}\n          transition={transition}\n        />\n      ))}\n    </span>\n  );\n}\n\ntype SlidingNumberDisplayProps = {\n  motionValue: MotionValue<number>;\n  number: number;\n  height: number;\n  transition: SpringOptions;\n};\n\nfunction SlidingNumberDisplay({\n  motionValue,\n  number,\n  height,\n  transition,\n}: SlidingNumberDisplayProps) {\n  const y = useTransform(motionValue, (latest) => {\n    if (!height) return 0;\n    const currentNumber = latest % 10;\n    const offset = (10 + number - currentNumber) % 10;\n    let translateY = offset * height;\n    if (offset > 5) translateY -= 10 * height;\n    return translateY;\n  });\n\n  if (!height) {\n    return (\n      <span style={{ visibility: 'hidden', position: 'absolute' }}>\n        {number}\n      </span>\n    );\n  }\n\n  return (\n    <motion.span\n      data-slot=\"sliding-number-display\"\n      style={{\n        y,\n        position: 'absolute',\n        inset: 0,\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n      transition={{ ...transition, type: 'spring' }}\n    >\n      {number}\n    </motion.span>\n  );\n}\n\ntype SlidingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  number: number | string;\n  padStart?: boolean;\n  decimalSeparator?: string;\n  decimalPlaces?: number;\n  transition?: SpringOptions;\n} & UseIsInViewOptions;\n\nfunction SlidingNumber({\n  ref,\n  number,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  padStart = false,\n  decimalSeparator = '.',\n  decimalPlaces = 0,\n  transition = { stiffness: 200, damping: 20, mass: 0.4 },\n  ...props\n}: SlidingNumberProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n  const start = React.useMemo(\n    () => (isInView && inView) || !inView,\n    [isInView, inView],\n  );\n\n  const prevNumberRef = React.useRef<number>(0);\n\n  const effectiveNumber = React.useMemo(\n    () => (!start ? 0 : Math.abs(Number(number))),\n    [number, start],\n  );\n\n  const formatNumber = React.useCallback(\n    (num: number) =>\n      decimalPlaces != null ? num.toFixed(decimalPlaces) : num.toString(),\n    [decimalPlaces],\n  );\n\n  const numberStr = formatNumber(effectiveNumber);\n  const [newIntStrRaw, newDecStrRaw = ''] = numberStr.split('.');\n  const newIntStr =\n    padStart && newIntStrRaw?.length === 1 ? '0' + newIntStrRaw : newIntStrRaw;\n\n  const prevFormatted = formatNumber(prevNumberRef.current);\n  const [prevIntStrRaw = '', prevDecStrRaw = ''] = prevFormatted.split('.');\n  const prevIntStr =\n    padStart && prevIntStrRaw.length === 1\n      ? '0' + prevIntStrRaw\n      : prevIntStrRaw;\n\n  const adjustedPrevInt = React.useMemo(() => {\n    return prevIntStr.length > (newIntStr?.length ?? 0)\n      ? prevIntStr.slice(-(newIntStr?.length ?? 0))\n      : prevIntStr.padStart(newIntStr?.length ?? 0, '0');\n  }, [prevIntStr, newIntStr]);\n\n  const adjustedPrevDec = React.useMemo(() => {\n    if (!newDecStrRaw) return '';\n    return prevDecStrRaw.length > newDecStrRaw.length\n      ? prevDecStrRaw.slice(0, newDecStrRaw.length)\n      : prevDecStrRaw.padEnd(newDecStrRaw.length, '0');\n  }, [prevDecStrRaw, newDecStrRaw]);\n\n  React.useEffect(() => {\n    if (start) prevNumberRef.current = effectiveNumber;\n  }, [effectiveNumber, start]);\n\n  const intDigitCount = newIntStr?.length ?? 0;\n  const intPlaces = React.useMemo(\n    () =>\n      Array.from({ length: intDigitCount }, (_, i) =>\n        Math.pow(10, intDigitCount - i - 1),\n      ),\n    [intDigitCount],\n  );\n  const decPlaces = React.useMemo(\n    () =>\n      newDecStrRaw\n        ? Array.from({ length: newDecStrRaw.length }, (_, i) =>\n            Math.pow(10, newDecStrRaw.length - i - 1),\n          )\n        : [],\n    [newDecStrRaw],\n  );\n\n  const newDecValue = newDecStrRaw ? parseInt(newDecStrRaw, 10) : 0;\n  const prevDecValue = adjustedPrevDec ? parseInt(adjustedPrevDec, 10) : 0;\n\n  return (\n    <span\n      ref={localRef}\n      data-slot=\"sliding-number\"\n      style={{\n        display: 'inline-flex',\n        alignItems: 'center',\n      }}\n      {...props}\n    >\n      {start && Number(number) < 0 && (\n        <span style={{ marginRight: '0.25rem' }}>-</span>\n      )}\n\n      {intPlaces.map((place) => (\n        <SlidingNumberRoller\n          key={`int-${place}`}\n          prevValue={parseInt(adjustedPrevInt, 10)}\n          value={parseInt(newIntStr ?? '0', 10)}\n          place={place}\n          transition={transition}\n        />\n      ))}\n\n      {newDecStrRaw && (\n        <>\n          <span>{decimalSeparator}</span>\n          {decPlaces.map((place) => (\n            <SlidingNumberRoller\n              key={`dec-${place}`}\n              prevValue={prevDecValue}\n              value={newDecValue}\n              place={place}\n              transition={transition}\n            />\n          ))}\n        </>\n      )}\n    </span>\n  );\n}\n\nexport { SlidingNumber, type SlidingNumberProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/sliding-number/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-sliding-number';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-sliding-number',
+  },
+  'primitives-texts-splitting': {
+    name: 'primitives-texts-splitting',
+    description: 'A splitting text animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/splitting/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/splitting.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  type Variants,\n  type TargetAndTransition,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype DefaultSplittingTextProps = Omit<\n  HTMLMotionProps<'div'>,\n  'children' | 'initial' | 'animate' | 'transition'\n> & {\n  initial?: TargetAndTransition;\n  animate?: TargetAndTransition;\n  transition?: Transition;\n  stagger?: number;\n  delay?: number;\n} & UseIsInViewOptions;\n\ntype CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'chars' | 'words';\n  text: string;\n};\n\ntype LinesSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'lines';\n  text: string[];\n};\n\ntype SplittingTextProps =\n  | CharsOrWordsSplittingTextProps\n  | LinesSplittingTextProps;\n\nconst defaultItemVariant: Variants = {\n  hidden: { x: 150, opacity: 0 },\n  visible: {\n    x: 0,\n    opacity: 1,\n    transition: { duration: 0.7, ease: 'easeOut' },\n  },\n};\n\nconst SplittingText: React.FC<SplittingTextProps> = ({\n  ref,\n  text,\n  type = 'chars',\n  initial,\n  animate,\n  transition,\n  stagger,\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}) => {\n  const items = React.useMemo<React.ReactNode[]>(() => {\n    if (Array.isArray(text)) {\n      return text.flatMap((line, i) => [\n        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,\n        i < text.length - 1 ? <br key={`br-${i}`} /> : null,\n      ]);\n    }\n\n    if (type === 'words') {\n      const tokens = text.match(/\\S+\\s*/g) || [];\n      return tokens.map((token, i) => (\n        <React.Fragment key={i}>{token}</React.Fragment>\n      ));\n    }\n\n    return text\n      .split('')\n      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);\n  }, [text, type]);\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        delayChildren: delay / 1000,\n        staggerChildren:\n          stagger ?? (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: {\n      ...defaultItemVariant.hidden,\n      ...(initial || {}),\n    },\n    visible: {\n      ...defaultItemVariant.visible,\n      ...(animate || {}),\n      transition: {\n        ...((defaultItemVariant.visible as TargetAndTransition).transition ||\n          {}),\n        ...(transition || {}),\n      },\n    },\n  };\n\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  return (\n    <motion.span\n      ref={localRef}\n      initial=\"hidden\"\n      animate={(isInView && inView) || !inView ? 'visible' : 'hidden'}\n      variants={containerVariants}\n      {...props}\n    >\n      {items.map(\n        (item, index) =>\n          item && (\n            <React.Fragment key={index}>\n              <motion.span\n                key={index}\n                variants={itemVariants}\n                style={{\n                  display: 'inline-block',\n                  whiteSpace: type === 'chars' ? 'pre' : 'normal',\n                }}\n              >\n                {item}\n              </motion.span>\n              {type === 'words' && ' '}\n            </React.Fragment>\n          ),\n      )}\n    </motion.span>\n  );\n};\n\nexport { SplittingText, type SplittingTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/splitting/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-splitting';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-splitting',
   },
 };

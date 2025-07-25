@@ -1,0 +1,34 @@
+---
+title: Slot
+description: A slot component that allows you to use motion components with any element.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+The `Slot` component is a wrapper component that allows you to use motion components with any element.
+
+## Installation
+
+<ComponentInstallation name="primitives-animate-slot" />
+
+## Usage
+
+```tsx
+<Slot as="div" />
+```
+
+## API Reference
+
+### Slot
+
+<TypeTable
+  type={{
+    as: {
+      description: 'The element to render as',
+      type: 'keyof HTMLElementTagNameMap',
+      required: false,
+      default: 'div',
+    },
+  }}
+/>

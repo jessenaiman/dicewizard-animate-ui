@@ -5,6 +5,10 @@
   "title": "Radix Collapsible",
   "description": "An interactive component which expands/collapses a panel.",
   "dependencies": ["motion", "radix-ui"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/hooks-use-controlled-boolean"
+  ],
   "files": [
     {
       "path": "registry/primitives/radix/collapsible/index.tsx",

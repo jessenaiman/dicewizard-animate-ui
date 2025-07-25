@@ -40,7 +40,6 @@ export default async function Page(props: {
       <DocsBody className="pb-10 pt-4">
         <MDXContent
           components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
             a: createRelativeLink(source, page),
           })}
         />

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "primitives-radix-toggle-group",
+  "type": "registry:ui",
+  "title": "Radix Toggle Group",
+  "description": "A set of two-state buttons that can be toggled on or off.",
+  "dependencies": [
+    "motion",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-effects-highlight",
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/hooks-use-controlled-state"
+  ],
+  "files": [
+    {
+      "path": "registry/primitives/radix/toggle-group/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';\nimport { type HTMLMotionProps, motion } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  useStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props.value,\n    defaultValue: props.defaultValue,\n    onChange: props.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <ToggleGroupProvider value={{ value, setValue }}>\n      <ToggleGroupPrimitive.Root\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleGroupItemProps = Omit<\n  React.ComponentProps<typeof ToggleGroupPrimitive.Item>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction ToggleGroupItem({ value, disabled, ...props }: ToggleGroupItemProps) {\n  return (\n    <ToggleGroupPrimitive.Item value={value} disabled={disabled} asChild>\n      <motion.button\n        data-slot=\"toggle-group-item\"\n        whileTap={{ scale: 0.9 }}\n        {...props}\n      />\n    </ToggleGroupPrimitive.Item>\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={typeof value === 'string' ? value : undefined}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleGroupHighlightItemProps = HighlightItemProps;\n\nfunction ToggleGroupHighlightItem(props: ToggleGroupHighlightItemProps) {\n  return <HighlightItem data-slot=\"toggle-group-highlight-item\" {...props} />;\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  ToggleGroupHighlight,\n  ToggleGroupHighlightItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n  type ToggleGroupHighlightProps,\n  type ToggleGroupHighlightItemProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/primitives/radix/toggle-group.tsx"
+    }
+  ]
+}

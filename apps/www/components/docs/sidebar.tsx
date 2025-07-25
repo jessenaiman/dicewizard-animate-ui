@@ -81,7 +81,7 @@ export function SidebarPageTree(props: {
             onMouseEnter={() => setHoveredItem(url)}
             onMouseLeave={() => setHoveredItem(null)}
           >
-            <span className="h-full w-px bg-accent absolute left-0 inset-y-0" />
+            <span className="h-full w-px bg-border absolute left-0 inset-y-0" />
 
             <AnimatePresence initial={false} mode="wait">
               {isActive && (
@@ -104,7 +104,7 @@ export function SidebarPageTree(props: {
               {isHovered && (
                 <motion.span
                   layoutId="sidebar-item-hover-indicator"
-                  className="pointer-events-none absolute z-10 left-0 top-1/2 h-[50%] w-0.5 -translate-y-1/2 rounded-full bg-neutral-500"
+                  className="pointer-events-none absolute z-10 left-0 top-1/2 h-[50%] w-0.5 -translate-y-1/2 rounded-full dark:bg-neutral-600 bg-neutral-300"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -190,7 +190,7 @@ export function SidebarLinkItem({
       onMouseLeave={() => setHoveredItem(null)}
       {...props}
     >
-      <span className="h-full w-px bg-accent absolute left-0 inset-y-0" />
+      <span className="h-full w-px bg-border absolute left-0 inset-y-0" />
 
       <AnimatePresence initial={false} mode="wait">
         {isActive && (

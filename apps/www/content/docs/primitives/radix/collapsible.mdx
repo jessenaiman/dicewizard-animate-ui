@@ -61,5 +61,19 @@ author:
       required: false,
       default: 'false',
     },
+    '...props': {
+      description: 'The props of the collapsible content.',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
   }}
 />
+
+<Callout type="info">
+  The `asChild` and `forceMount` props are not supported in the
+  `CollapsibleContent` component as it is used for animation.
+</Callout>
+
+## Credits
+
+- [Radix Collapsible](https://www.radix-ui.com/primitives/docs/components/collapsible)

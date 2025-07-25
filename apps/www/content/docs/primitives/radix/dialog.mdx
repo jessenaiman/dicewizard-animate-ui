@@ -57,6 +57,11 @@ author:
   text="Radix UI API Reference - Dialog.Portal"
 />
 
+<Callout type="info">
+  The `forceMount` property is not supported in the `DialogPortal` component, as
+  it is used for animation.
+</Callout>
+
 ### DialogOverlay
 
 <ExternalLink
@@ -72,8 +77,18 @@ author:
       required: false,
       default: "{ duration: 0.2, ease: 'easeInOut' }",
     },
+    '...props': {
+      description: 'The props of the dialog portal.',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
   }}
 />
+
+<Callout type="info">
+  The `asChild` and `forceMount` properties are not supported in the
+  `DialogOverlay` component, as it is used for animation.
+</Callout>
 
 ### DialogContent
 
@@ -84,20 +99,30 @@ author:
 
 <TypeTable
   type={{
-    transition: {
-      description: 'The direction the dialog should flip from',
-      type: 'Transition',
-      required: false,
-      default: "{ type: 'spring', stiffness: 150, damping: 25 }",
-    },
     from: {
       description: 'The direction the dialog should flip from',
       type: "'top' | 'bottom' | 'left' | 'right'",
       required: false,
       default: 'top',
     },
+    transition: {
+      description: 'The transition of the dialog content',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 25 }",
+    },
+    '...props': {
+      description: 'The props of the dialog content.',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
   }}
 />
+
+<Callout type="info">
+  The `asChild` and `forceMount` properties are not supported in the
+  `DialogContent` component, as it is used for animation.
+</Callout>
 
 ### DialogClose
 
@@ -108,7 +133,15 @@ author:
 
 ### DialogHeader
 
-`React.ComponentProps<'div'>`
+<TypeTable
+  type={{
+    '...props': {
+      description: 'The props of the dialog header.',
+      type: "React.ComponentProps<'div'>",
+      required: false,
+    },
+  }}
+/>
 
 ### DialogTitle
 
@@ -126,4 +159,16 @@ author:
 
 ### DialogFooter
 
-`React.ComponentProps<'div'>`
+<TypeTable
+  type={{
+    '...props': {
+      description: 'The props of the dialog footer.',
+      type: "React.ComponentProps<'div'>",
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog)

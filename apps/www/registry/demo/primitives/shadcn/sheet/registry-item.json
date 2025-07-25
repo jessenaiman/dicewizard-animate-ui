@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo-primitives-shadcn-sheet",
+  "type": "registry:ui",
+  "title": "Shadcn Sheet Demo",
+  "description": "Demo showing an animated shadcn sheet.",
+  "registryDependencies": ["https://animate-ui.com/r/primitives-shadcn-sheet"],
+  "files": [
+    {
+      "path": "registry/demo/primitives/shadcn/sheet/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/primitives/shadcn/sheet.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "SheetContent": {
+        "side": {
+          "value": "right",
+          "options": {
+            "top": "top",
+            "bottom": "bottom",
+            "left": "left",
+            "right": "right"
+          }
+        }
+      }
+    }
+  }
+}

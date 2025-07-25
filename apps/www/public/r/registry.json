@@ -18,6 +18,263 @@
       "files": []
     },
     {
+      "name": "demo-primitives-buttons-button",
+      "type": "registry:ui",
+      "title": "Button Demo",
+      "description": "Demo showing a button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/buttons/button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/buttons/button.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Button": {
+            "hoverScale": {
+              "value": 1.05,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            },
+            "tapScale": {
+              "value": 0.95,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-buttons-flip",
+      "type": "registry:ui",
+      "title": "Flip Button Demo",
+      "description": "Demo showing an animated flip button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/buttons/flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/buttons/flip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "FlipButton": {
+            "from": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "right": "right",
+                "bottom": "bottom",
+                "left": "left"
+              }
+            },
+            "tapScale": {
+              "value": 0.95,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-buttons-liquid",
+      "type": "registry:ui",
+      "title": "Liquid Button Demo",
+      "description": "Demo showing an animated liquid button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-liquid"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/buttons/liquid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/buttons/liquid.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "LiquidButton": {
+            "delay": {
+              "value": 0.3,
+              "min": 0.1,
+              "max": 0.5,
+              "step": 0.05
+            },
+            "fillHeight": {
+              "value": 3,
+              "min": 0,
+              "max": 10,
+              "step": 1
+            },
+            "hoverScale": {
+              "value": 1.05,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            },
+            "tapScale": {
+              "value": 0.95,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-buttons-ripple",
+      "type": "registry:ui",
+      "title": "Ripple Button Demo",
+      "description": "Demo showing a ripple button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-ripple"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/buttons/ripple/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/buttons/ripple.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "RippleButton": {
+            "hoverScale": {
+              "value": 1.05,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            },
+            "tapScale": {
+              "value": 0.95,
+              "min": 0,
+              "max": 2,
+              "step": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-effects-effect",
+      "type": "registry:ui",
+      "title": "Effect Demo",
+      "description": "Demo showing an animated effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-effect"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/effects/effect/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/effects/effect.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Effect": {
+            "delay": {
+              "value": 0
+            },
+            "blur": {
+              "value": true
+            },
+            "slide": {
+              "value": true
+            },
+            "fade": {
+              "value": true
+            },
+            "zoom": {
+              "value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-effects-highlight",
+      "type": "registry:ui",
+      "title": "Highlight Demo",
+      "description": "Demo showing an animated highlight.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/effects/highlight/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/effects/highlight.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Highlight": {
+            "mode": {
+              "value": "children",
+              "options": {
+                "children": "children",
+                "parent": "parent"
+              }
+            },
+            "exitDelay": {
+              "value": 0.2
+            },
+            "hover": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-effects-magnetic",
+      "type": "registry:ui",
+      "title": "Magnetic Demo",
+      "description": "Demo showing a magnetic effect.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-magnetic"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/effects/magnetic/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/effects/magnetic.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Magnetic": {
+            "onlyOnHover": {
+              "value": false
+            },
+            "strength": {
+              "value": 0.5,
+              "min": 0,
+              "max": 1,
+              "step": 0.05
+            },
+            "range": {
+              "value": 120
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "demo-primitives-radix-accordion",
       "type": "registry:ui",
       "title": "Radix Accordion Demo",
@@ -137,6 +394,700 @@
       }
     },
     {
+      "name": "demo-primitives-radix-dropdown-menu",
+      "type": "registry:ui",
+      "title": "Radix Dropdown Menu Demo",
+      "description": "Demo showing an animated radix dropdown menu.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/dropdown-menu/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/dropdown-menu.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "DropdownMenuContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-radix-hover-card",
+      "type": "registry:ui",
+      "title": "Radix Hover Card Demo",
+      "description": "Demo showing an animated radix hover card.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/hover-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/hover-card.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "HoverCardContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            },
+            "transitionOffset": {
+              "value": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-radix-popover",
+      "type": "registry:ui",
+      "title": "Radix Popover Demo",
+      "description": "Demo showing an animated radix popover.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/popover.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PopoverContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            },
+            "transitionOffset": {
+              "value": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-radix-progress",
+      "type": "registry:ui",
+      "title": "Radix Progress Demo",
+      "description": "Demo showing an animated radix progress.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-radix-radio-group",
+      "type": "registry:ui",
+      "title": "Radix Radio Group Demo",
+      "description": "Demo showing an animated radix radio group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/radio-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-radix-switch",
+      "type": "registry:ui",
+      "title": "Radix Switch Demo",
+      "description": "Demo showing an animated radix switch.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-radix-tabs",
+      "type": "registry:ui",
+      "title": "Radix Tabs Demo",
+      "description": "Demo showing an animated radix tabs.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-radix-toggle-group",
+      "type": "registry:ui",
+      "title": "Radix Toggle Group Demo",
+      "description": "Demo showing an animated radix toggle group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-radix-tooltip",
+      "type": "registry:ui",
+      "title": "Radix Tooltip Demo",
+      "description": "Demo showing an animated radix tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "TooltipContent": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            },
+            "transitionOffset": {
+              "value": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-shadcn-sheet",
+      "type": "registry:ui",
+      "title": "Shadcn Sheet Demo",
+      "description": "Demo showing an animated shadcn sheet.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-shadcn-sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/shadcn/sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/shadcn/sheet.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "SheetContent": {
+            "side": {
+              "value": "right",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-texts-counting-number",
+      "type": "registry:ui",
+      "title": "Counting Number Demo",
+      "description": "Demo showing an animated counting number.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-counting-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/counting-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/counting-number.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "CountingNumber": {
+            "number": {
+              "value": 2025
+            },
+            "fromNumber": {
+              "value": 0
+            },
+            "padStart": {
+              "value": false
+            },
+            "decimalSeparator": {
+              "value": "."
+            },
+            "decimalPlaces": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-texts-gradient",
+      "type": "registry:ui",
+      "title": "Gradient Demo",
+      "description": "Demo showing an animated gradient text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/gradient/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/gradient.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "GradientText": {
+            "neon": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-texts-highlight",
+      "type": "registry:ui",
+      "title": "Highlight Demo",
+      "description": "Demo showing an animated highlight text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/highlight/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/highlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-texts-rolling",
+      "type": "registry:ui",
+      "title": "Rolling Demo",
+      "description": "Demo showing an animated rolling text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-rolling"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/rolling/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/rolling.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-texts-shimmering",
+      "type": "registry:ui",
+      "title": "Shimmering Demo",
+      "description": "Demo showing an animated shimmering text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-shimmering"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/shimmering/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/shimmering.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ShimmeringText": {
+            "wave": {
+              "value": false
+            },
+            "duration": {
+              "value": 1,
+              "min": 0.1,
+              "max": 3,
+              "step": 0.1
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-texts-sliding-number",
+      "type": "registry:ui",
+      "title": "Sliding Number Demo",
+      "description": "Demo showing an animated sliding number.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-sliding-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/sliding-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/sliding-number.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "CountingNumber": {
+            "number": {
+              "value": 2025
+            },
+            "padStart": {
+              "value": false
+            },
+            "decimalSeparator": {
+              "value": "."
+            },
+            "decimalPlaces": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-texts-splitting",
+      "type": "registry:ui",
+      "title": "Splitting Demo",
+      "description": "Demo showing an animated splitting text.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-splitting"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/splitting/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/splitting.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "SplittingTextDemo": {
+            "type": {
+              "value": "chars",
+              "options": {
+                "chars": "chars",
+                "words": "words",
+                "lines": "lines"
+              }
+            },
+            "delay": {
+              "value": 0,
+              "min": 0,
+              "max": 3,
+              "step": 0.1
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "hooks-use-controlled-state",
+      "type": "registry:ui",
+      "title": "useControlledState",
+      "description": "A hook that allows you to control a state.",
+      "files": [
+        {
+          "path": "registry/hooks/use-controlled-state/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/hooks/use-controlled-state.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hooks-use-data-state",
+      "type": "registry:ui",
+      "title": "useDataState",
+      "description": "A hook that allows you to get the data-state of an element.",
+      "files": [
+        {
+          "path": "registry/hooks/use-data-state/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/hooks/use-data-state.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hooks-use-is-in-view",
+      "type": "registry:ui",
+      "title": "useIsInView",
+      "description": "A hook that allows you to check if an element is in view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/hooks/use-is-in-view/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/hooks/use-is-in-view.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hooks-use-strict-context",
+      "type": "registry:ui",
+      "title": "useStrictContext",
+      "description": "A hook that allows you to create a strict context.",
+      "files": [
+        {
+          "path": "registry/hooks/use-strict-context/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/hooks/use-strict-context.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-slot",
+      "type": "registry:ui",
+      "title": "Animate Slot",
+      "description": "A slot component that allows you to use motion components with any element.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/slot/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/slot.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-buttons-button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A simple button that animates on hover and tap.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/buttons/button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/buttons/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-buttons-flip",
+      "type": "registry:ui",
+      "title": "Flip Button",
+      "description": "A button that flips between two states on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/buttons/flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/buttons/flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-buttons-liquid",
+      "type": "registry:ui",
+      "title": "Liquid Button",
+      "description": "A button that fills on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/buttons/liquid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/buttons/liquid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-buttons-ripple",
+      "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "A button that animates on tap with a ripple effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/buttons/ripple/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/buttons/ripple.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-effects-effect",
+      "type": "registry:ui",
+      "title": "Effect",
+      "description": "An effect that allows you to animate elements on first view or load.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/effects/effect/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/effects/effect.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-effects-highlight",
+      "type": "registry:ui",
+      "title": "Highlight",
+      "description": "A highlight effect that allows you to highlight elements on hover, click or with a controlled value.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/effects/highlight/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/effects/highlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-effects-magnetic",
+      "type": "registry:ui",
+      "title": "Magnetic",
+      "description": "A magnetic effect that clings to the cursor, creating a magnetic attraction effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/effects/magnetic/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/effects/magnetic.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-radix-accordion",
       "type": "registry:ui",
       "title": "Radix Accordion",
@@ -144,6 +1095,10 @@
       "dependencies": [
         "motion",
         "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-data-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
       ],
       "files": [
         {
@@ -162,6 +1117,10 @@
         "motion",
         "radix-ui"
       ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
       "files": [
         {
           "path": "registry/primitives/radix/checkbox/index.tsx",
@@ -178,6 +1137,10 @@
       "dependencies": [
         "motion",
         "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-boolean"
       ],
       "files": [
         {
@@ -196,11 +1159,358 @@
         "motion",
         "radix-ui"
       ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
       "files": [
         {
           "path": "registry/primitives/radix/dialog/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/radix/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-dropdown-menu",
+      "type": "registry:ui",
+      "title": "Radix Dropdown Menu",
+      "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-highlight",
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/dropdown-menu/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-hover-card",
+      "type": "registry:ui",
+      "title": "Radix Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/hover-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/hover-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-popover",
+      "type": "registry:ui",
+      "title": "Radix Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-progress",
+      "type": "registry:ui",
+      "title": "Radix Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-radio-group",
+      "type": "registry:ui",
+      "title": "Radix Radio Group",
+      "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-switch",
+      "type": "registry:ui",
+      "title": "Radix Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-tabs",
+      "type": "registry:ui",
+      "title": "Radix Tabs",
+      "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-highlight",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-toggle-group",
+      "type": "registry:ui",
+      "title": "Radix Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-highlight",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-tooltip",
+      "type": "registry:ui",
+      "title": "Radix Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-shadcn-sheet",
+      "type": "registry:ui",
+      "title": "Shadcn Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/shadcn/sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/shadcn/sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-counting-number",
+      "type": "registry:ui",
+      "title": "Counting Number",
+      "description": "A counting number animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/counting-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/counting-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-gradient",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "A gradient text animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/gradient/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-highlight",
+      "type": "registry:ui",
+      "title": "Highlight Text",
+      "description": "A highlight text animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/highlight/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/highlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-rolling",
+      "type": "registry:ui",
+      "title": "Rolling Text",
+      "description": "A rolling text animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/rolling/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/rolling.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-shimmering",
+      "type": "registry:ui",
+      "title": "Shimmering Text",
+      "description": "A shimmering text animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/shimmering/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/shimmering.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-sliding-number",
+      "type": "registry:ui",
+      "title": "Sliding Number",
+      "description": "A sliding number animation.",
+      "dependencies": [
+        "motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/sliding-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/sliding-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-splitting",
+      "type": "registry:ui",
+      "title": "Splitting Text",
+      "description": "A splitting text animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/splitting/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/splitting.tsx"
         }
       ]
     }

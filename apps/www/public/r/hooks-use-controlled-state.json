@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hooks-use-controlled-state",
+  "type": "registry:ui",
+  "title": "useControlledState",
+  "description": "A hook that allows you to control a state.",
+  "files": [
+    {
+      "path": "registry/hooks/use-controlled-state/index.tsx",
+      "content": "import * as React from 'react';\n\ninterface UseControlledStateProps<T> {\n  value?: T;\n  defaultValue?: T;\n  onChange?: (value: T) => void;\n}\n\ntype UseControlledStateReturn<T> = readonly [T, (next: T) => void];\n\nfunction useControlledState<T>(\n  props: UseControlledStateProps<T>,\n): UseControlledStateReturn<T> {\n  const { value, defaultValue, onChange } = props;\n\n  const [state, setInternalState] = React.useState<T>(\n    value !== undefined ? value! : defaultValue!,\n  );\n\n  React.useEffect(() => {\n    if (value !== undefined) {\n      setInternalState(value);\n    }\n  }, [value]);\n\n  const setState = React.useCallback(\n    (next: T) => {\n      setInternalState(next);\n      onChange?.(next);\n    },\n    [onChange],\n  );\n\n  return [state, setState] as const;\n}\n\nexport {\n  useControlledState,\n  type UseControlledStateProps,\n  type UseControlledStateReturn,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/hooks/use-controlled-state.tsx"
+    }
+  ]
+}

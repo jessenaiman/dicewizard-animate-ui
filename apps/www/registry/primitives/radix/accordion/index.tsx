@@ -4,42 +4,63 @@ import * as React from 'react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
 import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
+import { useControlledState } from '@/registry/hooks/use-controlled-state';
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
+
+type AccordionContextType = {
+  value: string | string[] | undefined;
+  setValue: (value: string | string[] | undefined) => void;
+};
+
 type AccordionItemContextType = {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 };
 
-const AccordionItemContext = React.createContext<
-  AccordionItemContextType | undefined
->(undefined);
+const [AccordionProvider, useAccordion] =
+  useStrictContext<AccordionContextType>('AccordionContext');
 
-const useAccordionItem = (): AccordionItemContextType => {
-  const context = React.useContext(AccordionItemContext);
-  if (!context) {
-    throw new Error('useAccordionItem must be used within an AccordionItem');
-  }
-  return context;
-};
+const [AccordionItemProvider, useAccordionItem] =
+  useStrictContext<AccordionItemContextType>('AccordionItemContext');
 
 type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;
 
 function Accordion(props: AccordionProps) {
-  return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
-}
-
-type AccordionItemProps = React.ComponentProps<
-  typeof AccordionPrimitive.Item
-> & {
-  children: React.ReactNode;
-};
-
-function AccordionItem(props: AccordionItemProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [value, setValue] = useControlledState<string | string[] | undefined>({
+    value: props?.value,
+    defaultValue: props?.defaultValue,
+    onChange: props?.onValueChange as (
+      value: string | string[] | undefined,
+    ) => void,
+  });
 
   return (
-    <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>
+    <AccordionProvider value={{ value, setValue }}>
+      <AccordionPrimitive.Root
+        data-slot="accordion"
+        {...props}
+        onValueChange={setValue}
+      />
+    </AccordionProvider>
+  );
+}
+
+type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>;
+
+function AccordionItem(props: AccordionItemProps) {
+  const { value } = useAccordion();
+  const [isOpen, setIsOpen] = React.useState(
+    value?.includes(props?.value) ?? false,
+  );
+
+  React.useEffect(() => {
+    setIsOpen(value?.includes(props?.value) ?? false);
+  }, [value, props?.value]);
+
+  return (
+    <AccordionItemProvider value={{ isOpen, setIsOpen }}>
       <AccordionPrimitive.Item data-slot="accordion-item" {...props} />
-    </AccordionItemContext.Provider>
+    </AccordionItemProvider>
   );
 }
 
@@ -55,51 +76,23 @@ type AccordionTriggerProps = React.ComponentProps<
   typeof AccordionPrimitive.Trigger
 >;
 
-function AccordionTrigger({ ref, ...props }: AccordionTriggerProps) {
-  const triggerRef = React.useRef<HTMLButtonElement | null>(null);
-  React.useImperativeHandle(ref, () => triggerRef.current as HTMLButtonElement);
-  const { setIsOpen } = useAccordionItem();
-
-  React.useEffect(() => {
-    const node = triggerRef.current;
-    if (!node) return;
-
-    const observer = new MutationObserver((mutationsList) => {
-      mutationsList.forEach((mutation) => {
-        if (mutation.attributeName === 'data-state') {
-          const currentState = node.getAttribute('data-state');
-          setIsOpen(currentState === 'open');
-        }
-      });
-    });
-    observer.observe(node, {
-      attributes: true,
-      attributeFilter: ['data-state'],
-    });
-    const initialState = node.getAttribute('data-state');
-    setIsOpen(initialState === 'open');
-    return () => {
-      observer.disconnect();
-    };
-  }, [setIsOpen]);
-
+function AccordionTrigger(props: AccordionTriggerProps) {
   return (
-    <AccordionPrimitive.Trigger
-      ref={triggerRef}
-      data-slot="accordion-trigger"
-      {...props}
-    />
+    <AccordionPrimitive.Trigger data-slot="accordion-trigger" {...props} />
   );
 }
 
-type AccordionContentProps = HTMLMotionProps<'div'> & {
-  keepRendered?: boolean;
-};
+type AccordionContentProps = Omit<
+  React.ComponentProps<typeof AccordionPrimitive.Content>,
+  'asChild' | 'forceMount'
+> &
+  HTMLMotionProps<'div'> & {
+    keepRendered?: boolean;
+  };
 
 function AccordionContent({
-  children,
-  transition = { type: 'spring', stiffness: 150, damping: 22 },
   keepRendered = false,
+  transition = { type: 'spring', stiffness: 150, damping: 22 },
   ...props
 }: AccordionContentProps) {
   const { isOpen } = useAccordionItem();
@@ -107,7 +100,7 @@ function AccordionContent({
   return (
     <AnimatePresence>
       {keepRendered ? (
-        <AccordionPrimitive.Content forceMount>
+        <AccordionPrimitive.Content asChild forceMount>
           <motion.div
             key="accordion-content"
             initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
@@ -125,13 +118,11 @@ function AccordionContent({
               overflow: 'hidden',
             }}
             {...props}
-          >
-            {children}
-          </motion.div>
+          />
         </AccordionPrimitive.Content>
       ) : (
         isOpen && (
-          <AccordionPrimitive.Content forceMount>
+          <AccordionPrimitive.Content asChild forceMount>
             <motion.div
               key="accordion-content"
               data-slot="accordion-content"
@@ -147,9 +138,7 @@ function AccordionContent({
                 overflow: 'hidden',
               }}
               {...props}
-            >
-              {children}
-            </motion.div>
+            />
           </AccordionPrimitive.Content>
         )
       )}

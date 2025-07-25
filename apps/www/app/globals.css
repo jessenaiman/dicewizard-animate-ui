@@ -252,6 +252,10 @@
     @apply max-w-[860px];
   }
 
+  #nd-toc {
+    @apply !pb-18;
+  }
+
   @keyframes blink {
     50% {
       opacity: 0.6;

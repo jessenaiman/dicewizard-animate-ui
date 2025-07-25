@@ -1,15 +1,31 @@
-import { useTheme } from 'next-themes';
+'use client';
 
-export const HeroBackground = (props: React.SVGProps<SVGSVGElement>) => {
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { motion, type SVGMotionProps } from 'motion/react';
+
+export const HeroBackground = (props: SVGMotionProps<SVGSVGElement>) => {
   const { resolvedTheme } = useTheme();
+
+  const [isMounted, setIsMounted] = useState(false);
 
   const color = resolvedTheme === 'dark' ? '#fff' : '#000';
   const opacity = resolvedTheme === 'dark' ? 0.1 : 0.15;
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
-    <svg
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 74.71 74.71"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+      transition={{ duration: 1, ease: 'easeInOut' }}
       {...props}
     >
       <defs>
@@ -32,6 +48,6 @@ export const HeroBackground = (props: React.SVGProps<SVGSVGElement>) => {
         d="M0 0h74.71v74.71H0z"
         fillOpacity={opacity}
       ></path>
-    </svg>
+    </motion.svg>
   );
 };

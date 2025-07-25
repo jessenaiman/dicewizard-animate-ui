@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo-primitives-effects-effect",
+  "type": "registry:ui",
+  "title": "Effect Demo",
+  "description": "Demo showing an animated effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-effects-effect"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/primitives/effects/effect/index.tsx",
+      "content": "import { Effect } from '@/components/animate-ui/primitives/effects/effect';\n\nexport default function EffectDemo() {\n  return (\n    <Effect\n      slide={{\n        direction: 'down',\n      }}\n      fade\n      zoom\n      inView\n      className=\"px-6 py-4 bg-accent\"\n    >\n      Hello\n    </Effect>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/primitives/effects/effect.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "Effect": {
+        "delay": {
+          "value": 0
+        },
+        "blur": {
+          "value": true
+        },
+        "slide": {
+          "value": true
+        },
+        "fade": {
+          "value": true
+        },
+        "zoom": {
+          "value": true
+        }
+      }
+    }
+  }
+}

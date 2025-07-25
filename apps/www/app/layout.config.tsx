@@ -49,5 +49,15 @@ export const baseOptions: BaseLayoutProps = {
       url: '/docs/troubleshooting',
       secondary: false,
     },
+    {
+      text: "What's new in 1.0",
+      url: '/docs/1.0',
+      secondary: false,
+    },
+    {
+      text: 'Other animated distributions',
+      url: '/docs/other-animated-distributions',
+      secondary: false,
+    },
   ],
 };

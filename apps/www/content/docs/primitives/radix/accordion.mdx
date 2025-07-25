@@ -87,5 +87,19 @@ author:
       required: false,
       default: 'false',
     },
+    '...props': {
+      description: 'The props of the accordion content.',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
   }}
 />
+
+<Callout type="info">
+  The `asChild` and `forceMount` props are not supported in the
+  `AccordionContent` component as it is used for animation.
+</Callout>
+
+## Credits
+
+- [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion)

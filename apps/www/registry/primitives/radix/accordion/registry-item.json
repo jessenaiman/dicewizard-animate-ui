@@ -5,6 +5,10 @@
   "title": "Radix Accordion",
   "description": "A vertically stacked set of interactive headings that each reveal an associated section of content.",
   "dependencies": ["motion", "radix-ui"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-data-state",
+    "https://animate-ui.com/r/hooks-use-strict-context"
+  ],
   "files": [
     {
       "path": "registry/primitives/radix/accordion/index.tsx",

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "primitives-effects-effect",
+  "type": "registry:ui",
+  "title": "Effect",
+  "description": "An effect that allows you to animate elements on first view or load.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-animate-slot",
+    "https://animate-ui.com/r/hooks-use-is-in-view"
+  ],
+  "files": [
+    {
+      "path": "registry/primitives/effects/effect/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  AnimatePresence,\n  HTMLMotionProps,\n  type Variant,\n} from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SlideDirection = 'up' | 'down' | 'left' | 'right';\n\ntype Slide = {\n  direction?: SlideDirection;\n  offset?: number;\n};\n\ntype Fade = { initialOpacity?: number; opacity?: number };\n\ntype Zoom = {\n  initialScale?: number;\n  scale?: number;\n};\n\ntype EffectProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    delay?: number;\n    blur?: string | boolean;\n    slide?: Slide | boolean;\n    fade?: Fade | boolean;\n    zoom?: Zoom | boolean;\n    ref?: React.Ref<HTMLElement>;\n  } & UseIsInViewOptions,\n  HTMLMotionProps<'div'>\n>;\n\nfunction Effect({\n  ref,\n  transition = { type: 'spring', stiffness: 200, damping: 20 },\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  blur = false,\n  slide = false,\n  fade = false,\n  zoom = false,\n  asChild = false,\n  ...props\n}: EffectProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const hiddenVariant: Variant = {};\n  const visibleVariant: Variant = {};\n\n  if (slide) {\n    const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);\n    const direction =\n      typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');\n    const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';\n    hiddenVariant[axis] =\n      direction === 'left' || direction === 'up' ? -offset : offset;\n    visibleVariant[axis] = 0;\n  }\n\n  if (fade) {\n    hiddenVariant.opacity =\n      typeof fade === 'boolean' ? 0 : (fade.initialOpacity ?? 0);\n    visibleVariant.opacity =\n      typeof fade === 'boolean' ? 1 : (fade.opacity ?? 1);\n  }\n\n  if (zoom) {\n    hiddenVariant.scale =\n      typeof zoom === 'boolean' ? 0.5 : (zoom.initialScale ?? 0.5);\n    visibleVariant.scale = typeof zoom === 'boolean' ? 1 : (zoom.scale ?? 1);\n  }\n\n  if (blur) {\n    hiddenVariant.filter =\n      typeof blur === 'boolean' ? 'blur(10px)' : `blur(${blur})`;\n    visibleVariant.filter = 'blur(0px)';\n  }\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      <Component\n        ref={localRef as React.Ref<HTMLDivElement>}\n        initial=\"hidden\"\n        animate={isInView ? 'visible' : 'hidden'}\n        exit=\"hidden\"\n        variants={{\n          hidden: hiddenVariant,\n          visible: visibleVariant,\n        }}\n        transition={{\n          ...transition,\n          delay: (transition?.delay ?? 0) + delay,\n        }}\n        {...props}\n      />\n    </AnimatePresence>\n  );\n}\n\nexport { Effect, type EffectProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/primitives/effects/effect.tsx"
+    }
+  ]
+}

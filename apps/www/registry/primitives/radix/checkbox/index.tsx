@@ -4,22 +4,16 @@ import * as React from 'react';
 import { Checkbox as CheckboxPrimitive } from 'radix-ui';
 import { motion, SVGMotionProps, type HTMLMotionProps } from 'motion/react';
 
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { useControlledState } from '@/registry/hooks/use-controlled-state';
+
 type CheckboxContextType = {
   isChecked: boolean | 'indeterminate';
   setIsChecked: (checked: boolean | 'indeterminate') => void;
 };
 
-const CheckboxContext = React.createContext<CheckboxContextType | undefined>(
-  undefined,
-);
-
-const useCheckbox = (): CheckboxContextType => {
-  const context = React.useContext(CheckboxContext);
-  if (!context) {
-    throw new Error('useCheckbox must be used within a Checkbox');
-  }
-  return context;
-};
+const [CheckboxProvider, useCheckbox] =
+  useStrictContext<CheckboxContextType>('CheckboxContext');
 
 type CheckboxProps = HTMLMotionProps<'button'> &
   Omit<React.ComponentProps<typeof CheckboxPrimitive.Root>, 'asChild'>;
@@ -34,28 +28,18 @@ function Checkbox({
   value,
   ...props
 }: CheckboxProps) {
-  const [isChecked, setIsChecked] = React.useState(
-    checked ?? defaultChecked ?? false,
-  );
-
-  React.useEffect(() => {
-    if (checked !== undefined) setIsChecked(checked);
-  }, [checked]);
-
-  const handleCheckedChange = React.useCallback(
-    (checked: boolean | 'indeterminate') => {
-      setIsChecked(checked);
-      onCheckedChange?.(checked);
-    },
-    [onCheckedChange],
-  );
+  const [isChecked, setIsChecked] = useControlledState({
+    value: checked,
+    defaultValue: defaultChecked,
+    onChange: onCheckedChange,
+  });
 
   return (
-    <CheckboxContext.Provider value={{ isChecked, setIsChecked }}>
+    <CheckboxProvider value={{ isChecked, setIsChecked }}>
       <CheckboxPrimitive.Root
         defaultChecked={defaultChecked}
         checked={checked}
-        onCheckedChange={handleCheckedChange}
+        onCheckedChange={setIsChecked}
         disabled={disabled}
         required={required}
         name={name}
@@ -69,7 +53,7 @@ function Checkbox({
           {...props}
         />
       </CheckboxPrimitive.Root>
-    </CheckboxContext.Provider>
+    </CheckboxProvider>
   );
 }
 

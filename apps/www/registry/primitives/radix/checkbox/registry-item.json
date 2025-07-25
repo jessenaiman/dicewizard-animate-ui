@@ -5,6 +5,10 @@
   "title": "Radix Checkbox",
   "description": "A control that allows the user to toggle between checked and not checked.",
   "dependencies": ["motion", "radix-ui"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-controlled-state",
+    "https://animate-ui.com/r/hooks-use-strict-context"
+  ],
   "files": [
     {
       "path": "registry/primitives/radix/checkbox/index.tsx",

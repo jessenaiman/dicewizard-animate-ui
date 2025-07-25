@@ -20,7 +20,6 @@ import {
   WifiIcon,
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { HeroBackground } from './hero-background';
 
 const COMPONENTS = [
   {

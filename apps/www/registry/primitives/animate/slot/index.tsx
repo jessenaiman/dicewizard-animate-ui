@@ -1,72 +1,53 @@
 import * as React from 'react';
-import {
-  motion,
-  useInView,
-  type Variant,
-  type MotionProps,
-  type UseInViewOptions,
-} from 'motion/react';
+import { motion, isMotionComponent, type HTMLMotionProps } from 'motion/react';
 
-type WithoutRef<E extends React.ElementType> = Omit<
-  React.ComponentPropsWithoutRef<E>,
-  keyof MotionProps | 'as'
->;
+type AnyProps = Record<string, unknown>;
 
-export type SlotProps<E extends React.ElementType = 'div'> = {
-  as?: E;
-  inView?: boolean;
-  inViewOnce?: boolean;
-  inViewMargin?: UseInViewOptions['margin'];
-  hidden?: Variant;
-  visible?: Variant;
-} & MotionProps &
-  WithoutRef<E>;
+type DOMMotionProps<T extends HTMLElement = HTMLElement> = Omit<
+  HTMLMotionProps<'div'>,
+  'ref'
+> & {
+  ref?: React.Ref<T>;
+};
 
-export function Slot<E extends React.ElementType = 'div'>({
-  ref,
-  as,
-  inView,
-  inViewOnce = false,
-  inViewMargin = '0px',
-  hidden,
-  visible,
-  variants,
-  ...props
-}: SlotProps<E>) {
-  const Base = as ?? ('div' as React.ElementType);
-  const Component =
-    typeof Base === 'string'
-      ? // @ts-expect-error: Cannot index motion with a dynamic ElementType
-        motion[Base]
-      : motion(Base as React.ComponentType);
+type WithAsChild<Base extends object, Default extends object> =
+  | (Base & Default & { asChild: true; children: React.ReactElement })
+  | (Base &
+      Default & {
+        asChild?: false | undefined;
+      });
 
-  const localRef = React.useRef<HTMLElement>(null);
-  React.useImperativeHandle(ref, () => localRef.current as HTMLElement);
+type SlotProps<T extends HTMLElement = HTMLElement> = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children?: any;
+} & DOMMotionProps<T>;
 
-  const inViewResult = useInView(localRef, {
-    once: inViewOnce,
-    margin: inViewMargin,
-  });
-  const isInView = inView ?? inViewResult;
+function Slot<T extends HTMLElement = HTMLElement>({
+  children,
+  ref: outerRef,
+  ...motionProps
+}: SlotProps<T>) {
+  if (!React.isValidElement(children)) return null;
 
-  return (
-    <Component
-      ref={localRef}
-      {...(inView && hidden && visible
-        ? {
-            initial: 'hidden',
-            animate: isInView ? 'visible' : 'hidden',
-            exit: 'hidden',
-            variants: {
-              hidden: hidden ?? {},
-              visible: visible ?? {},
-              ...variants,
-            },
-          }
-        : {
-            variants,
-          })}
-      {...props}
-    />
-  );
+  const isAlreadyMotion =
+    typeof children.type === 'object' &&
+    children.type !== null &&
+    isMotionComponent(children.type);
+
+  const Base = isAlreadyMotion
+    ? (children.type as React.ElementType)
+    : motion(children.type as React.ElementType);
+
+  const { ref: childRef, ...childProps } = children.props as AnyProps;
+  const ref = React.useImperativeHandle(outerRef, () => childRef as T);
+
+  return <Base {...childProps} {...motionProps} ref={ref} />;
 }
+
+export {
+  Slot,
+  type SlotProps,
+  type WithAsChild,
+  type DOMMotionProps,
+  type AnyProps,
+};

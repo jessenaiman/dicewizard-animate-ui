@@ -5,6 +5,10 @@
   "title": "Radix Dialog",
   "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
   "dependencies": ["motion", "radix-ui"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-controlled-state",
+    "https://animate-ui.com/r/hooks-use-strict-context"
+  ],
   "files": [
     {
       "path": "registry/primitives/radix/dialog/index.tsx",

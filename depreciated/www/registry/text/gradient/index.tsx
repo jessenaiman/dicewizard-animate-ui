@@ -3,8 +3,6 @@
 import * as React from 'react';
 import { motion, type Transition } from 'motion/react';
 
-import { cn } from '@workspace/ui/lib/utils';
-
 type GradientTextProps = React.ComponentProps<'span'> & {
   text: string;
   gradient?: string;
@@ -14,7 +12,7 @@ type GradientTextProps = React.ComponentProps<'span'> & {
 
 function GradientText({
   text,
-  className,
+  style,
   gradient = 'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',
   neon = false,
   transition = { duration: 50, repeat: Infinity, ease: 'linear' },
@@ -22,16 +20,20 @@ function GradientText({
 }: GradientTextProps) {
   const baseStyle: React.CSSProperties = {
     backgroundImage: gradient,
+    margin: 0,
+    color: 'transparent',
+    backgroundClip: 'text',
+    backgroundSize: '700% 100%',
+    backgroundPosition: '0% 0%',
   };
 
   return (
     <span
       data-slot="gradient-text"
-      className={cn('relative inline-block', className)}
+      style={{ position: 'relative', display: 'inline-block', ...style }}
       {...props}
     >
       <motion.span
-        className="m-0 text-transparent bg-clip-text bg-[length:700%_100%] bg-[position:0%_0%]"
         style={baseStyle}
         initial={{ backgroundPosition: '0% 0%' }}
         animate={{ backgroundPosition: '500% 100%' }}
@@ -42,8 +44,14 @@ function GradientText({
 
       {neon && (
         <motion.span
-          className="m-0 absolute top-0 left-0 text-transparent bg-clip-text blur-[8px] mix-blend-plus-lighter bg-[length:700%_100%] bg-[position:0%_0%]"
-          style={baseStyle}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            mixBlendMode: 'plus-lighter',
+            filter: 'blur(8px)',
+            ...baseStyle,
+          }}
           initial={{ backgroundPosition: '0% 0%' }}
           animate={{ backgroundPosition: '500% 100%' }}
           transition={transition}

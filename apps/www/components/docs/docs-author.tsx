@@ -6,7 +6,7 @@ interface DocsAuthorProps {
 }
 
 const nameClassName =
-  'text-foreground underline underline-offset-2 decoration-blue-500 font-medium';
+  'text-foreground underline underline-offset-2 decoration-primary font-medium';
 
 export const DocsAuthor = ({ name, url }: DocsAuthorProps) => {
   return (

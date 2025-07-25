@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo-primitives-texts-sliding-number",
+  "type": "registry:ui",
+  "title": "Sliding Number Demo",
+  "description": "Demo showing an animated sliding number.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-texts-sliding-number"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/primitives/texts/sliding-number/index.tsx",
+      "content": "import { SlidingNumber } from '@/components/animate-ui/primitives/texts/sliding-number';\n\ninterface SlidingNumberDemoProps {\n  number: number;\n  padStart: boolean;\n  decimalSeparator: string;\n  decimalPlaces: number;\n}\n\nexport const SlidingNumberDemo = ({\n  number,\n  padStart,\n  decimalSeparator,\n  decimalPlaces,\n}: SlidingNumberDemoProps) => {\n  return (\n    <SlidingNumber\n      number={number}\n      padStart={padStart}\n      decimalSeparator={decimalSeparator}\n      decimalPlaces={decimalPlaces}\n      className=\"text-4xl font-semibold\"\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/primitives/texts/sliding-number.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "CountingNumber": {
+        "number": {
+          "value": 2025
+        },
+        "padStart": {
+          "value": false
+        },
+        "decimalSeparator": {
+          "value": "."
+        },
+        "decimalPlaces": {
+          "value": 0
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,11 @@
   "title": "Radix Dropdown Menu",
   "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
   "dependencies": ["motion", "radix-ui"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-effects-highlight",
+    "https://animate-ui.com/r/hooks-use-controlled-state",
+    "https://animate-ui.com/r/hooks-use-strict-context"
+  ],
   "files": [
     {
       "path": "registry/primitives/radix/dropdown-menu/index.tsx",

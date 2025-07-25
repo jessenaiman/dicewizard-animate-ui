@@ -13,10 +13,11 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultMdxComponents,
     ...components,
-    Card: ({ children, className, ...props }) => (
+    Card: ({ children, className, accent, ...props }) => (
       <Card
         className={cn(
-          'flex flex-col items-center justify-center py-7 bg-accent/50 border-none [&>h3]:text-base [&>h3]:text-fd-muted-foreground [&>div]:bg-transparent [&>div]:shadow-none [&>div]:border-none [&_svg]:size-10',
+          'flex flex-col items-center justify-center py-7 bg-accent/50 border-none [&>h3]:text-base [&>h3]:text-current [&>div]:bg-transparent [&>div]:shadow-none [&>div]:border-none [&_svg]:size-10',
+          accent && '[&>h3]:text-fd-muted-foreground',
           className,
         )}
         {...props}
