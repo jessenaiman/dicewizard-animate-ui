@@ -10,14 +10,14 @@
   "files": [
     {
       "path": "registry/demo/primitives/texts/splitting/index.tsx",
-      "content": "import {\n  SplittingText,\n  type SplittingTextProps,\n} from '@/components/animate-ui/primitives/texts/splitting';\n\ninterface SplittingTextDemoProps {\n  type: SplittingTextProps['type'];\n  delay: number;\n  stagger: number;\n}\n\nexport const SplittingTextDemo = ({\n  type,\n  delay,\n  stagger,\n}: SplittingTextDemoProps) => {\n  return (\n    // @ts-expect-error\n    <SplittingText\n      key={`${type}-${delay}-${stagger}`}\n      className=\"text-4xl font-semibold\"\n      type={type}\n      delay={delay}\n      stagger={stagger}\n      text={\n        type === 'lines'\n          ? [\n              'Introducing Splitting Text component',\n              'Made with Motion. Highly customizable and easy to use.',\n            ]\n          : 'Splitting Text'\n      }\n    />\n  );\n};\n",
+      "content": "import {\n  SplittingText,\n  type SplittingTextProps,\n} from '@/components/animate-ui/primitives/texts/splitting';\nimport { cn } from '@/lib/utils';\n\ninterface SplittingTextDemoProps {\n  type: SplittingTextProps['type'];\n  delay: number;\n  stagger: number;\n}\n\nexport const SplittingTextDemo = ({\n  type,\n  delay,\n  stagger,\n}: SplittingTextDemoProps) => {\n  return (\n    // @ts-expect-error\n    <SplittingText\n      key={`${type}-${delay}-${stagger}`}\n      className={cn('text-4xl font-semibold', type === 'lines' && 'text-xl')}\n      type={type}\n      delay={delay}\n      stagger={stagger}\n      text={\n        type === 'lines'\n          ? [\n              'Introducing Splitting Text component',\n              'Made with Motion. Highly customizable and easy to use.',\n            ]\n          : 'Splitting Text'\n      }\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/texts/splitting.tsx"
     }
   ],
   "meta": {
     "demoProps": {
-      "SplittingTextDemo": {
+      "SplittingText": {
         "type": {
           "value": "chars",
           "options": {

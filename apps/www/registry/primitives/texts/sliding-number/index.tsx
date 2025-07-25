@@ -20,6 +20,7 @@ type SlidingNumberRollerProps = {
   value: number;
   place: number;
   transition: SpringOptions;
+  delay?: number;
 };
 
 function SlidingNumberRoller({
@@ -27,14 +28,18 @@ function SlidingNumberRoller({
   value,
   place,
   transition,
+  delay = 0,
 }: SlidingNumberRollerProps) {
   const startNumber = Math.floor(prevValue / place) % 10;
   const targetNumber = Math.floor(value / place) % 10;
   const animatedValue = useSpring(startNumber, transition);
 
   React.useEffect(() => {
-    animatedValue.set(targetNumber);
-  }, [targetNumber, animatedValue]);
+    const timeoutId = setTimeout(() => {
+      animatedValue.set(targetNumber);
+    }, delay * 1000);
+    return () => clearTimeout(timeoutId);
+  }, [targetNumber, animatedValue, delay]);
 
   const [measureRef, { height }] = useMeasure();
 
@@ -120,6 +125,7 @@ type SlidingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   decimalSeparator?: string;
   decimalPlaces?: number;
   transition?: SpringOptions;
+  delay?: number;
 } & UseIsInViewOptions;
 
 function SlidingNumber({
@@ -132,6 +138,7 @@ function SlidingNumber({
   decimalSeparator = '.',
   decimalPlaces = 0,
   transition = { stiffness: 200, damping: 20, mass: 0.4 },
+  delay = 0,
   ...props
 }: SlidingNumberProps) {
   const { ref: localRef, isInView } = useIsInView(
@@ -231,6 +238,7 @@ function SlidingNumber({
           value={parseInt(newIntStr ?? '0', 10)}
           place={place}
           transition={transition}
+          delay={delay}
         />
       ))}
 
@@ -244,6 +252,7 @@ function SlidingNumber({
               value={newDecValue}
               place={place}
               transition={transition}
+              delay={delay}
             />
           ))}
         </>

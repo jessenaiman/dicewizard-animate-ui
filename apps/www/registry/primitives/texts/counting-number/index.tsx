@@ -15,6 +15,7 @@ type CountingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   decimalSeparator?: string;
   decimalPlaces?: number;
   transition?: SpringOptions;
+  delay?: number;
 } & UseIsInViewOptions;
 
 function CountingNumber({
@@ -28,6 +29,7 @@ function CountingNumber({
   decimalSeparator = '.',
   transition = { stiffness: 90, damping: 50 },
   decimalPlaces = 0,
+  delay = 0,
   ...props
 }: CountingNumberProps) {
   const { ref: localRef, isInView } = useIsInView(
@@ -51,8 +53,12 @@ function CountingNumber({
   const springVal = useSpring(motionVal, transition);
 
   React.useEffect(() => {
-    if ((isInView && inView) || !inView) motionVal.set(number);
-  }, [isInView, number, motionVal, inView]);
+    const timeoutId = setTimeout(() => {
+      if ((isInView && inView) || !inView) motionVal.set(number);
+    }, delay * 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [isInView, number, motionVal, inView, delay]);
 
   React.useEffect(() => {
     const unsubscribe = springVal.on('change', (latest) => {

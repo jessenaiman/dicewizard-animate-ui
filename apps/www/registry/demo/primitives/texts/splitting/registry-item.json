@@ -16,7 +16,7 @@
   ],
   "meta": {
     "demoProps": {
-      "SplittingTextDemo": {
+      "SplittingText": {
         "type": {
           "value": "chars",
           "options": {

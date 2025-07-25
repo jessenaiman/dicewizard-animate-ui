@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo-primitives-texts-typing",
+  "type": "registry:ui",
+  "title": "Typing Demo",
+  "description": "Demo showing an animated typing text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-texts-typing"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/primitives/texts/typing/index.tsx",
+      "content": "import { TypingText } from '@/components/animate-ui/primitives/texts/typing';\n\ninterface TypingTextDemoProps {\n  delay: number;\n}\n\nexport const TypingTextDemo = ({ delay }: TypingTextDemoProps) => {\n  return (\n    <TypingText\n      key={delay}\n      delay={delay}\n      className=\"text-4xl font-semibold\"\n      text=\"Typing Text\"\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/primitives/texts/typing.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "TypingText": {
+        "delay": {
+          "value": 0,
+          "min": 0,
+          "max": 3,
+          "step": 0.1
+        }
+      }
+    }
+  }
+}

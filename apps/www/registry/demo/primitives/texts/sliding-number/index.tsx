@@ -5,6 +5,7 @@ interface SlidingNumberDemoProps {
   padStart: boolean;
   decimalSeparator: string;
   decimalPlaces: number;
+  delay: number;
 }
 
 export const SlidingNumberDemo = ({
@@ -12,9 +13,12 @@ export const SlidingNumberDemo = ({
   padStart,
   decimalSeparator,
   decimalPlaces,
+  delay,
 }: SlidingNumberDemoProps) => {
   return (
     <SlidingNumber
+      key={delay}
+      delay={delay}
       number={number}
       padStart={padStart}
       decimalSeparator={decimalSeparator}

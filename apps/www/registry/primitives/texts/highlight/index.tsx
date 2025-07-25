@@ -10,6 +10,7 @@ import {
 
 type HighlightTextProps = Omit<HTMLMotionProps<'span'>, 'children'> & {
   text: string;
+  delay?: number;
 } & UseIsInViewOptions;
 
 function HighlightText({
@@ -20,6 +21,7 @@ function HighlightText({
   inViewMargin = '0px',
   inViewOnce = true,
   transition = { duration: 2, ease: 'easeInOut' },
+  delay = 0,
   ...props
 }: HighlightTextProps) {
   const { ref: localRef, isInView } = useIsInView(
@@ -41,7 +43,10 @@ function HighlightText({
           ? { backgroundSize: '100% 100%' }
           : undefined
       }
-      transition={transition}
+      transition={{
+        ...transition,
+        delay: (transition?.delay ?? 0) + delay,
+      }}
       style={{
         position: 'relative',
         backgroundRepeat: 'no-repeat',

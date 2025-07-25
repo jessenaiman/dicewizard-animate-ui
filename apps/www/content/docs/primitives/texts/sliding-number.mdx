@@ -53,6 +53,12 @@ author:
       required: false,
       default: '{ stiffness: 200, damping: 20, mass: 0.4 }',
     },
+    delay: {
+      description: 'The delay to use.',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
     '...props': {
       description: 'The props of the sliding number.',
       type: 'React.ComponentProps<"span">',

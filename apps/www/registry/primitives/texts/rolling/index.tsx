@@ -19,6 +19,7 @@ const CHAR_STYLE: React.CSSProperties = {
 type RollingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   text: string;
   transition?: Transition;
+  delay?: number;
 } & UseIsInViewOptions;
 
 function RollingText({
@@ -28,6 +29,7 @@ function RollingText({
   inViewMargin = '0px',
   inViewOnce = true,
   transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },
+  delay = 0,
   ...props
 }: RollingTextProps) {
   const { ref: localRef, isInView } = useIsInView(
@@ -44,51 +46,58 @@ function RollingText({
   );
   const characters = React.useMemo(() => text.split(''), [text]);
 
+  const stepDelay = transition?.delay ?? 0;
+
   return (
     <span ref={localRef} data-slot="rolling-text" {...props}>
-      {characters.map((char, idx) => (
-        <span
-          key={idx}
-          style={{
-            position: 'relative',
-            display: 'inline-block',
-            perspective: '9999999px',
-            transformStyle: 'preserve-3d',
-            width: 'auto',
-          }}
-          aria-hidden="true"
-        >
-          <motion.span
+      {characters.map((char, idx) => {
+        const charDelay = delay + idx * stepDelay;
+        return (
+          <span
+            key={idx}
             style={{
-              ...CHAR_STYLE,
-              transformOrigin: '50% 25%',
+              position: 'relative',
+              display: 'inline-block',
+              perspective: '9999999px',
+              transformStyle: 'preserve-3d',
+              width: 'auto',
             }}
-            initial={{ rotateX: 0 }}
-            animate={start ? { rotateX: 90 } : undefined}
-            transition={{
-              ...transition,
-              delay: idx * (transition?.delay ?? 0),
-            }}
+            aria-hidden="true"
           >
-            {formatCharacter(char)}
-          </motion.span>
-          <motion.span
-            style={{
-              ...CHAR_STYLE,
-              transformOrigin: '50% 100%',
-            }}
-            initial={{ rotateX: 90 }}
-            animate={start ? { rotateX: 0 } : undefined}
-            transition={{
-              ...transition,
-              delay: idx * (transition?.delay ?? 0) + 0.3,
-            }}
-          >
-            {formatCharacter(char)}
-          </motion.span>
-          <span style={{ visibility: 'hidden' }}>{formatCharacter(char)}</span>
-        </span>
-      ))}
+            <motion.span
+              style={{
+                ...CHAR_STYLE,
+                transformOrigin: '50% 25%',
+              }}
+              initial={{ rotateX: 0 }}
+              animate={start ? { rotateX: 90 } : undefined}
+              transition={{
+                ...transition,
+                delay: charDelay,
+              }}
+            >
+              {formatCharacter(char)}
+            </motion.span>
+            <motion.span
+              style={{
+                ...CHAR_STYLE,
+                transformOrigin: '50% 100%',
+              }}
+              initial={{ rotateX: 90 }}
+              animate={start ? { rotateX: 0 } : undefined}
+              transition={{
+                ...transition,
+                delay: charDelay + 0.3,
+              }}
+            >
+              {formatCharacter(char)}
+            </motion.span>
+            <span style={{ visibility: 'hidden' }}>
+              {formatCharacter(char)}
+            </span>
+          </span>
+        );
+      })}
 
       <span className="sr-only">{text}</span>
     </span>

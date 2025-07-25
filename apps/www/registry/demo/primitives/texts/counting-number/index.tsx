@@ -6,6 +6,7 @@ interface CountingFromNumberDemoProps {
   padStart: boolean;
   decimalSeparator: string;
   decimalPlaces: number;
+  delay: number;
 }
 
 export const CountingFromNumberDemo = ({
@@ -14,9 +15,12 @@ export const CountingFromNumberDemo = ({
   padStart,
   decimalSeparator,
   decimalPlaces,
+  delay,
 }: CountingFromNumberDemoProps) => {
   return (
     <CountingNumber
+      key={delay}
+      delay={delay}
       number={number}
       fromNumber={fromNumber}
       padStart={padStart}
