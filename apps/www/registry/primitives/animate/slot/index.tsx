@@ -27,8 +27,6 @@ function Slot<T extends HTMLElement = HTMLElement>({
   ref: outerRef,
   ...props
 }: SlotProps<T>) {
-  if (!React.isValidElement(children)) return null;
-
   const isAlreadyMotion =
     typeof children.type === 'object' &&
     children.type !== null &&
@@ -40,6 +38,8 @@ function Slot<T extends HTMLElement = HTMLElement>({
 
   const { ref: childRef, ...childProps } = children.props as AnyProps;
   const ref = React.useImperativeHandle(outerRef, () => childRef as T);
+
+  if (!React.isValidElement(children)) return null;
 
   return <Base {...childProps} {...props} ref={ref} />;
 }

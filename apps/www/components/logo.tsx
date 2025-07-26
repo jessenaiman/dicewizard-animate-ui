@@ -19,7 +19,9 @@ const pathVariants = {
 } as const;
 
 const sizes = {
-  sm: 'h-5.5',
+  xs: 'h-5.5',
+  sm: 'h-6.5',
+  md: 'h-8',
   lg: 'h-12',
   xl: 'h-14',
 };

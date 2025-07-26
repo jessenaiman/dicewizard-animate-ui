@@ -1,12 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  motion,
-  AnimatePresence,
-  HTMLMotionProps,
-  type Variant,
-} from 'motion/react';
+import { motion, type HTMLMotionProps, type Variant } from 'motion/react';
 
 import {
   useIsInView,
@@ -73,7 +68,7 @@ function Effect({
       typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');
     const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';
     hiddenVariant[axis] =
-      direction === 'left' || direction === 'up' ? -offset : offset;
+      direction === 'right' || direction === 'down' ? -offset : offset;
     visibleVariant[axis] = 0;
   }
 
@@ -99,23 +94,21 @@ function Effect({
   const Component = asChild ? Slot : motion.div;
 
   return (
-    <AnimatePresence>
-      <Component
-        ref={localRef as React.Ref<HTMLDivElement>}
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-        exit="hidden"
-        variants={{
-          hidden: hiddenVariant,
-          visible: visibleVariant,
-        }}
-        transition={{
-          ...transition,
-          delay: (transition?.delay ?? 0) + delay,
-        }}
-        {...props}
-      />
-    </AnimatePresence>
+    <Component
+      ref={localRef as React.Ref<HTMLDivElement>}
+      initial="hidden"
+      animate={(isInView && inView) || !inView ? 'visible' : 'hidden'}
+      exit="hidden"
+      variants={{
+        hidden: hiddenVariant,
+        visible: visibleVariant,
+      }}
+      transition={{
+        ...transition,
+        delay: (transition?.delay ?? 0) + delay / 1000,
+      }}
+      {...props}
+    />
   );
 }
 

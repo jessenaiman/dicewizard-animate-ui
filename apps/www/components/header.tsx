@@ -27,23 +27,6 @@ const LOGO_WRAPPER_VARIANTS = {
   },
 };
 
-const logoVariants = (isScroll: boolean, isMobile: boolean) => ({
-  center: {
-    top: '50%',
-    left: '50%',
-    x: '-50%',
-    y: '-50%',
-    scale: 1,
-  },
-  topLeft: {
-    top: isScroll ? (isMobile ? 4 : 0) : 20,
-    left: isScroll ? (isMobile ? -36 : -61) : isMobile ? -36 : -43,
-    x: 0,
-    y: 0,
-    scale: isScroll ? (isMobile ? 0.6 : 0.5) : 0.6,
-  },
-});
-
 export const Header = ({ transition }: { transition: boolean }) => {
   const isMobile = useIsMobile();
   const [isScroll, setIsScroll] = useState(false);
@@ -76,15 +59,24 @@ export const Header = ({ transition }: { transition: boolean }) => {
       </AnimatePresence>
 
       <div className="relative max-w-7xl size-full">
-        <motion.div
-          className="absolute z-110"
-          variants={logoVariants(isScroll, isMobile)}
-          initial="center"
-          animate={transition ? 'topLeft' : 'center'}
-          transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-        >
-          <Logo size={isMobile ? 'lg' : 'xl'} draw />
-        </motion.div>
+        {transition ? (
+          <motion.div
+            layoutId="logo"
+            className="absolute z-110 left-5"
+            animate={{
+              top: isScroll ? 16 : 32,
+            }}
+          >
+            <Logo size="sm" />
+          </motion.div>
+        ) : (
+          <motion.div
+            layoutId="logo"
+            className="absolute z-110 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            <Logo size={isMobile ? 'lg' : 'xl'} draw />
+          </motion.div>
+        )}
 
         <motion.div
           initial={{

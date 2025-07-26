@@ -33,6 +33,7 @@
     "texts/gradient",
     "texts/highlight",
     "texts/rolling",
+    "texts/rotating",
     "texts/shimmering",
     "texts/sliding-number",
     "texts/splitting",
