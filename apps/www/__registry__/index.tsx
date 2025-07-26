@@ -1188,6 +1188,52 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-texts-rolling',
   },
+  'demo-primitives-texts-rotating': {
+    name: 'demo-primitives-texts-rotating',
+    description: 'Demo showing an animated rotating text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-rotating',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/rotating/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/texts/rotating.tsx',
+        content:
+          "import { RotatingText } from '@/components/animate-ui/primitives/texts/rotating';\n\ninterface RotatingTextDemoProps {\n  delay: number;\n}\n\nexport const RotatingTextDemo = ({ delay }: RotatingTextDemoProps) => {\n  return (\n    <RotatingText\n      key={delay}\n      delay={delay}\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    />\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/rotating/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-rotating';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        RotatingText: {
+          delay: { value: 0, min: 0, max: 3000, step: 100 },
+          y: { value: -50, min: -100, max: 100, step: 10 },
+          duration: { value: 2000, min: 1000, max: 5000, step: 100 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-texts-rotating',
+  },
   'demo-primitives-texts-shimmering': {
     name: 'demo-primitives-texts-shimmering',
     description: 'Demo showing an animated shimmering text.',
@@ -1297,7 +1343,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/primitives/texts/splitting.tsx',
         content:
-          "import {\n  SplittingText,\n  type SplittingTextProps,\n} from '@/components/animate-ui/primitives/texts/splitting';\nimport { cn } from '@/lib/utils';\n\nconst ANIMATIONS: Record<\n  string,\n  {\n    initial: SplittingTextProps['initial'];\n    animate: SplittingTextProps['animate'];\n    transition: SplittingTextProps['transition'];\n  } | null\n> = {\n  default: null,\n  vibe: {\n    initial: { y: 50, scale: 0.5, opacity: 0, x: 50, rotate: 90 },\n    animate: { y: 0, scale: 1, opacity: 1, x: 0, rotate: 0 },\n    transition: { duration: 0.5, ease: 'easeOut' },\n  },\n  writing: {\n    initial: { y: 10, opacity: 0 },\n    animate: { y: 0, opacity: 1 },\n    transition: { type: 'spring', bounce: 0, duration: 2, delay: 0.5 },\n  },\n};\n\ninterface SplittingTextDemoProps {\n  type: SplittingTextProps['type'];\n  delay: number;\n  stagger: number;\n  animation: keyof typeof ANIMATIONS;\n}\n\nexport const SplittingTextDemo = ({\n  type,\n  delay,\n  stagger,\n  animation,\n}: SplittingTextDemoProps) => {\n  return (\n    // @ts-expect-error\n    <SplittingText\n      key={`${type}-${delay}-${stagger}`}\n      className={cn('text-4xl font-semibold', type === 'lines' && 'text-xl')}\n      type={type}\n      delay={delay}\n      stagger={stagger}\n      initial={ANIMATIONS[animation]?.initial}\n      animate={ANIMATIONS[animation]?.animate}\n      transition={ANIMATIONS[animation]?.transition}\n      text={\n        type === 'lines'\n          ? [\n              'Introducing Splitting Text component',\n              'Made with Motion. Highly customizable and easy to use.',\n            ]\n          : 'Splitting Text'\n      }\n    />\n  );\n};",
+          "import {\n  SplittingText,\n  type SplittingTextProps,\n} from '@/components/animate-ui/primitives/texts/splitting';\nimport { cn } from '@/lib/utils';\n\nconst ANIMATIONS: Record<\n  string,\n  {\n    initial: SplittingTextProps['initial'];\n    animate: SplittingTextProps['animate'];\n    transition: SplittingTextProps['transition'];\n  } | null\n> = {\n  default: null,\n  vibe: {\n    initial: { y: 50, scale: 0.5, opacity: 0, x: 50, rotate: 90 },\n    animate: { y: 0, scale: 1, opacity: 1, x: 0, rotate: 0 },\n    transition: { duration: 0.5, ease: 'easeOut' },\n  },\n  writing: {\n    initial: { y: 10, opacity: 0 },\n    animate: { y: 0, opacity: 1 },\n    transition: { type: 'spring', bounce: 0, duration: 2 },\n  },\n};\n\ninterface SplittingTextDemoProps {\n  type: SplittingTextProps['type'];\n  delay: number;\n  animation: keyof typeof ANIMATIONS;\n}\n\nexport const SplittingTextDemo = ({\n  type,\n  delay,\n  animation,\n}: SplittingTextDemoProps) => {\n  return (\n    // @ts-expect-error\n    <SplittingText\n      key={`${type}-${delay}-${animation}`}\n      className={cn('text-4xl font-semibold', type === 'lines' && 'text-xl')}\n      type={type}\n      delay={delay}\n      initial={ANIMATIONS[animation]?.initial}\n      animate={ANIMATIONS[animation]?.animate}\n      transition={ANIMATIONS[animation]?.transition}\n      text={\n        type === 'lines'\n          ? [\n              'Introducing Splitting Text component',\n              'Made with Motion. Highly customizable and easy to use.',\n            ]\n          : 'Splitting Text'\n      }\n    />\n  );\n};",
       },
     ],
     keywords: [],
@@ -1541,7 +1587,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/slot.tsx',
         content:
-          "import * as React from 'react';\nimport { motion, isMotionComponent, type HTMLMotionProps } from 'motion/react';\n\ntype AnyProps = Record<string, unknown>;\n\ntype DOMMotionProps<T extends HTMLElement = HTMLElement> = Omit<\n  HTMLMotionProps<'div'>,\n  'ref'\n> & {\n  ref?: React.Ref<T>;\n};\n\ntype WithAsChild<Base extends object, Default extends object> =\n  | (Base & Default & { asChild: true; children: React.ReactElement })\n  | (Base &\n      Default & {\n        asChild?: false | undefined;\n      });\n\ntype SlotProps<T extends HTMLElement = HTMLElement> = {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  children?: any;\n} & DOMMotionProps<T>;\n\nfunction Slot<T extends HTMLElement = HTMLElement>({\n  children,\n  ref: outerRef,\n  ...motionProps\n}: SlotProps<T>) {\n  if (!React.isValidElement(children)) return null;\n\n  const isAlreadyMotion =\n    typeof children.type === 'object' &&\n    children.type !== null &&\n    isMotionComponent(children.type);\n\n  const Base = isAlreadyMotion\n    ? (children.type as React.ElementType)\n    : motion(children.type as React.ElementType);\n\n  const { ref: childRef, ...childProps } = children.props as AnyProps;\n  const ref = React.useImperativeHandle(outerRef, () => childRef as T);\n\n  return <Base {...childProps} {...motionProps} ref={ref} />;\n}\n\nexport {\n  Slot,\n  type SlotProps,\n  type WithAsChild,\n  type DOMMotionProps,\n  type AnyProps,\n};",
+          "import * as React from 'react';\nimport { motion, isMotionComponent, type HTMLMotionProps } from 'motion/react';\n\ntype AnyProps = Record<string, unknown>;\n\ntype DOMMotionProps<T extends HTMLElement = HTMLElement> = Omit<\n  HTMLMotionProps<'div'>,\n  'ref'\n> & {\n  ref?: React.Ref<T>;\n};\n\ntype WithAsChild<Base extends object, Default extends object> =\n  | (Base & Default & { asChild: true; children: React.ReactElement })\n  | (Base &\n      Default & {\n        asChild?: false | undefined;\n      });\n\ntype SlotProps<T extends HTMLElement = HTMLElement> = {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  children?: any;\n} & DOMMotionProps<T>;\n\nfunction Slot<T extends HTMLElement = HTMLElement>({\n  children,\n  ref: outerRef,\n  ...props\n}: SlotProps<T>) {\n  const isAlreadyMotion =\n    typeof children.type === 'object' &&\n    children.type !== null &&\n    isMotionComponent(children.type);\n\n  const Base = isAlreadyMotion\n    ? (children.type as React.ElementType)\n    : motion(children.type as React.ElementType);\n\n  const { ref: childRef, ...childProps } = children.props as AnyProps;\n  const ref = React.useImperativeHandle(outerRef, () => childRef as T);\n\n  if (!React.isValidElement(children)) return null;\n\n  return <Base {...childProps} {...props} ref={ref} />;\n}\n\nexport {\n  Slot,\n  type SlotProps,\n  type WithAsChild,\n  type DOMMotionProps,\n  type AnyProps,\n};",
       },
     ],
     keywords: [],
@@ -1735,7 +1781,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/effects/effect.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  AnimatePresence,\n  HTMLMotionProps,\n  type Variant,\n} from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SlideDirection = 'up' | 'down' | 'left' | 'right';\n\ntype Slide = {\n  direction?: SlideDirection;\n  offset?: number;\n};\n\ntype Fade = { initialOpacity?: number; opacity?: number };\n\ntype Zoom = {\n  initialScale?: number;\n  scale?: number;\n};\n\ntype EffectProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    delay?: number;\n    blur?: string | boolean;\n    slide?: Slide | boolean;\n    fade?: Fade | boolean;\n    zoom?: Zoom | boolean;\n    ref?: React.Ref<HTMLElement>;\n  } & UseIsInViewOptions,\n  HTMLMotionProps<'div'>\n>;\n\nfunction Effect({\n  ref,\n  transition = { type: 'spring', stiffness: 200, damping: 20 },\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  blur = false,\n  slide = false,\n  fade = false,\n  zoom = false,\n  asChild = false,\n  ...props\n}: EffectProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const hiddenVariant: Variant = {};\n  const visibleVariant: Variant = {};\n\n  if (slide) {\n    const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);\n    const direction =\n      typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');\n    const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';\n    hiddenVariant[axis] =\n      direction === 'left' || direction === 'up' ? -offset : offset;\n    visibleVariant[axis] = 0;\n  }\n\n  if (fade) {\n    hiddenVariant.opacity =\n      typeof fade === 'boolean' ? 0 : (fade.initialOpacity ?? 0);\n    visibleVariant.opacity =\n      typeof fade === 'boolean' ? 1 : (fade.opacity ?? 1);\n  }\n\n  if (zoom) {\n    hiddenVariant.scale =\n      typeof zoom === 'boolean' ? 0.5 : (zoom.initialScale ?? 0.5);\n    visibleVariant.scale = typeof zoom === 'boolean' ? 1 : (zoom.scale ?? 1);\n  }\n\n  if (blur) {\n    hiddenVariant.filter =\n      typeof blur === 'boolean' ? 'blur(10px)' : `blur(${blur})`;\n    visibleVariant.filter = 'blur(0px)';\n  }\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      <Component\n        ref={localRef as React.Ref<HTMLDivElement>}\n        initial=\"hidden\"\n        animate={isInView ? 'visible' : 'hidden'}\n        exit=\"hidden\"\n        variants={{\n          hidden: hiddenVariant,\n          visible: visibleVariant,\n        }}\n        transition={{\n          ...transition,\n          delay: (transition?.delay ?? 0) + delay,\n        }}\n        {...props}\n      />\n    </AnimatePresence>\n  );\n}\n\nexport { Effect, type EffectProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Variant } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SlideDirection = 'up' | 'down' | 'left' | 'right';\n\ntype Slide = {\n  direction?: SlideDirection;\n  offset?: number;\n};\n\ntype Fade = { initialOpacity?: number; opacity?: number };\n\ntype Zoom = {\n  initialScale?: number;\n  scale?: number;\n};\n\ntype EffectProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    delay?: number;\n    blur?: string | boolean;\n    slide?: Slide | boolean;\n    fade?: Fade | boolean;\n    zoom?: Zoom | boolean;\n    ref?: React.Ref<HTMLElement>;\n  } & UseIsInViewOptions,\n  HTMLMotionProps<'div'>\n>;\n\nfunction Effect({\n  ref,\n  transition = { type: 'spring', stiffness: 200, damping: 20 },\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  blur = false,\n  slide = false,\n  fade = false,\n  zoom = false,\n  asChild = false,\n  ...props\n}: EffectProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const hiddenVariant: Variant = {};\n  const visibleVariant: Variant = {};\n\n  if (slide) {\n    const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);\n    const direction =\n      typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');\n    const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';\n    hiddenVariant[axis] =\n      direction === 'right' || direction === 'down' ? -offset : offset;\n    visibleVariant[axis] = 0;\n  }\n\n  if (fade) {\n    hiddenVariant.opacity =\n      typeof fade === 'boolean' ? 0 : (fade.initialOpacity ?? 0);\n    visibleVariant.opacity =\n      typeof fade === 'boolean' ? 1 : (fade.opacity ?? 1);\n  }\n\n  if (zoom) {\n    hiddenVariant.scale =\n      typeof zoom === 'boolean' ? 0.5 : (zoom.initialScale ?? 0.5);\n    visibleVariant.scale = typeof zoom === 'boolean' ? 1 : (zoom.scale ?? 1);\n  }\n\n  if (blur) {\n    hiddenVariant.filter =\n      typeof blur === 'boolean' ? 'blur(10px)' : `blur(${blur})`;\n    visibleVariant.filter = 'blur(0px)';\n  }\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={localRef as React.Ref<HTMLDivElement>}\n      initial=\"hidden\"\n      animate={(isInView && inView) || !inView ? 'visible' : 'hidden'}\n      exit=\"hidden\"\n      variants={{\n        hidden: hiddenVariant,\n        visible: visibleVariant,\n      }}\n      transition={{\n        ...transition,\n        delay: (transition?.delay ?? 0) + delay / 1000,\n      }}\n      {...props}\n    />\n  );\n}\n\nexport { Effect, type EffectProps };",
       },
     ],
     keywords: [],
@@ -2572,6 +2618,44 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/primitives-texts-rolling',
+  },
+  'primitives-texts-rotating': {
+    name: 'primitives-texts-rotating',
+    description: 'A rotating text animation.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/texts/rotating/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/texts/rotating.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, AnimatePresence, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype RotatingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string | string[];\n  duration?: number;\n  transition?: Transition;\n  y?: number;\n  delay?: number;\n} & UseIsInViewOptions;\n\nfunction RotatingText({\n  ref,\n  text,\n  y = -50,\n  duration = 2000,\n  transition = { duration: 0.3, ease: 'easeOut' },\n  delay = 0,\n  style,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}: RotatingTextProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    { inView, inViewOnce, inViewMargin },\n  );\n\n  const start = React.useMemo(\n    () => (isInView && inView) || !inView,\n    [isInView, inView],\n  );\n\n  const [index, setIndex] = React.useState(0);\n\n  React.useEffect(() => {\n    if (!Array.isArray(text) || !start) return;\n\n    const timeoutId = setTimeout(() => {\n      const intervalId = setInterval(() => {\n        setIndex((prev) => (prev + 1) % text.length);\n      }, duration);\n\n      (timeoutId as unknown as { intervalId?: NodeJS.Timeout }).intervalId =\n        intervalId;\n    }, delay * 1000);\n\n    return () => {\n      clearTimeout(timeoutId);\n      const { intervalId } = timeoutId as unknown as {\n        intervalId?: NodeJS.Timeout;\n      };\n      if (intervalId) clearInterval(intervalId);\n    };\n  }, [text, duration, delay, start]);\n\n  const currentText = Array.isArray(text) ? text[index] : text;\n\n  return (\n    <span\n      ref={localRef}\n      style={{\n        display: 'inline-block',\n        padding: '0.25rem 0',\n        ...style,\n      }}\n      {...props}\n    >\n      <AnimatePresence mode=\"wait\">\n        {start && (\n          <motion.span\n            key={currentText}\n            initial={{ opacity: 0, y: -y }}\n            animate={{ opacity: 1, y: 0 }}\n            exit={{ opacity: 0, y }}\n            transition={{\n              ...transition,\n              delay: (transition?.delay ?? 0) + delay,\n            }}\n          >\n            {currentText}\n          </motion.span>\n        )}\n      </AnimatePresence>\n    </span>\n  );\n}\n\nexport { RotatingText, type RotatingTextProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/texts/rotating/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-texts-rotating';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-texts-rotating',
   },
   'primitives-texts-shimmering': {
     name: 'primitives-texts-shimmering',

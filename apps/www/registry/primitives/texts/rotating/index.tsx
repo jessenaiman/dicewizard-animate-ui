@@ -1,12 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion, AnimatePresence, type Transition } from 'motion/react';
-
-import {
-  useIsInView,
-  type UseIsInViewOptions,
-} from '@/registry/hooks/use-is-in-view';
+import { AnimatePresence, motion, type Transition } from 'motion/react';
 
 type RotatingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   text: string | string[];
@@ -14,54 +9,51 @@ type RotatingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   transition?: Transition;
   y?: number;
   delay?: number;
-} & UseIsInViewOptions;
+};
 
 function RotatingText({
-  ref,
   text,
   y = -50,
   duration = 2000,
-  transition = { duration: 0.3, ease: 'easeOut' },
   delay = 0,
+  transition = { duration: 0.3, ease: 'easeOut' },
   style,
-  inView = false,
-  inViewMargin = '0px',
-  inViewOnce = true,
   ...props
 }: RotatingTextProps) {
-  const { ref: localRef, isInView } = useIsInView(
-    ref as React.Ref<HTMLElement>,
-    {
-      inView,
-      inViewOnce,
-      inViewMargin,
-    },
-  );
-
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
     if (!Array.isArray(text)) return;
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % text.length);
-    }, duration);
-    return () => clearInterval(interval);
-  }, [text, duration]);
+
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+
+    const timeoutId = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % text.length);
+      intervalId = setInterval(
+        () => setIndex((prev) => (prev + 1) % text.length),
+        duration,
+      );
+    }, delay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [text, duration, delay]);
 
   const currentText = Array.isArray(text) ? text[index] : text;
 
   return (
     <span
-      ref={localRef}
       style={{
-        display: 'inline-block',
-        padding: '0.25rem 0',
+        overflow: 'hidden',
+        paddingBlock: '0.25rem',
         ...style,
       }}
       {...props}
     >
       <AnimatePresence mode="wait">
-        <motion.span
+        <motion.div
           key={currentText}
           transition={transition}
           initial={{ opacity: 0, y: -y }}
@@ -69,7 +61,7 @@ function RotatingText({
           exit={{ opacity: 0, y }}
         >
           {currentText}
-        </motion.span>
+        </motion.div>
       </AnimatePresence>
     </span>
   );

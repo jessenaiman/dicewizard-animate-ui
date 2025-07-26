@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "primitives-texts-rotating",
+  "type": "registry:ui",
+  "title": "Rotating Text",
+  "description": "A rotating text animation.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-is-in-view"
+  ],
+  "files": [
+    {
+      "path": "registry/primitives/texts/rotating/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion, AnimatePresence, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype RotatingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string | string[];\n  duration?: number;\n  transition?: Transition;\n  y?: number;\n  delay?: number;\n} & UseIsInViewOptions;\n\nfunction RotatingText({\n  ref,\n  text,\n  y = -50,\n  duration = 2000,\n  transition = { duration: 0.3, ease: 'easeOut' },\n  delay = 0,\n  style,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}: RotatingTextProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    { inView, inViewOnce, inViewMargin },\n  );\n\n  const start = React.useMemo(\n    () => (isInView && inView) || !inView,\n    [isInView, inView],\n  );\n\n  const [index, setIndex] = React.useState(0);\n\n  React.useEffect(() => {\n    if (!Array.isArray(text) || !start) return;\n\n    const timeoutId = setTimeout(() => {\n      const intervalId = setInterval(() => {\n        setIndex((prev) => (prev + 1) % text.length);\n      }, duration);\n\n      (timeoutId as unknown as { intervalId?: NodeJS.Timeout }).intervalId =\n        intervalId;\n    }, delay * 1000);\n\n    return () => {\n      clearTimeout(timeoutId);\n      const { intervalId } = timeoutId as unknown as {\n        intervalId?: NodeJS.Timeout;\n      };\n      if (intervalId) clearInterval(intervalId);\n    };\n  }, [text, duration, delay, start]);\n\n  const currentText = Array.isArray(text) ? text[index] : text;\n\n  return (\n    <span\n      ref={localRef}\n      style={{\n        display: 'inline-block',\n        padding: '0.25rem 0',\n        ...style,\n      }}\n      {...props}\n    >\n      <AnimatePresence mode=\"wait\">\n        {start && (\n          <motion.span\n            key={currentText}\n            initial={{ opacity: 0, y: -y }}\n            animate={{ opacity: 1, y: 0 }}\n            exit={{ opacity: 0, y }}\n            transition={{\n              ...transition,\n              delay: (transition?.delay ?? 0) + delay,\n            }}\n          >\n            {currentText}\n          </motion.span>\n        )}\n      </AnimatePresence>\n    </span>\n  );\n}\n\nexport { RotatingText, type RotatingTextProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/primitives/texts/rotating.tsx"
+    }
+  ]
+}
