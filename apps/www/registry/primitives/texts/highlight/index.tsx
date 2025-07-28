@@ -38,11 +38,7 @@ function HighlightText({
       ref={localRef}
       data-slot="highlight-text"
       initial={{ backgroundSize: '0% 100%' }}
-      animate={
-        (isInView && inView) || !inView
-          ? { backgroundSize: '100% 100%' }
-          : undefined
-      }
+      animate={isInView ? { backgroundSize: '100% 100%' } : undefined}
       transition={{
         ...transition,
         delay: (transition?.delay ?? 0) + delay / 1000,

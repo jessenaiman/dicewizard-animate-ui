@@ -122,7 +122,7 @@ function Highlight<T extends React.ElementType = 'div'>({
     enabled = true,
     controlledItems,
     disabled = false,
-    exitDelay = 0.2,
+    exitDelay = 200,
     mode = 'children',
   } = props;
 
@@ -240,7 +240,7 @@ function Highlight<T extends React.ElementType = 'div'>({
                     opacity: 0,
                     transition: {
                       ...transition,
-                      delay: (transition?.delay ?? 0) + (exitDelay ?? 0),
+                      delay: (transition?.delay ?? 0) + (exitDelay ?? 0) / 1000,
                     },
                   }}
                   transition={transition}
@@ -496,7 +496,7 @@ function HighlightItem<T extends React.ElementType>({
                     ...itemTransition,
                     delay:
                       (itemTransition?.delay ?? 0) +
-                      (exitDelay ?? contextExitDelay ?? 0),
+                      (exitDelay ?? contextExitDelay ?? 0) / 1000,
                   },
                 }}
                 {...dataAttributes}
@@ -553,7 +553,7 @@ function HighlightItem<T extends React.ElementType>({
                   ...itemTransition,
                   delay:
                     (itemTransition?.delay ?? 0) +
-                    (exitDelay ?? contextExitDelay ?? 0),
+                    (exitDelay ?? contextExitDelay ?? 0) / 1000,
                 },
               }}
               {...dataAttributes}

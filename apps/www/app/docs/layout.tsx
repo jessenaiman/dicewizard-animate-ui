@@ -44,7 +44,7 @@ const DOCS_LAYOUT_PROPS: DocsLayoutProps = {
             <span
               className={cn(
                 dancing.className,
-                'text-sm ml-1 text-blue-600 dark:text-blue-400',
+                'text-sm ml-2 text-blue-600 dark:text-blue-400',
               )}
             >
               beta
@@ -60,7 +60,8 @@ const DOCS_LAYOUT_PROPS: DocsLayoutProps = {
       },
     ],
   },
-  githubUrl: 'https://github.com/animate-ui/animate-ui',
+
+  githubUrl: 'https://github.com/imskyleen/animate-ui',
   themeSwitch: {
     component: <ThemeSwitcher />,
   },

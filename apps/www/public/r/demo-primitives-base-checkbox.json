@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo-primitives-base-checkbox",
+  "type": "registry:ui",
+  "title": "Base Checkbox Demo",
+  "description": "Demo showing an animated base checkbox.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-base-checkbox"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/primitives/base/checkbox/index.tsx",
+      "content": "import {\n  Checkbox,\n  CheckboxIndicator,\n} from '@/components/animate-ui/primitives/base/checkbox';\n\ninterface BaseCheckboxDemoProps {\n  indeterminate: boolean;\n}\n\nexport const BaseCheckboxDemo = ({ indeterminate }: BaseCheckboxDemoProps) => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox\n        id=\"terms\"\n        indeterminate={indeterminate}\n        className=\"size-5 flex justify-center items-center border [&[data-state=checked],&[data-state=indeterminate]]:bg-primary [&[data-state=checked],&[data-state=indeterminate]]:text-primary-foreground transition-colors duration-500\"\n      >\n        <CheckboxIndicator className=\"size-3.5\" />\n      </Checkbox>\n      <label htmlFor=\"terms\">Accept terms and conditions</label>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/primitives/base/checkbox.tsx"
+    }
+  ],
+  "meta": {
+    "demoProps": {
+      "Checkbox": {
+        "indeterminate": {
+          "value": false
+        }
+      }
+    }
+  }
+}

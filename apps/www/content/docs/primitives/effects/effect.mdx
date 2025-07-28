@@ -14,8 +14,20 @@ author:
 
 ## Usage
 
+### Effect
+
 ```tsx
 <Effect>Effect</Effect>
+```
+
+### Effects
+
+```tsx
+<Effects>
+  <div>Effect 1</div>
+  <div>Effect 2</div>
+  <div>Effect 3</div>
+</Effects>
 ```
 
 ## API Reference
@@ -77,6 +89,29 @@ author:
       type: 'Zoom | boolean',
       required: false,
       default: 'false',
+    },
+  }}
+/>
+
+### Effects
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the effects',
+      type: 'React.ReactElement | React.ReactElement[]',
+      required: true,
+    },
+    holdDelay: {
+      description: 'The delay between each effect',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+    '...props': {
+      description: 'The props of the effects',
+      type: 'EffectProps',
+      required: false,
     },
   }}
 />

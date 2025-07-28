@@ -1,4 +1,5 @@
 import { Logo } from '@/components/logo';
+import AnimateUIIcon from '@workspace/ui/components/icons/animateui-icon';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 /**
@@ -11,8 +12,8 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
-      <div className="mb-2 mt-1 ml-0.5">
-        <Logo />
+      <div className="md:mb-2 md:mt-1 ml-0.5">
+        <Logo size="xs" />
       </div>
     ),
   },

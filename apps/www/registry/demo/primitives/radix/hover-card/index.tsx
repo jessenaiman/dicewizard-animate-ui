@@ -10,7 +10,6 @@ interface RadixHoverCardDemoProps {
   sideOffset?: number;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
-  transitionOffset?: number;
 }
 
 export const RadixHoverCardDemo = ({
@@ -18,7 +17,6 @@ export const RadixHoverCardDemo = ({
   sideOffset,
   align,
   alignOffset,
-  transitionOffset,
 }: RadixHoverCardDemoProps) => {
   return (
     <HoverCard>
@@ -41,7 +39,6 @@ export const RadixHoverCardDemo = ({
           sideOffset={sideOffset}
           align={align}
           alignOffset={alignOffset}
-          transitionOffset={transitionOffset}
           className="w-80 bg-background border p-4"
         >
           <div className="flex flex-col gap-4">

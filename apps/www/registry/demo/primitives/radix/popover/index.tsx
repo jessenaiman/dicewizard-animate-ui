@@ -1,5 +1,3 @@
-import { Input } from '@workspace/ui/components/ui/input';
-import { Label } from '@workspace/ui/components/ui/label';
 import {
   Popover,
   PopoverContent,
@@ -12,7 +10,6 @@ interface RadixPopoverDemoProps {
   sideOffset?: number;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
-  transitionOffset?: number;
 }
 
 export function RadixPopoverDemo({
@@ -20,7 +17,6 @@ export function RadixPopoverDemo({
   sideOffset,
   align,
   alignOffset,
-  transitionOffset,
 }: RadixPopoverDemoProps) {
   return (
     <Popover>
@@ -31,8 +27,7 @@ export function RadixPopoverDemo({
           sideOffset={sideOffset}
           align={align}
           alignOffset={alignOffset}
-          transitionOffset={transitionOffset}
-          className="w-80 bg-background border p-4"
+          className="w-80 bg-background border p-4 z-50"
         >
           <div className="grid gap-4">
             <div className="space-y-2">
@@ -43,35 +38,43 @@ export function RadixPopoverDemo({
             </div>
             <div className="grid gap-2">
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="width">Width</Label>
-                <Input
+                <label htmlFor="width" className="text-sm">
+                  Width
+                </label>
+                <input
                   id="width"
                   defaultValue="100%"
-                  className="col-span-2 h-8"
+                  className="col-span-2 h-8 p-2 border"
                 />
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="maxWidth">Max. width</Label>
-                <Input
+                <label htmlFor="maxWidth" className="text-sm">
+                  Max. width
+                </label>
+                <input
                   id="maxWidth"
                   defaultValue="300px"
-                  className="col-span-2 h-8"
+                  className="col-span-2 h-8 p-2 border"
                 />
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="height">Height</Label>
-                <Input
+                <label htmlFor="height" className="text-sm">
+                  Height
+                </label>
+                <input
                   id="height"
                   defaultValue="25px"
-                  className="col-span-2 h-8"
+                  className="col-span-2 h-8 p-2 border"
                 />
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="maxHeight">Max. height</Label>
-                <Input
+                <label htmlFor="maxHeight" className="text-sm">
+                  Max. height
+                </label>
+                <input
                   id="maxHeight"
                   defaultValue="none"
-                  className="col-span-2 h-8"
+                  className="col-span-2 h-8 p-2 border"
                 />
               </div>
             </div>

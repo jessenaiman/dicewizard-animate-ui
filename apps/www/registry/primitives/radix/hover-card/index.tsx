@@ -15,14 +15,6 @@ type HoverCardContextType = {
 const [HoverCardProvider, useHoverCard] =
   useStrictContext<HoverCardContextType>('HoverCardContext');
 
-type Side = 'top' | 'bottom' | 'left' | 'right';
-
-const getInitialPosition = (side: Side, offset: number) => {
-  const axisMap = { top: 'y', bottom: 'y', left: 'x', right: 'x' } as const;
-  const sign = side === 'top' || side === 'left' ? 1 : -1;
-  return { [axisMap[side]]: sign * offset };
-};
-
 type HoverCardProps = React.ComponentProps<typeof HoverCardPrimitive.Root>;
 
 function HoverCard(props: HoverCardProps) {
@@ -77,9 +69,7 @@ function HoverCardPortal(props: HoverCardPortalProps) {
 type HoverCardContentProps = React.ComponentProps<
   typeof HoverCardPrimitive.Content
 > &
-  HTMLMotionProps<'div'> & {
-    transitionOffset?: number;
-  };
+  HTMLMotionProps<'div'>;
 
 function HoverCardContent({
   align,
@@ -93,11 +83,8 @@ function HoverCardContent({
   sticky,
   hideWhenDetached,
   transition = { type: 'spring', stiffness: 300, damping: 25 },
-  transitionOffset = 15,
   ...props
 }: HoverCardContentProps) {
-  const initialPosition = getInitialPosition(side, transitionOffset);
-
   return (
     <HoverCardPrimitive.Content
       asChild
@@ -116,9 +103,9 @@ function HoverCardContent({
       <motion.div
         key="hover-card-content"
         data-slot="hover-card-content"
-        initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
-        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-        exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.5 }}
         transition={transition}
         {...props}
       />

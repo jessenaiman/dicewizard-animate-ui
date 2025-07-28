@@ -26,7 +26,7 @@ type HighlightDemoProps = {
 
 export const HighlightDemo = ({
   mode = 'children',
-  exitDelay = 0.2,
+  exitDelay = 200,
   hover = false,
 }: HighlightDemoProps) => {
   return (

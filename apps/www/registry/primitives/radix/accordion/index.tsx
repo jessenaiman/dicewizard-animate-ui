@@ -103,6 +103,7 @@ function AccordionContent({
         <AccordionPrimitive.Content asChild forceMount>
           <motion.div
             key="accordion-content"
+            data-slot="accordion-content"
             initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
             animate={
               isOpen

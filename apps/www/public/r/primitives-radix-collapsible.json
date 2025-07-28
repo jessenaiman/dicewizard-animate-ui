@@ -10,7 +10,7 @@
   ],
   "registryDependencies": [
     "https://animate-ui.com/r/hooks-use-strict-context",
-    "https://animate-ui.com/r/hooks-use-controlled-boolean"
+    "https://animate-ui.com/r/hooks-use-controlled-state"
   ],
   "files": [
     {

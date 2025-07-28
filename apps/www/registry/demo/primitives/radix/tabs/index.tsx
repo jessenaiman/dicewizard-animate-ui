@@ -11,10 +11,7 @@ import {
 export function RadixTabsDemo() {
   return (
     <Tabs defaultValue="account" className="w-[500px]">
-      <TabsHighlight
-        className="bg-background absolute z-0 inset-0"
-        defaultValue="account"
-      >
+      <TabsHighlight className="bg-background absolute z-0 inset-0">
         <TabsList className="h-10 inline-flex p-1 bg-accent w-full">
           <TabsHighlightItem value="account" className="flex-1">
             <TabsTrigger

@@ -10,7 +10,7 @@ export const HeroBackground = (props: SVGMotionProps<SVGSVGElement>) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const color = resolvedTheme === 'dark' ? '#fff' : '#000';
-  const opacity = resolvedTheme === 'dark' ? 0.1 : 0.15;
+  const opacity = resolvedTheme === 'dark' ? 0.2 : 0.15;
 
   useEffect(() => {
     setIsMounted(true);

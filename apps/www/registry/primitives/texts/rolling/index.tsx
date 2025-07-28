@@ -40,12 +40,7 @@ function RollingText({
       inViewMargin,
     },
   );
-  const start = React.useMemo(
-    () => (isInView && inView) || !inView,
-    [isInView, inView],
-  );
   const characters = React.useMemo(() => text.split(''), [text]);
-
   const stepDelay = transition?.delay ?? 0;
 
   return (
@@ -70,7 +65,7 @@ function RollingText({
                 transformOrigin: '50% 25%',
               }}
               initial={{ rotateX: 0 }}
-              animate={start ? { rotateX: 90 } : undefined}
+              animate={isInView ? { rotateX: 90 } : undefined}
               transition={{
                 ...transition,
                 delay: charDelay,
@@ -84,7 +79,7 @@ function RollingText({
                 transformOrigin: '50% 100%',
               }}
               initial={{ rotateX: 90 }}
-              animate={start ? { rotateX: 0 } : undefined}
+              animate={isInView ? { rotateX: 0 } : undefined}
               transition={{
                 ...transition,
                 delay: charDelay + 0.3,

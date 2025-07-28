@@ -4,6 +4,7 @@ import {
   DocsBody,
   DocsDescription,
   DocsTitle,
+  EditOnGitHub,
 } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
@@ -12,6 +13,7 @@ import { Metadata } from 'next';
 import { Footer } from '@workspace/ui/components/docs/footer';
 import { DocsBreadcrumb } from '@/components/docs/docs-breadcrumb';
 import { DocsAuthor } from '@/components/docs/docs-author';
+import { ViewOptions, LLMCopyButton } from '@/components/docs/page-actions';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -37,6 +39,19 @@ export default async function Page(props: {
       {page.data.author && (
         <DocsAuthor name={page.data.author.name} url={page.data.author?.url} />
       )}
+
+      <div className="flex flex-row gap-2 items-center">
+        <EditOnGitHub
+          className="border-0 [&_svg]:text-fd-muted-foreground"
+          href={`https://github.com/imskyleen/animate-ui/blob/main/apps/www/content/docs/${params.slug ? `${params.slug.join('/')}.mdx` : 'index.mdx'}`}
+        />
+        <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
+        <ViewOptions
+          markdownUrl={`${page.url}.mdx`}
+          githubUrl={`https://github.com/imskyleen/animate-ui/blob/dev/apps/docs/content/docs/${page.path}`}
+        />
+      </div>
+
       <DocsBody className="pb-10 pt-4">
         <MDXContent
           components={getMDXComponents({

@@ -36,24 +36,24 @@ const COMPONENTS = [
     name: 'Icons',
     href: '/docs/icons',
     icon: (
-      <div className="w-full flex flex-col gap-10 pt-10 justify-center items-center h-full aspect-[350/259.17] dark:text-neutral-500 text-neutral-400">
-        <div className="flex flex-row gap-10">
-          <WifiIcon className="size-9" />
-          <ClockIcon className="size-9" />
-          <AudioLinesIcon className="size-9" />
-          <LoaderIcon className="size-9" />
+      <div className="w-full flex flex-col gap-5 sm:gap-10 pt-10 justify-center items-center h-full aspect-[350/259.17] dark:text-neutral-500 text-neutral-400">
+        <div className="flex flex-row gap-7 sm:gap-10">
+          <WifiIcon className="sm:size-9 size-6.5" />
+          <ClockIcon className="sm:size-9 size-6.5" />
+          <AudioLinesIcon className="sm:size-9 size-6.5" />
+          <LoaderIcon className="sm:size-9 size-6.5" />
         </div>
-        <div className="flex flex-row gap-10">
-          <SettingsIcon className="size-9" />
-          <Disc3Icon className="size-9" />
-          <BatteryFullIcon className="size-9" />
-          <UsersIcon className="size-9" />
+        <div className="flex flex-row gap-7 sm:gap-10">
+          <SettingsIcon className="sm:size-9 size-6.5" />
+          <Disc3Icon className="sm:size-9 size-6.5" />
+          <BatteryFullIcon className="sm:size-9 size-6.5" />
+          <UsersIcon className="sm:size-9 size-6.5" />
         </div>
-        <div className="flex flex-row gap-10">
-          <MessageSquareMoreIcon className="size-9" />
-          <BellRingIcon className="size-9" />
-          <AlarmClockIcon className="size-9" />
-          <ArrowRightIcon className="size-9" />
+        <div className="flex flex-row gap-7 sm:gap-10">
+          <MessageSquareMoreIcon className="sm:size-9 size-6.5" />
+          <BellRingIcon className="sm:size-9 size-6.5" />
+          <AlarmClockIcon className="sm:size-9 size-6.5" />
+          <ArrowRightIcon className="sm:size-9 size-6.5" />
         </div>
       </div>
     ),
@@ -72,7 +72,7 @@ const dancing = Dancing_Script({ subsets: ['latin'] });
 
 export const Features = () => {
   return (
-    <div className="relative pt-10 pb-20 flex flex-col items-center justify-center">
+    <div className="relative pt-10 pb-20 px-5 flex flex-col items-center justify-center">
       <MotionEffect
         slide={{
           direction: 'down',
@@ -99,7 +99,7 @@ export const Features = () => {
         </p>
       </MotionEffect>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto px-10 mt-15">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto xs:px-10 mt-15">
         {COMPONENTS.map((component, index) => {
           const Component = component.href ? Link : 'div';
           return (

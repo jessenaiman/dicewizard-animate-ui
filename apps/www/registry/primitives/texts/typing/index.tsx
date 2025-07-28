@@ -52,13 +52,13 @@ function TypingText({
   const [displayedText, setDisplayedText] = React.useState<string>('');
 
   React.useEffect(() => {
-    if ((isInView && inView) || !inView) {
+    if (isInView) {
       const timeoutId = setTimeout(() => {
         setStarted(true);
       }, delay);
       return () => clearTimeout(timeoutId);
     }
-  }, [isInView, inView, delay]);
+  }, [isInView, delay]);
 
   React.useEffect(() => {
     if (!started) return;

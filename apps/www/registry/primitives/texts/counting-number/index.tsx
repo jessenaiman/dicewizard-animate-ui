@@ -54,11 +54,11 @@ function CountingNumber({
 
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if ((isInView && inView) || !inView) motionVal.set(number);
+      if (isInView) motionVal.set(number);
     }, delay);
 
     return () => clearTimeout(timeoutId);
-  }, [isInView, number, motionVal, inView, delay]);
+  }, [isInView, number, motionVal, delay]);
 
   React.useEffect(() => {
     const unsubscribe = springVal.on('change', (latest) => {

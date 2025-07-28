@@ -105,7 +105,7 @@ const SplittingText: React.FC<SplittingTextProps> = ({
     <motion.span
       ref={localRef}
       initial="hidden"
-      animate={(isInView && inView) || !inView ? 'visible' : 'hidden'}
+      animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}
       {...props}
     >

@@ -15,7 +15,7 @@ const ICONS = [ReactIcon, TSIcon, TailwindIcon, MotionIcon, ShadcnIcon];
 
 export const Hero = ({ isMobile }: { isMobile: boolean }) => {
   return (
-    <div className="relative h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center">
+    <div className="relative h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center px-5">
       <HeroBackground className="fixed -bottom-70 -right-120 size-[800px]" />
       <HeroBackground className="fixed -top-70 -left-120 size-[800px]" />
 

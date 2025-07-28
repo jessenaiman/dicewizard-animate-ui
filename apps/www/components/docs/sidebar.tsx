@@ -1,6 +1,6 @@
 'use client';
 
-import { SidebarIcon } from 'lucide-react';
+import { SidebarIcon, SparklesIcon } from 'lucide-react';
 import { cn } from '@workspace/ui/lib/utils';
 import {
   Sidebar,
@@ -213,7 +213,7 @@ export function SidebarLinkItem({
         {isHovered && (
           <motion.span
             layoutId="sidebar-item-hover-indicator"
-            className="pointer-events-none absolute z-10 left-0 top-1/2 h-[50%] w-0.5 -translate-y-1/2 rounded-full bg-neutral-500"
+            className="pointer-events-none absolute z-10 left-0 top-1/2 h-[50%] w-0.5 -translate-y-1/2 rounded-full dark:bg-neutral-600 bg-neutral-300"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/primitives/texts/rotating/index.tsx",
-      "content": "import { RotatingText } from '@/components/animate-ui/primitives/texts/rotating';\n\ninterface RotatingTextDemoProps {\n  delay: number;\n}\n\nexport const RotatingTextDemo = ({ delay }: RotatingTextDemoProps) => {\n  return (\n    <RotatingText\n      key={delay}\n      delay={delay}\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    />\n  );\n};\n",
+      "content": "import { RotatingText } from '@/components/animate-ui/primitives/texts/rotating';\n\ninterface RotatingTextDemoProps {\n  delay: number;\n  y: number;\n  duration: number;\n}\n\nexport const RotatingTextDemo = ({\n  delay,\n  y,\n  duration,\n}: RotatingTextDemoProps) => {\n  return (\n    <RotatingText\n      key={delay}\n      delay={delay}\n      y={y}\n      duration={duration}\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/texts/rotating.tsx"
     }

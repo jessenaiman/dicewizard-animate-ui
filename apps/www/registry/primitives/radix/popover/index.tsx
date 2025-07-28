@@ -15,14 +15,6 @@ type PopoverContextType = {
 const [PopoverProvider, usePopover] =
   useStrictContext<PopoverContextType>('PopoverContext');
 
-type Side = 'top' | 'bottom' | 'left' | 'right';
-
-const getInitialPosition = (side: Side, offset: number) => {
-  const axisMap = { top: 'y', bottom: 'y', left: 'x', right: 'x' } as const;
-  const sign = side === 'top' || side === 'left' ? 1 : -1;
-  return { [axisMap[side]]: sign * offset };
-};
-
 type PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>;
 
 function Popover(props: PopoverProps) {
@@ -76,9 +68,7 @@ type PopoverContentProps = Omit<
   React.ComponentProps<typeof PopoverPrimitive.Content>,
   'forceMount' | 'asChild'
 > &
-  HTMLMotionProps<'div'> & {
-    transitionOffset?: number;
-  };
+  HTMLMotionProps<'div'>;
 
 function PopoverContent({
   onOpenAutoFocus,
@@ -98,11 +88,8 @@ function PopoverContent({
   sticky,
   hideWhenDetached,
   transition = { type: 'spring', stiffness: 300, damping: 25 },
-  transitionOffset = 15,
   ...props
 }: PopoverContentProps) {
-  const initialPosition = getInitialPosition(side, transitionOffset);
-
   return (
     <PopoverPrimitive.Content
       asChild
@@ -127,9 +114,9 @@ function PopoverContent({
       <motion.div
         key="popover-content"
         data-slot="popover-content"
-        initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
-        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-        exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.5 }}
         transition={transition}
         {...props}
       />

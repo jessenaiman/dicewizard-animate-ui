@@ -1,12 +1,11 @@
 'use client';
 
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 
 import { Logo } from '@/components/logo';
 import GithubIcon from '@workspace/ui/components/icons/github-icon';
 import XIcon from '@workspace/ui/components/icons/x-icon';
 import { useIsMobile } from '@workspace/ui/hooks/use-mobile';
-import { useEffect, useState } from 'react';
 import { ThemeSwitcher } from './animate/theme-switcher';
 import { StarIcon } from 'lucide-react';
 
@@ -29,15 +28,6 @@ const LOGO_WRAPPER_VARIANTS = {
 
 export const Header = ({ transition }: { transition: boolean }) => {
   const isMobile = useIsMobile();
-  const [isScroll, setIsScroll] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScroll(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <motion.div
@@ -45,26 +35,15 @@ export const Header = ({ transition }: { transition: boolean }) => {
       initial="center"
       animate={transition ? 'topLeft' : 'center'}
       transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-      className="fixed z-40 flex items-center justify-center"
+      className="absolute z-40 flex items-center justify-center"
     >
-      <AnimatePresence>
-        {isScroll && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-x-0 top-0 h-14 z-100 w-full bg-background/70 backdrop-blur-md"
-          />
-        )}
-      </AnimatePresence>
-
       <div className="relative max-w-7xl size-full">
         {transition ? (
           <motion.div
             layoutId="logo"
             className="absolute z-110 left-5"
             animate={{
-              top: isScroll ? 16 : 32,
+              top: 32,
             }}
           >
             <Logo size="sm" />
@@ -80,19 +59,19 @@ export const Header = ({ transition }: { transition: boolean }) => {
 
         <motion.div
           initial={{
-            top: isScroll ? (isMobile ? 12 : 7.5) : 28,
+            top: 28,
             right: -43,
             opacity: 0,
           }}
           animate={
             transition
               ? {
-                  top: isScroll ? (isMobile ? 12 : 7.5) : 28,
+                  top: 28,
                   right: 20,
                   opacity: 1,
                 }
               : {
-                  top: isScroll ? (isMobile ? 12 : 7.5) : 28,
+                  top: 28,
                   right: -43,
                   opacity: 0,
                 }
@@ -102,7 +81,7 @@ export const Header = ({ transition }: { transition: boolean }) => {
         >
           <div className="hidden xs:flex items-center gap-x-1">
             <a
-              href="https://github.com/animate-ui/animate-ui"
+              href="https://github.com/imskyleen/animate-ui"
               rel="noreferrer noopener"
               target="_blank"
               className="sm:mt-1 justify-center rounded-md text-sm group font-medium transition-colors duration-300 ease-in-out disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5 flex items-center gap-x-2"
@@ -112,7 +91,7 @@ export const Header = ({ transition }: { transition: boolean }) => {
               </span>
 
               <span className="text-muted-foreground rounded-[4px] flex items-center gap-x-1 select-none cursor-default bg-accent dark:group-hover:bg-neutral-900 group-hover:bg-white text-sm py-0.5 pl-1.5 pr-[5px]">
-                2 059 <StarIcon className="!size-[15px] fill-current" />
+                2023 <StarIcon className="!size-[15px] fill-current" />
               </span>
             </a>
             <a

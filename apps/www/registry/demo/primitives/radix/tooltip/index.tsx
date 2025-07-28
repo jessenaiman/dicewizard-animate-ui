@@ -11,7 +11,6 @@ interface RadixTooltipDemoProps {
   sideOffset?: number;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
-  transitionOffset?: number;
 }
 
 export const RadixTooltipDemo = ({
@@ -19,7 +18,6 @@ export const RadixTooltipDemo = ({
   sideOffset,
   align,
   alignOffset,
-  transitionOffset,
 }: RadixTooltipDemoProps) => {
   return (
     <TooltipProvider>
@@ -31,7 +29,6 @@ export const RadixTooltipDemo = ({
             sideOffset={sideOffset}
             align={align}
             alignOffset={alignOffset}
-            transitionOffset={transitionOffset}
             className="bg-primary text-primary-foreground px-2 py-1 text-sm"
           >
             <p>Add to library</p>

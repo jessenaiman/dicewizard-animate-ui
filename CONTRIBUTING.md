@@ -10,7 +10,7 @@ Thank you for your interest in **contributing to Animate UI**! Your support is h
 
 #### 1. Fork the Repository
 
-Click [here](https://github.com/animate-ui/animate-ui/fork) to fork the repository.
+Click [here](https://github.com/imskyleen/animate-ui/fork) to fork the repository.
 
 #### 2. Clone your Fork to Your Local Machine
 
@@ -343,6 +343,6 @@ pnpm registry:build
 
 ## Ask for Help
 
-If you need any assistance or have questions, please feel free to open a [GitHub issue](https://github.com/animate-ui/animate-ui/issues/new). We are here to help!
+If you need any assistance or have questions, please feel free to open a [GitHub issue](https://github.com/imskyleen/animate-ui/issues/new). We are here to help!
 
 Thank you again for your contribution to Animate UI! We look forward to seeing your improvements and new components.

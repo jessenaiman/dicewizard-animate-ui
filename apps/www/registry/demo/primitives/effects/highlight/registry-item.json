@@ -25,7 +25,10 @@
           }
         },
         "exitDelay": {
-          "value": 0.2
+          "value": 200,
+          "min": 0,
+          "max": 3000,
+          "step": 100
         },
         "hover": {
           "value": false

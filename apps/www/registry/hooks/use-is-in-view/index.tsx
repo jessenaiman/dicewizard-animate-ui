@@ -18,7 +18,7 @@ function useIsInView<T extends HTMLElement = HTMLElement>(
     once: inViewOnce,
     margin: inViewMargin,
   });
-  const isInView = inView ?? inViewResult;
+  const isInView = !inView || inViewResult;
   return { ref: localRef, isInView };
 }
 

@@ -23,6 +23,17 @@
     "radix/tooltip",
     "---Shadcn UI---",
     "shadcn/sheet",
+    "---Base UI---",
+    "base/accordion",
+    "base/checkbox",
+    "base/collapsible",
+    "---Headless UI---",
+    "headless/checkbox",
+    "headless/dialog",
+    "headless/disclosure",
+    "headless/popover",
+    "headless/switch",
+    "headless/tabs",
     "---Buttons---",
     "buttons/button",
     "buttons/flip",
@@ -39,8 +50,12 @@
     "texts/splitting",
     "texts/typing",
     "---Effects---",
+    "effects/blur",
     "effects/effect",
+    "effects/fade",
     "effects/highlight",
-    "effects/magnetic"
+    "effects/magnetic",
+    "effects/slide",
+    "effects/zoom"
   ]
 }
