@@ -84,13 +84,13 @@ export const Header = ({ transition }: { transition: boolean }) => {
               href="https://github.com/imskyleen/animate-ui"
               rel="noreferrer noopener"
               target="_blank"
-              className="sm:mt-1 justify-center rounded-md text-sm group font-medium transition-colors duration-300 ease-in-out disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5 flex items-center gap-x-2"
+              className="sm:mt-1 cursor-pointer justify-center rounded-md text-sm group font-medium transition-colors duration-300 ease-in-out disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5 flex items-center gap-x-2"
             >
               <span data-active="false">
                 <GithubIcon />
               </span>
 
-              <span className="text-muted-foreground rounded-[4px] flex items-center gap-x-1 select-none cursor-default bg-accent dark:group-hover:bg-neutral-900 group-hover:bg-white text-sm py-0.5 pl-1.5 pr-[5px]">
+              <span className="text-muted-foreground rounded-[4px] flex items-center gap-x-1 select-none bg-accent dark:group-hover:bg-neutral-900 group-hover:bg-white text-sm py-0.5 pl-1.5 pr-[5px]">
                 2023 <StarIcon className="!size-[15px] fill-current" />
               </span>
             </a>

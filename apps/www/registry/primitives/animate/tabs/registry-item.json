@@ -7,6 +7,7 @@
   "dependencies": ["motion"],
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-effects-highlight",
+    "https://animate-ui.com/r/primitives-animate-slot",
     "https://animate-ui.com/r/hooks-use-strict-context"
   ],
   "files": [

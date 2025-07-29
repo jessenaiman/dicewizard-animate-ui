@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo-primitives-texts-scrolling-number",
+  "type": "registry:ui",
+  "title": "Scrolling Number Demo",
+  "description": "Demo showing an animated scrolling number.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-texts-scrolling-number"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/primitives/texts/scrolling-number/index.tsx",
+      "content": "'use client';\n\nimport React from 'react';\nimport {\n  ScrollingNumberContainer,\n  ScrollingNumber,\n} from '@/components/animate-ui/primitives/texts/scrolling-number';\n\nexport const ScrollingNumberDemo = () => {\n  return (\n    <ScrollingNumberContainer>\n      <ScrollingNumber number={1000} step={100} />\n    </ScrollingNumberContainer>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/demo/primitives/texts/scrolling-number.tsx"
+    }
+  ]
+}

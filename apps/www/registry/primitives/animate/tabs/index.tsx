@@ -10,6 +10,7 @@ import {
   type HighlightProps,
 } from '@/registry/primitives/effects/highlight';
 import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type TabsContextType = {
   activeValue: string;
@@ -46,7 +47,7 @@ function Tabs({
   ...props
 }: TabsProps) {
   const [activeValue, setActiveValue] = React.useState<string | undefined>(
-    defaultValue ?? undefined,
+    defaultValue,
   );
   const triggersRef = React.useRef(new Map<string, HTMLElement>());
   const initialSet = React.useRef(false);
@@ -59,28 +60,38 @@ function Tabs({
       triggersRef.current.size > 0 &&
       !initialSet.current
     ) {
-      const firstTab = Array.from(triggersRef.current.keys())[0];
-      setActiveValue(firstTab);
-      initialSet.current = true;
+      const firstTab = triggersRef.current.keys().next().value as
+        | string
+        | undefined;
+      if (firstTab !== undefined) {
+        setActiveValue(firstTab);
+        initialSet.current = true;
+      }
     }
   }, [activeValue, isControlled]);
 
-  const registerTrigger = (value: string, node: HTMLElement | null) => {
-    if (node) {
-      triggersRef.current.set(value, node);
-      if (!isControlled && activeValue === undefined && !initialSet.current) {
-        setActiveValue(value);
-        initialSet.current = true;
+  const registerTrigger = React.useCallback(
+    (val: string, node: HTMLElement | null) => {
+      if (node) {
+        triggersRef.current.set(val, node);
+        if (!isControlled && activeValue === undefined && !initialSet.current) {
+          setActiveValue(val);
+          initialSet.current = true;
+        }
+      } else {
+        triggersRef.current.delete(val);
       }
-    } else {
-      triggersRef.current.delete(value);
-    }
-  };
+    },
+    [activeValue, isControlled],
+  );
 
-  const handleValueChange = (val: string) => {
-    if (!isControlled) setActiveValue(val);
-    else onValueChange?.(val);
-  };
+  const handleValueChange = React.useCallback(
+    (val: string) => {
+      if (!isControlled) setActiveValue(val);
+      else onValueChange?.(val);
+    },
+    [isControlled, onValueChange],
+  );
 
   return (
     <TabsProvider
@@ -132,12 +143,20 @@ function TabsHighlightItem(props: TabsHighlightItemProps) {
   return <HighlightItem data-slot="tabs-highlight-item" {...props} />;
 }
 
-type TabsTriggerProps = React.ComponentProps<'button'> & {
-  value: string;
-  children: React.ReactNode;
-};
+type TabsTriggerProps = WithAsChild<
+  {
+    value: string;
+    children: React.ReactNode;
+  },
+  HTMLMotionProps<'button'>
+>;
 
-function TabsTrigger({ ref, value, ...props }: TabsTriggerProps) {
+function TabsTrigger({
+  ref,
+  value,
+  asChild = false,
+  ...props
+}: TabsTriggerProps) {
   const { activeValue, handleValueChange, registerTrigger } = useTabs();
 
   const localRef = React.useRef<HTMLButtonElement | null>(null);
@@ -148,8 +167,10 @@ function TabsTrigger({ ref, value, ...props }: TabsTriggerProps) {
     return () => registerTrigger(value, null);
   }, [value, registerTrigger]);
 
+  const Component = asChild ? Slot : motion.button;
+
   return (
-    <button
+    <Component
       ref={localRef}
       data-slot="tabs-trigger"
       role="tab"
@@ -178,14 +199,21 @@ function TabsContents({
   ...props
 }: TabsContentsProps) {
   const { activeValue } = useTabs();
-  const childrenArray = React.Children.toArray(children);
-  const activeIndex = childrenArray.findIndex(
-    (child): child is React.ReactElement<{ value: string }> =>
-      React.isValidElement(child) &&
-      typeof child.props === 'object' &&
-      child.props !== null &&
-      'value' in child.props &&
-      child.props.value === activeValue,
+  const childrenArray = React.useMemo(
+    () => React.Children.toArray(children),
+    [children],
+  );
+  const activeIndex = React.useMemo(
+    () =>
+      childrenArray.findIndex(
+        (child): child is React.ReactElement<{ value: string }> =>
+          React.isValidElement(child) &&
+          typeof child.props === 'object' &&
+          child.props !== null &&
+          'value' in child.props &&
+          child.props.value === activeValue,
+      ),
+    [childrenArray, activeValue],
   );
 
   return (
@@ -195,14 +223,14 @@ function TabsContents({
       {...props}
     >
       <motion.div
-        style={{ display: 'flex', marginInline: '-8px' }}
+        style={{ display: 'flex', marginInline: '-20px' }}
         animate={{ x: activeIndex * -100 + '%' }}
         transition={transition}
       >
         {childrenArray.map((child, index) => (
           <div
             key={index}
-            style={{ width: '100%', flexShrink: 0, paddingInline: '8px' }}
+            style={{ width: '100%', flexShrink: 0, paddingInline: '20px' }}
           >
             {child}
           </div>
@@ -212,17 +240,27 @@ function TabsContents({
   );
 }
 
-type TabsContentProps = HTMLMotionProps<'div'> & {
-  value: string;
-  children: React.ReactNode;
-};
+type TabsContentProps = WithAsChild<
+  {
+    value: string;
+    children: React.ReactNode;
+  },
+  HTMLMotionProps<'div'>
+>;
 
-function TabsContent({ value, style, ...props }: TabsContentProps) {
+function TabsContent({
+  value,
+  style,
+  asChild = false,
+  ...props
+}: TabsContentProps) {
   const { activeValue } = useTabs();
   const isActive = activeValue === value;
 
+  const Component = asChild ? Slot : motion.div;
+
   return (
-    <motion.div
+    <Component
       role="tabpanel"
       data-slot="tabs-content"
       style={{ overflow: 'hidden', ...style }}

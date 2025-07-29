@@ -53,6 +53,7 @@
     "texts/highlight",
     "texts/rolling",
     "texts/rotating",
+    "texts/scrolling-number",
     "texts/shimmering",
     "texts/sliding-number",
     "texts/splitting",

@@ -2,11 +2,12 @@
 
 import * as React from 'react';
 import { motion, isMotionComponent, type HTMLMotionProps } from 'motion/react';
+import { cn } from '@workspace/ui/lib/utils';
 
 type AnyProps = Record<string, unknown>;
 
 type DOMMotionProps<T extends HTMLElement = HTMLElement> = Omit<
-  HTMLMotionProps<'div'>,
+  HTMLMotionProps<keyof HTMLElementTagNameMap>,
   'ref'
 > & { ref?: React.Ref<T> };
 
@@ -34,6 +35,29 @@ function mergeRefs<T>(
   };
 }
 
+function mergeProps<T extends HTMLElement>(
+  childProps: AnyProps,
+  slotProps: DOMMotionProps<T>,
+): AnyProps {
+  const merged: AnyProps = { ...childProps, ...slotProps };
+
+  if (childProps.className || slotProps.className) {
+    merged.className = cn(
+      childProps.className as string,
+      slotProps.className as string,
+    );
+  }
+
+  if (childProps.style || slotProps.style) {
+    merged.style = {
+      ...(childProps.style as React.CSSProperties),
+      ...(slotProps.style as React.CSSProperties),
+    };
+  }
+
+  return merged;
+}
+
 function Slot<T extends HTMLElement = HTMLElement>({
   children,
   ref,
@@ -56,12 +80,10 @@ function Slot<T extends HTMLElement = HTMLElement>({
 
   const { ref: childRef, ...childProps } = children.props as AnyProps;
 
+  const mergedProps = mergeProps(childProps, props);
+
   return (
-    <Base
-      {...childProps}
-      {...props}
-      ref={mergeRefs(childRef as React.Ref<T>, ref)}
-    />
+    <Base {...mergedProps} ref={mergeRefs(childRef as React.Ref<T>, ref)} />
   );
 }
 

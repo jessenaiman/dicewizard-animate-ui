@@ -1512,6 +1512,22 @@
       }
     },
     {
+      "name": "demo-primitives-texts-scrolling-number",
+      "type": "registry:ui",
+      "title": "Scrolling Number Demo",
+      "description": "Demo showing an animated scrolling number.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-scrolling-number"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/scrolling-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/scrolling-number.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-texts-shimmering",
       "type": "registry:ui",
       "title": "Shimmering Demo",
@@ -1744,6 +1760,11 @@
       "description": "A tabs component that allows you to switch between different views.",
       "dependencies": [
         "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-highlight",
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/hooks-use-strict-context"
       ],
       "files": [
         {
@@ -2693,6 +2714,25 @@
           "path": "registry/primitives/texts/rotating/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/texts/rotating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-scrolling-number",
+      "type": "registry:ui",
+      "title": "Scrolling Number",
+      "description": "A scrolling number animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/scrolling-number/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/scrolling-number.tsx"
         }
       ]
     },
