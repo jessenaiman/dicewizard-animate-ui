@@ -10,7 +10,7 @@ import {
 
 export function AnimateTabsDemo() {
   return (
-    <Tabs defaultValue="account" className="w-[500px]">
+    <Tabs className="w-[500px]">
       <TabsHighlight className="bg-background absolute z-0 inset-0">
         <TabsList className="h-10 inline-flex p-1 bg-accent w-full">
           <TabsHighlightItem value="account" className="flex-1">

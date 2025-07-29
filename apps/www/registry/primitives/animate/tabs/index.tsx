@@ -45,53 +45,47 @@ function Tabs({
   children,
   ...props
 }: TabsProps) {
+  const [activeValue, setActiveValue] = React.useState<string | undefined>(
+    defaultValue ?? undefined,
+  );
+  const triggersRef = React.useRef(new Map<string, HTMLElement>());
+  const initialSet = React.useRef(false);
   const isControlled = value !== undefined;
 
-  const [activeValue, setActiveValue] = React.useState<string | null>(() =>
-    isControlled ? value : (defaultValue ?? null),
-  );
-
   React.useEffect(() => {
-    if (isControlled && value !== activeValue) {
-      setActiveValue(value);
+    if (
+      !isControlled &&
+      activeValue === undefined &&
+      triggersRef.current.size > 0 &&
+      !initialSet.current
+    ) {
+      const firstTab = Array.from(triggersRef.current.keys())[0];
+      setActiveValue(firstTab);
+      initialSet.current = true;
     }
-  }, [isControlled, value, activeValue]);
+  }, [activeValue, isControlled]);
 
-  React.useEffect(() => {
-    if (!isControlled && activeValue == null) {
-      const firstChild = React.Children.toArray(children).find(
-        (child): child is React.ReactElement<{ value: string }> =>
-          React.isValidElement(child) &&
-          typeof child.props === 'object' &&
-          child.props !== null &&
-          'value' in child.props,
-      );
-      if (firstChild) setActiveValue(firstChild.props.value);
+  const registerTrigger = (value: string, node: HTMLElement | null) => {
+    if (node) {
+      triggersRef.current.set(value, node);
+      if (!isControlled && activeValue === undefined && !initialSet.current) {
+        setActiveValue(value);
+        initialSet.current = true;
+      }
+    } else {
+      triggersRef.current.delete(value);
     }
-  }, [children, activeValue, isControlled]);
+  };
 
-  const triggersRef = React.useRef(new Map<string, HTMLElement>());
-
-  const registerTrigger = React.useCallback(
-    (val: string, node: HTMLElement | null) => {
-      if (node) triggersRef.current.set(val, node);
-      else triggersRef.current.delete(val);
-    },
-    [],
-  );
-
-  const handleValueChange = React.useCallback(
-    (val: string) => {
-      if (isControlled) onValueChange?.(val);
-      else setActiveValue(val);
-    },
-    [isControlled, onValueChange],
-  );
+  const handleValueChange = (val: string) => {
+    if (!isControlled) setActiveValue(val);
+    else onValueChange?.(val);
+  };
 
   return (
     <TabsProvider
       value={{
-        activeValue: (activeValue ?? '') as string,
+        activeValue: (value ?? activeValue) as string,
         handleValueChange,
         registerTrigger,
       }}
