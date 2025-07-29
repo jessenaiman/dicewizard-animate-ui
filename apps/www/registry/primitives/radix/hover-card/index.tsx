@@ -74,8 +74,8 @@ type HoverCardContentProps = React.ComponentProps<
 function HoverCardContent({
   align,
   alignOffset,
-  side = 'bottom',
-  sideOffset = 4,
+  side,
+  sideOffset,
   avoidCollisions,
   collisionBoundary,
   collisionPadding,

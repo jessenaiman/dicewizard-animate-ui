@@ -55,7 +55,7 @@ export const RadixDropdownMenuDemo = ({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
-        className="w-56 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden border bg-background p-1"
+        className="w-56 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden border bg-background p-1 z-50"
       >
         <DropdownMenuHighlight className="absolute inset-0 bg-accent z-0">
           <DropdownMenuLabel className="px-2 py-1.5 text-sm font-semibold">

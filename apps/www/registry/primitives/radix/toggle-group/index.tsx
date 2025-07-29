@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';
-import { type HTMLMotionProps, motion } from 'motion/react';
+import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
 import {
   Highlight,
@@ -16,6 +16,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 type ToggleGroupContextType = {
   value: string | string[] | undefined;
   setValue: (value: string | string[] | undefined) => void;
+  type: 'single' | 'multiple';
 };
 
 const [ToggleGroupProvider, useToggleGroup] =
@@ -33,7 +34,7 @@ function ToggleGroup(props: ToggleGroupProps) {
   });
 
   return (
-    <ToggleGroupProvider value={{ value, setValue }}>
+    <ToggleGroupProvider value={{ value, setValue, type: props.type }}>
       <ToggleGroupPrimitive.Root
         data-slot="toggle-group"
         {...props}
@@ -73,7 +74,7 @@ function ToggleGroupHighlight({
     <Highlight
       data-slot="toggle-group-highlight"
       controlledItems
-      value={typeof value === 'string' ? value : undefined}
+      value={typeof value === 'string' ? value : null}
       exitDelay={0}
       transition={transition}
       {...props}
@@ -81,10 +82,69 @@ function ToggleGroupHighlight({
   );
 }
 
-type ToggleGroupHighlightItemProps = HighlightItemProps;
+type ToggleGroupHighlightItemProps = HighlightItemProps &
+  HTMLMotionProps<'div'> & {
+    children: React.ReactElement;
+  };
 
-function ToggleGroupHighlightItem(props: ToggleGroupHighlightItemProps) {
-  return <HighlightItem data-slot="toggle-group-highlight-item" {...props} />;
+function ToggleGroupHighlightItem({
+  children,
+  style,
+  ...props
+}: ToggleGroupHighlightItemProps) {
+  const { type, value } = useToggleGroup();
+
+  if (type === 'single') {
+    return (
+      <HighlightItem
+        data-slot="toggle-group-highlight-item"
+        style={{ inset: 0, ...style }}
+        {...props}
+      >
+        {children}
+      </HighlightItem>
+    );
+  }
+
+  if (type === 'multiple' && React.isValidElement(children)) {
+    const isActive = props.value && value && value.includes(props.value);
+
+    const element = children as React.ReactElement<React.ComponentProps<'div'>>;
+
+    return React.cloneElement(
+      children,
+      {
+        style: {
+          ...element.props.style,
+          position: 'relative',
+        },
+        ...element.props,
+      },
+      <>
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              data-slot="toggle-group-highlight-item"
+              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              {...props}
+            />
+          )}
+        </AnimatePresence>
+
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          {element.props.children}
+        </div>
+      </>,
+    );
+  }
 }
 
 export {

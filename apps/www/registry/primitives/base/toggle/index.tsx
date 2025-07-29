@@ -1,0 +1,102 @@
+'use client';
+
+import * as React from 'react';
+import { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';
+import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
+
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { useControlledState } from '@/registry/hooks/use-controlled-state';
+
+type ToggleContextType = {
+  isPressed: boolean;
+  setIsPressed: (isPressed: boolean, event: Event) => void;
+};
+
+const [ToggleProvider, useToggle] =
+  useStrictContext<ToggleContextType>('ToggleContext');
+
+type ToggleProps = Omit<
+  React.ComponentProps<typeof TogglePrimitive>,
+  'render'
+> &
+  HTMLMotionProps<'button'>;
+
+function Toggle({
+  value,
+  pressed,
+  defaultPressed,
+  onPressedChange,
+  nativeButton,
+  disabled,
+  ...props
+}: ToggleProps) {
+  const [isPressed, setIsPressed] = useControlledState({
+    value: pressed,
+    defaultValue: defaultPressed,
+    onChange: onPressedChange,
+  });
+
+  return (
+    <ToggleProvider value={{ isPressed, setIsPressed }}>
+      <TogglePrimitive
+        value={value}
+        pressed={pressed}
+        defaultPressed={defaultPressed}
+        onPressedChange={setIsPressed}
+        nativeButton={nativeButton}
+        disabled={disabled}
+        render={
+          <motion.button
+            data-slot="toggle"
+            whileTap={{ scale: 0.9 }}
+            {...props}
+          />
+        }
+      />
+    </ToggleProvider>
+  );
+}
+
+type ToggleHighlightProps = HTMLMotionProps<'div'>;
+
+function ToggleHighlight({ style, ...props }: ToggleHighlightProps) {
+  const { isPressed } = useToggle();
+
+  return (
+    <AnimatePresence>
+      {isPressed && (
+        <motion.div
+          data-slot="toggle-highlight"
+          style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          {...props}
+        />
+      )}
+    </AnimatePresence>
+  );
+}
+
+type ToggleItemProps = HTMLMotionProps<'div'>;
+
+function ToggleItem({ style, ...props }: ToggleItemProps) {
+  return (
+    <motion.div
+      data-slot="toggle-item"
+      style={{ position: 'relative', zIndex: 1, ...style }}
+      {...props}
+    />
+  );
+}
+
+export {
+  Toggle,
+  ToggleHighlight,
+  ToggleItem,
+  useToggle,
+  type ToggleProps,
+  type ToggleHighlightProps,
+  type ToggleItemProps,
+  type ToggleContextType,
+};

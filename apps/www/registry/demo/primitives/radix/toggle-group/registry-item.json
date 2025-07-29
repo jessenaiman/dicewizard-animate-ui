@@ -13,5 +13,18 @@
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/radix/toggle-group.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "demoProps": {
+      "ToggleGroup": {
+        "type": {
+          "value": "single",
+          "options": {
+            "single": "single",
+            "multiple": "multiple"
+          }
+        }
+      }
+    }
+  }
 }

@@ -24,6 +24,7 @@ type HighlightContextType<T extends string> = {
   id: string;
   hover: boolean;
   className?: string;
+  style?: React.CSSProperties;
   activeClassName?: string;
   setActiveClassName: (className: string) => void;
   transition?: Transition;
@@ -54,6 +55,7 @@ type BaseHighlightProps<T extends React.ElementType = 'div'> = {
   defaultValue?: string | null;
   onValueChange?: (value: string | null) => void;
   className?: string;
+  style?: React.CSSProperties;
   transition?: Transition;
   hover?: boolean;
   disabled?: boolean;
@@ -117,6 +119,7 @@ function Highlight<T extends React.ElementType = 'div'>({
     defaultValue,
     onValueChange,
     className,
+    style,
     transition = { type: 'spring', stiffness: 350, damping: 35 },
     hover = false,
     enabled = true,
@@ -244,7 +247,7 @@ function Highlight<T extends React.ElementType = 'div'>({
                     },
                   }}
                   transition={transition}
-                  style={{ position: 'absolute', zIndex: 0 }}
+                  style={{ position: 'absolute', zIndex: 0, ...style }}
                   className={cn(className, activeClassNameState)}
                 />
               )}
@@ -276,6 +279,7 @@ function Highlight<T extends React.ElementType = 'div'>({
         id,
         hover,
         className,
+        style,
         transition,
         disabled,
         enabled,
@@ -335,6 +339,7 @@ type HighlightItemProps<T extends React.ElementType = 'div'> =
     id?: string;
     value?: string;
     className?: string;
+    style?: React.CSSProperties;
     transition?: Transition;
     activeClassName?: string;
     disabled?: boolean;
@@ -350,6 +355,7 @@ function HighlightItem<T extends React.ElementType>({
   id,
   value,
   className,
+  style,
   transition,
   disabled = false,
   activeClassName,
@@ -368,6 +374,7 @@ function HighlightItem<T extends React.ElementType>({
     hover,
     enabled,
     className: contextClassName,
+    style: contextStyle,
     transition: contextTransition,
     id: contextId,
     disabled: contextDisabled,
@@ -485,7 +492,12 @@ function HighlightItem<T extends React.ElementType>({
               <motion.div
                 layoutId={`transition-background-${contextId}`}
                 data-slot="motion-highlight"
-                style={{ position: 'absolute', zIndex: 0 }}
+                style={{
+                  position: 'absolute',
+                  zIndex: 0,
+                  ...contextStyle,
+                  ...style,
+                }}
                 className={cn(contextClassName, activeClassName)}
                 transition={itemTransition}
                 initial={{ opacity: 0 }}
@@ -542,7 +554,12 @@ function HighlightItem<T extends React.ElementType>({
             <motion.div
               layoutId={`transition-background-${contextId}`}
               data-slot="motion-highlight"
-              style={{ position: 'absolute', zIndex: 0 }}
+              style={{
+                position: 'absolute',
+                zIndex: 0,
+                ...contextStyle,
+                ...style,
+              }}
               className={cn(contextClassName, activeClassName)}
               transition={itemTransition}
               initial={{ opacity: 0 }}

@@ -29,7 +29,7 @@ export const RadixTooltipDemo = ({
             sideOffset={sideOffset}
             align={align}
             alignOffset={alignOffset}
-            className="bg-primary text-primary-foreground px-2 py-1 text-sm"
+            className="bg-primary text-primary-foreground px-2 py-1 text-sm z-50"
           >
             <p>Add to library</p>
           </TooltipContent>

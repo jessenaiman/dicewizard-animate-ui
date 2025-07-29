@@ -186,6 +186,11 @@ By using the `mode` property with the value `parent`, the `Highlight` component 
       type: 'string',
       required: false,
     },
+    style: {
+      description: 'The style of the highlight',
+      type: 'React.CSSProperties',
+      required: false,
+    },
     transition: {
       description: 'The transition of the highlight',
       type: 'Transition',
@@ -280,6 +285,11 @@ By using the `mode` property with the value `parent`, the `Highlight` component 
     className: {
       description: 'The class name of the highlight item',
       type: 'string',
+      required: false,
+    },
+    style: {
+      description: 'The style of the highlight item',
+      type: 'React.CSSProperties',
       required: false,
     },
     transition: {

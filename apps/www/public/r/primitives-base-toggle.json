@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "primitives-base-toggle",
+  "type": "registry:ui",
+  "title": "Base Toggle",
+  "description": "A two-state button that can be on or off.",
+  "dependencies": [
+    "motion",
+    "@base-ui-components/react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/hooks-use-controlled-state"
+  ],
+  "files": [
+    {
+      "path": "registry/primitives/base/toggle/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleContextType = {\n  isPressed: boolean;\n  setIsPressed: (isPressed: boolean, event: Event) => void;\n};\n\nconst [ToggleProvider, useToggle] =\n  useStrictContext<ToggleContextType>('ToggleContext');\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  const [isPressed, setIsPressed] = useControlledState({\n    value: pressed,\n    defaultValue: defaultPressed,\n    onChange: onPressedChange,\n  });\n\n  return (\n    <ToggleProvider value={{ isPressed, setIsPressed }}>\n      <TogglePrimitive\n        value={value}\n        pressed={pressed}\n        defaultPressed={defaultPressed}\n        onPressedChange={setIsPressed}\n        nativeButton={nativeButton}\n        disabled={disabled}\n        render={\n          <motion.button\n            data-slot=\"toggle\"\n            whileTap={{ scale: 0.9 }}\n            {...props}\n          />\n        }\n      />\n    </ToggleProvider>\n  );\n}\n\ntype ToggleHighlightProps = HTMLMotionProps<'div'>;\n\nfunction ToggleHighlight({ style, ...props }: ToggleHighlightProps) {\n  const { isPressed } = useToggle();\n\n  return (\n    <AnimatePresence>\n      {isPressed && (\n        <motion.div\n          data-slot=\"toggle-highlight\"\n          style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype ToggleItemProps = HTMLMotionProps<'div'>;\n\nfunction ToggleItem({ style, ...props }: ToggleItemProps) {\n  return (\n    <motion.div\n      data-slot=\"toggle-item\"\n      style={{ position: 'relative', zIndex: 1, ...style }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Toggle,\n  ToggleHighlight,\n  ToggleItem,\n  useToggle,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleItemProps,\n  type ToggleContextType,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/primitives/base/toggle.tsx"
+    }
+  ]
+}

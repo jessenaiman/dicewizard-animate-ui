@@ -81,8 +81,8 @@ type TooltipContentProps = Omit<
 function TooltipContent({
   onEscapeKeyDown,
   onPointerDownOutside,
-  side = 'top',
-  sideOffset = 4,
+  side,
+  sideOffset,
   align,
   alignOffset,
   avoidCollisions,

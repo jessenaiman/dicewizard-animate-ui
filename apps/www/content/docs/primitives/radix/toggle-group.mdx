@@ -14,49 +14,23 @@ author:
 
 ## Usage
 
-### Single with highlight
-
-#### With highlight
+### Single
 
 ```tsx
 <ToggleGroup type="single" defaultValue="bold">
   <ToggleGroupHighlight>
     <ToggleGroupHighlightItem value="bold">
-      <ToggleGroupItem value="bold">
-        <Bold className="h-4 w-4" />
-      </ToggleGroupItem>
+      <ToggleGroupItem value="bold" />
     </ToggleGroupHighlightItem>
 
     <ToggleGroupHighlightItem value="italic">
-      <ToggleGroupItem value="italic">
-        <Italic className="h-4 w-4" />
-      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" />
     </ToggleGroupHighlightItem>
 
     <ToggleGroupHighlightItem value="underline">
-      <ToggleGroupItem value="underline">
-        <Underline className="h-4 w-4" />
-      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" />
     </ToggleGroupHighlightItem>
   </ToggleGroupHighlight>
-</ToggleGroup>
-```
-
-#### Without highlight
-
-```tsx
-<ToggleGroup type="single" defaultValue="bold">
-  <ToggleGroupItem value="bold">
-    <Bold className="h-4 w-4" />
-  </ToggleGroupItem>
-
-  <ToggleGroupItem value="italic">
-    <Italic className="h-4 w-4" />
-  </ToggleGroupItem>
-
-  <ToggleGroupItem value="underline">
-    <Underline className="h-4 w-4" />
-  </ToggleGroupItem>
 </ToggleGroup>
 ```
 
@@ -64,17 +38,17 @@ author:
 
 ```tsx
 <ToggleGroup type="multiple" defaultValue={['bold']}>
-  <ToggleGroupItem value="bold">
-    <Bold className="h-4 w-4" />
-  </ToggleGroupItem>
+  <ToggleGroupHighlightItem value="bold">
+    <ToggleGroupItem value="bold" />
+  </ToggleGroupHighlightItem>
 
-  <ToggleGroupItem value="italic">
-    <Italic className="h-4 w-4" />
-  </ToggleGroupItem>
+  <ToggleGroupHighlightItem value="italic">
+    <ToggleGroupItem value="italic" />
+  </ToggleGroupHighlightItem>
 
-  <ToggleGroupItem value="underline">
-    <Underline className="h-4 w-4" />
-  </ToggleGroupItem>
+  <ToggleGroupHighlightItem value="underline">
+    <ToggleGroupItem value="underline" />
+  </ToggleGroupHighlightItem>
 </ToggleGroup>
 ```
 
@@ -132,6 +106,16 @@ author:
 <ExternalLink
   href="https://animate-ui.com/docs/primitives/effects/highlight#highlightitem"
   text="Animate UI API Reference - HighlightItem"
+/>
+
+<TypeTable
+  type={{
+    '...props': {
+      description: 'The props of the ToggleGroupHighlightItem component.',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
+  }}
 />
 
 ## Credits

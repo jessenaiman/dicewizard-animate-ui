@@ -39,7 +39,7 @@ export const RadixHoverCardDemo = ({
           sideOffset={sideOffset}
           align={align}
           alignOffset={alignOffset}
-          className="w-80 bg-background border p-4"
+          className="w-80 bg-background border p-4 z-50"
         >
           <div className="flex flex-col gap-4">
             <img

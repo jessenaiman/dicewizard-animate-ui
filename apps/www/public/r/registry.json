@@ -98,6 +98,220 @@
       }
     },
     {
+      "name": "demo-primitives-base-popover",
+      "type": "registry:ui",
+      "title": "Base Popover Demo",
+      "description": "Demo showing an animated base popover.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/popover.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PopoverPositioner": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-base-preview-card",
+      "type": "registry:ui",
+      "title": "Base Preview Card Demo",
+      "description": "Demo showing an animated base preview card.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-preview-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/preview-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/preview-card.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PreviewCardPositioner": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-base-progress",
+      "type": "registry:ui",
+      "title": "Base Progress Demo",
+      "description": "Demo showing an animated base progress.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-base-switch",
+      "type": "registry:ui",
+      "title": "Base Switch Demo",
+      "description": "Demo showing an animated base switch.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-base-toggle",
+      "type": "registry:ui",
+      "title": "Base Toggle Demo",
+      "description": "Demo showing an animated base toggle.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-base-toggle-group",
+      "type": "registry:ui",
+      "title": "Base Toggle Group Demo",
+      "description": "Demo showing an animated base toggle group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/toggle-group.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ToggleGroup": {
+            "toggleMultiple": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-base-tooltip",
+      "type": "registry:ui",
+      "title": "Base Tooltip Demo",
+      "description": "Demo showing an animated base tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "TooltipPositioner": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "demo-primitives-buttons-button",
       "type": "registry:ui",
       "title": "Button Demo",
@@ -997,6 +1211,22 @@
       ]
     },
     {
+      "name": "demo-primitives-radix-toggle",
+      "type": "registry:ui",
+      "title": "Radix Toggle Demo",
+      "description": "Demo showing an animated radix toggle.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/toggle.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-radix-toggle-group",
       "type": "registry:ui",
       "title": "Radix Toggle Group Demo",
@@ -1010,7 +1240,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/radix/toggle-group.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "ToggleGroup": {
+            "type": {
+              "value": "single",
+              "options": {
+                "single": "single",
+                "multiple": "multiple"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-radix-tooltip",
@@ -1538,6 +1781,154 @@
           "path": "registry/primitives/base/collapsible/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/base/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-popover",
+      "type": "registry:ui",
+      "title": "Base Popover",
+      "description": "An accessible popup anchored to a button.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-preview-card",
+      "type": "registry:ui",
+      "title": "Base Preview Card",
+      "description": "A popup that appears when a link is hovered, showing a preview for sighted users.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/preview-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/preview-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-progress",
+      "type": "registry:ui",
+      "title": "Base Progress",
+      "description": "Displays the status of a task that takes a long time.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/primitives-texts-counting-number"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-switch",
+      "type": "registry:ui",
+      "title": "Base Switch",
+      "description": "A control that indicates whether a setting is on or off.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-toggle",
+      "type": "registry:ui",
+      "title": "Base Toggle",
+      "description": "A two-state button that can be on or off.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-toggle-group",
+      "type": "registry:ui",
+      "title": "Base Toggle Group",
+      "description": "Provides a shared state to a series of toggle buttons.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state",
+        "https://animate-ui.com/r/primitives-effects-highlight"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-tooltip",
+      "type": "registry:ui",
+      "title": "Base Tooltip",
+      "description": "A popup that appears when an element is hovered or focused, showing a hint for sighted users.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/tooltip.tsx"
         }
       ]
     },
@@ -2093,6 +2484,27 @@
           "path": "registry/primitives/radix/tabs/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/radix/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-radix-toggle",
+      "type": "registry:ui",
+      "title": "Radix Toggle",
+      "description": "A two-state button that can be either on or off.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/toggle.tsx"
         }
       ]
     },

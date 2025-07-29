@@ -94,7 +94,6 @@ type PopoverPanelProps<TTag extends React.ElementType = 'div'> = Omit<
 function PopoverPanel(props: PopoverPanelProps) {
   const {
     transition = { type: 'spring', stiffness: 300, damping: 25 },
-    anchor = { to: 'bottom', gap: 4 },
     as = motion.div,
     ...rest
   } = props;
@@ -112,7 +111,6 @@ function PopoverPanel(props: PopoverPanelProps) {
           initial={{ opacity: 0, scale: 0.5, transition }}
           animate={{ opacity: 1, scale: 1, transition }}
           exit={{ opacity: 0, scale: 0.5, transition }}
-          anchor={anchor}
           {...rest}
         />
       )}
