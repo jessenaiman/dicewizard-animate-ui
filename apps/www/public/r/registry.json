@@ -18,6 +18,22 @@
       "files": []
     },
     {
+      "name": "demo-primitives-animate-tabs",
+      "type": "registry:ui",
+      "title": "Animate Tabs Demo",
+      "description": "Demo showing an animated tabs.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/tabs.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-base-accordion",
       "type": "registry:ui",
       "title": "Base Accordion Demo",
@@ -1718,6 +1734,22 @@
           "path": "registry/primitives/animate/slot/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/animate/slot.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A tabs component that allows you to switch between different views.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/tabs.tsx"
         }
       ]
     },

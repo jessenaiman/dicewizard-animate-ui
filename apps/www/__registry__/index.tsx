@@ -22,6 +22,44 @@ export const index: Record<string, any> = {
     component: null,
     command: 'https://animate-ui.com/r/index',
   },
+  'demo-primitives-animate-tabs': {
+    name: 'demo-primitives-animate-tabs',
+    description: 'Demo showing an animated tabs.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-animate-tabs'],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/tabs.tsx',
+        content:
+          'import {\n  Tabs,\n  TabsContent,\n  TabsContents,\n  TabsHighlight,\n  TabsHighlightItem,\n  TabsList,\n  TabsTrigger,\n} from \'@/components/animate-ui/primitives/animate/tabs\';\n\nexport function AnimateTabsDemo() {\n  return (\n    <Tabs defaultValue="account" className="w-[500px]">\n      <TabsHighlight className="bg-background absolute z-0 inset-0">\n        <TabsList className="h-10 inline-flex p-1 bg-accent w-full">\n          <TabsHighlightItem value="account" className="flex-1">\n            <TabsTrigger\n              value="account"\n              className="h-full px-4 py-2 leading-0 w-full text-sm"\n            >\n              Account\n            </TabsTrigger>\n          </TabsHighlightItem>\n          <TabsHighlightItem value="password" className="flex-1">\n            <TabsTrigger\n              value="password"\n              className="h-full px-4 py-2 leading-0 w-full text-sm"\n            >\n              Password\n            </TabsTrigger>\n          </TabsHighlightItem>\n        </TabsList>\n      </TabsHighlight>\n      <TabsContents className="bg-background p-3 border border-t-0">\n        <TabsContent value="account" className="space-y-4">\n          <p className="text-sm text-muted-foreground">\n            Make changes to your account here. Click save when you&apos;re done.\n          </p>\n\n          <div className="space-y-3">\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="name" className="text-sm">\n                Name\n              </label>\n              <input\n                id="name"\n                defaultValue="Pedro Duarte"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="username" className="text-sm">\n                Username\n              </label>\n              <input\n                id="username"\n                defaultValue="@peduarte"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n          </div>\n\n          <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm">\n            Save changes\n          </button>\n        </TabsContent>\n        <TabsContent value="password" className="space-y-4">\n          <p className="text-sm text-muted-foreground">\n            Change your password here. After saving, you&apos;ll be logged out.\n          </p>\n          <div className="space-y-3">\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="current" className="text-sm">\n                Current password\n              </label>\n              <input\n                id="current"\n                type="password"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="new" className="text-sm">\n                New password\n              </label>\n              <input\n                id="new"\n                type="password"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n            <div className="space-y-1 flex flex-col">\n              <label htmlFor="confirm" className="text-sm">\n                Confirm password\n              </label>\n              <input\n                id="confirm"\n                type="password"\n                className="border px-3 py-1.5 text-sm"\n              />\n            </div>\n          </div>\n\n          <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm">\n            Save password\n          </button>\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/tabs/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-tabs',
+  },
   'demo-primitives-base-accordion': {
     name: 'demo-primitives-base-accordion',
     description: 'Demo showing an animated base accordion.',
@@ -2560,6 +2598,45 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/primitives-animate-slot',
+  },
+  'primitives-animate-tabs': {
+    name: 'primitives-animate-tabs',
+    description:
+      'A tabs component that allows you to switch between different views.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/primitives/animate/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/tabs.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition, type HTMLMotionProps } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  Highlight,\n  HighlightItem,\n  HighlightItemProps,\n  HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype TabsContextType = {\n  activeValue: string;\n  handleValueChange: (value: string) => void;\n  registerTrigger: (value: string, node: HTMLElement | null) => void;\n};\n\nconst [TabsProvider, useTabs] =\n  useStrictContext<TabsContextType>('TabsContext');\n\ntype BaseTabsProps = React.ComponentProps<'div'> & {\n  children: React.ReactNode;\n};\n\ntype UnControlledTabsProps<T extends string = string> = BaseTabsProps & {\n  defaultValue?: T;\n  value?: never;\n  onValueChange?: never;\n};\n\ntype ControlledTabsProps<T extends string = string> = BaseTabsProps & {\n  value: T;\n  onValueChange?: (value: T) => void;\n  defaultValue?: never;\n};\n\ntype TabsProps<T extends string = string> =\n  | UnControlledTabsProps<T>\n  | ControlledTabsProps<T>;\n\nfunction Tabs<T extends string = string>({\n  defaultValue,\n  value,\n  onValueChange,\n  children,\n  className,\n  ...props\n}: TabsProps<T>) {\n  const [activeValue, setActiveValue] = React.useState<T | undefined>(\n    defaultValue ?? undefined,\n  );\n  const triggersRef = React.useRef(new Map<string, HTMLElement>());\n  const initialSet = React.useRef(false);\n  const isControlled = value !== undefined;\n\n  React.useEffect(() => {\n    if (\n      !isControlled &&\n      activeValue === undefined &&\n      triggersRef.current.size > 0 &&\n      !initialSet.current\n    ) {\n      const firstTab = Array.from(triggersRef.current.keys())[0];\n      setActiveValue(firstTab as T);\n      initialSet.current = true;\n    }\n  }, [activeValue, isControlled]);\n\n  const registerTrigger = (value: string, node: HTMLElement | null) => {\n    if (node) {\n      triggersRef.current.set(value, node);\n      if (!isControlled && activeValue === undefined && !initialSet.current) {\n        setActiveValue(value as T);\n        initialSet.current = true;\n      }\n    } else {\n      triggersRef.current.delete(value);\n    }\n  };\n\n  const handleValueChange = (val: T) => {\n    if (!isControlled) setActiveValue(val);\n    else onValueChange?.(val);\n  };\n\n  return (\n    <TabsProvider\n      value={{\n        activeValue: (value ?? activeValue)!,\n        handleValueChange,\n        registerTrigger,\n      }}\n    >\n      <div\n        data-slot=\"tabs\"\n        className={cn('flex flex-col gap-2', className)}\n        {...props}\n      >\n        {children}\n      </div>\n    </TabsProvider>\n  );\n}\n\ntype TabsHighlightProps = Omit<HighlightProps, 'controlledItems' | 'value'>;\n\nfunction TabsHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: TabsHighlightProps) {\n  const { activeValue } = useTabs();\n\n  return (\n    <Highlight\n      data-slot=\"tabs-highlight\"\n      controlledItems\n      value={activeValue}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype TabsListProps = React.ComponentProps<'div'> & {\n  children: React.ReactNode;\n};\n\nfunction TabsList(props: TabsListProps) {\n  return <div role=\"tablist\" data-slot=\"tabs-list\" {...props} />;\n}\n\ntype TabsHighlightItemProps = HighlightItemProps & {\n  value: string;\n};\n\nfunction TabsHighlightItem(props: TabsHighlightItemProps) {\n  return <HighlightItem data-slot=\"tabs-highlight-item\" {...props} />;\n}\n\ntype TabsTriggerProps = HTMLMotionProps<'button'> & {\n  value: string;\n  children: React.ReactNode;\n};\n\nfunction TabsTrigger({ ref, value, ...props }: TabsTriggerProps) {\n  const { activeValue, handleValueChange, registerTrigger } = useTabs();\n\n  const localRef = React.useRef<HTMLButtonElement | null>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLButtonElement);\n\n  React.useEffect(() => {\n    registerTrigger(value, localRef.current);\n    return () => registerTrigger(value, null);\n  }, [value, registerTrigger]);\n\n  return (\n    <motion.button\n      ref={localRef}\n      data-slot=\"tabs-trigger\"\n      role=\"tab\"\n      whileTap={{ scale: 0.95 }}\n      onClick={() => handleValueChange(value)}\n      data-state={activeValue === value ? 'active' : 'inactive'}\n      {...props}\n    />\n  );\n}\n\ntype TabsContentsProps = React.ComponentProps<'div'> & {\n  children: React.ReactNode;\n  transition?: Transition;\n};\n\nfunction TabsContents({\n  children,\n  className,\n  transition = {\n    type: 'spring',\n    stiffness: 300,\n    damping: 30,\n    bounce: 0,\n    restDelta: 0.01,\n  },\n  ...props\n}: TabsContentsProps) {\n  const { activeValue } = useTabs();\n  const childrenArray = React.Children.toArray(children);\n  const activeIndex = childrenArray.findIndex(\n    (child): child is React.ReactElement<{ value: string }> =>\n      React.isValidElement(child) &&\n      typeof child.props === 'object' &&\n      child.props !== null &&\n      'value' in child.props &&\n      child.props.value === activeValue,\n  );\n\n  return (\n    <div\n      data-slot=\"tabs-contents\"\n      className={cn('overflow-hidden', className)}\n      {...props}\n    >\n      <motion.div\n        className=\"flex -mx-2\"\n        animate={{ x: activeIndex * -100 + '%' }}\n        transition={transition}\n      >\n        {childrenArray.map((child, index) => (\n          <div key={index} className=\"w-full shrink-0 px-2\">\n            {child}\n          </div>\n        ))}\n      </motion.div>\n    </div>\n  );\n}\n\ntype TabsContentProps = HTMLMotionProps<'div'> & {\n  value: string;\n  children: React.ReactNode;\n};\n\nfunction TabsContent({\n  children,\n  value,\n  className,\n  ...props\n}: TabsContentProps) {\n  const { activeValue } = useTabs();\n  const isActive = activeValue === value;\n  return (\n    <motion.div\n      role=\"tabpanel\"\n      data-slot=\"tabs-content\"\n      className={cn('overflow-hidden', className)}\n      initial={{ filter: 'blur(0px)' }}\n      animate={{ filter: isActive ? 'blur(0px)' : 'blur(4px)' }}\n      exit={{ filter: 'blur(0px)' }}\n      transition={{ type: 'spring', stiffness: 200, damping: 25 }}\n      {...props}\n    >\n      {children}\n    </motion.div>\n  );\n}\n\nexport {\n  Tabs,\n  TabsList,\n  TabsHighlight,\n  TabsHighlightItem,\n  TabsTrigger,\n  TabsContents,\n  TabsContent,\n  useTabs,\n  type TabsProps,\n  type TabsListProps,\n  type TabsHighlightProps,\n  type TabsHighlightItemProps,\n  type TabsTriggerProps,\n  type TabsContentsProps,\n  type TabsContentProps,\n  type TabsContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/tabs/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-tabs',
   },
   'primitives-base-accordion': {
     name: 'primitives-base-accordion',
