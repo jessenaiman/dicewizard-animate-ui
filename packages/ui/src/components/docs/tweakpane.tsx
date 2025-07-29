@@ -384,11 +384,7 @@ const renderBinds = (
       )
     : renderFlatBinds(binds, onBindsChange as (b: FlatBinds) => void);
 
-const Tweakpane = ({
-  onBindsChange,
-
-  ...props
-}: TweakpaneProps) => {
+const Tweakpane = ({ onBindsChange, ...props }: TweakpaneProps) => {
   const [localBinds, setLocalBinds] = React.useState<Binds>(
     'binds' in props ? props.binds : props.initialBinds,
   );
