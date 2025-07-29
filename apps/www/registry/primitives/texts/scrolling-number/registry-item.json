@@ -5,7 +5,10 @@
   "title": "Scrolling Number",
   "description": "A scrolling number animation.",
   "dependencies": ["motion"],
-  "registryDependencies": ["https://animate-ui.com/r/hooks-use-is-in-view"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-is-in-view",
+    "https://animate-ui.com/r/hooks-use-strict-context"
+  ],
   "files": [
     {
       "path": "registry/primitives/texts/scrolling-number/index.tsx",
