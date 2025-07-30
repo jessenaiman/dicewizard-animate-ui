@@ -55,18 +55,38 @@ function CursorProvider({
     let removeListeners: () => void;
 
     if (isGlobal) {
-      const handleMouseMove = (e: MouseEvent) => {
+      const handlePointerMove = (e: PointerEvent) => {
         setCursorPos({ x: e.clientX, y: e.clientY });
         setIsActive(true);
       };
-      const handleMouseLeave = () => setIsActive(false);
 
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseleave', handleMouseLeave);
+      const handlePointerOut = (e: PointerEvent | MouseEvent) => {
+        if (e instanceof PointerEvent && e.relatedTarget === null) {
+          setIsActive(false);
+        }
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === 'hidden') setIsActive(false);
+      };
+
+      window.addEventListener('pointermove', handlePointerMove, {
+        passive: true,
+      });
+      window.addEventListener('pointerout', handlePointerOut, {
+        passive: true,
+      });
+      window.addEventListener('mouseout', handlePointerOut, { passive: true });
+      document.addEventListener('visibilitychange', handleVisibilityChange);
 
       removeListeners = () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('mouseleave', handleMouseLeave);
+        window.removeEventListener('pointermove', handlePointerMove);
+        window.removeEventListener('pointerout', handlePointerOut);
+        window.removeEventListener('mouseout', handlePointerOut);
+        document.removeEventListener(
+          'visibilitychange',
+          handleVisibilityChange,
+        );
       };
     } else {
       if (!containerRef.current) return;
@@ -78,19 +98,33 @@ function CursorProvider({
         parent.style.position = 'relative';
       }
 
-      const handleMouseMove = (e: MouseEvent) => {
+      const handlePointerMove = (e: PointerEvent) => {
         const rect = parent.getBoundingClientRect();
         setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
         setIsActive(true);
       };
-      const handleMouseLeave = () => setIsActive(false);
 
-      parent.addEventListener('mousemove', handleMouseMove);
-      parent.addEventListener('mouseleave', handleMouseLeave);
+      const handlePointerOut = (e: PointerEvent | MouseEvent) => {
+        if (
+          e.relatedTarget === null ||
+          !(parent as Node).contains(e.relatedTarget as Node)
+        ) {
+          setIsActive(false);
+        }
+      };
+
+      parent.addEventListener('pointermove', handlePointerMove, {
+        passive: true,
+      });
+      parent.addEventListener('pointerout', handlePointerOut, {
+        passive: true,
+      });
+      parent.addEventListener('mouseout', handlePointerOut, { passive: true });
 
       removeListeners = () => {
-        parent.removeEventListener('mousemove', handleMouseMove);
-        parent.removeEventListener('mouseleave', handleMouseLeave);
+        parent.removeEventListener('pointermove', handlePointerMove);
+        parent.removeEventListener('pointerout', handlePointerOut);
+        parent.removeEventListener('mouseout', handlePointerOut);
       };
     }
 
@@ -123,11 +157,13 @@ function CursorContainer({
   );
 }
 
-type CursorProps = HTMLMotionProps<'div'> & {
-  children: React.ReactNode;
-};
+type CursorProps = WithAsChild<
+  HTMLMotionProps<'div'> & {
+    children: React.ReactNode;
+  }
+>;
 
-function Cursor({ ref, children, style, ...props }: CursorProps) {
+function Cursor({ ref, asChild = false, style, ...props }: CursorProps) {
   const { cursorPos, isActive, containerRef, cursorRef, isGlobal } =
     useCursor();
   React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);
@@ -158,10 +194,12 @@ function Cursor({ ref, children, style, ...props }: CursorProps) {
     y.set(cursorPos.y);
   }, [cursorPos, x, y]);
 
+  const Component = asChild ? Slot : motion.div;
+
   return (
     <AnimatePresence>
       {isActive && (
-        <motion.div
+        <Component
           ref={cursorRef}
           data-slot="cursor"
           style={{
@@ -177,9 +215,7 @@ function Cursor({ ref, children, style, ...props }: CursorProps) {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
           {...props}
-        >
-          {children}
-        </motion.div>
+        />
       )}
     </AnimatePresence>
   );
@@ -196,18 +232,20 @@ type CursorFollowAlign =
   | 'right'
   | 'center';
 
-type CursorFollowProps = HTMLMotionProps<'div'> & {
-  sideOffset?: number;
-  align?: CursorFollowAlign;
-  transition?: SpringOptions;
-  children: React.ReactNode;
-};
+type CursorFollowProps = WithAsChild<
+  HTMLMotionProps<'div'> & {
+    align?: CursorFollowAlign;
+    sideOffset?: number;
+    transition?: SpringOptions;
+    children: React.ReactNode;
+  }
+>;
 
 function CursorFollow({
   ref,
+  asChild = false,
   sideOffset = 15,
   align = 'bottom-right',
-  children,
   style,
   transition = { stiffness: 500, damping: 50, bounce: 0 },
   ...props
@@ -277,10 +315,12 @@ function CursorFollow({
     y.set(cursorPos.y - offset.y + cursorHeight / 2);
   }, [calculateOffset, cursorPos, cursorRef, x, y]);
 
+  const Component = asChild ? Slot : motion.div;
+
   return (
     <AnimatePresence>
       {isActive && (
-        <motion.div
+        <Component
           ref={cursorFollowRef}
           data-slot="cursor-follow"
           style={{
@@ -296,9 +336,7 @@ function CursorFollow({
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
           {...props}
-        >
-          {children}
-        </motion.div>
+        />
       )}
     </AnimatePresence>
   );

@@ -41,3 +41,77 @@ author:
   </CursorContainer>
 </CursorProvider>
 ```
+
+## API Reference
+
+### CursorProvider
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the CursorProvider',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    global: {
+      description: 'Whether the cursor is global',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+  }}
+/>
+
+### CursorContainer
+
+<TypeTable
+  type={{
+    asChild: {
+      description: 'Whether the CursorContainer is as a child',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    '...props': {
+      description: 'The props of the CursorContainer',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
+  }}
+/>
+
+### Cursor
+
+<TypeTable
+  type={{
+    asChild: {
+      description: 'Whether the CursorContainer is as a child',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    '...props': {
+      description: 'The props of the CursorContainer',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
+  }}
+/>
+
+### CursorFollow
+
+<TypeTable
+  type={{
+    asChild: {
+      description: 'Whether the CursorContainer is as a child',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    '...props': {
+      description: 'The props of the CursorContainer',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
+  }}
+/>

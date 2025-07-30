@@ -19,6 +19,12 @@
       "CursorProvider": {
         "global": {
           "value": false
+        },
+        "enableCursor": {
+          "value": true
+        },
+        "enableCursorFollow": {
+          "value": true
         }
       }
     }

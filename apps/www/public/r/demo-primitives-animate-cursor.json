@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/primitives/animate/cursor/index.tsx",
-      "content": "import {\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  CursorProvider,\n} from '@/components/animate-ui/primitives/animate/cursor';\n\nexport const CursorDemo = () => {\n  return (\n    <div className=\"max-w-[400px] h-[400px] w-full rounded-xl bg-muted flex items-center justify-center\">\n      <p className=\"font-medium italic text-muted-foreground\">\n        Move your mouse over the div\n      </p>\n      <CursorProvider>\n        <CursorContainer>\n          <Cursor>\n            <svg\n              className=\"size-6 text-blue-500\"\n              xmlns=\"http://www.w3.org/2000/svg\"\n              viewBox=\"0 0 40 40\"\n            >\n              <path\n                fill=\"currentColor\"\n                d=\"M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z\"\n              />\n            </svg>\n          </Cursor>\n          <CursorFollow>\n            <div className=\"bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg\">\n              Designer\n            </div>\n          </CursorFollow>\n        </CursorContainer>\n      </CursorProvider>\n    </div>\n  );\n};\n",
+      "content": "import {\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  CursorProvider,\n} from '@/components/animate-ui/primitives/animate/cursor';\n\ninterface CursorDemoProps {\n  global?: boolean;\n  enableCursor?: boolean;\n  enableCursorFollow?: boolean;\n}\n\nexport const CursorDemo = ({\n  global = false,\n  enableCursor = true,\n  enableCursorFollow = true,\n}: CursorDemoProps) => {\n  return (\n    <div\n      key={String(global)}\n      className=\"max-w-[400px] h-[400px] w-full rounded-xl bg-muted flex items-center justify-center\"\n    >\n      <p className=\"font-medium italic text-muted-foreground\">\n        Move your mouse over the div\n      </p>\n      <CursorProvider global={global}>\n        <CursorContainer>\n          {enableCursor && (\n            <Cursor>\n              <svg\n                className=\"size-6 text-blue-500\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n                viewBox=\"0 0 40 40\"\n              >\n                <path\n                  fill=\"currentColor\"\n                  d=\"M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z\"\n                />\n              </svg>\n            </Cursor>\n          )}\n          {enableCursorFollow && (\n            <CursorFollow>\n              <div className=\"bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg\">\n                Designer\n              </div>\n            </CursorFollow>\n          )}\n        </CursorContainer>\n      </CursorProvider>\n    </div>\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/animate/cursor.tsx"
     }
@@ -20,6 +20,12 @@
       "CursorProvider": {
         "global": {
           "value": false
+        },
+        "enableCursor": {
+          "value": true
+        },
+        "enableCursorFollow": {
+          "value": true
         }
       }
     }

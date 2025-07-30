@@ -43,7 +43,7 @@ author:
       required: true,
     },
     global: {
-      description: 'Whether the ScrollProgressProvider is global',
+      description: 'Whether the progress is on the global scroll',
       type: 'boolean',
       required: false,
       default: 'false',
@@ -74,6 +74,11 @@ author:
       required: false,
       default: 'false',
     },
+    '...props': {
+      description: 'The props of the ScrollProgress',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
   }}
 />
 
@@ -87,6 +92,11 @@ author:
       type: 'boolean',
       required: false,
       default: 'false',
+    },
+    '...props': {
+      description: 'The props of the ScrollProgressContainer',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
     },
   }}
 />
