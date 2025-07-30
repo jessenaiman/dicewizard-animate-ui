@@ -40,6 +40,18 @@ function CursorProvider({
   const cursorRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
+    const id = '__cursor_none_style__';
+    if (document.getElementById(id)) return;
+
+    const style = document.createElement('style');
+    style.id = id;
+    style.textContent = `
+      .animate-ui-cursor-none, .animate-ui-cursor-none * { cursor: none !important; }
+    `;
+    document.head.appendChild(style);
+  }, []);
+
+  React.useEffect(() => {
     let removeListeners: () => void;
 
     if (isGlobal) {
@@ -125,12 +137,19 @@ function Cursor({ ref, children, style, ...props }: CursorProps) {
 
   React.useEffect(() => {
     const target = isGlobal
-      ? document.body
+      ? document.documentElement
       : containerRef.current?.parentElement;
-    if (target && isActive) target.style.cursor = 'none';
+
+    if (!target) return;
+
+    if (isActive) {
+      target.classList.add('animate-ui-cursor-none');
+    } else {
+      target.classList.remove('animate-ui-cursor-none');
+    }
 
     return () => {
-      if (target) target.style.cursor = 'default';
+      target.classList.remove('animate-ui-cursor-none');
     };
   }, [isActive, isGlobal, containerRef]);
 
