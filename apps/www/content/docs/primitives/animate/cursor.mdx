@@ -1,0 +1,43 @@
+---
+title: Cursor
+description: An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="demo-primitives-animate-cursor" />
+
+## Installation
+
+<ComponentInstallation name="primitives-animate-cursor" />
+
+## Usage
+
+### Global
+
+```tsx
+<CursorProvider>
+  <Cursor>
+    <div>Cursor</div>
+  </Cursor>
+  <CursorFollow>
+    <div>Cursor Follow</div>
+  </CursorFollow>
+</CursorProvider>
+```
+
+### Local
+
+```tsx
+<CursorProvider>
+  <CursorContainer>
+    <Cursor>
+      <div>Cursor</div>
+    </Cursor>
+    <CursorFollow>
+      <div>Cursor Follow</div>
+    </CursorFollow>
+  </CursorContainer>
+</CursorProvider>
+```

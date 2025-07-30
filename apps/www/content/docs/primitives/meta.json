@@ -5,6 +5,7 @@
   "root": true,
   "pages": [
     "---Animate UI---",
+    "animate/cursor",
     "animate/scroll-progress",
     "animate/slot",
     "animate/tabs",

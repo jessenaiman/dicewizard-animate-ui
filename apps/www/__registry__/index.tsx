@@ -22,6 +22,46 @@ export const index: Record<string, any> = {
     component: null,
     command: 'https://animate-ui.com/r/index',
   },
+  'demo-primitives-animate-cursor': {
+    name: 'demo-primitives-animate-cursor',
+    description: 'Demo showing an animated cursor.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-cursor',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/cursor/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/cursor.tsx',
+        content:
+          'import {\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  CursorProvider,\n} from \'@/components/animate-ui/primitives/animate/cursor\';\n\nexport const CursorDemo = () => {\n  return (\n    <div className="max-w-[400px] h-[400px] w-full rounded-xl bg-muted flex items-center justify-center">\n      <p className="font-medium italic text-muted-foreground">\n        Move your mouse over the div\n      </p>\n      <CursorProvider>\n        <CursorContainer>\n          <Cursor>\n            <svg\n              className="size-6 text-blue-500"\n              xmlns="http://www.w3.org/2000/svg"\n              viewBox="0 0 40 40"\n            >\n              <path\n                fill="currentColor"\n                d="M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z"\n              />\n            </svg>\n          </Cursor>\n          <CursorFollow>\n            <div className="bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg">\n              Designer\n            </div>\n          </CursorFollow>\n        </CursorContainer>\n      </CursorProvider>\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/cursor/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-cursor';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = { CursorProvider: { global: { value: false } } };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-cursor',
+  },
   'demo-primitives-animate-scroll-progress': {
     name: 'demo-primitives-animate-scroll-progress',
     description: 'Demo showing an animated scroll progress.',
@@ -2659,6 +2699,47 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/hooks-use-strict-context',
+  },
+  'primitives-animate-cursor': {
+    name: 'primitives-animate-cursor',
+    description: 'A custom cursor component',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-slot',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/animate/cursor/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/cursor.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype CursorContextType = {\n  cursorPos: { x: number; y: number };\n  isActive: boolean;\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  cursorRef: React.RefObject<HTMLDivElement | null>;\n};\n\nconst [LocalCursorProvider, useCursor] =\n  useStrictContext<CursorContextType>('CursorContext');\n\ntype CursorProviderProps = {\n  children: React.ReactNode;\n};\n\nfunction CursorProvider(props: CursorProviderProps) {\n  const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });\n  const [isActive, setIsActive] = React.useState(false);\n\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  const cursorRef = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(() => {\n    if (!containerRef.current) return;\n\n    const parent = containerRef.current.parentElement;\n    if (!parent) return;\n\n    if (getComputedStyle(parent).position === 'static') {\n      parent.style.position = 'relative';\n    }\n\n    const handleMouseMove = (e: MouseEvent) => {\n      const rect = parent.getBoundingClientRect();\n      setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n      setIsActive(true);\n    };\n    const handleMouseLeave = () => setIsActive(false);\n\n    parent.addEventListener('mousemove', handleMouseMove);\n    parent.addEventListener('mouseleave', handleMouseLeave);\n\n    return () => {\n      parent.removeEventListener('mousemove', handleMouseMove);\n      parent.removeEventListener('mouseleave', handleMouseLeave);\n    };\n  }, []);\n\n  return (\n    <LocalCursorProvider\n      value={{ cursorPos, isActive, containerRef, cursorRef }}\n      {...props}\n    />\n  );\n}\n\ntype CursorContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction CursorContainer({\n  ref,\n  asChild = false,\n  ...props\n}: CursorContainerProps) {\n  const { containerRef } = useCursor();\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component ref={containerRef} data-slot=\"cursor-provider\" {...props} />\n  );\n}\n\ntype CursorProps = HTMLMotionProps<'div'> & {\n  children: React.ReactNode;\n};\n\nfunction Cursor({ ref, children, className, style, ...props }: CursorProps) {\n  const { cursorPos, isActive, containerRef, cursorRef } = useCursor();\n  React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  React.useEffect(() => {\n    const parentElement = containerRef.current?.parentElement;\n\n    if (parentElement && isActive) parentElement.style.cursor = 'none';\n\n    return () => {\n      if (parentElement) parentElement.style.cursor = 'default';\n    };\n  }, [isActive]);\n\n  React.useEffect(() => {\n    x.set(cursorPos.x);\n    y.set(cursorPos.y);\n  }, [cursorPos, x, y]);\n\n  return (\n    <AnimatePresence>\n      {isActive && (\n        <motion.div\n          ref={cursorRef}\n          data-slot=\"cursor\"\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9999,\n            position: 'absolute',\n            top: y,\n            left: x,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        >\n          {children}\n        </motion.div>\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype CursorFollowAlign =\n  | 'top'\n  | 'top-left'\n  | 'top-right'\n  | 'bottom'\n  | 'bottom-left'\n  | 'bottom-right'\n  | 'left'\n  | 'right'\n  | 'center';\n\ntype CursorFollowProps = HTMLMotionProps<'div'> & {\n  sideOffset?: number;\n  align?: CursorFollowAlign;\n  transition?: SpringOptions;\n  children: React.ReactNode;\n};\n\nfunction CursorFollow({\n  ref,\n  sideOffset = 15,\n  align = 'bottom-right',\n  children,\n  className,\n  style,\n  transition = { stiffness: 500, damping: 50, bounce: 0 },\n  ...props\n}: CursorFollowProps) {\n  const { cursorPos, isActive, cursorRef } = useCursor();\n  const cursorFollowRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(\n    ref,\n    () => cursorFollowRef.current as HTMLDivElement,\n  );\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useSpring(x, transition);\n  const springY = useSpring(y, transition);\n\n  const calculateOffset = React.useCallback(() => {\n    const rect = cursorFollowRef.current?.getBoundingClientRect();\n    const width = rect?.width ?? 0;\n    const height = rect?.height ?? 0;\n\n    let newOffset;\n\n    switch (align) {\n      case 'center':\n        newOffset = { x: width / 2, y: height / 2 };\n        break;\n      case 'top':\n        newOffset = { x: width / 2, y: height + sideOffset };\n        break;\n      case 'top-left':\n        newOffset = { x: width + sideOffset, y: height + sideOffset };\n        break;\n      case 'top-right':\n        newOffset = { x: -sideOffset, y: height + sideOffset };\n        break;\n      case 'bottom':\n        newOffset = { x: width / 2, y: -sideOffset };\n        break;\n      case 'bottom-left':\n        newOffset = { x: width + sideOffset, y: -sideOffset };\n        break;\n      case 'bottom-right':\n        newOffset = { x: -sideOffset, y: -sideOffset };\n        break;\n      case 'left':\n        newOffset = { x: width + sideOffset, y: height / 2 };\n        break;\n      case 'right':\n        newOffset = { x: -sideOffset, y: height / 2 };\n        break;\n      default:\n        newOffset = { x: 0, y: 0 };\n    }\n\n    return newOffset;\n  }, [align, sideOffset]);\n\n  React.useEffect(() => {\n    const offset = calculateOffset();\n    const cursorRect = cursorRef.current?.getBoundingClientRect();\n    const cursorWidth = cursorRect?.width ?? 20;\n    const cursorHeight = cursorRect?.height ?? 20;\n\n    x.set(cursorPos.x - offset.x + cursorWidth / 2);\n    y.set(cursorPos.y - offset.y + cursorHeight / 2);\n  }, [calculateOffset, cursorPos, cursorRef, x, y]);\n\n  return (\n    <AnimatePresence>\n      {isActive && (\n        <motion.div\n          ref={cursorFollowRef}\n          data-slot=\"cursor-follow\"\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9998,\n            position: 'absolute',\n            top: springY,\n            left: springX,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        >\n          {children}\n        </motion.div>\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  CursorProvider,\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  useCursor,\n  type CursorProviderProps,\n  type CursorProps,\n  type CursorContainerProps,\n  type CursorFollowProps,\n  type CursorFollowAlign,\n  type CursorContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/cursor/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-cursor';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-cursor',
   },
   'primitives-animate-scroll-progress': {
     name: 'primitives-animate-scroll-progress',
