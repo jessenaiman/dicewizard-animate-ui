@@ -16,8 +16,8 @@ type FadeProps = WithAsChild<
     initialOpacity?: number;
     opacity?: number;
     ref?: React.Ref<HTMLElement>;
-  } & UseIsInViewOptions,
-  HTMLMotionProps<'div'>
+  } & UseIsInViewOptions &
+    HTMLMotionProps<'div'>
 >;
 
 function Fade({

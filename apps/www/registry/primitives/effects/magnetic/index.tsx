@@ -20,8 +20,7 @@ type MagneticProps = WithAsChild<
     onlyOnHover?: boolean;
     disableOnTouch?: boolean;
     ref?: React.Ref<HTMLElement>;
-  },
-  HTMLMotionProps<'div'>
+  } & HTMLMotionProps<'div'>
 >;
 
 function Magnetic({
@@ -89,17 +88,17 @@ function Magnetic({
     <Component
       ref={localRef}
       style={{ display: 'inline-block', ...style, x, y }}
-      onMouseEnter={(e) => {
+      onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
         if (onlyOnHover) setActive(true);
         onMouseEnter?.(e);
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
         if (onlyOnHover) setActive(false);
         rawX.set(0);
         rawY.set(0);
         onMouseLeave?.(e);
       }}
-      onMouseMove={(e) => {
+      onMouseMove={(e: React.MouseEvent<HTMLDivElement>) => {
         if (onlyOnHover) compute(e);
         onMouseMove?.(e);
       }}

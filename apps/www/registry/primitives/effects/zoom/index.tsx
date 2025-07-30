@@ -16,8 +16,8 @@ type ZoomProps = WithAsChild<
     initialScale?: number;
     scale?: number;
     ref?: React.Ref<HTMLElement>;
-  } & UseIsInViewOptions,
-  HTMLMotionProps<'div'>
+  } & UseIsInViewOptions &
+    HTMLMotionProps<'div'>
 >;
 
 function Zoom({

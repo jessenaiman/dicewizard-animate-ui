@@ -11,9 +11,9 @@ type DOMMotionProps<T extends HTMLElement = HTMLElement> = Omit<
   'ref'
 > & { ref?: React.Ref<T> };
 
-type WithAsChild<Base extends object, Default extends object> =
-  | (Base & Default & { asChild: true; children: React.ReactElement })
-  | (Base & Default & { asChild?: false | undefined });
+type WithAsChild<Base extends object> =
+  | (Base & { asChild: true; children: React.ReactElement })
+  | (Base & { asChild?: false | undefined });
 
 type SlotProps<T extends HTMLElement = HTMLElement> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

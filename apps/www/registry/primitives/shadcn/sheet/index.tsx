@@ -126,7 +126,6 @@ function SheetContent({
         exit={offscreen[side]}
         style={{
           position: 'fixed',
-          zIndex: 50,
           ...positionStyle[side],
           ...style,
         }}

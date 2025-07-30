@@ -37,8 +37,8 @@ type EffectProps = WithAsChild<
     fade?: Fade | boolean;
     zoom?: Zoom | boolean;
     ref?: React.Ref<HTMLElement>;
-  } & UseIsInViewOptions,
-  HTMLMotionProps<'div'>
+  } & UseIsInViewOptions &
+    HTMLMotionProps<'div'>
 >;
 
 const DEFAULT_SLIDE_DIRECTION: SlideDirection = 'up';

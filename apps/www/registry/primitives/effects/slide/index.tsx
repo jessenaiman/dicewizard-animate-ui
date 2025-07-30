@@ -18,8 +18,8 @@ type SlideProps = WithAsChild<
     direction?: SlideDirection;
     offset?: number;
     ref?: React.Ref<HTMLElement>;
-  } & UseIsInViewOptions,
-  HTMLMotionProps<'div'>
+  } & UseIsInViewOptions &
+    HTMLMotionProps<'div'>
 >;
 
 function Slide({

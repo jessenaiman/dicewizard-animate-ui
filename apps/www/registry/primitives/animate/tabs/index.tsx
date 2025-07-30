@@ -147,8 +147,7 @@ type TabsTriggerProps = WithAsChild<
   {
     value: string;
     children: React.ReactNode;
-  },
-  HTMLMotionProps<'button'>
+  } & HTMLMotionProps<'button'>
 >;
 
 function TabsTrigger({
@@ -244,8 +243,7 @@ type TabsContentProps = WithAsChild<
   {
     value: string;
     children: React.ReactNode;
-  },
-  HTMLMotionProps<'div'>
+  } & HTMLMotionProps<'div'>
 >;
 
 function TabsContent({

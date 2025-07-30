@@ -109,7 +109,7 @@ export const RadixDropdownMenuDemo = ({
                 </DropdownMenuSubTrigger>
               </DropdownMenuHighlightItem>
 
-              <DropdownMenuSubContent className="overflow-hidden min-w-[8rem] overflow-y-auto overflow-x-hidden border bg-background p-1">
+              <DropdownMenuSubContent className="overflow-hidden min-w-[8rem] overflow-y-auto overflow-x-hidden border bg-background p-1 z-50">
                 <DropdownMenuHighlightItem>
                   <DropdownMenuItem className={itemClassName}>
                     <Mail />

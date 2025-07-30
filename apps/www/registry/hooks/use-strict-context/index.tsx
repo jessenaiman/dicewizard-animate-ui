@@ -8,7 +8,7 @@ function useStrictContext<T>(
     children,
   }: {
     value: T;
-    children: React.ReactNode;
+    children?: React.ReactNode;
   }) => React.JSX.Element,
   () => T,
 ] {
@@ -19,7 +19,7 @@ function useStrictContext<T>(
     children,
   }: {
     value: T;
-    children: React.ReactNode;
+    children?: React.ReactNode;
   }) => <Context.Provider value={value}>{children}</Context.Provider>;
 
   const useSafeContext = () => {

@@ -16,8 +16,8 @@ type BlurProps = WithAsChild<
     initialBlur?: number;
     blur?: number;
     ref?: React.Ref<HTMLElement>;
-  } & UseIsInViewOptions,
-  HTMLMotionProps<'div'>
+  } & UseIsInViewOptions &
+    HTMLMotionProps<'div'>
 >;
 
 function Blur({

@@ -5,6 +5,7 @@
   "root": true,
   "pages": [
     "---Animate UI---",
+    "animate/scroll-progress",
     "animate/slot",
     "animate/tabs",
     "---Radix UI---",

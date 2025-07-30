@@ -23,7 +23,7 @@ export const RadixSheetDemo = ({ side }: RadixSheetDemoProps) => {
 
         <SheetContent
           side={side}
-          className="gap-4 bg-background p-6 w-full size-full data-[side=right]:w-[350px] data-[side=left]:w-[350px] data-[side=top]:h-[350px] data-[side=bottom]:h-[350px]"
+          className="gap-4 bg-background p-6 w-full size-full data-[side=right]:w-[350px] data-[side=left]:w-[350px] data-[side=top]:h-[350px] data-[side=bottom]:h-[350px] z-50"
         >
           <SheetHeader>
             <SheetTitle className="text-xl">Edit profile</SheetTitle>
