@@ -22,6 +22,338 @@ export const index: Record<string, any> = {
     component: null,
     command: 'https://animate-ui.com/r/index',
   },
+  'components-community-management-bar': {
+    name: 'components-community-management-bar',
+    description: 'A management bar for managing items.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-texts-sliding-number',
+    ],
+    files: [
+      {
+        path: 'registry/components/community/management-bar/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/community/management-bar.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  ChevronLeft,\n  ChevronRight,\n  Ban,\n  X,\n  Command,\n  IdCard,\n} from \'lucide-react\';\nimport { SlidingNumber } from \'@/components/animate-ui/primitives/texts/sliding-number\';\nimport { motion, type Variants, type Transition } from \'motion/react\';\n\nconst TOTAL_PAGES = 10;\n\nconst BUTTON_MOTION_CONFIG = {\n  initial: \'rest\',\n  whileHover: \'hover\',\n  whileTap: \'tap\',\n  variants: {\n    rest: { maxWidth: \'40px\' },\n    hover: {\n      maxWidth: \'140px\',\n      transition: { type: \'spring\', stiffness: 200, damping: 35, delay: 0.15 },\n    },\n    tap: { scale: 0.95 },\n  },\n  transition: { type: \'spring\', stiffness: 250, damping: 25 },\n} as const;\n\nconst LABEL_VARIANTS: Variants = {\n  rest: { opacity: 0, x: 4 },\n  hover: { opacity: 1, x: 0, visibility: \'visible\' },\n  tap: { opacity: 1, x: 0, visibility: \'visible\' },\n};\n\nconst LABEL_TRANSITION: Transition = {\n  type: \'spring\',\n  stiffness: 200,\n  damping: 25,\n};\n\nfunction ManagementBar() {\n  const [currentPage, setCurrentPage] = React.useState(1);\n\n  const handlePrevPage = React.useCallback(() => {\n    if (currentPage > 1) setCurrentPage(currentPage - 1);\n  }, [currentPage]);\n\n  const handleNextPage = React.useCallback(() => {\n    if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1);\n  }, [currentPage]);\n\n  return (\n    <div className="flex w-fit flex-wrap items-center gap-y-2 rounded-2xl border border-border bg-background p-2 shadow-lg">\n      <div className="mx-auto flex shrink-0 items-center">\n        <button\n          disabled={currentPage === 1}\n          className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"\n          onClick={handlePrevPage}\n        >\n          <ChevronLeft size={20} />\n        </button>\n        <div className="mx-2 flex items-center space-x-1 text-sm tabular-nums">\n          <SlidingNumber\n            className="text-foreground"\n            padStart\n            number={currentPage}\n          />\n          <span className="text-muted-foreground">/ {TOTAL_PAGES}</span>\n        </div>\n        <button\n          disabled={currentPage === TOTAL_PAGES}\n          className="p-1 text-muted-foreground transition-colors hover:text-foreground disabled:text-muted-foreground/30 disabled:hover:text-muted-foreground/30"\n          onClick={handleNextPage}\n        >\n          <ChevronRight size={20} />\n        </button>\n      </div>\n\n      <div className="mx-3 h-6 w-px bg-border rounded-full" />\n\n      <motion.div\n        layout\n        layoutRoot\n        className="mx-auto flex flex-wrap space-x-2 sm:flex-nowrap"\n      >\n        <motion.button\n          {...BUTTON_MOTION_CONFIG}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-neutral-200/60 dark:bg-neutral-600/80 px-2.5 py-2 text-neutral-600 dark:text-neutral-200"\n          aria-label="Blacklist"\n        >\n          <Ban size={20} className="shrink-0" />\n          <motion.span\n            variants={LABEL_VARIANTS}\n            transition={LABEL_TRANSITION}\n            className="invisible text-sm"\n          >\n            Blacklist\n          </motion.span>\n        </motion.button>\n\n        <motion.button\n          {...BUTTON_MOTION_CONFIG}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-red-200/60 dark:bg-red-800/80 px-2.5 py-2 text-red-600 dark:text-red-300"\n          aria-label="Reject"\n        >\n          <X size={20} className="shrink-0" />\n          <motion.span\n            variants={LABEL_VARIANTS}\n            transition={LABEL_TRANSITION}\n            className="invisible text-sm"\n          >\n            Reject\n          </motion.span>\n        </motion.button>\n\n        <motion.button\n          {...BUTTON_MOTION_CONFIG}\n          className="flex h-10 items-center space-x-2 overflow-hidden whitespace-nowrap rounded-lg bg-green-200/60 dark:bg-green-800/80 px-2.5 py-2 text-green-600 dark:text-green-300"\n          aria-label="Hire"\n        >\n          <IdCard size={20} className="shrink-0" />\n          <motion.span\n            variants={LABEL_VARIANTS}\n            transition={LABEL_TRANSITION}\n            className="invisible text-sm"\n          >\n            Hire\n          </motion.span>\n        </motion.button>\n      </motion.div>\n\n      <div className="mx-3 hidden h-6 w-px bg-border sm:block rounded-full" />\n\n      <motion.button\n        whileTap={{ scale: 0.975 }}\n        className="flex w-full h-10 text-sm cursor-pointer items-center justify-center rounded-lg bg-teal-500 dark:bg-teal-600/80 px-3 py-2 text-white transition-colors duration-300 dark:hover:bg-teal-800 hover:bg-teal-600 sm:w-auto"\n      >\n        <span className="mr-1 text-neutral-200">Move to:</span>\n        <span>Interview I</span>\n        <div className="mx-3 h-5 w-px bg-white/40 rounded-full" />\n        <div className="flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 -mr-1">\n          <Command size={14} />E\n        </div>\n      </motion.button>\n    </div>\n  );\n}\n\nexport { ManagementBar };',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/community/management-bar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-community-management-bar';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-community-management-bar',
+  },
+  'components-community-pin-list': {
+    name: 'components-community-pin-list',
+    description:
+      'A playful list for pinning and unpinning items, with smooth animated transitions as items move between groups.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/components/community/pin-list/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/community/pin-list.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { Pin } from 'lucide-react';\nimport {\n  motion,\n  LayoutGroup,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\nimport { cn } from '@/lib/utils';\n\ntype PinListItem = {\n  id: number;\n  name: string;\n  info: string;\n  icon: React.ElementType;\n  pinned: boolean;\n};\n\ntype PinListProps = {\n  items: PinListItem[];\n  labels?: {\n    pinned?: string;\n    unpinned?: string;\n  };\n  transition?: Transition;\n  labelMotionProps?: HTMLMotionProps<'p'>;\n  className?: string;\n  labelClassName?: string;\n  pinnedSectionClassName?: string;\n  unpinnedSectionClassName?: string;\n  zIndexResetDelay?: number;\n} & HTMLMotionProps<'div'>;\n\nfunction PinList({\n  items,\n  labels = { pinned: 'Pinned Items', unpinned: 'All Items' },\n  transition = { stiffness: 320, damping: 20, mass: 0.8, type: 'spring' },\n  labelMotionProps = {\n    initial: { opacity: 0 },\n    animate: { opacity: 1 },\n    exit: { opacity: 0 },\n    transition: { duration: 0.22, ease: 'easeInOut' },\n  },\n  className,\n  labelClassName,\n  pinnedSectionClassName,\n  unpinnedSectionClassName,\n  zIndexResetDelay = 500,\n  ...props\n}: PinListProps) {\n  const [listItems, setListItems] = React.useState(items);\n  const [togglingGroup, setTogglingGroup] = React.useState<\n    'pinned' | 'unpinned' | null\n  >(null);\n\n  const pinned = listItems.filter((u) => u.pinned);\n  const unpinned = listItems.filter((u) => !u.pinned);\n\n  const toggleStatus = (id: number) => {\n    const item = listItems.find((u) => u.id === id);\n    if (!item) return;\n\n    setTogglingGroup(item.pinned ? 'pinned' : 'unpinned');\n    setListItems((prev) => {\n      const idx = prev.findIndex((u) => u.id === id);\n      if (idx === -1) return prev;\n      const updated = [...prev];\n      const [item] = updated.splice(idx, 1);\n      if (!item) return prev;\n      const toggled = { ...item, pinned: !item.pinned };\n      if (toggled.pinned) updated.push(toggled);\n      else updated.unshift(toggled);\n      return updated;\n    });\n    // Reset group z-index after the animation duration (keep in sync with animation timing)\n    setTimeout(() => setTogglingGroup(null), zIndexResetDelay);\n  };\n\n  return (\n    <motion.div className={cn('space-y-10', className)} {...props}>\n      <LayoutGroup>\n        <div>\n          {pinned.length > 0 && (\n            <div\n              className={cn(\n                'space-y-3 relative',\n                togglingGroup === 'pinned' ? 'z-5' : 'z-10',\n                pinnedSectionClassName,\n              )}\n            >\n              {pinned.map((item) => (\n                <motion.div\n                  key={item.id}\n                  layoutId={`item-${item.id}`}\n                  onClick={() => toggleStatus(item.id)}\n                  transition={transition}\n                  className=\"flex items-center justify-between gap-5 rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-2\"\n                >\n                  <div className=\"flex items-center gap-2\">\n                    <div className=\"rounded-lg bg-background p-2\">\n                      <item.icon className=\"size-5 text-neutral-500 dark:text-neutral-400\" />\n                    </div>\n                    <div>\n                      <div className=\"text-sm font-semibold\">{item.name}</div>\n                      <div className=\"text-xs text-neutral-500 dark:text-neutral-400 font-medium\">\n                        {item.info}\n                      </div>\n                    </div>\n                  </div>\n                  <div className=\"flex items-center justify-center size-8 rounded-full bg-neutral-400 dark:bg-neutral-600\">\n                    <Pin className=\"size-4 text-white fill-white\" />\n                  </div>\n                </motion.div>\n              ))}\n            </div>\n          )}\n        </div>\n\n        <div>\n          <AnimatePresence>\n            {unpinned.length > 0 && (\n              <motion.p\n                layout\n                key=\"all-label\"\n                className={cn(\n                  'font-medium px-3 text-neutral-500 dark:text-neutral-300 text-sm mb-2',\n                  labelClassName,\n                )}\n                {...labelMotionProps}\n              >\n                {labels.unpinned}\n              </motion.p>\n            )}\n          </AnimatePresence>\n          {unpinned.length > 0 && (\n            <div\n              className={cn(\n                'space-y-3 relative',\n                togglingGroup === 'unpinned' ? 'z-5' : 'z-10',\n                unpinnedSectionClassName,\n              )}\n            >\n              {unpinned.map((item) => (\n                <motion.div\n                  key={item.id}\n                  layoutId={`item-${item.id}`}\n                  onClick={() => toggleStatus(item.id)}\n                  transition={transition}\n                  className=\"flex items-center justify-between gap-5 rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-2 group\"\n                >\n                  <div className=\"flex items-center gap-2\">\n                    <div className=\"rounded-lg bg-background p-2\">\n                      <item.icon className=\"size-5 text-neutral-500 dark:text-neutral-400\" />\n                    </div>\n                    <div>\n                      <div className=\"text-sm font-semibold\">{item.name}</div>\n                      <div className=\"text-xs text-neutral-500 dark:text-neutral-400 font-medium\">\n                        {item.info}\n                      </div>\n                    </div>\n                  </div>\n                  <div className=\"flex items-center justify-center size-8 rounded-full bg-neutral-400 dark:bg-neutral-600 opacity-0 group-hover:opacity-100 transition-opacity duration-250\">\n                    <Pin className=\"size-4 text-white\" />\n                  </div>\n                </motion.div>\n              ))}\n            </div>\n          )}\n        </div>\n      </LayoutGroup>\n    </motion.div>\n  );\n}\n\nexport { PinList, type PinListProps, type PinListItem };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/community/pin-list/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-community-pin-list';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-community-pin-list',
+  },
+  'components-community-playful-todolist': {
+    name: 'components-community-playful-todolist',
+    description:
+      'A playful todolist component with animated wavy strikethroughs for each completed task.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-checkbox',
+    ],
+    files: [
+      {
+        path: 'registry/components/community/playful-todolist/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/components/community/playful-todolist.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Transition } from \'motion/react\';\nimport { Label } from \'@/components/ui/label\';\nimport { Checkbox } from \'@/components/animate-ui/primitives/radix/checkbox\';\n\nconst checkboxItems = [\n  {\n    id: 1,\n    label: \'Code in Assembly 💾\',\n    defaultChecked: false,\n  },\n  {\n    id: 2,\n    label: \'Present a bug as a feature 🪲\',\n    defaultChecked: false,\n  },\n  {\n    id: 3,\n    label: \'Push to prod on a Friday 🚀\',\n    defaultChecked: false,\n  },\n];\n\nconst getPathAnimate = (isChecked: boolean) => ({\n  pathLength: isChecked ? 1 : 0,\n  opacity: isChecked ? 1 : 0,\n});\n\nconst getPathTransition = (isChecked: boolean): Transition => ({\n  pathLength: { duration: 1, ease: \'easeInOut\' },\n  opacity: {\n    duration: 0.01,\n    delay: isChecked ? 0 : 1,\n  },\n});\n\nfunction PlayfulTodolist() {\n  const [checked, setChecked] = React.useState(\n    checkboxItems.map((i) => !!i.defaultChecked),\n  );\n\n  return (\n    <div className="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-6 space-y-6">\n      {checkboxItems.map((item, idx) => (\n        <div key={item.id} className="space-y-6">\n          <div className="flex items-center space-x-2">\n            <Checkbox\n              checked={checked[idx]}\n              onCheckedChange={(val) => {\n                const updated = [...checked];\n                updated[idx] = val === true;\n                setChecked(updated);\n              }}\n              id={`checkbox-${item.id}`}\n            />\n            <div className="relative inline-block">\n              <Label htmlFor={`checkbox-${item.id}`}>{item.label}</Label>\n              <motion.svg\n                width="340"\n                height="32"\n                viewBox="0 0 340 32"\n                className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none z-20 w-full h-10"\n              >\n                <motion.path\n                  d="M 10 16.91 s 79.8 -11.36 98.1 -11.34 c 22.2 0.02 -47.82 14.25 -33.39 22.02 c 12.61 6.77 124.18 -27.98 133.31 -17.28 c 7.52 8.38 -26.8 20.02 4.61 22.05 c 24.55 1.93 113.37 -20.36 113.37 -20.36"\n                  vectorEffect="non-scaling-stroke"\n                  strokeWidth={2}\n                  strokeLinecap="round"\n                  strokeMiterlimit={10}\n                  fill="none"\n                  initial={false}\n                  animate={getPathAnimate(!!checked[idx])}\n                  transition={getPathTransition(!!checked[idx])}\n                  className="stroke-neutral-900 dark:stroke-neutral-100"\n                />\n              </motion.svg>\n            </div>\n          </div>\n          {idx !== checkboxItems.length - 1 && (\n            <div className="border-t border-neutral-300 dark:border-neutral-700" />\n          )}\n        </div>\n      ))}\n    </div>\n  );\n}\n\nexport { PlayfulTodolist };',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/community/playful-todolist/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-community-playful-todolist';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-community-playful-todolist',
+  },
+  'demo-components-community-management-bar': {
+    name: 'demo-components-community-management-bar',
+    description: 'Demo showing a management bar.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-community-management-bar',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/community/management-bar/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/components/community/management-bar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { ManagementBar } from '@/components/animate-ui/components/community/management-bar';\n\nexport const ManagementBarDemo = () => <ManagementBar />;",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/community/management-bar/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-community-management-bar';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command:
+      'https://animate-ui.com/r/demo-components-community-management-bar',
+  },
+  'demo-components-community-pin-list': {
+    name: 'demo-components-community-pin-list',
+    description: 'Demo showing a pin list.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-community-pin-list',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/community/pin-list/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/community/pin-list.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { GitCommit, AlertTriangle, Box, KeyRound, Regex } from 'lucide-react';\n\nimport { PinList } from '@/components/animate-ui/components/community/pin-list';\n\nconst ITEMS = [\n  {\n    id: 1,\n    name: 'Commit Zone',\n    info: 'Code updates · Closes 9:00 PM',\n    icon: GitCommit,\n    pinned: true,\n  },\n  {\n    id: 2,\n    name: '404 Room',\n    info: 'Fixing errors · Open 24 hours',\n    icon: AlertTriangle,\n    pinned: true,\n  },\n  {\n    id: 3,\n    name: 'NPM Stop',\n    info: 'Install stuff · Closes 8:00 PM',\n    icon: Box,\n    pinned: false,\n  },\n  {\n    id: 4,\n    name: 'Token Lock',\n    info: 'Login stuff · Open 24 hours',\n    icon: KeyRound,\n    pinned: false,\n  },\n  {\n    id: 5,\n    name: 'Regex Zone',\n    info: 'Find words · Closes 9:00 PM',\n    icon: Regex,\n    pinned: false,\n  },\n];\n\nexport const PinListDemo = () => <PinList items={ITEMS} />;",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/community/pin-list/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-community-pin-list';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-community-pin-list',
+  },
+  'demo-components-community-playful-todolist': {
+    name: 'demo-components-community-playful-todolist',
+    description: 'Demo showing a playful todolist.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-community-playful-todolist',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/community/playful-todolist/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/components/community/playful-todolist.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport { PlayfulTodolist } from '@/components/animate-ui/components/community/playful-todolist';\n\nexport const PlayfulTodolistDemo = () => <PlayfulTodolist />;",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/community/playful-todolist/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-community-playful-todolist';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command:
+      'https://animate-ui.com/r/demo-components-community-playful-todolist',
+  },
+  'demo-primitives-animate-code-block': {
+    name: 'demo-primitives-animate-code-block',
+    description: 'Demo showing an animated code block.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-code-block',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/code-block/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/code-block.tsx',
+        content:
+          "'use client';\n\nimport { CodeBlock } from '@/components/animate-ui/primitives/animate/code-block';\nimport { cn } from '@/lib/utils';\nimport { useTheme } from 'next-themes';\n\ninterface CodeBlockDemoProps {\n  duration: number;\n  delay: number;\n  writing: boolean;\n  cursor: boolean;\n}\n\nexport const CodeBlockDemo = ({\n  duration,\n  delay,\n  writing,\n  cursor,\n}: CodeBlockDemoProps) => {\n  const { resolvedTheme } = useTheme();\n\n  return (\n    <div\n      key={`${duration}-${delay}-${writing}-${cursor}`}\n      className=\"relative bg-accent w-[420px] h-[372px] text-sm p-4 overflow-auto\"\n    >\n      <CodeBlock\n        code={`'use client';\n \nimport * as React from 'react';\n \ntype MyComponentProps = {\n  myProps: string;\n} & React.ComponentProps<'div'>;\n \nfunction MyComponent(props: MyComponentProps) {\n  return (\n    <div {...props}>\n      <p>My Component</p>\n    </div>\n  );\n}\n\nexport { MyComponent, type MyComponentProps };`}\n        lang=\"tsx\"\n        theme={resolvedTheme === 'dark' ? 'dark' : 'light'}\n        writing={writing}\n        duration={duration}\n        delay={delay}\n        className={cn(\n          '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px] [&_code_.line]:!px-0',\n          cursor &&\n            \"data-[done=false]:[&_.line:last-of-type::after]:content-['|'] data-[done=false]:[&_.line:last-of-type::after]:inline-block data-[done=false]:[&_.line:last-of-type::after]:w-[1ch] data-[done=false]:[&_.line:last-of-type::after]:-translate-px\",\n        )}\n      />\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/code-block/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-code-block';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        CodeBlock: {
+          delay: { value: 0, min: 0, max: 3000, step: 100 },
+          duration: { value: 10000, min: 0, max: 30000, step: 1000 },
+          writing: { value: true },
+          cursor: { value: true },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-code-block',
+  },
+  'demo-primitives-animate-counter': {
+    name: 'demo-primitives-animate-counter',
+    description: 'Demo showing an animated counter.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-counter',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/counter/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/counter.tsx',
+        content:
+          'import {\n  Counter,\n  CounterMinusButton,\n  CounterNumber,\n  CounterPlusButton,\n} from \'@/components/animate-ui/primitives/animate/counter\';\nimport { MinusIcon, PlusIcon } from \'lucide-react\';\n\nexport const CounterDemo = () => {\n  return (\n    <Counter className="flex items-center p-1 bg-accent">\n      <CounterMinusButton className="bg-background size-7 flex items-center justify-center">\n        <MinusIcon className="size-4" />\n      </CounterMinusButton>\n      <CounterNumber className="px-2.5" />\n      <CounterPlusButton className="bg-background size-7 flex items-center justify-center">\n        <PlusIcon className="size-4" />\n      </CounterPlusButton>\n    </Counter>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/counter/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-counter';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-counter',
+  },
   'demo-primitives-animate-cursor': {
     name: 'demo-primitives-animate-cursor',
     description: 'Demo showing an animated cursor.',
@@ -37,7 +369,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/primitives/animate/cursor.tsx',
         content:
-          'import {\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  CursorProvider,\n} from \'@/components/animate-ui/primitives/animate/cursor\';\n\ninterface CursorDemoProps {\n  global?: boolean;\n  enableCursor?: boolean;\n  enableCursorFollow?: boolean;\n}\n\nexport const CursorDemo = ({\n  global = false,\n  enableCursor = true,\n  enableCursorFollow = true,\n}: CursorDemoProps) => {\n  return (\n    <div\n      key={String(global)}\n      className="max-w-[400px] h-[400px] w-full rounded-xl bg-muted flex items-center justify-center"\n    >\n      <p className="font-medium italic text-muted-foreground">\n        Move your mouse over the div\n      </p>\n      <CursorProvider global={global}>\n        <CursorContainer>\n          {enableCursor && (\n            <Cursor>\n              <svg\n                className="size-6 text-blue-500"\n                xmlns="http://www.w3.org/2000/svg"\n                viewBox="0 0 40 40"\n              >\n                <path\n                  fill="currentColor"\n                  d="M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z"\n                />\n              </svg>\n            </Cursor>\n          )}\n          {enableCursorFollow && (\n            <CursorFollow>\n              <div className="bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg">\n                Designer\n              </div>\n            </CursorFollow>\n          )}\n        </CursorContainer>\n      </CursorProvider>\n    </div>\n  );\n};',
+          'import {\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  CursorProvider,\n  type CursorFollowSide,\n  type CursorFollowAlign,\n} from \'@/components/animate-ui/primitives/animate/cursor\';\n\ninterface CursorDemoProps {\n  global?: boolean;\n  enableCursor?: boolean;\n  enableCursorFollow?: boolean;\n  side?: CursorFollowSide;\n  sideOffset?: number;\n  align?: CursorFollowAlign;\n  alignOffset?: number;\n}\n\nexport const CursorDemo = ({\n  global = false,\n  enableCursor = true,\n  enableCursorFollow = true,\n  side = \'bottom\',\n  sideOffset = 15,\n  align = \'end\',\n  alignOffset = 5,\n}: CursorDemoProps) => {\n  return (\n    <div\n      key={String(global)}\n      className="max-w-[400px] h-[400px] w-full bg-accent flex items-center justify-center"\n    >\n      <p className="font-medium italic text-muted-foreground">\n        Move your mouse over the div\n      </p>\n      <CursorProvider global={global}>\n        <CursorContainer>\n          {enableCursor && (\n            <Cursor>\n              <svg\n                className="size-6 text-foreground"\n                xmlns="http://www.w3.org/2000/svg"\n                viewBox="0 0 40 40"\n              >\n                <path\n                  fill="currentColor"\n                  d="M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z"\n                />\n              </svg>\n            </Cursor>\n          )}\n          {enableCursorFollow && (\n            <CursorFollow\n              side={side}\n              sideOffset={sideOffset}\n              align={align}\n              alignOffset={alignOffset}\n            >\n              <div className="bg-foreground text-background px-2 py-1 text-sm">\n                Designer\n              </div>\n            </CursorFollow>\n          )}\n        </CursorContainer>\n      </CursorProvider>\n    </div>\n  );\n};',
       },
     ],
     keywords: [],
@@ -63,10 +395,108 @@ export const index: Record<string, any> = {
           enableCursor: { value: true },
           enableCursorFollow: { value: true },
         },
+        CursorFollow: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              right: 'right',
+              bottom: 'bottom',
+              left: 'left',
+            },
+          },
+          sideOffset: { value: 15 },
+          align: {
+            value: 'end',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 5 },
+        },
       };
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-animate-cursor',
+  },
+  'demo-primitives-animate-motion-grid': {
+    name: 'demo-primitives-animate-motion-grid',
+    description: 'Demo showing an animated motion grid.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-motion-grid',
+      'https://animate-ui.com/r/primitives-texts-rotating',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/motion-grid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/motion-grid.tsx',
+        content:
+          "import { useEffect, useState } from 'react';\nimport { motion } from 'motion/react';\n\nimport {\n  MotionGrid,\n  MotionGridCells,\n  type Frames,\n} from '@/components/animate-ui/primitives/animate/motion-grid';\nimport {\n  RotatingText,\n  RotatingTextContainer,\n} from '@/components/animate-ui/primitives/texts/rotating';\n\nconst importingFrames = [\n  [[2, 2]],\n  [\n    [1, 2],\n    [2, 1],\n    [2, 3],\n    [3, 2],\n  ],\n  [\n    [2, 2],\n    [0, 2],\n    [1, 1],\n    [1, 3],\n    [2, 0],\n    [2, 4],\n    [3, 1],\n    [3, 3],\n    [4, 2],\n  ],\n  [\n    [0, 1],\n    [0, 3],\n    [1, 0],\n    [1, 2],\n    [1, 4],\n    [2, 1],\n    [2, 3],\n    [3, 0],\n    [3, 2],\n    [3, 4],\n    [4, 1],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 2],\n    [0, 4],\n    [1, 1],\n    [1, 3],\n    [2, 0],\n    [2, 2],\n    [2, 4],\n    [3, 1],\n    [3, 3],\n    [4, 0],\n    [4, 2],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [0, 3],\n    [1, 0],\n    [1, 2],\n    [1, 4],\n    [2, 1],\n    [2, 3],\n    [3, 0],\n    [3, 2],\n    [3, 4],\n    [4, 1],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 2],\n    [0, 4],\n    [1, 1],\n    [1, 3],\n    [2, 0],\n    [2, 4],\n    [3, 1],\n    [3, 3],\n    [4, 0],\n    [4, 2],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [1, 0],\n    [3, 0],\n    [4, 1],\n    [0, 3],\n    [1, 4],\n    [3, 4],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 4],\n    [4, 0],\n    [4, 4],\n  ],\n  [],\n] as Frames;\n\nconst arrowDownFrames = [\n  [[2, 0]],\n  [\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [2, 1],\n  ],\n  [\n    [2, 0],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [2, 2],\n  ],\n  [\n    [2, 0],\n    [2, 1],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [2, 3],\n  ],\n  [\n    [2, 1],\n    [2, 2],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n    [2, 4],\n  ],\n  [\n    [2, 2],\n    [2, 3],\n    [1, 4],\n    [2, 4],\n    [3, 4],\n  ],\n  [\n    [2, 3],\n    [2, 4],\n  ],\n  [[2, 4]],\n  [],\n] as Frames;\n\nconst arrowUpFrames = [\n  [[2, 4]],\n  [\n    [1, 4],\n    [2, 4],\n    [3, 4],\n    [2, 3],\n  ],\n  [\n    [2, 4],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n    [2, 2],\n  ],\n  [\n    [2, 4],\n    [2, 3],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [2, 1],\n  ],\n  [\n    [2, 3],\n    [2, 2],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [2, 0],\n  ],\n  [\n    [2, 2],\n    [2, 1],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n  ],\n  [\n    [2, 1],\n    [2, 0],\n  ],\n  [[2, 0]],\n  [],\n] as Frames;\n\nconst syncingFrames = [...arrowDownFrames, ...arrowUpFrames] as Frames;\n\nconst searchingFrames = [\n  [\n    [1, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [1, 2],\n  ],\n  [\n    [2, 0],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [2, 2],\n  ],\n  [\n    [3, 0],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [3, 2],\n  ],\n  [\n    [3, 1],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n    [3, 3],\n  ],\n  [\n    [3, 2],\n    [2, 3],\n    [3, 3],\n    [4, 3],\n    [3, 4],\n  ],\n  [\n    [1, 2],\n    [0, 3],\n    [1, 3],\n    [2, 3],\n    [1, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [1, 0],\n    [1, 2],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n  ],\n  [],\n] as Frames;\n\nconst busyFrames = [\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [1, 2],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [2, 3],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [3, 4],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [2, 3],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [1, 2],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [2, 1],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n  ],\n  [\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [2, 1],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n  ],\n] as Frames;\n\nconst savingFrames = [\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [0, 4],\n    [1, 0],\n    [1, 1],\n    [1, 2],\n    [1, 3],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n    [2, 3],\n    [2, 4],\n    [3, 0],\n    [3, 1],\n    [3, 2],\n    [3, 3],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n    [4, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [0, 3],\n    [1, 0],\n    [1, 1],\n    [1, 2],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n    [2, 3],\n    [3, 0],\n    [3, 1],\n    [3, 2],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n    [4, 3],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [0, 2],\n    [1, 0],\n    [1, 1],\n    [2, 0],\n    [2, 1],\n    [2, 2],\n    [3, 0],\n    [3, 1],\n    [4, 0],\n    [4, 1],\n    [4, 2],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [0, 1],\n    [1, 0],\n    [2, 0],\n    [2, 1],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [2, 0],\n    [4, 0],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [3, 1],\n    [2, 1],\n    [1, 1],\n    [0, 1],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [3, 1],\n    [2, 1],\n    [1, 1],\n    [0, 1],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n  [\n    [0, 0],\n    [1, 0],\n    [2, 0],\n    [3, 0],\n    [4, 0],\n    [4, 1],\n    [3, 1],\n    [2, 1],\n    [1, 1],\n    [0, 1],\n    [4, 2],\n    [3, 2],\n    [2, 2],\n    [1, 2],\n    [0, 2],\n    [4, 3],\n    [3, 3],\n    [2, 3],\n    [1, 3],\n    [0, 3],\n    [4, 4],\n    [3, 4],\n    [2, 4],\n    [1, 4],\n    [0, 4],\n  ],\n] as Frames;\n\nconst initializingFrames = [\n  [],\n  [\n    [1, 0],\n    [3, 0],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [0, 2],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [0, 2],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n  ],\n  [\n    [1, 0],\n    [3, 0],\n    [0, 1],\n    [1, 1],\n    [2, 1],\n    [3, 1],\n    [4, 1],\n    [0, 2],\n    [1, 2],\n    [2, 2],\n    [3, 2],\n    [4, 2],\n    [1, 3],\n    [2, 3],\n    [3, 3],\n    [2, 4],\n  ],\n  [\n    [1, 2],\n    [2, 1],\n    [2, 2],\n    [2, 3],\n    [3, 2],\n  ],\n  [[2, 2]],\n  [],\n] as Frames;\n\nconst states = {\n  importing: {\n    frames: importingFrames,\n    label: 'Importing',\n  },\n  syncing: {\n    frames: syncingFrames,\n    label: 'Syncing',\n  },\n  searching: {\n    frames: searchingFrames,\n    label: 'Searching',\n  },\n  busy: {\n    frames: busyFrames,\n    label: 'Busy',\n  },\n  saving: {\n    frames: savingFrames,\n    label: 'Saving',\n  },\n  initializing: {\n    frames: initializingFrames,\n    label: 'Initializing',\n  },\n};\n\nconst sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));\n\nexport const MotionGridDemo = () => {\n  const [state, setState] = useState<keyof typeof states>('importing');\n\n  const runStates = async () => {\n    while (true) {\n      for (const state of Object.keys(states) as (keyof typeof states)[]) {\n        setState(state);\n        await sleep(3000);\n      }\n    }\n  };\n\n  useEffect(() => {\n    runStates();\n  }, []);\n\n  return (\n    <motion.button\n      layout\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      className=\"px-3 h-11 gap-x-3 relative bg-primary inline-flex items-center justify-center\"\n    >\n      <motion.div layout=\"preserve-aspect\">\n        <MotionGrid\n          gridSize={[5, 5]}\n          frames={states[state].frames}\n          className=\"w-fit gap-0.5\"\n        >\n          <MotionGridCells className=\"size-[3px] rounded-full aspect-square bg-white/20 dark:bg-black/20 data-[active=true]:bg-white/70 dark:data-[active=true]:bg-black/70\" />\n        </MotionGrid>\n      </motion.div>\n\n      <RotatingTextContainer\n        text={states[state].label}\n        className=\"absolute left-[46px] top-1/2 -translate-y-1/2\"\n      >\n        <RotatingText\n          layout=\"preserve-aspect\"\n          className=\"text-primary-foreground\"\n        />\n      </RotatingTextContainer>\n\n      <span className=\"invisible opacity-0\" aria-hidden>\n        {states[state].label}\n      </span>\n    </motion.button>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/motion-grid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-motion-grid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-motion-grid',
+  },
+  'demo-primitives-animate-pinned-list': {
+    name: 'demo-primitives-animate-pinned-list',
+    description: 'Demo showing an animated pinned list.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-pinned-list',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/pinned-list/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/pinned-list.tsx',
+        content:
+          'import {\n  PinnedList,\n  PinnedListItem,\n  PinnedListItems,\n  PinnedListLabel,\n  PinnedListPinned,\n  PinnedListTrigger,\n  PinnedListUnpinned,\n} from \'@/components/animate-ui/primitives/animate/pinned-list\';\nimport { Pin } from \'lucide-react\';\nimport { useState } from \'react\';\n\nconst ITEMS = [\n  { id: \'1\', name: \'Item 1\' },\n  { id: \'2\', name: \'Item 2\', pinned: true },\n  { id: \'3\', name: \'Item 3\', pinned: true },\n  { id: \'4\', name: \'Item 4\' },\n];\n\nexport const PinnedListDemo = () => {\n  const [items, setItems] = useState(ITEMS);\n\n  const pinned = items.filter((item) => item.pinned);\n  const unpinned = items.filter((item) => !item.pinned);\n\n  const toggleStatus = (id: string) => {\n    setItems((prev) => {\n      const item = prev.find((item) => item.id === id);\n      if (!item) return prev;\n      return prev.map((item) => ({\n        ...item,\n        pinned: item.id === id ? !item.pinned : item.pinned,\n      }));\n    });\n  };\n\n  return (\n    <PinnedList className="space-y-6 w-[200px]" onPinnedChange={toggleStatus}>\n      <PinnedListPinned>\n        <PinnedListLabel className="mb-2" hide={pinned.length === 0}>\n          Pinned\n        </PinnedListLabel>\n        <PinnedListItems className="space-y-2">\n          {pinned.map((item) => (\n            <PinnedListItem\n              key={item.id}\n              id={item.id}\n              className="h-12 px-4 bg-accent select-none flex items-center justify-between"\n              customTrigger\n            >\n              {item.name}\n\n              <PinnedListTrigger className="h-9 -mr-2.5 aspect-square bg-background flex items-center justify-center">\n                <Pin\n                  size={16}\n                  className="text-muted-foreground fill-muted-foreground"\n                />\n              </PinnedListTrigger>\n            </PinnedListItem>\n          ))}\n        </PinnedListItems>\n      </PinnedListPinned>\n\n      <PinnedListUnpinned>\n        <PinnedListLabel className="mb-2" hide={unpinned.length === 0}>\n          Unpinned\n        </PinnedListLabel>\n        <PinnedListItems className="space-y-2">\n          {unpinned.map((item) => (\n            <PinnedListItem\n              key={item.id}\n              id={item.id}\n              className="h-12 px-4 bg-accent select-none flex items-center justify-between"\n              customTrigger\n            >\n              {item.name}\n\n              <PinnedListTrigger className="h-9 -mr-2.5 aspect-square bg-background flex items-center justify-center">\n                <Pin size={16} className="text-muted-foreground" />\n              </PinnedListTrigger>\n            </PinnedListItem>\n          ))}\n        </PinnedListItems>\n      </PinnedListUnpinned>\n    </PinnedList>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/pinned-list/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-pinned-list';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-pinned-list',
   },
   'demo-primitives-animate-scroll-progress': {
     name: 'demo-primitives-animate-scroll-progress',
@@ -84,7 +514,7 @@ export const index: Record<string, any> = {
         target:
           'components/animate-ui/demo/primitives/animate/scroll-progress.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { ArrowDown } from 'lucide-react';\nimport { motion } from 'motion/react';\n\nimport {\n  ScrollProgressProvider,\n  ScrollProgress,\n  ScrollProgressContainer,\n  type ScrollProgressDirection,\n} from '@/components/animate-ui/primitives/animate/scroll-progress';\nimport { cn } from '@/lib/utils';\n\ninterface ScrollProgressDemoProps {\n  global?: boolean;\n  direction?: ScrollProgressDirection;\n}\n\nexport const ScrollProgressDemo = ({\n  global = false,\n  direction = 'vertical',\n}: ScrollProgressDemoProps) => {\n  return (\n    <div className=\"absolute inset-0\" key={String(global) + direction}>\n      <div className=\"relative h-full w-full overflow-hidden\">\n        <ScrollProgressProvider global={global} direction={direction}>\n          <ScrollProgress\n            className={cn(\n              'z-50 bg-foreground h-1',\n              global ? 'fixed' : 'absolute',\n            )}\n          />\n\n          {global ? (\n            <div className=\"size-full flex items-center justify-center dark:bg-neutral-950 bg-white\">\n              <p className=\"flex items-center gap-2 font-medium\">\n                Scroll the page to see the progress bar\n              </p>\n            </div>\n          ) : (\n            <ScrollProgressContainer className=\"w-full h-full data-[direction=vertical]:overflow-y-auto data-[direction=horizontal]:overflow-x-auto\">\n              <div\n                className={cn('flex', direction === 'vertical' && 'flex-col')}\n              >\n                <div className=\"w-full h-[400px] shrink-0 flex items-center justify-center dark:bg-neutral-950 bg-white\">\n                  <p className=\"flex items-center gap-2 font-medium\">\n                    Scroll to see the progress bar{' '}\n                    <motion.span\n                      className={direction === 'horizontal' ? '-rotate-90' : ''}\n                      animate={{ y: [3, -3, 3] }}\n                      transition={{\n                        duration: 1.25,\n                        repeat: Infinity,\n                        ease: 'easeInOut',\n                        type: 'keyframes',\n                      }}\n                    >\n                      <ArrowDown className=\"size-5\" />\n                    </motion.span>\n                  </p>\n                </div>\n                <div className=\"w-full h-[400px] shrink-0 dark:bg-neutral-900 bg-neutral-100\" />\n                <div className=\"w-full h-[400px] shrink-0 dark:bg-neutral-950 bg-white\" />\n                <div className=\"w-full h-[400px] shrink-0 dark:bg-neutral-900 bg-neutral-100\" />\n                <div className=\"w-full h-[400px] shrink-0 dark:bg-neutral-950 bg-white\" />\n              </div>\n            </ScrollProgressContainer>\n          )}\n        </ScrollProgressProvider>\n      </div>\n    </div>\n  );\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { ArrowDown } from 'lucide-react';\nimport { motion } from 'motion/react';\n\nimport {\n  ScrollProgressProvider,\n  ScrollProgress,\n  ScrollProgressContainer,\n  type ScrollProgressDirection,\n} from '@/components/animate-ui/primitives/animate/scroll-progress';\nimport { cn } from '@/lib/utils';\n\ninterface ScrollProgressDemoProps {\n  global?: boolean;\n  direction?: ScrollProgressDirection;\n}\n\nexport const ScrollProgressDemo = ({\n  global = false,\n  direction = 'vertical',\n}: ScrollProgressDemoProps) => {\n  return (\n    <div className=\"absolute inset-0\" key={String(global) + direction}>\n      <div className=\"relative h-full w-full overflow-hidden\">\n        <ScrollProgressProvider global={global} direction={direction}>\n          <div\n            className={cn(\n              'z-50 ',\n              global\n                ? 'fixed top-0 left-0 right-0'\n                : 'absolute bottom-3 left-3 right-3',\n            )}\n          >\n            <ScrollProgress className=\"bg-foreground h-1.5 data-[global=false]:rounded-full\" />\n          </div>\n\n          {global ? (\n            <div className=\"size-full flex items-center justify-center\">\n              <p className=\"flex items-center gap-2 font-medium\">\n                Scroll the page to see the progress bar\n              </p>\n            </div>\n          ) : (\n            <ScrollProgressContainer className=\"w-full h-full data-[direction=vertical]:overflow-y-auto data-[direction=horizontal]:overflow-x-auto\">\n              <div\n                className={cn('flex', direction === 'vertical' && 'flex-col')}\n              >\n                <div className=\"w-full h-[400px] shrink-0 flex items-center justify-center\">\n                  <p className=\"flex items-center gap-2 font-medium\">\n                    Scroll to see the progress bar{' '}\n                    <motion.span\n                      className={direction === 'horizontal' ? '-rotate-90' : ''}\n                      animate={{ y: [3, -3, 3] }}\n                      transition={{\n                        duration: 1.25,\n                        repeat: Infinity,\n                        ease: 'easeInOut',\n                        type: 'keyframes',\n                      }}\n                    >\n                      <ArrowDown className=\"size-5\" />\n                    </motion.span>\n                  </p>\n                </div>\n                <div className=\"w-full h-[400px] shrink-0 p-3\">\n                  <div className=\"size-full bg-accent rounded-xl\" />\n                </div>\n                <div className=\"w-full h-[400px] shrink-0\" />\n                <div className=\"w-full h-[400px] shrink-0 p-3\">\n                  <div className=\"size-full bg-accent rounded-xl\" />\n                </div>\n                <div className=\"w-full h-[400px] shrink-0\" />\n              </div>\n            </ScrollProgressContainer>\n          )}\n        </ScrollProgressProvider>\n      </div>\n    </div>\n  );\n};",
       },
     ],
     keywords: [],
@@ -116,6 +546,46 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-animate-scroll-progress',
+  },
+  'demo-primitives-animate-spring': {
+    name: 'demo-primitives-animate-spring',
+    description: 'Demo showing an animated spring.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-spring',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/spring/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/spring.tsx',
+        content:
+          'import {\n  SpringProvider,\n  Spring,\n  SpringElement,\n} from \'@/components/animate-ui/primitives/animate/spring\';\n\nexport const SpringDemo = () => {\n  return (\n    <SpringProvider>\n      <Spring className="z-50 text-neutral-500" />\n      <SpringElement className="z-50">\n        <img\n          src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"\n          alt="Animate UI"\n          draggable={false}\n          className="size-12 border"\n        />\n      </SpringElement>\n    </SpringProvider>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/spring/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-spring';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-spring',
   },
   'demo-primitives-animate-tabs': {
     name: 'demo-primitives-animate-tabs',
@@ -154,6 +624,68 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-animate-tabs',
+  },
+  'demo-primitives-animate-tooltip': {
+    name: 'demo-primitives-animate-tooltip',
+    description: 'Demo showing an animated tooltip.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-tooltip',
+    ],
+    files: [
+      {
+        path: 'registry/demo/primitives/animate/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/animate/tooltip.tsx',
+        content:
+          "import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  TooltipPortal,\n  TooltipOverlay,\n  type TooltipProviderProps,\n  type TooltipProps,\n} from '@/components/animate-ui/primitives/animate/tooltip';\n\ntype TooltipDemoProps = Pick<TooltipProviderProps, 'openDelay' | 'closeDelay'> &\n  Pick<TooltipProps, 'side' | 'sideOffset' | 'align' | 'alignOffset'>;\n\nexport const AnimateTooltipDemo = ({\n  openDelay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: TooltipDemoProps) => {\n  return (\n    <TooltipProvider openDelay={openDelay} closeDelay={closeDelay}>\n      <div className=\"flex flex-col gap-5 justify-center items-center\">\n        <div className=\"flex flex-row gap-5 border rounded-lg p-5\">\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <button>Docs</button>\n            </TooltipTrigger>\n\n            <TooltipPortal>\n              <TooltipOverlay />\n              <TooltipContent>\n                <p>Documentation</p>\n              </TooltipContent>\n            </TooltipPortal>\n          </Tooltip>\n\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <button>API</button>\n            </TooltipTrigger>\n\n            <TooltipPortal>\n              <TooltipOverlay />\n              <TooltipContent>\n                <p>API Reference</p>\n              </TooltipContent>\n            </TooltipPortal>\n          </Tooltip>\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <button>Guide</button>\n            </TooltipTrigger>\n\n            <TooltipPortal>\n              <TooltipOverlay />\n              <TooltipContent>\n                <p>User Guide</p>\n              </TooltipContent>\n            </TooltipPortal>\n          </Tooltip>\n        </div>\n        <div className=\"flex flex-row gap-5\">\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <button>Repo</button>\n            </TooltipTrigger>\n\n            <TooltipPortal>\n              <TooltipOverlay />\n              <TooltipContent>\n                <p>GitHub</p>\n              </TooltipContent>\n            </TooltipPortal>\n          </Tooltip>\n        </div>\n      </div>\n    </TooltipProvider>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/animate/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-animate-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        TooltipProvider: {
+          openDelay: { value: 700 },
+          closeDelay: { value: 300 },
+        },
+        Tooltip: {
+          side: {
+            value: 'top',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          sideOffset: { value: 0 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-animate-tooltip',
   },
   'demo-primitives-base-accordion': {
     name: 'demo-primitives-base-accordion',
@@ -277,6 +809,44 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-base-collapsible',
+  },
+  'demo-primitives-base-files': {
+    name: 'demo-primitives-base-files',
+    description: 'Demo showing an animated base files.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-base-files'],
+    files: [
+      {
+        path: 'registry/demo/primitives/base/files/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/base/files.tsx',
+        content:
+          'import {\n  File,\n  FileHighlight,\n  FileIcon,\n  FileLabel,\n  Files,\n  FilesHighlight,\n  Folder,\n  FolderPanel,\n  FolderHeader,\n  FolderHighlight,\n  FolderIcon,\n  FolderItem,\n  FolderTrigger,\n} from \'@/components/animate-ui/primitives/base/files\';\nimport {\n  FolderOpenIcon,\n  FolderIcon as LucideFolderIcon,\n  FileIcon as LucideFileIcon,\n} from \'lucide-react\';\n\nexport const FilesDemo = () => {\n  return (\n    <div className="relative size-full border bg-background overflow-auto">\n      <Files className="p-3" defaultOpen={[\'folder-1\']}>\n        <FilesHighlight className="bg-accent pointer-events-none">\n          <FolderItem value="folder-1">\n            <FolderHeader>\n              <FolderTrigger className="w-full text-start">\n                <FolderHighlight>\n                  <Folder className="flex items-center gap-2 p-2 pointer-events-none">\n                    <FolderIcon\n                      closeIcon={<LucideFolderIcon className="size-4.5" />}\n                      openIcon={<FolderOpenIcon className="size-4.5" />}\n                    />\n                    <FileLabel className="text-sm">Folder 1</FileLabel>\n                  </Folder>\n                </FolderHighlight>\n              </FolderTrigger>\n            </FolderHeader>\n\n            <div className="relative ml-8 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">\n              <FolderPanel>\n                <FileHighlight>\n                  <File className="flex items-center gap-2 p-2 pointer-events-none">\n                    <FileIcon>\n                      <LucideFileIcon className="size-4.5" />\n                    </FileIcon>\n                    <FileLabel className="text-sm">File 1</FileLabel>\n                  </File>\n                </FileHighlight>\n\n                <Files defaultOpen={[\'folder-2\']}>\n                  <FolderItem value="folder-2">\n                    <FolderHeader>\n                      <FolderTrigger className="w-full text-start">\n                        <FolderHighlight>\n                          <Folder className="flex items-center gap-2 p-2 pointer-events-none">\n                            <FolderIcon\n                              closeIcon={\n                                <LucideFolderIcon className="size-4.5" />\n                              }\n                              openIcon={<FolderOpenIcon className="size-4.5" />}\n                            />\n                            <FileLabel className="text-sm">Folder 2</FileLabel>\n                          </Folder>\n                        </FolderHighlight>\n                      </FolderTrigger>\n                    </FolderHeader>\n\n                    <div className="relative ml-8 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">\n                      <FolderPanel>\n                        <FileHighlight>\n                          <File className="flex items-center gap-2 p-2 pointer-events-none">\n                            <FileIcon>\n                              <LucideFileIcon className="size-4.5" />\n                            </FileIcon>\n                            <FileLabel className="text-sm">File 2</FileLabel>\n                          </File>\n                        </FileHighlight>\n                        <FileHighlight>\n                          <File className="flex items-center gap-2 p-2 pointer-events-none">\n                            <FileIcon>\n                              <LucideFileIcon className="size-4.5" />\n                            </FileIcon>\n                            <FileLabel className="text-sm">File 3</FileLabel>\n                          </File>\n                        </FileHighlight>\n                      </FolderPanel>\n                    </div>\n                  </FolderItem>\n\n                  <FileHighlight>\n                    <File className="flex items-center gap-2 p-2 pointer-events-none">\n                      <FileIcon>\n                        <LucideFileIcon className="size-4.5" />\n                      </FileIcon>\n                      <FileLabel className="text-sm">File 4</FileLabel>\n                    </File>\n                  </FileHighlight>\n                </Files>\n              </FolderPanel>\n            </div>\n          </FolderItem>\n\n          <FileHighlight>\n            <File className="flex items-center gap-2 p-2 pointer-events-none">\n              <FileIcon>\n                <LucideFileIcon className="size-4.5" />\n              </FileIcon>\n              <FileLabel className="text-sm">File 5</FileLabel>\n            </File>\n          </FileHighlight>\n        </FilesHighlight>\n      </Files>\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/base/files/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-base-files';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-base-files',
   },
   'demo-primitives-base-popover': {
     name: 'demo-primitives-base-popover',
@@ -1637,6 +2207,44 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/demo-primitives-radix-dropdown-menu',
   },
+  'demo-primitives-radix-files': {
+    name: 'demo-primitives-radix-files',
+    description: 'Demo showing an animated radix files.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-files'],
+    files: [
+      {
+        path: 'registry/demo/primitives/radix/files/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/primitives/radix/files.tsx',
+        content:
+          'import {\n  File,\n  FileHighlight,\n  FileIcon,\n  FileLabel,\n  Files,\n  FilesHighlight,\n  Folder,\n  FolderContent,\n  FolderHeader,\n  FolderHighlight,\n  FolderIcon,\n  FolderItem,\n  FolderTrigger,\n} from \'@/components/animate-ui/primitives/radix/files\';\nimport {\n  FolderOpenIcon,\n  FolderIcon as LucideFolderIcon,\n  FileIcon as LucideFileIcon,\n} from \'lucide-react\';\n\nexport const FilesDemo = () => {\n  return (\n    <div className="relative size-full border bg-background overflow-auto">\n      <Files className="p-3" defaultOpen={[\'folder-1\']}>\n        <FilesHighlight className="bg-accent pointer-events-none">\n          <FolderItem value="folder-1">\n            <FolderHeader>\n              <FolderTrigger className="w-full text-start">\n                <FolderHighlight>\n                  <Folder className="flex items-center gap-2 p-2 pointer-events-none">\n                    <FolderIcon\n                      closeIcon={<LucideFolderIcon className="size-4.5" />}\n                      openIcon={<FolderOpenIcon className="size-4.5" />}\n                    />\n                    <FileLabel className="text-sm">Folder 1</FileLabel>\n                  </Folder>\n                </FolderHighlight>\n              </FolderTrigger>\n            </FolderHeader>\n\n            <div className="relative ml-8 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">\n              <FolderContent>\n                <FileHighlight>\n                  <File className="flex items-center gap-2 p-2 pointer-events-none">\n                    <FileIcon>\n                      <LucideFileIcon className="size-4.5" />\n                    </FileIcon>\n                    <FileLabel className="text-sm">File 1</FileLabel>\n                  </File>\n                </FileHighlight>\n\n                <Files defaultOpen={[\'folder-2\']}>\n                  <FolderItem value="folder-2">\n                    <FolderHeader>\n                      <FolderTrigger className="w-full text-start">\n                        <FolderHighlight>\n                          <Folder className="flex items-center gap-2 p-2 pointer-events-none">\n                            <FolderIcon\n                              closeIcon={\n                                <LucideFolderIcon className="size-4.5" />\n                              }\n                              openIcon={<FolderOpenIcon className="size-4.5" />}\n                            />\n                            <FileLabel className="text-sm">Folder 2</FileLabel>\n                          </Folder>\n                        </FolderHighlight>\n                      </FolderTrigger>\n                    </FolderHeader>\n\n                    <div className="relative ml-8 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">\n                      <FolderContent>\n                        <FileHighlight>\n                          <File className="flex items-center gap-2 p-2 pointer-events-none">\n                            <FileIcon>\n                              <LucideFileIcon className="size-4.5" />\n                            </FileIcon>\n                            <FileLabel className="text-sm">File 2</FileLabel>\n                          </File>\n                        </FileHighlight>\n                        <FileHighlight>\n                          <File className="flex items-center gap-2 p-2 pointer-events-none">\n                            <FileIcon>\n                              <LucideFileIcon className="size-4.5" />\n                            </FileIcon>\n                            <FileLabel className="text-sm">File 3</FileLabel>\n                          </File>\n                        </FileHighlight>\n                      </FolderContent>\n                    </div>\n                  </FolderItem>\n\n                  <FileHighlight>\n                    <File className="flex items-center gap-2 p-2 pointer-events-none">\n                      <FileIcon>\n                        <LucideFileIcon className="size-4.5" />\n                      </FileIcon>\n                      <FileLabel className="text-sm">File 4</FileLabel>\n                    </File>\n                  </FileHighlight>\n                </Files>\n              </FolderContent>\n            </div>\n          </FolderItem>\n\n          <FileHighlight>\n            <File className="flex items-center gap-2 p-2 pointer-events-none">\n              <FileIcon>\n                <LucideFileIcon className="size-4.5" />\n              </FileIcon>\n              <FileLabel className="text-sm">File 5</FileLabel>\n            </File>\n          </FileHighlight>\n        </FilesHighlight>\n      </Files>\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/radix/files/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-radix-files';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-primitives-radix-files',
+  },
   'demo-primitives-radix-hover-card': {
     name: 'demo-primitives-radix-hover-card',
     description: 'Demo showing an animated radix hover card.',
@@ -2285,7 +2893,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/primitives/texts/rotating.tsx',
         content:
-          "import { RotatingText } from '@/components/animate-ui/primitives/texts/rotating';\n\ninterface RotatingTextDemoProps {\n  delay: number;\n  y: number;\n  duration: number;\n}\n\nexport const RotatingTextDemo = ({\n  delay,\n  y,\n  duration,\n}: RotatingTextDemoProps) => {\n  return (\n    <RotatingText\n      key={delay}\n      delay={delay}\n      y={y}\n      duration={duration}\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    />\n  );\n};",
+          "import {\n  RotatingText,\n  RotatingTextContainer,\n} from '@/components/animate-ui/primitives/texts/rotating';\n\ninterface RotatingTextDemoProps {\n  delay: number;\n  y: number;\n  duration: number;\n}\n\nexport const RotatingTextDemo = ({\n  delay,\n  y,\n  duration,\n}: RotatingTextDemoProps) => {\n  return (\n    <RotatingTextContainer\n      key={delay}\n      delay={delay}\n      y={y}\n      duration={duration}\n      className=\"text-4xl font-semibold\"\n      text={['Rotating', 'Text', 'Demo']}\n    >\n      <RotatingText />\n    </RotatingTextContainer>\n  );\n};",
       },
     ],
     keywords: [],
@@ -2668,6 +3276,44 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/hooks-use-is-in-view',
   },
+  'hooks-use-motion-value-state': {
+    name: 'hooks-use-motion-value-state',
+    description: 'A hook that allows you to use a motion value state.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/hooks/use-motion-value-state/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/hooks/use-motion-value-state.tsx',
+        content:
+          "import * as React from 'react';\nimport { type MotionValue } from 'motion/react';\n\nfunction useMotionValueState(motionValue: MotionValue): number {\n  return React.useSyncExternalStore(\n    (callback) => {\n      const unsub = motionValue.on('change', callback);\n      return unsub;\n    },\n    () => motionValue.get(),\n    () => motionValue.get(),\n  );\n}\n\nexport { useMotionValueState };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/hooks/use-motion-value-state/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'hooks-use-motion-value-state';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/hooks-use-motion-value-state',
+  },
   'hooks-use-strict-context': {
     name: 'hooks-use-strict-context',
     description: 'A hook that allows you to create a strict context.',
@@ -2706,6 +3352,89 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/hooks-use-strict-context',
   },
+  'primitives-animate-code-block': {
+    name: 'primitives-animate-code-block',
+    description:
+      'A code block component that animates the code as it is written.',
+    type: 'registry:ui',
+    dependencies: ['shiki'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    files: [
+      {
+        path: 'registry/primitives/animate/code-block/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/code-block.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype CodeBlockProps = React.ComponentProps<'div'> & {\n  code: string;\n  lang: string;\n  theme?: 'light' | 'dark';\n  themes?: { light: string; dark: string };\n  writing?: boolean;\n  duration?: number;\n  delay?: number;\n  onDone?: () => void;\n} & UseIsInViewOptions;\n\nfunction CodeBlock({\n  ref,\n  code,\n  lang,\n  theme = 'light',\n  themes = {\n    light: 'github-light',\n    dark: 'github-dark',\n  },\n  writing = false,\n  duration = 5000,\n  delay = 0,\n  onDone,\n  inView = false,\n  inViewOnce = true,\n  inViewMargin = '0px',\n  ...props\n}: CodeBlockProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const [visibleCode, setVisibleCode] = React.useState('');\n  const [highlightedCode, setHighlightedCode] = React.useState('');\n  const [isDone, setIsDone] = React.useState(false);\n\n  React.useEffect(() => {\n    if (!visibleCode.length || !isInView) return;\n\n    const loadHighlightedCode = async () => {\n      try {\n        const { codeToHtml } = await import('shiki');\n\n        const highlighted = await codeToHtml(visibleCode, {\n          lang,\n          themes,\n          defaultColor: theme,\n        });\n\n        setHighlightedCode(highlighted);\n      } catch (e) {\n        console.error(`Language \"${lang}\" could not be loaded.`, e);\n      }\n    };\n\n    loadHighlightedCode();\n  }, [lang, themes, writing, isInView, duration, delay, visibleCode]);\n\n  React.useEffect(() => {\n    if (!writing) {\n      setVisibleCode(code);\n      onDone?.();\n      return;\n    }\n\n    if (!code.length || !isInView) return;\n\n    const characters = Array.from(code);\n    let index = 0;\n    const totalDuration = duration;\n    const interval = totalDuration / characters.length;\n    let intervalId: NodeJS.Timeout;\n\n    const timeout = setTimeout(() => {\n      intervalId = setInterval(() => {\n        if (index < characters.length) {\n          setVisibleCode((prev) => {\n            const currentIndex = index;\n            index += 1;\n            return prev + characters[currentIndex];\n          });\n          localRef.current?.scrollTo({\n            top: localRef.current?.scrollHeight,\n            behavior: 'smooth',\n          });\n        } else {\n          clearInterval(intervalId);\n          setIsDone(true);\n          onDone?.();\n        }\n      }, interval);\n    }, delay);\n\n    return () => {\n      clearTimeout(timeout);\n      clearInterval(intervalId);\n    };\n  }, [code, duration, delay, isInView, writing, onDone]);\n\n  return (\n    <div\n      ref={localRef}\n      data-slot=\"code-block\"\n      data-writing={writing}\n      data-done={isDone}\n      dangerouslySetInnerHTML={{ __html: highlightedCode }}\n      {...props}\n    />\n  );\n}\n\nexport { CodeBlock, type CodeBlockProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/code-block/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-code-block';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-code-block',
+  },
+  'primitives-animate-counter': {
+    name: 'primitives-animate-counter',
+    description:
+      'A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-slot',
+      'https://animate-ui.com/r/primitives-animate-sliding-number',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/animate/counter/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/counter.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Transition } from 'motion/react';\n\nimport {\n  SlidingNumber,\n  type SlidingNumberProps,\n} from '@/components/animate-ui/primitives/texts/sliding-number';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype CounterContextType = {\n  value: number;\n  setValue: (value: number) => void;\n};\n\nconst [CounterProvider, useCounter] =\n  useStrictContext<CounterContextType>('CounterContext');\n\ntype BaseCounterProps = HTMLMotionProps<'div'> & {\n  children: React.ReactNode;\n  transition?: Transition;\n};\n\ntype UnControlledCounterProps = BaseCounterProps & {\n  defaultValue?: number;\n  value?: never;\n  onValueChange?: never;\n};\n\ntype ControlledCounterProps = BaseCounterProps & {\n  value: number;\n  defaultValue?: never;\n  onValueChange?: (value: number) => void;\n};\n\ntype CounterProps = WithAsChild<\n  UnControlledCounterProps | ControlledCounterProps\n>;\n\nfunction Counter({\n  value,\n  defaultValue = 0,\n  onValueChange,\n  transition = { type: 'spring', bounce: 0, stiffness: 300, damping: 30 },\n  asChild = false,\n  ...props\n}: CounterProps) {\n  const [number, setNumber] = useControlledState({\n    value,\n    defaultValue,\n    onChange: onValueChange,\n  });\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <CounterProvider value={{ value: number, setValue: setNumber }}>\n      <Component\n        data-slot=\"counter\"\n        layout\n        transition={transition}\n        {...props}\n      />\n    </CounterProvider>\n  );\n}\n\ntype CounterMinusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nconst CounterMinusButton = ({\n  onClick,\n  asChild = false,\n  ...props\n}: CounterMinusButtonProps) => {\n  const { setValue, value } = useCounter();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"counter-minus-button\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        setValue(value - 1);\n        onClick?.(e);\n      }}\n      {...props}\n    />\n  );\n};\n\ntype CounterPlusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nconst CounterPlusButton = ({\n  onClick,\n  asChild = false,\n  ...props\n}: CounterPlusButtonProps) => {\n  const { setValue, value } = useCounter();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"counter-plus-button\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        setValue(value + 1);\n        onClick?.(e);\n      }}\n      {...props}\n    />\n  );\n};\n\ntype CounterNumberProps = Omit<SlidingNumberProps, 'number'>;\n\nconst CounterNumber = (props: CounterNumberProps) => {\n  const { value } = useCounter();\n\n  return <SlidingNumber data-slot=\"counter-number\" number={value} {...props} />;\n};\n\nexport {\n  Counter,\n  CounterMinusButton,\n  CounterPlusButton,\n  CounterNumber,\n  type CounterProps,\n  type CounterMinusButtonProps,\n  type CounterPlusButtonProps,\n  type CounterContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/counter/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-counter';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-counter',
+  },
   'primitives-animate-cursor': {
     name: 'primitives-animate-cursor',
     description:
@@ -2723,7 +3452,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/cursor.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype CursorContextType = {\n  cursorPos: { x: number; y: number };\n  isActive: boolean;\n  isGlobal: boolean;\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  cursorRef: React.RefObject<HTMLDivElement | null>;\n};\n\nconst [LocalCursorProvider, useCursor] =\n  useStrictContext<CursorContextType>('CursorContext');\n\ntype CursorProviderProps = {\n  children: React.ReactNode;\n  global?: boolean;\n};\n\nfunction CursorProvider({\n  children,\n  global: isGlobal = false,\n}: CursorProviderProps) {\n  const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });\n  const [isActive, setIsActive] = React.useState(false);\n\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  const cursorRef = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(() => {\n    const id = '__cursor_none_style__';\n    if (document.getElementById(id)) return;\n\n    const style = document.createElement('style');\n    style.id = id;\n    style.textContent = `\n      .animate-ui-cursor-none, .animate-ui-cursor-none * { cursor: none !important; }\n    `;\n    document.head.appendChild(style);\n  }, []);\n\n  React.useEffect(() => {\n    let removeListeners: () => void;\n\n    if (isGlobal) {\n      const handlePointerMove = (e: PointerEvent) => {\n        setCursorPos({ x: e.clientX, y: e.clientY });\n        setIsActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (e instanceof PointerEvent && e.relatedTarget === null) {\n          setIsActive(false);\n        }\n      };\n\n      const handleVisibilityChange = () => {\n        if (document.visibilityState === 'hidden') setIsActive(false);\n      };\n\n      window.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      window.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      window.addEventListener('mouseout', handlePointerOut, { passive: true });\n      document.addEventListener('visibilitychange', handleVisibilityChange);\n\n      removeListeners = () => {\n        window.removeEventListener('pointermove', handlePointerMove);\n        window.removeEventListener('pointerout', handlePointerOut);\n        window.removeEventListener('mouseout', handlePointerOut);\n        document.removeEventListener(\n          'visibilitychange',\n          handleVisibilityChange,\n        );\n      };\n    } else {\n      if (!containerRef.current) return;\n\n      const parent = containerRef.current.parentElement;\n      if (!parent) return;\n\n      if (getComputedStyle(parent).position === 'static') {\n        parent.style.position = 'relative';\n      }\n\n      const handlePointerMove = (e: PointerEvent) => {\n        const rect = parent.getBoundingClientRect();\n        setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n        setIsActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (\n          e.relatedTarget === null ||\n          !(parent as Node).contains(e.relatedTarget as Node)\n        ) {\n          setIsActive(false);\n        }\n      };\n\n      parent.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      parent.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      parent.addEventListener('mouseout', handlePointerOut, { passive: true });\n\n      removeListeners = () => {\n        parent.removeEventListener('pointermove', handlePointerMove);\n        parent.removeEventListener('pointerout', handlePointerOut);\n        parent.removeEventListener('mouseout', handlePointerOut);\n      };\n    }\n\n    return removeListeners;\n  }, [isGlobal]);\n\n  return (\n    <LocalCursorProvider\n      value={{ cursorPos, isActive, isGlobal, containerRef, cursorRef }}\n    >\n      {children}\n    </LocalCursorProvider>\n  );\n}\n\ntype CursorContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction CursorContainer({\n  ref,\n  asChild = false,\n  ...props\n}: CursorContainerProps) {\n  const { containerRef } = useCursor();\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component ref={containerRef} data-slot=\"cursor-provider\" {...props} />\n  );\n}\n\ntype CursorProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    children: React.ReactNode;\n  }\n>;\n\nfunction Cursor({ ref, asChild = false, style, ...props }: CursorProps) {\n  const { cursorPos, isActive, containerRef, cursorRef, isGlobal } =\n    useCursor();\n  React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  React.useEffect(() => {\n    const target = isGlobal\n      ? document.documentElement\n      : containerRef.current?.parentElement;\n\n    if (!target) return;\n\n    if (isActive) {\n      target.classList.add('animate-ui-cursor-none');\n    } else {\n      target.classList.remove('animate-ui-cursor-none');\n    }\n\n    return () => {\n      target.classList.remove('animate-ui-cursor-none');\n    };\n  }, [isActive, isGlobal, containerRef]);\n\n  React.useEffect(() => {\n    x.set(cursorPos.x);\n    y.set(cursorPos.y);\n  }, [cursorPos, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {isActive && (\n        <Component\n          ref={cursorRef}\n          data-slot=\"cursor\"\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9999,\n            position: isGlobal ? 'fixed' : 'absolute',\n            top: y,\n            left: x,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype CursorFollowAlign =\n  | 'top'\n  | 'top-left'\n  | 'top-right'\n  | 'bottom'\n  | 'bottom-left'\n  | 'bottom-right'\n  | 'left'\n  | 'right'\n  | 'center';\n\ntype CursorFollowProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    sideOffset?: number;\n    align?: CursorFollowAlign;\n    transition?: SpringOptions;\n    children: React.ReactNode;\n  }\n>;\n\nfunction CursorFollow({\n  ref,\n  asChild = false,\n  sideOffset = 15,\n  align = 'bottom-right',\n  style,\n  transition = { stiffness: 500, damping: 50, bounce: 0 },\n  ...props\n}: CursorFollowProps) {\n  const { cursorPos, isActive, cursorRef, isGlobal } = useCursor();\n  const cursorFollowRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(\n    ref,\n    () => cursorFollowRef.current as HTMLDivElement,\n  );\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useSpring(x, transition);\n  const springY = useSpring(y, transition);\n\n  const calculateOffset = React.useCallback(() => {\n    const rect = cursorFollowRef.current?.getBoundingClientRect();\n    const width = rect?.width ?? 0;\n    const height = rect?.height ?? 0;\n\n    let newOffset;\n\n    switch (align) {\n      case 'center':\n        newOffset = { x: width / 2, y: height / 2 };\n        break;\n      case 'top':\n        newOffset = { x: width / 2, y: height + sideOffset };\n        break;\n      case 'top-left':\n        newOffset = { x: width + sideOffset, y: height + sideOffset };\n        break;\n      case 'top-right':\n        newOffset = { x: -sideOffset, y: height + sideOffset };\n        break;\n      case 'bottom':\n        newOffset = { x: width / 2, y: -sideOffset };\n        break;\n      case 'bottom-left':\n        newOffset = { x: width + sideOffset, y: -sideOffset };\n        break;\n      case 'bottom-right':\n        newOffset = { x: -sideOffset, y: -sideOffset };\n        break;\n      case 'left':\n        newOffset = { x: width + sideOffset, y: height / 2 };\n        break;\n      case 'right':\n        newOffset = { x: -sideOffset, y: height / 2 };\n        break;\n      default:\n        newOffset = { x: 0, y: 0 };\n    }\n\n    return newOffset;\n  }, [align, sideOffset]);\n\n  React.useEffect(() => {\n    const offset = calculateOffset();\n    const cursorRect = cursorRef.current?.getBoundingClientRect();\n    const cursorWidth = cursorRect?.width ?? 20;\n    const cursorHeight = cursorRect?.height ?? 20;\n\n    x.set(cursorPos.x - offset.x + cursorWidth / 2);\n    y.set(cursorPos.y - offset.y + cursorHeight / 2);\n  }, [calculateOffset, cursorPos, cursorRef, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {isActive && (\n        <Component\n          ref={cursorFollowRef}\n          data-slot=\"cursor-follow\"\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9998,\n            position: isGlobal ? 'fixed' : 'absolute',\n            top: springY,\n            left: springX,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  CursorProvider,\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  useCursor,\n  type CursorProviderProps,\n  type CursorProps,\n  type CursorContainerProps,\n  type CursorFollowProps,\n  type CursorFollowAlign,\n  type CursorContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype CursorContextType = {\n  cursorPos: { x: number; y: number };\n  active: boolean;\n  global: boolean;\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  cursorRef: React.RefObject<HTMLDivElement | null>;\n};\n\nconst [LocalCursorProvider, useCursor] =\n  useStrictContext<CursorContextType>('CursorContext');\n\ntype CursorProviderProps = {\n  children: React.ReactNode;\n  global?: boolean;\n};\n\nfunction CursorProvider({ children, global = false }: CursorProviderProps) {\n  const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });\n  const [active, setActive] = React.useState(false);\n\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  const cursorRef = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(() => {\n    const id = '__cursor_none_style__';\n    if (document.getElementById(id)) return;\n\n    const style = document.createElement('style');\n    style.id = id;\n    style.textContent = `\n      .animate-ui-cursor-none, .animate-ui-cursor-none * { cursor: none !important; }\n    `;\n    document.head.appendChild(style);\n  }, []);\n\n  React.useEffect(() => {\n    let removeListeners: () => void;\n\n    if (global) {\n      const handlePointerMove = (e: PointerEvent) => {\n        setCursorPos({ x: e.clientX, y: e.clientY });\n        setActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (e instanceof PointerEvent && e.relatedTarget === null) {\n          setActive(false);\n        }\n      };\n\n      const handleVisibilityChange = () => {\n        if (document.visibilityState === 'hidden') setActive(false);\n      };\n\n      window.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      window.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      window.addEventListener('mouseout', handlePointerOut, { passive: true });\n      document.addEventListener('visibilitychange', handleVisibilityChange);\n\n      removeListeners = () => {\n        window.removeEventListener('pointermove', handlePointerMove);\n        window.removeEventListener('pointerout', handlePointerOut);\n        window.removeEventListener('mouseout', handlePointerOut);\n        document.removeEventListener(\n          'visibilitychange',\n          handleVisibilityChange,\n        );\n      };\n    } else {\n      if (!containerRef.current) return;\n\n      const parent = containerRef.current.parentElement;\n      if (!parent) return;\n\n      if (getComputedStyle(parent).position === 'static') {\n        parent.style.position = 'relative';\n      }\n\n      const handlePointerMove = (e: PointerEvent) => {\n        const rect = parent.getBoundingClientRect();\n        setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n        setActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (\n          e.relatedTarget === null ||\n          !(parent as Node).contains(e.relatedTarget as Node)\n        ) {\n          setActive(false);\n        }\n      };\n\n      parent.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      parent.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      parent.addEventListener('mouseout', handlePointerOut, { passive: true });\n\n      removeListeners = () => {\n        parent.removeEventListener('pointermove', handlePointerMove);\n        parent.removeEventListener('pointerout', handlePointerOut);\n        parent.removeEventListener('mouseout', handlePointerOut);\n      };\n    }\n\n    return removeListeners;\n  }, [global]);\n\n  return (\n    <LocalCursorProvider\n      value={{ cursorPos, active, global, containerRef, cursorRef }}\n    >\n      {children}\n    </LocalCursorProvider>\n  );\n}\n\ntype CursorContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction CursorContainer({\n  ref,\n  asChild = false,\n  ...props\n}: CursorContainerProps) {\n  const { containerRef, global, active } = useCursor();\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={containerRef}\n      data-slot=\"cursor-provider\"\n      data-global={global}\n      data-active={active}\n      {...props}\n    />\n  );\n}\n\ntype CursorProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    children: React.ReactNode;\n  }\n>;\n\nfunction Cursor({ ref, asChild = false, style, ...props }: CursorProps) {\n  const { cursorPos, active, containerRef, cursorRef, global } = useCursor();\n  React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  React.useEffect(() => {\n    const target = global\n      ? document.documentElement\n      : containerRef.current?.parentElement;\n\n    if (!target) return;\n\n    if (active) {\n      target.classList.add('animate-ui-cursor-none');\n    } else {\n      target.classList.remove('animate-ui-cursor-none');\n    }\n\n    return () => {\n      target.classList.remove('animate-ui-cursor-none');\n    };\n  }, [active, global, containerRef]);\n\n  React.useEffect(() => {\n    x.set(cursorPos.x);\n    y.set(cursorPos.y);\n  }, [cursorPos, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {active && (\n        <Component\n          ref={cursorRef}\n          data-slot=\"cursor\"\n          data-global={global}\n          data-active={active}\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9999,\n            position: global ? 'fixed' : 'absolute',\n            top: y,\n            left: x,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype CursorFollowSide = 'top' | 'right' | 'bottom' | 'left';\ntype CursorFollowAlign = 'start' | 'center' | 'end';\n\ntype CursorFollowProps = WithAsChild<\n  Omit<HTMLMotionProps<'div'>, 'transition'> & {\n    side?: CursorFollowSide;\n    sideOffset?: number;\n    align?: CursorFollowAlign;\n    alignOffset?: number;\n    transition?: SpringOptions;\n    children: React.ReactNode;\n  }\n>;\n\nfunction CursorFollow({\n  ref,\n  asChild = false,\n  side = 'bottom',\n  sideOffset = 0,\n  align = 'end',\n  alignOffset = 0,\n  style,\n  transition = { stiffness: 500, damping: 50, bounce: 0 },\n  ...props\n}: CursorFollowProps) {\n  const { cursorPos, active, cursorRef, global } = useCursor();\n  const cursorFollowRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(\n    ref,\n    () => cursorFollowRef.current as HTMLDivElement,\n  );\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useSpring(x, transition);\n  const springY = useSpring(y, transition);\n\n  const calculateOffset = React.useCallback(() => {\n    const rect = cursorFollowRef.current?.getBoundingClientRect();\n    const width = rect?.width ?? 0;\n    const height = rect?.height ?? 0;\n\n    let offsetX = 0;\n    let offsetY = 0;\n\n    switch (side) {\n      case 'top':\n        offsetY = height + sideOffset;\n        switch (align) {\n          case 'start':\n            offsetX = width + alignOffset;\n            break;\n          case 'center':\n            offsetX = width / 2;\n            break;\n          case 'end':\n            offsetX = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'bottom':\n        offsetY = -sideOffset;\n        switch (align) {\n          case 'start':\n            offsetX = width + alignOffset;\n            break;\n          case 'center':\n            offsetX = width / 2;\n            break;\n          case 'end':\n            offsetX = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'left':\n        offsetX = width + sideOffset;\n        switch (align) {\n          case 'start':\n            offsetY = height + alignOffset;\n            break;\n          case 'center':\n            offsetY = height / 2;\n            break;\n          case 'end':\n            offsetY = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'right':\n        offsetX = -sideOffset;\n        switch (align) {\n          case 'start':\n            offsetY = height + alignOffset;\n            break;\n          case 'center':\n            offsetY = height / 2;\n            break;\n          case 'end':\n            offsetY = -alignOffset;\n            break;\n        }\n        break;\n    }\n\n    return { x: offsetX, y: offsetY };\n  }, [side, align, sideOffset, alignOffset]);\n\n  React.useEffect(() => {\n    const offset = calculateOffset();\n    const cursorRect = cursorRef.current?.getBoundingClientRect();\n    const cursorWidth = cursorRect?.width ?? 20;\n    const cursorHeight = cursorRect?.height ?? 20;\n\n    x.set(cursorPos.x - offset.x + cursorWidth / 2);\n    y.set(cursorPos.y - offset.y + cursorHeight / 2);\n  }, [calculateOffset, cursorPos, cursorRef, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {active && (\n        <Component\n          ref={cursorFollowRef}\n          data-slot=\"cursor-follow\"\n          data-global={global}\n          data-active={active}\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9998,\n            position: global ? 'fixed' : 'absolute',\n            top: springY,\n            left: springX,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  CursorProvider,\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  useCursor,\n  type CursorProviderProps,\n  type CursorProps,\n  type CursorContainerProps,\n  type CursorFollowProps,\n  type CursorFollowAlign,\n  type CursorFollowSide,\n  type CursorContextType,\n};",
       },
     ],
     keywords: [],
@@ -2748,6 +3477,86 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/primitives-animate-cursor',
   },
+  'primitives-animate-motion-grid': {
+    name: 'primitives-animate-motion-grid',
+    description: 'A grid that displays animations in a grid.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-slot',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/animate/motion-grid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/motion-grid.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype FrameDot = [number, number];\ntype Frame = FrameDot[];\ntype Frames = Frame[];\n\ntype MotionGridContextType = {\n  index: number;\n  cols: number;\n  rows: number;\n  frames: Frames;\n  duration: number;\n  animate: boolean;\n};\n\nconst [MotionGridProvider, useMotionGrid] =\n  useStrictContext<MotionGridContextType>('MotionGridContext');\n\ntype MotionGridProps = WithAsChild<\n  {\n    gridSize: [number, number];\n    frames: Frames;\n    duration?: number;\n    animate?: boolean;\n  } & HTMLMotionProps<'div'>\n>;\n\nconst MotionGrid = ({\n  gridSize,\n  frames,\n  duration = 200,\n  animate = true,\n  asChild = false,\n  style,\n  ...props\n}: MotionGridProps) => {\n  const [index, setIndex] = React.useState(0);\n  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);\n\n  React.useEffect(() => {\n    if (!animate || frames.length === 0) return;\n    intervalRef.current = setInterval(\n      () => setIndex((i) => (i + 1) % frames.length),\n      duration,\n    );\n    return () => clearInterval(intervalRef.current!);\n  }, [frames.length, duration, animate]);\n\n  const [cols, rows] = gridSize;\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <MotionGridProvider\n      value={{ animate, index, cols, rows, frames, duration }}\n    >\n      <Component\n        data-animate={animate}\n        style={{\n          display: 'grid',\n          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,\n          gridAutoRows: '1fr',\n          ...style,\n        }}\n        {...props}\n      />\n    </MotionGridProvider>\n  );\n};\n\ntype MotionGridCellsProps = HTMLMotionProps<'div'> & {\n  activeProps?: HTMLMotionProps<'div'>;\n  inactiveProps?: HTMLMotionProps<'div'>;\n};\n\nfunction MotionGridCells({\n  activeProps,\n  inactiveProps,\n  ...props\n}: MotionGridCellsProps) {\n  const { animate, index, cols, rows, frames, duration } = useMotionGrid();\n\n  const active = new Set<number>(\n    frames[index]?.map(([x, y]) => y * cols + x) ?? [],\n  );\n\n  return Array.from({ length: cols * rows }).map((_, i) => {\n    const isActive = active.has(i);\n    const componentProps: HTMLMotionProps<'div'> = {\n      ...(isActive ? activeProps : inactiveProps),\n    };\n    componentProps.className = cn(\n      props?.className,\n      isActive ? activeProps?.className : inactiveProps?.className,\n    );\n    componentProps.style = {\n      ...props?.style,\n      ...(isActive ? activeProps?.style : inactiveProps?.style),\n    };\n\n    return (\n      <motion.div\n        key={i}\n        data-active={isActive}\n        data-animate={animate}\n        transition={{ duration, ease: 'easeInOut' }}\n        {...props}\n        {...componentProps}\n      />\n    );\n  });\n}\n\nexport {\n  MotionGrid,\n  MotionGridCells,\n  type MotionGridProps,\n  type MotionGridCellsProps,\n  type FrameDot,\n  type Frame,\n  type Frames,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/motion-grid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-motion-grid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-motion-grid',
+  },
+  'primitives-animate-pinned-list': {
+    name: 'primitives-animate-pinned-list',
+    description:
+      'A pin list component that allows you to pin items to the top of the list.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-animate-slot'],
+    files: [
+      {
+        path: 'registry/primitives/animate/pinned-list/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/pinned-list.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  LayoutGroup,\n  AnimatePresence,\n  type HTMLMotionProps,\n} from 'motion/react';\n\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype PinnedListContextType = {\n  movingId: string | null;\n  setMovingId: (id: string | null) => void;\n  onPinnedChange?: (id: string) => void;\n};\n\ntype PinnedListItemContextType = {\n  id: string;\n};\n\nconst [PinnedListProvider, usePinnedList] =\n  useStrictContext<PinnedListContextType>('PinnedListContext');\n\nconst [PinnedListItemProvider, usePinnedListItem] =\n  useStrictContext<PinnedListItemContextType>('PinnedListItemContext');\n\ntype PinnedListProps = HTMLMotionProps<'div'> & {\n  children: React.ReactNode;\n  onPinnedChange?: (id: string) => void;\n};\n\nfunction PinnedList({ children, onPinnedChange, ...props }: PinnedListProps) {\n  const [movingId, setMovingId] = React.useState<string | null>(null);\n\n  return (\n    <PinnedListProvider value={{ movingId, setMovingId, onPinnedChange }}>\n      <motion.div data-slot=\"pinned-list\" {...props}>\n        <LayoutGroup>{children}</LayoutGroup>\n      </motion.div>\n    </PinnedListProvider>\n  );\n}\n\ntype PinnedListPinnedProps = React.ComponentProps<'div'> & {\n  children: React.ReactNode;\n};\n\nfunction PinnedListPinned(props: PinnedListPinnedProps) {\n  return <div data-slot=\"pinned-list-pinned\" {...props} />;\n}\n\ntype PinnedListUnpinnedProps = React.ComponentProps<'div'> & {\n  children: React.ReactNode;\n};\n\nfunction PinnedListUnpinned(props: PinnedListUnpinnedProps) {\n  return <div data-slot=\"pinned-list-unpinned\" {...props} />;\n}\n\ntype PinnedListLabelProps = WithAsChild<\n  HTMLMotionProps<'p'> & {\n    hide?: boolean;\n  }\n>;\n\nfunction PinnedListLabel({\n  hide = false,\n  asChild = false,\n  transition = { duration: 0.22, ease: 'easeInOut' },\n  ...props\n}: PinnedListLabelProps) {\n  const Component = asChild ? Slot : motion.p;\n\n  return (\n    <AnimatePresence initial={false}>\n      {!hide && (\n        <Component\n          layout\n          key=\"pinned-list-label\"\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n          transition={transition}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype PinnedListItemsProps = React.ComponentProps<'div'> & {\n  children: React.ReactNode;\n};\n\nfunction PinnedListItems(props: PinnedListItemsProps) {\n  return <div data-slot=\"pinned-list-items\" {...props} />;\n}\n\ntype PinnedListItemProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    id: string;\n    children: React.ReactNode;\n    customTrigger?: boolean;\n  }\n>;\n\nfunction PinnedListItem({\n  id,\n  asChild = false,\n  customTrigger = false,\n  transition = { stiffness: 320, damping: 25, mass: 0.8, type: 'spring' },\n  onClick,\n  ...props\n}: PinnedListItemProps) {\n  const { movingId, setMovingId, onPinnedChange } = usePinnedList();\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <PinnedListItemProvider value={{ id }}>\n      <Component\n        data-slot=\"pinned-list-item\"\n        layoutId={`pinned-list-item-${id}`}\n        style={{\n          position: 'relative',\n          zIndex: movingId === id ? 10 : undefined,\n        }}\n        onLayoutAnimationComplete={() => {\n          if (id === movingId) setMovingId(null);\n        }}\n        onClick={(e: React.MouseEvent<HTMLDivElement>) => {\n          if (!customTrigger) {\n            setMovingId(id);\n            onPinnedChange?.(id);\n          }\n          onClick?.(e);\n        }}\n        transition={transition}\n        whileHover={!customTrigger ? { scale: 1.05 } : undefined}\n        whileTap={!customTrigger ? { scale: 0.95 } : undefined}\n        {...props}\n      />\n    </PinnedListItemProvider>\n  );\n}\n\ntype PinnedListTriggerProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nfunction PinnedListTrigger({\n  asChild = false,\n  onClick,\n  ...props\n}: PinnedListTriggerProps) {\n  const { setMovingId, onPinnedChange } = usePinnedList();\n  const { id } = usePinnedListItem();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"pinned-list-trigger\"\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        e.stopPropagation();\n        setMovingId(id);\n        onPinnedChange?.(id);\n        onClick?.(e);\n      }}\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  PinnedList,\n  PinnedListPinned,\n  PinnedListUnpinned,\n  PinnedListLabel,\n  PinnedListItems,\n  PinnedListItem,\n  PinnedListTrigger,\n  usePinnedList,\n  usePinnedListItem,\n  type PinnedListProps,\n  type PinnedListPinnedProps,\n  type PinnedListUnpinnedProps,\n  type PinnedListLabelProps,\n  type PinnedListItemsProps,\n  type PinnedListItemProps,\n  type PinnedListTriggerProps,\n  type PinnedListContextType,\n  type PinnedListItemContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/pinned-list/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-pinned-list';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-pinned-list',
+  },
   'primitives-animate-scroll-progress': {
     name: 'primitives-animate-scroll-progress',
     description:
@@ -2758,6 +3567,7 @@ export const index: Record<string, any> = {
     registryDependencies: [
       'https://animate-ui.com/r/primitives-animate-slot',
       'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-motion-value-state',
     ],
     files: [
       {
@@ -2765,7 +3575,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/scroll-progress.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useScroll,\n  useSpring,\n  type MotionValue,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype ScrollProgressDirection = 'horizontal' | 'vertical';\n\ntype ScrollProgressContextType = {\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  progress: MotionValue<number>;\n  scale: MotionValue<number>;\n  direction: ScrollProgressDirection;\n};\n\nconst [LocalScrollProgressProvider, useScrollProgress] =\n  useStrictContext<ScrollProgressContextType>('ScrollProgressContext');\n\ntype ScrollProgressProviderProps = {\n  children: React.ReactNode;\n  global?: boolean;\n  transition?: SpringOptions;\n  direction?: ScrollProgressDirection;\n};\n\nfunction ScrollProgressProvider({\n  global = false,\n  transition = { stiffness: 250, damping: 40, bounce: 0 },\n  direction = 'vertical',\n  ...props\n}: ScrollProgressProviderProps) {\n  const containerRef = React.useRef<HTMLDivElement | null>(null);\n\n  const { scrollYProgress, scrollXProgress } = useScroll(\n    global ? undefined : { container: containerRef },\n  );\n\n  const progress = direction === 'vertical' ? scrollYProgress : scrollXProgress;\n  const scale = useSpring(progress, transition);\n\n  return (\n    <LocalScrollProgressProvider\n      value={{\n        containerRef,\n        progress,\n        scale,\n        direction,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype ScrollProgressProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction ScrollProgress({\n  style,\n  asChild = false,\n  ...props\n}: ScrollProgressProps) {\n  const { scale, direction } = useScrollProgress();\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      data-slot=\"scroll-progress\"\n      data-direction={direction}\n      style={{\n        top: 0,\n        insetInline: 0,\n        transformOrigin: 'left',\n        scaleX: scale,\n        ...style,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype ScrollProgressContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction ScrollProgressContainer({\n  ref,\n  asChild = false,\n  ...props\n}: ScrollProgressContainerProps) {\n  const { containerRef, direction } = useScrollProgress();\n\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={containerRef}\n      data-slot=\"scroll-progress-container\"\n      data-direction={direction}\n      {...props}\n    />\n  );\n}\n\nexport {\n  ScrollProgressProvider,\n  ScrollProgress,\n  ScrollProgressContainer,\n  useScrollProgress,\n  type ScrollProgressProviderProps,\n  type ScrollProgressProps,\n  type ScrollProgressContainerProps,\n  type ScrollProgressDirection,\n  type ScrollProgressContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useScroll,\n  useSpring,\n  type MotionValue,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useMotionValueState } from '@/components/animate-ui/hooks/use-motion-value-state';\n\ntype ScrollProgressDirection = 'horizontal' | 'vertical';\n\ntype ScrollProgressContextType = {\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  progress: MotionValue<number>;\n  scale: MotionValue<number>;\n  direction: ScrollProgressDirection;\n  global: boolean;\n};\n\nconst [LocalScrollProgressProvider, useScrollProgress] =\n  useStrictContext<ScrollProgressContextType>('ScrollProgressContext');\n\ntype ScrollProgressProviderProps = {\n  children: React.ReactNode;\n  global?: boolean;\n  transition?: SpringOptions;\n  direction?: ScrollProgressDirection;\n};\n\nfunction ScrollProgressProvider({\n  global = false,\n  transition = { stiffness: 250, damping: 40, bounce: 0 },\n  direction = 'vertical',\n  ...props\n}: ScrollProgressProviderProps) {\n  const containerRef = React.useRef<HTMLDivElement | null>(null);\n\n  const { scrollYProgress, scrollXProgress } = useScroll(\n    global ? undefined : { container: containerRef },\n  );\n\n  const progress = direction === 'vertical' ? scrollYProgress : scrollXProgress;\n  const scale = useSpring(progress, transition);\n\n  return (\n    <LocalScrollProgressProvider\n      value={{\n        containerRef,\n        progress,\n        scale,\n        direction,\n        global,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype ScrollProgressMode = 'width' | 'height' | 'scaleY' | 'scaleX';\n\ntype ScrollProgressProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    mode?: ScrollProgressMode;\n  }\n>;\n\nfunction ScrollProgress({\n  style,\n  mode = 'width',\n  asChild = false,\n  ...props\n}: ScrollProgressProps) {\n  const { scale, direction, global } = useScrollProgress();\n  const scaleValue = useMotionValueState(scale);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      data-slot=\"scroll-progress\"\n      data-direction={direction}\n      data-mode={mode}\n      data-global={global}\n      style={{\n        ...(mode === 'width' || mode === 'height'\n          ? {\n              [mode]: scaleValue * 100 + '%',\n            }\n          : {\n              [mode]: scale,\n            }),\n        ...style,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype ScrollProgressContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction ScrollProgressContainer({\n  ref,\n  asChild = false,\n  ...props\n}: ScrollProgressContainerProps) {\n  const { containerRef, direction } = useScrollProgress();\n\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={containerRef}\n      data-slot=\"scroll-progress-container\"\n      data-direction={direction}\n      data-global={global}\n      {...props}\n    />\n  );\n}\n\nexport {\n  ScrollProgressProvider,\n  ScrollProgress,\n  ScrollProgressContainer,\n  useScrollProgress,\n  type ScrollProgressProviderProps,\n  type ScrollProgressProps,\n  type ScrollProgressContainerProps,\n  type ScrollProgressDirection,\n  type ScrollProgressMode,\n  type ScrollProgressContextType,\n};",
       },
     ],
     keywords: [],
@@ -2829,6 +3639,49 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/primitives-animate-slot',
   },
+  'primitives-animate-spring': {
+    name: 'primitives-animate-spring',
+    description:
+      'A flexible, animated spring component that attaches a draggable element to its origin with a spring line.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-slot',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-motion-value-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/animate/spring/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/spring.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring as useMotionSpring,\n  type SpringOptions,\n  type HTMLMotionProps,\n  type MotionValue,\n} from 'motion/react';\n\nimport { useMotionValueState } from '@/components/animate-ui/hooks/use-motion-value-state';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SpringPathConfig = {\n  coilCount?: number;\n  amplitudeMin?: number;\n  amplitudeMax?: number;\n  curveRatioMin?: number;\n  curveRatioMax?: number;\n  bezierOffset?: number;\n};\n\nfunction generateSpringPath(\n  x1: number,\n  y1: number,\n  x2: number,\n  y2: number,\n  pathConfig: SpringPathConfig = {},\n) {\n  const {\n    coilCount = 8,\n    amplitudeMin = 8,\n    amplitudeMax = 20,\n    curveRatioMin = 0.5,\n    curveRatioMax = 1,\n    bezierOffset = 8,\n  } = pathConfig;\n\n  const dx = x2 - x1;\n  const dy = y2 - y1;\n  const dist = Math.sqrt(dx * dx + dy * dy);\n  if (dist < 2) return `M${x1},${y1}`;\n  const d = dist / coilCount;\n  const h = Math.max(0.8, 1 - (dist - 40) / 200);\n  const amplitude = Math.max(\n    amplitudeMin,\n    Math.min(amplitudeMax, amplitudeMax * h),\n  );\n  const curveRatio =\n    dist <= 40\n      ? curveRatioMax\n      : dist <= 120\n        ? curveRatioMax - ((dist - 40) / 80) * (curveRatioMax - curveRatioMin)\n        : curveRatioMin;\n  const ux = dx / dist,\n    uy = dy / dist;\n  const perpX = -uy,\n    perpY = ux;\n\n  let path = [];\n  for (let i = 0; i < coilCount; i++) {\n    const sx = x1 + ux * (i * d);\n    const sy = y1 + uy * (i * d);\n    const ex = x1 + ux * ((i + 1) * d);\n    const ey = y1 + uy * ((i + 1) * d);\n\n    const mx = x1 + ux * ((i + 0.5) * d) + perpX * amplitude;\n    const my = y1 + uy * ((i + 0.5) * d) + perpY * amplitude;\n\n    const c1x = sx + d * curveRatio * ux;\n    const c1y = sy + d * curveRatio * uy;\n    const c2x = mx + ux * bezierOffset;\n    const c2y = my + uy * bezierOffset;\n    const c3x = mx - ux * bezierOffset;\n    const c3y = my - uy * bezierOffset;\n    const c4x = ex - d * curveRatio * ux;\n    const c4y = ey - d * curveRatio * uy;\n\n    if (i === 0) path.push(`M${sx},${sy}`);\n    else path.push(`L${sx},${sy}`);\n    path.push(`C${c1x},${c1y} ${c2x},${c2y} ${mx},${my}`);\n    path.push(`C${c3x},${c3y} ${c4x},${c4y} ${ex},${ey}`);\n  }\n  return path.join(' ');\n}\n\ntype SpringContextType = {\n  dragElastic?: number;\n  childRef: React.RefObject<HTMLDivElement | null>;\n  springX: MotionValue<number>;\n  springY: MotionValue<number>;\n  x: MotionValue<number>;\n  y: MotionValue<number>;\n  isDragging: boolean;\n  setIsDragging: (isDragging: boolean) => void;\n  path: string;\n};\n\nconst [LocalSpringProvider, useSpring] =\n  useStrictContext<SpringContextType>('SpringContext');\n\ntype SpringProviderProps = {\n  children: React.ReactNode;\n  dragElastic?: number;\n  pathConfig?: SpringPathConfig;\n  transition?: SpringOptions;\n};\n\nfunction SpringProvider({\n  dragElastic = 0.2,\n  transition = { stiffness: 200, damping: 16 },\n  pathConfig = {},\n  ...props\n}: SpringProviderProps) {\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useMotionSpring(x, transition);\n  const springY = useMotionSpring(y, transition);\n\n  const sx = useMotionValueState(springX);\n  const sy = useMotionValueState(springY);\n\n  const childRef = React.useRef<HTMLDivElement>(null);\n\n  const [center, setCenter] = React.useState({ x: 0, y: 0 });\n  const [isDragging, setIsDragging] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    function update() {\n      if (childRef.current) {\n        const rect = childRef.current.getBoundingClientRect();\n        setCenter({\n          x: rect.left + rect.width / 2,\n          y: rect.top + rect.height / 2,\n        });\n      }\n    }\n\n    update();\n\n    window.addEventListener('resize', update);\n    window.addEventListener('scroll', update, true);\n\n    return () => {\n      window.removeEventListener('resize', update);\n      window.removeEventListener('scroll', update, true);\n    };\n  }, []);\n\n  React.useEffect(() => {\n    if (isDragging) {\n      document.body.style.cursor = 'grabbing';\n    } else {\n      document.body.style.cursor = 'default';\n    }\n  }, [isDragging]);\n\n  const path = generateSpringPath(\n    center.x,\n    center.y,\n    center.x + sx,\n    center.y + sy,\n    pathConfig,\n  );\n\n  return (\n    <LocalSpringProvider\n      value={{\n        springX,\n        springY,\n        x,\n        y,\n        isDragging,\n        setIsDragging,\n        dragElastic,\n        childRef,\n        path,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype SpringProps = React.SVGProps<SVGSVGElement>;\n\nfunction Spring({ style, ...props }: SpringProps) {\n  const { path } = useSpring();\n\n  return (\n    <>\n      <svg\n        width=\"100vw\"\n        height=\"100vh\"\n        style={{\n          position: 'fixed',\n          inset: 0,\n          pointerEvents: 'none',\n          ...style,\n        }}\n        {...props}\n      >\n        <path\n          d={path}\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          stroke=\"currentColor\"\n          strokeWidth={2}\n          fill=\"none\"\n        />\n      </svg>\n    </>\n  );\n}\n\ntype SpringElementProps = WithAsChild<\n  Omit<HTMLMotionProps<'div'>, 'children'> & {\n    children: React.ReactElement;\n  }\n>;\n\nfunction SpringElement({\n  ref,\n  asChild = false,\n  style,\n  ...props\n}: SpringElementProps) {\n  const {\n    childRef,\n    dragElastic,\n    isDragging,\n    setIsDragging,\n    springX,\n    springY,\n    x,\n    y,\n  } = useSpring();\n\n  React.useImperativeHandle(ref, () => childRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={childRef}\n      style={{\n        cursor: isDragging ? 'grabbing' : 'grab',\n        x: springX,\n        y: springY,\n        ...style,\n      }}\n      drag\n      dragElastic={dragElastic}\n      dragMomentum={false}\n      onDragStart={() => {\n        setIsDragging(true);\n      }}\n      onDrag={(_, info) => {\n        x.set(info.offset.x);\n        y.set(info.offset.y);\n      }}\n      onDragEnd={() => {\n        x.set(0);\n        y.set(0);\n        setIsDragging(false);\n      }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  SpringProvider,\n  Spring,\n  SpringElement,\n  useSpring,\n  type SpringProviderProps,\n  type SpringProps,\n  type SpringElementProps,\n  type SpringPathConfig,\n  type SpringContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/spring/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-spring';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-spring',
+  },
   'primitives-animate-tabs': {
     name: 'primitives-animate-tabs',
     description:
@@ -2871,6 +3724,48 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/primitives-animate-tabs',
+  },
+  'primitives-animate-tooltip': {
+    name: 'primitives-animate-tooltip',
+    description:
+      'An animated tooltip that shows contextual info on hover or focus and smoothly glides to the next element without disappearing between transitions.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-slot',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/animate/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/animate/tooltip.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { createPortal } from 'react-dom';\nimport {\n  motion,\n  AnimatePresence,\n  LayoutGroup,\n  type Transition,\n  type HTMLMotionProps,\n} from 'motion/react';\n\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\ntype Align = 'start' | 'center' | 'end';\n\ntype TooltipData = {\n  rect: DOMRect;\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  id: string;\n};\n\ntype GlobalTooltipContextType = {\n  showTooltip: (data: TooltipData) => void;\n  hideTooltip: () => void;\n  currentTooltip: TooltipData | null;\n  globalId: string;\n};\n\nconst [GlobalTooltipProvider, useGlobalTooltip] =\n  useStrictContext<GlobalTooltipContextType>('GlobalTooltipContext');\n\ntype TooltipContextType = {\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  id: string;\n  position: TooltipPosition | null;\n};\n\nconst [LocalTooltipProvider, useTooltip] =\n  useStrictContext<TooltipContextType>('TooltipContext');\n\ntype TooltipPosition = {\n  x: number;\n  y: number;\n  transform: string;\n  initial: { x?: number; y?: number };\n};\n\nfunction getTooltipPosition({\n  rect,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  transitionOffset = 15,\n}: {\n  rect: DOMRect;\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  transitionOffset?: number;\n}): TooltipPosition {\n  switch (side) {\n    case 'top':\n      if (align === 'start') {\n        return {\n          x: rect.left + alignOffset,\n          y: rect.top - sideOffset,\n          transform: 'translate(0, -100%)',\n          initial: { y: transitionOffset },\n        };\n      } else if (align === 'end') {\n        return {\n          x: rect.right + alignOffset,\n          y: rect.top - sideOffset,\n          transform: 'translate(-100%, -100%)',\n          initial: { y: transitionOffset },\n        };\n      } else {\n        // center\n        return {\n          x: rect.left + rect.width / 2,\n          y: rect.top - sideOffset,\n          transform: 'translate(-50%, -100%)',\n          initial: { y: transitionOffset },\n        };\n      }\n    case 'bottom':\n      if (align === 'start') {\n        return {\n          x: rect.left + alignOffset,\n          y: rect.bottom + sideOffset,\n          transform: 'translate(0, 0)',\n          initial: { y: -transitionOffset },\n        };\n      } else if (align === 'end') {\n        return {\n          x: rect.right + alignOffset,\n          y: rect.bottom + sideOffset,\n          transform: 'translate(-100%, 0)',\n          initial: { y: -transitionOffset },\n        };\n      } else {\n        // center\n        return {\n          x: rect.left + rect.width / 2,\n          y: rect.bottom + sideOffset,\n          transform: 'translate(-50%, 0)',\n          initial: { y: -transitionOffset },\n        };\n      }\n    case 'left':\n      if (align === 'start') {\n        return {\n          x: rect.left - sideOffset,\n          y: rect.top + alignOffset,\n          transform: 'translate(-100%, 0)',\n          initial: { x: transitionOffset },\n        };\n      } else if (align === 'end') {\n        return {\n          x: rect.left - sideOffset,\n          y: rect.bottom + alignOffset,\n          transform: 'translate(-100%, -100%)',\n          initial: { x: transitionOffset },\n        };\n      } else {\n        // center\n        return {\n          x: rect.left - sideOffset,\n          y: rect.top + rect.height / 2,\n          transform: 'translate(-100%, -50%)',\n          initial: { x: transitionOffset },\n        };\n      }\n    case 'right':\n      if (align === 'start') {\n        return {\n          x: rect.right + sideOffset,\n          y: rect.top + alignOffset,\n          transform: 'translate(0, 0)',\n          initial: { x: -transitionOffset },\n        };\n      } else if (align === 'end') {\n        return {\n          x: rect.right + sideOffset,\n          y: rect.bottom + alignOffset,\n          transform: 'translate(0, -100%)',\n          initial: { x: -transitionOffset },\n        };\n      } else {\n        // center\n        return {\n          x: rect.right + sideOffset,\n          y: rect.top + rect.height / 2,\n          transform: 'translate(0, -50%)',\n          initial: { x: -transitionOffset },\n        };\n      }\n  }\n}\n\ntype TooltipProviderProps = {\n  children: React.ReactNode;\n  openDelay?: number;\n  closeDelay?: number;\n  transition?: Transition;\n};\n\nfunction TooltipProvider({\n  children,\n  openDelay = 700,\n  closeDelay = 300,\n}: TooltipProviderProps) {\n  const globalId = React.useId();\n  const [currentTooltip, setCurrentTooltip] =\n    React.useState<TooltipData | null>(null);\n  const timeoutRef = React.useRef<number>(null);\n  const lastCloseTimeRef = React.useRef<number>(0);\n\n  const showTooltip = React.useCallback(\n    (data: TooltipData) => {\n      if (timeoutRef.current) clearTimeout(timeoutRef.current);\n      if (currentTooltip !== null) {\n        setCurrentTooltip(data);\n        return;\n      }\n      const now = Date.now();\n      const delay = now - lastCloseTimeRef.current < closeDelay ? 0 : openDelay;\n      timeoutRef.current = window.setTimeout(\n        () => setCurrentTooltip(data),\n        delay,\n      );\n    },\n    [openDelay, closeDelay, currentTooltip],\n  );\n\n  const hideTooltip = React.useCallback(() => {\n    if (timeoutRef.current) clearTimeout(timeoutRef.current);\n    timeoutRef.current = window.setTimeout(() => {\n      setCurrentTooltip(null);\n      lastCloseTimeRef.current = Date.now();\n    }, closeDelay);\n  }, [closeDelay]);\n\n  const hideImmediate = React.useCallback(() => {\n    if (timeoutRef.current) clearTimeout(timeoutRef.current);\n    setCurrentTooltip(null);\n    lastCloseTimeRef.current = Date.now();\n  }, []);\n\n  React.useEffect(() => {\n    window.addEventListener('scroll', hideImmediate, true);\n    return () => window.removeEventListener('scroll', hideImmediate, true);\n  }, [hideImmediate]);\n\n  return (\n    <GlobalTooltipProvider\n      value={{\n        showTooltip,\n        hideTooltip,\n        currentTooltip,\n        globalId,\n      }}\n    >\n      <LayoutGroup>{children}</LayoutGroup>\n      <TooltipOverlay />\n    </GlobalTooltipProvider>\n  );\n}\n\ntype TooltipProps = {\n  children: React.ReactNode;\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n  transitionOffset?: number;\n};\n\nfunction Tooltip({\n  children,\n  side = 'top',\n  sideOffset = 14,\n  align = 'center',\n  alignOffset = 0,\n  transitionOffset = 15,\n}: TooltipProps) {\n  const id = React.useId();\n  const { currentTooltip } = useGlobalTooltip();\n\n  const position = React.useMemo(() => {\n    if (!currentTooltip) return null;\n    return getTooltipPosition({\n      rect: currentTooltip.rect,\n      side: currentTooltip.side,\n      sideOffset: currentTooltip.sideOffset,\n      align: currentTooltip.align,\n      alignOffset: currentTooltip.alignOffset,\n      transitionOffset,\n    });\n  }, [currentTooltip]);\n\n  return (\n    <LocalTooltipProvider\n      value={{\n        side,\n        sideOffset,\n        align,\n        alignOffset,\n        id,\n        position,\n      }}\n    >\n      {children}\n    </LocalTooltipProvider>\n  );\n}\n\ntype TooltipArrowProps = React.ComponentProps<'div'>;\n\nfunction TooltipArrow({ style, ...props }: TooltipArrowProps) {\n  const { currentTooltip } = useGlobalTooltip();\n  const { id, side, align } = useTooltip();\n\n  return (\n    <div\n      data-slot=\"tooltip-arrow\"\n      data-side={side}\n      data-state={currentTooltip?.id === id ? 'open' : 'closed'}\n      data-align={align}\n      style={{ position: 'absolute', ...style }}\n      {...props}\n    />\n  );\n}\n\ntype TooltipPortalProps = {\n  children: React.ReactNode;\n};\n\nfunction TooltipPortal({ children }: TooltipPortalProps) {\n  const { currentTooltip } = useGlobalTooltip();\n  const { position } = useTooltip();\n\n  const [isMounted, setIsMounted] = React.useState(false);\n  React.useEffect(() => setIsMounted(true), []);\n\n  return isMounted ? (\n    <AnimatePresence>\n      {currentTooltip && position && createPortal(children, document.body)}\n    </AnimatePresence>\n  ) : null;\n}\n\ntype TooltipOverlayProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction TooltipOverlay({\n  asChild = false,\n  style,\n  ...props\n}: TooltipOverlayProps) {\n  const { currentTooltip } = useGlobalTooltip();\n  const { id, side, align } = useTooltip();\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      data-slot=\"tooltip-overlay\"\n      data-state={currentTooltip?.id === id ? 'open' : 'closed'}\n      data-side={side}\n      data-align={align}\n      style={{\n        position: 'fixed',\n        inset: 0,\n        ...style,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype TooltipContentProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    children: React.ReactNode;\n  }\n>;\n\nfunction TooltipContent({\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  asChild = false,\n  style,\n  ...props\n}: TooltipContentProps) {\n  const { globalId, currentTooltip } = useGlobalTooltip();\n  const { position, id, side, align } = useTooltip();\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      layoutId={`tooltip-content-${globalId}`}\n      initial={{ opacity: 0, scale: 0, ...position?.initial }}\n      animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}\n      exit={{ opacity: 0, scale: 0, ...position?.initial }}\n      style={{\n        top: position?.y,\n        left: position?.x,\n        transform: position?.transform,\n        ...style,\n      }}\n      transition={transition}\n      data-slot=\"tooltip-content\"\n      data-state={currentTooltip?.id === id ? 'open' : 'closed'}\n      data-side={side}\n      data-align={align}\n      {...props}\n    />\n  );\n}\n\ntype TooltipTriggerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction TooltipTrigger({\n  onMouseEnter,\n  onMouseLeave,\n  onFocus,\n  onBlur,\n  asChild = false,\n  ...props\n}: TooltipTriggerProps) {\n  const { side, sideOffset, align, alignOffset, id } = useTooltip();\n  const { showTooltip, hideTooltip, currentTooltip } = useGlobalTooltip();\n  const localRef = React.useRef<HTMLDivElement>(null);\n\n  const handleOpen = React.useCallback(() => {\n    if (!localRef.current) return;\n    const rect = localRef.current.getBoundingClientRect();\n    showTooltip({\n      rect,\n      side,\n      sideOffset,\n      align,\n      alignOffset,\n      id,\n    });\n  }, [showTooltip, side, sideOffset, align, alignOffset, id]);\n\n  const handleMouseEnter = React.useCallback(\n    (e: React.MouseEvent<HTMLDivElement>) => {\n      onMouseEnter?.(e);\n      handleOpen();\n    },\n    [handleOpen, onMouseEnter],\n  );\n\n  const handleMouseLeave = React.useCallback(\n    (e: React.MouseEvent<HTMLDivElement>) => {\n      onMouseLeave?.(e);\n      hideTooltip();\n    },\n    [hideTooltip, onMouseLeave],\n  );\n\n  const handleFocus = React.useCallback(\n    (e: React.FocusEvent<HTMLDivElement>) => {\n      onFocus?.(e);\n      handleOpen();\n    },\n    [handleOpen, onFocus],\n  );\n\n  const handleBlur = React.useCallback(\n    (e: React.FocusEvent<HTMLDivElement>) => {\n      onBlur?.(e);\n      hideTooltip();\n    },\n    [hideTooltip, onBlur],\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={localRef}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onFocus={handleFocus}\n      onBlur={handleBlur}\n      data-slot=\"tooltip-trigger\"\n      data-state={currentTooltip?.id === id ? 'open' : 'closed'}\n      data-side={side}\n      data-align={align}\n      {...props}\n    />\n  );\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipPortal,\n  TooltipOverlay,\n  TooltipContent,\n  TooltipTrigger,\n  TooltipArrow,\n  useGlobalTooltip,\n  useTooltip,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipOverlayProps,\n  type TooltipPortalProps,\n  type TooltipContentProps,\n  type TooltipTriggerProps,\n  type TooltipArrowProps,\n  type GlobalTooltipContextType,\n  type TooltipContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/primitives/animate/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-animate-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-animate-tooltip',
   },
   'primitives-base-accordion': {
     name: 'primitives-base-accordion',
@@ -2994,6 +3889,48 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/primitives-base-collapsible',
+  },
+  'primitives-base-files': {
+    name: 'primitives-base-files',
+    description:
+      'A component that allows you to display a list of files and folders.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-base-accordion',
+      'https://animate-ui.com/r/primitives-effects-highlight',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/base/files/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/base/files.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport {\n  Accordion,\n  AccordionItem,\n  AccordionHeader,\n  AccordionTrigger,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionHeaderProps,\n  type AccordionTriggerProps,\n  type AccordionPanelProps,\n} from '@/components/animate-ui/primitives/base/accordion';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype FilesContextType = {\n  open: string[];\n};\n\ntype FolderContextType = {\n  isOpen: boolean;\n};\n\nconst [FilesProvider, useFiles] =\n  useStrictContext<FilesContextType>('FilesContext');\n\nconst [FolderProvider, useFolder] =\n  useStrictContext<FolderContextType>('FolderContext');\n\ntype FilesProps = {\n  children: React.ReactNode;\n  defaultOpen?: string[];\n  open?: string[];\n  onOpenChange?: (open: string[]) => void;\n} & Omit<AccordionProps, 'type' | 'defaultValue' | 'value' | 'onValueChange'>;\n\nfunction Files({\n  children,\n  defaultOpen,\n  open,\n  onOpenChange,\n  style,\n  ...props\n}: FilesProps) {\n  const [openValue, setOpenValue] = useControlledState({\n    value: open,\n    defaultValue: defaultOpen,\n    onChange: onOpenChange,\n  });\n\n  return (\n    <FilesProvider value={{ open: openValue ?? [] }}>\n      <Accordion\n        data-slot=\"files\"\n        openMultiple\n        defaultValue={defaultOpen}\n        value={open}\n        onValueChange={setOpenValue}\n        style={{\n          position: 'relative',\n          overflow: 'auto',\n          ...style,\n        }}\n        {...props}\n      >\n        {children}\n      </Accordion>\n    </FilesProvider>\n  );\n}\n\ntype FilesHighlightProps = Omit<HighlightProps, 'controlledItems' | 'mode'>;\n\nfunction FilesHighlight({ hover = true, ...props }: FilesHighlightProps) {\n  return (\n    <Highlight\n      data-slot=\"files-highlight\"\n      controlledItems\n      mode=\"parent\"\n      hover={hover}\n      {...props}\n    />\n  );\n}\n\ntype FolderItemProps = AccordionItemProps;\n\nfunction FolderItem({ value, ...props }: FolderItemProps) {\n  const { open } = useFiles();\n\n  return (\n    <FolderProvider value={{ isOpen: open.includes(value) }}>\n      <AccordionItem data-slot=\"folder-item\" value={value} {...props} />\n    </FolderProvider>\n  );\n}\n\ntype FolderHeaderProps = AccordionHeaderProps;\n\nfunction FolderHeader(props: FolderHeaderProps) {\n  return <AccordionHeader data-slot=\"folder-header\" {...props} />;\n}\n\ntype FolderTriggerProps = AccordionTriggerProps;\n\nfunction FolderTrigger(props: FolderTriggerProps) {\n  return <AccordionTrigger data-slot=\"folder-trigger\" {...props} />;\n}\n\ntype FolderPanelProps = AccordionPanelProps;\n\nfunction FolderPanel(props: FolderPanelProps) {\n  return <AccordionPanel data-slot=\"folder-panel\" {...props} />;\n}\n\ntype FileHighlightProps = HighlightItemProps;\n\nfunction FileHighlight(props: FileHighlightProps) {\n  return <HighlightItem data-slot=\"file-highlight\" {...props} />;\n}\n\ntype FileProps = React.ComponentProps<'div'>;\n\nfunction File(props: FileProps) {\n  return <div data-slot=\"file\" {...props} />;\n}\n\ntype FileIconProps = React.ComponentProps<'span'>;\n\nfunction FileIcon(props: FileIconProps) {\n  return <span data-slot=\"file-icon\" {...props} />;\n}\n\ntype FileLabelProps = React.ComponentProps<'span'>;\n\nfunction FileLabel(props: FileLabelProps) {\n  return <span data-slot=\"file-label\" {...props} />;\n}\n\ntype FolderHighlightProps = HighlightItemProps;\n\nfunction FolderHighlight(props: FolderHighlightProps) {\n  return <HighlightItem data-slot=\"folder-highlight\" {...props} />;\n}\n\ntype FolderProps = React.ComponentProps<'div'>;\n\nfunction Folder(props: FolderProps) {\n  return <div data-slot=\"folder\" {...props} />;\n}\n\ntype FolderIconProps = HTMLMotionProps<'span'> & {\n  closeIcon: React.ReactNode;\n  openIcon: React.ReactNode;\n};\n\nfunction FolderIcon({\n  closeIcon,\n  openIcon,\n  transition = { duration: 0.15 },\n  ...props\n}: FolderIconProps) {\n  const { isOpen } = useFolder();\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      <motion.span\n        key={isOpen ? 'open' : 'close'}\n        data-slot=\"folder-icon\"\n        initial={{ scale: 0.9 }}\n        animate={{ scale: 1 }}\n        exit={{ scale: 0.9 }}\n        transition={transition}\n        {...props}\n      >\n        {isOpen ? openIcon : closeIcon}\n      </motion.span>\n    </AnimatePresence>\n  );\n}\n\ntype FolderLabelProps = React.ComponentProps<'span'>;\n\nfunction FolderLabel(props: FolderLabelProps) {\n  return <span data-slot=\"folder-label\" {...props} />;\n}\n\nexport {\n  Files,\n  FilesHighlight,\n  FolderItem,\n  FolderHeader,\n  FolderTrigger,\n  FolderPanel,\n  FileHighlight,\n  File,\n  FileIcon,\n  FileLabel,\n  FolderHighlight,\n  Folder,\n  FolderIcon,\n  FolderLabel,\n  useFiles,\n  useFolder,\n  type FilesProps,\n  type FilesHighlightProps,\n  type FolderItemProps,\n  type FolderHeaderProps,\n  type FolderTriggerProps,\n  type FolderPanelProps,\n  type FileHighlightProps,\n  type FileProps,\n  type FileIconProps,\n  type FileLabelProps,\n  type FolderHighlightProps,\n  type FolderProps,\n  type FolderIconProps,\n  type FolderLabelProps,\n  type FilesContextType,\n  type FolderContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/primitives/base/files/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-base-files';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-base-files',
   },
   'primitives-base-popover': {
     name: 'primitives-base-popover',
@@ -3975,7 +4912,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/accordion.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Accordion as AccordionPrimitive } from 'radix-ui';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype AccordionContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n};\n\ntype AccordionItemContextType = {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n};\n\nconst [AccordionProvider, useAccordion] =\n  useStrictContext<AccordionContextType>('AccordionContext');\n\nconst [AccordionItemProvider, useAccordionItem] =\n  useStrictContext<AccordionItemContextType>('AccordionItemContext');\n\ntype AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;\n\nfunction Accordion(props: AccordionProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props?.value,\n    defaultValue: props?.defaultValue,\n    onChange: props?.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <AccordionProvider value={{ value, setValue }}>\n      <AccordionPrimitive.Root\n        data-slot=\"accordion\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </AccordionProvider>\n  );\n}\n\ntype AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>;\n\nfunction AccordionItem(props: AccordionItemProps) {\n  const { value } = useAccordion();\n  const [isOpen, setIsOpen] = React.useState(\n    value?.includes(props?.value) ?? false,\n  );\n\n  React.useEffect(() => {\n    setIsOpen(value?.includes(props?.value) ?? false);\n  }, [value, props?.value]);\n\n  return (\n    <AccordionItemProvider value={{ isOpen, setIsOpen }}>\n      <AccordionPrimitive.Item data-slot=\"accordion-item\" {...props} />\n    </AccordionItemProvider>\n  );\n}\n\ntype AccordionHeaderProps = React.ComponentProps<\n  typeof AccordionPrimitive.Header\n>;\n\nfunction AccordionHeader(props: AccordionHeaderProps) {\n  return <AccordionPrimitive.Header data-slot=\"accordion-header\" {...props} />;\n}\n\ntype AccordionTriggerProps = React.ComponentProps<\n  typeof AccordionPrimitive.Trigger\n>;\n\nfunction AccordionTrigger(props: AccordionTriggerProps) {\n  return (\n    <AccordionPrimitive.Trigger data-slot=\"accordion-trigger\" {...props} />\n  );\n}\n\ntype AccordionContentProps = Omit<\n  React.ComponentProps<typeof AccordionPrimitive.Content>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'> & {\n    keepRendered?: boolean;\n  };\n\nfunction AccordionContent({\n  keepRendered = false,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  ...props\n}: AccordionContentProps) {\n  const { isOpen } = useAccordionItem();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <AccordionPrimitive.Content asChild forceMount>\n          <motion.div\n            key=\"accordion-content\"\n            data-slot=\"accordion-content\"\n            initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n            animate={\n              isOpen\n                ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }\n                : { height: 0, opacity: 0, '--mask-stop': '0%' }\n            }\n            transition={transition}\n            style={{\n              maskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              WebkitMaskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              overflow: 'hidden',\n            }}\n            {...props}\n          />\n        </AccordionPrimitive.Content>\n      ) : (\n        isOpen && (\n          <AccordionPrimitive.Content asChild forceMount>\n            <motion.div\n              key=\"accordion-content\"\n              data-slot=\"accordion-content\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                overflow: 'hidden',\n              }}\n              {...props}\n            />\n          </AccordionPrimitive.Content>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionHeader,\n  AccordionTrigger,\n  AccordionContent,\n  useAccordionItem,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionHeaderProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n  type AccordionItemContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Accordion as AccordionPrimitive } from 'radix-ui';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype AccordionContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n};\n\ntype AccordionItemContextType = {\n  value: string;\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n};\n\nconst [AccordionProvider, useAccordion] =\n  useStrictContext<AccordionContextType>('AccordionContext');\n\nconst [AccordionItemProvider, useAccordionItem] =\n  useStrictContext<AccordionItemContextType>('AccordionItemContext');\n\ntype AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;\n\nfunction Accordion(props: AccordionProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props?.value,\n    defaultValue: props?.defaultValue,\n    onChange: props?.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <AccordionProvider value={{ value, setValue }}>\n      <AccordionPrimitive.Root\n        data-slot=\"accordion\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </AccordionProvider>\n  );\n}\n\ntype AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>;\n\nfunction AccordionItem(props: AccordionItemProps) {\n  const { value } = useAccordion();\n  const [isOpen, setIsOpen] = React.useState(\n    value?.includes(props?.value) ?? false,\n  );\n\n  React.useEffect(() => {\n    setIsOpen(value?.includes(props?.value) ?? false);\n  }, [value, props?.value]);\n\n  return (\n    <AccordionItemProvider value={{ isOpen, setIsOpen, value: props.value }}>\n      <AccordionPrimitive.Item data-slot=\"accordion-item\" {...props} />\n    </AccordionItemProvider>\n  );\n}\n\ntype AccordionHeaderProps = React.ComponentProps<\n  typeof AccordionPrimitive.Header\n>;\n\nfunction AccordionHeader(props: AccordionHeaderProps) {\n  return <AccordionPrimitive.Header data-slot=\"accordion-header\" {...props} />;\n}\n\ntype AccordionTriggerProps = React.ComponentProps<\n  typeof AccordionPrimitive.Trigger\n>;\n\nfunction AccordionTrigger(props: AccordionTriggerProps) {\n  return (\n    <AccordionPrimitive.Trigger data-slot=\"accordion-trigger\" {...props} />\n  );\n}\n\ntype AccordionContentProps = Omit<\n  React.ComponentProps<typeof AccordionPrimitive.Content>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'> & {\n    keepRendered?: boolean;\n  };\n\nfunction AccordionContent({\n  keepRendered = false,\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  ...props\n}: AccordionContentProps) {\n  const { isOpen } = useAccordionItem();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <AccordionPrimitive.Content asChild forceMount>\n          <motion.div\n            key=\"accordion-content\"\n            data-slot=\"accordion-content\"\n            initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n            animate={\n              isOpen\n                ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }\n                : { height: 0, opacity: 0, '--mask-stop': '0%' }\n            }\n            transition={transition}\n            style={{\n              maskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              WebkitMaskImage:\n                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n              overflow: 'hidden',\n            }}\n            {...props}\n          />\n        </AccordionPrimitive.Content>\n      ) : (\n        isOpen && (\n          <AccordionPrimitive.Content asChild forceMount>\n            <motion.div\n              key=\"accordion-content\"\n              data-slot=\"accordion-content\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n              exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                overflow: 'hidden',\n              }}\n              {...props}\n            />\n          </AccordionPrimitive.Content>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionHeader,\n  AccordionTrigger,\n  AccordionContent,\n  useAccordion,\n  useAccordionItem,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionHeaderProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n  type AccordionContextType,\n  type AccordionItemContextType,\n};",
       },
     ],
     keywords: [],
@@ -4167,6 +5104,48 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/primitives-radix-dropdown-menu',
+  },
+  'primitives-radix-files': {
+    name: 'primitives-radix-files',
+    description:
+      'A component that allows you to display a list of files and folders.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-accordion',
+      'https://animate-ui.com/r/primitives-effects-highlight',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/primitives/radix/files/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/primitives/radix/files.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport {\n  Accordion,\n  AccordionItem,\n  AccordionHeader,\n  AccordionTrigger,\n  AccordionContent,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionHeaderProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n} from '@/components/animate-ui/primitives/radix/accordion';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype FilesContextType = {\n  open: string[];\n};\n\ntype FolderContextType = {\n  isOpen: boolean;\n};\n\nconst [FilesProvider, useFiles] =\n  useStrictContext<FilesContextType>('FilesContext');\n\nconst [FolderProvider, useFolder] =\n  useStrictContext<FolderContextType>('FolderContext');\n\ntype BaseFilesProps = {\n  children: React.ReactNode;\n} & Omit<AccordionProps, 'type' | 'defaultValue' | 'value' | 'onValueChange'>;\n\ntype ControlledFilesProps = {\n  defaultOpen?: never;\n  open?: string[];\n  onOpenChange?: (open: string[]) => void;\n};\n\ntype UncontrolledFilesProps = {\n  defaultOpen: string[];\n  open?: never;\n  onOpenChange?: never;\n};\n\ntype FilesProps = BaseFilesProps &\n  (ControlledFilesProps | UncontrolledFilesProps);\n\nfunction Files({\n  children,\n  defaultOpen = [],\n  open,\n  onOpenChange,\n  style,\n  ...props\n}: FilesProps) {\n  const [openValue, setOpenValue] = useControlledState({\n    value: open,\n    defaultValue: defaultOpen,\n    onChange: onOpenChange,\n  });\n\n  return (\n    <FilesProvider value={{ open: openValue ?? [] }}>\n      <Accordion\n        data-slot=\"files\"\n        type=\"multiple\"\n        defaultValue={defaultOpen}\n        value={open}\n        onValueChange={setOpenValue}\n        style={{\n          position: 'relative',\n          overflow: 'auto',\n          ...style,\n        }}\n        {...props}\n      >\n        {children}\n      </Accordion>\n    </FilesProvider>\n  );\n}\n\ntype FilesHighlightProps = Omit<HighlightProps, 'controlledItems' | 'mode'>;\n\nfunction FilesHighlight({ hover = true, ...props }: FilesHighlightProps) {\n  return (\n    <Highlight\n      data-slot=\"files-highlight\"\n      controlledItems\n      mode=\"parent\"\n      hover={hover}\n      {...props}\n    />\n  );\n}\n\ntype FolderItemProps = AccordionItemProps;\n\nfunction FolderItem({ value, ...props }: FolderItemProps) {\n  const { open } = useFiles();\n\n  return (\n    <FolderProvider value={{ isOpen: open.includes(value) }}>\n      <AccordionItem data-slot=\"folder-item\" value={value} {...props} />\n    </FolderProvider>\n  );\n}\n\ntype FolderHeaderProps = AccordionHeaderProps;\n\nfunction FolderHeader(props: FolderHeaderProps) {\n  return <AccordionHeader data-slot=\"folder-header\" {...props} />;\n}\n\ntype FolderTriggerProps = AccordionTriggerProps;\n\nfunction FolderTrigger(props: FolderTriggerProps) {\n  return <AccordionTrigger data-slot=\"folder-trigger\" {...props} />;\n}\n\ntype FolderContentProps = AccordionContentProps;\n\nfunction FolderContent(props: FolderContentProps) {\n  return <AccordionContent data-slot=\"folder-content\" {...props} />;\n}\n\ntype FolderHighlightProps = HighlightItemProps;\n\nfunction FolderHighlight(props: FolderHighlightProps) {\n  return <HighlightItem data-slot=\"folder-highlight\" {...props} />;\n}\n\ntype FolderProps = React.ComponentProps<'div'>;\n\nfunction Folder(props: FolderProps) {\n  return <div data-slot=\"folder\" {...props} />;\n}\n\ntype FolderIconProps = HTMLMotionProps<'span'> & {\n  closeIcon: React.ReactNode;\n  openIcon: React.ReactNode;\n};\n\nfunction FolderIcon({\n  closeIcon,\n  openIcon,\n  transition = { duration: 0.15 },\n  ...props\n}: FolderIconProps) {\n  const { isOpen } = useFolder();\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      <motion.span\n        key={isOpen ? 'open' : 'close'}\n        data-slot=\"folder-icon\"\n        initial={{ scale: 0.9 }}\n        animate={{ scale: 1 }}\n        exit={{ scale: 0.9 }}\n        transition={transition}\n        {...props}\n      >\n        {isOpen ? openIcon : closeIcon}\n      </motion.span>\n    </AnimatePresence>\n  );\n}\n\ntype FolderLabelProps = React.ComponentProps<'span'>;\n\nfunction FolderLabel(props: FolderLabelProps) {\n  return <span data-slot=\"folder-label\" {...props} />;\n}\n\ntype FileHighlightProps = HighlightItemProps;\n\nfunction FileHighlight(props: FileHighlightProps) {\n  return <HighlightItem data-slot=\"file-highlight\" {...props} />;\n}\n\ntype FileProps = React.ComponentProps<'div'>;\n\nfunction File(props: FileProps) {\n  return <div data-slot=\"file\" {...props} />;\n}\n\ntype FileIconProps = React.ComponentProps<'span'>;\n\nfunction FileIcon(props: FileIconProps) {\n  return <span data-slot=\"file-icon\" {...props} />;\n}\n\ntype FileLabelProps = React.ComponentProps<'span'>;\n\nfunction FileLabel(props: FileLabelProps) {\n  return <span data-slot=\"file-label\" {...props} />;\n}\n\nexport {\n  Files,\n  FilesHighlight,\n  FolderItem,\n  FolderHeader,\n  FolderTrigger,\n  FolderContent,\n  FileHighlight,\n  File,\n  FileIcon,\n  FileLabel,\n  FolderHighlight,\n  Folder,\n  FolderIcon,\n  FolderLabel,\n  useFiles,\n  useFolder,\n  type FilesProps,\n  type FilesHighlightProps,\n  type FolderItemProps,\n  type FolderHeaderProps,\n  type FolderTriggerProps,\n  type FolderContentProps,\n  type FileHighlightProps,\n  type FileProps,\n  type FileIconProps,\n  type FileLabelProps,\n  type FolderHighlightProps,\n  type FolderProps,\n  type FolderIconProps,\n  type FolderLabelProps,\n  type FilesContextType,\n  type FolderContextType,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/primitives/radix/files/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'primitives-radix-files';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/primitives-radix-files',
   },
   'primitives-radix-hover-card': {
     name: 'primitives-radix-hover-card',
@@ -4740,14 +5719,17 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: [
+      'https://animate-ui.com/r/hooks-use-is-in-view',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
     files: [
       {
         path: 'registry/primitives/texts/rotating/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/texts/rotating.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype RotatingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string | string[];\n  duration?: number;\n  transition?: Transition;\n  y?: number;\n  delay?: number;\n} & UseIsInViewOptions;\n\nfunction RotatingText({\n  ref,\n  text,\n  y = -50,\n  duration = 2000,\n  delay = 0,\n  transition = { duration: 0.3, ease: 'easeOut' },\n  style,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}: RotatingTextProps) {\n  const [index, setIndex] = React.useState(0);\n\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  React.useEffect(() => {\n    if (!Array.isArray(text)) return;\n    if (inView && !isInView) return;\n\n    let intervalId: ReturnType<typeof setInterval> | undefined;\n\n    const timeoutId = setTimeout(() => {\n      setIndex((prev) => (prev + 1) % text.length);\n      intervalId = setInterval(\n        () => setIndex((prev) => (prev + 1) % text.length),\n        duration,\n      );\n    }, delay);\n\n    return () => {\n      clearTimeout(timeoutId);\n      if (intervalId) clearInterval(intervalId);\n    };\n  }, [text, duration, delay, inView, isInView]);\n\n  const currentText = Array.isArray(text) ? text[index] : text;\n\n  return (\n    <span\n      ref={localRef}\n      style={{\n        overflow: 'hidden',\n        paddingBlock: '0.25rem',\n        ...style,\n      }}\n      {...props}\n    >\n      <AnimatePresence mode=\"wait\">\n        {isInView && (\n          <motion.div\n            key={currentText}\n            transition={transition}\n            initial={{ opacity: 0, y: -y }}\n            animate={{ opacity: 1, y: 0 }}\n            exit={{ opacity: 0, y }}\n          >\n            {currentText}\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </span>\n  );\n}\n\nexport { RotatingText, type RotatingTextProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\nimport { useStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype RotatingTextContextType = {\n  currentText: string;\n  y: number;\n  isInView: boolean;\n};\n\nconst [RotatingTextProvider, useRotatingText] =\n  useStrictContext<RotatingTextContextType>('RotatingTextContext');\n\ntype RotatingTextContainerProps = React.ComponentProps<'div'> & {\n  text: string | string[];\n  duration?: number;\n  y?: number;\n  delay?: number;\n} & UseIsInViewOptions;\n\nfunction RotatingTextContainer({\n  ref,\n  text,\n  y = -50,\n  duration = 2000,\n  delay = 0,\n  style,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}: RotatingTextContainerProps) {\n  const [index, setIndex] = React.useState(0);\n\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  React.useEffect(() => {\n    if (!Array.isArray(text)) return;\n    if (inView && !isInView) return;\n\n    let intervalId: ReturnType<typeof setInterval> | undefined;\n\n    const timeoutId = setTimeout(() => {\n      setIndex((prev) => (prev + 1) % text.length);\n      intervalId = setInterval(\n        () => setIndex((prev) => (prev + 1) % text.length),\n        duration,\n      );\n    }, delay);\n\n    return () => {\n      clearTimeout(timeoutId);\n      if (intervalId) clearInterval(intervalId);\n    };\n  }, [text, duration, delay, inView, isInView]);\n\n  const currentText = Array.isArray(text) ? text[index] : text;\n\n  return (\n    <RotatingTextProvider value={{ currentText, y, isInView }}>\n      <div\n        ref={localRef}\n        style={{\n          overflow: 'hidden',\n          paddingBlock: '0.25rem',\n          ...style,\n        }}\n        {...props}\n      />\n    </RotatingTextProvider>\n  );\n}\n\ntype RotatingTextProps = Omit<HTMLMotionProps<'div'>, 'children'>;\n\nfunction RotatingText({\n  transition = { duration: 0.3, ease: 'easeOut' },\n  ...props\n}: RotatingTextProps) {\n  const { currentText, y, isInView } = useRotatingText();\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      {isInView && (\n        <motion.div\n          key={currentText}\n          transition={{ duration: 0.3, ease: 'easeOut' }}\n          initial={{ opacity: 0, y: -y }}\n          animate={{ opacity: 1, y: 0 }}\n          exit={{ opacity: 0, y }}\n          {...props}\n        >\n          {currentText}\n        </motion.div>\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  RotatingTextContainer,\n  RotatingText,\n  useRotatingText,\n  type RotatingTextContainerProps,\n  type RotatingTextProps,\n  type RotatingTextContextType,\n};",
       },
     ],
     keywords: [],

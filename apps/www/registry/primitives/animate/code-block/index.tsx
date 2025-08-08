@@ -1,0 +1,127 @@
+'use client';
+
+import * as React from 'react';
+
+import {
+  useIsInView,
+  type UseIsInViewOptions,
+} from '@/registry/hooks/use-is-in-view';
+
+type CodeBlockProps = React.ComponentProps<'div'> & {
+  code: string;
+  lang: string;
+  theme?: 'light' | 'dark';
+  themes?: { light: string; dark: string };
+  writing?: boolean;
+  duration?: number;
+  delay?: number;
+  onDone?: () => void;
+} & UseIsInViewOptions;
+
+function CodeBlock({
+  ref,
+  code,
+  lang,
+  theme = 'light',
+  themes = {
+    light: 'github-light',
+    dark: 'github-dark',
+  },
+  writing = false,
+  duration = 5000,
+  delay = 0,
+  onDone,
+  inView = false,
+  inViewOnce = true,
+  inViewMargin = '0px',
+  ...props
+}: CodeBlockProps) {
+  const { ref: localRef, isInView } = useIsInView(
+    ref as React.Ref<HTMLDivElement>,
+    {
+      inView,
+      inViewOnce,
+      inViewMargin,
+    },
+  );
+
+  const [visibleCode, setVisibleCode] = React.useState('');
+  const [highlightedCode, setHighlightedCode] = React.useState('');
+  const [isDone, setIsDone] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!visibleCode.length || !isInView) return;
+
+    const loadHighlightedCode = async () => {
+      try {
+        const { codeToHtml } = await import('shiki');
+
+        const highlighted = await codeToHtml(visibleCode, {
+          lang,
+          themes,
+          defaultColor: theme,
+        });
+
+        setHighlightedCode(highlighted);
+      } catch (e) {
+        console.error(`Language "${lang}" could not be loaded.`, e);
+      }
+    };
+
+    loadHighlightedCode();
+  }, [lang, themes, writing, isInView, duration, delay, visibleCode]);
+
+  React.useEffect(() => {
+    if (!writing) {
+      setVisibleCode(code);
+      onDone?.();
+      return;
+    }
+
+    if (!code.length || !isInView) return;
+
+    const characters = Array.from(code);
+    let index = 0;
+    const totalDuration = duration;
+    const interval = totalDuration / characters.length;
+    let intervalId: NodeJS.Timeout;
+
+    const timeout = setTimeout(() => {
+      intervalId = setInterval(() => {
+        if (index < characters.length) {
+          setVisibleCode((prev) => {
+            const currentIndex = index;
+            index += 1;
+            return prev + characters[currentIndex];
+          });
+          localRef.current?.scrollTo({
+            top: localRef.current?.scrollHeight,
+            behavior: 'smooth',
+          });
+        } else {
+          clearInterval(intervalId);
+          setIsDone(true);
+          onDone?.();
+        }
+      }, interval);
+    }, delay);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(intervalId);
+    };
+  }, [code, duration, delay, isInView, writing, onDone]);
+
+  return (
+    <div
+      ref={localRef}
+      data-slot="code-block"
+      data-writing={writing}
+      data-done={isDone}
+      dangerouslySetInnerHTML={{ __html: highlightedCode }}
+      {...props}
+    />
+  );
+}
+
+export { CodeBlock, type CodeBlockProps };

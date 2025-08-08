@@ -12,6 +12,7 @@ import {
 
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { useMotionValueState } from '@/registry/hooks/use-motion-value-state';
 
 type ScrollProgressDirection = 'horizontal' | 'vertical';
 
@@ -20,6 +21,7 @@ type ScrollProgressContextType = {
   progress: MotionValue<number>;
   scale: MotionValue<number>;
   direction: ScrollProgressDirection;
+  global: boolean;
 };
 
 const [LocalScrollProgressProvider, useScrollProgress] =
@@ -54,20 +56,29 @@ function ScrollProgressProvider({
         progress,
         scale,
         direction,
+        global,
       }}
       {...props}
     />
   );
 }
 
-type ScrollProgressProps = WithAsChild<HTMLMotionProps<'div'>>;
+type ScrollProgressMode = 'width' | 'height' | 'scaleY' | 'scaleX';
+
+type ScrollProgressProps = WithAsChild<
+  HTMLMotionProps<'div'> & {
+    mode?: ScrollProgressMode;
+  }
+>;
 
 function ScrollProgress({
   style,
+  mode = 'width',
   asChild = false,
   ...props
 }: ScrollProgressProps) {
-  const { scale, direction } = useScrollProgress();
+  const { scale, direction, global } = useScrollProgress();
+  const scaleValue = useMotionValueState(scale);
 
   const Component = asChild ? Slot : motion.div;
 
@@ -75,11 +86,16 @@ function ScrollProgress({
     <Component
       data-slot="scroll-progress"
       data-direction={direction}
+      data-mode={mode}
+      data-global={global}
       style={{
-        top: 0,
-        insetInline: 0,
-        transformOrigin: 'left',
-        scaleX: scale,
+        ...(mode === 'width' || mode === 'height'
+          ? {
+              [mode]: scaleValue * 100 + '%',
+            }
+          : {
+              [mode]: scale,
+            }),
         ...style,
       }}
       {...props}
@@ -105,6 +121,7 @@ function ScrollProgressContainer({
       ref={containerRef}
       data-slot="scroll-progress-container"
       data-direction={direction}
+      data-global={global}
       {...props}
     />
   );
@@ -119,5 +136,6 @@ export {
   type ScrollProgressProps,
   type ScrollProgressContainerProps,
   type ScrollProgressDirection,
+  type ScrollProgressMode,
   type ScrollProgressContextType,
 };

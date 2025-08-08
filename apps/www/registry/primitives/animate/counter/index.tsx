@@ -1,0 +1,138 @@
+'use client';
+
+import * as React from 'react';
+import { motion, type HTMLMotionProps, type Transition } from 'motion/react';
+
+import {
+  SlidingNumber,
+  type SlidingNumberProps,
+} from '@/registry/primitives/texts/sliding-number';
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { useControlledState } from '@/registry/hooks/use-controlled-state';
+
+type CounterContextType = {
+  value: number;
+  setValue: (value: number) => void;
+};
+
+const [CounterProvider, useCounter] =
+  useStrictContext<CounterContextType>('CounterContext');
+
+type BaseCounterProps = HTMLMotionProps<'div'> & {
+  children: React.ReactNode;
+  transition?: Transition;
+};
+
+type UnControlledCounterProps = BaseCounterProps & {
+  defaultValue?: number;
+  value?: never;
+  onValueChange?: never;
+};
+
+type ControlledCounterProps = BaseCounterProps & {
+  value: number;
+  defaultValue?: never;
+  onValueChange?: (value: number) => void;
+};
+
+type CounterProps = WithAsChild<
+  UnControlledCounterProps | ControlledCounterProps
+>;
+
+function Counter({
+  value,
+  defaultValue = 0,
+  onValueChange,
+  transition = { type: 'spring', bounce: 0, stiffness: 300, damping: 30 },
+  asChild = false,
+  ...props
+}: CounterProps) {
+  const [number, setNumber] = useControlledState({
+    value,
+    defaultValue,
+    onChange: onValueChange,
+  });
+
+  const Component = asChild ? Slot : motion.div;
+
+  return (
+    <CounterProvider value={{ value: number, setValue: setNumber }}>
+      <Component
+        data-slot="counter"
+        layout
+        transition={transition}
+        {...props}
+      />
+    </CounterProvider>
+  );
+}
+
+type CounterMinusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;
+
+const CounterMinusButton = ({
+  onClick,
+  asChild = false,
+  ...props
+}: CounterMinusButtonProps) => {
+  const { setValue, value } = useCounter();
+
+  const Component = asChild ? Slot : motion.button;
+
+  return (
+    <Component
+      data-slot="counter-minus-button"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        setValue(value - 1);
+        onClick?.(e);
+      }}
+      {...props}
+    />
+  );
+};
+
+type CounterPlusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;
+
+const CounterPlusButton = ({
+  onClick,
+  asChild = false,
+  ...props
+}: CounterPlusButtonProps) => {
+  const { setValue, value } = useCounter();
+
+  const Component = asChild ? Slot : motion.button;
+
+  return (
+    <Component
+      data-slot="counter-plus-button"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        setValue(value + 1);
+        onClick?.(e);
+      }}
+      {...props}
+    />
+  );
+};
+
+type CounterNumberProps = Omit<SlidingNumberProps, 'number'>;
+
+const CounterNumber = (props: CounterNumberProps) => {
+  const { value } = useCounter();
+
+  return <SlidingNumber data-slot="counter-number" number={value} {...props} />;
+};
+
+export {
+  Counter,
+  CounterMinusButton,
+  CounterPlusButton,
+  CounterNumber,
+  type CounterProps,
+  type CounterMinusButtonProps,
+  type CounterPlusButtonProps,
+  type CounterContextType,
+};

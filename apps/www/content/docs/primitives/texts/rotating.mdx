@@ -15,25 +15,33 @@ author:
 ## Usage
 
 ```tsx
-<RotatingText text="Rotating Text" />
+<RotatingTextContainer text={['Rotating', 'Text']}>
+  <RotatingText />
+</RotatingTextContainer>
 ```
 
 ## API Reference
 
-### RollingText
+### RotatingTextContainer
 
 <TypeTable
   type={{
     text: {
-      description: 'The text to display.',
-      type: 'string',
+      description: 'The text(s) to display.',
+      type: 'string | string[]',
       required: true,
     },
-    transition: {
-      description: 'The transition to use.',
-      type: 'Transition',
+    duration: {
+      description: 'The duration of the animation.',
+      type: 'number',
       required: false,
-      default: "{ duration: 2, ease: 'easeInOut' }",
+      default: '2000',
+    },
+    y: {
+      description: 'The y position of the text.',
+      type: 'number',
+      required: false,
+      default: '-50',
     },
     inView: {
       description: 'Whether the text is in view.',
@@ -60,8 +68,26 @@ author:
       default: '0',
     },
     '...props': {
-      description: 'The props of the rolling text.',
-      type: 'React.ComponentProps<"span">',
+      description: 'The props of the rotating text container.',
+      type: 'React.ComponentProps<"div">',
+      required: false,
+    },
+  }}
+/>
+
+### RotatingText
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition to use.',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 0.3, ease: 'easeInOut' }",
+    },
+    '...props': {
+      description: 'The props of the rotating text.',
+      type: 'HTMLMotionProps<"div">',
       required: false,
     },
   }}

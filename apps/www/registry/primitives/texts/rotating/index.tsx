@@ -1,38 +1,46 @@
 'use client';
 
 import * as React from 'react';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
 import {
   useIsInView,
   type UseIsInViewOptions,
 } from '@/registry/hooks/use-is-in-view';
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
 
-type RotatingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
+type RotatingTextContextType = {
+  currentText: string;
+  y: number;
+  isInView: boolean;
+};
+
+const [RotatingTextProvider, useRotatingText] =
+  useStrictContext<RotatingTextContextType>('RotatingTextContext');
+
+type RotatingTextContainerProps = React.ComponentProps<'div'> & {
   text: string | string[];
   duration?: number;
-  transition?: Transition;
   y?: number;
   delay?: number;
 } & UseIsInViewOptions;
 
-function RotatingText({
+function RotatingTextContainer({
   ref,
   text,
   y = -50,
   duration = 2000,
   delay = 0,
-  transition = { duration: 0.3, ease: 'easeOut' },
   style,
   inView = false,
   inViewMargin = '0px',
   inViewOnce = true,
   ...props
-}: RotatingTextProps) {
+}: RotatingTextContainerProps) {
   const [index, setIndex] = React.useState(0);
 
   const { ref: localRef, isInView } = useIsInView(
-    ref as React.Ref<HTMLElement>,
+    ref as React.Ref<HTMLDivElement>,
     {
       inView,
       inViewOnce,
@@ -63,30 +71,51 @@ function RotatingText({
   const currentText = Array.isArray(text) ? text[index] : text;
 
   return (
-    <span
-      ref={localRef}
-      style={{
-        overflow: 'hidden',
-        paddingBlock: '0.25rem',
-        ...style,
-      }}
-      {...props}
-    >
-      <AnimatePresence mode="wait">
-        {isInView && (
-          <motion.div
-            key={currentText}
-            transition={transition}
-            initial={{ opacity: 0, y: -y }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y }}
-          >
-            {currentText}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </span>
+    <RotatingTextProvider value={{ currentText, y, isInView }}>
+      <div
+        ref={localRef}
+        style={{
+          overflow: 'hidden',
+          paddingBlock: '0.25rem',
+          ...style,
+        }}
+        {...props}
+      />
+    </RotatingTextProvider>
   );
 }
 
-export { RotatingText, type RotatingTextProps };
+type RotatingTextProps = Omit<HTMLMotionProps<'div'>, 'children'>;
+
+function RotatingText({
+  transition = { duration: 0.3, ease: 'easeOut' },
+  ...props
+}: RotatingTextProps) {
+  const { currentText, y, isInView } = useRotatingText();
+
+  return (
+    <AnimatePresence mode="wait">
+      {isInView && (
+        <motion.div
+          key={currentText}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: -y }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y }}
+          {...props}
+        >
+          {currentText}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+export {
+  RotatingTextContainer,
+  RotatingText,
+  useRotatingText,
+  type RotatingTextContainerProps,
+  type RotatingTextProps,
+  type RotatingTextContextType,
+};

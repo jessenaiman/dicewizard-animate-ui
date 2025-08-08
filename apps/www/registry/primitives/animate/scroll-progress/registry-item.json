@@ -7,7 +7,8 @@
   "dependencies": ["motion"],
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-animate-slot",
-    "https://animate-ui.com/r/hooks-use-strict-context"
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/hooks-use-motion-value-state"
   ],
   "files": [
     {

@@ -67,7 +67,8 @@ author:
 <TypeTable
   type={{
     asChild: {
-      description: 'Whether the CursorContainer is as a child',
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior.',
       type: 'boolean',
       required: false,
       default: 'false',
@@ -85,7 +86,8 @@ author:
 <TypeTable
   type={{
     asChild: {
-      description: 'Whether the CursorContainer is as a child',
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior.',
       type: 'boolean',
       required: false,
       default: 'false',
@@ -103,13 +105,44 @@ author:
 <TypeTable
   type={{
     asChild: {
-      description: 'Whether the CursorContainer is as a child',
+      description:
+        'Change the default rendered element for the one passed as a child, merging their props and behavior.',
       type: 'boolean',
       required: false,
       default: 'false',
     },
+    side: {
+      description: 'The side of the CursorFollow',
+      type: 'CursorFollowSide',
+      required: false,
+      default: 'bottom',
+    },
+    sideOffset: {
+      description: 'The side offset of the CursorFollow',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+    align: {
+      description: 'The align of the CursorFollow',
+      type: 'CursorFollowAlign',
+      required: false,
+      default: 'end',
+    },
+    alignOffset: {
+      description: 'The align offset of the CursorFollow',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
+    transition: {
+      description: 'The transition of the CursorFollow',
+      type: 'SpringOptions',
+      required: false,
+      default: '{ stiffness: 500, damping: 50, bounce: 0 }',
+    },
     '...props': {
-      description: 'The props of the CursorContainer',
+      description: 'The props of the CursorFollow',
       type: 'HTMLMotionProps<"div">',
       required: false,
     },

@@ -18,6 +18,166 @@
       "files": []
     },
     {
+      "name": "components-community-management-bar",
+      "type": "registry:ui",
+      "title": "Management Bar",
+      "description": "A management bar for managing items.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-texts-sliding-number"
+      ],
+      "files": [
+        {
+          "path": "registry/components/community/management-bar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/community/management-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-community-pin-list",
+      "type": "registry:ui",
+      "title": "Pin List",
+      "description": "A playful list for pinning and unpinning items, with smooth animated transitions as items move between groups.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/components/community/pin-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/community/pin-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-community-playful-todolist",
+      "type": "registry:ui",
+      "title": "Playful Todolist",
+      "description": "A playful todolist component with animated wavy strikethroughs for each completed task.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/components/community/playful-todolist/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/community/playful-todolist.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-community-management-bar",
+      "type": "registry:ui",
+      "title": "Management Bar Demo",
+      "description": "Demo showing a management bar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-community-management-bar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/community/management-bar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/community/management-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-community-pin-list",
+      "type": "registry:ui",
+      "title": "Pin List Demo",
+      "description": "Demo showing a pin list.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-community-pin-list"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/community/pin-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/community/pin-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-community-playful-todolist",
+      "type": "registry:ui",
+      "title": "Playful Todolist Demo",
+      "description": "Demo showing a playful todolist.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-community-playful-todolist"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/community/playful-todolist/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/community/playful-todolist.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-animate-code-block",
+      "type": "registry:ui",
+      "title": "Animate Code Block Demo",
+      "description": "Demo showing an animated code block.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-code-block"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/code-block/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/code-block.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "CodeBlock": {
+            "delay": {
+              "value": 0,
+              "min": 0,
+              "max": 3000,
+              "step": 100
+            },
+            "duration": {
+              "value": 10000,
+              "min": 0,
+              "max": 30000,
+              "step": 1000
+            },
+            "writing": {
+              "value": true
+            },
+            "cursor": {
+              "value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-animate-counter",
+      "type": "registry:ui",
+      "title": "Animate Counter Demo",
+      "description": "Demo showing an animated counter.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-counter"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/counter/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/counter.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-animate-cursor",
       "type": "registry:ui",
       "title": "Animate Cursor Demo",
@@ -44,9 +204,67 @@
             "enableCursorFollow": {
               "value": true
             }
+          },
+          "CursorFollow": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "right": "right",
+                "bottom": "bottom",
+                "left": "left"
+              }
+            },
+            "sideOffset": {
+              "value": 15
+            },
+            "align": {
+              "value": "end",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 5
+            }
           }
         }
       }
+    },
+    {
+      "name": "demo-primitives-animate-motion-grid",
+      "type": "registry:ui",
+      "title": "Animate Motion Grid Demo",
+      "description": "Demo showing an animated motion grid.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-motion-grid",
+        "https://animate-ui.com/r/primitives-texts-rotating"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/motion-grid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/motion-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-animate-pinned-list",
+      "type": "registry:ui",
+      "title": "Animate Pinned List Demo",
+      "description": "Demo showing an animated pinned list.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-pinned-list"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/pinned-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/pinned-list.tsx"
+        }
+      ]
     },
     {
       "name": "demo-primitives-animate-scroll-progress",
@@ -81,6 +299,22 @@
       }
     },
     {
+      "name": "demo-primitives-animate-spring",
+      "type": "registry:ui",
+      "title": "Animate Spring Demo",
+      "description": "Demo showing an animated spring.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-spring"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/spring/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/spring.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-animate-tabs",
       "type": "registry:ui",
       "title": "Animate Tabs Demo",
@@ -95,6 +329,59 @@
           "target": "components/animate-ui/demo/primitives/animate/tabs.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-primitives-animate-tooltip",
+      "type": "registry:ui",
+      "title": "Animate Tooltip Demo",
+      "description": "Demo showing an animated tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "TooltipProvider": {
+            "openDelay": {
+              "value": 700
+            },
+            "closeDelay": {
+              "value": 300
+            }
+          },
+          "Tooltip": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 0
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-base-accordion",
@@ -175,6 +462,25 @@
           }
         }
       }
+    },
+    {
+      "name": "demo-primitives-base-files",
+      "type": "registry:ui",
+      "title": "Base Files Demo",
+      "description": "Demo showing an animated base files.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-files"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/files.tsx"
+        }
+      ]
     },
     {
       "name": "demo-primitives-base-popover",
@@ -1136,6 +1442,25 @@
       }
     },
     {
+      "name": "demo-primitives-radix-files",
+      "type": "registry:ui",
+      "title": "Radix Files Demo",
+      "description": "Demo showing an animated radix files.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-files"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/files.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-radix-hover-card",
       "type": "registry:ui",
       "title": "Radix Hover Card Demo",
@@ -1811,6 +2136,19 @@
       ]
     },
     {
+      "name": "hooks-use-motion-value-state",
+      "type": "registry:ui",
+      "title": "useMotionValueState",
+      "description": "A hook that allows you to use a motion value state.",
+      "files": [
+        {
+          "path": "registry/hooks/use-motion-value-state/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/hooks/use-motion-value-state.tsx"
+        }
+      ]
+    },
+    {
       "name": "hooks-use-strict-context",
       "type": "registry:ui",
       "title": "useStrictContext",
@@ -1820,6 +2158,47 @@
           "path": "registry/hooks/use-strict-context/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/hooks/use-strict-context.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "A code block component that animates the code as it is written.",
+      "dependencies": [
+        "shiki"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/code-block/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/code-block.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-counter",
+      "type": "registry:ui",
+      "title": "Counter",
+      "description": "A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/primitives-animate-sliding-number",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/counter/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/counter.tsx"
         }
       ]
     },
@@ -1844,6 +2223,45 @@
       ]
     },
     {
+      "name": "primitives-animate-motion-grid",
+      "type": "registry:ui",
+      "title": "Motion Grid",
+      "description": "A grid that displays animations in a grid.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/motion-grid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/motion-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-pinned-list",
+      "type": "registry:ui",
+      "title": "Pin List",
+      "description": "A pin list component that allows you to pin items to the top of the list.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/pinned-list/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/pinned-list.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-animate-scroll-progress",
       "type": "registry:ui",
       "title": "Scroll Progress",
@@ -1853,7 +2271,8 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-motion-value-state"
       ],
       "files": [
         {
@@ -1880,6 +2299,27 @@
       ]
     },
     {
+      "name": "primitives-animate-spring",
+      "type": "registry:ui",
+      "title": "Spring",
+      "description": "A flexible, animated spring component that attaches a draggable element to its origin with a spring line.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-motion-value-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/spring/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/spring.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-animate-tabs",
       "type": "registry:ui",
       "title": "Tabs",
@@ -1897,6 +2337,26 @@
           "path": "registry/primitives/animate/tabs/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/animate/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "An animated tooltip that shows contextual info on hover or focus and smoothly glides to the next element without disappearing between transitions.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/tooltip.tsx"
         }
       ]
     },
@@ -1960,6 +2420,28 @@
           "path": "registry/primitives/base/collapsible/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/base/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-files",
+      "type": "registry:ui",
+      "title": "Files",
+      "description": "A component that allows you to display a list of files and folders.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-accordion",
+        "https://animate-ui.com/r/primitives-effects-highlight",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/files.tsx"
         }
       ]
     },
@@ -2541,6 +3023,28 @@
       ]
     },
     {
+      "name": "primitives-radix-files",
+      "type": "registry:ui",
+      "title": "Files",
+      "description": "A component that allows you to display a list of files and folders.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-accordion",
+        "https://animate-ui.com/r/primitives-effects-highlight",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/files.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-radix-hover-card",
       "type": "registry:ui",
       "title": "Radix Hover Card",
@@ -2833,7 +3337,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "https://animate-ui.com/r/hooks-use-is-in-view",
+        "https://animate-ui.com/r/hooks-use-strict-context"
       ],
       "files": [
         {

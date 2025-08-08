@@ -13,6 +13,7 @@ type AccordionContextType = {
 };
 
 type AccordionItemContextType = {
+  value: string;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 };
@@ -58,7 +59,7 @@ function AccordionItem(props: AccordionItemProps) {
   }, [value, props?.value]);
 
   return (
-    <AccordionItemProvider value={{ isOpen, setIsOpen }}>
+    <AccordionItemProvider value={{ isOpen, setIsOpen, value: props.value }}>
       <AccordionPrimitive.Item data-slot="accordion-item" {...props} />
     </AccordionItemProvider>
   );
@@ -153,11 +154,13 @@ export {
   AccordionHeader,
   AccordionTrigger,
   AccordionContent,
+  useAccordion,
   useAccordionItem,
   type AccordionProps,
   type AccordionItemProps,
   type AccordionHeaderProps,
   type AccordionTriggerProps,
   type AccordionContentProps,
+  type AccordionContextType,
   type AccordionItemContextType,
 };

@@ -3,5 +3,12 @@
   "description": "Animated Components",
   "icon": "Component",
   "root": true,
-  "pages": ["---Components---", "index"]
+  "pages": [
+    "---Components---",
+    "index",
+    "---Community---",
+    "community/management-bar",
+    "community/pin-list",
+    "community/playful-todolist"
+  ]
 }

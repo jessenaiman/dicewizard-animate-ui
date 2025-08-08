@@ -25,15 +25,19 @@ export const ScrollProgressDemo = ({
     <div className="absolute inset-0" key={String(global) + direction}>
       <div className="relative h-full w-full overflow-hidden">
         <ScrollProgressProvider global={global} direction={direction}>
-          <ScrollProgress
+          <div
             className={cn(
-              'z-50 bg-foreground h-1',
-              global ? 'fixed' : 'absolute',
+              'z-50 ',
+              global
+                ? 'fixed top-0 left-0 right-0'
+                : 'absolute bottom-3 left-3 right-3',
             )}
-          />
+          >
+            <ScrollProgress className="bg-foreground h-1.5 data-[global=false]:rounded-full" />
+          </div>
 
           {global ? (
-            <div className="size-full flex items-center justify-center dark:bg-neutral-950 bg-white">
+            <div className="size-full flex items-center justify-center">
               <p className="flex items-center gap-2 font-medium">
                 Scroll the page to see the progress bar
               </p>
@@ -43,7 +47,7 @@ export const ScrollProgressDemo = ({
               <div
                 className={cn('flex', direction === 'vertical' && 'flex-col')}
               >
-                <div className="w-full h-[400px] shrink-0 flex items-center justify-center dark:bg-neutral-950 bg-white">
+                <div className="w-full h-[400px] shrink-0 flex items-center justify-center">
                   <p className="flex items-center gap-2 font-medium">
                     Scroll to see the progress bar{' '}
                     <motion.span
@@ -60,10 +64,14 @@ export const ScrollProgressDemo = ({
                     </motion.span>
                   </p>
                 </div>
-                <div className="w-full h-[400px] shrink-0 dark:bg-neutral-900 bg-neutral-100" />
-                <div className="w-full h-[400px] shrink-0 dark:bg-neutral-950 bg-white" />
-                <div className="w-full h-[400px] shrink-0 dark:bg-neutral-900 bg-neutral-100" />
-                <div className="w-full h-[400px] shrink-0 dark:bg-neutral-950 bg-white" />
+                <div className="w-full h-[400px] shrink-0 p-3">
+                  <div className="size-full bg-accent rounded-xl" />
+                </div>
+                <div className="w-full h-[400px] shrink-0" />
+                <div className="w-full h-[400px] shrink-0 p-3">
+                  <div className="size-full bg-accent rounded-xl" />
+                </div>
+                <div className="w-full h-[400px] shrink-0" />
               </div>
             </ScrollProgressContainer>
           )}

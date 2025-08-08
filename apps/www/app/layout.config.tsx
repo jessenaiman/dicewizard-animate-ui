@@ -51,8 +51,8 @@ export const baseOptions: BaseLayoutProps = {
       secondary: false,
     },
     {
-      text: "What's new in 1.0",
-      url: '/docs/1.0',
+      text: 'Changelog',
+      url: '/docs/changelog',
       secondary: false,
     },
     {
