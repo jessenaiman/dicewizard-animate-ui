@@ -87,7 +87,7 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              <TooltipArrow side={side}>
+              <TooltipArrow sideOffset={4}>
                 <div className="bg-primary size-2.5 rotate-45" />
               </TooltipArrow>
               <p>GitHub</p>

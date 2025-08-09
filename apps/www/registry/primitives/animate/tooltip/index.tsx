@@ -246,50 +246,53 @@ function TooltipProvider({
   );
 }
 
+type RenderedTooltipContextType = {
+  side: Side;
+  align: Align;
+};
+
+const oppositeSide: Record<Side, Side> = {
+  top: 'bottom',
+  bottom: 'top',
+  left: 'right',
+  right: 'left',
+} as const;
+
+const [RenderedTooltipProvider, useRenderedTooltip] =
+  useStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');
+
 type TooltipArrowProps = React.ComponentProps<'div'> & {
   side?: Side;
   sideOffset?: number;
 };
 
 function TooltipArrow({
-  side = 'bottom',
+  side: sideOverride,
   sideOffset = 0,
   style,
   ...props
 }: TooltipArrowProps) {
-  const { currentTooltip } = useGlobalTooltip();
+  const rendered = useRenderedTooltip();
+
+  const effectiveSide: Side | undefined =
+    sideOverride ?? (rendered?.side && oppositeSide[rendered.side]);
+  const effectiveAlign: Align | undefined = rendered?.align;
 
   const centered: Record<Side, React.CSSProperties> = {
-    top: {
-      left: '50%',
-      transform: 'translateX(-50%)',
-      top: sideOffset,
-    },
-    bottom: {
-      left: '50%',
-      transform: 'translateX(-50%)',
-      bottom: sideOffset,
-    },
-    left: {
-      top: '50%',
-      transform: 'translateY(-50%)',
-      left: sideOffset,
-    },
-    right: {
-      top: '50%',
-      transform: 'translateY(-50%)',
-      right: sideOffset,
-    },
+    top: { left: '50%', transform: 'translateX(-50%)', top: -sideOffset },
+    bottom: { left: '50%', transform: 'translateX(-50%)', bottom: -sideOffset },
+    left: { top: '50%', transform: 'translateY(-50%)', left: -sideOffset },
+    right: { top: '50%', transform: 'translateY(-50%)', right: -sideOffset },
   };
 
   return (
     <div
       data-slot="tooltip-arrow"
-      data-side={side}
-      data-align={currentTooltip?.align}
+      data-side={effectiveSide}
+      data-align={effectiveAlign}
       style={{
         position: 'absolute',
-        ...centered[side],
+        ...(effectiveSide ? centered[effectiveSide] : {}),
         ...style,
       }}
       {...props}
@@ -310,27 +313,40 @@ function TooltipPortal({ children }: TooltipPortalProps) {
 function TooltipOverlay() {
   const { currentTooltip, transition, globalId } = useGlobalTooltip();
 
-  const position = React.useMemo(() => {
-    if (!currentTooltip) return null;
-    return getTooltipPosition({
-      rect: currentTooltip.rect,
-      side: currentTooltip.side,
-      sideOffset: currentTooltip.sideOffset,
-      align: currentTooltip.align,
-      alignOffset: currentTooltip.alignOffset,
-    });
+  const [rendered, setRendered] = React.useState<{
+    data: TooltipData | null;
+    open: boolean;
+  }>({ data: null, open: false });
+
+  React.useEffect(() => {
+    if (currentTooltip) {
+      setRendered({ data: currentTooltip, open: true });
+    } else {
+      setRendered((p) => (p.data ? { ...p, open: false } : p));
+    }
   }, [currentTooltip]);
 
-  const Component = currentTooltip?.contentAsChild ? Slot : motion.div;
+  const position = React.useMemo(() => {
+    if (!rendered.data) return null;
+    return getTooltipPosition({
+      rect: rendered.data.rect,
+      side: rendered.data.side,
+      sideOffset: rendered.data.sideOffset,
+      align: rendered.data.align,
+      alignOffset: rendered.data.alignOffset,
+    });
+  }, [rendered.data]);
+
+  const Component = rendered.data?.contentAsChild ? Slot : motion.div;
 
   return (
     <AnimatePresence>
-      {currentTooltip && currentTooltip.contentProps && position && (
+      {rendered.data && position && (
         <TooltipPortal>
           <motion.div
             data-slot="tooltip-overlay"
-            data-side={currentTooltip.side}
-            data-align={currentTooltip.align}
+            data-side={rendered.data.side}
+            data-align={rendered.data.align}
             style={{
               position: 'fixed',
               zIndex: 50,
@@ -339,21 +355,34 @@ function TooltipOverlay() {
               transform: position.transform,
             }}
           >
-            <Component
-              data-slot="tooltip-content"
-              data-side={currentTooltip.side}
-              data-align={currentTooltip.align}
-              layoutId={`tooltip-content-${globalId}`}
-              initial={{ opacity: 0, scale: 0, ...position.initial }}
-              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0, ...position.initial }}
-              transition={transition}
-              {...currentTooltip.contentProps}
-              style={{
-                position: 'relative',
-                ...currentTooltip.contentProps?.style,
-              }}
-            />
+            <RenderedTooltipProvider
+              value={{ side: rendered.data.side, align: rendered.data.align }}
+            >
+              <Component
+                data-slot="tooltip-content"
+                data-side={rendered.data.side}
+                data-align={rendered.data.align}
+                layoutId={`tooltip-content-${globalId}`}
+                initial={{ opacity: 0, scale: 0, ...position.initial }}
+                animate={
+                  rendered.open
+                    ? { opacity: 1, scale: 1, x: 0, y: 0 }
+                    : { opacity: 0, scale: 0, ...position.initial }
+                }
+                exit={{ opacity: 0, scale: 0, ...position.initial }}
+                onAnimationComplete={() => {
+                  if (!rendered.open) {
+                    setRendered({ data: null, open: false });
+                  }
+                }}
+                transition={transition}
+                {...rendered.data.contentProps}
+                style={{
+                  position: 'relative',
+                  ...rendered.data.contentProps?.style,
+                }}
+              />
+            </RenderedTooltipProvider>
           </motion.div>
         </TooltipPortal>
       )}
