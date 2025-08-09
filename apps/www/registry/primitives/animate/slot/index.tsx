@@ -72,7 +72,7 @@ function Slot<T extends HTMLElement = HTMLElement>({
     () =>
       isAlreadyMotion
         ? (children.type as React.ElementType)
-        : motion(children.type as React.ElementType),
+        : motion.create(children.type as React.ElementType),
     [isAlreadyMotion, children.type],
   );
 

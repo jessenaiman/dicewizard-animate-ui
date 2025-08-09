@@ -68,6 +68,9 @@ importers:
       '@base-ui-components/react':
         specifier: 1.0.0-beta.1
         version: 1.0.0-beta.1(@types/react@19.1.8)(react-dom@19.1.0)(react@19.1.0)
+      '@floating-ui/dom':
+        specifier: ^1.7.3
+        version: 1.7.3
       '@headlessui/react':
         specifier: ^2.2.6
         version: 2.2.6(react-dom@19.1.0)(react@19.1.0)
@@ -1157,29 +1160,16 @@ packages:
       '@eslint/core': 0.13.0
       levn: 0.4.1
 
-  /@floating-ui/core@1.7.0:
-    resolution: {integrity: sha512-FRdBLykrPPA6P76GGGqlex/e7fbe0F1ykgxHYNXQsH/iTEtjMj/f9bpY5oQqbjt5VgZvgz/uKXbGuROijh3VLA==}
-    dependencies:
-      '@floating-ui/utils': 0.2.9
-    dev: false
-
-  /@floating-ui/core@1.7.2:
-    resolution: {integrity: sha512-wNB5ooIKHQc+Kui96jE/n69rHFWAVoxn5CAzL1Xdd8FG03cgY3MLO+GF9U3W737fYDSgPWA6MReKhBQBop6Pcw==}
+  /@floating-ui/core@1.7.3:
+    resolution: {integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==}
     dependencies:
       '@floating-ui/utils': 0.2.10
     dev: false
 
-  /@floating-ui/dom@1.7.0:
-    resolution: {integrity: sha512-lGTor4VlXcesUMh1cupTUTDoCxMb0V6bm3CnxHzQcw8Eaf1jQbgQX4i02fYgT0vJ82tb5MZ4CZk1LRGkktJCzg==}
+  /@floating-ui/dom@1.7.3:
+    resolution: {integrity: sha512-uZA413QEpNuhtb3/iIKoYMSK07keHPYeXF02Zhd6e213j+d1NamLix/mCLxBUDW/Gx52sPH2m+chlUsyaBs/Ag==}
     dependencies:
-      '@floating-ui/core': 1.7.0
-      '@floating-ui/utils': 0.2.9
-    dev: false
-
-  /@floating-ui/dom@1.7.2:
-    resolution: {integrity: sha512-7cfaOQuCS27HD7DX+6ib2OrnW+b4ZBwDNnCcT0uTyidcmyWb03FnQqJybDBoCnpdxwBSfA94UAYlRCt7mV+TbA==}
-    dependencies:
-      '@floating-ui/core': 1.7.2
+      '@floating-ui/core': 1.7.3
       '@floating-ui/utils': 0.2.10
     dev: false
 
@@ -1189,7 +1179,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@floating-ui/dom': 1.7.0
+      '@floating-ui/dom': 1.7.3
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     dev: false
@@ -1200,7 +1190,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@floating-ui/dom': 1.7.2
+      '@floating-ui/dom': 1.7.3
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     dev: false

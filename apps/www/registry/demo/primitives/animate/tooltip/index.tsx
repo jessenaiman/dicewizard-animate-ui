@@ -5,10 +5,11 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  TooltipPortal,
+  TooltipArrow,
   type TooltipProviderProps,
   type TooltipProps,
 } from '@/registry/primitives/animate/tooltip';
+import { cn } from '@workspace/ui/lib/utils';
 
 type TooltipDemoProps = Pick<TooltipProviderProps, 'openDelay' | 'closeDelay'> &
   Pick<TooltipProps, 'side' | 'sideOffset' | 'align' | 'alignOffset'>;
@@ -22,7 +23,11 @@ export const AnimateTooltipDemo = ({
   alignOffset,
 }: TooltipDemoProps) => {
   return (
-    <TooltipProvider openDelay={openDelay} closeDelay={closeDelay}>
+    <TooltipProvider
+      key={`${side}-${sideOffset}-${align}-${alignOffset}-${openDelay}-${closeDelay}`}
+      openDelay={openDelay}
+      closeDelay={closeDelay}
+    >
       <div className="flex flex-col gap-5 justify-center items-center">
         <div className="flex flex-row gap-2 border p-2">
           <Tooltip
@@ -82,6 +87,9 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+              <TooltipArrow side={side}>
+                <div className="bg-primary size-2.5 rotate-45" />
+              </TooltipArrow>
               <p>GitHub</p>
             </TooltipContent>
           </Tooltip>

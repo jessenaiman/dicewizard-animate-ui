@@ -191,7 +191,7 @@ function TooltipProvider({
   const globalId = React.useId();
   const [currentTooltip, setCurrentTooltip] =
     React.useState<TooltipData | null>(null);
-  const timeoutRef = React.useRef<number>(null);
+  const timeoutRef = React.useRef<number | null>(null);
   const lastCloseTimeRef = React.useRef<number>(0);
 
   const showTooltip = React.useCallback(
@@ -246,12 +246,55 @@ function TooltipProvider({
   );
 }
 
-type TooltipArrowProps = {
-  side: Side;
-} & React.ComponentProps<'div'>;
+type TooltipArrowProps = React.ComponentProps<'div'> & {
+  side?: Side;
+  sideOffset?: number;
+};
 
-function TooltipArrow({ side, ...props }: TooltipArrowProps) {
-  return <div data-slot="tooltip-arrow" data-side={side} {...props} />;
+function TooltipArrow({
+  side = 'bottom',
+  sideOffset = 0,
+  style,
+  ...props
+}: TooltipArrowProps) {
+  const { currentTooltip } = useGlobalTooltip();
+
+  const centered: Record<Side, React.CSSProperties> = {
+    top: {
+      left: '50%',
+      transform: 'translateX(-50%)',
+      top: sideOffset,
+    },
+    bottom: {
+      left: '50%',
+      transform: 'translateX(-50%)',
+      bottom: sideOffset,
+    },
+    left: {
+      top: '50%',
+      transform: 'translateY(-50%)',
+      left: sideOffset,
+    },
+    right: {
+      top: '50%',
+      transform: 'translateY(-50%)',
+      right: sideOffset,
+    },
+  };
+
+  return (
+    <div
+      data-slot="tooltip-arrow"
+      data-side={side}
+      data-align={currentTooltip?.align}
+      style={{
+        position: 'absolute',
+        ...centered[side],
+        ...style,
+      }}
+      {...props}
+    />
+  );
 }
 
 type TooltipPortalProps = {
@@ -286,8 +329,11 @@ function TooltipOverlay() {
         <TooltipPortal>
           <motion.div
             data-slot="tooltip-overlay"
-            className="fixed z-50"
+            data-side={currentTooltip.side}
+            data-align={currentTooltip.align}
             style={{
+              position: 'fixed',
+              zIndex: 50,
               top: position.y,
               left: position.x,
               transform: position.transform,
@@ -295,12 +341,18 @@ function TooltipOverlay() {
           >
             <Component
               data-slot="tooltip-content"
+              data-side={currentTooltip.side}
+              data-align={currentTooltip.align}
               layoutId={`tooltip-content-${globalId}`}
               initial={{ opacity: 0, scale: 0, ...position.initial }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, scale: 0, ...position.initial }}
               transition={transition}
               {...currentTooltip.contentProps}
+              style={{
+                position: 'relative',
+                ...currentTooltip.contentProps?.style,
+              }}
             />
           </motion.div>
         </TooltipPortal>
@@ -349,12 +401,39 @@ function Tooltip({
 
 type TooltipContentProps = WithAsChild<HTMLMotionProps<'div'>>;
 
+function shallowEqualWithoutChildren(
+  a?: HTMLMotionProps<'div'>,
+  b?: HTMLMotionProps<'div'>,
+) {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  const keysA = Object.keys(a).filter((k) => k !== 'children');
+  const keysB = Object.keys(b).filter((k) => k !== 'children');
+  if (keysA.length !== keysB.length) return false;
+  for (const k of keysA) {
+    // @ts-expect-error index
+    if (a[k] !== b[k]) return false;
+  }
+  return true;
+}
+
 function TooltipContent({ asChild = false, ...props }: TooltipContentProps) {
   const { setProps, setAsChild } = useTooltip();
+  const lastPropsRef = React.useRef<HTMLMotionProps<'div'> | undefined>(
+    undefined,
+  );
+
   React.useEffect(() => {
-    setProps(props);
+    if (!shallowEqualWithoutChildren(lastPropsRef.current, props)) {
+      lastPropsRef.current = props;
+      setProps(props);
+    }
+  }, [props, setProps]);
+
+  React.useEffect(() => {
     setAsChild(asChild);
-  }, [props, setProps, setAsChild, asChild]);
+  }, [asChild, setAsChild]);
+
   return null;
 }
 
