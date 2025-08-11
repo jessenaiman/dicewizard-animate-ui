@@ -166,34 +166,36 @@ type RenderedTooltipContextType = {
 const [RenderedTooltipProvider, useRenderedTooltip] =
   useStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');
 
-type FloatingCtx = {
+type FloatingContextType = {
   context: UseFloatingReturn['context'];
   arrowRef: React.RefObject<SVGSVGElement | null>;
 };
-const FloatingContext = React.createContext<FloatingCtx | null>(null);
-function useFloatingCtx() {
-  const ctx = React.useContext(FloatingContext);
-  if (!ctx) throw new Error('TooltipArrow must be used inside TooltipOverlay');
-  return ctx;
-}
+
+const [FloatingProvider, useFloatingContext] =
+  useStrictContext<FloatingContextType>('FloatingContext');
+
+const MotionTooltipArrow = motion.create(FloatingArrow);
 
 type TooltipArrowProps = Omit<
-  React.ComponentProps<typeof FloatingArrow>,
+  React.ComponentProps<typeof MotionTooltipArrow>,
   'context'
 >;
 
 function TooltipArrow({ ref, ...props }: TooltipArrowProps) {
   const { side, align, open } = useRenderedTooltip();
-  const { context, arrowRef } = useFloatingCtx();
+  const { context, arrowRef } = useFloatingContext();
+  const { transition, globalId } = useGlobalTooltip();
   React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);
   return (
-    <FloatingArrow
+    <MotionTooltipArrow
       ref={arrowRef}
       context={context}
       data-state={open ? 'open' : 'closed'}
       data-side={side}
       data-align={align}
       data-slot="tooltip-trigger"
+      layoutId={`tooltip-arrow-${globalId}`}
+      transition={transition}
       {...props}
     />
   );
@@ -270,7 +272,7 @@ function TooltipOverlay() {
               transform: `translate3d(${x!}px, ${y!}px, 0)`,
             }}
           >
-            <FloatingContext.Provider value={{ context, arrowRef }}>
+            <FloatingProvider value={{ context, arrowRef }}>
               <RenderedTooltipProvider
                 value={{
                   side: rendered.data.side,
@@ -315,7 +317,7 @@ function TooltipOverlay() {
                   }}
                 />
               </RenderedTooltipProvider>
-            </FloatingContext.Provider>
+            </FloatingProvider>
           </div>
         </TooltipPortal>
       )}

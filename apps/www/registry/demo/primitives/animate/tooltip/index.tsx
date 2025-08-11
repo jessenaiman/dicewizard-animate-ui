@@ -44,6 +44,7 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+              <TooltipArrow className="fill-primary size-2.5" />
               <p>Documentation</p>
             </TooltipContent>
           </Tooltip>
@@ -59,6 +60,7 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+              <TooltipArrow className="fill-primary size-2.5" />
               <p>API Reference</p>
             </TooltipContent>
           </Tooltip>
@@ -74,6 +76,7 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+              <TooltipArrow className="fill-primary size-2.5" />
               <p>User Guide</p>
             </TooltipContent>
           </Tooltip>
