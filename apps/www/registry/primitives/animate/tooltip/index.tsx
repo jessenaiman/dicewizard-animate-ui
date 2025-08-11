@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { createPortal } from 'react-dom';
 import {
   motion,
   AnimatePresence,
@@ -13,8 +12,17 @@ import {
 import { useStrictContext } from '@/registry/hooks/use-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
-type Side = 'top' | 'bottom' | 'left' | 'right';
+import { FloatingPortal } from '@floating-ui/react';
+import {
+  useFloating,
+  autoUpdate,
+  offset as floatingOffset,
+  flip,
+  shift,
+  arrow as floatingArrow,
+} from '@floating-ui/react';
 
+type Side = 'top' | 'bottom' | 'left' | 'right';
 type Align = 'start' | 'center' | 'end';
 
 type TooltipData = {
@@ -34,6 +42,8 @@ type GlobalTooltipContextType = {
   currentTooltip: TooltipData | null;
   transition: Transition;
   globalId: string;
+  setReferenceEl: (el: HTMLElement | null) => void;
+  referenceElRef: React.RefObject<HTMLElement | null>;
 };
 
 const [GlobalTooltipProvider, useGlobalTooltip] =
@@ -55,125 +65,7 @@ const [LocalTooltipProvider, useTooltip] = useStrictContext<TooltipContextType>(
   'LocalTooltipProvider',
 );
 
-type TooltipPosition = {
-  x: number;
-  y: number;
-  transform: string;
-  initial: { x?: number; y?: number };
-};
-
-function getTooltipPosition({
-  rect,
-  side,
-  sideOffset,
-  align,
-  alignOffset,
-}: {
-  rect: DOMRect;
-  side: Side;
-  sideOffset: number;
-  align: Align;
-  alignOffset: number;
-}): TooltipPosition {
-  switch (side) {
-    case 'top':
-      if (align === 'start') {
-        return {
-          x: rect.left + alignOffset,
-          y: rect.top - sideOffset,
-          transform: 'translate(0, -100%)',
-          initial: { y: 15 },
-        };
-      } else if (align === 'end') {
-        return {
-          x: rect.right + alignOffset,
-          y: rect.top - sideOffset,
-          transform: 'translate(-100%, -100%)',
-          initial: { y: 15 },
-        };
-      } else {
-        // center
-        return {
-          x: rect.left + rect.width / 2,
-          y: rect.top - sideOffset,
-          transform: 'translate(-50%, -100%)',
-          initial: { y: 15 },
-        };
-      }
-    case 'bottom':
-      if (align === 'start') {
-        return {
-          x: rect.left + alignOffset,
-          y: rect.bottom + sideOffset,
-          transform: 'translate(0, 0)',
-          initial: { y: -15 },
-        };
-      } else if (align === 'end') {
-        return {
-          x: rect.right + alignOffset,
-          y: rect.bottom + sideOffset,
-          transform: 'translate(-100%, 0)',
-          initial: { y: -15 },
-        };
-      } else {
-        // center
-        return {
-          x: rect.left + rect.width / 2,
-          y: rect.bottom + sideOffset,
-          transform: 'translate(-50%, 0)',
-          initial: { y: -15 },
-        };
-      }
-    case 'left':
-      if (align === 'start') {
-        return {
-          x: rect.left - sideOffset,
-          y: rect.top + alignOffset,
-          transform: 'translate(-100%, 0)',
-          initial: { x: 15 },
-        };
-      } else if (align === 'end') {
-        return {
-          x: rect.left - sideOffset,
-          y: rect.bottom + alignOffset,
-          transform: 'translate(-100%, -100%)',
-          initial: { x: 15 },
-        };
-      } else {
-        // center
-        return {
-          x: rect.left - sideOffset,
-          y: rect.top + rect.height / 2,
-          transform: 'translate(-100%, -50%)',
-          initial: { x: 15 },
-        };
-      }
-    case 'right':
-      if (align === 'start') {
-        return {
-          x: rect.right + sideOffset,
-          y: rect.top + alignOffset,
-          transform: 'translate(0, 0)',
-          initial: { x: -15 },
-        };
-      } else if (align === 'end') {
-        return {
-          x: rect.right + sideOffset,
-          y: rect.bottom + alignOffset,
-          transform: 'translate(0, -100%)',
-          initial: { x: -15 },
-        };
-      } else {
-        // center
-        return {
-          x: rect.right + sideOffset,
-          y: rect.top + rect.height / 2,
-          transform: 'translate(0, -50%)',
-          initial: { x: -15 },
-        };
-      }
-  }
-}
+type TooltipPosition = { x: number; y: number };
 
 type TooltipProviderProps = {
   children: React.ReactNode;
@@ -181,6 +73,20 @@ type TooltipProviderProps = {
   closeDelay?: number;
   transition?: Transition;
 };
+
+function initialFromSide(side: Side): Partial<Record<'x' | 'y', number>> {
+  if (side === 'top') return { y: 15 };
+  if (side === 'bottom') return { y: -15 };
+  if (side === 'left') return { x: 15 };
+  return { x: -15 };
+}
+
+const oppositeSide: Record<Side, Side> = {
+  top: 'bottom',
+  bottom: 'top',
+  left: 'right',
+  right: 'left',
+} as const;
 
 function TooltipProvider({
   children,
@@ -193,6 +99,7 @@ function TooltipProvider({
     React.useState<TooltipData | null>(null);
   const timeoutRef = React.useRef<number | null>(null);
   const lastCloseTimeRef = React.useRef<number>(0);
+  const referenceElRef = React.useRef<HTMLElement | null>(null);
 
   const showTooltip = React.useCallback(
     (data: TooltipData) => {
@@ -225,9 +132,17 @@ function TooltipProvider({
     lastCloseTimeRef.current = Date.now();
   }, []);
 
+  const setReferenceEl = React.useCallback((el: HTMLElement | null) => {
+    referenceElRef.current = el;
+  }, []);
+
   React.useEffect(() => {
     window.addEventListener('scroll', hideImmediate, true);
-    return () => window.removeEventListener('scroll', hideImmediate, true);
+    window.addEventListener('resize', hideImmediate, true);
+    return () => {
+      window.removeEventListener('scroll', hideImmediate, true);
+      window.removeEventListener('resize', hideImmediate, true);
+    };
   }, [hideImmediate]);
 
   return (
@@ -238,6 +153,8 @@ function TooltipProvider({
         currentTooltip,
         transition,
         globalId,
+        setReferenceEl,
+        referenceElRef,
       }}
     >
       <LayoutGroup>{children}</LayoutGroup>
@@ -249,14 +166,9 @@ function TooltipProvider({
 type RenderedTooltipContextType = {
   side: Side;
   align: Align;
+  arrowX: number | null;
+  arrowY: number | null;
 };
-
-const oppositeSide: Record<Side, Side> = {
-  top: 'bottom',
-  bottom: 'top',
-  left: 'right',
-  right: 'left',
-} as const;
 
 const [RenderedTooltipProvider, useRenderedTooltip] =
   useStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');
@@ -279,10 +191,26 @@ function TooltipArrow({
   const effectiveAlign: Align | undefined = rendered?.align;
 
   const centered: Record<Side, React.CSSProperties> = {
-    top: { left: '50%', transform: 'translateX(-50%)', top: -sideOffset },
-    bottom: { left: '50%', transform: 'translateX(-50%)', bottom: -sideOffset },
-    left: { top: '50%', transform: 'translateY(-50%)', left: -sideOffset },
-    right: { top: '50%', transform: 'translateY(-50%)', right: -sideOffset },
+    top: {
+      left: rendered.arrowX ?? '50%',
+      transform: rendered.arrowX != null ? 'translateX(0)' : 'translateX(-50%)',
+      top: -sideOffset,
+    },
+    bottom: {
+      left: rendered.arrowX ?? '50%',
+      transform: rendered.arrowX != null ? 'translateX(0)' : 'translateX(-50%)',
+      bottom: -sideOffset,
+    },
+    left: {
+      top: rendered.arrowY ?? '50%',
+      transform: rendered.arrowY != null ? 'translateY(0)' : 'translateY(-50%)',
+      left: -sideOffset,
+    },
+    right: {
+      top: rendered.arrowY ?? '50%',
+      transform: rendered.arrowY != null ? 'translateY(0)' : 'translateY(-50%)',
+      right: -sideOffset,
+    },
   };
 
   return (
@@ -300,23 +228,38 @@ function TooltipArrow({
   );
 }
 
-type TooltipPortalProps = {
-  children: React.ReactNode;
-};
-
-function TooltipPortal({ children }: TooltipPortalProps) {
-  const [isMounted, setIsMounted] = React.useState(false);
-  React.useEffect(() => setIsMounted(true), []);
-  return isMounted ? createPortal(children, document.body) : null;
+type TooltipPortalProps = React.ComponentProps<typeof FloatingPortal>;
+function TooltipPortal(props: TooltipPortalProps) {
+  return <FloatingPortal {...props} />;
 }
 
 function TooltipOverlay() {
-  const { currentTooltip, transition, globalId } = useGlobalTooltip();
+  const { currentTooltip, transition, globalId, referenceElRef } =
+    useGlobalTooltip();
 
   const [rendered, setRendered] = React.useState<{
     data: TooltipData | null;
     open: boolean;
   }>({ data: null, open: false });
+
+  const arrowRef = React.useRef<HTMLDivElement | null>(null);
+
+  const side = rendered.data?.side ?? 'top';
+  const align = rendered.data?.align ?? 'center';
+
+  const { refs, x, y, strategy, middlewareData, update } = useFloating({
+    placement: align === 'center' ? side : (`${side}-${align}` as any),
+    whileElementsMounted: autoUpdate,
+    middleware: [
+      floatingOffset({
+        mainAxis: rendered.data?.sideOffset ?? 0,
+        crossAxis: rendered.data?.alignOffset ?? 0,
+      }),
+      flip(),
+      shift({ padding: 8 }),
+      floatingArrow({ element: arrowRef }),
+    ],
+  });
 
   React.useEffect(() => {
     if (currentTooltip) {
@@ -326,64 +269,91 @@ function TooltipOverlay() {
     }
   }, [currentTooltip]);
 
-  const position = React.useMemo(() => {
-    if (!rendered.data) return null;
-    return getTooltipPosition({
-      rect: rendered.data.rect,
-      side: rendered.data.side,
-      sideOffset: rendered.data.sideOffset,
-      align: rendered.data.align,
-      alignOffset: rendered.data.alignOffset,
-    });
-  }, [rendered.data]);
+  React.useLayoutEffect(() => {
+    if (referenceElRef.current) {
+      refs.setReference(referenceElRef.current);
+      // force un compute synchrone juste après avoir fixé la ref
+      // pour éviter tout frame à (0,0)
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      update();
+    }
+  }, [referenceElRef, refs, update, rendered.data]);
+
+  // prêt à rendre seulement quand Floating UI a calculé une position
+  const ready = x != null && y != null;
 
   const Component = rendered.data?.contentAsChild ? Slot : motion.div;
 
   return (
     <AnimatePresence>
-      {rendered.data && position && (
+      {rendered.data && ready && (
         <TooltipPortal>
-          <motion.div
+          <div
+            ref={refs.setFloating}
             data-slot="tooltip-overlay"
             data-side={rendered.data.side}
             data-align={rendered.data.align}
             style={{
-              position: 'fixed',
+              position: strategy,
+              top: 0,
+              left: 0,
               zIndex: 50,
-              top: position.y,
-              left: position.x,
-              transform: position.transform,
+              transform: `translate3d(${x!}px, ${y!}px, 0)`,
             }}
           >
             <RenderedTooltipProvider
-              value={{ side: rendered.data.side, align: rendered.data.align }}
+              value={{
+                side: rendered.data.side,
+                align: rendered.data.align,
+                arrowX: (middlewareData.arrow as any)?.x ?? null,
+                arrowY: (middlewareData.arrow as any)?.y ?? null,
+              }}
             >
               <Component
                 data-slot="tooltip-content"
                 data-side={rendered.data.side}
                 data-align={rendered.data.align}
                 layoutId={`tooltip-content-${globalId}`}
-                initial={{ opacity: 0, scale: 0, ...position.initial }}
+                initial={{
+                  opacity: 0,
+                  scale: 0,
+                  ...initialFromSide(rendered.data.side),
+                }}
                 animate={
                   rendered.open
                     ? { opacity: 1, scale: 1, x: 0, y: 0 }
-                    : { opacity: 0, scale: 0, ...position.initial }
+                    : {
+                        opacity: 0,
+                        scale: 0,
+                        ...initialFromSide(rendered.data.side),
+                      }
                 }
-                exit={{ opacity: 0, scale: 0, ...position.initial }}
+                exit={{
+                  opacity: 0,
+                  scale: 0,
+                  ...initialFromSide(rendered.data.side),
+                }}
                 onAnimationComplete={() => {
-                  if (!rendered.open) {
-                    setRendered({ data: null, open: false });
-                  }
+                  if (!rendered.open) setRendered({ data: null, open: false });
                 }}
                 transition={transition}
                 {...rendered.data.contentProps}
                 style={{
                   position: 'relative',
-                  ...rendered.data.contentProps?.style,
+                  ...(rendered.data.contentProps?.style || {}),
+                }}
+              />
+              <div
+                ref={arrowRef}
+                style={{
+                  position: 'absolute',
+                  width: 0,
+                  height: 0,
+                  pointerEvents: 'none',
                 }}
               />
             </RenderedTooltipProvider>
-          </motion.div>
+          </div>
         </TooltipPortal>
       )}
     </AnimatePresence>
@@ -486,13 +456,15 @@ function TooltipTrigger({
     alignOffset,
     id,
   } = useTooltip();
-  const { showTooltip, hideTooltip, currentTooltip } = useGlobalTooltip();
+  const { showTooltip, hideTooltip, currentTooltip, setReferenceEl } =
+    useGlobalTooltip();
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement);
 
   const handleOpen = React.useCallback(() => {
     if (!triggerRef.current) return;
+    setReferenceEl(triggerRef.current);
     const rect = triggerRef.current.getBoundingClientRect();
     showTooltip({
       contentProps,
@@ -506,6 +478,7 @@ function TooltipTrigger({
     });
   }, [
     showTooltip,
+    setReferenceEl,
     contentProps,
     contentAsChild,
     side,
