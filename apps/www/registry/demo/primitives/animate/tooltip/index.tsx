@@ -15,6 +15,7 @@ interface TooltipDemoProps {
   sideOffset?: number;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
+  withTransition?: boolean;
 }
 
 export const AnimateTooltipDemo = ({
@@ -24,6 +25,7 @@ export const AnimateTooltipDemo = ({
   sideOffset,
   align,
   alignOffset,
+  withTransition,
 }: TooltipDemoProps) => {
   return (
     <TooltipProvider
@@ -44,7 +46,10 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              <TooltipArrow className="fill-primary size-2.5" />
+              <TooltipArrow
+                className="fill-primary size-2.5"
+                withTransition={withTransition}
+              />
               <p>Documentation</p>
             </TooltipContent>
           </Tooltip>
@@ -60,7 +65,10 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              <TooltipArrow className="fill-primary size-2.5" />
+              <TooltipArrow
+                className="fill-primary size-2.5"
+                withTransition={withTransition}
+              />
               <p>API Reference</p>
             </TooltipContent>
           </Tooltip>
@@ -76,7 +84,10 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              <TooltipArrow className="fill-primary size-2.5" />
+              <TooltipArrow
+                className="fill-primary size-2.5"
+                withTransition={withTransition}
+              />
               <p>User Guide</p>
             </TooltipContent>
           </Tooltip>
@@ -93,7 +104,10 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              <TooltipArrow className="fill-primary size-2.5" />
+              <TooltipArrow
+                className="fill-primary size-2.5"
+                withTransition={withTransition}
+              />
               <p>GitHub</p>
             </TooltipContent>
           </Tooltip>

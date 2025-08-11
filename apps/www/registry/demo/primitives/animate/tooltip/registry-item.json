@@ -48,6 +48,11 @@
         "alignOffset": {
           "value": 0
         }
+      },
+      "TooltipArrow": {
+        "withTransition": {
+          "value": true
+        }
       }
     }
   }

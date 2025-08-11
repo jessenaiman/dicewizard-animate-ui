@@ -75,6 +75,13 @@ type TooltipProviderProps = {
   transition?: Transition;
 };
 
+function getResolvedSide(placement: Side | `${Side}-${Align}`) {
+  if (placement.includes('-')) {
+    return placement.split('-')[0] as Side;
+  }
+  return placement as Side;
+}
+
 function initialFromSide(side: Side): Partial<Record<'x' | 'y', number>> {
   if (side === 'top') return { y: 15 };
   if (side === 'bottom') return { y: -15 };
@@ -86,7 +93,7 @@ function TooltipProvider({
   children,
   openDelay = 700,
   closeDelay = 300,
-  transition = { type: 'spring', stiffness: 300, damping: 25 },
+  transition = { type: 'spring', stiffness: 300, damping: 35 },
 }: TooltipProviderProps) {
   const globalId = React.useId();
   const [currentTooltip, setCurrentTooltip] =
@@ -179,23 +186,34 @@ const MotionTooltipArrow = motion.create(FloatingArrow);
 type TooltipArrowProps = Omit<
   React.ComponentProps<typeof MotionTooltipArrow>,
   'context'
->;
+> & {
+  withTransition?: boolean;
+};
 
-function TooltipArrow({ ref, ...props }: TooltipArrowProps) {
+function TooltipArrow({
+  ref,
+  withTransition = true,
+  ...props
+}: TooltipArrowProps) {
   const { side, align, open } = useRenderedTooltip();
   const { context, arrowRef } = useFloatingContext();
   const { transition, globalId } = useGlobalTooltip();
-  React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);
+
+  const resolvedSide = getResolvedSide(context.placement);
+  const deg = { top: 0, right: 90, bottom: 180, left: -90 }[resolvedSide];
+
   return (
     <MotionTooltipArrow
       ref={arrowRef}
       context={context}
       data-state={open ? 'open' : 'closed'}
+      data-resolved-side={resolvedSide}
       data-side={side}
       data-align={align}
-      data-slot="tooltip-trigger"
-      layoutId={`tooltip-arrow-${globalId}`}
-      transition={transition}
+      data-slot="tooltip-arrow"
+      style={{ rotate: deg }}
+      layoutId={withTransition ? `tooltip-arrow-${globalId}` : undefined}
+      transition={withTransition ? transition : undefined}
       {...props}
     />
   );
@@ -261,6 +279,7 @@ function TooltipOverlay() {
           <div
             ref={refs.setFloating}
             data-slot="tooltip-overlay"
+            data-resolved-side={getResolvedSide(context.placement)}
             data-side={rendered.data.side}
             data-align={rendered.data.align}
             data-state={rendered.open ? 'open' : 'closed'}
@@ -282,6 +301,7 @@ function TooltipOverlay() {
               >
                 <Component
                   data-slot="tooltip-content"
+                  data-resolved-side={getResolvedSide(context.placement)}
                   data-side={rendered.data.side}
                   data-align={rendered.data.align}
                   data-state={rendered.open ? 'open' : 'closed'}

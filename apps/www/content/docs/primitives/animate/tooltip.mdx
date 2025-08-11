@@ -60,7 +60,7 @@ author:
       description: 'The transition of the tooltip.',
       type: 'Transition',
       required: false,
-      default: '{ type: "spring", stiffness: 300, damping: 25 }',
+      default: '{ type: "spring", stiffness: 300, damping: 35 }',
     },
   }}
 />
@@ -85,7 +85,7 @@ author:
       description: 'The distance in pixels from the trigger.',
       type: 'number',
       required: false,
-      default: '14',
+      default: '0',
     },
     align: {
       description: 'How to align the popup relative to the specified side.',
@@ -142,11 +142,11 @@ author:
 
 <TypeTable
   type={{
-    side: {
-      description: 'The side of the arrow.',
-      type: 'Side',
+    withTransition: {
+      description: 'Whether to animate the arrow when tooltip is moving.',
+      type: 'boolean',
       required: false,
-      default: 'top',
+      default: 'true',
     },
     '...props': {
       description: 'The props of the TooltipArrow component.',
