@@ -8,11 +8,6 @@ import {
   type Transition,
   type HTMLMotionProps,
 } from 'motion/react';
-
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
-import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-
-import { FloatingPortal } from '@floating-ui/react';
 import {
   useFloating,
   autoUpdate,
@@ -20,7 +15,13 @@ import {
   flip,
   shift,
   arrow as floatingArrow,
+  FloatingPortal,
+  FloatingArrow,
+  type UseFloatingReturn,
 } from '@floating-ui/react';
+
+import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type Side = 'top' | 'bottom' | 'left' | 'right';
 type Align = 'start' | 'center' | 'end';
@@ -80,13 +81,6 @@ function initialFromSide(side: Side): Partial<Record<'x' | 'y', number>> {
   if (side === 'left') return { x: 15 };
   return { x: -15 };
 }
-
-const oppositeSide: Record<Side, Side> = {
-  top: 'bottom',
-  bottom: 'top',
-  left: 'right',
-  right: 'left',
-} as const;
 
 function TooltipProvider({
   children,
@@ -166,69 +160,47 @@ function TooltipProvider({
 type RenderedTooltipContextType = {
   side: Side;
   align: Align;
-  arrowX: number | null;
-  arrowY: number | null;
+  open: boolean;
 };
 
 const [RenderedTooltipProvider, useRenderedTooltip] =
   useStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');
 
-type TooltipArrowProps = React.ComponentProps<'div'> & {
-  side?: Side;
-  sideOffset?: number;
+type FloatingCtx = {
+  context: UseFloatingReturn['context'];
+  arrowRef: React.RefObject<SVGSVGElement | null>;
 };
+const FloatingContext = React.createContext<FloatingCtx | null>(null);
+function useFloatingCtx() {
+  const ctx = React.useContext(FloatingContext);
+  if (!ctx) throw new Error('TooltipArrow must be used inside TooltipOverlay');
+  return ctx;
+}
 
-function TooltipArrow({
-  side: sideOverride,
-  sideOffset = 0,
-  style,
-  ...props
-}: TooltipArrowProps) {
-  const rendered = useRenderedTooltip();
+type TooltipArrowProps = Omit<
+  React.ComponentProps<typeof FloatingArrow>,
+  'context'
+>;
 
-  const effectiveSide: Side | undefined =
-    sideOverride ?? (rendered?.side && oppositeSide[rendered.side]);
-  const effectiveAlign: Align | undefined = rendered?.align;
-
-  const centered: Record<Side, React.CSSProperties> = {
-    top: {
-      left: rendered.arrowX ?? '50%',
-      transform: rendered.arrowX != null ? 'translateX(0)' : 'translateX(-50%)',
-      top: -sideOffset,
-    },
-    bottom: {
-      left: rendered.arrowX ?? '50%',
-      transform: rendered.arrowX != null ? 'translateX(0)' : 'translateX(-50%)',
-      bottom: -sideOffset,
-    },
-    left: {
-      top: rendered.arrowY ?? '50%',
-      transform: rendered.arrowY != null ? 'translateY(0)' : 'translateY(-50%)',
-      left: -sideOffset,
-    },
-    right: {
-      top: rendered.arrowY ?? '50%',
-      transform: rendered.arrowY != null ? 'translateY(0)' : 'translateY(-50%)',
-      right: -sideOffset,
-    },
-  };
-
+function TooltipArrow({ ref, ...props }: TooltipArrowProps) {
+  const { side, align, open } = useRenderedTooltip();
+  const { context, arrowRef } = useFloatingCtx();
+  React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);
   return (
-    <div
-      data-slot="tooltip-arrow"
-      data-side={effectiveSide}
-      data-align={effectiveAlign}
-      style={{
-        position: 'absolute',
-        ...(effectiveSide ? centered[effectiveSide] : {}),
-        ...style,
-      }}
+    <FloatingArrow
+      ref={arrowRef}
+      context={context}
+      data-state={open ? 'open' : 'closed'}
+      data-side={side}
+      data-align={align}
+      data-slot="tooltip-trigger"
       {...props}
     />
   );
 }
 
 type TooltipPortalProps = React.ComponentProps<typeof FloatingPortal>;
+
 function TooltipPortal(props: TooltipPortalProps) {
   return <FloatingPortal {...props} />;
 }
@@ -242,13 +214,13 @@ function TooltipOverlay() {
     open: boolean;
   }>({ data: null, open: false });
 
-  const arrowRef = React.useRef<HTMLDivElement | null>(null);
+  const arrowRef = React.useRef<SVGSVGElement | null>(null);
 
   const side = rendered.data?.side ?? 'top';
   const align = rendered.data?.align ?? 'center';
 
-  const { refs, x, y, strategy, middlewareData, update } = useFloating({
-    placement: align === 'center' ? side : (`${side}-${align}` as any),
+  const { refs, x, y, strategy, context, update } = useFloating({
+    placement: align === 'center' ? side : `${side}-${align}`,
     whileElementsMounted: autoUpdate,
     middleware: [
       floatingOffset({
@@ -257,7 +229,7 @@ function TooltipOverlay() {
       }),
       flip(),
       shift({ padding: 8 }),
-      floatingArrow({ element: arrowRef }),
+      floatingArrow({ element: arrowRef as any }),
     ],
   });
 
@@ -272,16 +244,12 @@ function TooltipOverlay() {
   React.useLayoutEffect(() => {
     if (referenceElRef.current) {
       refs.setReference(referenceElRef.current);
-      // force un compute synchrone juste après avoir fixé la ref
-      // pour éviter tout frame à (0,0)
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       update();
     }
   }, [referenceElRef, refs, update, rendered.data]);
 
-  // prêt à rendre seulement quand Floating UI a calculé une position
   const ready = x != null && y != null;
-
   const Component = rendered.data?.contentAsChild ? Slot : motion.div;
 
   return (
@@ -293,6 +261,7 @@ function TooltipOverlay() {
             data-slot="tooltip-overlay"
             data-side={rendered.data.side}
             data-align={rendered.data.align}
+            data-state={rendered.open ? 'open' : 'closed'}
             style={{
               position: strategy,
               top: 0,
@@ -301,58 +270,52 @@ function TooltipOverlay() {
               transform: `translate3d(${x!}px, ${y!}px, 0)`,
             }}
           >
-            <RenderedTooltipProvider
-              value={{
-                side: rendered.data.side,
-                align: rendered.data.align,
-                arrowX: (middlewareData.arrow as any)?.x ?? null,
-                arrowY: (middlewareData.arrow as any)?.y ?? null,
-              }}
-            >
-              <Component
-                data-slot="tooltip-content"
-                data-side={rendered.data.side}
-                data-align={rendered.data.align}
-                layoutId={`tooltip-content-${globalId}`}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                  ...initialFromSide(rendered.data.side),
+            <FloatingContext.Provider value={{ context, arrowRef }}>
+              <RenderedTooltipProvider
+                value={{
+                  side: rendered.data.side,
+                  align: rendered.data.align,
+                  open: rendered.open,
                 }}
-                animate={
-                  rendered.open
-                    ? { opacity: 1, scale: 1, x: 0, y: 0 }
-                    : {
-                        opacity: 0,
-                        scale: 0,
-                        ...initialFromSide(rendered.data.side),
-                      }
-                }
-                exit={{
-                  opacity: 0,
-                  scale: 0,
-                  ...initialFromSide(rendered.data.side),
-                }}
-                onAnimationComplete={() => {
-                  if (!rendered.open) setRendered({ data: null, open: false });
-                }}
-                transition={transition}
-                {...rendered.data.contentProps}
-                style={{
-                  position: 'relative',
-                  ...(rendered.data.contentProps?.style || {}),
-                }}
-              />
-              <div
-                ref={arrowRef}
-                style={{
-                  position: 'absolute',
-                  width: 0,
-                  height: 0,
-                  pointerEvents: 'none',
-                }}
-              />
-            </RenderedTooltipProvider>
+              >
+                <Component
+                  data-slot="tooltip-content"
+                  data-side={rendered.data.side}
+                  data-align={rendered.data.align}
+                  data-state={rendered.open ? 'open' : 'closed'}
+                  layoutId={`tooltip-content-${globalId}`}
+                  initial={{
+                    opacity: 0,
+                    scale: 0,
+                    ...initialFromSide(rendered.data.side),
+                  }}
+                  animate={
+                    rendered.open
+                      ? { opacity: 1, scale: 1, x: 0, y: 0 }
+                      : {
+                          opacity: 0,
+                          scale: 0,
+                          ...initialFromSide(rendered.data.side),
+                        }
+                  }
+                  exit={{
+                    opacity: 0,
+                    scale: 0,
+                    ...initialFromSide(rendered.data.side),
+                  }}
+                  onAnimationComplete={() => {
+                    if (!rendered.open)
+                      setRendered({ data: null, open: false });
+                  }}
+                  transition={transition}
+                  {...rendered.data.contentProps}
+                  style={{
+                    position: 'relative',
+                    ...(rendered.data.contentProps?.style || {}),
+                  }}
+                />
+              </RenderedTooltipProvider>
+            </FloatingContext.Provider>
           </div>
         </TooltipPortal>
       )}
@@ -529,10 +492,10 @@ function TooltipTrigger({
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      data-state={currentTooltip?.id === id ? 'open' : 'closed'}
+      data-slot="tooltip-trigger"
       data-side={side}
       data-align={align}
-      data-slot="tooltip-trigger"
+      data-state={currentTooltip?.id === id ? 'open' : 'closed'}
       {...props}
     />
   );
