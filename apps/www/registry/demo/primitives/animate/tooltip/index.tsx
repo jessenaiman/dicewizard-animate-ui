@@ -90,7 +90,7 @@ export const AnimateTooltipDemo = ({
             </TooltipTrigger>
 
             <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
-              <TooltipArrow className="bg-primary fill-primary size-2.5 rotate-45" />
+              <TooltipArrow className="fill-primary size-2.5" />
               <p>GitHub</p>
             </TooltipContent>
           </Tooltip>

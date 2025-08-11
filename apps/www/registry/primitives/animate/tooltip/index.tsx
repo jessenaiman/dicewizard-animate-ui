@@ -229,7 +229,7 @@ function TooltipOverlay() {
       }),
       flip(),
       shift({ padding: 8 }),
-      floatingArrow({ element: arrowRef as any }),
+      floatingArrow({ element: arrowRef }),
     ],
   });
 
@@ -334,7 +334,7 @@ type TooltipProps = {
 function Tooltip({
   children,
   side = 'top',
-  sideOffset = 14,
+  sideOffset = 0,
   align = 'center',
   alignOffset = 0,
 }: TooltipProps) {
