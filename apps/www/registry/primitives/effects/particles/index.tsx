@@ -69,6 +69,7 @@ type ParticlesEffectProps = Omit<HTMLMotionProps<'div'>, 'children'> & {
   holdDelay?: number;
   sideOffset?: number;
   alignOffset?: number;
+  delay?: number;
 };
 
 function ParticlesEffect({
@@ -81,6 +82,7 @@ function ParticlesEffect({
   holdDelay = 0.05,
   sideOffset = 0,
   alignOffset = 0,
+  delay = 0,
   transition,
   style,
   ...props
@@ -133,7 +135,7 @@ function ParticlesEffect({
               }}
               transition={{
                 duration,
-                delay: i * holdDelay,
+                delay: delay + i * holdDelay,
                 ease: 'easeOut',
                 ...transition,
               }}
