@@ -41,11 +41,7 @@ function Particles({
 }: ParticlesProps) {
   const { ref: localRef, isInView } = useIsInView(
     ref as React.Ref<HTMLDivElement>,
-    {
-      inView,
-      inViewOnce,
-      inViewMargin,
-    },
+    { inView, inViewOnce, inViewMargin },
   );
 
   const Component = asChild ? Slot : motion.div;
@@ -71,6 +67,8 @@ type ParticlesEffectProps = Omit<HTMLMotionProps<'div'>, 'children'> & {
   spread?: number;
   duration?: number;
   holdDelay?: number;
+  sideOffset?: number;
+  alignOffset?: number;
 };
 
 function ParticlesEffect({
@@ -81,28 +79,37 @@ function ParticlesEffect({
   spread = 360,
   duration = 0.8,
   holdDelay = 0.05,
+  sideOffset = 0,
+  alignOffset = 0,
   transition,
   style,
   ...props
 }: ParticlesEffectProps) {
   const { animate, isInView } = useParticles();
 
+  const isVertical = side === 'top' || side === 'bottom';
+  const alignPct = align === 'start' ? '0%' : align === 'end' ? '100%' : '50%';
+
+  const top = isVertical
+    ? side === 'top'
+      ? `calc(0% - ${sideOffset}px)`
+      : `calc(100% + ${sideOffset}px)`
+    : `calc(${alignPct} + ${alignOffset}px)`;
+
+  const left = isVertical
+    ? `calc(${alignPct} + ${alignOffset}px)`
+    : side === 'left'
+      ? `calc(0% - ${sideOffset}px)`
+      : `calc(100% + ${sideOffset}px)`;
+
   const containerStyle: React.CSSProperties = {
     position: 'absolute',
+    top,
+    left,
     transform: 'translate(-50%, -50%)',
-    top: side === 'top' ? '0%' : side === 'bottom' ? '100%' : '50%',
-    left: side === 'left' ? '0%' : side === 'right' ? '100%' : '50%',
   };
 
-  if (side === 'top' || side === 'bottom') {
-    containerStyle.left =
-      align === 'start' ? '0%' : align === 'end' ? '100%' : '50%';
-  } else {
-    containerStyle.top =
-      align === 'start' ? '0%' : align === 'end' ? '100%' : '50%';
-  }
-
-  const angleStep = (spread * (Math.PI / 180)) / Math.max(1, count - 1 || 1);
+  const angleStep = (spread * (Math.PI / 180)) / Math.max(1, count - 1);
 
   return (
     <AnimatePresence>

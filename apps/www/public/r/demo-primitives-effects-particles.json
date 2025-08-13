@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/primitives/effects/particles/index.tsx",
-      "content": "import {\n  Particles,\n  ParticlesEffect,\n  type ParticlesEffectProps,\n} from '@/components/animate-ui/primitives/effects/particles';\n\ntype ParticlesDemoProps = Pick<\n  ParticlesEffectProps,\n  'side' | 'align' | 'count' | 'radius' | 'spread' | 'duration'\n>;\n\nexport function ParticlesDemo(props: ParticlesDemoProps) {\n  return (\n    <Particles>\n      <div className=\"px-4 py-2\">Particles</div>\n      <ParticlesEffect className=\"bg-primary size-1 rounded-full\" {...props} />\n    </Particles>\n  );\n}\n",
+      "content": "import {\n  Particles,\n  ParticlesEffect,\n  type ParticlesEffectProps,\n} from '@/components/animate-ui/primitives/effects/particles';\nimport { useState } from 'react';\n\nexport function ParticlesDemo(props: ParticlesEffectProps) {\n  const [key, setKey] = useState(0);\n\n  return (\n    <Particles key={key}>\n      <button\n        className=\"px-4 py-2 bg-accent\"\n        onClick={() => setKey((k) => k + 1)}\n      >\n        Particles\n      </button>\n      <ParticlesEffect className=\"bg-primary size-1 rounded-full\" {...props} />\n    </Particles>\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/effects/particles.tsx"
     }
@@ -27,6 +27,12 @@
             "right": "right"
           }
         },
+        "sideOffset": {
+          "value": 0,
+          "min": 0,
+          "max": 50,
+          "step": 1
+        },
         "align": {
           "value": "center",
           "options": {
@@ -34,6 +40,12 @@
             "center": "center",
             "end": "end"
           }
+        },
+        "alignOffset": {
+          "value": 0,
+          "min": 0,
+          "max": 50,
+          "step": 1
         },
         "count": {
           "value": 6,
@@ -62,7 +74,7 @@
         "holdDelay": {
           "value": 0.05,
           "min": 0,
-          "max": 1,
+          "max": 0.2,
           "step": 0.01
         }
       }

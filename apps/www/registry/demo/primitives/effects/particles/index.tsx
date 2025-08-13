@@ -5,12 +5,7 @@ import {
 } from '@/registry/primitives/effects/particles';
 import { useState } from 'react';
 
-type ParticlesDemoProps = Pick<
-  ParticlesEffectProps,
-  'side' | 'align' | 'count' | 'radius' | 'spread' | 'duration'
->;
-
-export function ParticlesDemo(props: ParticlesDemoProps) {
+export function ParticlesDemo(props: ParticlesEffectProps) {
   const [key, setKey] = useState(0);
 
   return (
