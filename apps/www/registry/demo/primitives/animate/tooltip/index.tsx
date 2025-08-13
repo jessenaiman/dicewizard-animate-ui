@@ -7,6 +7,7 @@ import {
   TooltipTrigger,
   TooltipArrow,
 } from '@/registry/primitives/animate/tooltip';
+import { motion } from 'motion/react';
 
 interface TooltipDemoProps {
   openDelay?: number;
@@ -50,7 +51,7 @@ export const AnimateTooltipDemo = ({
                 className="fill-primary size-2.5"
                 withTransition={withTransition}
               />
-              <p>Documentation</p>
+              <motion.p layout="preserve-aspect">Documentation</motion.p>
             </TooltipContent>
           </Tooltip>
 
@@ -69,7 +70,7 @@ export const AnimateTooltipDemo = ({
                 className="fill-primary size-2.5"
                 withTransition={withTransition}
               />
-              <p>API Reference</p>
+              <motion.p layout="preserve-aspect">API Reference</motion.p>
             </TooltipContent>
           </Tooltip>
 
@@ -88,7 +89,7 @@ export const AnimateTooltipDemo = ({
                 className="fill-primary size-2.5"
                 withTransition={withTransition}
               />
-              <p>User Guide</p>
+              <motion.p layout="preserve-aspect">User Guide</motion.p>
             </TooltipContent>
           </Tooltip>
         </div>
@@ -108,7 +109,7 @@ export const AnimateTooltipDemo = ({
                 className="fill-primary size-2.5"
                 withTransition={withTransition}
               />
-              <p>GitHub</p>
+              <motion.p layout="preserve-aspect">GitHub</motion.p>
             </TooltipContent>
           </Tooltip>
         </div>

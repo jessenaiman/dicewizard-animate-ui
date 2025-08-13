@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Animate Tooltip Demo",
   "description": "Demo showing an animated tooltip.",
+  "dependencies": ["motion"],
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-animate-tooltip"
   ],

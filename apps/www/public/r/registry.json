@@ -122,6 +122,25 @@
       ]
     },
     {
+      "name": "demo-primitives-animate-avatar-group",
+      "type": "registry:ui",
+      "title": "Animate Avatar Group Demo",
+      "description": "Demo showing an animated avatar group.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/avatar-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/avatar-group.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-animate-code-block",
       "type": "registry:ui",
       "title": "Animate Code Block Demo",
@@ -335,6 +354,9 @@
       "type": "registry:ui",
       "title": "Animate Tooltip Demo",
       "description": "Demo showing an animated tooltip.",
+      "dependencies": [
+        "motion"
+      ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-tooltip"
       ],
@@ -1039,6 +1061,75 @@
             },
             "range": {
               "value": 120
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-effects-particles",
+      "type": "registry:ui",
+      "title": "Particles Demo",
+      "description": "Demo showing an animated particles.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-effects-particles"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/effects/particles/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/effects/particles.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ParticlesEffect": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "count": {
+              "value": 6,
+              "min": 1,
+              "max": 30,
+              "step": 1
+            },
+            "radius": {
+              "value": 30,
+              "min": 10,
+              "max": 100,
+              "step": 1
+            },
+            "spread": {
+              "value": 360,
+              "min": 0,
+              "max": 1000,
+              "step": 1
+            },
+            "duration": {
+              "value": 0.8,
+              "min": 0.1,
+              "max": 2,
+              "step": 0.1
+            },
+            "holdDelay": {
+              "value": 0.05,
+              "min": 0,
+              "max": 1,
+              "step": 0.01
             }
           }
         }
@@ -2167,6 +2258,25 @@
       ]
     },
     {
+      "name": "primitives-animate-avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "An animated avatar group that displays overlapping user images and smoothly shifts each avatar forward on hover to highlight it.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/avatar-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/avatar-group.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-animate-code-block",
       "type": "registry:ui",
       "title": "Code Block",
@@ -2764,6 +2874,26 @@
           "path": "registry/primitives/effects/magnetic/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/effects/magnetic.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-effects-particles",
+      "type": "registry:ui",
+      "title": "Particles",
+      "description": "A particles effect that creates a particle system.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/effects/particles/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/effects/particles.tsx"
         }
       ]
     },

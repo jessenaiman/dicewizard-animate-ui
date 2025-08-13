@@ -5,6 +5,7 @@
   "root": true,
   "pages": [
     "---Animate UI---",
+    "animate/avatar-group",
     "animate/code-block",
     "animate/counter",
     "animate/cursor",
@@ -74,6 +75,7 @@
     "effects/fade",
     "effects/highlight",
     "effects/magnetic",
+    "effects/particles",
     "effects/slide",
     "effects/zoom"
   ]

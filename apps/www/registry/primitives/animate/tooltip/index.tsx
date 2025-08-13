@@ -40,6 +40,7 @@ type TooltipData = {
 type GlobalTooltipContextType = {
   showTooltip: (data: TooltipData) => void;
   hideTooltip: () => void;
+  hideImmediate: () => void;
   currentTooltip: TooltipData | null;
   transition: Transition;
   globalId: string;
@@ -138,9 +139,14 @@ function TooltipProvider({
   }, []);
 
   React.useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') hideImmediate();
+    };
+    window.addEventListener('keydown', onKeyDown, true);
     window.addEventListener('scroll', hideImmediate, true);
     window.addEventListener('resize', hideImmediate, true);
     return () => {
+      window.removeEventListener('keydown', onKeyDown, true);
       window.removeEventListener('scroll', hideImmediate, true);
       window.removeEventListener('resize', hideImmediate, true);
     };
@@ -151,6 +157,7 @@ function TooltipProvider({
       value={{
         showTooltip,
         hideTooltip,
+        hideImmediate,
         currentTooltip,
         transition,
         globalId,
@@ -429,6 +436,7 @@ function TooltipTrigger({
   onMouseLeave,
   onFocus,
   onBlur,
+  onPointerDown,
   asChild = false,
   ...props
 }: TooltipTriggerProps) {
@@ -441,11 +449,18 @@ function TooltipTrigger({
     alignOffset,
     id,
   } = useTooltip();
-  const { showTooltip, hideTooltip, currentTooltip, setReferenceEl } =
-    useGlobalTooltip();
+  const {
+    showTooltip,
+    hideTooltip,
+    hideImmediate,
+    currentTooltip,
+    setReferenceEl,
+  } = useGlobalTooltip();
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement);
+
+  const suppressNextFocusRef = React.useRef(false);
 
   const handleOpen = React.useCallback(() => {
     if (!triggerRef.current) return;
@@ -473,6 +488,20 @@ function TooltipTrigger({
     id,
   ]);
 
+  const handlePointerDown = React.useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      onPointerDown?.(e);
+      if (currentTooltip?.id === id) {
+        suppressNextFocusRef.current = true;
+        hideImmediate();
+        Promise.resolve().then(() => {
+          suppressNextFocusRef.current = false;
+        });
+      }
+    },
+    [onPointerDown, currentTooltip?.id, id, hideImmediate],
+  );
+
   const handleMouseEnter = React.useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       onMouseEnter?.(e);
@@ -492,6 +521,7 @@ function TooltipTrigger({
   const handleFocus = React.useCallback(
     (e: React.FocusEvent<HTMLDivElement>) => {
       onFocus?.(e);
+      if (suppressNextFocusRef.current) return;
       handleOpen();
     },
     [handleOpen, onFocus],
@@ -510,6 +540,7 @@ function TooltipTrigger({
   return (
     <Component
       ref={triggerRef}
+      onPointerDown={handlePointerDown}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
