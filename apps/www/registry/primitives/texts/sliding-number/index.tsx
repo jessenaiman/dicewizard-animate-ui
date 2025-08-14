@@ -5,6 +5,7 @@ import {
   useSpring,
   useTransform,
   motion,
+  useMotionValue,
   type MotionValue,
   type SpringOptions,
 } from 'motion/react';
@@ -154,10 +155,34 @@ function SlidingNumber({
 
   const prevNumberRef = React.useRef<number>(0);
 
-  const effectiveNumber = React.useMemo(
-    () => (!isInView ? 0 : Math.abs(Number(number))),
-    [number, isInView],
-  );
+  const motionVal = fromNumber != null ? useMotionValue(fromNumber) : null;
+  const springVal = motionVal
+    ? useSpring(motionVal, { stiffness: 90, damping: 50 })
+    : null;
+
+  React.useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (isInView && motionVal) motionVal.set(number);
+    }, delay);
+
+    return () => clearTimeout(timeoutId);
+  }, [isInView, number, motionVal, delay]);
+
+  const [effectiveNumber, setEffectiveNumber] = React.useState(0);
+
+  React.useEffect(() => {
+    if (fromNumber !== undefined && springVal) {
+      const unsubscribe = springVal.on('change', (latest: number) => {
+        const newValue = Math.round(latest);
+        if (effectiveNumber !== newValue) {
+          setEffectiveNumber(newValue);
+        }
+      });
+      return () => unsubscribe();
+    } else {
+      setEffectiveNumber(!isInView ? 0 : Math.abs(Number(number)));
+    }
+  }, [springVal, isInView, number]);
 
   const formatNumber = React.useCallback(
     (num: number) =>
