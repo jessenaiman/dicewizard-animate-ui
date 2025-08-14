@@ -62,15 +62,17 @@ export const AnimateTooltipDemo = ({
             alignOffset={alignOffset}
           >
             <TooltipTrigger className="bg-accent select-none px-4 py-2">
-              API
+              Lorem
             </TooltipTrigger>
 
-            <TooltipContent className="bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+            <TooltipContent className="bg-primary max-w-[200px] px-3 py-1.5 text-sm text-primary-foreground">
               <TooltipArrow
                 className="fill-primary size-2.5"
                 withTransition={withTransition}
               />
-              <motion.p layout="preserve-aspect">API Reference</motion.p>
+              <motion.p layout="preserve-aspect">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit
+              </motion.p>
             </TooltipContent>
           </Tooltip>
 
