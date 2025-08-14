@@ -120,7 +120,8 @@ function SlidingNumberDisplay({
 }
 
 type SlidingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {
-  number: number | string;
+  number: number;
+  fromNumber?: number;
   padStart?: boolean;
   decimalSeparator?: string;
   decimalPlaces?: number;
@@ -131,6 +132,7 @@ type SlidingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {
 function SlidingNumber({
   ref,
   number,
+  fromNumber,
   inView = false,
   inViewMargin = '0px',
   inViewOnce = true,

@@ -20,6 +20,7 @@ export const SlidingNumberDemo = ({
       key={delay}
       delay={delay}
       number={number}
+      fromNumber={0}
       padStart={padStart}
       decimalSeparator={decimalSeparator}
       decimalPlaces={decimalPlaces}

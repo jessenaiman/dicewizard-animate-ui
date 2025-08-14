@@ -26,8 +26,13 @@ author:
   type={{
     number: {
       description: 'The number to slide.',
-      type: 'number | string',
+      type: 'number',
       required: true,
+    },
+    fromNumber: {
+      description: 'The number to start counting from.',
+      type: 'number',
+      required: false,
     },
     padStart: {
       description: 'Whether to pad the number with leading zeros.',
