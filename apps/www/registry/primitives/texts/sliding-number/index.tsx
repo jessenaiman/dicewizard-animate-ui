@@ -123,6 +123,7 @@ function SlidingNumberDisplay({
 type SlidingNumberProps = Omit<React.ComponentProps<'span'>, 'children'> & {
   number: number;
   fromNumber?: number;
+  onNumberChange?: (number: number) => void;
   padStart?: boolean;
   decimalSeparator?: string;
   decimalPlaces?: number;
@@ -134,6 +135,7 @@ function SlidingNumber({
   ref,
   number,
   fromNumber,
+  onNumberChange,
   inView = false,
   inViewMargin = '0px',
   inViewOnce = true,
@@ -176,6 +178,7 @@ function SlidingNumber({
         const newValue = Math.round(latest);
         if (effectiveNumber !== newValue) {
           setEffectiveNumber(newValue);
+          onNumberChange?.(newValue);
         }
       });
       return () => unsubscribe();
@@ -192,21 +195,29 @@ function SlidingNumber({
 
   const numberStr = formatNumber(effectiveNumber);
   const [newIntStrRaw, newDecStrRaw = ''] = numberStr.split('.');
-  const newIntStr =
-    padStart && newIntStrRaw?.length === 1 ? '0' + newIntStrRaw : newIntStrRaw;
+
+  const finalIntLength = padStart
+    ? Math.max(
+        Math.floor(Math.abs(number)).toString().length,
+        newIntStrRaw.length,
+      )
+    : newIntStrRaw.length;
+
+  const newIntStr = padStart
+    ? newIntStrRaw.padStart(finalIntLength, '0')
+    : newIntStrRaw;
 
   const prevFormatted = formatNumber(prevNumberRef.current);
   const [prevIntStrRaw = '', prevDecStrRaw = ''] = prevFormatted.split('.');
-  const prevIntStr =
-    padStart && prevIntStrRaw.length === 1
-      ? '0' + prevIntStrRaw
-      : prevIntStrRaw;
+  const prevIntStr = padStart
+    ? prevIntStrRaw.padStart(finalIntLength, '0')
+    : prevIntStrRaw;
 
   const adjustedPrevInt = React.useMemo(() => {
-    return prevIntStr.length > (newIntStr?.length ?? 0)
-      ? prevIntStr.slice(-(newIntStr?.length ?? 0))
-      : prevIntStr.padStart(newIntStr?.length ?? 0, '0');
-  }, [prevIntStr, newIntStr]);
+    return prevIntStr.length > finalIntLength
+      ? prevIntStr.slice(-finalIntLength)
+      : prevIntStr.padStart(finalIntLength, '0');
+  }, [prevIntStr, finalIntLength]);
 
   const adjustedPrevDec = React.useMemo(() => {
     if (!newDecStrRaw) return '';
@@ -219,13 +230,12 @@ function SlidingNumber({
     if (isInView) prevNumberRef.current = effectiveNumber;
   }, [effectiveNumber, isInView]);
 
-  const intDigitCount = newIntStr?.length ?? 0;
   const intPlaces = React.useMemo(
     () =>
-      Array.from({ length: intDigitCount }, (_, i) =>
-        Math.pow(10, intDigitCount - i - 1),
+      Array.from({ length: finalIntLength }, (_, i) =>
+        Math.pow(10, finalIntLength - i - 1),
       ),
-    [intDigitCount],
+    [finalIntLength],
   );
   const decPlaces = React.useMemo(
     () =>

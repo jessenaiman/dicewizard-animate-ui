@@ -42,7 +42,7 @@
         },
         "alignOffset": {
           "value": 0,
-          "min": 0,
+          "min": -50,
           "max": 50,
           "step": 1
         },

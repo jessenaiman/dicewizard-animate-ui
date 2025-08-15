@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/primitives/texts/sliding-number/index.tsx",
-      "content": "import { SlidingNumber } from '@/components/animate-ui/primitives/texts/sliding-number';\n\ninterface SlidingNumberDemoProps {\n  number: number;\n  padStart: boolean;\n  decimalSeparator: string;\n  decimalPlaces: number;\n  delay: number;\n}\n\nexport const SlidingNumberDemo = ({\n  number,\n  padStart,\n  decimalSeparator,\n  decimalPlaces,\n  delay,\n}: SlidingNumberDemoProps) => {\n  return (\n    <SlidingNumber\n      key={delay}\n      delay={delay}\n      number={number}\n      padStart={padStart}\n      decimalSeparator={decimalSeparator}\n      decimalPlaces={decimalPlaces}\n      className=\"text-4xl font-semibold\"\n    />\n  );\n};\n",
+      "content": "import { SlidingNumber } from '@/components/animate-ui/primitives/texts/sliding-number';\n\ninterface SlidingNumberDemoProps {\n  number: number;\n  fromNumber: boolean;\n  padStart: boolean;\n  decimalSeparator: string;\n  decimalPlaces: number;\n  delay: number;\n}\n\nexport const SlidingNumberDemo = ({\n  number,\n  fromNumber,\n  padStart,\n  decimalSeparator,\n  decimalPlaces,\n  delay,\n}: SlidingNumberDemoProps) => {\n  return (\n    <SlidingNumber\n      key={`${delay}-${fromNumber}`}\n      delay={delay}\n      number={number}\n      fromNumber={fromNumber ? 0 : undefined}\n      padStart={padStart}\n      decimalSeparator={decimalSeparator}\n      decimalPlaces={decimalPlaces}\n      className=\"text-4xl font-semibold\"\n    />\n  );\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/texts/sliding-number.tsx"
     }
@@ -21,8 +21,11 @@
         "number": {
           "value": 2025
         },
+        "fromNumber": {
+          "value": true
+        },
         "padStart": {
-          "value": false
+          "value": true
         },
         "decimalSeparator": {
           "value": "."

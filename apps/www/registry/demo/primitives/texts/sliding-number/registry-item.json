@@ -20,8 +20,11 @@
         "number": {
           "value": 2025
         },
+        "fromNumber": {
+          "value": true
+        },
         "padStart": {
-          "value": false
+          "value": true
         },
         "decimalSeparator": {
           "value": "."

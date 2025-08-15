@@ -253,6 +253,22 @@
       }
     },
     {
+      "name": "demo-primitives-animate-github-stars",
+      "type": "registry:ui",
+      "title": "GitHub Stars Demo",
+      "description": "Demo showing an animated github stars counter.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-github-stars"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/animate/github-stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/animate/github-stars.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-primitives-animate-motion-grid",
       "type": "registry:ui",
       "title": "Animate Motion Grid Demo",
@@ -1109,7 +1125,7 @@
             },
             "alignOffset": {
               "value": 0,
-              "min": 0,
+              "min": -50,
               "max": 50,
               "step": 1
             },
@@ -2104,8 +2120,11 @@
             "number": {
               "value": 2025
             },
+            "fromNumber": {
+              "value": true
+            },
             "padStart": {
-              "value": false
+              "value": true
             },
             "decimalSeparator": {
               "value": "."
@@ -2352,6 +2371,28 @@
           "path": "registry/primitives/animate/cursor/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/animate/cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-animate-github-stars",
+      "type": "registry:ui",
+      "title": "Github Stars",
+      "description": "A component that animates a number of stars, smoothly animating number transitions using the SlidingNumber component.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot",
+        "https://animate-ui.com/r/primitives-animate-sliding-number",
+        "https://animate-ui.com/r/hooks-use-is-in-view",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/animate/github-stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/animate/github-stars.tsx"
         }
       ]
     },

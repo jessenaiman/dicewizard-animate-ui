@@ -93,13 +93,13 @@ export const Features = () => {
         inView
         delay={0.15}
       >
-        <p className="text-center sm:text-base text-sm text-muted-foreground sm:max-w-md max-w-[350px] mt-5">
+        <p className="text-center sm:text-base text-sm text-muted-foreground sm:max-w-sm max-w-[350px] mt-5">
           From primitives and icons to complete components, find everything you
           need to animate your app.
         </p>
       </MotionEffect>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto xs:px-10 mt-15">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto xs:px-10 mt-15">
         {COMPONENTS.map((component, index) => {
           const Component = component.href ? Link : 'div';
           return (

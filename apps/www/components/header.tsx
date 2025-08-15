@@ -8,6 +8,13 @@ import XIcon from '@workspace/ui/components/icons/x-icon';
 import { useIsMobile } from '@workspace/ui/hooks/use-mobile';
 import { ThemeSwitcher } from './animate/theme-switcher';
 import { StarIcon } from 'lucide-react';
+import {
+  GithubStars,
+  GithubStarsIcon,
+  GithubStarsLogo,
+  GithubStarsNumber,
+  GithubStarsParticles,
+} from '@/registry/primitives/animate/github-stars';
 
 const LOGO_WRAPPER_VARIANTS = {
   center: {
@@ -80,20 +87,32 @@ export const Header = ({ transition }: { transition: boolean }) => {
           className="absolute z-110 flex items-center gap-x-4"
         >
           <div className="hidden xs:flex items-center gap-x-1">
-            <a
-              href="https://github.com/imskyleen/animate-ui"
-              rel="noreferrer noopener"
-              target="_blank"
-              className="sm:mt-1 cursor-pointer justify-center rounded-md text-sm group font-medium transition-colors duration-300 ease-in-out disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5 flex items-center gap-x-2"
+            <GithubStars
+              username="imskyleen"
+              repo="animate-ui"
+              delay={2000}
+              asChild
             >
-              <span data-active="false">
-                <GithubIcon />
-              </span>
+              <a
+                href="https://github.com/imskyleen/animate-ui"
+                rel="noreferrer noopener"
+                target="_blank"
+                className="sm:mt-1 group cursor-pointer justify-center rounded-md text-sm group font-medium transition-colors duration-300 ease-in-out disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5 flex items-center gap-x-2"
+              >
+                <GithubStarsLogo className="size-6" />
 
-              <span className="text-muted-foreground rounded-[4px] flex items-center gap-x-1 select-none bg-accent dark:group-hover:bg-neutral-900 group-hover:bg-white text-sm py-0.5 pl-1.5 pr-[5px]">
-                2023 <StarIcon className="!size-[15px] fill-current" />
-              </span>
-            </a>
+                <span className="rounded-[4px] flex items-center gap-x-1 select-none bg-accent dark:group-hover:bg-neutral-900 group-hover:bg-white text-sm py-1 pl-1.5 pr-[5px]">
+                  <GithubStarsNumber />{' '}
+                  <GithubStarsParticles>
+                    <GithubStarsIcon
+                      icon={StarIcon}
+                      className="!size-4"
+                      activeClassName="text-muted-foreground group-hover:text-current"
+                    />
+                  </GithubStarsParticles>
+                </span>
+              </a>
+            </GithubStars>
             <a
               href="https://x.com/animate_ui"
               rel="noreferrer noopener"
