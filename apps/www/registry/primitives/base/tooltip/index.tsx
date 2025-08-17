@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Tooltip as TooltipPrimitive } from '@base-ui-components/react/tooltip';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type TooltipContextType = {
@@ -17,7 +17,7 @@ type TooltipContextType = {
 };
 
 const [LocalTooltipProvider, useTooltip] =
-  useStrictContext<TooltipContextType>('TooltipContext');
+  getStrictContext<TooltipContextType>('TooltipContext');
 
 type TooltipProviderProps = React.ComponentProps<
   typeof TooltipPrimitive.Provider

@@ -9,7 +9,7 @@ import {
   type HighlightItemProps,
   type HighlightProps,
 } from '@/registry/primitives/effects/highlight';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type TabsContextType = {
@@ -19,7 +19,7 @@ type TabsContextType = {
 };
 
 const [TabsProvider, useTabs] =
-  useStrictContext<TabsContextType>('TabsContext');
+  getStrictContext<TabsContextType>('TabsContext');
 
 type BaseTabsProps = React.ComponentProps<'div'> & {
   children: React.ReactNode;

@@ -20,14 +20,14 @@ import {
   type Transition,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type PopoverContextType = {
   isOpen: boolean;
 };
 
 const [PopoverProvider, usePopover] =
-  useStrictContext<PopoverContextType>('PopoverContext');
+  getStrictContext<PopoverContextType>('PopoverContext');
 
 type PopoverProps<TTag extends React.ElementType = 'div'> =
   PopoverPrimitiveProps<TTag> & {

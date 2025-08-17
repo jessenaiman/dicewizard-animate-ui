@@ -10,7 +10,7 @@ import {
   type LegacyAnimationControls,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type SwitchContextType = {
@@ -21,7 +21,7 @@ type SwitchContextType = {
 };
 
 const [SwitchProvider, useSwitch] =
-  useStrictContext<SwitchContextType>('SwitchContext');
+  getStrictContext<SwitchContextType>('SwitchContext');
 
 type SwitchProps = Omit<
   React.ComponentProps<typeof SwitchPrimitives.Root>,

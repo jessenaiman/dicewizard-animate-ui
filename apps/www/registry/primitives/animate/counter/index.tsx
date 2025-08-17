@@ -8,7 +8,7 @@ import {
   type SlidingNumberProps,
 } from '@/registry/primitives/texts/sliding-number';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CounterContextType = {
@@ -17,7 +17,7 @@ type CounterContextType = {
 };
 
 const [CounterProvider, useCounter] =
-  useStrictContext<CounterContextType>('CounterContext');
+  getStrictContext<CounterContextType>('CounterContext');
 
 type BaseCounterProps = HTMLMotionProps<'div'> & {
   children: React.ReactNode;

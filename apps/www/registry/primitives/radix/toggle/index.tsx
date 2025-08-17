@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Toggle as TogglePrimitive } from 'radix-ui';
 import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type ToggleContextType = {
@@ -13,7 +13,7 @@ type ToggleContextType = {
 };
 
 const [ToggleProvider, useToggle] =
-  useStrictContext<ToggleContextType>('ToggleContext');
+  getStrictContext<ToggleContextType>('ToggleContext');
 
 type ToggleProps = Omit<
   React.ComponentProps<typeof TogglePrimitive.Root>,

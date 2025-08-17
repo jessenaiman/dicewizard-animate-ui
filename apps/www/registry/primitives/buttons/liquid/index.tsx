@@ -3,22 +3,29 @@
 import * as React from 'react';
 import { motion, type HTMLMotionProps } from 'motion/react';
 
-type LiquidButtonProps = HTMLMotionProps<'button'> & {
-  delay?: string;
-  fillHeight?: string;
-  hoverScale?: number;
-  tapScale?: number;
-};
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
+
+type LiquidButtonProps = WithAsChild<
+  HTMLMotionProps<'button'> & {
+    delay?: string;
+    fillHeight?: string;
+    hoverScale?: number;
+    tapScale?: number;
+  }
+>;
 
 function LiquidButton({
   delay = '0.3s',
   fillHeight = '3px',
   hoverScale = 1.05,
   tapScale = 0.95,
+  asChild = false,
   ...props
 }: LiquidButtonProps) {
+  const Component = asChild ? Slot : motion.button;
+
   return (
-    <motion.button
+    <Component
       whileTap={{ scale: tapScale }}
       whileHover={{
         scale: hoverScale,

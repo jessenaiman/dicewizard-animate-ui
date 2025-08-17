@@ -5,7 +5,10 @@
   "title": "Flip Button",
   "description": "A button that flips between two states on hover.",
   "dependencies": ["motion"],
-  "registryDependencies": ["https://animate-ui.com/r/hooks-use-strict-context"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/primitives-animate-slot"
+  ],
   "files": [
     {
       "path": "registry/primitives/buttons/flip/index.tsx",

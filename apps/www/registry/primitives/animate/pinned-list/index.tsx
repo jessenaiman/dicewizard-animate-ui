@@ -9,7 +9,7 @@ import {
 } from 'motion/react';
 
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type PinnedListContextType = {
   movingId: string | null;
@@ -22,10 +22,10 @@ type PinnedListItemContextType = {
 };
 
 const [PinnedListProvider, usePinnedList] =
-  useStrictContext<PinnedListContextType>('PinnedListContext');
+  getStrictContext<PinnedListContextType>('PinnedListContext');
 
 const [PinnedListItemProvider, usePinnedListItem] =
-  useStrictContext<PinnedListItemContextType>('PinnedListItemContext');
+  getStrictContext<PinnedListItemContextType>('PinnedListItemContext');
 
 type PinnedListProps = HTMLMotionProps<'div'> & {
   children: React.ReactNode;

@@ -16,14 +16,14 @@ import {
   type Transition,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type DisclosureContextType = {
   isOpen: boolean;
 };
 
 const [DisclosureProvider, useDisclosure] =
-  useStrictContext<DisclosureContextType>('DisclosureContext');
+  getStrictContext<DisclosureContextType>('DisclosureContext');
 
 type DisclosureProps<TTag extends React.ElementType = 'div'> =
   DisclosurePrimitiveProps<TTag> & {

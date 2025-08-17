@@ -14,7 +14,7 @@ import {
   useIsInView,
   type UseIsInViewOptions,
 } from '@/registry/hooks/use-is-in-view';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 const formatter = new Intl.NumberFormat('en-US');
 
@@ -46,7 +46,7 @@ type ScrollingNumberContextType = {
 };
 
 const [ScrollingNumberProvider, useScrollingNumber] =
-  useStrictContext<ScrollingNumberContextType>('ScrollingNumberContext');
+  getStrictContext<ScrollingNumberContextType>('ScrollingNumberContext');
 
 type ScrollingNumberContainerProps = React.ComponentProps<'div'> & {
   number: number;

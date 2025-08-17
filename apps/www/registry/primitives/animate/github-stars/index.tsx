@@ -7,7 +7,7 @@ import {
   useIsInView,
   type UseIsInViewOptions,
 } from '@/registry/hooks/use-is-in-view';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 import {
   SlidingNumber,
@@ -30,7 +30,7 @@ type GithubStarsContextType = {
 };
 
 const [GithubStarsProvider, useGithubStars] =
-  useStrictContext<GithubStarsContextType>('GithubStarsContext');
+  getStrictContext<GithubStarsContextType>('GithubStarsContext');
 
 type GithubStarsProps = WithAsChild<
   {

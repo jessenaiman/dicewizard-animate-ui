@@ -20,7 +20,7 @@ import {
   type UseFloatingReturn,
 } from '@floating-ui/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type Side = 'top' | 'bottom' | 'left' | 'right';
@@ -49,7 +49,7 @@ type GlobalTooltipContextType = {
 };
 
 const [GlobalTooltipProvider, useGlobalTooltip] =
-  useStrictContext<GlobalTooltipContextType>('GlobalTooltipProvider');
+  getStrictContext<GlobalTooltipContextType>('GlobalTooltipProvider');
 
 type TooltipContextType = {
   props: HTMLMotionProps<'div'>;
@@ -63,7 +63,7 @@ type TooltipContextType = {
   id: string;
 };
 
-const [LocalTooltipProvider, useTooltip] = useStrictContext<TooltipContextType>(
+const [LocalTooltipProvider, useTooltip] = getStrictContext<TooltipContextType>(
   'LocalTooltipProvider',
 );
 
@@ -178,7 +178,7 @@ type RenderedTooltipContextType = {
 };
 
 const [RenderedTooltipProvider, useRenderedTooltip] =
-  useStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');
+  getStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');
 
 type FloatingContextType = {
   context: UseFloatingReturn['context'];
@@ -186,7 +186,7 @@ type FloatingContextType = {
 };
 
 const [FloatingProvider, useFloatingContext] =
-  useStrictContext<FloatingContextType>('FloatingContext');
+  getStrictContext<FloatingContextType>('FloatingContext');
 
 const MotionTooltipArrow = motion.create(FloatingArrow);
 

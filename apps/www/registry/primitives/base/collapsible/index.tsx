@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Collapsible as CollapsiblePrimitive } from '@base-ui-components/react/collapsible';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CollapsibleContextType = {
@@ -13,7 +13,7 @@ type CollapsibleContextType = {
 };
 
 const [CollapsibleProvider, useCollapsible] =
-  useStrictContext<CollapsibleContextType>('CollapsibleContext');
+  getStrictContext<CollapsibleContextType>('CollapsibleContext');
 
 type CollapsibleProps = React.ComponentProps<typeof CollapsiblePrimitive.Root>;
 

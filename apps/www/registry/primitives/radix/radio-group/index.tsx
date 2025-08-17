@@ -4,7 +4,7 @@ import * as React from 'react';
 import { RadioGroup as RadioGroupPrimitive } from 'radix-ui';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type RadioGroupContextType = {
@@ -18,10 +18,10 @@ type RadioGroupItemContextType = {
 };
 
 const [RadioGroupProvider, useRadioGroup] =
-  useStrictContext<RadioGroupContextType>('RadioGroupContext');
+  getStrictContext<RadioGroupContextType>('RadioGroupContext');
 
 const [RadioGroupItemProvider, useRadioGroupItem] =
-  useStrictContext<RadioGroupItemContextType>('RadioGroupItemContext');
+  getStrictContext<RadioGroupItemContextType>('RadioGroupItemContext');
 
 type RadioGroupProps = React.ComponentProps<typeof RadioGroupPrimitive.Root>;
 

@@ -5,7 +5,7 @@ import { Accordion as AccordionPrimitive } from 'radix-ui';
 import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type AccordionContextType = {
   value: string | string[] | undefined;
@@ -19,10 +19,10 @@ type AccordionItemContextType = {
 };
 
 const [AccordionProvider, useAccordion] =
-  useStrictContext<AccordionContextType>('AccordionContext');
+  getStrictContext<AccordionContextType>('AccordionContext');
 
 const [AccordionItemProvider, useAccordionItem] =
-  useStrictContext<AccordionItemContextType>('AccordionItemContext');
+  getStrictContext<AccordionItemContextType>('AccordionItemContext');
 
 type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;
 

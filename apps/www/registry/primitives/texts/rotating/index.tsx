@@ -7,7 +7,7 @@ import {
   useIsInView,
   type UseIsInViewOptions,
 } from '@/registry/hooks/use-is-in-view';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type RotatingTextContextType = {
   currentText: string;
@@ -16,7 +16,7 @@ type RotatingTextContextType = {
 };
 
 const [RotatingTextProvider, useRotatingText] =
-  useStrictContext<RotatingTextContextType>('RotatingTextContext');
+  getStrictContext<RotatingTextContextType>('RotatingTextContext');
 
 type RotatingTextContainerProps = React.ComponentProps<'div'> & {
   text: string | string[];

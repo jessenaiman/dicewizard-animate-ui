@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "demo-primitives-texts-rotating",
   "type": "registry:ui",
-  "title": "Rotating Demo",
+  "title": "Rotating Text Demo",
   "description": "Demo showing an animated rotating text.",
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-texts-rotating"

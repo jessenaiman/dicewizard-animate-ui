@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Dialog as SheetPrimitive } from 'radix-ui';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type SheetContextType = {
@@ -13,7 +13,7 @@ type SheetContextType = {
 };
 
 const [SheetProvider, useSheet] =
-  useStrictContext<SheetContextType>('SheetContext');
+  getStrictContext<SheetContextType>('SheetContext');
 
 type SheetProps = React.ComponentProps<typeof SheetPrimitive.Root>;
 

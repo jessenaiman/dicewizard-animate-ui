@@ -15,7 +15,7 @@ import {
   type HighlightProps,
   type HighlightItemProps,
 } from '@/registry/primitives/effects/highlight';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type TabsContextType = {
@@ -24,7 +24,7 @@ type TabsContextType = {
 };
 
 const [TabsProvider, useTabs] =
-  useStrictContext<TabsContextType>('TabsContext');
+  getStrictContext<TabsContextType>('TabsContext');
 
 type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
 

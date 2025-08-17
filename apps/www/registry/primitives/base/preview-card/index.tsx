@@ -4,7 +4,7 @@ import * as React from 'react';
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui-components/react/preview-card';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type PreviewCardContextType = {
@@ -17,7 +17,7 @@ type PreviewCardContextType = {
 };
 
 const [PreviewCardProvider, usePreviewCard] =
-  useStrictContext<PreviewCardContextType>('PreviewCardContext');
+  getStrictContext<PreviewCardContextType>('PreviewCardContext');
 
 type PreviewCardProps = React.ComponentProps<typeof PreviewCardPrimitive.Root>;
 

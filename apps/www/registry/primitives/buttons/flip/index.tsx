@@ -3,7 +3,8 @@
 import * as React from 'react';
 import { motion, type HTMLMotionProps, type Variant } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 const buildVariant = ({
   opacity,
@@ -33,25 +34,30 @@ type FlipButtonContextType = {
 };
 
 const [FlipButtonProvider, useFlipButton] =
-  useStrictContext<FlipButtonContextType>('FlipButtonContext');
+  getStrictContext<FlipButtonContextType>('FlipButtonContext');
 
-type FlipButtonProps = HTMLMotionProps<'button'> & {
-  from?: FlipDirection;
-  tapScale?: number;
-};
+type FlipButtonProps = WithAsChild<
+  HTMLMotionProps<'button'> & {
+    from?: FlipDirection;
+    tapScale?: number;
+  }
+>;
 
 function FlipButton({
   from = 'top',
   tapScale = 0.95,
+  asChild = false,
   style,
   ...props
 }: FlipButtonProps) {
   const isVertical = from === 'top' || from === 'bottom';
   const rotateAxis = isVertical ? 'rotateX' : 'rotateY';
 
+  const Component = asChild ? Slot : motion.button;
+
   return (
     <FlipButtonProvider value={{ from, isVertical, rotateAxis }}>
-      <motion.button
+      <Component
         data-slot="flip-button"
         initial="initial"
         whileHover="hover"
@@ -68,10 +74,11 @@ function FlipButton({
   );
 }
 
-type FlipButtonFaceProps = HTMLMotionProps<'span'>;
+type FlipButtonFaceProps = WithAsChild<HTMLMotionProps<'span'>>;
 
 function FlipButtonFront({
   transition = { type: 'spring', stiffness: 280, damping: 20 },
+  asChild = false,
   style,
   ...props
 }: FlipButtonFaceProps) {
@@ -96,8 +103,10 @@ function FlipButtonFront({
     }),
   };
 
+  const Component = asChild ? Slot : motion.span;
+
   return (
-    <motion.span
+    <Component
       data-slot="flip-button-front"
       variants={frontVariants}
       transition={transition}
@@ -115,6 +124,7 @@ function FlipButtonFront({
 
 function FlipButtonBack({
   transition = { type: 'spring', stiffness: 280, damping: 20 },
+  asChild = false,
   style,
   ...props
 }: FlipButtonFaceProps) {
@@ -139,8 +149,10 @@ function FlipButtonBack({
     }),
   };
 
+  const Component = asChild ? Slot : motion.span;
+
   return (
-    <motion.span
+    <Component
       data-slot="flip-button-back"
       variants={backVariants}
       transition={transition}

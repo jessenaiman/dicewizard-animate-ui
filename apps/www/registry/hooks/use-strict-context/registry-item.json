@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hooks-use-strict-context",
   "type": "registry:ui",
-  "title": "useStrictContext",
+  "title": "getStrictContext",
   "description": "A hook that allows you to create a strict context.",
   "files": [
     {

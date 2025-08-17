@@ -8,7 +8,7 @@ import {
   useIsInView,
   type UseIsInViewOptions,
 } from '@/registry/hooks/use-is-in-view';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type Side = 'top' | 'bottom' | 'left' | 'right';
 type Align = 'start' | 'center' | 'end';
@@ -19,7 +19,7 @@ type ParticlesContextType = {
 };
 
 const [ParticlesProvider, useParticles] =
-  useStrictContext<ParticlesContextType>('ParticlesContext');
+  getStrictContext<ParticlesContextType>('ParticlesContext');
 
 type ParticlesProps = WithAsChild<
   Omit<HTMLMotionProps<'div'>, 'children'> & {

@@ -8,14 +8,14 @@ import {
   CountingNumber,
   type CountingNumberProps,
 } from '@/registry/primitives/texts/counting-number';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type ProgressContextType = {
   value: number;
 };
 
 const [ProgressProvider, useProgress] =
-  useStrictContext<ProgressContextType>('ProgressContext');
+  getStrictContext<ProgressContextType>('ProgressContext');
 
 type ProgressProps = React.ComponentProps<typeof ProgressPrimitives.Root>;
 

@@ -18,6 +18,115 @@
       "files": []
     },
     {
+      "name": "components-backgrounds-bubble",
+      "type": "registry:ui",
+      "title": "Bubble Background",
+      "description": "An interactive background featuring smoothly animated gradient bubbles, creating a playful, dynamic, and visually engaging backdrop.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/backgrounds/bubble/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/backgrounds/bubble.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-backgrounds-fireworks",
+      "type": "registry:ui",
+      "title": "Fireworks Background",
+      "description": "A background component that displays a fireworks animation.",
+      "files": [
+        {
+          "path": "registry/components/backgrounds/fireworks/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/backgrounds/fireworks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-backgrounds-gradient",
+      "type": "registry:ui",
+      "title": "Gradient Background",
+      "description": "A background component featuring a subtle yet engaging animated gradient effect, smoothly transitioning colors to enhance visual depth.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/backgrounds/gradient/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/backgrounds/gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-backgrounds-hexagon",
+      "type": "registry:ui",
+      "title": "Hexagon Background",
+      "description": "A background component featuring an interactive hexagon grid.",
+      "files": [
+        {
+          "path": "registry/components/backgrounds/hexagon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/backgrounds/hexagon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-backgrounds-hole",
+      "type": "registry:ui",
+      "title": "Hole Background",
+      "description": "A background component featuring an animated hole grid.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/backgrounds/hole/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/backgrounds/hole.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-backgrounds-stars",
+      "type": "registry:ui",
+      "title": "Stars Background",
+      "description": "An interactive background featuring animated dots of varying sizes and speeds, simulating a dynamic and immersive starry space effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/backgrounds/stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/backgrounds/stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-buttons-button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A button component with a variety of styles and animations.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-button"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/button.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-community-management-bar",
       "type": "registry:ui",
       "title": "Management Bar",
@@ -72,6 +181,221 @@
           "target": "components/animate-ui/components/community/playful-todolist.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-backgrounds-bubble",
+      "type": "registry:ui",
+      "title": "Bubble Background Demo",
+      "description": "Demo showing a bubble background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-bubble"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/bubble/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/bubble.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "BubbleBackground": {
+            "interactive": {
+              "value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-backgrounds-fireworks",
+      "type": "registry:ui",
+      "title": "Fireworks Background Demo",
+      "description": "Demo showing a fireworks background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-fireworks"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/fireworks/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/fireworks.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "FireworksBackground": {
+            "population": {
+              "value": 1,
+              "min": 0.1,
+              "max": 10,
+              "step": 0.1
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-backgrounds-fireworks-circle",
+      "type": "registry:ui",
+      "title": "Fireworks Circle Background Demo",
+      "description": "Demo showing a fireworks circle background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-fireworks"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/fireworks-circle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/fireworks-circle.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "FireworksBackground": {
+            "population": {
+              "value": 1,
+              "min": 0.1,
+              "max": 10,
+              "step": 0.1
+            },
+            "fireworkSize": {
+              "value": 7,
+              "min": 1,
+              "max": 20,
+              "step": 1
+            },
+            "fireworkSpeed": {
+              "value": 7,
+              "min": 1,
+              "max": 20,
+              "step": 1
+            },
+            "particleSize": {
+              "value": 7,
+              "min": 1,
+              "max": 20,
+              "step": 1
+            },
+            "particleSpeed": {
+              "value": 7,
+              "min": 1,
+              "max": 20,
+              "step": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-backgrounds-gradient",
+      "type": "registry:ui",
+      "title": "Gradient Background Demo",
+      "description": "Demo showing a gradient background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/gradient/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-backgrounds-hexagon",
+      "type": "registry:ui",
+      "title": "Hexagon Background Demo",
+      "description": "Demo showing a hexagon background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-hexagon"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/hexagon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/hexagon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-backgrounds-hole",
+      "type": "registry:ui",
+      "title": "Hole Background Demo",
+      "description": "Demo showing a hole background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-hole"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/hole/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/hole.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-backgrounds-stars",
+      "type": "registry:ui",
+      "title": "Stars Background Demo",
+      "description": "Demo showing a stars background.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-backgrounds-stars"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/backgrounds/stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/backgrounds/stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-buttons-button",
+      "type": "registry:ui",
+      "title": "Button Demo",
+      "description": "Demo showing a button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/button.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Button": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "destructive": "destructive",
+                "outline": "outline",
+                "secondary": "secondary",
+                "ghost": "ghost",
+                "link": "link"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-components-community-management-bar",
@@ -1911,7 +2235,7 @@
     {
       "name": "demo-primitives-texts-gradient",
       "type": "registry:ui",
-      "title": "Gradient Demo",
+      "title": "Gradient Text Demo",
       "description": "Demo showing an animated gradient text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-gradient"
@@ -1936,7 +2260,7 @@
     {
       "name": "demo-primitives-texts-highlight",
       "type": "registry:ui",
-      "title": "Highlight Demo",
+      "title": "Highlight Text Demo",
       "description": "Demo showing an animated highlight text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-highlight"
@@ -1964,7 +2288,7 @@
     {
       "name": "demo-primitives-texts-rolling",
       "type": "registry:ui",
-      "title": "Rolling Demo",
+      "title": "Rolling Text Demo",
       "description": "Demo showing an animated rolling text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-rolling"
@@ -1992,7 +2316,7 @@
     {
       "name": "demo-primitives-texts-rotating",
       "type": "registry:ui",
-      "title": "Rotating Demo",
+      "title": "Rotating Text Demo",
       "description": "Demo showing an animated rotating text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-rotating"
@@ -2071,7 +2395,7 @@
     {
       "name": "demo-primitives-texts-shimmering",
       "type": "registry:ui",
-      "title": "Shimmering Demo",
+      "title": "Shimmering Text Demo",
       "description": "Demo showing an animated shimmering text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-shimmering"
@@ -2145,7 +2469,7 @@
     {
       "name": "demo-primitives-texts-splitting",
       "type": "registry:ui",
-      "title": "Splitting Demo",
+      "title": "Splitting Text Demo",
       "description": "Demo showing an animated splitting text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-splitting"
@@ -2189,7 +2513,7 @@
     {
       "name": "demo-primitives-texts-typing",
       "type": "registry:ui",
-      "title": "Typing Demo",
+      "title": "Typing Text Demo",
       "description": "Demo showing an animated typing text.",
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-texts-typing"
@@ -2284,7 +2608,7 @@
     {
       "name": "hooks-use-strict-context",
       "type": "registry:ui",
-      "title": "useStrictContext",
+      "title": "getStrictContext",
       "description": "A hook that allows you to create a strict context.",
       "files": [
         {
@@ -2776,6 +3100,9 @@
       "dependencies": [
         "motion"
       ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-slot"
+      ],
       "files": [
         {
           "path": "registry/primitives/buttons/button/index.tsx",
@@ -2793,7 +3120,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/primitives-animate-slot"
       ],
       "files": [
         {
@@ -2812,7 +3140,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/primitives-animate-slot"
       ],
       "files": [
         {
@@ -2831,7 +3160,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/primitives-animate-slot"
       ],
       "files": [
         {

@@ -11,7 +11,7 @@ import {
   type HTMLMotionProps,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type CheckboxContextType = {
   isChecked: boolean;
@@ -19,7 +19,7 @@ type CheckboxContextType = {
 };
 
 const [CheckboxProvider, useCheckbox] =
-  useStrictContext<CheckboxContextType>('CheckboxContext');
+  getStrictContext<CheckboxContextType>('CheckboxContext');
 
 type CheckboxProps<TTag extends React.ElementType = typeof motion.button> =
   CheckboxPrimitiveProps<TTag> &

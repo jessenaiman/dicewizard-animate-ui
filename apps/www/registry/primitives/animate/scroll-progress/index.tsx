@@ -11,7 +11,7 @@ import {
 } from 'motion/react';
 
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useMotionValueState } from '@/registry/hooks/use-motion-value-state';
 
 type ScrollProgressDirection = 'horizontal' | 'vertical';
@@ -25,7 +25,7 @@ type ScrollProgressContextType = {
 };
 
 const [LocalScrollProgressProvider, useScrollProgress] =
-  useStrictContext<ScrollProgressContextType>('ScrollProgressContext');
+  getStrictContext<ScrollProgressContextType>('ScrollProgressContext');
 
 type ScrollProgressProviderProps = {
   children: React.ReactNode;

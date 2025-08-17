@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Base Preview Card Demo",
   "description": "Demo showing a base preview card.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/base-preview-card"
-  ],
+  "registryDependencies": ["https://animate-ui.com/r/base-preview-card"],
   "files": [
     {
       "path": "registry/demo/base/preview-card/index.tsx",

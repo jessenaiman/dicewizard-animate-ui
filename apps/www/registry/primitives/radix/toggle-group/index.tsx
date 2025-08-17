@@ -10,7 +10,7 @@ import {
   type HighlightItemProps,
   type HighlightProps,
 } from '@/registry/primitives/effects/highlight';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type ToggleGroupContextType = {
@@ -20,7 +20,7 @@ type ToggleGroupContextType = {
 };
 
 const [ToggleGroupProvider, useToggleGroup] =
-  useStrictContext<ToggleGroupContextType>('ToggleGroupContext');
+  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');
 
 type ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root>;
 

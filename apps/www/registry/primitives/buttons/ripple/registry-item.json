@@ -5,7 +5,10 @@
   "title": "Ripple Button",
   "description": "A button that animates on tap with a ripple effect.",
   "dependencies": ["motion"],
-  "registryDependencies": ["https://animate-ui.com/r/hooks-use-strict-context"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/primitives-animate-slot"
+  ],
   "files": [
     {
       "path": "registry/primitives/buttons/ripple/index.tsx",

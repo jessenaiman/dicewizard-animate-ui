@@ -10,7 +10,7 @@ import {
   type SpringOptions,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type CursorContextType = {
@@ -22,7 +22,7 @@ type CursorContextType = {
 };
 
 const [LocalCursorProvider, useCursor] =
-  useStrictContext<CursorContextType>('CursorContext');
+  getStrictContext<CursorContextType>('CursorContext');
 
 type CursorProviderProps = {
   children: React.ReactNode;

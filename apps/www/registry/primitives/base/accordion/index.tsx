@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Accordion as AccordionPrimitive } from '@base-ui-components/react/accordion';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type AccordionContextType = {
@@ -18,10 +18,10 @@ type AccordionItemContextType = {
 };
 
 const [AccordionProvider, useAccordion] =
-  useStrictContext<AccordionContextType>('AccordionContext');
+  getStrictContext<AccordionContextType>('AccordionContext');
 
 const [AccordionItemProvider, useAccordionItem] =
-  useStrictContext<AccordionItemContextType>('AccordionItemContext');
+  getStrictContext<AccordionItemContextType>('AccordionItemContext');
 
 type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;
 

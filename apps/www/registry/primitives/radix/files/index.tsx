@@ -21,7 +21,7 @@ import {
   type AccordionTriggerProps,
   type AccordionContentProps,
 } from '@/registry/primitives/radix/accordion';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type FilesContextType = {
@@ -33,10 +33,10 @@ type FolderContextType = {
 };
 
 const [FilesProvider, useFiles] =
-  useStrictContext<FilesContextType>('FilesContext');
+  getStrictContext<FilesContextType>('FilesContext');
 
 const [FolderProvider, useFolder] =
-  useStrictContext<FolderContextType>('FolderContext');
+  getStrictContext<FolderContextType>('FolderContext');
 
 type BaseFilesProps = {
   children: React.ReactNode;

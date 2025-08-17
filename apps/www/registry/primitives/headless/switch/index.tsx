@@ -13,7 +13,7 @@ import {
   type LegacyAnimationControls,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type SwitchContextType = {
   isChecked: boolean;
@@ -21,7 +21,7 @@ type SwitchContextType = {
 };
 
 const [SwitchProvider, useSwitch] =
-  useStrictContext<SwitchContextType>('SwitchContext');
+  getStrictContext<SwitchContextType>('SwitchContext');
 
 type SwitchProps<TTag extends React.ElementType = typeof motion.button> =
   SwitchPrimitiveProps<TTag> &

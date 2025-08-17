@@ -3,14 +3,25 @@
 import * as React from 'react';
 import { motion, type HTMLMotionProps } from 'motion/react';
 
-type ButtonProps = HTMLMotionProps<'button'> & {
-  hoverScale?: number;
-  tapScale?: number;
-};
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
-function Button({ hoverScale = 1.05, tapScale = 0.95, ...props }: ButtonProps) {
+type ButtonProps = WithAsChild<
+  HTMLMotionProps<'button'> & {
+    hoverScale?: number;
+    tapScale?: number;
+  }
+>;
+
+function Button({
+  hoverScale = 1.05,
+  tapScale = 0.95,
+  asChild = false,
+  ...props
+}: ButtonProps) {
+  const Component = asChild ? Slot : motion.button;
+
   return (
-    <motion.button
+    <Component
       whileTap={{ scale: tapScale }}
       whileHover={{ scale: hoverScale }}
       {...props}

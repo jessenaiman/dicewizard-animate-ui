@@ -5,7 +5,10 @@
   "title": "Liquid Button",
   "description": "A button that fills on hover.",
   "dependencies": ["motion"],
-  "registryDependencies": ["https://animate-ui.com/r/hooks-use-strict-context"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/primitives-animate-slot"
+  ],
   "files": [
     {
       "path": "registry/primitives/buttons/liquid/index.tsx",

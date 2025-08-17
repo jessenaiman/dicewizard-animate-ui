@@ -174,8 +174,23 @@ function SlidingNumber({
 
   React.useEffect(() => {
     if (fromNumber !== undefined && springVal) {
+      const inferredDecimals =
+        typeof decimalPlaces === 'number' && decimalPlaces >= 0
+          ? decimalPlaces
+          : (() => {
+              const s = String(number);
+              const idx = s.indexOf('.');
+              return idx >= 0 ? s.length - idx - 1 : 0;
+            })();
+
+      const factor = Math.pow(10, inferredDecimals);
+
       const unsubscribe = springVal.on('change', (latest: number) => {
-        const newValue = Math.round(latest);
+        const newValue =
+          inferredDecimals > 0
+            ? Math.round(latest * factor) / factor
+            : Math.round(latest);
+
         if (effectiveNumber !== newValue) {
           setEffectiveNumber(newValue);
           onNumberChange?.(newValue);
@@ -185,7 +200,15 @@ function SlidingNumber({
     } else {
       setEffectiveNumber(!isInView ? 0 : Math.abs(Number(number)));
     }
-  }, [springVal, isInView, number]);
+  }, [
+    springVal,
+    isInView,
+    number,
+    fromNumber,
+    decimalPlaces,
+    onNumberChange,
+    effectiveNumber,
+  ]);
 
   const formatNumber = React.useCallback(
     (num: number) =>

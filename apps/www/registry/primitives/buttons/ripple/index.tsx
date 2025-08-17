@@ -3,7 +3,8 @@
 import * as React from 'react';
 import { motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type Ripple = {
   id: number;
@@ -17,18 +18,21 @@ type RippleButtonContextType = {
 };
 
 const [RippleButtonProvider, useRippleButton] =
-  useStrictContext<RippleButtonContextType>('RippleButtonContext');
+  getStrictContext<RippleButtonContextType>('RippleButtonContext');
 
-type RippleButtonProps = HTMLMotionProps<'button'> & {
-  hoverScale?: number;
-  tapScale?: number;
-};
+type RippleButtonProps = WithAsChild<
+  HTMLMotionProps<'button'> & {
+    hoverScale?: number;
+    tapScale?: number;
+  }
+>;
 
 function RippleButton({
   ref,
   onClick,
   hoverScale = 1.05,
   tapScale = 0.95,
+  asChild = false,
   style,
   ...props
 }: RippleButtonProps) {
@@ -70,9 +74,11 @@ function RippleButton({
     [createRipple, onClick],
   );
 
+  const Component = asChild ? Slot : motion.button;
+
   return (
     <RippleButtonProvider value={{ ripples, setRipples }}>
-      <motion.button
+      <Component
         ref={buttonRef}
         data-slot="ripple-button"
         onClick={handleClick}
@@ -89,22 +95,27 @@ function RippleButton({
   );
 }
 
-type RippleButtonRipplesProps = HTMLMotionProps<'span'> & {
-  color?: string;
-  scale?: number;
-};
+type RippleButtonRipplesProps = WithAsChild<
+  HTMLMotionProps<'span'> & {
+    color?: string;
+    scale?: number;
+  }
+>;
 
 function RippleButtonRipples({
   color = 'var(--ripple-button-ripple-color)',
   scale = 10,
   transition = { duration: 0.6, ease: 'easeOut' },
+  asChild = false,
   style,
   ...props
 }: RippleButtonRipplesProps) {
   const { ripples } = useRippleButton();
 
+  const Component = asChild ? Slot : motion.span;
+
   return ripples.map((ripple) => (
-    <motion.span
+    <Component
       key={ripple.id}
       initial={{ scale: 0, opacity: 0.5 }}
       animate={{ scale, opacity: 0 }}

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Popover as PopoverPrimitive } from 'radix-ui';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type PopoverContextType = {
@@ -13,7 +13,7 @@ type PopoverContextType = {
 };
 
 const [PopoverProvider, usePopover] =
-  useStrictContext<PopoverContextType>('PopoverContext');
+  getStrictContext<PopoverContextType>('PopoverContext');
 
 type PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>;
 

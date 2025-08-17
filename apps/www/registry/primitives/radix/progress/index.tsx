@@ -4,14 +4,14 @@ import * as React from 'react';
 import { Progress as ProgressPrimitive } from 'radix-ui';
 import { motion } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type ProgressContextType = {
   value: number;
 };
 
 const [ProgressProvider, useProgress] =
-  useStrictContext<ProgressContextType>('ProgressContext');
+  getStrictContext<ProgressContextType>('ProgressContext');
 
 type ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root>;
 

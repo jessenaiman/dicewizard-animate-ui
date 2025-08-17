@@ -10,7 +10,7 @@ import {
   type HighlightItemProps,
   type HighlightProps,
 } from '@/registry/primitives/effects/highlight';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type DropdownMenuContextType = {
@@ -19,10 +19,10 @@ type DropdownMenuContextType = {
 };
 
 const [DropdownMenuProvider, useDropdownMenu] =
-  useStrictContext<DropdownMenuContextType>('DropdownMenuContext');
+  getStrictContext<DropdownMenuContextType>('DropdownMenuContext');
 
 const [DropdownMenuSubProvider, useDropdownMenuSub] =
-  useStrictContext<DropdownMenuContextType>('DropdownMenuSubContext');
+  getStrictContext<DropdownMenuContextType>('DropdownMenuSubContext');
 
 type DropdownMenuProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.Root

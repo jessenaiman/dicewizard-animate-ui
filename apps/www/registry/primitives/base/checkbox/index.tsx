@@ -8,7 +8,7 @@ import {
   type SVGMotionProps,
 } from 'motion/react';
 
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CheckboxContextType = {
@@ -18,7 +18,7 @@ type CheckboxContextType = {
 };
 
 const [CheckboxProvider, useCheckbox] =
-  useStrictContext<CheckboxContextType>('CheckboxContext');
+  getStrictContext<CheckboxContextType>('CheckboxContext');
 
 type CheckboxProps = Omit<
   React.ComponentProps<typeof CheckboxPrimitive.Root>,

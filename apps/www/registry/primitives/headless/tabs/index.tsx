@@ -21,14 +21,14 @@ import {
   HighlightItemProps,
   HighlightProps,
 } from '@/registry/primitives/effects/highlight';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type TabsContextType = {
   selectedIndex: number;
 };
 
 const [TabsProvider, useTabs] =
-  useStrictContext<TabsContextType>('TabsContext');
+  getStrictContext<TabsContextType>('TabsContext');
 
 type TabGroupProps<TTag extends React.ElementType = 'div'> =
   TabGroupPrimitiveProps<TTag> & {

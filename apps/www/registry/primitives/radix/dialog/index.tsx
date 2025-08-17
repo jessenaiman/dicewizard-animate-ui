@@ -5,7 +5,7 @@ import { Dialog as DialogPrimitive } from 'radix-ui';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
-import { useStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
 type DialogContextType = {
   isOpen: boolean;
@@ -13,7 +13,7 @@ type DialogContextType = {
 };
 
 const [DialogProvider, useDialog] =
-  useStrictContext<DialogContextType>('DialogContext');
+  getStrictContext<DialogContextType>('DialogContext');
 
 type DialogProps = React.ComponentProps<typeof DialogPrimitive.Root>;
 

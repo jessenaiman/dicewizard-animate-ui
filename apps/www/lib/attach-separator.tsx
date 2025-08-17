@@ -1,5 +1,7 @@
 import AnimateUIIcon from '@workspace/ui/components/icons/animateui-icon';
 import BaseUIIcon from '@workspace/ui/components/icons/baseui-icon';
+import CommunityIcon from '@workspace/ui/components/icons/community-icon';
+import ImageIcon from '@workspace/ui/components/icons/image-icon';
 import HeadlessUIIcon from '@workspace/ui/components/icons/headlessui-icon';
 import RadixIcon from '@workspace/ui/components/icons/radix-icon';
 import ShadcnIcon from '@workspace/ui/components/icons/shadcn-icon';
@@ -62,6 +64,14 @@ export const attachSeparator: BuildPageTreeOptions['attachSeparator'] = (
     case 'Effects':
       node.name = (
         <Separator icon={<SparklesIcon fill="currentColor" />} name="Effects" />
+      );
+      break;
+    case 'Community':
+      node.name = <Separator icon={<CommunityIcon />} name="Community" />;
+      break;
+    case 'Backgrounds':
+      node.name = (
+        <Separator icon={<ImageIcon strokeWidth={5} />} name="Backgrounds" />
       );
       break;
     case 'Buttons':
