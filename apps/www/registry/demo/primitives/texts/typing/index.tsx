@@ -22,7 +22,7 @@ export const TypingTextDemo = ({
       delay={delay}
       holdDelay={holdDelay}
       className="text-4xl font-semibold"
-      text="Typing Text"
+      text="Typing Text component made with Motion. Highly customizable and easy to use."
       loop={loop}
     >
       {cursor && <TypingTextCursor className="!h-8 !w-1 rounded-full ml-1" />}

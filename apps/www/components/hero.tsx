@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRightIcon, PartyPopper } from 'lucide-react';
-import { SplittingText } from './texts/splitting';
+import { SplittingText } from '@/registry/primitives/texts/splitting';
 import ReactIcon from '@workspace/ui/components/icons/react-icon';
 import TSIcon from '@workspace/ui/components/icons/ts-icon';
 import TailwindIcon from '@workspace/ui/components/icons/tailwind-icon';
@@ -13,7 +13,7 @@ import { HeroBackground } from './hero-background';
 
 const ICONS = [ReactIcon, TSIcon, TailwindIcon, MotionIcon, ShadcnIcon];
 
-export const Hero = ({ isMobile }: { isMobile: boolean }) => {
+export const Hero = () => {
   return (
     <div className="relative h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center px-5">
       <HeroBackground className="fixed -bottom-70 -right-120 size-[800px]" />
@@ -53,7 +53,6 @@ export const Hero = ({ isMobile }: { isMobile: boolean }) => {
               <SplittingText
                 text="Elevate your UI with fluid, animated components"
                 className="block md:text-6xl sm:text-5xl text-4xl font-semibold text-center text-neutral-200 dark:text-neutral-800"
-                type={isMobile ? 'words' : 'chars'}
                 disableAnimation
               />
             </h1>
@@ -61,12 +60,10 @@ export const Hero = ({ isMobile }: { isMobile: boolean }) => {
               <SplittingText
                 text="Elevate your UI with fluid, animated components"
                 className="block md:text-6xl sm:text-5xl text-4xl font-semibold text-center"
-                type={isMobile ? 'words' : 'chars'}
-                motionVariants={{
-                  initial: { y: 0, opacity: 0, x: 0, filter: 'blur(10px)' },
-                  animate: { y: 0, opacity: 1, x: 0, filter: 'blur(0px)' },
-                  transition: { duration: 0.4, ease: 'easeOut' },
-                }}
+                type="chars"
+                initial={{ y: 0, opacity: 0, x: 0, filter: 'blur(10px)' }}
+                animate={{ y: 0, opacity: 1, x: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
               />
             </div>
           </div>

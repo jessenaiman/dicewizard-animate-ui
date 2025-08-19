@@ -5,7 +5,6 @@ import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 import { cn } from '@workspace/ui/lib/utils';
-import { useMediaQuery } from 'fumadocs-core/utils/use-media-query';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
@@ -32,8 +31,6 @@ export default function HomePage() {
     };
   }, []);
 
-  const isMobile = useMediaQuery('(max-width: 640px)');
-
   return (
     <main className={cn('relative h-dvh', !isLoaded && 'overflow-y-hidden')}>
       <Header transition={transition} />
@@ -46,9 +43,7 @@ export default function HomePage() {
             animate={transition ? 'visible' : 'hidden'}
             className="w-full"
           >
-            {isMobile !== null && (
-              <Hero key={String(transition)} isMobile={isMobile} />
-            )}
+            <Hero key={String(transition)} />
           </motion.div>
         )}
       </div>

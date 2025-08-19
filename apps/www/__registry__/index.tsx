@@ -269,7 +269,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/buttons/button.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ButtonProps = ButtonPrimitiveProps &\n  VariantProps<typeof buttonVariants> & {\n    asChild?: boolean;\n  };\n\nfunction Button({\n  className,\n  variant,\n  size,\n  asChild = false,\n  ...props\n}: ButtonProps) {\n  return (\n    <ButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { Button, type ButtonProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ButtonProps = ButtonPrimitiveProps & VariantProps<typeof buttonVariants>;\n\nfunction Button({ className, variant, size, ...props }: ButtonProps) {\n  return (\n    <ButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { Button, buttonVariants, type ButtonProps };",
       },
     ],
     keywords: [],
@@ -293,6 +293,128 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/components-buttons-button',
+  },
+  'components-buttons-flip': {
+    name: 'components-buttons-flip',
+    description: 'A button that flips between two states on hover.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-buttons-button',
+      'https://animate-ui.com/r/primitives-buttons-flip',
+    ],
+    files: [
+      {
+        path: 'registry/components/buttons/flip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/buttons/flip.tsx',
+        content:
+          "import * as React from 'react';\nimport { type VariantProps } from 'class-variance-authority';\n\nimport {\n  FlipButton as FlipButtonPrimitive,\n  FlipButtonFront as FlipButtonFrontPrimitive,\n  FlipButtonBack as FlipButtonBackPrimitive,\n  type FlipButtonProps as FlipButtonPrimitiveProps,\n  type FlipButtonFrontProps as FlipButtonFrontPrimitiveProps,\n  type FlipButtonBackProps as FlipButtonBackPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/flip';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { buttonVariants } from '@/components/animate-ui/components/buttons/button';\nimport { cn } from '@/lib/utils';\n\ntype FlipButtonContextType = VariantProps<typeof buttonVariants>;\n\nconst [FlipButtonProvider, useFlipButton] =\n  getStrictContext<FlipButtonContextType>('FlipButtonContext');\n\ntype FlipButtonProps = FlipButtonPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction FlipButton({ variant, size, ...props }: FlipButtonProps) {\n  return (\n    <FlipButtonProvider value={{ variant, size }}>\n      <FlipButtonPrimitive {...props} />\n    </FlipButtonProvider>\n  );\n}\n\ntype FlipButtonFrontProps = FlipButtonFrontPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction FlipButtonFront({\n  variant,\n  size,\n  className,\n  ...props\n}: FlipButtonFrontProps) {\n  const { variant: buttonVariant, size: buttonSize } = useFlipButton();\n  return (\n    <FlipButtonFrontPrimitive\n      className={cn(\n        buttonVariants({\n          variant: variant ?? buttonVariant,\n          size: size ?? buttonSize,\n          className,\n        }),\n      )}\n      {...props}\n    />\n  );\n}\n\ntype FlipButtonBackProps = FlipButtonBackPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction FlipButtonBack({\n  variant,\n  size,\n  className,\n  ...props\n}: FlipButtonBackProps) {\n  const { variant: buttonVariant, size: buttonSize } = useFlipButton();\n  return (\n    <FlipButtonBackPrimitive\n      className={cn(\n        buttonVariants({\n          variant: variant ?? buttonVariant,\n          size: size ?? buttonSize,\n          className,\n        }),\n      )}\n      {...props}\n    />\n  );\n}\n\nexport {\n  FlipButton,\n  FlipButtonFront,\n  FlipButtonBack,\n  type FlipButtonProps,\n  type FlipButtonFrontProps,\n  type FlipButtonBackProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/buttons/flip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-buttons-flip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-buttons-flip',
+  },
+  'components-buttons-liquid': {
+    name: 'components-buttons-liquid',
+    description: 'A button that fills on hover.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-liquid',
+    ],
+    files: [
+      {
+        path: 'registry/components/buttons/liquid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/buttons/liquid.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  LiquidButton as LiquidButtonPrimitive,\n  type LiquidButtonProps as LiquidButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/liquid';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--primary)] text-primary hover:text-primary-foreground shadow-xs',\n        destructive:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--destructive)] text-white shadow-xs focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',\n        secondary:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--secondary)] text-secondary hover:text-secondary-foreground shadow-xs',\n        ghost:\n          '[--liquid-button-background-color:var(--transparent)] [--liquid-button-color:var(--primary)] text-primary hover:text-primary-foreground shadow-xs',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype LiquidButtonProps = LiquidButtonPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction LiquidButton({\n  className,\n  variant,\n  size,\n  ...props\n}: LiquidButtonProps) {\n  return (\n    <LiquidButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { LiquidButton, buttonVariants, type LiquidButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/buttons/liquid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-buttons-liquid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-buttons-liquid',
+  },
+  'components-buttons-ripple': {
+    name: 'components-buttons-ripple',
+    description: 'A button that animates on tap with a ripple effect.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-buttons-button',
+      'https://animate-ui.com/r/primitives-buttons-ripple',
+    ],
+    files: [
+      {
+        path: 'registry/components/buttons/ripple/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/buttons/ripple.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { type VariantProps } from 'class-variance-authority';\n\nimport { buttonVariants } from '@/components/animate-ui/components/buttons/button';\nimport {\n  RippleButton as RippleButtonPrimitive,\n  RippleButtonRipples as RippleButtonRipplesPrimitive,\n  type RippleButtonProps as RippleButtonPrimitiveProps,\n  type RippleButtonRipplesProps as RippleButtonRipplesPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/ripple';\nimport { cn } from '@/lib/utils';\n\nconst rippleButtonVariants = {\n  default: '[--ripple-button-ripple-color:var(--primary-foreground)]',\n  accent: '[--ripple-button-ripple-color:var(--accent-foreground)]',\n  destructive: '[--ripple-button-ripple-color:var(--destructive-foreground)]',\n  outline: '[--ripple-button-ripple-color:var(--foreground)]',\n  secondary: '[--ripple-button-ripple-color:var(--secondary-foreground)]',\n  ghost: '[--ripple-button-ripple-color:var(--foreground)]',\n  link: '[--ripple-button-ripple-color:var(--primary-foreground)]',\n};\n\ntype RippleButtonProps = RippleButtonPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction RippleButton({\n  className,\n  variant,\n  size,\n  ...props\n}: RippleButtonProps) {\n  return (\n    <RippleButtonPrimitive\n      className={cn(\n        buttonVariants({ variant, size, className }),\n        rippleButtonVariants[variant as keyof typeof rippleButtonVariants],\n      )}\n      {...props}\n    />\n  );\n}\n\ntype RippleButtonRipplesProps = RippleButtonRipplesPrimitiveProps;\n\nfunction RippleButtonRipples(props: RippleButtonRipplesProps) {\n  return <RippleButtonRipplesPrimitive {...props} />;\n}\n\nexport {\n  RippleButton,\n  RippleButtonRipples,\n  type RippleButtonProps,\n  type RippleButtonRipplesProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/buttons/ripple/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-buttons-ripple';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-buttons-ripple',
   },
   'components-community-management-bar': {
     name: 'components-community-management-bar',
@@ -414,6 +536,127 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/components-community-playful-todolist',
+  },
+  'components-radix-accordion': {
+    name: 'components-radix-accordion',
+    description:
+      'A vertically stacked set of interactive headings that each reveal an associated section of content.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-accordion',
+    ],
+    files: [
+      {
+        path: 'registry/components/radix/accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/accordion.tsx',
+        content:
+          "import * as React from 'react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Accordion as AccordionPrimitive,\n  AccordionItem as AccordionItemPrimitive,\n  AccordionHeader as AccordionHeaderPrimitive,\n  AccordionTrigger as AccordionTriggerPrimitive,\n  AccordionContent as AccordionContentPrimitive,\n  type AccordionProps as AccordionPrimitiveProps,\n  type AccordionItemProps as AccordionItemPrimitiveProps,\n  type AccordionTriggerProps as AccordionTriggerPrimitiveProps,\n  type AccordionContentProps as AccordionContentPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/accordion';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = AccordionPrimitiveProps;\n\nfunction Accordion(props: AccordionProps) {\n  return <AccordionPrimitive {...props} />;\n}\n\ntype AccordionItemProps = AccordionItemPrimitiveProps;\n\nfunction AccordionItem({ className, ...props }: AccordionItemProps) {\n  return (\n    <AccordionItemPrimitive\n      className={cn('border-b last:border-b-0', className)}\n      {...props}\n    />\n  );\n}\n\ntype AccordionTriggerProps = AccordionTriggerPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionTrigger({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionTriggerProps) {\n  return (\n    <AccordionHeaderPrimitive className=\"flex\">\n      <AccordionTriggerPrimitive\n        className={cn(\n          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showArrow && (\n          <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n        )}\n      </AccordionTriggerPrimitive>\n    </AccordionHeaderPrimitive>\n  );\n}\n\ntype AccordionContentProps = AccordionContentPrimitiveProps;\n\nfunction AccordionContent({\n  className,\n  children,\n  ...props\n}: AccordionContentProps) {\n  return (\n    <AccordionContentPrimitive {...props}>\n      <div className={cn('text-sm pt-0 pb-4', className)}>{children}</div>\n    </AccordionContentPrimitive>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionContentProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/accordion/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-accordion';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-accordion',
+  },
+  'components-radix-checkbox': {
+    name: 'components-radix-checkbox',
+    description:
+      'A control that allows the user to toggle between checked and not checked.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-checkbox',
+    ],
+    files: [
+      {
+        path: 'registry/components/radix/checkbox/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/checkbox.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Checkbox as CheckboxPrimitive,\n  CheckboxIndicator as CheckboxIndicatorPrimitive,\n  type CheckboxProps as CheckboxPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/checkbox';\nimport { cn } from '@/lib/utils';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nconst checkboxVariants = cva(\n  'peer shrink-0 flex items-center justify-center outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-500 size-5 rounded-sm bg-background border focus-visible:ring-offset-2 [&[data-state=checked],&[data-state=indeterminate]]:bg-primary [&[data-state=checked],&[data-state=indeterminate]]:text-primary-foreground',\n  {\n    variants: {\n      variant: {\n        default: 'bg-background border',\n        accent: 'bg-input',\n      },\n      size: {\n        default: 'size-5',\n        sm: 'size-4',\n        lg: 'size-6',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\nconst checkboxIndicatorVariants = cva('', {\n  variants: {\n    size: {\n      default: 'size-3.5',\n      sm: 'size-3',\n      lg: 'size-4',\n    },\n  },\n  defaultVariants: {\n    size: 'default',\n  },\n});\n\ntype CheckboxProps = CheckboxPrimitiveProps &\n  VariantProps<typeof checkboxVariants>;\n\nfunction Checkbox({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: CheckboxProps) {\n  return (\n    <CheckboxPrimitive\n      className={cn(checkboxVariants({ variant, size, className }))}\n      {...props}\n    >\n      {children}\n      <CheckboxIndicatorPrimitive\n        className={cn(checkboxIndicatorVariants({ size }))}\n      />\n    </CheckboxPrimitive>\n  );\n}\n\nexport { Checkbox, type CheckboxProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/checkbox/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-checkbox';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-checkbox',
+  },
+  'components-radix-dialog': {
+    name: 'components-radix-dialog',
+    description:
+      'A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-dialog'],
+    files: [
+      {
+        path: 'registry/components/radix/dialog/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/dialog.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Dialog as DialogPrimitive,\n  DialogContent as DialogContentPrimitive,\n  DialogDescription as DialogDescriptionPrimitive,\n  DialogFooter as DialogFooterPrimitive,\n  DialogHeader as DialogHeaderPrimitive,\n  DialogTitle as DialogTitlePrimitive,\n  DialogTrigger as DialogTriggerPrimitive,\n  DialogPortal as DialogPortalPrimitive,\n  DialogOverlay as DialogOverlayPrimitive,\n  DialogClose as DialogClosePrimitive,\n  type DialogProps as DialogPrimitiveProps,\n  type DialogContentProps as DialogContentPrimitiveProps,\n  type DialogDescriptionProps as DialogDescriptionPrimitiveProps,\n  type DialogFooterProps as DialogFooterPrimitiveProps,\n  type DialogHeaderProps as DialogHeaderPrimitiveProps,\n  type DialogTitleProps as DialogTitlePrimitiveProps,\n  type DialogTriggerProps as DialogTriggerPrimitiveProps,\n  type DialogPortalProps as DialogPortalPrimitiveProps,\n  type DialogOverlayProps as DialogOverlayPrimitiveProps,\n  type DialogCloseProps as DialogClosePrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/dialog';\nimport { cn } from '@/lib/utils';\nimport { XIcon } from 'lucide-react';\n\ntype DialogProps = DialogPrimitiveProps;\n\nfunction Dialog(props: DialogProps) {\n  return <DialogPrimitive {...props} />;\n}\n\ntype DialogTriggerProps = DialogTriggerPrimitiveProps;\n\nfunction DialogTrigger(props: DialogTriggerProps) {\n  return <DialogTriggerPrimitive {...props} />;\n}\n\ntype DialogCloseProps = DialogClosePrimitiveProps;\n\nfunction DialogClose(props: DialogCloseProps) {\n  return <DialogClosePrimitive {...props} />;\n}\n\ntype DialogOverlayProps = DialogOverlayPrimitiveProps;\n\nfunction DialogOverlay({ className, ...props }: DialogOverlayProps) {\n  return (\n    <DialogOverlayPrimitive\n      className={cn('fixed inset-0 z-50 bg-black/50', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogContentProps = DialogContentPrimitiveProps & {\n  showCloseButton?: boolean;\n};\n\nfunction DialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: DialogContentProps & {\n  showCloseButton?: boolean;\n}) {\n  return (\n    <DialogPortalPrimitive data-slot=\"dialog-portal\">\n      <DialogOverlay />\n      <DialogContentPrimitive\n        data-slot=\"dialog-content\"\n        className={cn(\n          'bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showCloseButton && (\n          <DialogClosePrimitive\n            data-slot=\"dialog-close\"\n            className=\"ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\"\n          >\n            <XIcon />\n            <span className=\"sr-only\">Close</span>\n          </DialogClosePrimitive>\n        )}\n      </DialogContentPrimitive>\n    </DialogPortalPrimitive>\n  );\n}\n\ntype DialogHeaderProps = DialogHeaderPrimitiveProps;\n\nfunction DialogHeader({ className, ...props }: DialogHeaderProps) {\n  return (\n    <DialogHeaderPrimitive\n      className={cn('flex flex-col gap-2 text-center sm:text-left', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogFooterProps = DialogFooterPrimitiveProps;\n\nfunction DialogFooter({ className, ...props }: DialogFooterProps) {\n  return (\n    <DialogFooterPrimitive\n      className={cn(\n        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype DialogTitleProps = DialogTitlePrimitiveProps;\n\nfunction DialogTitle({ className, ...props }: DialogTitleProps) {\n  return (\n    <DialogTitlePrimitive\n      className={cn('text-lg leading-none font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogDescriptionProps = DialogDescriptionPrimitiveProps;\n\nfunction DialogDescription({ className, ...props }: DialogDescriptionProps) {\n  return (\n    <DialogDescriptionPrimitive\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Dialog,\n  DialogTrigger,\n  DialogClose,\n  DialogContent,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  type DialogProps,\n  type DialogTriggerProps,\n  type DialogCloseProps,\n  type DialogContentProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/dialog/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-dialog';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-dialog',
   },
   'demo-components-backgrounds-bubble': {
     name: 'demo-components-backgrounds-bubble',
@@ -772,6 +1015,195 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/demo-components-buttons-button',
   },
+  'demo-components-buttons-flip': {
+    name: 'demo-components-buttons-flip',
+    description: 'Demo showing a flip button.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-buttons-flip'],
+    files: [
+      {
+        path: 'registry/demo/components/buttons/flip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/buttons/flip.tsx',
+        content:
+          "import { PlusIcon } from 'lucide-react';\nimport {\n  FlipButton,\n  FlipButtonBack,\n  FlipButtonFront,\n  type FlipButtonProps,\n} from '@/components/animate-ui/components/buttons/flip';\n\ninterface ButtonDemoProps {\n  frontVariant: FlipButtonProps['variant'];\n  frontSize: FlipButtonProps['size'];\n  backVariant: FlipButtonProps['variant'];\n  backSize: FlipButtonProps['size'];\n}\n\nexport default function ButtonDemo({\n  frontVariant,\n  frontSize,\n  backVariant,\n  backSize,\n}: ButtonDemoProps) {\n  return (\n    <FlipButton>\n      <FlipButtonFront variant={frontVariant} size={frontSize}>\n        {frontSize === 'icon' ? <PlusIcon /> : 'Front Button'}\n      </FlipButtonFront>\n      <FlipButtonBack variant={backVariant} size={backSize}>\n        {backSize === 'icon' ? <PlusIcon /> : 'Back Button'}\n      </FlipButtonBack>\n    </FlipButton>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/buttons/flip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-buttons-flip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        FlipButtonFront: {
+          frontVariant: {
+            value: 'accent',
+            options: {
+              default: 'default',
+              accent: 'accent',
+              destructive: 'destructive',
+              outline: 'outline',
+              secondary: 'secondary',
+              ghost: 'ghost',
+              link: 'link',
+            },
+          },
+          frontSize: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+        FlipButtonBack: {
+          backVariant: {
+            value: 'default',
+            options: {
+              default: 'default',
+              accent: 'accent',
+              destructive: 'destructive',
+              outline: 'outline',
+              secondary: 'secondary',
+              ghost: 'ghost',
+              link: 'link',
+            },
+          },
+          backSize: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-buttons-flip',
+  },
+  'demo-components-buttons-liquid': {
+    name: 'demo-components-buttons-liquid',
+    description: 'Demo showing a liquid button.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-buttons-liquid',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/buttons/liquid/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/buttons/liquid.tsx',
+        content:
+          "import { PlusIcon } from 'lucide-react';\nimport {\n  LiquidButton,\n  type LiquidButtonProps,\n} from '@/components/animate-ui/components/buttons/liquid';\n\ninterface LiquidButtonDemoProps {\n  variant: LiquidButtonProps['variant'];\n  size: LiquidButtonProps['size'];\n}\n\nexport default function LiquidButtonDemo({\n  variant,\n  size,\n}: LiquidButtonDemoProps) {\n  return (\n    <LiquidButton variant={variant} size={size}>\n      {size === 'icon' ? <PlusIcon /> : 'Hover me'}\n    </LiquidButton>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/buttons/liquid/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-buttons-liquid';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        LiquidButton: {
+          variant: {
+            value: 'default',
+            options: {
+              default: 'default',
+              destructive: 'destructive',
+              ghost: 'ghost',
+            },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-buttons-liquid',
+  },
+  'demo-components-buttons-ripple': {
+    name: 'demo-components-buttons-ripple',
+    description: 'Demo showing a ripple button.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-buttons-ripple',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/buttons/ripple/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/buttons/ripple.tsx',
+        content:
+          "import { PlusIcon } from 'lucide-react';\nimport {\n  RippleButton,\n  RippleButtonRipples,\n  type RippleButtonProps,\n} from '@/components/animate-ui/components/buttons/ripple';\n\ninterface RippleButtonDemoProps {\n  variant: RippleButtonProps['variant'];\n  size: RippleButtonProps['size'];\n}\n\nexport default function RippleButtonDemo({\n  variant,\n  size,\n}: RippleButtonDemoProps) {\n  return (\n    <RippleButton variant={variant} size={size}>\n      {size === 'icon' ? <PlusIcon /> : 'Click me'}\n      <RippleButtonRipples />\n    </RippleButton>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/buttons/ripple/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-buttons-ripple';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        RippleButton: {
+          variant: {
+            value: 'default',
+            options: {
+              default: 'default',
+              accent: 'accent',
+              destructive: 'destructive',
+              outline: 'outline',
+              secondary: 'secondary',
+              ghost: 'ghost',
+              link: 'link',
+            },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-buttons-ripple',
+  },
   'demo-components-community-management-bar': {
     name: 'demo-components-community-management-bar',
     description: 'Demo showing a management bar.',
@@ -895,6 +1327,160 @@ export const index: Record<string, any> = {
     })(),
     command:
       'https://animate-ui.com/r/demo-components-community-playful-todolist',
+  },
+  'demo-components-radix-accordion': {
+    name: 'demo-components-radix-accordion',
+    description: 'Demo showing a accordion.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-radix-accordion',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/radix/accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/accordion.tsx',
+        content:
+          "import {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionContent,\n} from '@/components/animate-ui/components/radix/accordion';\n\nconst ITEMS = [\n  {\n    title: 'What is Animate UI?',\n    content:\n      'Animate UI is an open-source distribution of React components built with TypeScript, Tailwind CSS, and Motion.',\n  },\n  {\n    title: 'How is it different from other libraries?',\n    content:\n      'Instead of installing via NPM, you copy and paste the components directly. This gives you full control to modify or customize them as needed.',\n  },\n  {\n    title: 'Is Animate UI free to use?',\n    content:\n      'Absolutely! Animate UI is fully open-source. You can use, modify, and adapt it to fit your needs.',\n  },\n];\n\ntype RadixAccordionDemoProps = {\n  multiple?: boolean;\n  collapsible?: boolean;\n  keepRendered?: boolean;\n  showArrow?: boolean;\n};\n\nexport const RadixAccordionDemo = ({\n  multiple = false,\n  collapsible = true,\n  keepRendered = false,\n  showArrow = true,\n}: RadixAccordionDemoProps) => {\n  return (\n    <Accordion\n      type={multiple ? 'multiple' : 'single'}\n      collapsible={collapsible}\n      className=\"max-w-[400px] w-full\"\n    >\n      {ITEMS.map((item, index) => (\n        <AccordionItem key={index} value={`item-${index + 1}`}>\n          <AccordionTrigger showArrow={showArrow}>\n            {item.title}\n          </AccordionTrigger>\n          <AccordionContent keepRendered={keepRendered}>\n            {item.content}\n          </AccordionContent>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/accordion/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-accordion';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Accordion: { multiple: { value: false }, collapsible: { value: true } },
+        AccordionTrigger: { showArrow: { value: true } },
+        AccordionContent: { keepRendered: { value: false } },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-accordion',
+  },
+  'demo-components-radix-checkbox': {
+    name: 'demo-components-radix-checkbox',
+    description: 'Demo showing a checkbox.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-radix-checkbox',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/radix/checkbox/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/checkbox.tsx',
+        content:
+          "import { useEffect, useState } from 'react';\n\nimport { Label } from '@/components/ui/label';\nimport {\n  Checkbox,\n  type CheckboxProps,\n} from '@/components/animate-ui/components/radix/checkbox';\n\ninterface RadixCheckboxDemoProps {\n  checked: boolean | 'indeterminate';\n  variant: CheckboxProps['variant'];\n  size: CheckboxProps['size'];\n}\n\nexport const RadixCheckboxDemo = ({\n  checked,\n  variant,\n  size,\n}: RadixCheckboxDemoProps) => {\n  const [isChecked, setIsChecked] = useState(checked ?? false);\n\n  useEffect(() => {\n    setIsChecked(checked);\n  }, [checked]);\n\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox\n        id=\"terms\"\n        checked={isChecked}\n        onCheckedChange={setIsChecked}\n        variant={variant}\n        size={size}\n      />\n      <Label htmlFor=\"terms\">Accept terms and conditions</Label>\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/checkbox/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-checkbox';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Checkbox: {
+          checked: {
+            value: false,
+            options: {
+              true: true,
+              false: false,
+              indeterminate: 'indeterminate',
+            },
+          },
+          variant: {
+            value: 'default',
+            options: { default: 'default', accent: 'accent' },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-checkbox',
+  },
+  'demo-components-radix-dialog': {
+    name: 'demo-components-radix-dialog',
+    description: 'Demo showing a dialog.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-radix-dialog'],
+    files: [
+      {
+        path: 'registry/demo/components/radix/dialog/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/dialog.tsx',
+        content:
+          'import * as React from \'react\';\n\nimport { Button } from \'@/components/ui/button\';\nimport {\n  Dialog,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogClose,\n  DialogFooter,\n  type DialogContentProps,\n} from \'@/components/animate-ui/components/radix/dialog\';\nimport { Label } from \'@/components/ui/label\';\nimport { Input } from \'@/components/ui/input\';\n\ninterface RadixDialogDemoProps {\n  from: DialogContentProps[\'from\'];\n  showCloseButton: boolean;\n}\n\nexport const RadixDialogDemo = ({\n  from,\n  showCloseButton,\n}: RadixDialogDemoProps) => {\n  return (\n    <Dialog>\n      <form>\n        <DialogTrigger asChild>\n          <Button variant="outline">Open Dialog</Button>\n        </DialogTrigger>\n        <DialogContent\n          from={from}\n          showCloseButton={showCloseButton}\n          className="sm:max-w-[425px]"\n        >\n          <DialogHeader>\n            <DialogTitle>Edit profile</DialogTitle>\n            <DialogDescription>\n              Make changes to your profile here. Click save when you&apos;re\n              done.\n            </DialogDescription>\n          </DialogHeader>\n          <div className="grid gap-4">\n            <div className="grid gap-3">\n              <Label htmlFor="name-1">Name</Label>\n              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />\n            </div>\n            <div className="grid gap-3">\n              <Label htmlFor="username-1">Username</Label>\n              <Input id="username-1" name="username" defaultValue="@peduarte" />\n            </div>\n          </div>\n          <DialogFooter>\n            <DialogClose asChild>\n              <Button variant="outline">Cancel</Button>\n            </DialogClose>\n            <Button type="submit">Save changes</Button>\n          </DialogFooter>\n        </DialogContent>\n      </form>\n    </Dialog>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/dialog/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-dialog';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        DialogContent: {
+          from: {
+            value: 'top',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          showCloseButton: { value: true },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-dialog',
   },
   'demo-primitives-animate-avatar-group': {
     name: 'demo-primitives-animate-avatar-group',
@@ -3911,7 +4497,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/primitives/texts/typing.tsx',
         content:
-          'import {\n  TypingText,\n  TypingTextCursor,\n} from \'@/components/animate-ui/primitives/texts/typing\';\n\ninterface TypingTextDemoProps {\n  delay: number;\n  holdDelay: number;\n  loop: boolean;\n  cursor: boolean;\n}\n\nexport const TypingTextDemo = ({\n  delay,\n  holdDelay,\n  loop,\n  cursor,\n}: TypingTextDemoProps) => {\n  return (\n    <TypingText\n      key={`${delay}-${holdDelay}-${loop}-${cursor}`}\n      delay={delay}\n      holdDelay={holdDelay}\n      className="text-4xl font-semibold"\n      text="Typing Text"\n      loop={loop}\n    >\n      {cursor && <TypingTextCursor className="!h-8 !w-1 rounded-full ml-1" />}\n    </TypingText>\n  );\n};',
+          'import {\n  TypingText,\n  TypingTextCursor,\n} from \'@/components/animate-ui/primitives/texts/typing\';\n\ninterface TypingTextDemoProps {\n  delay: number;\n  holdDelay: number;\n  loop: boolean;\n  cursor: boolean;\n}\n\nexport const TypingTextDemo = ({\n  delay,\n  holdDelay,\n  loop,\n  cursor,\n}: TypingTextDemoProps) => {\n  return (\n    <TypingText\n      key={`${delay}-${holdDelay}-${loop}-${cursor}`}\n      delay={delay}\n      holdDelay={holdDelay}\n      className="text-4xl font-semibold"\n      text="Typing Text component made with Motion. Highly customizable and easy to use."\n      loop={loop}\n    >\n      {cursor && <TypingTextCursor className="!h-8 !w-1 rounded-full ml-1" />}\n    </TypingText>\n  );\n};',
       },
     ],
     keywords: [],
@@ -6600,7 +7186,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/texts/rolling.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\nconst formatCharacter = (char: string) => (char === ' ' ? '\\u00A0' : char);\n\nconst CHAR_STYLE: React.CSSProperties = {\n  position: 'absolute',\n  display: 'inline-block',\n  backfaceVisibility: 'hidden',\n};\n\ntype RollingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string;\n  transition?: Transition;\n  delay?: number;\n} & UseIsInViewOptions;\n\nfunction RollingText({\n  ref,\n  text,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },\n  delay = 0,\n  ...props\n}: RollingTextProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n  const characters = React.useMemo(() => text.split(''), [text]);\n  const stepDelay = transition?.delay ?? 0;\n\n  return (\n    <span ref={localRef} data-slot=\"rolling-text\" {...props}>\n      {characters.map((char, idx) => {\n        const charDelay = delay / 1000 + idx * stepDelay;\n        return (\n          <span\n            key={idx}\n            style={{\n              position: 'relative',\n              display: 'inline-block',\n              perspective: '9999999px',\n              transformStyle: 'preserve-3d',\n              width: 'auto',\n            }}\n            aria-hidden=\"true\"\n          >\n            <motion.span\n              style={{\n                ...CHAR_STYLE,\n                transformOrigin: '50% 25%',\n              }}\n              initial={{ rotateX: 0 }}\n              animate={isInView ? { rotateX: 90 } : undefined}\n              transition={{\n                ...transition,\n                delay: charDelay,\n              }}\n            >\n              {formatCharacter(char)}\n            </motion.span>\n            <motion.span\n              style={{\n                ...CHAR_STYLE,\n                transformOrigin: '50% 100%',\n              }}\n              initial={{ rotateX: 90 }}\n              animate={isInView ? { rotateX: 0 } : undefined}\n              transition={{\n                ...transition,\n                delay: charDelay + 0.3,\n              }}\n            >\n              {formatCharacter(char)}\n            </motion.span>\n            <span style={{ visibility: 'hidden' }}>\n              {formatCharacter(char)}\n            </span>\n          </span>\n        );\n      })}\n\n      <span className=\"sr-only\">{text}</span>\n    </span>\n  );\n}\n\nexport { RollingText, type RollingTextProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\nconst formatCharacter = (char: string) => (char === ' ' ? '\\u00A0' : char);\n\nconst CHAR_STYLE: React.CSSProperties = {\n  position: 'absolute',\n  display: 'inline-block',\n  backfaceVisibility: 'hidden',\n};\n\ntype RollingTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\n  text: string;\n  transition?: Transition;\n  delay?: number;\n} & UseIsInViewOptions;\n\nfunction RollingText({\n  ref,\n  text,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },\n  delay = 0,\n  ...props\n}: RollingTextProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const parts = React.useMemo(() => text.split(/(\\s+)/), [text]);\n  const stepDelay = transition?.delay ?? 0;\n\n  let charIdx = 0;\n\n  return (\n    <span ref={localRef} data-slot=\"rolling-text\" {...props}>\n      {parts.map((part, wi) => {\n        if (/^\\s+$/.test(part)) {\n          return <span key={`space-${wi}`}>{part}</span>;\n        }\n\n        const chars = Array.from(part);\n        return (\n          <span\n            key={`word-${wi}`}\n            style={{ display: 'inline-block', whiteSpace: 'nowrap' }}\n          >\n            {chars.map((char, ci) => {\n              const thisIdx = charIdx++;\n              const charDelay = delay / 1000 + thisIdx * stepDelay;\n              return (\n                <span\n                  key={`c-${wi}-${ci}`}\n                  style={{\n                    position: 'relative',\n                    display: 'inline-block',\n                    perspective: '9999999px',\n                    transformStyle: 'preserve-3d',\n                    width: 'auto',\n                  }}\n                  aria-hidden=\"true\"\n                >\n                  <motion.span\n                    style={{\n                      ...CHAR_STYLE,\n                      transformOrigin: '50% 25%',\n                    }}\n                    initial={{ rotateX: 0 }}\n                    animate={isInView ? { rotateX: 90 } : undefined}\n                    transition={{\n                      ...transition,\n                      delay: charDelay,\n                    }}\n                  >\n                    {formatCharacter(char)}\n                  </motion.span>\n                  <motion.span\n                    style={{\n                      ...CHAR_STYLE,\n                      transformOrigin: '50% 100%',\n                    }}\n                    initial={{ rotateX: 90 }}\n                    animate={isInView ? { rotateX: 0 } : undefined}\n                    transition={{\n                      ...transition,\n                      delay: charDelay + 0.3,\n                    }}\n                  >\n                    {formatCharacter(char)}\n                  </motion.span>\n                  <span style={{ visibility: 'hidden' }}>\n                    {formatCharacter(char)}\n                  </span>\n                </span>\n              );\n            })}\n          </span>\n        );\n      })}\n\n      <span className=\"sr-only\">{text}</span>\n    </span>\n  );\n}\n\nexport { RollingText, type RollingTextProps };",
       },
     ],
     keywords: [],
@@ -6796,7 +7382,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/texts/splitting.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  type Variants,\n  type TargetAndTransition,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype DefaultSplittingTextProps = Omit<\n  HTMLMotionProps<'div'>,\n  'children' | 'initial' | 'animate' | 'transition'\n> & {\n  initial?: TargetAndTransition;\n  animate?: TargetAndTransition;\n  transition?: Transition;\n  stagger?: number;\n  delay?: number;\n} & UseIsInViewOptions;\n\ntype CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'chars' | 'words';\n  text: string;\n};\n\ntype LinesSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'lines';\n  text: string[];\n};\n\ntype SplittingTextProps =\n  | CharsOrWordsSplittingTextProps\n  | LinesSplittingTextProps;\n\nconst SplittingText: React.FC<SplittingTextProps> = ({\n  ref,\n  text,\n  type = 'chars',\n  initial = { x: 150, opacity: 0 },\n  animate = { x: 0, opacity: 1 },\n  transition = { duration: 0.7, ease: 'easeOut' },\n  stagger,\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  ...props\n}) => {\n  const items = React.useMemo<React.ReactNode[]>(() => {\n    if (Array.isArray(text)) {\n      return text.flatMap((line, i) => [\n        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,\n        i < text.length - 1 ? <br key={`br-${i}`} /> : null,\n      ]);\n    }\n\n    if (type === 'words') {\n      const tokens = text.match(/\\S+\\s*/g) || [];\n      return tokens.map((token, i) => (\n        <React.Fragment key={i}>{token}</React.Fragment>\n      ));\n    }\n\n    return text\n      .split('')\n      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);\n  }, [text, type]);\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        delayChildren: delay / 1000,\n        staggerChildren:\n          stagger ?? (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: initial,\n    visible: {\n      ...animate,\n      transition,\n    },\n  };\n\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  return (\n    <motion.span\n      ref={localRef}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      variants={containerVariants}\n      {...props}\n    >\n      {items.map(\n        (item, index) =>\n          item && (\n            <React.Fragment key={index}>\n              <motion.span\n                key={index}\n                variants={itemVariants}\n                style={{\n                  display: 'inline-block',\n                  whiteSpace: type === 'chars' ? 'pre' : 'normal',\n                }}\n              >\n                {item}\n              </motion.span>\n              {type === 'words' && ' '}\n            </React.Fragment>\n          ),\n      )}\n    </motion.span>\n  );\n};\n\nexport { SplittingText, type SplittingTextProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  type Variants,\n  type TargetAndTransition,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype DefaultSplittingTextProps = Omit<\n  HTMLMotionProps<'div'>,\n  'children' | 'initial' | 'animate' | 'transition'\n> & {\n  initial?: TargetAndTransition;\n  animate?: TargetAndTransition;\n  transition?: Transition;\n  stagger?: number;\n  delay?: number;\n  disableAnimation?: boolean;\n} & UseIsInViewOptions;\n\ntype CharsOrWordsSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'chars' | 'words';\n  text: string;\n};\n\ntype LinesSplittingTextProps = DefaultSplittingTextProps & {\n  type?: 'lines';\n  text: string[];\n};\n\ntype SplittingTextProps =\n  | CharsOrWordsSplittingTextProps\n  | LinesSplittingTextProps;\n\nconst SplittingText: React.FC<SplittingTextProps> = ({\n  ref,\n  text,\n  type = 'chars',\n  initial = { x: 150, opacity: 0 },\n  animate = { x: 0, opacity: 1 },\n  transition = { duration: 0.7, ease: 'easeOut' },\n  stagger,\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  disableAnimation = false,\n  ...props\n}) => {\n  const items = React.useMemo<React.ReactNode[]>(() => {\n    if (Array.isArray(text)) {\n      return text.flatMap((line, i) => [\n        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,\n        i < text.length - 1 ? <br key={`br-${i}`} /> : null,\n      ]);\n    }\n\n    if (type === 'words') {\n      const tokens = text.match(/\\S+\\s*/g) || [];\n      return tokens.map((token, i) => (\n        <React.Fragment key={i}>{token}</React.Fragment>\n      ));\n    }\n\n    return text\n      .split('')\n      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);\n  }, [text, type]);\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        delayChildren: delay / 1000,\n        staggerChildren:\n          stagger ?? (type === 'chars' ? 0.05 : type === 'words' ? 0.2 : 0.3),\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: disableAnimation ? animate : initial,\n    visible: {\n      ...animate,\n      transition: disableAnimation ? { duration: 0 } : transition,\n    },\n  };\n\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  if (Array.isArray(text)) {\n    return (\n      <motion.span\n        ref={localRef}\n        initial=\"hidden\"\n        animate={isInView ? 'visible' : 'hidden'}\n        variants={containerVariants}\n        {...props}\n      >\n        {text.map((line, i) => (\n          <React.Fragment key={`line-${i}`}>\n            <motion.span\n              variants={itemVariants}\n              style={{ display: 'inline-block' }}\n            >\n              {line}\n            </motion.span>\n            {i < text.length - 1 ? <br /> : null}\n          </React.Fragment>\n        ))}\n      </motion.span>\n    );\n  }\n\n  if (type === 'words') {\n    const tokens = (text as string).match(/\\S+\\s*/g) || [];\n    return (\n      <motion.span\n        ref={localRef}\n        initial=\"hidden\"\n        animate={isInView ? 'visible' : 'hidden'}\n        variants={containerVariants}\n        {...props}\n      >\n        {tokens.map((token, i) => (\n          <React.Fragment key={i}>\n            <motion.span\n              variants={itemVariants}\n              style={{ display: 'inline-block', whiteSpace: 'normal' }}\n            >\n              {token.trim()}\n            </motion.span>\n            {/\\s$/.test(token) ? ' ' : null}\n          </React.Fragment>\n        ))}\n      </motion.span>\n    );\n  }\n\n  const tokens = (text as string).split(/(\\s+)/);\n  const perChar = stagger ?? 0.05;\n  const baseDelaySec = (delay ?? 0) / 1000;\n\n  let globalIndex = 0;\n\n  return (\n    <motion.span\n      ref={localRef}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      variants={{\n        hidden: {},\n        visible: { transition: {} },\n      }}\n      {...props}\n    >\n      {tokens.map((tok, wi) => {\n        if (/^\\s+$/.test(tok)) {\n          return <span key={`space-${wi}`}>{tok}</span>;\n        }\n        const chars = Array.from(tok);\n        const wordDelay = baseDelaySec + perChar * globalIndex;\n        globalIndex += chars.length;\n\n        return (\n          <motion.span\n            key={`word-${wi}`}\n            style={{ display: 'inline-block', whiteSpace: 'nowrap' }}\n            variants={{}}\n            transition={{ delayChildren: wordDelay, staggerChildren: perChar }}\n            initial=\"hidden\"\n            animate={isInView ? 'visible' : 'hidden'}\n          >\n            {chars.map((ch, ci) => (\n              <motion.span\n                key={`ch-${wi}-${ci}`}\n                variants={itemVariants}\n                style={{ display: 'inline-block', whiteSpace: 'pre' }}\n              >\n                {ch}\n              </motion.span>\n            ))}\n          </motion.span>\n        );\n      })}\n    </motion.span>\n  );\n};\n\nexport { SplittingText, type SplittingTextProps };",
       },
     ],
     keywords: [],

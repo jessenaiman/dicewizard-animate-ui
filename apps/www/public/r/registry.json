@@ -127,6 +127,65 @@
       ]
     },
     {
+      "name": "components-buttons-flip",
+      "type": "registry:ui",
+      "title": "Flip Button",
+      "description": "A button that flips between two states on hover.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-button",
+        "https://animate-ui.com/r/primitives-buttons-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-buttons-liquid",
+      "type": "registry:ui",
+      "title": "Liquid Button",
+      "description": "A button that fills on hover.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-liquid"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/liquid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/liquid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-buttons-ripple",
+      "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "A button that animates on tap with a ripple effect.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-button",
+        "https://animate-ui.com/r/primitives-buttons-ripple"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/ripple/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/ripple.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-community-management-bar",
       "type": "registry:ui",
       "title": "Management Bar",
@@ -179,6 +238,63 @@
           "path": "registry/components/community/playful-todolist/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/components/community/playful-todolist.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal an associated section of content.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/dialog.tsx"
         }
       ]
     },
@@ -398,6 +514,163 @@
       }
     },
     {
+      "name": "demo-components-buttons-flip",
+      "type": "registry:ui",
+      "title": "Flip Button Demo",
+      "description": "Demo showing a flip button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/flip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "FlipButtonFront": {
+            "frontVariant": {
+              "value": "accent",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "destructive": "destructive",
+                "outline": "outline",
+                "secondary": "secondary",
+                "ghost": "ghost",
+                "link": "link"
+              }
+            },
+            "frontSize": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          },
+          "FlipButtonBack": {
+            "backVariant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "destructive": "destructive",
+                "outline": "outline",
+                "secondary": "secondary",
+                "ghost": "ghost",
+                "link": "link"
+              }
+            },
+            "backSize": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-buttons-liquid",
+      "type": "registry:ui",
+      "title": "Liquid Button Demo",
+      "description": "Demo showing a liquid button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-liquid"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/liquid/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/liquid.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "LiquidButton": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "destructive": "destructive",
+                "ghost": "ghost"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-buttons-ripple",
+      "type": "registry:ui",
+      "title": "Ripple Button Demo",
+      "description": "Demo showing a ripple button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-ripple"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/ripple/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/ripple.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "RippleButton": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "destructive": "destructive",
+                "outline": "outline",
+                "secondary": "secondary",
+                "ghost": "ghost",
+                "link": "link"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "demo-components-community-management-bar",
       "type": "registry:ui",
       "title": "Management Bar Demo",
@@ -444,6 +717,123 @@
           "target": "components/animate-ui/demo/components/community/playful-todolist.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-radix-accordion",
+      "type": "registry:ui",
+      "title": "Accordion Demo",
+      "description": "Demo showing a accordion.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/accordion.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Accordion": {
+            "multiple": {
+              "value": false
+            },
+            "collapsible": {
+              "value": true
+            }
+          },
+          "AccordionTrigger": {
+            "showArrow": {
+              "value": true
+            }
+          },
+          "AccordionContent": {
+            "keepRendered": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox Demo",
+      "description": "Demo showing a checkbox.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/checkbox.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Checkbox": {
+            "checked": {
+              "value": false,
+              "options": {
+                "true": true,
+                "false": false,
+                "indeterminate": "indeterminate"
+              }
+            },
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-dialog",
+      "type": "registry:ui",
+      "title": "Dialog Demo",
+      "description": "Demo showing a dialog.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/dialog.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "DialogContent": {
+            "from": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "showCloseButton": {
+              "value": true
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-animate-avatar-group",
