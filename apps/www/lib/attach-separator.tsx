@@ -4,14 +4,8 @@ import CommunityIcon from '@workspace/ui/components/icons/community-icon';
 import ImageIcon from '@workspace/ui/components/icons/image-icon';
 import HeadlessUIIcon from '@workspace/ui/components/icons/headlessui-icon';
 import RadixIcon from '@workspace/ui/components/icons/radix-icon';
-import ShadcnIcon from '@workspace/ui/components/icons/shadcn-icon';
 import type { BuildPageTreeOptions } from 'fumadocs-core/source';
-import {
-  BookOpenIcon,
-  RectangleHorizontalIcon,
-  SparklesIcon,
-  TypeIcon,
-} from 'lucide-react';
+import { RectangleHorizontalIcon, SparklesIcon, TypeIcon } from 'lucide-react';
 
 const Icon = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -45,14 +39,6 @@ export const attachSeparator: BuildPageTreeOptions['attachSeparator'] = (
     case 'Radix UI':
       node.name = (
         <Separator icon={<RadixIcon className="!size-2.5" />} name="Radix UI" />
-      );
-      break;
-    case 'Shadcn UI':
-      node.name = (
-        <Separator
-          icon={<ShadcnIcon className="!size-2.5" strokeWidth={40} />}
-          name="Shadcn UI"
-        />
       );
       break;
     case 'Base UI':

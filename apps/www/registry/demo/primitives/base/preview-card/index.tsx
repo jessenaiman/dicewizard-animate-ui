@@ -30,7 +30,7 @@ export const PreviewCardDemo = ({
             rel="noreferrer noopener"
           >
             <img
-              src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"
+              src="https://pbs.twimg.com/profile_images/1950218390741618688/72447Y7e_400x400.jpg"
               alt="Animate UI"
             />
           </a>
@@ -48,7 +48,7 @@ export const PreviewCardDemo = ({
             <div className="flex flex-col gap-4">
               <img
                 className="size-16 rounded-full overflow-hidden border"
-                src="https://pbs.twimg.com/profile_images/1904970066770214912/lYBctz26_400x400.jpg"
+                src="https://pbs.twimg.com/profile_images/1950218390741618688/72447Y7e_400x400.jpg"
                 alt="Animate UI"
               />
               <div className="flex flex-col gap-4">

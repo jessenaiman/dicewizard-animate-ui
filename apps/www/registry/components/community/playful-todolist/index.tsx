@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { motion, type Transition } from 'motion/react';
 import { Label } from '@workspace/ui/components/ui/label';
-import { Checkbox } from '@/registry/primitives/radix/checkbox';
+import { Checkbox } from '@/registry/components/radix/checkbox';
 
 const checkboxItems = [
   {
@@ -47,6 +47,7 @@ function PlayfulTodolist() {
         <div key={item.id} className="space-y-6">
           <div className="flex items-center space-x-2">
             <Checkbox
+              variant="accent"
               checked={checked[idx]}
               onCheckedChange={(val) => {
                 const updated = [...checked];

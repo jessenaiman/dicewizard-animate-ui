@@ -134,7 +134,6 @@ function DropdownMenuSubTrigger({
       <motion.div
         data-slot="dropdown-menu-sub-trigger"
         data-disabled={disabled}
-        whileTap={{ scale: 0.95 }}
         {...props}
       />
     </DropdownMenuPrimitive.SubTrigger>
@@ -295,7 +294,11 @@ function DropdownMenuContent({
               data-slot="dropdown-menu-content"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              exit={{
+                opacity: 0,
+                scale: 0.95,
+                transition: { ...transition, delay: 0.3 },
+              }}
               transition={transition}
               style={{ willChange: 'opacity, transform', ...style }}
               {...props}
@@ -335,7 +338,6 @@ function DropdownMenuItem({
       <motion.div
         data-slot="dropdown-menu-item"
         data-disabled={disabled}
-        whileTap={{ scale: 0.95 }}
         {...props}
       />
     </DropdownMenuPrimitive.Item>
@@ -367,7 +369,6 @@ function DropdownMenuCheckboxItem({
       <motion.div
         data-slot="dropdown-menu-checkbox-item"
         data-disabled={disabled}
-        whileTap={{ scale: 0.95 }}
         {...props}
       />
     </DropdownMenuPrimitive.CheckboxItem>
@@ -398,7 +399,6 @@ function DropdownMenuRadioItem({
       <motion.div
         data-slot="dropdown-menu-radio-item"
         data-disabled={disabled}
-        whileTap={{ scale: 0.95 }}
         {...props}
       />
     </DropdownMenuPrimitive.RadioItem>
@@ -434,12 +434,30 @@ function DropdownMenuShortcut(props: DropdownMenuShortcutProps) {
   return <span data-slot="dropdown-menu-shortcut" {...props} />;
 }
 
+type DropdownMenuItemIndicatorProps = Omit<
+  React.ComponentProps<typeof DropdownMenuPrimitive.ItemIndicator>,
+  'asChild'
+> &
+  HTMLMotionProps<'div'>;
+
+function DropdownMenuItemIndicator(props: DropdownMenuItemIndicatorProps) {
+  return (
+    <DropdownMenuPrimitive.ItemIndicator
+      data-slot="dropdown-menu-item-indicator"
+      asChild
+    >
+      <motion.div {...props} />
+    </DropdownMenuPrimitive.ItemIndicator>
+  );
+}
+
 export {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuHighlight,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuItemIndicator,
   DropdownMenuHighlightItem,
   DropdownMenuCheckboxItem,
   DropdownMenuRadioItem,
@@ -459,6 +477,7 @@ export {
   type DropdownMenuHighlightProps,
   type DropdownMenuContentProps,
   type DropdownMenuItemProps,
+  type DropdownMenuItemIndicatorProps,
   type DropdownMenuHighlightItemProps,
   type DropdownMenuCheckboxItemProps,
   type DropdownMenuRadioItemProps,

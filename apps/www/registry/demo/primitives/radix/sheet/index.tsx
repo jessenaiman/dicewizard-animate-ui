@@ -9,7 +9,7 @@ import {
   SheetPortal,
   SheetTitle,
   SheetTrigger,
-} from '@/registry/primitives/shadcn/sheet';
+} from '@/registry/primitives/radix/sheet';
 
 interface RadixSheetDemoProps {
   side: 'right' | 'left' | 'top' | 'bottom';

@@ -299,6 +299,92 @@
       ]
     },
     {
+      "name": "components-radix-dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/dropdown-menu/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-files",
+      "type": "registry:ui",
+      "title": "Files",
+      "description": "A component that allows you to display a list of files and folders.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-files"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/files.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/hover-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/hover-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/progress.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-components-backgrounds-bubble",
       "type": "registry:ui",
       "title": "Bubble Background Demo",
@@ -834,6 +920,263 @@
           }
         }
       }
+    },
+    {
+      "name": "demo-components-radix-dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu Demo",
+      "description": "Demo showing a dropdown menu.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/dropdown-menu/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/dropdown-menu.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "DropdownMenuContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "start",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-dropdown-menu-checkbox",
+      "type": "registry:ui",
+      "title": "Dropdown Menu Checkbox Demo",
+      "description": "Demo showing a dropdown menu with a checkbox.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/dropdown-menu-checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/dropdown-menu-checkbox.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "DropdownMenuContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "start",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-dropdown-menu-radio",
+      "type": "registry:ui",
+      "title": "Dropdown Menu Radio Demo",
+      "description": "Demo showing a dropdown menu with a radio.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/dropdown-menu-radio/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/dropdown-menu-radio.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "DropdownMenuContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "start",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-files",
+      "type": "registry:ui",
+      "title": "Files Demo",
+      "description": "Demo showing a files.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-files"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/files.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-radix-hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card Demo",
+      "description": "Demo showing a hover card.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/hover-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/hover-card.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "HoverCardContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-popover",
+      "type": "registry:ui",
+      "title": "Popover Demo",
+      "description": "Demo showing a popover.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/popover.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PopoverContent": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-progress",
+      "type": "registry:ui",
+      "title": "Radix Progress Demo",
+      "description": "Demo showing a radix progress.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/progress.tsx"
+        }
+      ]
     },
     {
       "name": "demo-primitives-animate-avatar-group",
@@ -2427,6 +2770,37 @@
       ]
     },
     {
+      "name": "demo-primitives-radix-sheet",
+      "type": "registry:ui",
+      "title": "Radix Sheet Demo",
+      "description": "Demo showing an animated radix sheet.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/radix/sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/radix/sheet.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "SheetContent": {
+            "side": {
+              "value": "right",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "demo-primitives-radix-switch",
       "type": "registry:ui",
       "title": "Radix Switch Demo",
@@ -2543,37 +2917,6 @@
             },
             "alignOffset": {
               "value": 0
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "demo-primitives-shadcn-sheet",
-      "type": "registry:ui",
-      "title": "Shadcn Sheet Demo",
-      "description": "Demo showing an animated shadcn sheet.",
-      "registryDependencies": [
-        "https://animate-ui.com/r/primitives-shadcn-sheet"
-      ],
-      "files": [
-        {
-          "path": "registry/demo/primitives/shadcn/sheet/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/demo/primitives/shadcn/sheet.tsx"
-        }
-      ],
-      "meta": {
-        "demoProps": {
-          "SheetContent": {
-            "side": {
-              "value": "right",
-              "options": {
-                "top": "top",
-                "bottom": "bottom",
-                "left": "left",
-                "right": "right"
-              }
             }
           }
         }
@@ -4043,6 +4386,27 @@
       ]
     },
     {
+      "name": "primitives-radix-sheet",
+      "type": "registry:ui",
+      "title": "Radix Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+      "dependencies": [
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/radix/sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/radix/sheet.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-radix-switch",
       "type": "registry:ui",
       "title": "Radix Switch",
@@ -4146,27 +4510,6 @@
           "path": "registry/primitives/radix/tooltip/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/radix/tooltip.tsx"
-        }
-      ]
-    },
-    {
-      "name": "primitives-shadcn-sheet",
-      "type": "registry:ui",
-      "title": "Shadcn Sheet",
-      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
-      "dependencies": [
-        "motion",
-        "radix-ui"
-      ],
-      "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
-      ],
-      "files": [
-        {
-          "path": "registry/primitives/shadcn/sheet/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/primitives/shadcn/sheet.tsx"
         }
       ]
     },

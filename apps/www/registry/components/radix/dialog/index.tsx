@@ -18,7 +18,6 @@ import {
   type DialogHeaderProps as DialogHeaderPrimitiveProps,
   type DialogTitleProps as DialogTitlePrimitiveProps,
   type DialogTriggerProps as DialogTriggerPrimitiveProps,
-  type DialogPortalProps as DialogPortalPrimitiveProps,
   type DialogOverlayProps as DialogOverlayPrimitiveProps,
   type DialogCloseProps as DialogClosePrimitiveProps,
 } from '@/registry/primitives/radix/dialog';
