@@ -10,6 +10,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 type ToggleContextType = {
   isPressed: boolean;
   setIsPressed: (isPressed: boolean, event: Event) => void;
+  disabled?: boolean;
 };
 
 const [ToggleProvider, useToggle] =
@@ -37,7 +38,7 @@ function Toggle({
   });
 
   return (
-    <ToggleProvider value={{ isPressed, setIsPressed }}>
+    <ToggleProvider value={{ isPressed, setIsPressed, disabled }}>
       <TogglePrimitive
         value={value}
         pressed={pressed}
@@ -48,7 +49,7 @@ function Toggle({
         render={
           <motion.button
             data-slot="toggle"
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
             {...props}
           />
         }
@@ -60,13 +61,16 @@ function Toggle({
 type ToggleHighlightProps = HTMLMotionProps<'div'>;
 
 function ToggleHighlight({ style, ...props }: ToggleHighlightProps) {
-  const { isPressed } = useToggle();
+  const { isPressed, disabled } = useToggle();
 
   return (
     <AnimatePresence>
       {isPressed && (
         <motion.div
           data-slot="toggle-highlight"
+          aria-pressed={isPressed}
+          {...(isPressed && { 'data-pressed': true })}
+          {...(disabled && { 'data-disabled': true })}
           style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -81,9 +85,14 @@ function ToggleHighlight({ style, ...props }: ToggleHighlightProps) {
 type ToggleItemProps = HTMLMotionProps<'div'>;
 
 function ToggleItem({ style, ...props }: ToggleItemProps) {
+  const { isPressed, disabled } = useToggle();
+
   return (
     <motion.div
       data-slot="toggle-item"
+      aria-pressed={isPressed}
+      {...(isPressed && { 'data-pressed': true })}
+      {...(disabled && { 'data-disabled': true })}
       style={{ position: 'relative', zIndex: 1, ...style }}
       {...props}
     />

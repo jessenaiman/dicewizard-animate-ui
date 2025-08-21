@@ -385,6 +385,132 @@
       ]
     },
     {
+      "name": "components-radix-radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/radio-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be either on or off.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-toggle-group",
+        "https://animate-ui.com/r/components-radix-toggle",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-radix-tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/tooltip.tsx"
+        }
+      ]
+    },
+    {
       "name": "demo-components-backgrounds-bubble",
       "type": "registry:ui",
       "title": "Bubble Background Demo",
@@ -1177,6 +1303,213 @@
           "target": "components/animate-ui/demo/components/radix/progress.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-radix-radio-group",
+      "type": "registry:ui",
+      "title": "Radix Radio Group Demo",
+      "description": "Demo showing a radix radio group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/radio-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-radix-sheet",
+      "type": "registry:ui",
+      "title": "Radix Sheet Demo",
+      "description": "Demo showing a radix sheet.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/sheet/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/sheet.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "SheetContent": {
+            "side": {
+              "value": "right",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-switch",
+      "type": "registry:ui",
+      "title": "Radix Switch Demo",
+      "description": "Demo showing a radix switch.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-radix-tabs",
+      "type": "registry:ui",
+      "title": "Radix Tabs Demo",
+      "description": "Demo showing a radix tabs.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-radix-toggle",
+      "type": "registry:ui",
+      "title": "Radix Toggle Demo",
+      "description": "Demo showing a radix toggle.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/toggle.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Toggle": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "outline": "outline"
+              }
+            },
+            "size": {
+              "value": "icon",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-toggle-group",
+      "type": "registry:ui",
+      "title": "Radix Toggle Group Demo",
+      "description": "Demo showing a radix toggle group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/toggle-group.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ToggleGroup": {
+            "type": {
+              "value": "single",
+              "options": {
+                "single": "single",
+                "multiple": "multiple"
+              }
+            },
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "outline": "outline"
+              }
+            },
+            "size": {
+              "value": "icon",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-radix-tooltip",
+      "type": "registry:ui",
+      "title": "Radix Tooltip Demo",
+      "description": "Demo showing a radix tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "TooltipContent": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 0
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-animate-avatar-group",

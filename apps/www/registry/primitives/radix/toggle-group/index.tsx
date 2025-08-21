@@ -55,7 +55,7 @@ function ToggleGroupItem({ value, disabled, ...props }: ToggleGroupItemProps) {
     <ToggleGroupPrimitive.Item value={value} disabled={disabled} asChild>
       <motion.button
         data-slot="toggle-group-item"
-        whileTap={{ scale: 0.9 }}
+        whileTap={{ scale: 0.95 }}
         {...props}
       />
     </ToggleGroupPrimitive.Item>
@@ -152,8 +152,10 @@ export {
   ToggleGroupItem,
   ToggleGroupHighlight,
   ToggleGroupHighlightItem,
+  useToggleGroup,
   type ToggleGroupProps,
   type ToggleGroupItemProps,
   type ToggleGroupHighlightProps,
   type ToggleGroupHighlightItemProps,
+  type ToggleGroupContextType,
 };

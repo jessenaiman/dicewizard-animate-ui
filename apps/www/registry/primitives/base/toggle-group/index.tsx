@@ -71,7 +71,7 @@ function Toggle({
       render={
         <motion.button
           data-slot="toggle"
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.95 }}
           {...props}
         />
       }

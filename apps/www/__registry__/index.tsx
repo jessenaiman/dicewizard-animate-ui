@@ -831,7 +831,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/radix/progress.tsx',
         content:
-          "import {\n  Progress as ProgressPrimitive,\n  ProgressIndicator as ProgressIndicatorPrimitive,\n  type ProgressProps as ProgressPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/progress';\nimport { cn } from '@/lib/utils';\n\ntype ProgressProps = ProgressPrimitiveProps;\n\nfunction Progress({ className, ...props }: ProgressProps) {\n  return (\n    <ProgressPrimitive\n      className={cn(\n        'bg-primary/20 relative h-2 w-full overflow-hidden rounded-full',\n        className,\n      )}\n      {...props}\n    >\n      <ProgressIndicatorPrimitive className=\"bg-primary h-full w-full flex-1 transition-all\" />\n    </ProgressPrimitive>\n  );\n}\n\nexport { Progress, type ProgressProps };",
+          "import * as React from 'react';\n\nimport {\n  Progress as ProgressPrimitive,\n  ProgressIndicator as ProgressIndicatorPrimitive,\n  type ProgressProps as ProgressPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/progress';\nimport { cn } from '@/lib/utils';\n\ntype ProgressProps = ProgressPrimitiveProps;\n\nfunction Progress({ className, ...props }: ProgressProps) {\n  return (\n    <ProgressPrimitive\n      className={cn(\n        'bg-primary/20 relative h-2 w-full overflow-hidden rounded-full',\n        className,\n      )}\n      {...props}\n    >\n      <ProgressIndicatorPrimitive className=\"bg-primary rounded-full h-full w-full flex-1\" />\n    </ProgressPrimitive>\n  );\n}\n\nexport { Progress, type ProgressProps };",
       },
     ],
     keywords: [],
@@ -855,6 +855,279 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/components-radix-progress',
+  },
+  'components-radix-radio-group': {
+    name: 'components-radix-radio-group',
+    description:
+      'A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-radio-group',
+    ],
+    files: [
+      {
+        path: 'registry/components/radix/radio-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/radio-group.tsx',
+        content:
+          "import * as React from 'react';\nimport { CircleIcon } from 'lucide-react';\n\nimport {\n  RadioGroup as RadioGroupPrimitive,\n  RadioGroupItem as RadioGroupItemPrimitive,\n  RadioGroupIndicator as RadioGroupIndicatorPrimitive,\n  type RadioGroupProps as RadioGroupPrimitiveProps,\n  type RadioGroupItemProps as RadioGroupItemPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/radio-group';\nimport { cn } from '@/lib/utils';\n\ntype RadioGroupProps = RadioGroupPrimitiveProps;\n\nfunction RadioGroup({ className, ...props }: RadioGroupProps) {\n  return (\n    <RadioGroupPrimitive className={cn('grid gap-3', className)} {...props} />\n  );\n}\n\ntype RadioGroupItemProps = RadioGroupItemPrimitiveProps;\n\nfunction RadioGroupItem({ className, ...props }: RadioGroupItemProps) {\n  return (\n    <RadioGroupItemPrimitive\n      className={cn(\n        'border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',\n        className,\n      )}\n      {...props}\n    >\n      <RadioGroupIndicatorPrimitive className=\"relative flex items-center justify-center\">\n        <CircleIcon className=\"fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2\" />\n      </RadioGroupIndicatorPrimitive>\n    </RadioGroupItemPrimitive>\n  );\n}\n\nexport {\n  RadioGroup,\n  RadioGroupItem,\n  type RadioGroupProps,\n  type RadioGroupItemProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/radio-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-radio-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-radio-group',
+  },
+  'components-radix-sheet': {
+    name: 'components-radix-sheet',
+    description:
+      'Extends the Dialog component to display content that complements the main content of the screen.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-sheet'],
+    files: [
+      {
+        path: 'registry/components/radix/sheet/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/sheet.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Sheet as SheetPrimitive,\n  SheetTrigger as SheetTriggerPrimitive,\n  SheetOverlay as SheetOverlayPrimitive,\n  SheetClose as SheetClosePrimitive,\n  SheetPortal as SheetPortalPrimitive,\n  SheetContent as SheetContentPrimitive,\n  SheetHeader as SheetHeaderPrimitive,\n  SheetFooter as SheetFooterPrimitive,\n  SheetTitle as SheetTitlePrimitive,\n  SheetDescription as SheetDescriptionPrimitive,\n  type SheetProps as SheetPrimitiveProps,\n  type SheetTriggerProps as SheetTriggerPrimitiveProps,\n  type SheetOverlayProps as SheetOverlayPrimitiveProps,\n  type SheetCloseProps as SheetClosePrimitiveProps,\n  type SheetContentProps as SheetContentPrimitiveProps,\n  type SheetHeaderProps as SheetHeaderPrimitiveProps,\n  type SheetFooterProps as SheetFooterPrimitiveProps,\n  type SheetTitleProps as SheetTitlePrimitiveProps,\n  type SheetDescriptionProps as SheetDescriptionPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/sheet';\nimport { cn } from '@/lib/utils';\nimport { XIcon } from 'lucide-react';\n\ntype SheetProps = SheetPrimitiveProps;\n\nfunction Sheet(props: SheetProps) {\n  return <SheetPrimitive {...props} />;\n}\n\ntype SheetTriggerProps = SheetTriggerPrimitiveProps;\n\nfunction SheetTrigger(props: SheetTriggerProps) {\n  return <SheetTriggerPrimitive {...props} />;\n}\n\ntype SheetOverlayProps = SheetOverlayPrimitiveProps;\n\nfunction SheetOverlay({ className, ...props }: SheetOverlayProps) {\n  return (\n    <SheetOverlayPrimitive\n      className={cn('fixed inset-0 z-50 bg-black/50', className)}\n      {...props}\n    />\n  );\n}\n\ntype SheetCloseProps = SheetClosePrimitiveProps;\n\nfunction SheetClose(props: SheetCloseProps) {\n  return <SheetClosePrimitive {...props} />;\n}\n\ntype SheetContentProps = SheetContentPrimitiveProps & {\n  showCloseButton?: boolean;\n};\n\nfunction SheetContent({\n  className,\n  children,\n  side = 'right',\n  showCloseButton = true,\n  ...props\n}: SheetContentProps) {\n  return (\n    <SheetPortalPrimitive>\n      <SheetOverlay />\n      <SheetContentPrimitive\n        className={cn(\n          'bg-background fixed z-50 flex flex-col gap-4 shadow-lg',\n          side === 'right' && 'h-full w-[350px] border-l',\n          side === 'left' && 'h-full w-[350px] border-r',\n          side === 'top' && 'w-full h-[350px] border-b',\n          side === 'bottom' && 'w-full h-[350px] border-t',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showCloseButton && (\n          <SheetClose className=\"ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none\">\n            <XIcon className=\"size-4\" />\n            <span className=\"sr-only\">Close</span>\n          </SheetClose>\n        )}\n      </SheetContentPrimitive>\n    </SheetPortalPrimitive>\n  );\n}\n\ntype SheetHeaderProps = SheetHeaderPrimitiveProps;\n\nfunction SheetHeader({ className, ...props }: SheetHeaderProps) {\n  return (\n    <SheetHeaderPrimitive\n      className={cn('flex flex-col gap-1.5 p-4', className)}\n      {...props}\n    />\n  );\n}\n\ntype SheetFooterProps = SheetFooterPrimitiveProps;\n\nfunction SheetFooter({ className, ...props }: SheetFooterProps) {\n  return (\n    <SheetFooterPrimitive\n      className={cn('mt-auto flex flex-col gap-2 p-4', className)}\n      {...props}\n    />\n  );\n}\n\ntype SheetTitleProps = SheetTitlePrimitiveProps;\n\nfunction SheetTitle({ className, ...props }: SheetTitleProps) {\n  return (\n    <SheetTitlePrimitive\n      className={cn('text-foreground font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\ntype SheetDescriptionProps = SheetDescriptionPrimitiveProps;\n\nfunction SheetDescription({ className, ...props }: SheetDescriptionProps) {\n  return (\n    <SheetDescriptionPrimitive\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Sheet,\n  SheetTrigger,\n  SheetClose,\n  SheetContent,\n  SheetHeader,\n  SheetFooter,\n  SheetTitle,\n  SheetDescription,\n  type SheetProps,\n  type SheetTriggerProps,\n  type SheetCloseProps,\n  type SheetContentProps,\n  type SheetHeaderProps,\n  type SheetFooterProps,\n  type SheetTitleProps,\n  type SheetDescriptionProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/components/radix/sheet/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-sheet';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-sheet',
+  },
+  'components-radix-switch': {
+    name: 'components-radix-switch',
+    description:
+      'A control that allows the user to toggle between checked and not checked.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-switch'],
+    files: [
+      {
+        path: 'registry/components/radix/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/switch.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Switch as SwitchPrimitive,\n  SwitchThumb as SwitchThumbPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/switch';\nimport { cn } from '@/lib/utils';\n\ntype SwitchProps = SwitchPrimitiveProps & {\n  pressedWidth?: number;\n};\n\nfunction Switch({ className, pressedWidth = 19, ...props }: SwitchProps) {\n  return (\n    <SwitchPrimitive\n      className={cn(\n        'peer focus-visible:border-ring focus-visible:ring-ring/50 flex h-5 w-8 px-px shrink-0 items-center justify-start rounded-full border border-transparent shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',\n        'data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 data-[state=checked]:justify-end',\n        className,\n      )}\n      {...props}\n    >\n      <SwitchThumbPrimitive\n        className={cn(\n          'bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0',\n        )}\n        pressedAnimation={{ width: pressedWidth }}\n      />\n    </SwitchPrimitive>\n  );\n}\n\nexport { Switch, type SwitchProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-switch',
+  },
+  'components-radix-tabs': {
+    name: 'components-radix-tabs',
+    description:
+      'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tabs'],
+    files: [
+      {
+        path: 'registry/components/radix/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/tabs.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Tabs as TabsPrimitive,\n  TabsList as TabsListPrimitive,\n  TabsTrigger as TabsTriggerPrimitive,\n  TabsContent as TabsContentPrimitive,\n  TabsContents as TabsContentsPrimitive,\n  TabsHighlight as TabsHighlightPrimitive,\n  TabsHighlightItem as TabsHighlightItemPrimitive,\n  type TabsProps as TabsPrimitiveProps,\n  type TabsListProps as TabsListPrimitiveProps,\n  type TabsTriggerProps as TabsTriggerPrimitiveProps,\n  type TabsContentProps as TabsContentPrimitiveProps,\n  type TabsContentsProps as TabsContentsPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/tabs';\nimport { cn } from '@/lib/utils';\n\ntype TabsProps = TabsPrimitiveProps;\n\nfunction Tabs({ className, ...props }: TabsProps) {\n  return (\n    <TabsPrimitive\n      className={cn('flex flex-col gap-2', className)}\n      {...props}\n    />\n  );\n}\n\ntype TabsListProps = TabsListPrimitiveProps;\n\nfunction TabsList({ className, ...props }: TabsListProps) {\n  return (\n    <TabsHighlightPrimitive className=\"absolute z-0 inset-0 border border-transparent rounded-md bg-background dark:border-input dark:bg-input/30 shadow-sm\">\n      <TabsListPrimitive\n        className={cn(\n          'bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]',\n          className,\n        )}\n        {...props}\n      />\n    </TabsHighlightPrimitive>\n  );\n}\n\ntype TabsTriggerProps = TabsTriggerPrimitiveProps;\n\nfunction TabsTrigger({ className, ...props }: TabsTriggerProps) {\n  return (\n    <TabsHighlightItemPrimitive value={props.value} className=\"flex-1\">\n      <TabsTriggerPrimitive\n        className={cn(\n          \"data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md w-full px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors duration-500 ease-in-out focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n          className,\n        )}\n        {...props}\n      />\n    </TabsHighlightItemPrimitive>\n  );\n}\n\ntype TabsContentsProps = TabsContentsPrimitiveProps;\n\nfunction TabsContents(props: TabsContentsProps) {\n  return <TabsContentsPrimitive {...props} />;\n}\n\ntype TabsContentProps = TabsContentPrimitiveProps;\n\nfunction TabsContent({ className, ...props }: TabsContentProps) {\n  return (\n    <TabsContentPrimitive\n      className={cn('flex-1 outline-none', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContents,\n  TabsContent,\n  type TabsProps,\n  type TabsListProps,\n  type TabsTriggerProps,\n  type TabsContentsProps,\n  type TabsContentProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/components/radix/tabs/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-tabs',
+  },
+  'components-radix-toggle': {
+    name: 'components-radix-toggle',
+    description: 'A two-state button that can be either on or off.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-toggle'],
+    files: [
+      {
+        path: 'registry/components/radix/toggle/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/toggle.tsx',
+        content:
+          "import * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Toggle as TogglePrimitive,\n  ToggleItem as ToggleItemPrimitive,\n  ToggleHighlight as ToggleHighlightPrimitive,\n  type ToggleProps as TogglePrimitiveProps,\n  type ToggleItemProps as ToggleItemPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/toggle';\nimport { cn } from '@/lib/utils';\n\nconst toggleVariants = cva(\n  \"inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted/40 hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,background-color,box-shadow] duration-200 ease-in-out aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap\",\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        outline:\n          'border border-input bg-transparent shadow-xs hover:bg-accent/40 hover:text-accent-foreground',\n      },\n      size: {\n        default: 'h-9 px-2 min-w-9',\n        sm: 'h-8 px-1.5 min-w-8',\n        lg: 'h-10 px-2.5 min-w-10',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ToggleProps = TogglePrimitiveProps &\n  ToggleItemPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction Toggle({\n  className,\n  variant,\n  size,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  disabled,\n  ...props\n}: ToggleProps) {\n  return (\n    <TogglePrimitive\n      pressed={pressed}\n      defaultPressed={defaultPressed}\n      onPressedChange={onPressedChange}\n      disabled={disabled}\n      className=\"relative\"\n    >\n      <ToggleHighlightPrimitive className=\"bg-accent rounded-md\" />\n      <ToggleItemPrimitive\n        className={cn(toggleVariants({ variant, size, className }))}\n        {...props}\n      />\n    </TogglePrimitive>\n  );\n}\n\nexport { Toggle, toggleVariants, type ToggleProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/toggle/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-toggle';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-toggle',
+  },
+  'components-radix-toggle-group': {
+    name: 'components-radix-toggle-group',
+    description: 'A set of two-state buttons that can be toggled on or off.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-radix-toggle-group',
+      'https://animate-ui.com/r/components-radix-toggle',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/components/radix/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/toggle-group.tsx',
+        content:
+          "import * as React from 'react';\nimport { type VariantProps } from 'class-variance-authority';\n\nimport {\n  ToggleGroup as ToggleGroupPrimitive,\n  ToggleGroupItem as ToggleGroupItemPrimitive,\n  ToggleGroupHighlight as ToggleGroupHighlightPrimitive,\n  ToggleGroupHighlightItem as ToggleGroupHighlightItemPrimitive,\n  useToggleGroup as useToggleGroupPrimitive,\n  type ToggleGroupProps as ToggleGroupPrimitiveProps,\n  type ToggleGroupItemProps as ToggleGroupItemPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/toggle-group';\nimport { toggleVariants } from '@/components/animate-ui/components/radix/toggle';\nimport { cn } from '@/lib/utils';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<VariantProps<typeof toggleVariants>>('ToggleGroupContext');\n\ntype ToggleGroupProps = ToggleGroupPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  children,\n  ...props\n}: ToggleGroupProps) {\n  return (\n    <ToggleGroupPrimitive\n      data-variant={variant}\n      data-size={size}\n      className={cn(\n        'group/toggle-group flex gap-1 w-fit items-center rounded-md data-[variant=outline]:shadow-xs',\n        className,\n      )}\n      {...props}\n    >\n      <ToggleGroupProvider value={{ variant, size }}>\n        {props.type === 'single' ? (\n          <ToggleGroupHighlightPrimitive className=\"bg-accent rounded-md\">\n            {children}\n          </ToggleGroupHighlightPrimitive>\n        ) : (\n          children\n        )}\n      </ToggleGroupProvider>\n    </ToggleGroupPrimitive>\n  );\n}\n\ntype ToggleGroupItemProps = ToggleGroupItemPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroupItem({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: ToggleGroupItemProps) {\n  const { variant: contextVariant, size: contextSize } = useToggleGroup();\n  const { type } = useToggleGroupPrimitive();\n\n  return (\n    <ToggleGroupHighlightItemPrimitive\n      value={props.value}\n      className={cn(type === 'multiple' && 'bg-accent rounded-md')}\n    >\n      <ToggleGroupItemPrimitive\n        data-variant={contextVariant || variant}\n        data-size={contextSize || size}\n        className={cn(\n          toggleVariants({\n            variant: contextVariant || variant,\n            size: contextSize || size,\n          }),\n          'min-w-0 flex-1 shrink-0 shadow-none rounded-md focus:z-10 focus-visible:z-10',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </ToggleGroupItemPrimitive>\n    </ToggleGroupHighlightItemPrimitive>\n  );\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/toggle-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-toggle-group',
+  },
+  'components-radix-tooltip': {
+    name: 'components-radix-tooltip',
+    description:
+      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tooltip'],
+    files: [
+      {
+        path: 'registry/components/radix/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/radix/tooltip.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  TooltipProvider as TooltipProviderPrimitive,\n  Tooltip as TooltipPrimitive,\n  TooltipTrigger as TooltipTriggerPrimitive,\n  TooltipContent as TooltipContentPrimitive,\n  TooltipArrow as TooltipArrowPrimitive,\n  TooltipPortal as TooltipPortalPrimitive,\n  type TooltipProviderProps as TooltipProviderPrimitiveProps,\n  type TooltipProps as TooltipPrimitiveProps,\n  type TooltipTriggerProps as TooltipTriggerPrimitiveProps,\n  type TooltipContentProps as TooltipContentPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/tooltip';\nimport { cn } from '@/lib/utils';\n\ntype TooltipProviderProps = TooltipProviderPrimitiveProps;\n\nfunction TooltipProvider({\n  delayDuration = 0,\n  ...props\n}: TooltipProviderProps) {\n  return <TooltipProviderPrimitive delayDuration={delayDuration} {...props} />;\n}\n\ntype TooltipProps = TooltipPrimitiveProps & {\n  delayDuration?: TooltipPrimitiveProps['delayDuration'];\n};\n\nfunction Tooltip({ delayDuration = 0, ...props }: TooltipProps) {\n  return (\n    <TooltipProvider delayDuration={delayDuration}>\n      <TooltipPrimitive {...props} />\n    </TooltipProvider>\n  );\n}\n\ntype TooltipTriggerProps = TooltipTriggerPrimitiveProps;\n\nfunction TooltipTrigger({ ...props }: TooltipTriggerProps) {\n  return <TooltipTriggerPrimitive {...props} />;\n}\n\ntype TooltipContentProps = TooltipContentPrimitiveProps;\n\nfunction TooltipContent({\n  className,\n  sideOffset,\n  children,\n  ...props\n}: TooltipContentProps) {\n  return (\n    <TooltipPortalPrimitive>\n      <TooltipContentPrimitive\n        sideOffset={sideOffset}\n        className={cn(\n          'bg-primary text-primary-foreground z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        <TooltipArrowPrimitive className=\"bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]\" />\n      </TooltipContentPrimitive>\n    </TooltipPortalPrimitive>\n  );\n}\n\nexport {\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipContentProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/radix/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-radix-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-radix-tooltip',
   },
   'demo-components-backgrounds-bubble': {
     name: 'demo-components-backgrounds-bubble',
@@ -2049,6 +2322,332 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-components-radix-progress',
+  },
+  'demo-components-radix-radio-group': {
+    name: 'demo-components-radix-radio-group',
+    description: 'Demo showing a radix radio group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-radix-radio-group',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/radix/radio-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/radio-group.tsx',
+        content:
+          'import * as React from \'react\';\n\nimport {\n  RadioGroup,\n  RadioGroupItem,\n} from \'@/components/animate-ui/components/radix/radio-group\';\nimport { Label } from \'@/components/ui/label\';\n\nexport const RadixRadioGroupDemo = () => {\n  return (\n    <RadioGroup defaultValue="default">\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="default" id="r1" />\n        <Label htmlFor="r1">Default</Label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="comfortable" id="r2" />\n        <Label htmlFor="r2">Comfortable</Label>\n      </div>\n      <div className="flex items-center space-x-2">\n        <RadioGroupItem value="compact" id="r3" />\n        <Label htmlFor="r3">Compact</Label>\n      </div>\n    </RadioGroup>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/radio-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-radio-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-radio-group',
+  },
+  'demo-components-radix-sheet': {
+    name: 'demo-components-radix-sheet',
+    description: 'Demo showing a radix sheet.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-radix-sheet'],
+    files: [
+      {
+        path: 'registry/demo/components/radix/sheet/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/sheet.tsx',
+        content:
+          'import { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\nimport {\n  Sheet,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from \'@/components/animate-ui/components/radix/sheet\';\n\nexport function RadixSheetDemo() {\n  return (\n    <Sheet>\n      <SheetTrigger asChild>\n        <Button variant="outline">Open</Button>\n      </SheetTrigger>\n      <SheetContent>\n        <SheetHeader>\n          <SheetTitle>Edit profile</SheetTitle>\n          <SheetDescription>\n            Make changes to your profile here. Click save when you&apos;re done.\n          </SheetDescription>\n        </SheetHeader>\n        <div className="grid flex-1 auto-rows-min gap-6 px-4">\n          <div className="grid gap-3">\n            <Label htmlFor="sheet-demo-name">Name</Label>\n            <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />\n          </div>\n          <div className="grid gap-3">\n            <Label htmlFor="sheet-demo-username">Username</Label>\n            <Input id="sheet-demo-username" defaultValue="@peduarte" />\n          </div>\n        </div>\n        <SheetFooter>\n          <Button type="submit">Save changes</Button>\n          <SheetClose asChild>\n            <Button variant="outline">Close</Button>\n          </SheetClose>\n        </SheetFooter>\n      </SheetContent>\n    </Sheet>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/sheet/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-sheet';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        SheetContent: {
+          side: {
+            value: 'right',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-sheet',
+  },
+  'demo-components-radix-switch': {
+    name: 'demo-components-radix-switch',
+    description: 'Demo showing a radix switch.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-radix-switch'],
+    files: [
+      {
+        path: 'registry/demo/components/radix/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/switch.tsx',
+        content:
+          'import { Label } from \'@/components/ui/label\';\nimport { Switch } from \'@/components/animate-ui/components/radix/switch\';\n\nexport function RadixSwitchDemo() {\n  return (\n    <div className="flex items-center space-x-2">\n      <Switch id="airplane-mode" />\n      <Label htmlFor="airplane-mode">Airplane Mode</Label>\n    </div>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-switch',
+  },
+  'demo-components-radix-tabs': {
+    name: 'demo-components-radix-tabs',
+    description: 'Demo showing a radix tabs.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-radix-tabs'],
+    files: [
+      {
+        path: 'registry/demo/components/radix/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/tabs.tsx',
+        content:
+          'import {\n  Tabs,\n  TabsContent,\n  TabsContents,\n  TabsList,\n  TabsTrigger,\n} from \'@/components/animate-ui/components/radix/tabs\';\nimport { Button } from \'@/components/ui/button\';\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \'@/components/ui/card\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\n\nexport function RadixTabsDemo() {\n  return (\n    <div className="flex w-full max-w-sm flex-col gap-6">\n      <Tabs defaultValue="account">\n        <TabsList>\n          <TabsTrigger value="account">Account</TabsTrigger>\n          <TabsTrigger value="password">Password</TabsTrigger>\n        </TabsList>\n        <TabsContents>\n          <Card>\n            <TabsContent value="account" className="flex flex-col gap-6">\n              <CardHeader>\n                <CardTitle>Account</CardTitle>\n                <CardDescription>\n                  Make changes to your account here. Click save when you&apos;re\n                  done.\n                </CardDescription>\n              </CardHeader>\n              <CardContent className="grid gap-6">\n                <div className="grid gap-3">\n                  <Label htmlFor="tabs-demo-name">Name</Label>\n                  <Input id="tabs-demo-name" defaultValue="Pedro Duarte" />\n                </div>\n              </CardContent>\n              <CardFooter>\n                <Button>Save changes</Button>\n              </CardFooter>\n            </TabsContent>\n            <TabsContent value="password" className="flex flex-col gap-6">\n              <CardHeader>\n                <CardTitle>Password</CardTitle>\n                <CardDescription>\n                  Change your password here. After saving, you&apos;ll be logged\n                  out.\n                </CardDescription>\n              </CardHeader>\n              <CardContent className="grid gap-6">\n                <div className="grid gap-3">\n                  <Label htmlFor="tabs-demo-current">Current password</Label>\n                  <Input id="tabs-demo-current" type="password" />\n                </div>\n                <div className="grid gap-3">\n                  <Label htmlFor="tabs-demo-new">New password</Label>\n                  <Input id="tabs-demo-new" type="password" />\n                </div>\n              </CardContent>\n              <CardFooter>\n                <Button>Save password</Button>\n              </CardFooter>\n            </TabsContent>\n          </Card>\n        </TabsContents>\n      </Tabs>\n    </div>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/tabs/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-tabs',
+  },
+  'demo-components-radix-toggle': {
+    name: 'demo-components-radix-toggle',
+    description: 'Demo showing a radix toggle.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-radix-toggle'],
+    files: [
+      {
+        path: 'registry/demo/components/radix/toggle/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/toggle.tsx',
+        content:
+          "import { Toggle, type ToggleProps } from '@/components/animate-ui/components/radix/toggle';\nimport { Bold } from 'lucide-react';\n\ninterface RadixToggleDemoProps {\n  variant: ToggleProps['variant'];\n  size: ToggleProps['size'];\n}\n\nexport function RadixToggleDemo({ variant, size }: RadixToggleDemoProps) {\n  return (\n    <Toggle aria-label=\"Toggle italic\" variant={variant} size={size}>\n      <Bold className=\"h-4 w-4\" />\n    </Toggle>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/toggle/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-toggle';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Toggle: {
+          variant: {
+            value: 'default',
+            options: { default: 'default', outline: 'outline' },
+          },
+          size: {
+            value: 'icon',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-toggle',
+  },
+  'demo-components-radix-toggle-group': {
+    name: 'demo-components-radix-toggle-group',
+    description: 'Demo showing a radix toggle group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-radix-toggle-group',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/radix/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/toggle-group.tsx',
+        content:
+          'import {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n} from \'@/components/animate-ui/components/radix/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\ninterface RadixToggleGroupDemoProps {\n  type: \'single\' | \'multiple\';\n  variant: ToggleGroupProps[\'variant\'];\n  size: ToggleGroupProps[\'size\'];\n}\n\nexport function RadixToggleGroupDemo({\n  type,\n  variant,\n  size,\n}: RadixToggleGroupDemoProps) {\n  return (\n    <ToggleGroup type={type} variant={variant} size={size}>\n      <ToggleGroupItem value="bold" aria-label="Toggle bold">\n        <Bold className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="italic" aria-label="Toggle italic">\n        <Italic className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">\n        <Underline className="h-4 w-4" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/toggle-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        ToggleGroup: {
+          type: {
+            value: 'single',
+            options: { single: 'single', multiple: 'multiple' },
+          },
+          variant: {
+            value: 'default',
+            options: { default: 'default', outline: 'outline' },
+          },
+          size: {
+            value: 'icon',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-toggle-group',
+  },
+  'demo-components-radix-tooltip': {
+    name: 'demo-components-radix-tooltip',
+    description: 'Demo showing a radix tooltip.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-radix-tooltip'],
+    files: [
+      {
+        path: 'registry/demo/components/radix/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/radix/tooltip.tsx',
+        content:
+          "import {\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  type TooltipContentProps,\n} from '@/components/animate-ui/components/radix/tooltip';\nimport { Button } from '@/components/ui/button';\n\ninterface RadixTooltipDemoProps {\n  side: TooltipContentProps['side'];\n  sideOffset: TooltipContentProps['sideOffset'];\n  align: TooltipContentProps['align'];\n  alignOffset: TooltipContentProps['alignOffset'];\n}\n\nexport function RadixTooltipDemo({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: RadixTooltipDemoProps) {\n  return (\n    <Tooltip>\n      <TooltipTrigger asChild>\n        <Button variant=\"outline\">Hover</Button>\n      </TooltipTrigger>\n      <TooltipContent\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <p>Add to library</p>\n      </TooltipContent>\n    </Tooltip>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/radix/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-radix-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        TooltipContent: {
+          side: {
+            value: 'top',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          sideOffset: { value: 0 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-radix-tooltip',
   },
   'demo-primitives-animate-avatar-group': {
     name: 'demo-primitives-animate-avatar-group',
@@ -6127,7 +6726,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/base/toggle.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleContextType = {\n  isPressed: boolean;\n  setIsPressed: (isPressed: boolean, event: Event) => void;\n};\n\nconst [ToggleProvider, useToggle] =\n  getStrictContext<ToggleContextType>('ToggleContext');\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  const [isPressed, setIsPressed] = useControlledState({\n    value: pressed,\n    defaultValue: defaultPressed,\n    onChange: onPressedChange,\n  });\n\n  return (\n    <ToggleProvider value={{ isPressed, setIsPressed }}>\n      <TogglePrimitive\n        value={value}\n        pressed={pressed}\n        defaultPressed={defaultPressed}\n        onPressedChange={setIsPressed}\n        nativeButton={nativeButton}\n        disabled={disabled}\n        render={\n          <motion.button\n            data-slot=\"toggle\"\n            whileTap={{ scale: 0.9 }}\n            {...props}\n          />\n        }\n      />\n    </ToggleProvider>\n  );\n}\n\ntype ToggleHighlightProps = HTMLMotionProps<'div'>;\n\nfunction ToggleHighlight({ style, ...props }: ToggleHighlightProps) {\n  const { isPressed } = useToggle();\n\n  return (\n    <AnimatePresence>\n      {isPressed && (\n        <motion.div\n          data-slot=\"toggle-highlight\"\n          style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype ToggleItemProps = HTMLMotionProps<'div'>;\n\nfunction ToggleItem({ style, ...props }: ToggleItemProps) {\n  return (\n    <motion.div\n      data-slot=\"toggle-item\"\n      style={{ position: 'relative', zIndex: 1, ...style }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Toggle,\n  ToggleHighlight,\n  ToggleItem,\n  useToggle,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleItemProps,\n  type ToggleContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleContextType = {\n  isPressed: boolean;\n  setIsPressed: (isPressed: boolean, event: Event) => void;\n  disabled?: boolean;\n};\n\nconst [ToggleProvider, useToggle] =\n  getStrictContext<ToggleContextType>('ToggleContext');\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  const [isPressed, setIsPressed] = useControlledState({\n    value: pressed,\n    defaultValue: defaultPressed,\n    onChange: onPressedChange,\n  });\n\n  return (\n    <ToggleProvider value={{ isPressed, setIsPressed, disabled }}>\n      <TogglePrimitive\n        value={value}\n        pressed={pressed}\n        defaultPressed={defaultPressed}\n        onPressedChange={setIsPressed}\n        nativeButton={nativeButton}\n        disabled={disabled}\n        render={\n          <motion.button\n            data-slot=\"toggle\"\n            whileTap={{ scale: 0.95 }}\n            {...props}\n          />\n        }\n      />\n    </ToggleProvider>\n  );\n}\n\ntype ToggleHighlightProps = HTMLMotionProps<'div'>;\n\nfunction ToggleHighlight({ style, ...props }: ToggleHighlightProps) {\n  const { isPressed, disabled } = useToggle();\n\n  return (\n    <AnimatePresence>\n      {isPressed && (\n        <motion.div\n          data-slot=\"toggle-highlight\"\n          aria-pressed={isPressed}\n          {...(isPressed && { 'data-pressed': true })}\n          {...(disabled && { 'data-disabled': true })}\n          style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype ToggleItemProps = HTMLMotionProps<'div'>;\n\nfunction ToggleItem({ style, ...props }: ToggleItemProps) {\n  const { isPressed, disabled } = useToggle();\n\n  return (\n    <motion.div\n      data-slot=\"toggle-item\"\n      aria-pressed={isPressed}\n      {...(isPressed && { 'data-pressed': true })}\n      {...(disabled && { 'data-disabled': true })}\n      style={{ position: 'relative', zIndex: 1, ...style }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Toggle,\n  ToggleHighlight,\n  ToggleItem,\n  useToggle,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleItemProps,\n  type ToggleContextType,\n};",
       },
     ],
     keywords: [],
@@ -6167,7 +6766,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/base/toggle-group.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { ToggleGroup as ToggleGroupPrimitive } from '@base-ui-components/react/toggle-group';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: any[];\n  setValue: (groupValue: any[], event: Event) => void;\n  toggleMultiple: boolean | undefined;\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState({\n    value: props.value as any[],\n    defaultValue: props.defaultValue as any[],\n    onChange: props.onValueChange,\n  });\n\n  return (\n    <ToggleGroupProvider\n      value={{ value, setValue, toggleMultiple: props.toggleMultiple }}\n    >\n      <ToggleGroupPrimitive\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  return (\n    <TogglePrimitive\n      value={value}\n      disabled={disabled}\n      pressed={pressed}\n      defaultPressed={defaultPressed}\n      onPressedChange={onPressedChange}\n      nativeButton={nativeButton}\n      render={\n        <motion.button\n          data-slot=\"toggle\"\n          whileTap={{ scale: 0.9 }}\n          {...props}\n        />\n      }\n    />\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={value?.[0] ?? null}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleHighlightProps = HighlightItemProps &\n  HTMLMotionProps<'div'> & {\n    children: React.ReactElement;\n  };\n\nfunction ToggleHighlight({ children, style, ...props }: ToggleHighlightProps) {\n  const { toggleMultiple, value } = useToggleGroup();\n\n  if (!toggleMultiple) {\n    return (\n      <HighlightItem\n        data-slot=\"toggle-highlight\"\n        style={{ inset: 0, ...style }}\n        {...props}\n      >\n        {children}\n      </HighlightItem>\n    );\n  }\n\n  if (toggleMultiple && React.isValidElement(children)) {\n    const isActive = props.value && value && value.includes(props.value);\n\n    const element = children as React.ReactElement<React.ComponentProps<'div'>>;\n\n    return React.cloneElement(\n      children,\n      {\n        style: {\n          ...element.props.style,\n          position: 'relative',\n        },\n        ...element.props,\n      },\n      <>\n        <AnimatePresence>\n          {isActive && (\n            <motion.div\n              data-slot=\"toggle-highlight\"\n              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              {...props}\n            />\n          )}\n        </AnimatePresence>\n\n        <div\n          style={{\n            position: 'relative',\n            zIndex: 1,\n          }}\n        >\n          {element.props.children}\n        </div>\n      </>,\n    );\n  }\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupHighlight,\n  Toggle,\n  ToggleHighlight,\n  useToggleGroup,\n  type ToggleGroupProps,\n  type ToggleGroupHighlightProps,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleGroupContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { ToggleGroup as ToggleGroupPrimitive } from '@base-ui-components/react/toggle-group';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: any[];\n  setValue: (groupValue: any[], event: Event) => void;\n  toggleMultiple: boolean | undefined;\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState({\n    value: props.value as any[],\n    defaultValue: props.defaultValue as any[],\n    onChange: props.onValueChange,\n  });\n\n  return (\n    <ToggleGroupProvider\n      value={{ value, setValue, toggleMultiple: props.toggleMultiple }}\n    >\n      <ToggleGroupPrimitive\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  return (\n    <TogglePrimitive\n      value={value}\n      disabled={disabled}\n      pressed={pressed}\n      defaultPressed={defaultPressed}\n      onPressedChange={onPressedChange}\n      nativeButton={nativeButton}\n      render={\n        <motion.button\n          data-slot=\"toggle\"\n          whileTap={{ scale: 0.95 }}\n          {...props}\n        />\n      }\n    />\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={value?.[0] ?? null}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleHighlightProps = HighlightItemProps &\n  HTMLMotionProps<'div'> & {\n    children: React.ReactElement;\n  };\n\nfunction ToggleHighlight({ children, style, ...props }: ToggleHighlightProps) {\n  const { toggleMultiple, value } = useToggleGroup();\n\n  if (!toggleMultiple) {\n    return (\n      <HighlightItem\n        data-slot=\"toggle-highlight\"\n        style={{ inset: 0, ...style }}\n        {...props}\n      >\n        {children}\n      </HighlightItem>\n    );\n  }\n\n  if (toggleMultiple && React.isValidElement(children)) {\n    const isActive = props.value && value && value.includes(props.value);\n\n    const element = children as React.ReactElement<React.ComponentProps<'div'>>;\n\n    return React.cloneElement(\n      children,\n      {\n        style: {\n          ...element.props.style,\n          position: 'relative',\n        },\n        ...element.props,\n      },\n      <>\n        <AnimatePresence>\n          {isActive && (\n            <motion.div\n              data-slot=\"toggle-highlight\"\n              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              {...props}\n            />\n          )}\n        </AnimatePresence>\n\n        <div\n          style={{\n            position: 'relative',\n            zIndex: 1,\n          }}\n        >\n          {element.props.children}\n        </div>\n      </>,\n    );\n  }\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupHighlight,\n  Toggle,\n  ToggleHighlight,\n  useToggleGroup,\n  type ToggleGroupProps,\n  type ToggleGroupHighlightProps,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleGroupContextType,\n};",
       },
     ],
     keywords: [],
@@ -7394,7 +7993,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/sheet.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Dialog as SheetPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype SheetContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [SheetProvider, useSheet] =\n  getStrictContext<SheetContextType>('SheetContext');\n\ntype SheetProps = React.ComponentProps<typeof SheetPrimitive.Root>;\n\nfunction Sheet(props: SheetProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props.open,\n    defaultValue: props.defaultOpen,\n    onChange: props.onOpenChange,\n  });\n\n  return (\n    <SheetProvider value={{ isOpen, setIsOpen }}>\n      <SheetPrimitive.Root\n        data-slot=\"sheet\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </SheetProvider>\n  );\n}\n\ntype SheetTriggerProps = React.ComponentProps<typeof SheetPrimitive.Trigger>;\n\nfunction SheetTrigger(props: SheetTriggerProps) {\n  return <SheetPrimitive.Trigger data-slot=\"sheet-trigger\" {...props} />;\n}\n\ntype SheetCloseProps = React.ComponentProps<typeof SheetPrimitive.Close>;\n\nfunction SheetClose(props: SheetCloseProps) {\n  return <SheetPrimitive.Close data-slot=\"sheet-close\" {...props} />;\n}\n\ntype SheetPortalProps = React.ComponentProps<typeof SheetPrimitive.Portal>;\n\nfunction SheetPortal(props: SheetPortalProps) {\n  const { isOpen } = useSheet();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <SheetPrimitive.Portal forceMount data-slot=\"sheet-portal\" {...props} />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype SheetOverlayProps = Omit<\n  React.ComponentProps<typeof SheetPrimitive.Overlay>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction SheetOverlay({\n  transition = { duration: 0.2, ease: 'easeInOut' },\n  ...props\n}: SheetOverlayProps) {\n  return (\n    <SheetPrimitive.Overlay asChild forceMount>\n      <motion.div\n        key=\"sheet-overlay\"\n        data-slot=\"sheet-overlay\"\n        initial={{ opacity: 0, filter: 'blur(4px)' }}\n        animate={{ opacity: 1, filter: 'blur(0px)' }}\n        exit={{ opacity: 0, filter: 'blur(4px)' }}\n        transition={transition}\n        {...props}\n      />\n    </SheetPrimitive.Overlay>\n  );\n}\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\ntype SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &\n  HTMLMotionProps<'div'> & {\n    side?: Side;\n  };\n\nfunction SheetContent({\n  side = 'right',\n  transition = { type: 'spring', stiffness: 150, damping: 25 },\n  style,\n  ...props\n}: SheetContentProps) {\n  const axis = side === 'left' || side === 'right' ? 'x' : 'y';\n\n  const offscreen: Record<Side, { x?: string; y?: string; opacity: number }> = {\n    right: { x: '100%', opacity: 0 },\n    left: { x: '-100%', opacity: 0 },\n    top: { y: '-100%', opacity: 0 },\n    bottom: { y: '100%', opacity: 0 },\n  };\n\n  const positionStyle: Record<Side, React.CSSProperties> = {\n    right: { insetBlock: 0, right: 0 },\n    left: { insetBlock: 0, left: 0 },\n    top: { insetInline: 0, top: 0 },\n    bottom: { insetInline: 0, bottom: 0 },\n  };\n\n  return (\n    <SheetPrimitive.Content asChild forceMount {...props}>\n      <motion.div\n        key=\"sheet-content\"\n        data-slot=\"sheet-content\"\n        data-side={side}\n        initial={offscreen[side]}\n        animate={{ [axis]: 0, opacity: 1 }}\n        exit={offscreen[side]}\n        style={{\n          position: 'fixed',\n          ...positionStyle[side],\n          ...style,\n        }}\n        transition={transition}\n        {...props}\n      />\n    </SheetPrimitive.Content>\n  );\n}\n\ntype SheetHeaderProps = React.ComponentProps<'div'>;\n\nfunction SheetHeader(props: SheetHeaderProps) {\n  return <div data-slot=\"sheet-header\" {...props} />;\n}\n\ntype SheetFooterProps = React.ComponentProps<'div'>;\n\nfunction SheetFooter(props: SheetFooterProps) {\n  return <div data-slot=\"sheet-footer\" {...props} />;\n}\n\ntype SheetTitleProps = React.ComponentProps<typeof SheetPrimitive.Title>;\n\nfunction SheetTitle(props: SheetTitleProps) {\n  return <SheetPrimitive.Title data-slot=\"sheet-title\" {...props} />;\n}\n\ntype SheetDescriptionProps = React.ComponentProps<\n  typeof SheetPrimitive.Description\n>;\n\nfunction SheetDescription(props: SheetDescriptionProps) {\n  return (\n    <SheetPrimitive.Description data-slot=\"sheet-description\" {...props} />\n  );\n}\n\nexport {\n  useSheet,\n  Sheet,\n  SheetPortal,\n  SheetOverlay,\n  SheetTrigger,\n  SheetClose,\n  SheetContent,\n  SheetHeader,\n  SheetFooter,\n  SheetTitle,\n  SheetDescription,\n  type SheetProps,\n  type SheetPortalProps,\n  type SheetOverlayProps,\n  type SheetTriggerProps,\n  type SheetCloseProps,\n  type SheetContentProps,\n  type SheetHeaderProps,\n  type SheetFooterProps,\n  type SheetTitleProps,\n  type SheetDescriptionProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Dialog as SheetPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype SheetContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [SheetProvider, useSheet] =\n  getStrictContext<SheetContextType>('SheetContext');\n\ntype SheetProps = React.ComponentProps<typeof SheetPrimitive.Root>;\n\nfunction Sheet(props: SheetProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props.open,\n    defaultValue: props.defaultOpen,\n    onChange: props.onOpenChange,\n  });\n\n  return (\n    <SheetProvider value={{ isOpen, setIsOpen }}>\n      <SheetPrimitive.Root\n        data-slot=\"sheet\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </SheetProvider>\n  );\n}\n\ntype SheetTriggerProps = React.ComponentProps<typeof SheetPrimitive.Trigger>;\n\nfunction SheetTrigger(props: SheetTriggerProps) {\n  return <SheetPrimitive.Trigger data-slot=\"sheet-trigger\" {...props} />;\n}\n\ntype SheetCloseProps = React.ComponentProps<typeof SheetPrimitive.Close>;\n\nfunction SheetClose(props: SheetCloseProps) {\n  return <SheetPrimitive.Close data-slot=\"sheet-close\" {...props} />;\n}\n\ntype SheetPortalProps = React.ComponentProps<typeof SheetPrimitive.Portal>;\n\nfunction SheetPortal(props: SheetPortalProps) {\n  const { isOpen } = useSheet();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <SheetPrimitive.Portal forceMount data-slot=\"sheet-portal\" {...props} />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype SheetOverlayProps = Omit<\n  React.ComponentProps<typeof SheetPrimitive.Overlay>,\n  'asChild' | 'forceMount'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction SheetOverlay({\n  transition = { duration: 0.2, ease: 'easeInOut' },\n  ...props\n}: SheetOverlayProps) {\n  return (\n    <SheetPrimitive.Overlay asChild forceMount>\n      <motion.div\n        key=\"sheet-overlay\"\n        data-slot=\"sheet-overlay\"\n        initial={{ opacity: 0, filter: 'blur(4px)' }}\n        animate={{ opacity: 1, filter: 'blur(0px)' }}\n        exit={{ opacity: 0, filter: 'blur(4px)' }}\n        transition={transition}\n        {...props}\n      />\n    </SheetPrimitive.Overlay>\n  );\n}\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\n\ntype SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &\n  HTMLMotionProps<'div'> & {\n    side?: Side;\n  };\n\nfunction SheetContent({\n  side = 'right',\n  transition = { type: 'spring', stiffness: 150, damping: 22 },\n  style,\n  ...props\n}: SheetContentProps) {\n  const axis = side === 'left' || side === 'right' ? 'x' : 'y';\n\n  const offscreen: Record<Side, { x?: string; y?: string; opacity: number }> = {\n    right: { x: '100%', opacity: 0 },\n    left: { x: '-100%', opacity: 0 },\n    top: { y: '-100%', opacity: 0 },\n    bottom: { y: '100%', opacity: 0 },\n  };\n\n  const positionStyle: Record<Side, React.CSSProperties> = {\n    right: { insetBlock: 0, right: 0 },\n    left: { insetBlock: 0, left: 0 },\n    top: { insetInline: 0, top: 0 },\n    bottom: { insetInline: 0, bottom: 0 },\n  };\n\n  return (\n    <SheetPrimitive.Content asChild forceMount {...props}>\n      <motion.div\n        key=\"sheet-content\"\n        data-slot=\"sheet-content\"\n        data-side={side}\n        initial={offscreen[side]}\n        animate={{ [axis]: 0, opacity: 1 }}\n        exit={offscreen[side]}\n        style={{\n          position: 'fixed',\n          ...positionStyle[side],\n          ...style,\n        }}\n        transition={transition}\n        {...props}\n      />\n    </SheetPrimitive.Content>\n  );\n}\n\ntype SheetHeaderProps = React.ComponentProps<'div'>;\n\nfunction SheetHeader(props: SheetHeaderProps) {\n  return <div data-slot=\"sheet-header\" {...props} />;\n}\n\ntype SheetFooterProps = React.ComponentProps<'div'>;\n\nfunction SheetFooter(props: SheetFooterProps) {\n  return <div data-slot=\"sheet-footer\" {...props} />;\n}\n\ntype SheetTitleProps = React.ComponentProps<typeof SheetPrimitive.Title>;\n\nfunction SheetTitle(props: SheetTitleProps) {\n  return <SheetPrimitive.Title data-slot=\"sheet-title\" {...props} />;\n}\n\ntype SheetDescriptionProps = React.ComponentProps<\n  typeof SheetPrimitive.Description\n>;\n\nfunction SheetDescription(props: SheetDescriptionProps) {\n  return (\n    <SheetPrimitive.Description data-slot=\"sheet-description\" {...props} />\n  );\n}\n\nexport {\n  useSheet,\n  Sheet,\n  SheetPortal,\n  SheetOverlay,\n  SheetTrigger,\n  SheetClose,\n  SheetContent,\n  SheetHeader,\n  SheetFooter,\n  SheetTitle,\n  SheetDescription,\n  type SheetProps,\n  type SheetPortalProps,\n  type SheetOverlayProps,\n  type SheetTriggerProps,\n  type SheetCloseProps,\n  type SheetContentProps,\n  type SheetHeaderProps,\n  type SheetFooterProps,\n  type SheetTitleProps,\n  type SheetDescriptionProps,\n};",
       },
     ],
     keywords: [],
@@ -7516,7 +8115,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/toggle.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from 'radix-ui';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleContextType = {\n  isPressed: boolean;\n  setIsPressed: (isPressed: boolean) => void;\n};\n\nconst [ToggleProvider, useToggle] =\n  getStrictContext<ToggleContextType>('ToggleContext');\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive.Root>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  disabled,\n  ...props\n}: ToggleProps) {\n  const [isPressed, setIsPressed] = useControlledState({\n    value: pressed,\n    defaultValue: defaultPressed,\n    onChange: onPressedChange,\n  });\n\n  return (\n    <ToggleProvider value={{ isPressed, setIsPressed }}>\n      <TogglePrimitive.Root\n        pressed={pressed}\n        defaultPressed={defaultPressed}\n        onPressedChange={setIsPressed}\n        disabled={disabled}\n        asChild\n      >\n        <motion.button\n          data-slot=\"toggle\"\n          whileTap={{ scale: 0.9 }}\n          {...props}\n        />\n      </TogglePrimitive.Root>\n    </ToggleProvider>\n  );\n}\n\ntype ToggleHighlightProps = HTMLMotionProps<'div'>;\n\nfunction ToggleHighlight({ style, ...props }: ToggleHighlightProps) {\n  const { isPressed } = useToggle();\n\n  return (\n    <AnimatePresence>\n      {isPressed && (\n        <motion.div\n          data-slot=\"toggle-highlight\"\n          style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype ToggleItemProps = HTMLMotionProps<'div'>;\n\nfunction ToggleItem({ style, ...props }: ToggleItemProps) {\n  return (\n    <motion.div\n      data-slot=\"toggle-item\"\n      style={{ position: 'relative', zIndex: 1, ...style }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Toggle,\n  ToggleHighlight,\n  ToggleItem,\n  useToggle,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleItemProps,\n  type ToggleContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from 'radix-ui';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleContextType = {\n  isPressed: boolean;\n  setIsPressed: (isPressed: boolean) => void;\n  disabled?: boolean;\n};\n\nconst [ToggleProvider, useToggle] =\n  getStrictContext<ToggleContextType>('ToggleContext');\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive.Root>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  disabled,\n  ...props\n}: ToggleProps) {\n  const [isPressed, setIsPressed] = useControlledState({\n    value: pressed,\n    defaultValue: defaultPressed,\n    onChange: onPressedChange,\n  });\n\n  return (\n    <ToggleProvider value={{ isPressed, setIsPressed, disabled }}>\n      <TogglePrimitive.Root\n        pressed={pressed}\n        defaultPressed={defaultPressed}\n        onPressedChange={setIsPressed}\n        disabled={disabled}\n        asChild\n      >\n        <motion.button\n          data-slot=\"toggle\"\n          whileTap={{ scale: 0.95 }}\n          {...props}\n        />\n      </TogglePrimitive.Root>\n    </ToggleProvider>\n  );\n}\n\ntype ToggleHighlightProps = HTMLMotionProps<'div'>;\n\nfunction ToggleHighlight({ style, ...props }: ToggleHighlightProps) {\n  const { isPressed, disabled } = useToggle();\n\n  return (\n    <AnimatePresence>\n      {isPressed && (\n        <motion.div\n          data-slot=\"toggle-highlight\"\n          aria-pressed={isPressed}\n          data-state={isPressed ? 'on' : 'off'}\n          data-disabled={disabled}\n          style={{ position: 'absolute', zIndex: 0, inset: 0, ...style }}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype ToggleItemProps = HTMLMotionProps<'div'>;\n\nfunction ToggleItem({ style, ...props }: ToggleItemProps) {\n  const { isPressed, disabled } = useToggle();\n\n  return (\n    <motion.div\n      data-slot=\"toggle-item\"\n      aria-pressed={isPressed}\n      data-state={isPressed ? 'on' : 'off'}\n      data-disabled={disabled}\n      style={{ position: 'relative', zIndex: 1, ...style }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Toggle,\n  ToggleHighlight,\n  ToggleItem,\n  useToggle,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleItemProps,\n  type ToggleContextType,\n};",
       },
     ],
     keywords: [],
@@ -7558,7 +8157,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/toggle-group.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n  type: 'single' | 'multiple';\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props.value,\n    defaultValue: props.defaultValue,\n    onChange: props.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <ToggleGroupProvider value={{ value, setValue, type: props.type }}>\n      <ToggleGroupPrimitive.Root\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleGroupItemProps = Omit<\n  React.ComponentProps<typeof ToggleGroupPrimitive.Item>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction ToggleGroupItem({ value, disabled, ...props }: ToggleGroupItemProps) {\n  return (\n    <ToggleGroupPrimitive.Item value={value} disabled={disabled} asChild>\n      <motion.button\n        data-slot=\"toggle-group-item\"\n        whileTap={{ scale: 0.9 }}\n        {...props}\n      />\n    </ToggleGroupPrimitive.Item>\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={typeof value === 'string' ? value : null}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleGroupHighlightItemProps = HighlightItemProps &\n  HTMLMotionProps<'div'> & {\n    children: React.ReactElement;\n  };\n\nfunction ToggleGroupHighlightItem({\n  children,\n  style,\n  ...props\n}: ToggleGroupHighlightItemProps) {\n  const { type, value } = useToggleGroup();\n\n  if (type === 'single') {\n    return (\n      <HighlightItem\n        data-slot=\"toggle-group-highlight-item\"\n        style={{ inset: 0, ...style }}\n        {...props}\n      >\n        {children}\n      </HighlightItem>\n    );\n  }\n\n  if (type === 'multiple' && React.isValidElement(children)) {\n    const isActive = props.value && value && value.includes(props.value);\n\n    const element = children as React.ReactElement<React.ComponentProps<'div'>>;\n\n    return React.cloneElement(\n      children,\n      {\n        style: {\n          ...element.props.style,\n          position: 'relative',\n        },\n        ...element.props,\n      },\n      <>\n        <AnimatePresence>\n          {isActive && (\n            <motion.div\n              data-slot=\"toggle-group-highlight-item\"\n              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              {...props}\n            />\n          )}\n        </AnimatePresence>\n\n        <div\n          style={{\n            position: 'relative',\n            zIndex: 1,\n          }}\n        >\n          {element.props.children}\n        </div>\n      </>,\n    );\n  }\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  ToggleGroupHighlight,\n  ToggleGroupHighlightItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n  type ToggleGroupHighlightProps,\n  type ToggleGroupHighlightItemProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: string | string[] | undefined;\n  setValue: (value: string | string[] | undefined) => void;\n  type: 'single' | 'multiple';\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState<string | string[] | undefined>({\n    value: props.value,\n    defaultValue: props.defaultValue,\n    onChange: props.onValueChange as (\n      value: string | string[] | undefined,\n    ) => void,\n  });\n\n  return (\n    <ToggleGroupProvider value={{ value, setValue, type: props.type }}>\n      <ToggleGroupPrimitive.Root\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleGroupItemProps = Omit<\n  React.ComponentProps<typeof ToggleGroupPrimitive.Item>,\n  'asChild'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction ToggleGroupItem({ value, disabled, ...props }: ToggleGroupItemProps) {\n  return (\n    <ToggleGroupPrimitive.Item value={value} disabled={disabled} asChild>\n      <motion.button\n        data-slot=\"toggle-group-item\"\n        whileTap={{ scale: 0.95 }}\n        {...props}\n      />\n    </ToggleGroupPrimitive.Item>\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={typeof value === 'string' ? value : null}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleGroupHighlightItemProps = HighlightItemProps &\n  HTMLMotionProps<'div'> & {\n    children: React.ReactElement;\n  };\n\nfunction ToggleGroupHighlightItem({\n  children,\n  style,\n  ...props\n}: ToggleGroupHighlightItemProps) {\n  const { type, value } = useToggleGroup();\n\n  if (type === 'single') {\n    return (\n      <HighlightItem\n        data-slot=\"toggle-group-highlight-item\"\n        style={{ inset: 0, ...style }}\n        {...props}\n      >\n        {children}\n      </HighlightItem>\n    );\n  }\n\n  if (type === 'multiple' && React.isValidElement(children)) {\n    const isActive = props.value && value && value.includes(props.value);\n\n    const element = children as React.ReactElement<React.ComponentProps<'div'>>;\n\n    return React.cloneElement(\n      children,\n      {\n        style: {\n          ...element.props.style,\n          position: 'relative',\n        },\n        ...element.props,\n      },\n      <>\n        <AnimatePresence>\n          {isActive && (\n            <motion.div\n              data-slot=\"toggle-group-highlight-item\"\n              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              {...props}\n            />\n          )}\n        </AnimatePresence>\n\n        <div\n          style={{\n            position: 'relative',\n            zIndex: 1,\n          }}\n        >\n          {element.props.children}\n        </div>\n      </>,\n    );\n  }\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  ToggleGroupHighlight,\n  ToggleGroupHighlightItem,\n  useToggleGroup,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n  type ToggleGroupHighlightProps,\n  type ToggleGroupHighlightItemProps,\n  type ToggleGroupContextType,\n};",
       },
     ],
     keywords: [],

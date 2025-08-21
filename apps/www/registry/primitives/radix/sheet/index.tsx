@@ -95,7 +95,7 @@ type SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &
 
 function SheetContent({
   side = 'right',
-  transition = { type: 'spring', stiffness: 150, damping: 25 },
+  transition = { type: 'spring', stiffness: 150, damping: 22 },
   style,
   ...props
 }: SheetContentProps) {
