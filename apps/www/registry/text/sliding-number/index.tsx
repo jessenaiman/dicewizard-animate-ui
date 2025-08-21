@@ -103,6 +103,7 @@ type SlidingNumberProps = React.ComponentProps<'span'> & {
   padStart?: boolean;
   decimalSeparator?: string;
   decimalPlaces?: number;
+  thousandSeparator?: string;
   transition?: SpringOptions;
 };
 
@@ -116,6 +117,7 @@ function SlidingNumber({
   padStart = false,
   decimalSeparator = '.',
   decimalPlaces = 0,
+  thousandSeparator,
   transition = {
     stiffness: 200,
     damping: 20,
@@ -204,15 +206,24 @@ function SlidingNumber({
     >
       {isInView && Number(number) < 0 && <span className="mr-1">-</span>}
 
-      {intPlaces.map((place) => (
-        <SlidingNumberRoller
-          key={`int-${place}`}
-          prevValue={parseInt(adjustedPrevInt, 10)}
-          value={parseInt(newIntStr ?? '0', 10)}
-          place={place}
-          transition={transition}
-        />
-      ))}
+      {intPlaces.map((place, idx) => {
+        const isSeparatorPosition =
+          typeof thousandSeparator !== "undefined" &&
+          (idx + 1) % 3 === 0 && // every 3 digits
+          idx !== intPlaces.length - 1; // skip before first digit
+
+        return (
+          <React.Fragment key={`int-${place}`}>
+            <SlidingNumberRoller
+              prevValue={parseInt(adjustedPrevInt, 10)}
+              value={parseInt(newIntStr ?? "0", 10)}
+              place={place}
+              transition={transition}
+            />
+            {isSeparatorPosition && <span>{thousandSeparator}</span>}
+          </React.Fragment>
+        );
+      })}
 
       {newDecStrRaw && (
         <>
