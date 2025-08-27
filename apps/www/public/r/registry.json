@@ -242,6 +242,65 @@
       ]
     },
     {
+      "name": "components-headless-accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal an associated section of content.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-headless-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/headless/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/headless/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-headless-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkboxes provide the same functionality as native HTML checkboxes, without any of the styling, giving you a clean slate to design them however you'd like.",
+      "dependencies": [
+        "class-variance-authority",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-headless-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/components/headless/checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/headless/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-headless-dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A fully-managed, renderless dialog component jam-packed with accessibility and keyboard features, perfect for building completely custom dialogs and alerts.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-headless-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/components/headless/dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/headless/dialog.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-radix-accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -929,6 +988,110 @@
           "target": "components/animate-ui/demo/components/community/playful-todolist.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-headless-accordion",
+      "type": "registry:ui",
+      "title": "Accordion Demo",
+      "description": "Demo showing a accordion.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-headless-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/headless/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/headless/accordion.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "AccordionButton": {
+            "showArrow": {
+              "value": true
+            }
+          },
+          "AccordionPanel": {
+            "keepRendered": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-headless-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox Demo",
+      "description": "Demo showing a checkbox.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-headless-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/headless/checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/headless/checkbox.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Checkbox": {
+            "indeterminate": {
+              "value": false
+            },
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-headless-dialog",
+      "type": "registry:ui",
+      "title": "Dialog Demo",
+      "description": "Demo showing a dialog.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-headless-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/headless/dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/headless/dialog.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "DialogPanel": {
+            "from": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "showCloseButton": {
+              "value": true
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-components-radix-accordion",

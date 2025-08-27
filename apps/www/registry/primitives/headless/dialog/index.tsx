@@ -138,10 +138,10 @@ type DialogCloseProps<TTag extends React.ElementType = 'div'> =
     as?: TTag;
   };
 
-function DialogClose<TTag extends React.ElementType = 'div'>(
+function DialogClose<TTag extends React.ElementType = 'button'>(
   props: DialogCloseProps<TTag>,
 ) {
-  const { as = 'div', ...rest } = props;
+  const { as = 'button', ...rest } = props;
 
   return (
     <CloseButton
@@ -176,6 +176,7 @@ function DialogFooter({ as: Component = 'div', ...props }: DialogFooterProps) {
 type DialogTitleProps<TTag extends React.ElementType = 'h2'> =
   DialogTitlePrimitiveProps<TTag> & {
     as?: TTag;
+    className?: string;
   };
 
 function DialogTitle<TTag extends React.ElementType = 'h2'>(
@@ -187,6 +188,7 @@ function DialogTitle<TTag extends React.ElementType = 'h2'>(
 type DialogDescriptionProps<TTag extends React.ElementType = 'div'> =
   React.ComponentProps<typeof DialogDescriptionPrimitive<TTag>> & {
     as?: TTag;
+    className?: string;
   };
 
 function DialogDescription<TTag extends React.ElementType = 'div'>(

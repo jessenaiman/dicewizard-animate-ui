@@ -537,6 +537,129 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/components-community-playful-todolist',
   },
+  'components-headless-accordion': {
+    name: 'components-headless-accordion',
+    description:
+      'A vertically stacked set of interactive headings that each reveal an associated section of content.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-headless-accordion',
+    ],
+    files: [
+      {
+        path: 'registry/components/headless/accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/headless/accordion.tsx',
+        content:
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    children: React.ReactNode;\n    as?: TTag;\n  };\n\nfunction Accordion<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: AccordionProps<TTag>) {\n  return <Component data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag>;\n\nfunction AccordionItem<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: AccordionItemProps<TTag>) {\n  return (\n    <DisclosurePrimitive\n      className={cn('border-b last:border-b-0', className)}\n      {...props}\n    />\n  );\n}\n\ntype AccordionButtonProps = DisclosureButtonPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionButton({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionButtonProps) {\n  return (\n    <DisclosureButtonPrimitive\n      className={cn(\n        'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',\n        className,\n      )}\n      {...props}\n    >\n      {(bag) => (\n        <>\n          {typeof children === 'function' ? children(bag) : children}\n          {showArrow && (\n            <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n          )}\n        </>\n      )}\n    </DisclosureButtonPrimitive>\n  );\n}\n\ntype AccordionPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  DisclosurePanelPrimitiveProps<TTag>;\n\nfunction AccordionPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  ...props\n}: AccordionPanelProps<TTag>) {\n  return (\n    <DisclosurePanelPrimitive\n      className={cn('text-sm pt-0 pb-4', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionButtonProps,\n  type AccordionPanelProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/headless/accordion/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-headless-accordion';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-headless-accordion',
+  },
+  'components-headless-checkbox': {
+    name: 'components-headless-checkbox',
+    description:
+      "Checkboxes provide the same functionality as native HTML checkboxes, without any of the styling, giving you a clean slate to design them however you'd like.",
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-headless-checkbox',
+    ],
+    files: [
+      {
+        path: 'registry/components/headless/checkbox/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/headless/checkbox.tsx',
+        content:
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport {\n  Checkbox as CheckboxPrimitive,\n  CheckboxIndicator as CheckboxIndicatorPrimitive,\n  type CheckboxProps as CheckboxPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/checkbox';\nimport { cn } from '@/lib/utils';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nconst checkboxVariants = cva(\n  'peer shrink-0 flex items-center justify-center outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-500 focus-visible:ring-offset-2 [&[data-checked],&[data-indeterminate]]:bg-primary [&[data-checked],&[data-indeterminate]]:text-primary-foreground',\n  {\n    variants: {\n      variant: {\n        default: 'bg-background border',\n        accent: 'bg-input',\n      },\n      size: {\n        default: 'size-5 rounded-sm',\n        sm: 'size-4.5 rounded-[5px]',\n        lg: 'size-6 rounded-[7px]',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\nconst checkboxIndicatorVariants = cva('', {\n  variants: {\n    size: {\n      default: 'size-3.5',\n      sm: 'size-3',\n      lg: 'size-4',\n    },\n  },\n  defaultVariants: {\n    size: 'default',\n  },\n});\n\ntype CheckboxProps<TTag extends React.ElementType = typeof motion.button> =\n  CheckboxPrimitiveProps<TTag> & VariantProps<typeof checkboxVariants>;\n\nfunction Checkbox<TTag extends React.ElementType = typeof motion.button>({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: CheckboxProps<TTag>) {\n  return (\n    <CheckboxPrimitive\n      className={cn(checkboxVariants({ variant, size, className }))}\n      {...props}\n    >\n      {(bag) => (\n        <>\n          {typeof children === 'function' ? children(bag) : children}\n          <CheckboxIndicatorPrimitive\n            className={cn(checkboxIndicatorVariants({ size }))}\n          />\n        </>\n      )}\n    </CheckboxPrimitive>\n  );\n}\n\nexport { Checkbox, type CheckboxProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/headless/checkbox/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-headless-checkbox';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-headless-checkbox',
+  },
+  'components-headless-dialog': {
+    name: 'components-headless-dialog',
+    description:
+      'A fully-managed, renderless dialog component jam-packed with accessibility and keyboard features, perfect for building completely custom dialogs and alerts.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react', 'motion'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-headless-dialog',
+    ],
+    files: [
+      {
+        path: 'registry/components/headless/dialog/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/headless/dialog.tsx',
+        content:
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport {\n  Dialog as DialogPrimitive,\n  DialogPanel as DialogPanelPrimitive,\n  DialogDescription as DialogDescriptionPrimitive,\n  DialogFooter as DialogFooterPrimitive,\n  DialogHeader as DialogHeaderPrimitive,\n  DialogTitle as DialogTitlePrimitive,\n  DialogBackdrop as DialogBackdropPrimitive,\n  DialogClose as DialogClosePrimitive,\n  type DialogProps as DialogPrimitiveProps,\n  type DialogPanelProps as DialogPanelPrimitiveProps,\n  type DialogDescriptionProps as DialogDescriptionPrimitiveProps,\n  type DialogFooterProps as DialogFooterPrimitiveProps,\n  type DialogHeaderProps as DialogHeaderPrimitiveProps,\n  type DialogTitleProps as DialogTitlePrimitiveProps,\n  type DialogBackdropProps as DialogBackdropPrimitiveProps,\n  type DialogCloseProps as DialogClosePrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/dialog';\nimport { cn } from '@/lib/utils';\nimport { XIcon } from 'lucide-react';\n\ntype DialogProps<TTag extends React.ElementType = 'div'> =\n  DialogPrimitiveProps<TTag>;\n\nfunction Dialog<TTag extends React.ElementType = 'div'>(\n  props: DialogProps<TTag>,\n) {\n  return <DialogPrimitive {...props} />;\n}\n\ntype DialogCloseProps<TTag extends React.ElementType = 'button'> =\n  DialogClosePrimitiveProps<TTag>;\n\nfunction DialogClose<TTag extends React.ElementType = 'button'>(\n  props: DialogCloseProps<TTag>,\n) {\n  return <DialogClosePrimitive {...props} />;\n}\n\ntype DialogBackdropProps<TTag extends React.ElementType = typeof motion.div> =\n  DialogBackdropPrimitiveProps<TTag>;\n\nfunction DialogBackdrop<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  ...props\n}: DialogBackdropProps<TTag>) {\n  return (\n    <DialogBackdropPrimitive\n      className={cn('fixed inset-0 z-50 bg-black/50', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  DialogPanelPrimitiveProps<TTag> & {\n    showCloseButton?: boolean;\n  };\n\nfunction DialogPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: DialogPanelProps<TTag>) {\n  return (\n    <>\n      <DialogBackdrop />\n      <DialogPanelPrimitive\n        className={cn(\n          'bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',\n          className,\n        )}\n        {...props}\n      >\n        {(bag) => (\n          <>\n            {typeof children === 'function' ? children(bag) : children}\n            {showCloseButton && (\n              <DialogClosePrimitive className=\"ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\">\n                <XIcon />\n                <span className=\"sr-only\">Close</span>\n              </DialogClosePrimitive>\n            )}\n          </>\n        )}\n      </DialogPanelPrimitive>\n    </>\n  );\n}\n\ntype DialogHeaderProps<TTag extends React.ElementType = 'div'> =\n  DialogHeaderPrimitiveProps<TTag>;\n\nfunction DialogHeader<TTag extends React.ElementType = 'div'>(\n  props: DialogHeaderProps<TTag>,\n) {\n  const { as = 'div', className, ...rest } = props;\n\n  return (\n    <DialogHeaderPrimitive\n      as={as}\n      className={cn('flex flex-col gap-2 text-center sm:text-left', className)}\n      {...rest}\n    />\n  );\n}\n\ntype DialogFooterProps<TTag extends React.ElementType = 'div'> =\n  DialogFooterPrimitiveProps<TTag>;\n\nfunction DialogFooter<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: DialogFooterProps<TTag>) {\n  return (\n    <DialogFooterPrimitive\n      className={cn(\n        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype DialogTitleProps<TTag extends React.ElementType = 'h2'> =\n  DialogTitlePrimitiveProps<TTag>;\n\nfunction DialogTitle<TTag extends React.ElementType = 'h2'>({\n  className,\n  ...props\n}: DialogTitleProps<TTag>) {\n  return (\n    <DialogTitlePrimitive\n      className={cn('text-lg leading-none font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogDescriptionProps<TTag extends React.ElementType = 'div'> =\n  DialogDescriptionPrimitiveProps<TTag>;\n\nfunction DialogDescription<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: DialogDescriptionProps<TTag>) {\n  return (\n    <DialogDescriptionPrimitive\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Dialog,\n  DialogClose,\n  DialogPanel,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  type DialogProps,\n  type DialogCloseProps,\n  type DialogPanelProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/headless/dialog/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-headless-dialog';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-headless-dialog',
+  },
   'components-radix-accordion': {
     name: 'components-radix-accordion',
     description:
@@ -633,7 +756,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/radix/dialog.tsx',
         content:
-          "import * as React from 'react';\n\nimport {\n  Dialog as DialogPrimitive,\n  DialogContent as DialogContentPrimitive,\n  DialogDescription as DialogDescriptionPrimitive,\n  DialogFooter as DialogFooterPrimitive,\n  DialogHeader as DialogHeaderPrimitive,\n  DialogTitle as DialogTitlePrimitive,\n  DialogTrigger as DialogTriggerPrimitive,\n  DialogPortal as DialogPortalPrimitive,\n  DialogOverlay as DialogOverlayPrimitive,\n  DialogClose as DialogClosePrimitive,\n  type DialogProps as DialogPrimitiveProps,\n  type DialogContentProps as DialogContentPrimitiveProps,\n  type DialogDescriptionProps as DialogDescriptionPrimitiveProps,\n  type DialogFooterProps as DialogFooterPrimitiveProps,\n  type DialogHeaderProps as DialogHeaderPrimitiveProps,\n  type DialogTitleProps as DialogTitlePrimitiveProps,\n  type DialogTriggerProps as DialogTriggerPrimitiveProps,\n  type DialogOverlayProps as DialogOverlayPrimitiveProps,\n  type DialogCloseProps as DialogClosePrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/dialog';\nimport { cn } from '@/lib/utils';\nimport { XIcon } from 'lucide-react';\n\ntype DialogProps = DialogPrimitiveProps;\n\nfunction Dialog(props: DialogProps) {\n  return <DialogPrimitive {...props} />;\n}\n\ntype DialogTriggerProps = DialogTriggerPrimitiveProps;\n\nfunction DialogTrigger(props: DialogTriggerProps) {\n  return <DialogTriggerPrimitive {...props} />;\n}\n\ntype DialogCloseProps = DialogClosePrimitiveProps;\n\nfunction DialogClose(props: DialogCloseProps) {\n  return <DialogClosePrimitive {...props} />;\n}\n\ntype DialogOverlayProps = DialogOverlayPrimitiveProps;\n\nfunction DialogOverlay({ className, ...props }: DialogOverlayProps) {\n  return (\n    <DialogOverlayPrimitive\n      className={cn('fixed inset-0 z-50 bg-black/50', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogContentProps = DialogContentPrimitiveProps & {\n  showCloseButton?: boolean;\n};\n\nfunction DialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: DialogContentProps & {\n  showCloseButton?: boolean;\n}) {\n  return (\n    <DialogPortalPrimitive data-slot=\"dialog-portal\">\n      <DialogOverlay />\n      <DialogContentPrimitive\n        data-slot=\"dialog-content\"\n        className={cn(\n          'bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showCloseButton && (\n          <DialogClosePrimitive\n            data-slot=\"dialog-close\"\n            className=\"ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\"\n          >\n            <XIcon />\n            <span className=\"sr-only\">Close</span>\n          </DialogClosePrimitive>\n        )}\n      </DialogContentPrimitive>\n    </DialogPortalPrimitive>\n  );\n}\n\ntype DialogHeaderProps = DialogHeaderPrimitiveProps;\n\nfunction DialogHeader({ className, ...props }: DialogHeaderProps) {\n  return (\n    <DialogHeaderPrimitive\n      className={cn('flex flex-col gap-2 text-center sm:text-left', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogFooterProps = DialogFooterPrimitiveProps;\n\nfunction DialogFooter({ className, ...props }: DialogFooterProps) {\n  return (\n    <DialogFooterPrimitive\n      className={cn(\n        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype DialogTitleProps = DialogTitlePrimitiveProps;\n\nfunction DialogTitle({ className, ...props }: DialogTitleProps) {\n  return (\n    <DialogTitlePrimitive\n      className={cn('text-lg leading-none font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogDescriptionProps = DialogDescriptionPrimitiveProps;\n\nfunction DialogDescription({ className, ...props }: DialogDescriptionProps) {\n  return (\n    <DialogDescriptionPrimitive\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Dialog,\n  DialogTrigger,\n  DialogClose,\n  DialogContent,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  type DialogProps,\n  type DialogTriggerProps,\n  type DialogCloseProps,\n  type DialogContentProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n};",
+          "import * as React from 'react';\n\nimport {\n  Dialog as DialogPrimitive,\n  DialogContent as DialogContentPrimitive,\n  DialogDescription as DialogDescriptionPrimitive,\n  DialogFooter as DialogFooterPrimitive,\n  DialogHeader as DialogHeaderPrimitive,\n  DialogTitle as DialogTitlePrimitive,\n  DialogTrigger as DialogTriggerPrimitive,\n  DialogPortal as DialogPortalPrimitive,\n  DialogOverlay as DialogOverlayPrimitive,\n  DialogClose as DialogClosePrimitive,\n  type DialogProps as DialogPrimitiveProps,\n  type DialogContentProps as DialogContentPrimitiveProps,\n  type DialogDescriptionProps as DialogDescriptionPrimitiveProps,\n  type DialogFooterProps as DialogFooterPrimitiveProps,\n  type DialogHeaderProps as DialogHeaderPrimitiveProps,\n  type DialogTitleProps as DialogTitlePrimitiveProps,\n  type DialogTriggerProps as DialogTriggerPrimitiveProps,\n  type DialogOverlayProps as DialogOverlayPrimitiveProps,\n  type DialogCloseProps as DialogClosePrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/dialog';\nimport { cn } from '@/lib/utils';\nimport { XIcon } from 'lucide-react';\n\ntype DialogProps = DialogPrimitiveProps;\n\nfunction Dialog(props: DialogProps) {\n  return <DialogPrimitive {...props} />;\n}\n\ntype DialogTriggerProps = DialogTriggerPrimitiveProps;\n\nfunction DialogTrigger(props: DialogTriggerProps) {\n  return <DialogTriggerPrimitive {...props} />;\n}\n\ntype DialogCloseProps = DialogClosePrimitiveProps;\n\nfunction DialogClose(props: DialogCloseProps) {\n  return <DialogClosePrimitive {...props} />;\n}\n\ntype DialogOverlayProps = DialogOverlayPrimitiveProps;\n\nfunction DialogOverlay({ className, ...props }: DialogOverlayProps) {\n  return (\n    <DialogOverlayPrimitive\n      className={cn('fixed inset-0 z-50 bg-black/50', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogContentProps = DialogContentPrimitiveProps & {\n  showCloseButton?: boolean;\n};\n\nfunction DialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: DialogContentProps & {\n  showCloseButton?: boolean;\n}) {\n  return (\n    <DialogPortalPrimitive>\n      <DialogOverlay />\n      <DialogContentPrimitive\n        className={cn(\n          'bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showCloseButton && (\n          <DialogClosePrimitive className=\"ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\">\n            <XIcon />\n            <span className=\"sr-only\">Close</span>\n          </DialogClosePrimitive>\n        )}\n      </DialogContentPrimitive>\n    </DialogPortalPrimitive>\n  );\n}\n\ntype DialogHeaderProps = DialogHeaderPrimitiveProps;\n\nfunction DialogHeader({ className, ...props }: DialogHeaderProps) {\n  return (\n    <DialogHeaderPrimitive\n      className={cn('flex flex-col gap-2 text-center sm:text-left', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogFooterProps = DialogFooterPrimitiveProps;\n\nfunction DialogFooter({ className, ...props }: DialogFooterProps) {\n  return (\n    <DialogFooterPrimitive\n      className={cn(\n        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype DialogTitleProps = DialogTitlePrimitiveProps;\n\nfunction DialogTitle({ className, ...props }: DialogTitleProps) {\n  return (\n    <DialogTitlePrimitive\n      className={cn('text-lg leading-none font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\ntype DialogDescriptionProps = DialogDescriptionPrimitiveProps;\n\nfunction DialogDescription({ className, ...props }: DialogDescriptionProps) {\n  return (\n    <DialogDescriptionPrimitive\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Dialog,\n  DialogTrigger,\n  DialogClose,\n  DialogContent,\n  DialogHeader,\n  DialogFooter,\n  DialogTitle,\n  DialogDescription,\n  type DialogProps,\n  type DialogTriggerProps,\n  type DialogCloseProps,\n  type DialogContentProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n};",
       },
     ],
     keywords: [],
@@ -1798,6 +1921,154 @@ export const index: Record<string, any> = {
     })(),
     command:
       'https://animate-ui.com/r/demo-components-community-playful-todolist',
+  },
+  'demo-components-headless-accordion': {
+    name: 'demo-components-headless-accordion',
+    description: 'Demo showing a accordion.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-headless-accordion',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/headless/accordion/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/headless/accordion.tsx',
+        content:
+          "import {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n} from '@/components/animate-ui/components/headless/accordion';\n\nconst ITEMS = [\n  {\n    title: 'What is Animate UI?',\n    content:\n      'Animate UI is an open-source distribution of React components built with TypeScript, Tailwind CSS, and Motion.',\n  },\n  {\n    title: 'How is it different from other libraries?',\n    content:\n      'Instead of installing via NPM, you copy and paste the components directly. This gives you full control to modify or customize them as needed.',\n  },\n  {\n    title: 'Is Animate UI free to use?',\n    content:\n      'Absolutely! Animate UI is fully open-source. You can use, modify, and adapt it to fit your needs.',\n  },\n];\n\ntype HeadlessAccordionDemoProps = {\n  keepRendered?: boolean;\n  showArrow?: boolean;\n};\n\nexport const HeadlessAccordionDemo = ({\n  keepRendered = false,\n  showArrow = true,\n}: HeadlessAccordionDemoProps) => {\n  return (\n    <Accordion className=\"max-w-[400px] w-full\">\n      {ITEMS.map((item, index) => (\n        <AccordionItem key={index}>\n          <AccordionButton showArrow={showArrow}>{item.title}</AccordionButton>\n          <AccordionPanel keepRendered={keepRendered}>\n            {item.content}\n          </AccordionPanel>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/headless/accordion/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-headless-accordion';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        AccordionButton: { showArrow: { value: true } },
+        AccordionPanel: { keepRendered: { value: false } },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-headless-accordion',
+  },
+  'demo-components-headless-checkbox': {
+    name: 'demo-components-headless-checkbox',
+    description: 'Demo showing a checkbox.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-headless-checkbox',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/headless/checkbox/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/headless/checkbox.tsx',
+        content:
+          "import { Label } from '@/components/ui/label';\nimport {\n  Checkbox,\n  type CheckboxProps,\n} from '@/components/animate-ui/components/headless/checkbox';\n\ninterface HeadlessCheckboxDemoProps {\n  indeterminate: boolean;\n  variant: CheckboxProps['variant'];\n  size: CheckboxProps['size'];\n}\n\nexport const HeadlessCheckboxDemo = ({\n  indeterminate,\n  variant,\n  size,\n}: HeadlessCheckboxDemoProps) => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox\n        id=\"terms\"\n        indeterminate={indeterminate}\n        variant={variant}\n        size={size}\n      />\n      <Label htmlFor=\"terms\">Accept terms and conditions</Label>\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/headless/checkbox/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-headless-checkbox';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Checkbox: {
+          indeterminate: { value: false },
+          variant: {
+            value: 'default',
+            options: { default: 'default', accent: 'accent' },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-headless-checkbox',
+  },
+  'demo-components-headless-dialog': {
+    name: 'demo-components-headless-dialog',
+    description: 'Demo showing a dialog.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-headless-dialog',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/headless/dialog/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/headless/dialog.tsx',
+        content:
+          'import * as React from \'react\';\n\nimport { Button } from \'@/components/ui/button\';\nimport {\n  Dialog,\n  DialogPanel,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogFooter,\n  type DialogPanelProps,\n} from \'@/components/animate-ui/components/headless/dialog\';\nimport { Label } from \'@/components/ui/label\';\nimport { Input } from \'@/components/ui/input\';\n\ninterface HeadlessDialogDemoProps {\n  from: DialogPanelProps[\'from\'];\n  showCloseButton: boolean;\n}\n\nexport const HeadlessDialogDemo = ({\n  from,\n  showCloseButton,\n}: HeadlessDialogDemoProps) => {\n  const [isOpen, setIsOpen] = React.useState(false);\n\n  return (\n    <div>\n      <Button variant="outline" onClick={() => setIsOpen(true)}>\n        Open Dialog\n      </Button>\n\n      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>\n        <DialogPanel\n          from={from}\n          showCloseButton={showCloseButton}\n          className="sm:max-w-[425px]"\n        >\n          <form className="flex flex-col gap-4">\n            <DialogHeader>\n              <DialogTitle>Edit profile</DialogTitle>\n              <DialogDescription>\n                Make changes to your profile here. Click save when you&apos;re\n                done.\n              </DialogDescription>\n            </DialogHeader>\n            <div className="grid gap-4">\n              <div className="grid gap-3">\n                <Label htmlFor="name-1">Name</Label>\n                <Input id="name-1" name="name" defaultValue="Pedro Duarte" />\n              </div>\n              <div className="grid gap-3">\n                <Label htmlFor="username-1">Username</Label>\n                <Input\n                  id="username-1"\n                  name="username"\n                  defaultValue="@peduarte"\n                />\n              </div>\n            </div>\n            <DialogFooter>\n              <Button variant="outline" onClick={() => setIsOpen(false)}>\n                Cancel\n              </Button>\n              <Button type="submit">Save changes</Button>\n            </DialogFooter>\n          </form>\n        </DialogPanel>\n      </Dialog>\n    </div>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/headless/dialog/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-headless-dialog';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        DialogPanel: {
+          from: {
+            value: 'top',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+            },
+          },
+          showCloseButton: { value: true },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-headless-dialog',
   },
   'demo-components-radix-accordion': {
     name: 'demo-components-radix-accordion',
@@ -7376,7 +7647,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/headless/dialog.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  Dialog as DialogPrimitive,\n  DialogBackdrop as DialogBackdropPrimitive,\n  DialogPanel as DialogPanelPrimitive,\n  DialogTitle as DialogTitlePrimitive,\n  Description as DialogDescriptionPrimitive,\n  type DialogProps as DialogPrimitiveProps,\n  type DialogBackdropProps as DialogBackdropPrimitiveProps,\n  type DialogPanelProps as DialogPanelPrimitiveProps,\n  type DialogTitleProps as DialogTitlePrimitiveProps,\n  CloseButton,\n  CloseButtonProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  AnimatePresence,\n  type Transition,\n  type HTMLMotionProps,\n} from 'motion/react';\n\ntype DialogProps<TTag extends React.ElementType = 'div'> = Omit<\n  DialogPrimitiveProps<TTag>,\n  'static'\n> & {\n  className?: string;\n  as?: TTag;\n};\n\nfunction Dialog<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: DialogProps<TTag>) {\n  return (\n    <AnimatePresence>\n      {props?.open && (\n        <DialogPrimitive\n          data-slot=\"dialog\"\n          className={className}\n          {...props}\n          static\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype DialogBackdropProps<TTag extends React.ElementType = typeof motion.div> =\n  Omit<DialogBackdropPrimitiveProps<TTag>, 'transition'> &\n    HTMLMotionProps<'div'> & {\n      as?: TTag;\n    };\n\nfunction DialogBackdrop<TTag extends React.ElementType = typeof motion.div>(\n  props: DialogBackdropProps<TTag>,\n) {\n  const {\n    as = motion.div,\n    transition = { duration: 0.2, ease: 'easeInOut' },\n    ...rest\n  } = props;\n\n  return (\n    <DialogBackdropPrimitive\n      key=\"dialog-backdrop\"\n      data-slot=\"dialog-backdrop\"\n      as={as as React.ElementType}\n      initial={{ opacity: 0, filter: 'blur(4px)', transition }}\n      animate={{ opacity: 1, filter: 'blur(0px)', transition }}\n      exit={{ opacity: 0, filter: 'blur(4px)', transition }}\n      {...rest}\n    />\n  );\n}\n\ntype DialogFlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ntype DialogPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  Omit<DialogPanelPrimitiveProps<TTag>, 'transition'> &\n    Omit<HTMLMotionProps<'div'>, 'children'> & {\n      from?: DialogFlipDirection;\n      transition?: Transition;\n      as?: TTag;\n    };\n\nfunction DialogPanel<TTag extends React.ElementType = typeof motion.div>(\n  props: DialogPanelProps<TTag>,\n) {\n  const {\n    children,\n    as = motion.div,\n    from = 'top',\n    transition = { type: 'spring', stiffness: 150, damping: 25 },\n    ...rest\n  } = props;\n\n  const initialRotation =\n    from === 'bottom' || from === 'left' ? '20deg' : '-20deg';\n  const isVertical = from === 'top' || from === 'bottom';\n  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n  return (\n    <DialogPanelPrimitive\n      key=\"dialog-panel\"\n      data-slot=\"dialog-panel\"\n      as={as as React.ElementType}\n      initial={{\n        opacity: 0,\n        filter: 'blur(4px)',\n        transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        transition,\n      }}\n      animate={{\n        opacity: 1,\n        filter: 'blur(0px)',\n        transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,\n        transition,\n      }}\n      exit={{\n        opacity: 0,\n        filter: 'blur(4px)',\n        transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        transition,\n      }}\n      {...rest}\n    >\n      {(bag) => (\n        <>{typeof children === 'function' ? children(bag) : children}</>\n      )}\n    </DialogPanelPrimitive>\n  );\n}\n\ntype DialogCloseProps<TTag extends React.ElementType = 'div'> =\n  CloseButtonProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogClose<TTag extends React.ElementType = 'div'>(\n  props: DialogCloseProps<TTag>,\n) {\n  const { as = 'div', ...rest } = props;\n\n  return (\n    <CloseButton\n      data-slot=\"dialog-close\"\n      as={as as React.ElementType}\n      {...rest}\n    />\n  );\n}\n\ntype DialogHeaderProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogHeader<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: DialogHeaderProps<TTag>) {\n  return <Component data-slot=\"dialog-header\" {...props} />;\n}\n\ntype DialogFooterProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogFooter({ as: Component = 'div', ...props }: DialogFooterProps) {\n  return <Component data-slot=\"dialog-footer\" {...props} />;\n}\n\ntype DialogTitleProps<TTag extends React.ElementType = 'h2'> =\n  DialogTitlePrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogTitle<TTag extends React.ElementType = 'h2'>(\n  props: DialogTitleProps<TTag>,\n) {\n  return <DialogTitlePrimitive data-slot=\"dialog-title\" {...props} />;\n}\n\ntype DialogDescriptionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<typeof DialogDescriptionPrimitive<TTag>> & {\n    as?: TTag;\n  };\n\nfunction DialogDescription<TTag extends React.ElementType = 'div'>(\n  props: DialogDescriptionProps<TTag>,\n) {\n  return (\n    <DialogDescriptionPrimitive data-slot=\"dialog-description\" {...props} />\n  );\n}\n\nexport {\n  Dialog,\n  DialogBackdrop,\n  DialogPanel,\n  DialogClose,\n  DialogTitle,\n  DialogDescription,\n  DialogHeader,\n  DialogFooter,\n  type DialogProps,\n  type DialogBackdropProps,\n  type DialogPanelProps,\n  type DialogCloseProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogFlipDirection,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Dialog as DialogPrimitive,\n  DialogBackdrop as DialogBackdropPrimitive,\n  DialogPanel as DialogPanelPrimitive,\n  DialogTitle as DialogTitlePrimitive,\n  Description as DialogDescriptionPrimitive,\n  type DialogProps as DialogPrimitiveProps,\n  type DialogBackdropProps as DialogBackdropPrimitiveProps,\n  type DialogPanelProps as DialogPanelPrimitiveProps,\n  type DialogTitleProps as DialogTitlePrimitiveProps,\n  CloseButton,\n  CloseButtonProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  AnimatePresence,\n  type Transition,\n  type HTMLMotionProps,\n} from 'motion/react';\n\ntype DialogProps<TTag extends React.ElementType = 'div'> = Omit<\n  DialogPrimitiveProps<TTag>,\n  'static'\n> & {\n  className?: string;\n  as?: TTag;\n};\n\nfunction Dialog<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: DialogProps<TTag>) {\n  return (\n    <AnimatePresence>\n      {props?.open && (\n        <DialogPrimitive\n          data-slot=\"dialog\"\n          className={className}\n          {...props}\n          static\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype DialogBackdropProps<TTag extends React.ElementType = typeof motion.div> =\n  Omit<DialogBackdropPrimitiveProps<TTag>, 'transition'> &\n    HTMLMotionProps<'div'> & {\n      as?: TTag;\n    };\n\nfunction DialogBackdrop<TTag extends React.ElementType = typeof motion.div>(\n  props: DialogBackdropProps<TTag>,\n) {\n  const {\n    as = motion.div,\n    transition = { duration: 0.2, ease: 'easeInOut' },\n    ...rest\n  } = props;\n\n  return (\n    <DialogBackdropPrimitive\n      key=\"dialog-backdrop\"\n      data-slot=\"dialog-backdrop\"\n      as={as as React.ElementType}\n      initial={{ opacity: 0, filter: 'blur(4px)', transition }}\n      animate={{ opacity: 1, filter: 'blur(0px)', transition }}\n      exit={{ opacity: 0, filter: 'blur(4px)', transition }}\n      {...rest}\n    />\n  );\n}\n\ntype DialogFlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ntype DialogPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  Omit<DialogPanelPrimitiveProps<TTag>, 'transition'> &\n    Omit<HTMLMotionProps<'div'>, 'children'> & {\n      from?: DialogFlipDirection;\n      transition?: Transition;\n      as?: TTag;\n    };\n\nfunction DialogPanel<TTag extends React.ElementType = typeof motion.div>(\n  props: DialogPanelProps<TTag>,\n) {\n  const {\n    children,\n    as = motion.div,\n    from = 'top',\n    transition = { type: 'spring', stiffness: 150, damping: 25 },\n    ...rest\n  } = props;\n\n  const initialRotation =\n    from === 'bottom' || from === 'left' ? '20deg' : '-20deg';\n  const isVertical = from === 'top' || from === 'bottom';\n  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n  return (\n    <DialogPanelPrimitive\n      key=\"dialog-panel\"\n      data-slot=\"dialog-panel\"\n      as={as as React.ElementType}\n      initial={{\n        opacity: 0,\n        filter: 'blur(4px)',\n        transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        transition,\n      }}\n      animate={{\n        opacity: 1,\n        filter: 'blur(0px)',\n        transform: `perspective(500px) ${rotateAxis}(0deg) scale(1)`,\n        transition,\n      }}\n      exit={{\n        opacity: 0,\n        filter: 'blur(4px)',\n        transform: `perspective(500px) ${rotateAxis}(${initialRotation}) scale(0.8)`,\n        transition,\n      }}\n      {...rest}\n    >\n      {(bag) => (\n        <>{typeof children === 'function' ? children(bag) : children}</>\n      )}\n    </DialogPanelPrimitive>\n  );\n}\n\ntype DialogCloseProps<TTag extends React.ElementType = 'div'> =\n  CloseButtonProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogClose<TTag extends React.ElementType = 'button'>(\n  props: DialogCloseProps<TTag>,\n) {\n  const { as = 'button', ...rest } = props;\n\n  return (\n    <CloseButton\n      data-slot=\"dialog-close\"\n      as={as as React.ElementType}\n      {...rest}\n    />\n  );\n}\n\ntype DialogHeaderProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogHeader<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: DialogHeaderProps<TTag>) {\n  return <Component data-slot=\"dialog-header\" {...props} />;\n}\n\ntype DialogFooterProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DialogFooter({ as: Component = 'div', ...props }: DialogFooterProps) {\n  return <Component data-slot=\"dialog-footer\" {...props} />;\n}\n\ntype DialogTitleProps<TTag extends React.ElementType = 'h2'> =\n  DialogTitlePrimitiveProps<TTag> & {\n    as?: TTag;\n    className?: string;\n  };\n\nfunction DialogTitle<TTag extends React.ElementType = 'h2'>(\n  props: DialogTitleProps<TTag>,\n) {\n  return <DialogTitlePrimitive data-slot=\"dialog-title\" {...props} />;\n}\n\ntype DialogDescriptionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<typeof DialogDescriptionPrimitive<TTag>> & {\n    as?: TTag;\n    className?: string;\n  };\n\nfunction DialogDescription<TTag extends React.ElementType = 'div'>(\n  props: DialogDescriptionProps<TTag>,\n) {\n  return (\n    <DialogDescriptionPrimitive data-slot=\"dialog-description\" {...props} />\n  );\n}\n\nexport {\n  Dialog,\n  DialogBackdrop,\n  DialogPanel,\n  DialogClose,\n  DialogTitle,\n  DialogDescription,\n  DialogHeader,\n  DialogFooter,\n  type DialogProps,\n  type DialogBackdropProps,\n  type DialogPanelProps,\n  type DialogCloseProps,\n  type DialogTitleProps,\n  type DialogDescriptionProps,\n  type DialogHeaderProps,\n  type DialogFooterProps,\n  type DialogFlipDirection,\n};",
       },
     ],
     keywords: [],
@@ -7415,7 +7686,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/headless/disclosure.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype DisclosureContextType = {\n  isOpen: boolean;\n};\n\nconst [DisclosureProvider, useDisclosure] =\n  getStrictContext<DisclosureContextType>('DisclosureContext');\n\ntype DisclosureProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction Disclosure<TTag extends React.ElementType = 'div'>({\n  children,\n  ...props\n}: DisclosureProps<TTag>) {\n  return (\n    <DisclosurePrimitive data-slot=\"disclosure\" {...props}>\n      {(bag) => (\n        <DisclosureProvider value={{ isOpen: bag.open }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </DisclosureProvider>\n      )}\n    </DisclosurePrimitive>\n  );\n}\n\ntype DisclosureButtonProps<TTag extends React.ElementType = 'button'> =\n  DisclosureButtonPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DisclosureButton<TTag extends React.ElementType = 'button'>(\n  props: DisclosureButtonProps<TTag>,\n) {\n  return <DisclosureButtonPrimitive data-slot=\"disclosure-button\" {...props} />;\n}\n\ntype DisclosurePanelProps<TTag extends React.ElementType = typeof motion.div> =\n  Pick<DisclosurePanelPrimitiveProps<TTag>, 'static' | 'unmount' | 'children'> &\n    Omit<HTMLMotionProps<'div'>, 'children'> & {\n      as?: TTag;\n      keepRendered?: boolean;\n    };\n\nfunction DisclosurePanel<TTag extends React.ElementType = typeof motion.div>(\n  props: DisclosurePanelProps<TTag>,\n) {\n  const {\n    children,\n    transition = { type: 'spring', stiffness: 150, damping: 22 },\n    as = motion.div,\n    unmount,\n    keepRendered = false,\n    ...rest\n  } = props;\n  const { isOpen } = useDisclosure();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <DisclosurePanelPrimitive\n          static\n          as={as as React.ElementType}\n          unmount={unmount}\n        >\n          {(bag) => (\n            <motion.div\n              key=\"disclosure-panel\"\n              data-slot=\"disclosure-panel\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={\n                isOpen\n                  ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }\n                  : { height: 0, opacity: 0, '--mask-stop': '0%' }\n              }\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                overflow: 'hidden',\n              }}\n              {...rest}\n            >\n              {typeof children === 'function' ? children(bag) : children}\n            </motion.div>\n          )}\n        </DisclosurePanelPrimitive>\n      ) : (\n        isOpen && (\n          <DisclosurePanelPrimitive\n            static\n            as={as as React.ElementType}\n            unmount={unmount}\n          >\n            {(bag) => (\n              <motion.div\n                key=\"disclosure-panel\"\n                data-slot=\"disclosure-panel\"\n                initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n                animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n                exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n                transition={transition}\n                style={{\n                  maskImage:\n                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                  WebkitMaskImage:\n                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                  overflow: 'hidden',\n                }}\n                {...rest}\n              >\n                {typeof children === 'function' ? children(bag) : children}\n              </motion.div>\n            )}\n          </DisclosurePanelPrimitive>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n  useDisclosure,\n  type DisclosureProps,\n  type DisclosureButtonProps,\n  type DisclosurePanelProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@headlessui/react';\nimport { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype DisclosureContextType = {\n  isOpen: boolean;\n};\n\nconst [DisclosureProvider, useDisclosure] =\n  getStrictContext<DisclosureContextType>('DisclosureContext');\n\ntype DisclosureProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag> & {\n    as?: TTag;\n    className?: string;\n  };\n\nfunction Disclosure<TTag extends React.ElementType = 'div'>({\n  children,\n  ...props\n}: DisclosureProps<TTag>) {\n  return (\n    <DisclosurePrimitive data-slot=\"disclosure\" {...props}>\n      {(bag) => (\n        <DisclosureProvider value={{ isOpen: bag.open }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </DisclosureProvider>\n      )}\n    </DisclosurePrimitive>\n  );\n}\n\ntype DisclosureButtonProps<TTag extends React.ElementType = 'button'> =\n  DisclosureButtonPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction DisclosureButton<TTag extends React.ElementType = 'button'>(\n  props: DisclosureButtonProps<TTag>,\n) {\n  return <DisclosureButtonPrimitive data-slot=\"disclosure-button\" {...props} />;\n}\n\ntype DisclosurePanelProps<TTag extends React.ElementType = typeof motion.div> =\n  Pick<DisclosurePanelPrimitiveProps<TTag>, 'static' | 'unmount' | 'children'> &\n    Omit<HTMLMotionProps<'div'>, 'children'> & {\n      as?: TTag;\n      keepRendered?: boolean;\n    };\n\nfunction DisclosurePanel<TTag extends React.ElementType = typeof motion.div>(\n  props: DisclosurePanelProps<TTag>,\n) {\n  const {\n    children,\n    transition = { type: 'spring', stiffness: 150, damping: 22 },\n    as = motion.div,\n    unmount,\n    keepRendered = false,\n    ...rest\n  } = props;\n  const { isOpen } = useDisclosure();\n\n  return (\n    <AnimatePresence>\n      {keepRendered ? (\n        <DisclosurePanelPrimitive\n          static\n          as={as as React.ElementType}\n          unmount={unmount}\n        >\n          {(bag) => (\n            <motion.div\n              key=\"disclosure-panel\"\n              data-slot=\"disclosure-panel\"\n              initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n              animate={\n                isOpen\n                  ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }\n                  : { height: 0, opacity: 0, '--mask-stop': '0%' }\n              }\n              transition={transition}\n              style={{\n                maskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                WebkitMaskImage:\n                  'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                overflow: 'hidden',\n              }}\n              {...rest}\n            >\n              {typeof children === 'function' ? children(bag) : children}\n            </motion.div>\n          )}\n        </DisclosurePanelPrimitive>\n      ) : (\n        isOpen && (\n          <DisclosurePanelPrimitive\n            static\n            as={as as React.ElementType}\n            unmount={unmount}\n          >\n            {(bag) => (\n              <motion.div\n                key=\"disclosure-panel\"\n                data-slot=\"disclosure-panel\"\n                initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n                animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}\n                exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}\n                transition={transition}\n                style={{\n                  maskImage:\n                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                  WebkitMaskImage:\n                    'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',\n                  overflow: 'hidden',\n                }}\n                {...rest}\n              >\n                {typeof children === 'function' ? children(bag) : children}\n              </motion.div>\n            )}\n          </DisclosurePanelPrimitive>\n        )\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n  useDisclosure,\n  type DisclosureProps,\n  type DisclosureButtonProps,\n  type DisclosurePanelProps,\n};",
       },
     ],
     keywords: [],

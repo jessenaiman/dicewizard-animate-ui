@@ -9,12 +9,7 @@ import {
   type DisclosureButtonProps as DisclosureButtonPrimitiveProps,
   type DisclosurePanelProps as DisclosurePanelPrimitiveProps,
 } from '@headlessui/react';
-import {
-  motion,
-  AnimatePresence,
-  type HTMLMotionProps,
-  type Transition,
-} from 'motion/react';
+import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
 import { getStrictContext } from '@/registry/hooks/use-strict-context';
 
@@ -28,6 +23,7 @@ const [DisclosureProvider, useDisclosure] =
 type DisclosureProps<TTag extends React.ElementType = 'div'> =
   DisclosurePrimitiveProps<TTag> & {
     as?: TTag;
+    className?: string;
   };
 
 function Disclosure<TTag extends React.ElementType = 'div'>({
