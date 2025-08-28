@@ -69,7 +69,7 @@ type SwitchThumbProps<TTag extends React.ElementType = typeof motion.div> =
 function SwitchThumb<TTag extends React.ElementType = typeof motion.div>(
   props: SwitchThumbProps<TTag>,
 ) {
-  const { isPressed } = useSwitch();
+  const { isPressed, isChecked } = useSwitch();
 
   const {
     transition = { type: 'spring', stiffness: 300, damping: 25 },
@@ -85,6 +85,7 @@ function SwitchThumb<TTag extends React.ElementType = typeof motion.div>(
       layout
       transition={transition}
       animate={isPressed ? pressedAnimation : undefined}
+      {...(isChecked && { 'data-checked': true })}
       {...rest}
     />
   );

@@ -553,7 +553,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/headless/accordion.tsx',
         content:
-          "import * as React from 'react';\nimport { motion } from 'motion/react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    children: React.ReactNode;\n    as?: TTag;\n  };\n\nfunction Accordion<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: AccordionProps<TTag>) {\n  return <Component data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag>;\n\nfunction AccordionItem<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: AccordionItemProps<TTag>) {\n  return (\n    <DisclosurePrimitive\n      className={cn('border-b last:border-b-0', className)}\n      {...props}\n    />\n  );\n}\n\ntype AccordionButtonProps = DisclosureButtonPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionButton({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionButtonProps) {\n  return (\n    <DisclosureButtonPrimitive\n      className={cn(\n        'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',\n        className,\n      )}\n      {...props}\n    >\n      {(bag) => (\n        <>\n          {typeof children === 'function' ? children(bag) : children}\n          {showArrow && (\n            <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n          )}\n        </>\n      )}\n    </DisclosureButtonPrimitive>\n  );\n}\n\ntype AccordionPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  DisclosurePanelPrimitiveProps<TTag>;\n\nfunction AccordionPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  ...props\n}: AccordionPanelProps<TTag>) {\n  return (\n    <DisclosurePanelPrimitive\n      className={cn('text-sm pt-0 pb-4', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionButtonProps,\n  type AccordionPanelProps,\n};",
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    children: React.ReactNode;\n    as?: TTag;\n  };\n\nfunction Accordion<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: AccordionProps<TTag>) {\n  return <Component data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag>;\n\nfunction AccordionItem<TTag extends React.ElementType = 'div'>({\n  className,\n  children,\n  ...props\n}: AccordionItemProps<TTag>) {\n  return (\n    <DisclosurePrimitive {...props}>\n      {(bag) => (\n        <div className={cn('border-b last:border-b-0', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePrimitive>\n  );\n}\n\ntype AccordionButtonProps = DisclosureButtonPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionButton({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionButtonProps) {\n  return (\n    <DisclosureButtonPrimitive\n      className={cn(\n        'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 w-full rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-open]>svg]:rotate-180',\n        className,\n      )}\n      {...props}\n    >\n      {(bag) => (\n        <>\n          {typeof children === 'function' ? children(bag) : children}\n          {showArrow && (\n            <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n          )}\n        </>\n      )}\n    </DisclosureButtonPrimitive>\n  );\n}\n\ntype AccordionPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  DisclosurePanelPrimitiveProps<TTag>;\n\nfunction AccordionPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  children,\n  ...props\n}: AccordionPanelProps<TTag>) {\n  return (\n    <DisclosurePanelPrimitive<any> {...props}>\n      {(bag) => (\n        <div className={cn('text-sm pt-0 pb-4', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePanelPrimitive>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionButtonProps,\n  type AccordionPanelProps,\n};",
       },
     ],
     keywords: [],
@@ -659,6 +659,127 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/components-headless-dialog',
+  },
+  'components-headless-popover': {
+    name: 'components-headless-popover',
+    description:
+      'Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-headless-popover',
+    ],
+    files: [
+      {
+        path: 'registry/components/headless/popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/headless/popover.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n  PopoverBackdrop as PopoverBackdropPrimitive,\n  PopoverGroup as PopoverGroupPrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverButtonProps as PopoverButtonPrimitiveProps,\n  type PopoverPanelProps as PopoverPanelPrimitiveProps,\n  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,\n  type PopoverGroupProps as PopoverGroupPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/popover';\nimport { cn } from '@/lib/utils';\n\ntype PopoverProps<TTag extends React.ElementType = 'div'> =\n  PopoverPrimitiveProps<TTag>;\n\nfunction Popover<TTag extends React.ElementType = 'div'>(\n  props: PopoverProps<TTag>,\n) {\n  return <PopoverPrimitive {...props} />;\n}\n\ntype PopoverButtonProps<TTag extends React.ElementType = 'button'> =\n  PopoverButtonPrimitiveProps<TTag>;\n\nfunction PopoverButton<TTag extends React.ElementType = 'button'>(\n  props: PopoverButtonProps<TTag>,\n) {\n  return <PopoverButtonPrimitive {...props} />;\n}\n\ntype PopoverPanelProps<TTag extends React.ElementType = 'div'> =\n  PopoverPanelPrimitiveProps<TTag>;\n\nfunction PopoverPanel<TTag extends React.ElementType = 'div'>({\n  className,\n  anchor = { to: 'bottom', gap: 4 },\n  ...props\n}: PopoverPanelProps<TTag>) {\n  return (\n    <PopoverPanelPrimitive\n      anchor={anchor}\n      className={cn(\n        'bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-hidden',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype PopoverBackdropProps<TTag extends React.ElementType = 'div'> =\n  PopoverBackdropPrimitiveProps<TTag>;\n\nfunction PopoverBackdrop<TTag extends React.ElementType = 'div'>(\n  props: PopoverBackdropProps<TTag>,\n) {\n  return <PopoverBackdropPrimitive {...props} />;\n}\n\ntype PopoverGroupProps<TTag extends React.ElementType = 'div'> =\n  PopoverGroupPrimitiveProps<TTag>;\n\nfunction PopoverGroup<TTag extends React.ElementType = 'div'>(\n  props: PopoverGroupProps<TTag>,\n) {\n  return <PopoverGroupPrimitive {...props} />;\n}\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  PopoverBackdrop,\n  PopoverGroup,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n  type PopoverBackdropProps,\n  type PopoverGroupProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/headless/popover/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-headless-popover';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-headless-popover',
+  },
+  'components-headless-switch': {
+    name: 'components-headless-switch',
+    description:
+      'Switches are a pleasant interface for toggling a value between two states, and offer the same semantics and keyboard navigation as native checkbox elements.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-headless-switch',
+    ],
+    files: [
+      {
+        path: 'registry/components/headless/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/headless/switch.tsx',
+        content:
+          'import * as React from \'react\';\n\nimport {\n  Switch as SwitchPrimitive,\n  SwitchThumb as SwitchThumbPrimitive,\n  SwitchIcon as SwitchIconPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from \'@/components/animate-ui/primitives/headless/switch\';\nimport { cn } from \'@/lib/utils\';\n\ntype SwitchProps = SwitchPrimitiveProps & {\n  pressedWidth?: number;\n  startIcon?: React.ReactElement;\n  endIcon?: React.ReactElement;\n  thumbIcon?: React.ReactElement;\n};\n\nfunction Switch({\n  className,\n  pressedWidth = 19,\n  startIcon,\n  endIcon,\n  thumbIcon,\n  ...props\n}: SwitchProps) {\n  return (\n    <SwitchPrimitive\n      className={cn(\n        \'relative peer focus-visible:border-ring focus-visible:ring-ring/50 flex h-5 w-8 px-px shrink-0 items-center justify-start rounded-full border border-transparent shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50\',\n        \'data-[checked]:bg-primary bg-input dark:bg-input/80 data-[checked]:justify-end\',\n        className,\n      )}\n      {...props}\n    >\n      <SwitchThumbPrimitive\n        className={cn(\n          \'relative z-10 bg-background dark:bg-foreground dark:data-[checked="true"]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0\',\n        )}\n        pressedAnimation={{ width: pressedWidth }}\n      >\n        {thumbIcon && (\n          <SwitchIconPrimitive\n            position="thumb"\n            className="absolute [&_svg]:size-[9px] left-1/2 top-1/2 -translate-1/2 dark:text-neutral-500 text-neutral-400"\n          >\n            {thumbIcon}\n          </SwitchIconPrimitive>\n        )}\n      </SwitchThumbPrimitive>\n\n      {startIcon && (\n        <SwitchIconPrimitive\n          position="left"\n          className="absolute [&_svg]:size-[9px] left-0.5 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400"\n        >\n          {startIcon}\n        </SwitchIconPrimitive>\n      )}\n      {endIcon && (\n        <SwitchIconPrimitive\n          position="right"\n          className="absolute [&_svg]:size-[9px] right-0.5 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500"\n        >\n          {endIcon}\n        </SwitchIconPrimitive>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\nexport { Switch, type SwitchProps };',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/headless/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-headless-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-headless-switch',
+  },
+  'components-headless-tabs': {
+    name: 'components-headless-tabs',
+    description:
+      'Easily create accessible, fully customizable tab interfaces, with robust focus management and keyboard navigation support.',
+    type: 'registry:ui',
+    dependencies: ['motion/react'],
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-headless-tabs'],
+    files: [
+      {
+        path: 'registry/components/headless/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/headless/tabs.tsx',
+        content:
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport {\n  TabGroup as TabGroupPrimitive,\n  TabList as TabListPrimitive,\n  Tab as TabPrimitive,\n  TabPanel as TabPanelPrimitive,\n  TabPanels as TabPanelsPrimitive,\n  TabHighlight as TabHighlightPrimitive,\n  TabHighlightItem as TabHighlightItemPrimitive,\n  type TabGroupProps as TabGroupPrimitiveProps,\n  type TabListProps as TabListPrimitiveProps,\n  type TabProps as TabPrimitiveProps,\n  type TabPanelProps as TabPanelPrimitiveProps,\n  type TabPanelsProps as TabPanelsPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/tabs';\nimport { cn } from '@/lib/utils';\n\ntype TabGroupProps<TTag extends React.ElementType = 'div'> =\n  TabGroupPrimitiveProps<TTag>;\n\nfunction TabGroup<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: TabGroupProps<TTag>) {\n  return (\n    <TabGroupPrimitive\n      className={cn('flex flex-col gap-2', className)}\n      {...props}\n    />\n  );\n}\n\ntype TabListProps<TTag extends React.ElementType = 'div'> =\n  TabListPrimitiveProps<TTag>;\n\nfunction TabList<TTag extends React.ElementType = 'div'>({\n  className,\n  ...props\n}: TabListProps<TTag>) {\n  return (\n    <TabHighlightPrimitive className=\"absolute z-0 inset-0 border border-transparent rounded-md bg-background dark:border-input dark:bg-input/30 shadow-sm\">\n      <TabListPrimitive\n        className={cn(\n          'bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]',\n          className,\n        )}\n        {...props}\n      />\n    </TabHighlightPrimitive>\n  );\n}\n\ntype TabProps<TTag extends React.ElementType = 'button'> =\n  TabPrimitiveProps<TTag>;\n\nfunction Tab<TTag extends React.ElementType = 'button'>({\n  className,\n  ...props\n}: TabProps<TTag>) {\n  return (\n    <TabHighlightItemPrimitive index={props.index} className=\"flex-1\">\n      <TabPrimitive\n        className={cn(\n          \"data-[active='true']:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md w-full px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors duration-500 ease-in-out focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n          className,\n        )}\n        {...props}\n      />\n    </TabHighlightItemPrimitive>\n  );\n}\n\ntype TabPanelsProps<TTag extends React.ElementType = typeof motion.div> =\n  TabPanelsPrimitiveProps<TTag>;\n\nfunction TabPanels<TTag extends React.ElementType = typeof motion.div>(\n  props: TabPanelsProps<TTag>,\n) {\n  return <TabPanelsPrimitive {...props} />;\n}\n\ntype TabPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  TabPanelPrimitiveProps<TTag>;\n\nfunction TabPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  ...props\n}: TabPanelProps<TTag>) {\n  return (\n    <TabPanelPrimitive\n      className={cn('flex-1 outline-none', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  TabGroup,\n  TabList,\n  Tab,\n  TabPanels,\n  TabPanel,\n  type TabGroupProps,\n  type TabListProps,\n  type TabProps,\n  type TabPanelsProps,\n  type TabPanelProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/headless/tabs/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-headless-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-headless-tabs',
   },
   'components-radix-accordion': {
     name: 'components-radix-accordion',
@@ -1071,7 +1192,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/radix/switch.tsx',
         content:
-          "import * as React from 'react';\n\nimport {\n  Switch as SwitchPrimitive,\n  SwitchThumb as SwitchThumbPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/switch';\nimport { cn } from '@/lib/utils';\n\ntype SwitchProps = SwitchPrimitiveProps & {\n  pressedWidth?: number;\n};\n\nfunction Switch({ className, pressedWidth = 19, ...props }: SwitchProps) {\n  return (\n    <SwitchPrimitive\n      className={cn(\n        'peer focus-visible:border-ring focus-visible:ring-ring/50 flex h-5 w-8 px-px shrink-0 items-center justify-start rounded-full border border-transparent shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',\n        'data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 data-[state=checked]:justify-end',\n        className,\n      )}\n      {...props}\n    >\n      <SwitchThumbPrimitive\n        className={cn(\n          'bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0',\n        )}\n        pressedAnimation={{ width: pressedWidth }}\n      />\n    </SwitchPrimitive>\n  );\n}\n\nexport { Switch, type SwitchProps };",
+          'import * as React from \'react\';\n\nimport {\n  Switch as SwitchPrimitive,\n  SwitchThumb as SwitchThumbPrimitive,\n  SwitchIcon as SwitchIconPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from \'@/components/animate-ui/primitives/radix/switch\';\nimport { cn } from \'@/lib/utils\';\n\ntype SwitchProps = SwitchPrimitiveProps & {\n  pressedWidth?: number;\n  startIcon?: React.ReactElement;\n  endIcon?: React.ReactElement;\n  thumbIcon?: React.ReactElement;\n};\n\nfunction Switch({\n  className,\n  pressedWidth = 19,\n  startIcon,\n  endIcon,\n  thumbIcon,\n  ...props\n}: SwitchProps) {\n  return (\n    <SwitchPrimitive\n      className={cn(\n        \'relative peer focus-visible:border-ring focus-visible:ring-ring/50 flex h-5 w-8 px-px shrink-0 items-center justify-start rounded-full border border-transparent shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50\',\n        \'data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 data-[state=checked]:justify-end\',\n        className,\n      )}\n      {...props}\n    >\n      <SwitchThumbPrimitive\n        className={cn(\n          \'relative z-10 bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0\',\n        )}\n        pressedAnimation={{ width: pressedWidth }}\n      >\n        {thumbIcon && (\n          <SwitchIconPrimitive\n            position="thumb"\n            className="absolute [&_svg]:size-[9px] left-1/2 top-1/2 -translate-1/2 dark:text-neutral-500 text-neutral-400"\n          >\n            {thumbIcon}\n          </SwitchIconPrimitive>\n        )}\n      </SwitchThumbPrimitive>\n\n      {startIcon && (\n        <SwitchIconPrimitive\n          position="left"\n          className="absolute [&_svg]:size-[9px] left-0.5 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400"\n        >\n          {startIcon}\n        </SwitchIconPrimitive>\n      )}\n      {endIcon && (\n        <SwitchIconPrimitive\n          position="right"\n          className="absolute [&_svg]:size-[9px] right-0.5 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500"\n        >\n          {endIcon}\n        </SwitchIconPrimitive>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\nexport { Switch, type SwitchProps };',
       },
     ],
     keywords: [],
@@ -2069,6 +2190,145 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-components-headless-dialog',
+  },
+  'demo-components-headless-popover': {
+    name: 'demo-components-headless-popover',
+    description: 'Demo showing a popover.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-headless-popover',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/headless/popover/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/headless/popover.tsx',
+        content:
+          'import {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n} from \'@/components/animate-ui/components/headless/popover\';\nimport { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\n\ninterface HeadlessPopoverDemoProps {\n  anchor?:\n    | \'top\'\n    | \'bottom\'\n    | \'left\'\n    | \'right\'\n    | \'top start\'\n    | \'top end\'\n    | \'bottom start\'\n    | \'bottom end\'\n    | \'left start\'\n    | \'left end\'\n    | \'right start\'\n    | \'right end\';\n  gap?: number;\n}\n\nexport function HeadlessPopoverDemo({\n  anchor = \'bottom\',\n  gap = 4,\n}: HeadlessPopoverDemoProps) {\n  return (\n    <Popover>\n      <PopoverButton as={Button} variant="outline">\n        Open popover\n      </PopoverButton>\n\n      <PopoverPanel anchor={{ to: anchor, gap }} className="w-80">\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="leading-none font-medium">Dimensions</h4>\n            <p className="text-muted-foreground text-sm">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverPanel>\n    </Popover>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/headless/popover/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-headless-popover';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        PopoverPanel: {
+          anchor: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+              'top start': 'top start',
+              'top end': 'top end',
+              'bottom start': 'bottom start',
+              'bottom end': 'bottom end',
+              'left start': 'left start',
+              'left end': 'left end',
+              'right start': 'right start',
+              'right end': 'right end',
+            },
+          },
+          gap: { value: 4 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-headless-popover',
+  },
+  'demo-components-headless-switch': {
+    name: 'demo-components-headless-switch',
+    description: 'Demo showing a headless switch.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-headless-switch',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/headless/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/headless/switch.tsx',
+        content:
+          'import { Label } from \'@/components/ui/label\';\nimport { Switch } from \'@/components/animate-ui/components/headless/switch\';\n\nexport function HeadlessSwitchDemo() {\n  return (\n    <div className="flex items-center space-x-2">\n      <Switch id="airplane-mode" />\n      <Label htmlFor="airplane-mode">Airplane Mode</Label>\n    </div>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/headless/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-headless-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-headless-switch',
+  },
+  'demo-components-headless-tabs': {
+    name: 'demo-components-headless-tabs',
+    description: 'Demo showing a headless tabs.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-headless-tabs'],
+    files: [
+      {
+        path: 'registry/demo/components/headless/tabs/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/headless/tabs.tsx',
+        content:
+          'import {\n  TabGroup,\n  TabPanel,\n  TabPanels,\n  TabList,\n  Tab,\n} from \'@/components/animate-ui/components/headless/tabs\';\nimport { Button } from \'@/components/ui/button\';\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \'@/components/ui/card\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\n\nexport function RadixTabsDemo() {\n  return (\n    <div className="flex w-full max-w-sm flex-col gap-6">\n      <TabGroup defaultValue="account">\n        <TabList>\n          <Tab index={0} value="account">\n            Account\n          </Tab>\n          <Tab index={1} value="password">\n            Password\n          </Tab>\n        </TabList>\n        <TabPanels>\n          <Card>\n            <TabPanel className="flex flex-col gap-6">\n              <CardHeader>\n                <CardTitle>Account</CardTitle>\n                <CardDescription>\n                  Make changes to your account here. Click save when you&apos;re\n                  done.\n                </CardDescription>\n              </CardHeader>\n              <CardContent className="grid gap-6">\n                <div className="grid gap-3">\n                  <Label htmlFor="tabs-demo-name">Name</Label>\n                  <Input id="tabs-demo-name" defaultValue="Pedro Duarte" />\n                </div>\n              </CardContent>\n              <CardFooter>\n                <Button>Save changes</Button>\n              </CardFooter>\n            </TabPanel>\n            <TabPanel className="flex flex-col gap-6">\n              <CardHeader>\n                <CardTitle>Password</CardTitle>\n                <CardDescription>\n                  Change your password here. After saving, you&apos;ll be logged\n                  out.\n                </CardDescription>\n              </CardHeader>\n              <CardContent className="grid gap-6">\n                <div className="grid gap-3">\n                  <Label htmlFor="tabs-demo-current">Current password</Label>\n                  <Input id="tabs-demo-current" type="password" />\n                </div>\n                <div className="grid gap-3">\n                  <Label htmlFor="tabs-demo-new">New password</Label>\n                  <Input id="tabs-demo-new" type="password" />\n                </div>\n              </CardContent>\n              <CardFooter>\n                <Button>Save password</Button>\n              </CardFooter>\n            </TabPanel>\n          </Card>\n        </TabPanels>\n      </TabGroup>\n    </div>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/headless/tabs/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-headless-tabs';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-headless-tabs',
   },
   'demo-components-radix-accordion': {
     name: 'demo-components-radix-accordion',
@@ -7725,7 +7985,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/headless/popover.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n  PopoverBackdrop as PopoverBackdropPrimitive,\n  PopoverGroup as PopoverGroupPrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverButtonProps as PopoverButtonPrimitiveProps,\n  type PopoverPanelProps as PopoverPanelPrimitiveProps,\n  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,\n  type PopoverGroupProps as PopoverGroupPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype PopoverContextType = {\n  isOpen: boolean;\n};\n\nconst [PopoverProvider, usePopover] =\n  getStrictContext<PopoverContextType>('PopoverContext');\n\ntype PopoverProps<TTag extends React.ElementType = 'div'> =\n  PopoverPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction Popover<TTag extends React.ElementType = 'div'>({\n  children,\n  ...props\n}: PopoverProps<TTag>) {\n  return (\n    <PopoverPrimitive data-slot=\"popover\" {...props}>\n      {(bag) => (\n        <PopoverProvider value={{ isOpen: bag.open }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </PopoverProvider>\n      )}\n    </PopoverPrimitive>\n  );\n}\n\ntype PopoverButtonProps<TTag extends React.ElementType = 'button'> =\n  PopoverButtonPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction PopoverButton<TTag extends React.ElementType = 'button'>(\n  props: PopoverButtonProps<TTag>,\n) {\n  return <PopoverButtonPrimitive data-slot=\"popover-button\" {...props} />;\n}\n\ntype PopoverBackdropProps<TTag extends React.ElementType = 'div'> =\n  PopoverBackdropPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction PopoverBackdrop<TTag extends React.ElementType = 'div'>(\n  props: PopoverBackdropProps<TTag>,\n) {\n  return <PopoverBackdropPrimitive data-slot=\"popover-backdrop\" {...props} />;\n}\n\ntype PopoverGroupProps<TTag extends React.ElementType = 'div'> =\n  PopoverGroupPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction PopoverGroup<TTag extends React.ElementType = 'div'>(\n  props: PopoverGroupProps<TTag>,\n) {\n  return <PopoverGroupPrimitive data-slot=\"popover-group\" {...props} />;\n}\n\ntype PopoverPanelProps<TTag extends React.ElementType = 'div'> = Omit<\n  PopoverPanelPrimitiveProps<TTag>,\n  'transition'\n> &\n  Omit<HTMLMotionProps<'div'>, 'children'> & {\n    transition?: Transition;\n    as?: TTag;\n  };\n\nfunction PopoverPanel(props: PopoverPanelProps) {\n  const {\n    transition = { type: 'spring', stiffness: 300, damping: 25 },\n    as = motion.div,\n    ...rest\n  } = props;\n\n  const { isOpen } = usePopover();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <PopoverPanelPrimitive\n          key=\"popover-panel\"\n          data-slot=\"popover-panel\"\n          static\n          as={as}\n          initial={{ opacity: 0, scale: 0.5, transition }}\n          animate={{ opacity: 1, scale: 1, transition }}\n          exit={{ opacity: 0, scale: 0.5, transition }}\n          {...rest}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  PopoverBackdrop,\n  PopoverGroup,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n  type PopoverBackdropProps,\n  type PopoverGroupProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n  PopoverBackdrop as PopoverBackdropPrimitive,\n  PopoverGroup as PopoverGroupPrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverButtonProps as PopoverButtonPrimitiveProps,\n  type PopoverPanelProps as PopoverPanelPrimitiveProps,\n  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,\n  type PopoverGroupProps as PopoverGroupPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  AnimatePresence,\n  motion,\n  type HTMLMotionProps,\n  type Transition,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype PopoverContextType = {\n  isOpen: boolean;\n};\n\nconst [PopoverProvider, usePopover] =\n  getStrictContext<PopoverContextType>('PopoverContext');\n\ntype PopoverProps<TTag extends React.ElementType = 'div'> =\n  PopoverPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction Popover<TTag extends React.ElementType = 'div'>({\n  children,\n  ...props\n}: PopoverProps<TTag>) {\n  return (\n    <PopoverPrimitive data-slot=\"popover\" {...props}>\n      {(bag) => (\n        <PopoverProvider value={{ isOpen: bag.open }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </PopoverProvider>\n      )}\n    </PopoverPrimitive>\n  );\n}\n\ntype PopoverButtonProps<TTag extends React.ElementType = 'button'> =\n  PopoverButtonPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction PopoverButton<TTag extends React.ElementType = 'button'>(\n  props: PopoverButtonProps<TTag>,\n) {\n  return <PopoverButtonPrimitive data-slot=\"popover-button\" {...props} />;\n}\n\ntype PopoverBackdropProps<TTag extends React.ElementType = 'div'> =\n  PopoverBackdropPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction PopoverBackdrop<TTag extends React.ElementType = 'div'>(\n  props: PopoverBackdropProps<TTag>,\n) {\n  return <PopoverBackdropPrimitive data-slot=\"popover-backdrop\" {...props} />;\n}\n\ntype PopoverGroupProps<TTag extends React.ElementType = 'div'> =\n  PopoverGroupPrimitiveProps<TTag> & {\n    as?: TTag;\n  };\n\nfunction PopoverGroup<TTag extends React.ElementType = 'div'>(\n  props: PopoverGroupProps<TTag>,\n) {\n  return <PopoverGroupPrimitive data-slot=\"popover-group\" {...props} />;\n}\n\ntype PopoverPanelProps<TTag extends React.ElementType = 'div'> = Omit<\n  PopoverPanelPrimitiveProps<TTag>,\n  'transition'\n> &\n  Omit<HTMLMotionProps<'div'>, 'children'> & {\n    transition?: Transition;\n    as?: TTag;\n  };\n\nfunction PopoverPanel<TTag extends React.ElementType = 'div'>(\n  props: PopoverPanelProps<TTag>,\n) {\n  const {\n    transition = { type: 'spring', stiffness: 300, damping: 25 },\n    as = motion.div,\n    ...rest\n  } = props;\n\n  const { isOpen } = usePopover();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <PopoverPanelPrimitive\n          key=\"popover-panel\"\n          data-slot=\"popover-panel\"\n          static\n          as={as}\n          initial={{ opacity: 0, scale: 0.5, transition }}\n          animate={{ opacity: 1, scale: 1, transition }}\n          exit={{ opacity: 0, scale: 0.5, transition }}\n          {...rest}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  PopoverBackdrop,\n  PopoverGroup,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n  type PopoverBackdropProps,\n  type PopoverGroupProps,\n};",
       },
     ],
     keywords: [],
@@ -7764,7 +8024,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/headless/switch.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  Switch as SwitchPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  type TargetAndTransition,\n  type VariantLabels,\n  type HTMLMotionProps,\n  type LegacyAnimationControls,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype SwitchContextType = {\n  isChecked: boolean;\n  isPressed: boolean;\n};\n\nconst [SwitchProvider, useSwitch] =\n  getStrictContext<SwitchContextType>('SwitchContext');\n\ntype SwitchProps<TTag extends React.ElementType = typeof motion.button> =\n  SwitchPrimitiveProps<TTag> &\n    HTMLMotionProps<'button'> & {\n      as?: TTag;\n    };\n\nfunction Switch<TTag extends React.ElementType = typeof motion.button>(\n  props: SwitchProps<TTag>,\n) {\n  const { as = motion.button, children, ...rest } = props;\n\n  const [isPressed, setIsPressed] = React.useState(false);\n\n  return (\n    <SwitchPrimitive\n      data-slot=\"switch\"\n      whileTap=\"tap\"\n      initial={false}\n      onTapStart={() => setIsPressed(true)}\n      onTapCancel={() => setIsPressed(false)}\n      onTap={() => setIsPressed(false)}\n      {...rest}\n      as={as}\n    >\n      {(bag) => (\n        <SwitchProvider value={{ isPressed, isChecked: bag.checked }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </SwitchProvider>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\ntype SwitchThumbProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    as?: TTag;\n    pressedAnimation?:\n      | TargetAndTransition\n      | VariantLabels\n      | boolean\n      | LegacyAnimationControls;\n  };\n\nfunction SwitchThumb<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchThumbProps<TTag>,\n) {\n  const { isPressed } = useSwitch();\n\n  const {\n    transition = { type: 'spring', stiffness: 300, damping: 25 },\n    pressedAnimation,\n    as: Component = motion.div,\n    ...rest\n  } = props;\n\n  return (\n    <Component\n      data-slot=\"switch-thumb\"\n      whileTap=\"tab\"\n      layout\n      transition={transition}\n      animate={isPressed ? pressedAnimation : undefined}\n      {...rest}\n    />\n  );\n}\n\ntype SwitchIconPosition = 'left' | 'right' | 'thumb';\n\ntype SwitchIconProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    position: SwitchIconPosition;\n    as?: TTag;\n  };\n\nfunction SwitchIcon<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchIconProps<TTag>,\n) {\n  const {\n    position,\n    transition = { type: 'spring', bounce: 0 },\n    as: Component = motion.div,\n    ...rest\n  } = props;\n  const { isChecked } = useSwitch();\n\n  const isAnimated = React.useMemo(() => {\n    if (position === 'right') return !isChecked;\n    if (position === 'left') return isChecked;\n    if (position === 'thumb') return true;\n    return false;\n  }, [position, isChecked]);\n\n  return (\n    <Component\n      data-slot={`switch-${position}-icon`}\n      animate={isAnimated ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}\n      transition={transition}\n      {...rest}\n    />\n  );\n}\n\nexport {\n  Switch,\n  SwitchThumb,\n  SwitchIcon,\n  type SwitchProps,\n  type SwitchThumbProps,\n  type SwitchIconProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Switch as SwitchPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  type TargetAndTransition,\n  type VariantLabels,\n  type HTMLMotionProps,\n  type LegacyAnimationControls,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype SwitchContextType = {\n  isChecked: boolean;\n  isPressed: boolean;\n};\n\nconst [SwitchProvider, useSwitch] =\n  getStrictContext<SwitchContextType>('SwitchContext');\n\ntype SwitchProps<TTag extends React.ElementType = typeof motion.button> =\n  SwitchPrimitiveProps<TTag> &\n    HTMLMotionProps<'button'> & {\n      as?: TTag;\n    };\n\nfunction Switch<TTag extends React.ElementType = typeof motion.button>(\n  props: SwitchProps<TTag>,\n) {\n  const { as = motion.button, children, ...rest } = props;\n\n  const [isPressed, setIsPressed] = React.useState(false);\n\n  return (\n    <SwitchPrimitive\n      data-slot=\"switch\"\n      whileTap=\"tap\"\n      initial={false}\n      onTapStart={() => setIsPressed(true)}\n      onTapCancel={() => setIsPressed(false)}\n      onTap={() => setIsPressed(false)}\n      {...rest}\n      as={as}\n    >\n      {(bag) => (\n        <SwitchProvider value={{ isPressed, isChecked: bag.checked }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </SwitchProvider>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\ntype SwitchThumbProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    as?: TTag;\n    pressedAnimation?:\n      | TargetAndTransition\n      | VariantLabels\n      | boolean\n      | LegacyAnimationControls;\n  };\n\nfunction SwitchThumb<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchThumbProps<TTag>,\n) {\n  const { isPressed, isChecked } = useSwitch();\n\n  const {\n    transition = { type: 'spring', stiffness: 300, damping: 25 },\n    pressedAnimation,\n    as: Component = motion.div,\n    ...rest\n  } = props;\n\n  return (\n    <Component\n      data-slot=\"switch-thumb\"\n      whileTap=\"tab\"\n      layout\n      transition={transition}\n      animate={isPressed ? pressedAnimation : undefined}\n      {...(isChecked && { 'data-checked': true })}\n      {...rest}\n    />\n  );\n}\n\ntype SwitchIconPosition = 'left' | 'right' | 'thumb';\n\ntype SwitchIconProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    position: SwitchIconPosition;\n    as?: TTag;\n  };\n\nfunction SwitchIcon<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchIconProps<TTag>,\n) {\n  const {\n    position,\n    transition = { type: 'spring', bounce: 0 },\n    as: Component = motion.div,\n    ...rest\n  } = props;\n  const { isChecked } = useSwitch();\n\n  const isAnimated = React.useMemo(() => {\n    if (position === 'right') return !isChecked;\n    if (position === 'left') return isChecked;\n    if (position === 'thumb') return true;\n    return false;\n  }, [position, isChecked]);\n\n  return (\n    <Component\n      data-slot={`switch-${position}-icon`}\n      animate={isAnimated ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}\n      transition={transition}\n      {...rest}\n    />\n  );\n}\n\nexport {\n  Switch,\n  SwitchThumb,\n  SwitchIcon,\n  type SwitchProps,\n  type SwitchThumbProps,\n  type SwitchIconProps,\n};",
       },
     ],
     keywords: [],
@@ -7806,7 +8066,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/headless/switch.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  Switch as SwitchPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  type TargetAndTransition,\n  type VariantLabels,\n  type HTMLMotionProps,\n  type LegacyAnimationControls,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype SwitchContextType = {\n  isChecked: boolean;\n  isPressed: boolean;\n};\n\nconst [SwitchProvider, useSwitch] =\n  getStrictContext<SwitchContextType>('SwitchContext');\n\ntype SwitchProps<TTag extends React.ElementType = typeof motion.button> =\n  SwitchPrimitiveProps<TTag> &\n    HTMLMotionProps<'button'> & {\n      as?: TTag;\n    };\n\nfunction Switch<TTag extends React.ElementType = typeof motion.button>(\n  props: SwitchProps<TTag>,\n) {\n  const { as = motion.button, children, ...rest } = props;\n\n  const [isPressed, setIsPressed] = React.useState(false);\n\n  return (\n    <SwitchPrimitive\n      data-slot=\"switch\"\n      whileTap=\"tap\"\n      initial={false}\n      onTapStart={() => setIsPressed(true)}\n      onTapCancel={() => setIsPressed(false)}\n      onTap={() => setIsPressed(false)}\n      {...rest}\n      as={as}\n    >\n      {(bag) => (\n        <SwitchProvider value={{ isPressed, isChecked: bag.checked }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </SwitchProvider>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\ntype SwitchThumbProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    as?: TTag;\n    pressedAnimation?:\n      | TargetAndTransition\n      | VariantLabels\n      | boolean\n      | LegacyAnimationControls;\n  };\n\nfunction SwitchThumb<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchThumbProps<TTag>,\n) {\n  const { isPressed } = useSwitch();\n\n  const {\n    transition = { type: 'spring', stiffness: 300, damping: 25 },\n    pressedAnimation,\n    as: Component = motion.div,\n    ...rest\n  } = props;\n\n  return (\n    <Component\n      data-slot=\"switch-thumb\"\n      whileTap=\"tab\"\n      layout\n      transition={transition}\n      animate={isPressed ? pressedAnimation : undefined}\n      {...rest}\n    />\n  );\n}\n\ntype SwitchIconPosition = 'left' | 'right' | 'thumb';\n\ntype SwitchIconProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    position: SwitchIconPosition;\n    as?: TTag;\n  };\n\nfunction SwitchIcon<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchIconProps<TTag>,\n) {\n  const {\n    position,\n    transition = { type: 'spring', bounce: 0 },\n    as: Component = motion.div,\n    ...rest\n  } = props;\n  const { isChecked } = useSwitch();\n\n  const isAnimated = React.useMemo(() => {\n    if (position === 'right') return !isChecked;\n    if (position === 'left') return isChecked;\n    if (position === 'thumb') return true;\n    return false;\n  }, [position, isChecked]);\n\n  return (\n    <Component\n      data-slot={`switch-${position}-icon`}\n      animate={isAnimated ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}\n      transition={transition}\n      {...rest}\n    />\n  );\n}\n\nexport {\n  Switch,\n  SwitchThumb,\n  SwitchIcon,\n  type SwitchProps,\n  type SwitchThumbProps,\n  type SwitchIconProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  Switch as SwitchPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from '@headlessui/react';\nimport {\n  motion,\n  type TargetAndTransition,\n  type VariantLabels,\n  type HTMLMotionProps,\n  type LegacyAnimationControls,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype SwitchContextType = {\n  isChecked: boolean;\n  isPressed: boolean;\n};\n\nconst [SwitchProvider, useSwitch] =\n  getStrictContext<SwitchContextType>('SwitchContext');\n\ntype SwitchProps<TTag extends React.ElementType = typeof motion.button> =\n  SwitchPrimitiveProps<TTag> &\n    HTMLMotionProps<'button'> & {\n      as?: TTag;\n    };\n\nfunction Switch<TTag extends React.ElementType = typeof motion.button>(\n  props: SwitchProps<TTag>,\n) {\n  const { as = motion.button, children, ...rest } = props;\n\n  const [isPressed, setIsPressed] = React.useState(false);\n\n  return (\n    <SwitchPrimitive\n      data-slot=\"switch\"\n      whileTap=\"tap\"\n      initial={false}\n      onTapStart={() => setIsPressed(true)}\n      onTapCancel={() => setIsPressed(false)}\n      onTap={() => setIsPressed(false)}\n      {...rest}\n      as={as}\n    >\n      {(bag) => (\n        <SwitchProvider value={{ isPressed, isChecked: bag.checked }}>\n          {typeof children === 'function' ? children(bag) : children}\n        </SwitchProvider>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\ntype SwitchThumbProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    as?: TTag;\n    pressedAnimation?:\n      | TargetAndTransition\n      | VariantLabels\n      | boolean\n      | LegacyAnimationControls;\n  };\n\nfunction SwitchThumb<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchThumbProps<TTag>,\n) {\n  const { isPressed, isChecked } = useSwitch();\n\n  const {\n    transition = { type: 'spring', stiffness: 300, damping: 25 },\n    pressedAnimation,\n    as: Component = motion.div,\n    ...rest\n  } = props;\n\n  return (\n    <Component\n      data-slot=\"switch-thumb\"\n      whileTap=\"tab\"\n      layout\n      transition={transition}\n      animate={isPressed ? pressedAnimation : undefined}\n      {...(isChecked && { 'data-checked': true })}\n      {...rest}\n    />\n  );\n}\n\ntype SwitchIconPosition = 'left' | 'right' | 'thumb';\n\ntype SwitchIconProps<TTag extends React.ElementType = typeof motion.div> =\n  HTMLMotionProps<'div'> & {\n    position: SwitchIconPosition;\n    as?: TTag;\n  };\n\nfunction SwitchIcon<TTag extends React.ElementType = typeof motion.div>(\n  props: SwitchIconProps<TTag>,\n) {\n  const {\n    position,\n    transition = { type: 'spring', bounce: 0 },\n    as: Component = motion.div,\n    ...rest\n  } = props;\n  const { isChecked } = useSwitch();\n\n  const isAnimated = React.useMemo(() => {\n    if (position === 'right') return !isChecked;\n    if (position === 'left') return isChecked;\n    if (position === 'thumb') return true;\n    return false;\n  }, [position, isChecked]);\n\n  return (\n    <Component\n      data-slot={`switch-${position}-icon`}\n      animate={isAnimated ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}\n      transition={transition}\n      {...rest}\n    />\n  );\n}\n\nexport {\n  Switch,\n  SwitchThumb,\n  SwitchIcon,\n  type SwitchProps,\n  type SwitchThumbProps,\n  type SwitchIconProps,\n};",
       },
     ],
     keywords: [],

@@ -91,7 +91,9 @@ type PopoverPanelProps<TTag extends React.ElementType = 'div'> = Omit<
     as?: TTag;
   };
 
-function PopoverPanel(props: PopoverPanelProps) {
+function PopoverPanel<TTag extends React.ElementType = 'div'>(
+  props: PopoverPanelProps<TTag>,
+) {
   const {
     transition = { type: 'spring', stiffness: 300, damping: 25 },
     as = motion.div,

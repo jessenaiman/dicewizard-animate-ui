@@ -33,6 +33,7 @@ const [TabsProvider, useTabs] =
 type TabGroupProps<TTag extends React.ElementType = 'div'> =
   TabGroupPrimitiveProps<TTag> & {
     as?: TTag;
+    className?: string;
   };
 
 function TabGroup<TTag extends React.ElementType = 'div'>({
@@ -53,6 +54,7 @@ function TabGroup<TTag extends React.ElementType = 'div'>({
 type TabListProps<TTag extends React.ElementType = 'div'> =
   TabListPrimitiveProps<TTag> & {
     as?: TTag;
+    className?: string;
   };
 
 function TabList<TTag extends React.ElementType = 'div'>(
@@ -87,6 +89,7 @@ type TabProps<TTag extends React.ElementType = 'button'> = Omit<
   Required<Pick<TabPrimitiveProps<TTag>, 'children'>> & {
     index: number;
     as?: TTag;
+    className?: string;
   };
 
 function Tab<TTag extends React.ElementType = 'button'>(props: TabProps<TTag>) {
@@ -120,6 +123,7 @@ type TabPanelProps<TTag extends React.ElementType = typeof motion.div> = Omit<
   'transition'
 > & {
   children: React.ReactNode;
+  className?: string;
   as?: TTag;
   transition?: Transition;
 };
