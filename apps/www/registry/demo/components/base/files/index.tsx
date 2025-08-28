@@ -5,13 +5,13 @@ import {
   FileItem,
   FolderItem,
   FolderTrigger,
-  FolderContent,
+  FolderPanel,
   Files,
   SubFiles,
-} from '@/registry/components/radix/files';
+} from '@/registry/components/base/files';
 import { FileJsonIcon } from 'lucide-react';
 
-export const RadixFilesDemo = () => {
+export const BaseFilesDemo = () => {
   return (
     <div className="relative max-w-[500px] max-h-[350px] size-full rounded-2xl border bg-background overflow-auto">
       <Files className="w-full" defaultOpen={['app']}>
@@ -23,28 +23,28 @@ export const RadixFilesDemo = () => {
             app
           </FolderTrigger>
 
-          <FolderContent>
+          <FolderPanel>
             <SubFiles defaultOpen={['(home)']}>
               <FolderItem value="(home)">
                 <FolderTrigger gitStatus="untracked">(home)</FolderTrigger>
 
-                <FolderContent>
+                <FolderPanel>
                   <FileItem gitStatus="untracked">page.tsx</FileItem>
                   <FileItem gitStatus="untracked">layout.tsx</FileItem>
-                </FolderContent>
+                </FolderPanel>
               </FolderItem>
 
               <FileItem>layout.tsx</FileItem>
               <FileItem gitStatus="modified">page.tsx</FileItem>
               <FileItem>global.css</FileItem>
             </SubFiles>
-          </FolderContent>
+          </FolderPanel>
         </FolderItem>
 
         <FolderItem value="components">
           <FolderTrigger>components</FolderTrigger>
 
-          <FolderContent>
+          <FolderPanel>
             <SubFiles>
               <FileItem>button.tsx</FileItem>
               <FileItem>tabs.tsx</FileItem>
@@ -54,7 +54,7 @@ export const RadixFilesDemo = () => {
                 <FolderTrigger>empty</FolderTrigger>
               </FolderItem>
             </SubFiles>
-          </FolderContent>
+          </FolderPanel>
         </FolderItem>
 
         <FileItem icon={FileJsonIcon}>package.json</FileItem>

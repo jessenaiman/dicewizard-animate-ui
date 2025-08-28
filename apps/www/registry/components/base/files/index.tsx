@@ -11,16 +11,16 @@ import {
   Folder as FolderPrimitive,
   FolderIcon as FolderIconPrimitive,
   FileLabel as FileLabelPrimitive,
-  FolderContent as FolderContentPrimitive,
+  FolderPanel as FolderPanelPrimitive,
   FileHighlight as FileHighlightPrimitive,
   File as FilePrimitive,
   FileIcon as FileIconPrimitive,
   type FilesProps as FilesPrimitiveProps,
   type FolderItemProps as FolderItemPrimitiveProps,
-  type FolderContentProps as FolderContentPrimitiveProps,
+  type FolderPanelProps as FolderPanelPrimitiveProps,
   type FileProps as FilePrimitiveProps,
   type FileLabelProps as FileLabelPrimitiveProps,
-} from '@/registry/primitives/radix/files';
+} from '@/registry/primitives/base/files';
 import { cn } from '@workspace/ui/lib/utils';
 
 type GitStatus = 'untracked' | 'modified' | 'deleted';
@@ -101,12 +101,12 @@ function FolderTrigger({
   );
 }
 
-type FolderContentProps = FolderContentPrimitiveProps;
+type FolderPanelProps = FolderPanelPrimitiveProps;
 
-function FolderContent(props: FolderContentProps) {
+function FolderPanel(props: FolderPanelProps) {
   return (
     <div className="relative ml-6 before:absolute before:-left-2 before:inset-y-0 before:w-px before:h-full before:bg-border">
-      <FolderContentPrimitive {...props} />
+      <FolderPanelPrimitive {...props} />
     </div>
   );
 }
@@ -158,13 +158,13 @@ export {
   Files,
   FolderItem,
   FolderTrigger,
-  FolderContent,
+  FolderPanel,
   FileItem,
   SubFiles,
   type FilesProps,
   type FolderItemProps,
   type FolderTriggerProps,
-  type FolderContentProps,
+  type FolderPanelProps,
   type FileItemProps,
   type SubFilesProps,
 };

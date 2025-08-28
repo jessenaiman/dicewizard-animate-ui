@@ -108,6 +108,79 @@
       ]
     },
     {
+      "name": "components-base-accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A set of collapsible panels with headings.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "An easily stylable checkbox component.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-files",
+      "type": "registry:ui",
+      "title": "Files",
+      "description": "A component that allows you to display a list of files and folders.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-files"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/files.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "An accessible popup anchored to a button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/popover.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-buttons-button",
       "type": "registry:ui",
       "title": "Button",
@@ -788,6 +861,142 @@
           "target": "components/animate-ui/demo/components/backgrounds/stars.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-base-accordion",
+      "type": "registry:ui",
+      "title": "Accordion Demo",
+      "description": "Demo showing a accordion.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/accordion/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/accordion.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Accordion": {
+            "openMultiple": {
+              "value": false
+            }
+          },
+          "AccordionTrigger": {
+            "showArrow": {
+              "value": true
+            }
+          },
+          "AccordionPanel": {
+            "keepRendered": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-base-checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox Demo",
+      "description": "Demo showing a checkbox.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/checkbox/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/checkbox.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Checkbox": {
+            "indeterminate": {
+              "value": false
+            },
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-base-files",
+      "type": "registry:ui",
+      "title": "Files Demo",
+      "description": "Demo showing a files.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-files"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/files/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/files.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-base-popover",
+      "type": "registry:ui",
+      "title": "Popover Demo",
+      "description": "Demo showing a popover.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/popover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/popover.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PopoverPanel": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-components-buttons-button",
