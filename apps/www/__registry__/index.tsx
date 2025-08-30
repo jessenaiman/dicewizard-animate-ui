@@ -269,7 +269,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/base/accordion.tsx',
         content:
-          "import * as React from 'react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Accordion as AccordionPrimitive,\n  AccordionItem as AccordionItemPrimitive,\n  AccordionHeader as AccordionHeaderPrimitive,\n  AccordionTrigger as AccordionTriggerPrimitive,\n  AccordionPanel as AccordionPanelPrimitive,\n  type AccordionProps as AccordionPrimitiveProps,\n  type AccordionItemProps as AccordionItemPrimitiveProps,\n  type AccordionTriggerProps as AccordionTriggerPrimitiveProps,\n  type AccordionPanelProps as AccordionPanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/accordion';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = AccordionPrimitiveProps;\n\nfunction Accordion(props: AccordionProps) {\n  return <AccordionPrimitive {...props} />;\n}\n\ntype AccordionItemProps = AccordionItemPrimitiveProps;\n\nfunction AccordionItem({ className, ...props }: AccordionItemProps) {\n  return (\n    <AccordionItemPrimitive\n      className={cn('border-b last:border-b-0', className)}\n      {...props}\n    />\n  );\n}\n\ntype AccordionTriggerProps = AccordionTriggerPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionTrigger({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionTriggerProps) {\n  return (\n    <AccordionHeaderPrimitive className=\"flex\">\n      <AccordionTriggerPrimitive\n        className={cn(\n          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-panel-open]>svg]:rotate-180',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showArrow && (\n          <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n        )}\n      </AccordionTriggerPrimitive>\n    </AccordionHeaderPrimitive>\n  );\n}\n\ntype AccordionPanelProps = AccordionPanelPrimitiveProps;\n\nfunction AccordionPanel({\n  className,\n  children,\n  ...props\n}: AccordionPanelProps) {\n  return (\n    <AccordionPanelPrimitive {...props}>\n      <div className={cn('text-sm pt-0 pb-4', className)}>{children}</div>\n    </AccordionPanelPrimitive>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionPanelProps,\n};",
+          "import * as React from 'react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Accordion as AccordionPrimitive,\n  AccordionItem as AccordionItemPrimitive,\n  AccordionHeader as AccordionHeaderPrimitive,\n  AccordionTrigger as AccordionTriggerPrimitive,\n  AccordionPanel as AccordionPanelPrimitive,\n  type AccordionProps as AccordionPrimitiveProps,\n  type AccordionItemProps as AccordionItemPrimitiveProps,\n  type AccordionTriggerProps as AccordionTriggerPrimitiveProps,\n  type AccordionPanelProps as AccordionPanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/accordion';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps = AccordionPrimitiveProps;\n\nfunction Accordion(props: AccordionProps) {\n  return <AccordionPrimitive {...props} />;\n}\n\ntype AccordionItemProps = AccordionItemPrimitiveProps;\n\nfunction AccordionItem({ className, ...props }: AccordionItemProps) {\n  return (\n    <AccordionItemPrimitive\n      className={cn('border-b last:border-b-0', className)}\n      {...props}\n    />\n  );\n}\n\ntype AccordionTriggerProps = AccordionTriggerPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionTrigger({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionTriggerProps) {\n  return (\n    <AccordionHeaderPrimitive className=\"flex\">\n      <AccordionTriggerPrimitive\n        className={cn(\n          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-panel-open]>svg]:rotate-180',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {showArrow && (\n          <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n        )}\n      </AccordionTriggerPrimitive>\n    </AccordionHeaderPrimitive>\n  );\n}\n\ntype AccordionPanelProps = AccordionPanelPrimitiveProps & {\n  children: React.ReactNode;\n};\n\nfunction AccordionPanel({\n  className,\n  children,\n  ...props\n}: AccordionPanelProps) {\n  return (\n    <AccordionPanelPrimitive {...props}>\n      <div className={cn('text-sm pt-0 pb-4', className)}>{children}</div>\n    </AccordionPanelPrimitive>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionTrigger,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionTriggerProps,\n  type AccordionPanelProps,\n};",
       },
     ],
     keywords: [],
@@ -307,7 +307,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/base/checkbox.tsx',
         content:
-          "import * as React from 'react';\n\nimport {\n  Checkbox as CheckboxPrimitive,\n  CheckboxIndicator as CheckboxIndicatorPrimitive,\n  type CheckboxProps as CheckboxPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/checkbox';\nimport { cn } from '@/lib/utils';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nconst checkboxVariants = cva(\n  'peer shrink-0 flex items-center justify-center outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-500 focus-visible:ring-offset-2 [&[data-checked],&[data-indeterminate]]:bg-primary [&[data-checked],&[data-indeterminate]]:text-primary-foreground',\n  {\n    variants: {\n      variant: {\n        default: 'bg-background border',\n        accent: 'bg-input',\n      },\n      size: {\n        default: 'size-5 rounded-sm',\n        sm: 'size-4.5 rounded-[5px]',\n        lg: 'size-6 rounded-[7px]',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\nconst checkboxIndicatorVariants = cva('', {\n  variants: {\n    size: {\n      default: 'size-3.5',\n      sm: 'size-3',\n      lg: 'size-4',\n    },\n  },\n  defaultVariants: {\n    size: 'default',\n  },\n});\n\ntype CheckboxProps = CheckboxPrimitiveProps &\n  VariantProps<typeof checkboxVariants>;\n\nfunction Checkbox({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: CheckboxProps) {\n  return (\n    <CheckboxPrimitive\n      className={cn(checkboxVariants({ variant, size, className }))}\n      {...props}\n    >\n      {children}\n      <CheckboxIndicatorPrimitive\n        className={cn(checkboxIndicatorVariants({ size }))}\n      />\n    </CheckboxPrimitive>\n  );\n}\n\nexport { Checkbox, type CheckboxProps };",
+          "import * as React from 'react';\n\nimport {\n  Checkbox as CheckboxPrimitive,\n  CheckboxIndicator as CheckboxIndicatorPrimitive,\n  type CheckboxProps as CheckboxPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/checkbox';\nimport { cn } from '@/lib/utils';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nconst checkboxVariants = cva(\n  'peer shrink-0 flex items-center justify-center outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-500 focus-visible:ring-offset-2 [&[data-checked],&[data-indeterminate]]:bg-primary [&[data-checked],&[data-indeterminate]]:text-primary-foreground',\n  {\n    variants: {\n      variant: {\n        default: 'bg-background border',\n        accent: 'bg-input',\n      },\n      size: {\n        default: 'size-5 rounded-sm',\n        sm: 'size-4.5 rounded-[5px]',\n        lg: 'size-6 rounded-[7px]',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\nconst checkboxIndicatorVariants = cva('', {\n  variants: {\n    size: {\n      default: 'size-3.5',\n      sm: 'size-3',\n      lg: 'size-4',\n    },\n  },\n  defaultVariants: {\n    size: 'default',\n  },\n});\n\ntype CheckboxProps = CheckboxPrimitiveProps &\n  VariantProps<typeof checkboxVariants> & {\n    children?: React.ReactNode;\n  };\n\nfunction Checkbox({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: CheckboxProps) {\n  return (\n    <CheckboxPrimitive\n      className={cn(checkboxVariants({ variant, size, className }))}\n      {...props}\n    >\n      {children}\n      <CheckboxIndicatorPrimitive\n        className={cn(checkboxIndicatorVariants({ size }))}\n      />\n    </CheckboxPrimitive>\n  );\n}\n\nexport { Checkbox, type CheckboxProps };",
       },
     ],
     keywords: [],
@@ -346,7 +346,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/base/files.tsx',
         content:
-          "import * as React from 'react';\nimport { FolderIcon, FolderOpenIcon, FileIcon } from 'lucide-react';\n\nimport {\n  Files as FilesPrimitive,\n  FilesHighlight as FilesHighlightPrimitive,\n  FolderItem as FolderItemPrimitive,\n  FolderHeader as FolderHeaderPrimitive,\n  FolderTrigger as FolderTriggerPrimitive,\n  FolderHighlight as FolderHighlightPrimitive,\n  Folder as FolderPrimitive,\n  FolderIcon as FolderIconPrimitive,\n  FileLabel as FileLabelPrimitive,\n  FolderPanel as FolderPanelPrimitive,\n  FileHighlight as FileHighlightPrimitive,\n  File as FilePrimitive,\n  FileIcon as FileIconPrimitive,\n  type FilesProps as FilesPrimitiveProps,\n  type FolderItemProps as FolderItemPrimitiveProps,\n  type FolderHeaderProps as FolderHeaderPrimitiveProps,\n  type FolderTriggerProps as FolderTriggerPrimitiveProps,\n  type FolderHighlightProps as FolderHighlightPrimitiveProps,\n  type FolderProps as FolderPrimitiveProps,\n  type FolderPanelProps as FolderPanelPrimitiveProps,\n  type FileHighlightProps as FileHighlightPrimitiveProps,\n  type FileProps as FilePrimitiveProps,\n  type FileIconProps as FileIconPrimitiveProps,\n  type FileLabelProps as FileLabelPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/files';\nimport { cn } from '@/lib/utils';\n\ntype GitStatus = 'untracked' | 'modified' | 'deleted';\n\ntype FilesProps = FilesPrimitiveProps;\n\nfunction Files({ className, children, ...props }: FilesProps) {\n  return (\n    <FilesPrimitive className={cn('p-2 w-full', className)} {...props}>\n      <FilesHighlightPrimitive className=\"bg-accent rounded-lg pointer-events-none\">\n        {children}\n      </FilesHighlightPrimitive>\n    </FilesPrimitive>\n  );\n}\n\ntype SubFilesProps = FilesProps;\n\nfunction SubFiles(props: SubFilesProps) {\n  return <FilesPrimitive {...props} />;\n}\n\ntype FolderItemProps = FolderItemPrimitiveProps;\n\nfunction FolderItem(props: FolderItemProps) {\n  return <FolderItemPrimitive {...props} />;\n}\n\ntype FolderTriggerProps = FileLabelPrimitiveProps & {\n  gitStatus?: GitStatus;\n};\n\nfunction FolderTrigger({\n  children,\n  className,\n  gitStatus,\n  ...props\n}: FolderTriggerProps) {\n  return (\n    <FolderHeaderPrimitive>\n      <FolderTriggerPrimitive className=\"w-full text-start\">\n        <FolderHighlightPrimitive>\n          <FolderPrimitive className=\"flex items-center justify-between gap-2 p-2 pointer-events-none\">\n            <div\n              className={cn(\n                'flex items-center gap-2',\n                gitStatus === 'untracked' && 'text-green-400',\n                gitStatus === 'modified' && 'text-amber-400',\n                gitStatus === 'deleted' && 'text-red-400',\n              )}\n            >\n              <FolderIconPrimitive\n                closeIcon={<FolderIcon className=\"size-4.5\" />}\n                openIcon={<FolderOpenIcon className=\"size-4.5\" />}\n              />\n              <FileLabelPrimitive\n                className={cn('text-sm', className)}\n                {...props}\n              >\n                {children}\n              </FileLabelPrimitive>\n            </div>\n\n            {gitStatus && (\n              <span\n                className={cn(\n                  'rounded-full size-2',\n                  gitStatus === 'untracked' && 'bg-green-400',\n                  gitStatus === 'modified' && 'bg-amber-400',\n                  gitStatus === 'deleted' && 'bg-red-400',\n                )}\n              />\n            )}\n          </FolderPrimitive>\n        </FolderHighlightPrimitive>\n      </FolderTriggerPrimitive>\n    </FolderHeaderPrimitive>\n  );\n}\n\ntype FolderPanelProps = FolderPanelPrimitiveProps;\n\nfunction FolderPanel(props: FolderPanelProps) {\n  return (\n    <div className=\"relative ml-6 before:absolute before:-left-2 before:inset-y-0 before:w-px before:h-full before:bg-border\">\n      <FolderPanelPrimitive {...props} />\n    </div>\n  );\n}\n\ntype FileItemProps = FilePrimitiveProps & {\n  icon?: React.ElementType;\n  gitStatus?: GitStatus;\n};\n\nfunction FileItem({\n  icon: Icon = FileIcon,\n  className,\n  children,\n  gitStatus,\n  ...props\n}: FileItemProps) {\n  return (\n    <FileHighlightPrimitive>\n      <FilePrimitive\n        className={cn(\n          'flex items-center justify-between gap-2 p-2 pointer-events-none',\n          gitStatus === 'untracked' && 'text-green-400',\n          gitStatus === 'modified' && 'text-amber-400',\n          gitStatus === 'deleted' && 'text-red-400',\n        )}\n      >\n        <div className=\"flex items-center gap-2\">\n          <FileIconPrimitive>\n            <Icon className=\"size-4.5\" />\n          </FileIconPrimitive>\n          <FileLabelPrimitive className={cn('text-sm', className)} {...props}>\n            {children}\n          </FileLabelPrimitive>\n        </div>\n\n        {gitStatus && (\n          <span className=\"text-sm font-medium\">\n            {gitStatus === 'untracked' && 'U'}\n            {gitStatus === 'modified' && 'M'}\n            {gitStatus === 'deleted' && 'D'}\n          </span>\n        )}\n      </FilePrimitive>\n    </FileHighlightPrimitive>\n  );\n}\n\nexport {\n  Files,\n  FolderItem,\n  FolderTrigger,\n  FolderPanel,\n  FileItem,\n  SubFiles,\n  type FilesProps,\n  type FolderItemProps,\n  type FolderTriggerProps,\n  type FolderPanelProps,\n  type FileItemProps,\n  type SubFilesProps,\n};",
+          "import * as React from 'react';\nimport { FolderIcon, FolderOpenIcon, FileIcon } from 'lucide-react';\n\nimport {\n  Files as FilesPrimitive,\n  FilesHighlight as FilesHighlightPrimitive,\n  FolderItem as FolderItemPrimitive,\n  FolderHeader as FolderHeaderPrimitive,\n  FolderTrigger as FolderTriggerPrimitive,\n  FolderHighlight as FolderHighlightPrimitive,\n  Folder as FolderPrimitive,\n  FolderIcon as FolderIconPrimitive,\n  FileLabel as FileLabelPrimitive,\n  FolderPanel as FolderPanelPrimitive,\n  FileHighlight as FileHighlightPrimitive,\n  File as FilePrimitive,\n  FileIcon as FileIconPrimitive,\n  type FilesProps as FilesPrimitiveProps,\n  type FolderItemProps as FolderItemPrimitiveProps,\n  type FolderPanelProps as FolderPanelPrimitiveProps,\n  type FileProps as FilePrimitiveProps,\n  type FileLabelProps as FileLabelPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/files';\nimport { cn } from '@/lib/utils';\n\ntype GitStatus = 'untracked' | 'modified' | 'deleted';\n\ntype FilesProps = FilesPrimitiveProps;\n\nfunction Files({ className, children, ...props }: FilesProps) {\n  return (\n    <FilesPrimitive className={cn('p-2 w-full', className)} {...props}>\n      <FilesHighlightPrimitive className=\"bg-accent rounded-lg pointer-events-none\">\n        {children}\n      </FilesHighlightPrimitive>\n    </FilesPrimitive>\n  );\n}\n\ntype SubFilesProps = FilesProps;\n\nfunction SubFiles(props: SubFilesProps) {\n  return <FilesPrimitive {...props} />;\n}\n\ntype FolderItemProps = FolderItemPrimitiveProps;\n\nfunction FolderItem(props: FolderItemProps) {\n  return <FolderItemPrimitive {...props} />;\n}\n\ntype FolderTriggerProps = FileLabelPrimitiveProps & {\n  gitStatus?: GitStatus;\n};\n\nfunction FolderTrigger({\n  children,\n  className,\n  gitStatus,\n  ...props\n}: FolderTriggerProps) {\n  return (\n    <FolderHeaderPrimitive>\n      <FolderTriggerPrimitive className=\"w-full text-start\">\n        <FolderHighlightPrimitive>\n          <FolderPrimitive className=\"flex items-center justify-between gap-2 p-2 pointer-events-none\">\n            <div\n              className={cn(\n                'flex items-center gap-2',\n                gitStatus === 'untracked' && 'text-green-400',\n                gitStatus === 'modified' && 'text-amber-400',\n                gitStatus === 'deleted' && 'text-red-400',\n              )}\n            >\n              <FolderIconPrimitive\n                closeIcon={<FolderIcon className=\"size-4.5\" />}\n                openIcon={<FolderOpenIcon className=\"size-4.5\" />}\n              />\n              <FileLabelPrimitive\n                className={cn('text-sm', className)}\n                {...props}\n              >\n                {children}\n              </FileLabelPrimitive>\n            </div>\n\n            {gitStatus && (\n              <span\n                className={cn(\n                  'rounded-full size-2',\n                  gitStatus === 'untracked' && 'bg-green-400',\n                  gitStatus === 'modified' && 'bg-amber-400',\n                  gitStatus === 'deleted' && 'bg-red-400',\n                )}\n              />\n            )}\n          </FolderPrimitive>\n        </FolderHighlightPrimitive>\n      </FolderTriggerPrimitive>\n    </FolderHeaderPrimitive>\n  );\n}\n\ntype FolderPanelProps = FolderPanelPrimitiveProps;\n\nfunction FolderPanel(props: FolderPanelProps) {\n  return (\n    <div className=\"relative ml-6 before:absolute before:-left-2 before:inset-y-0 before:w-px before:h-full before:bg-border\">\n      <FolderPanelPrimitive {...props} />\n    </div>\n  );\n}\n\ntype FileItemProps = FilePrimitiveProps & {\n  icon?: React.ElementType;\n  gitStatus?: GitStatus;\n};\n\nfunction FileItem({\n  icon: Icon = FileIcon,\n  className,\n  children,\n  gitStatus,\n  ...props\n}: FileItemProps) {\n  return (\n    <FileHighlightPrimitive>\n      <FilePrimitive\n        className={cn(\n          'flex items-center justify-between gap-2 p-2 pointer-events-none',\n          gitStatus === 'untracked' && 'text-green-400',\n          gitStatus === 'modified' && 'text-amber-400',\n          gitStatus === 'deleted' && 'text-red-400',\n        )}\n      >\n        <div className=\"flex items-center gap-2\">\n          <FileIconPrimitive>\n            <Icon className=\"size-4.5\" />\n          </FileIconPrimitive>\n          <FileLabelPrimitive className={cn('text-sm', className)} {...props}>\n            {children}\n          </FileLabelPrimitive>\n        </div>\n\n        {gitStatus && (\n          <span className=\"text-sm font-medium\">\n            {gitStatus === 'untracked' && 'U'}\n            {gitStatus === 'modified' && 'M'}\n            {gitStatus === 'deleted' && 'D'}\n          </span>\n        )}\n      </FilePrimitive>\n    </FileHighlightPrimitive>\n  );\n}\n\nexport {\n  Files,\n  FolderItem,\n  FolderTrigger,\n  FolderPanel,\n  FileItem,\n  SubFiles,\n  type FilesProps,\n  type FolderItemProps,\n  type FolderTriggerProps,\n  type FolderPanelProps,\n  type FileItemProps,\n  type SubFilesProps,\n};",
       },
     ],
     keywords: [],
@@ -382,7 +382,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/base/popover.tsx',
         content:
-          "import * as React from 'react';\n\nimport {\n  Popover as PopoverPrimitive,\n  PopoverTrigger as PopoverTriggerPrimitive,\n  PopoverPositioner as PopoverPositionerPrimitive,\n  PopoverPopup as PopoverPopupPrimitive,\n  PopoverPortal as PopoverPortalPrimitive,\n  PopoverClose as PopoverClosePrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverTriggerProps as PopoverTriggerPrimitiveProps,\n  type PopoverPositionerProps as PopoverPositionerPrimitiveProps,\n  type PopoverPopupProps as PopoverPopupPrimitiveProps,\n  type PopoverCloseProps as PopoverClosePrimitiveProps,\n} from '@/components/animate-ui/primitives/base/popover';\nimport { cn } from '@/lib/utils';\n\ntype PopoverProps = PopoverPrimitiveProps;\n\nfunction Popover(props: PopoverProps) {\n  return <PopoverPrimitive {...props} />;\n}\n\ntype PopoverTriggerProps = PopoverTriggerPrimitiveProps;\n\nfunction PopoverTrigger(props: PopoverTriggerProps) {\n  return <PopoverTriggerPrimitive {...props} />;\n}\n\ntype PopoverPanelProps = PopoverPositionerPrimitiveProps &\n  PopoverPopupPrimitiveProps;\n\nfunction PopoverPanel({\n  className,\n  align = 'center',\n  sideOffset = 4,\n  initialFocus,\n  finalFocus,\n  ...props\n}: PopoverPanelProps) {\n  return (\n    <PopoverPortalPrimitive>\n      <PopoverPositionerPrimitive\n        align={align}\n        sideOffset={sideOffset}\n        className=\"z-50\"\n      >\n        <PopoverPopupPrimitive\n          initialFocus={initialFocus}\n          finalFocus={finalFocus}\n          className={cn(\n            'bg-popover text-popover-foreground w-72 rounded-md border p-4 shadow-md outline-hidden',\n            className,\n          )}\n          {...props}\n        />\n      </PopoverPositionerPrimitive>\n    </PopoverPortalPrimitive>\n  );\n}\n\ntype PopoverCloseProps = PopoverClosePrimitiveProps;\n\nfunction PopoverClose(props: PopoverCloseProps) {\n  return <PopoverClosePrimitive {...props} />;\n}\n\nexport {\n  Popover,\n  PopoverTrigger,\n  PopoverPanel,\n  PopoverClose,\n  type PopoverProps,\n  type PopoverTriggerProps,\n  type PopoverPanelProps,\n  type PopoverCloseProps,\n};",
+          "import * as React from 'react';\n\nimport {\n  Popover as PopoverPrimitive,\n  PopoverTrigger as PopoverTriggerPrimitive,\n  PopoverPositioner as PopoverPositionerPrimitive,\n  PopoverPopup as PopoverPopupPrimitive,\n  PopoverPortal as PopoverPortalPrimitive,\n  PopoverClose as PopoverClosePrimitive,\n  PopoverBackdrop as PopoverBackdropPrimitive,\n  PopoverTitle as PopoverTitlePrimitive,\n  PopoverDescription as PopoverDescriptionPrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverTriggerProps as PopoverTriggerPrimitiveProps,\n  type PopoverPositionerProps as PopoverPositionerPrimitiveProps,\n  type PopoverPopupProps as PopoverPopupPrimitiveProps,\n  type PopoverCloseProps as PopoverClosePrimitiveProps,\n  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,\n  type PopoverTitleProps as PopoverTitlePrimitiveProps,\n  type PopoverDescriptionProps as PopoverDescriptionPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/popover';\nimport { cn } from '@/lib/utils';\n\ntype PopoverProps = PopoverPrimitiveProps;\n\nfunction Popover(props: PopoverProps) {\n  return <PopoverPrimitive {...props} />;\n}\n\ntype PopoverTriggerProps = PopoverTriggerPrimitiveProps;\n\nfunction PopoverTrigger(props: PopoverTriggerProps) {\n  return <PopoverTriggerPrimitive {...props} />;\n}\n\ntype PopoverPanelProps = PopoverPositionerPrimitiveProps &\n  PopoverPopupPrimitiveProps;\n\nfunction PopoverPanel({\n  className,\n  align = 'center',\n  sideOffset = 4,\n  initialFocus,\n  finalFocus,\n  style,\n  children,\n  ...props\n}: PopoverPanelProps) {\n  return (\n    <PopoverPortalPrimitive>\n      <PopoverPositionerPrimitive\n        align={align}\n        sideOffset={sideOffset}\n        className=\"z-50\"\n        {...props}\n      >\n        <PopoverPopupPrimitive\n          initialFocus={initialFocus}\n          finalFocus={finalFocus}\n          className={cn(\n            'bg-popover text-popover-foreground w-72 rounded-md border p-4 shadow-md outline-hidden origin-(--transform-origin)',\n            className,\n          )}\n          style={style}\n        >\n          {children}\n        </PopoverPopupPrimitive>\n      </PopoverPositionerPrimitive>\n    </PopoverPortalPrimitive>\n  );\n}\n\ntype PopoverCloseProps = PopoverClosePrimitiveProps;\n\nfunction PopoverClose(props: PopoverCloseProps) {\n  return <PopoverClosePrimitive {...props} />;\n}\n\ntype PopoverBackdropProps = PopoverBackdropPrimitiveProps;\n\nfunction PopoverBackdrop(props: PopoverBackdropProps) {\n  return <PopoverBackdropPrimitive {...props} />;\n}\n\ntype PopoverTitleProps = PopoverTitlePrimitiveProps;\n\nfunction PopoverTitle(props: PopoverTitleProps) {\n  return <PopoverTitlePrimitive {...props} />;\n}\n\ntype PopoverDescriptionProps = PopoverDescriptionPrimitiveProps;\n\nfunction PopoverDescription(props: PopoverDescriptionProps) {\n  return <PopoverDescriptionPrimitive {...props} />;\n}\n\nexport {\n  Popover,\n  PopoverTrigger,\n  PopoverPanel,\n  PopoverClose,\n  PopoverBackdrop,\n  PopoverTitle,\n  PopoverDescription,\n  type PopoverProps,\n  type PopoverTriggerProps,\n  type PopoverPanelProps,\n  type PopoverCloseProps,\n  type PopoverBackdropProps,\n  type PopoverTitleProps,\n  type PopoverDescriptionProps,\n};",
       },
     ],
     keywords: [],
@@ -406,6 +406,236 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/components-base-popover',
+  },
+  'components-base-preview-card': {
+    name: 'components-base-preview-card',
+    description:
+      'A popup that appears when a link is hovered, showing a preview for sighted users.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-base-preview-card',
+    ],
+    files: [
+      {
+        path: 'registry/components/base/preview-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/base/preview-card.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  PreviewCard as PreviewCardPrimitive,\n  PreviewCardTrigger as PreviewCardTriggerPrimitive,\n  PreviewCardPortal as PreviewCardPortalPrimitive,\n  PreviewCardPositioner as PreviewCardPositionerPrimitive,\n  PreviewCardPopup as PreviewCardPopupPrimitive,\n  PreviewCardBackdrop as PreviewCardBackdropPrimitive,\n  type PreviewCardProps as PreviewCardPrimitiveProps,\n  type PreviewCardTriggerProps as PreviewCardTriggerPrimitiveProps,\n  type PreviewCardPositionerProps as PreviewCardPositionerPrimitiveProps,\n  type PreviewCardPopupProps as PreviewCardPopupPrimitiveProps,\n  type PreviewCardBackdropProps as PreviewCardBackdropPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/preview-card';\nimport { cn } from '@/lib/utils';\n\ntype PreviewCardProps = PreviewCardPrimitiveProps;\n\nfunction PreviewCard(props: PreviewCardProps) {\n  return <PreviewCardPrimitive {...props} />;\n}\n\ntype PreviewCardTriggerProps = PreviewCardTriggerPrimitiveProps;\n\nfunction PreviewCardTrigger(props: PreviewCardTriggerProps) {\n  return <PreviewCardTriggerPrimitive {...props} />;\n}\n\ntype PreviewCardPanelProps = PreviewCardPositionerPrimitiveProps &\n  PreviewCardPopupPrimitiveProps;\n\nfunction PreviewCardPanel({\n  className,\n  align = 'center',\n  sideOffset = 4,\n  style,\n  children,\n  ...props\n}: PreviewCardPanelProps) {\n  return (\n    <PreviewCardPortalPrimitive>\n      <PreviewCardPositionerPrimitive\n        align={align}\n        sideOffset={sideOffset}\n        className=\"z-50\"\n        {...props}\n      >\n        <PreviewCardPopupPrimitive\n          className={cn(\n            'bg-popover text-popover-foreground w-64 origin-(--transform-origin) rounded-md border p-4 shadow-md outline-hidden',\n            className,\n          )}\n          style={style}\n        >\n          {children}\n        </PreviewCardPopupPrimitive>\n      </PreviewCardPositionerPrimitive>\n    </PreviewCardPortalPrimitive>\n  );\n}\n\ntype PreviewCardBackdropProps = PreviewCardBackdropPrimitiveProps;\n\nfunction PreviewCardBackdrop(props: PreviewCardBackdropProps) {\n  return <PreviewCardBackdropPrimitive {...props} />;\n}\n\nexport {\n  PreviewCard,\n  PreviewCardTrigger,\n  PreviewCardPanel,\n  PreviewCardBackdrop,\n  type PreviewCardProps,\n  type PreviewCardTriggerProps,\n  type PreviewCardPanelProps,\n  type PreviewCardBackdropProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/base/preview-card/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-base-preview-card';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-base-preview-card',
+  },
+  'components-base-progress': {
+    name: 'components-base-progress',
+    description: 'Displays the status of a task that takes a long time.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-base-progress'],
+    files: [
+      {
+        path: 'registry/components/base/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/base/progress.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  Progress as ProgressPrimitive,\n  ProgressTrack as ProgressTrackPrimitive,\n  ProgressIndicator as ProgressIndicatorPrimitive,\n  ProgressLabel as ProgressLabelPrimitive,\n  ProgressValue as ProgressValuePrimitive,\n  type ProgressProps as ProgressPrimitiveProps,\n  type ProgressTrackProps as ProgressTrackPrimitiveProps,\n  type ProgressLabelProps as ProgressLabelPrimitiveProps,\n  type ProgressValueProps as ProgressValuePrimitiveProps,\n} from '@/components/animate-ui/primitives/base/progress';\nimport { cn } from '@/lib/utils';\n\ntype ProgressProps = ProgressPrimitiveProps;\n\nfunction Progress(props: ProgressProps) {\n  return <ProgressPrimitive {...props} />;\n}\n\ntype ProgressTrackProps = ProgressTrackPrimitiveProps;\n\nfunction ProgressTrack({ className, ...props }: ProgressTrackProps) {\n  return (\n    <ProgressTrackPrimitive\n      className={cn(\n        'bg-primary/20 relative h-2 w-full overflow-hidden rounded-full',\n        className,\n      )}\n      {...props}\n    >\n      <ProgressIndicatorPrimitive className=\"bg-primary rounded-full h-full w-full flex-1\" />\n    </ProgressTrackPrimitive>\n  );\n}\n\ntype ProgressLabelProps = ProgressLabelPrimitiveProps;\n\nfunction ProgressLabel(props: ProgressLabelProps) {\n  return <ProgressLabelPrimitive className=\"text-sm font-medium\" {...props} />;\n}\n\ntype ProgressValueProps = ProgressValuePrimitiveProps;\n\nfunction ProgressValue(props: ProgressValueProps) {\n  return <ProgressValuePrimitive className=\"text-sm\" {...props} />;\n}\n\nexport {\n  Progress,\n  ProgressTrack,\n  ProgressLabel,\n  ProgressValue,\n  type ProgressProps,\n  type ProgressTrackProps,\n  type ProgressLabelProps,\n  type ProgressValueProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/base/progress/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-base-progress';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-base-progress',
+  },
+  'components-base-switch': {
+    name: 'components-base-switch',
+    description: 'A control that indicates whether a setting is on or off.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-base-switch'],
+    files: [
+      {
+        path: 'registry/components/base/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/base/switch.tsx',
+        content:
+          'import * as React from \'react\';\n\nimport {\n  Switch as SwitchPrimitive,\n  SwitchThumb as SwitchThumbPrimitive,\n  SwitchIcon as SwitchIconPrimitive,\n  type SwitchProps as SwitchPrimitiveProps,\n} from \'@/components/animate-ui/primitives/base/switch\';\nimport { cn } from \'@/lib/utils\';\n\ntype SwitchProps = SwitchPrimitiveProps & {\n  pressedWidth?: number;\n  startIcon?: React.ReactElement;\n  endIcon?: React.ReactElement;\n  thumbIcon?: React.ReactElement;\n};\n\nfunction Switch({\n  className,\n  pressedWidth = 19,\n  startIcon,\n  endIcon,\n  thumbIcon,\n  ...props\n}: SwitchProps) {\n  return (\n    <SwitchPrimitive\n      className={cn(\n        \'relative peer focus-visible:border-ring focus-visible:ring-ring/50 flex h-5 w-8 px-px shrink-0 items-center justify-start rounded-full border border-transparent shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50\',\n        \'data-[checked]:bg-primary data-[unchecked]:bg-input dark:data-[unchecked]:bg-input/80 data-[checked]:justify-end\',\n        className,\n      )}\n      {...props}\n    >\n      <SwitchThumbPrimitive\n        className={cn(\n          \'relative z-10 bg-background dark:data-[unchecked]:bg-foreground dark:data-[checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0\',\n        )}\n        pressedAnimation={{ width: pressedWidth }}\n      >\n        {thumbIcon && (\n          <SwitchIconPrimitive\n            position="thumb"\n            className="absolute [&_svg]:size-[9px] left-1/2 top-1/2 -translate-1/2 dark:text-neutral-500 text-neutral-400"\n          >\n            {thumbIcon}\n          </SwitchIconPrimitive>\n        )}\n      </SwitchThumbPrimitive>\n\n      {startIcon && (\n        <SwitchIconPrimitive\n          position="left"\n          className="absolute [&_svg]:size-[9px] left-0.5 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400"\n        >\n          {startIcon}\n        </SwitchIconPrimitive>\n      )}\n      {endIcon && (\n        <SwitchIconPrimitive\n          position="right"\n          className="absolute [&_svg]:size-[9px] right-0.5 top-1/2 -translate-y-1/2 dark:text-neutral-400 text-neutral-500"\n        >\n          {endIcon}\n        </SwitchIconPrimitive>\n      )}\n    </SwitchPrimitive>\n  );\n}\n\nexport { Switch, type SwitchProps };',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/components/base/switch/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-base-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-base-switch',
+  },
+  'components-base-toggle': {
+    name: 'components-base-toggle',
+    description: 'A two-state button that can be on or off.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-base-toggle'],
+    files: [
+      {
+        path: 'registry/components/base/toggle/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/base/toggle.tsx',
+        content:
+          "import * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Toggle as TogglePrimitive,\n  ToggleItem as ToggleItemPrimitive,\n  ToggleHighlight as ToggleHighlightPrimitive,\n  type ToggleProps as TogglePrimitiveProps,\n  type ToggleItemProps as ToggleItemPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/toggle';\nimport { cn } from '@/lib/utils';\n\nconst toggleVariants = cva(\n  \"inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted/40 hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,background-color,box-shadow] duration-200 ease-in-out aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap\",\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        outline:\n          'border border-input bg-transparent shadow-xs hover:bg-accent/40 hover:text-accent-foreground',\n      },\n      size: {\n        default: 'h-9 px-2 min-w-9',\n        sm: 'h-8 px-1.5 min-w-8',\n        lg: 'h-10 px-2.5 min-w-10',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ToggleProps = TogglePrimitiveProps &\n  ToggleItemPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction Toggle({\n  className,\n  variant,\n  size,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  disabled,\n  ...props\n}: ToggleProps) {\n  return (\n    <TogglePrimitive\n      pressed={pressed}\n      defaultPressed={defaultPressed}\n      onPressedChange={onPressedChange}\n      disabled={disabled}\n      className=\"relative\"\n    >\n      <ToggleHighlightPrimitive className=\"bg-accent rounded-md\" />\n      <ToggleItemPrimitive\n        className={cn(toggleVariants({ variant, size, className }))}\n        {...props}\n      />\n    </TogglePrimitive>\n  );\n}\n\nexport { Toggle, toggleVariants, type ToggleProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/components/base/toggle/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-base-toggle';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-base-toggle',
+  },
+  'components-base-toggle-group': {
+    name: 'components-base-toggle-group',
+    description: 'Provides a shared state to a series of toggle buttons.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-base-toggle-group',
+    ],
+    files: [
+      {
+        path: 'registry/components/base/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/base/toggle-group.tsx',
+        content:
+          "import * as React from 'react';\nimport { type VariantProps } from 'class-variance-authority';\n\nimport {\n  ToggleGroup as ToggleGroupPrimitive,\n  Toggle as TogglePrimitive,\n  ToggleGroupHighlight as ToggleGroupHighlightPrimitive,\n  ToggleHighlight as ToggleHighlightPrimitive,\n  useToggleGroup as useToggleGroupPrimitive,\n  type ToggleGroupProps as ToggleGroupPrimitiveProps,\n  type ToggleProps as TogglePrimitiveProps,\n} from '@/components/animate-ui/primitives/base/toggle-group';\nimport { toggleVariants } from '@/components/animate-ui/components/base/toggle';\nimport { cn } from '@/lib/utils';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<VariantProps<typeof toggleVariants>>('ToggleGroupContext');\n\ntype ToggleGroupProps = ToggleGroupPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  children,\n  toggleMultiple,\n  ...props\n}: ToggleGroupProps) {\n  return (\n    <ToggleGroupPrimitive\n      data-variant={variant}\n      data-size={size}\n      className={cn(\n        'group/toggle-group flex gap-0.5 w-fit items-center rounded-lg data-[variant=outline]:shadow-xs data-[variant=outline]:border data-[variant=outline]:p-0.5',\n        className,\n      )}\n      toggleMultiple={toggleMultiple}\n      {...props}\n    >\n      <ToggleGroupProvider value={{ variant, size }}>\n        {!toggleMultiple ? (\n          <ToggleGroupHighlightPrimitive className=\"bg-accent rounded-md\">\n            {children}\n          </ToggleGroupHighlightPrimitive>\n        ) : (\n          children\n        )}\n      </ToggleGroupProvider>\n    </ToggleGroupPrimitive>\n  );\n}\n\ntype ToggleProps = TogglePrimitiveProps & VariantProps<typeof toggleVariants>;\n\nfunction Toggle({ className, children, variant, size, ...props }: ToggleProps) {\n  const { variant: contextVariant, size: contextSize } = useToggleGroup();\n  const { toggleMultiple } = useToggleGroupPrimitive();\n\n  return (\n    <ToggleHighlightPrimitive\n      value={props.value?.toString()}\n      className={cn(toggleMultiple && 'bg-accent rounded-md')}\n    >\n      <TogglePrimitive\n        data-variant={contextVariant || variant}\n        data-size={contextSize || size}\n        className={cn(\n          toggleVariants({\n            variant: contextVariant || variant,\n            size: contextSize || size,\n          }),\n          'min-w-0 border-0 flex-1 shrink-0 shadow-none rounded-md focus:z-10 focus-visible:z-10',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </TogglePrimitive>\n    </ToggleHighlightPrimitive>\n  );\n}\n\nexport { ToggleGroup, Toggle, type ToggleGroupProps, type ToggleProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/base/toggle-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-base-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-base-toggle-group',
+  },
+  'components-base-tooltip': {
+    name: 'components-base-tooltip',
+    description:
+      'A popup that appears when an element is hovered or focused, showing a hint for sighted users.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/primitives-base-tooltip'],
+    files: [
+      {
+        path: 'registry/components/base/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/base/tooltip.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  TooltipProvider as TooltipProviderPrimitive,\n  Tooltip as TooltipPrimitive,\n  TooltipTrigger as TooltipTriggerPrimitive,\n  TooltipPositioner as TooltipPositionerPrimitive,\n  TooltipPopup as TooltipPopupPrimitive,\n  TooltipArrow as TooltipArrowPrimitive,\n  TooltipPortal as TooltipPortalPrimitive,\n  type TooltipProviderProps as TooltipProviderPrimitiveProps,\n  type TooltipProps as TooltipPrimitiveProps,\n  type TooltipTriggerProps as TooltipTriggerPrimitiveProps,\n  type TooltipPositionerProps as TooltipPositionerPrimitiveProps,\n  type TooltipPopupProps as TooltipPopupPrimitiveProps,\n} from '@/components/animate-ui/primitives/base/tooltip';\nimport { cn } from '@/lib/utils';\n\ntype TooltipProviderProps = TooltipProviderPrimitiveProps;\n\nfunction TooltipProvider({\n  delayDuration = 0,\n  ...props\n}: TooltipProviderProps) {\n  return <TooltipProviderPrimitive delayDuration={delayDuration} {...props} />;\n}\n\ntype TooltipProps = TooltipPrimitiveProps & {\n  delayDuration?: TooltipPrimitiveProps['delayDuration'];\n};\n\nfunction Tooltip({ delayDuration = 0, ...props }: TooltipProps) {\n  return (\n    <TooltipProvider delayDuration={delayDuration}>\n      <TooltipPrimitive {...props} />\n    </TooltipProvider>\n  );\n}\n\ntype TooltipTriggerProps = TooltipTriggerPrimitiveProps;\n\nfunction TooltipTrigger({ ...props }: TooltipTriggerProps) {\n  return <TooltipTriggerPrimitive {...props} />;\n}\n\ntype TooltipPanelProps = TooltipPositionerPrimitiveProps &\n  TooltipPopupPrimitiveProps;\n\nfunction TooltipPanel({\n  className,\n  sideOffset = 4,\n  children,\n  style,\n  ...props\n}: TooltipPanelProps) {\n  return (\n    <TooltipPortalPrimitive>\n      <TooltipPositionerPrimitive\n        sideOffset={sideOffset}\n        className=\"z-50\"\n        {...props}\n      >\n        <TooltipPopupPrimitive\n          className={cn(\n            'bg-primary text-primary-foreground w-fit origin-(--transform-origin) rounded-md px-3 py-1.5 text-xs text-balance',\n            className,\n          )}\n          style={style}\n        >\n          {children}\n          <TooltipArrowPrimitive className=\"bg-primary fill-primary z-50 size-2.5 data-[side='bottom']:-top-[4px] data-[side='right']:-left-[4px] data-[side='left']:-right-[4px] data-[side='inline-start']:-right-[4px] data-[side='inline-end']:-left-[4px] rotate-45 rounded-[2px]\" />\n        </TooltipPopupPrimitive>\n      </TooltipPositionerPrimitive>\n    </TooltipPortalPrimitive>\n  );\n}\n\nexport {\n  Tooltip,\n  TooltipTrigger,\n  TooltipPanel,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipPanelProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/base/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-base-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-base-tooltip',
   },
   'components-buttons-button': {
     name: 'components-buttons-button',
@@ -829,7 +1059,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/headless/popover.tsx',
         content:
-          "import * as React from 'react';\n\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n  PopoverBackdrop as PopoverBackdropPrimitive,\n  PopoverGroup as PopoverGroupPrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverButtonProps as PopoverButtonPrimitiveProps,\n  type PopoverPanelProps as PopoverPanelPrimitiveProps,\n  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,\n  type PopoverGroupProps as PopoverGroupPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/popover';\nimport { cn } from '@/lib/utils';\n\ntype PopoverProps<TTag extends React.ElementType = 'div'> =\n  PopoverPrimitiveProps<TTag>;\n\nfunction Popover<TTag extends React.ElementType = 'div'>(\n  props: PopoverProps<TTag>,\n) {\n  return <PopoverPrimitive {...props} />;\n}\n\ntype PopoverButtonProps<TTag extends React.ElementType = 'button'> =\n  PopoverButtonPrimitiveProps<TTag>;\n\nfunction PopoverButton<TTag extends React.ElementType = 'button'>(\n  props: PopoverButtonProps<TTag>,\n) {\n  return <PopoverButtonPrimitive {...props} />;\n}\n\ntype PopoverPanelProps<TTag extends React.ElementType = 'div'> =\n  PopoverPanelPrimitiveProps<TTag>;\n\nfunction PopoverPanel<TTag extends React.ElementType = 'div'>({\n  className,\n  anchor = { to: 'bottom', gap: 4 },\n  ...props\n}: PopoverPanelProps<TTag>) {\n  return (\n    <PopoverPanelPrimitive\n      anchor={anchor}\n      className={cn(\n        'bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-hidden',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype PopoverBackdropProps<TTag extends React.ElementType = 'div'> =\n  PopoverBackdropPrimitiveProps<TTag>;\n\nfunction PopoverBackdrop<TTag extends React.ElementType = 'div'>(\n  props: PopoverBackdropProps<TTag>,\n) {\n  return <PopoverBackdropPrimitive {...props} />;\n}\n\ntype PopoverGroupProps<TTag extends React.ElementType = 'div'> =\n  PopoverGroupPrimitiveProps<TTag>;\n\nfunction PopoverGroup<TTag extends React.ElementType = 'div'>(\n  props: PopoverGroupProps<TTag>,\n) {\n  return <PopoverGroupPrimitive {...props} />;\n}\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  PopoverBackdrop,\n  PopoverGroup,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n  type PopoverBackdropProps,\n  type PopoverGroupProps,\n};",
+          "import * as React from 'react';\n\nimport {\n  Popover as PopoverPrimitive,\n  PopoverButton as PopoverButtonPrimitive,\n  PopoverPanel as PopoverPanelPrimitive,\n  PopoverBackdrop as PopoverBackdropPrimitive,\n  PopoverGroup as PopoverGroupPrimitive,\n  type PopoverProps as PopoverPrimitiveProps,\n  type PopoverButtonProps as PopoverButtonPrimitiveProps,\n  type PopoverPanelProps as PopoverPanelPrimitiveProps,\n  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,\n  type PopoverGroupProps as PopoverGroupPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/popover';\nimport { cn } from '@/lib/utils';\n\ntype PopoverProps<TTag extends React.ElementType = 'div'> =\n  PopoverPrimitiveProps<TTag>;\n\nfunction Popover<TTag extends React.ElementType = 'div'>(\n  props: PopoverProps<TTag>,\n) {\n  return <PopoverPrimitive {...props} />;\n}\n\ntype PopoverButtonProps<TTag extends React.ElementType = 'button'> =\n  PopoverButtonPrimitiveProps<TTag>;\n\nfunction PopoverButton<TTag extends React.ElementType = 'button'>(\n  props: PopoverButtonProps<TTag>,\n) {\n  return <PopoverButtonPrimitive {...props} />;\n}\n\ntype PopoverPanelProps<TTag extends React.ElementType = 'div'> =\n  PopoverPanelPrimitiveProps<TTag>;\n\nfunction PopoverPanel<TTag extends React.ElementType = 'div'>({\n  className,\n  anchor = { to: 'bottom', gap: 4 },\n  ...props\n}: PopoverPanelProps<TTag>) {\n  return (\n    <PopoverPanelPrimitive\n      anchor={anchor}\n      className={cn(\n        'bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-hidden',\n        'data-[anchor=top_center]:origin-bottom data-[anchor=top_start]:origin-bottom-left data-[anchor=top_end]:origin-bottom-right',\n        'data-[anchor=bottom_center]:origin-top data-[anchor=bottom_start]:origin-top-left data-[anchor=bottom_end]:origin-top-right',\n        'data-[anchor=left_center]:origin-right data-[anchor=left_start]:origin-top-right data-[anchor=left_end]:origin-bottom-right',\n        'data-[anchor=right_center]:origin-left data-[anchor=right_start]:origin-top-left data-[anchor=right_end]:origin-bottom-left',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\ntype PopoverBackdropProps<TTag extends React.ElementType = 'div'> =\n  PopoverBackdropPrimitiveProps<TTag>;\n\nfunction PopoverBackdrop<TTag extends React.ElementType = 'div'>(\n  props: PopoverBackdropProps<TTag>,\n) {\n  return <PopoverBackdropPrimitive {...props} />;\n}\n\ntype PopoverGroupProps<TTag extends React.ElementType = 'div'> =\n  PopoverGroupPrimitiveProps<TTag>;\n\nfunction PopoverGroup<TTag extends React.ElementType = 'div'>(\n  props: PopoverGroupProps<TTag>,\n) {\n  return <PopoverGroupPrimitive {...props} />;\n}\n\nexport {\n  Popover,\n  PopoverButton,\n  PopoverPanel,\n  PopoverBackdrop,\n  PopoverGroup,\n  type PopoverProps,\n  type PopoverButtonProps,\n  type PopoverPanelProps,\n  type PopoverBackdropProps,\n  type PopoverGroupProps,\n};",
       },
     ],
     keywords: [],
@@ -1110,7 +1340,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/radix/files.tsx',
         content:
-          "import * as React from 'react';\nimport { FolderIcon, FolderOpenIcon, FileIcon } from 'lucide-react';\n\nimport {\n  Files as FilesPrimitive,\n  FilesHighlight as FilesHighlightPrimitive,\n  FolderItem as FolderItemPrimitive,\n  FolderHeader as FolderHeaderPrimitive,\n  FolderTrigger as FolderTriggerPrimitive,\n  FolderHighlight as FolderHighlightPrimitive,\n  Folder as FolderPrimitive,\n  FolderIcon as FolderIconPrimitive,\n  FileLabel as FileLabelPrimitive,\n  FolderContent as FolderContentPrimitive,\n  FileHighlight as FileHighlightPrimitive,\n  File as FilePrimitive,\n  FileIcon as FileIconPrimitive,\n  type FilesProps as FilesPrimitiveProps,\n  type FolderItemProps as FolderItemPrimitiveProps,\n  type FolderHeaderProps as FolderHeaderPrimitiveProps,\n  type FolderTriggerProps as FolderTriggerPrimitiveProps,\n  type FolderHighlightProps as FolderHighlightPrimitiveProps,\n  type FolderProps as FolderPrimitiveProps,\n  type FolderContentProps as FolderContentPrimitiveProps,\n  type FileHighlightProps as FileHighlightPrimitiveProps,\n  type FileProps as FilePrimitiveProps,\n  type FileIconProps as FileIconPrimitiveProps,\n  type FileLabelProps as FileLabelPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/files';\nimport { cn } from '@/lib/utils';\n\ntype GitStatus = 'untracked' | 'modified' | 'deleted';\n\ntype FilesProps = FilesPrimitiveProps;\n\nfunction Files({ className, children, ...props }: FilesProps) {\n  return (\n    <FilesPrimitive className={cn('p-2 w-full', className)} {...props}>\n      <FilesHighlightPrimitive className=\"bg-accent rounded-lg pointer-events-none\">\n        {children}\n      </FilesHighlightPrimitive>\n    </FilesPrimitive>\n  );\n}\n\ntype SubFilesProps = FilesProps;\n\nfunction SubFiles(props: SubFilesProps) {\n  return <FilesPrimitive {...props} />;\n}\n\ntype FolderItemProps = FolderItemPrimitiveProps;\n\nfunction FolderItem(props: FolderItemProps) {\n  return <FolderItemPrimitive {...props} />;\n}\n\ntype FolderTriggerProps = FileLabelPrimitiveProps & {\n  gitStatus?: GitStatus;\n};\n\nfunction FolderTrigger({\n  children,\n  className,\n  gitStatus,\n  ...props\n}: FolderTriggerProps) {\n  return (\n    <FolderHeaderPrimitive>\n      <FolderTriggerPrimitive className=\"w-full text-start\">\n        <FolderHighlightPrimitive>\n          <FolderPrimitive className=\"flex items-center justify-between gap-2 p-2 pointer-events-none\">\n            <div\n              className={cn(\n                'flex items-center gap-2',\n                gitStatus === 'untracked' && 'text-green-400',\n                gitStatus === 'modified' && 'text-amber-400',\n                gitStatus === 'deleted' && 'text-red-400',\n              )}\n            >\n              <FolderIconPrimitive\n                closeIcon={<FolderIcon className=\"size-4.5\" />}\n                openIcon={<FolderOpenIcon className=\"size-4.5\" />}\n              />\n              <FileLabelPrimitive\n                className={cn('text-sm', className)}\n                {...props}\n              >\n                {children}\n              </FileLabelPrimitive>\n            </div>\n\n            {gitStatus && (\n              <span\n                className={cn(\n                  'rounded-full size-2',\n                  gitStatus === 'untracked' && 'bg-green-400',\n                  gitStatus === 'modified' && 'bg-amber-400',\n                  gitStatus === 'deleted' && 'bg-red-400',\n                )}\n              />\n            )}\n          </FolderPrimitive>\n        </FolderHighlightPrimitive>\n      </FolderTriggerPrimitive>\n    </FolderHeaderPrimitive>\n  );\n}\n\ntype FolderContentProps = FolderContentPrimitiveProps;\n\nfunction FolderContent(props: FolderContentProps) {\n  return (\n    <div className=\"relative ml-6 before:absolute before:-left-2 before:inset-y-0 before:w-px before:h-full before:bg-border\">\n      <FolderContentPrimitive {...props} />\n    </div>\n  );\n}\n\ntype FileItemProps = FilePrimitiveProps & {\n  icon?: React.ElementType;\n  gitStatus?: GitStatus;\n};\n\nfunction FileItem({\n  icon: Icon = FileIcon,\n  className,\n  children,\n  gitStatus,\n  ...props\n}: FileItemProps) {\n  return (\n    <FileHighlightPrimitive>\n      <FilePrimitive\n        className={cn(\n          'flex items-center justify-between gap-2 p-2 pointer-events-none',\n          gitStatus === 'untracked' && 'text-green-400',\n          gitStatus === 'modified' && 'text-amber-400',\n          gitStatus === 'deleted' && 'text-red-400',\n        )}\n      >\n        <div className=\"flex items-center gap-2\">\n          <FileIconPrimitive>\n            <Icon className=\"size-4.5\" />\n          </FileIconPrimitive>\n          <FileLabelPrimitive className={cn('text-sm', className)} {...props}>\n            {children}\n          </FileLabelPrimitive>\n        </div>\n\n        {gitStatus && (\n          <span className=\"text-sm font-medium\">\n            {gitStatus === 'untracked' && 'U'}\n            {gitStatus === 'modified' && 'M'}\n            {gitStatus === 'deleted' && 'D'}\n          </span>\n        )}\n      </FilePrimitive>\n    </FileHighlightPrimitive>\n  );\n}\n\nexport {\n  Files,\n  FolderItem,\n  FolderTrigger,\n  FolderContent,\n  FileItem,\n  SubFiles,\n  type FilesProps,\n  type FolderItemProps,\n  type FolderTriggerProps,\n  type FolderContentProps,\n  type FileItemProps,\n  type SubFilesProps,\n};",
+          "import * as React from 'react';\nimport { FolderIcon, FolderOpenIcon, FileIcon } from 'lucide-react';\n\nimport {\n  Files as FilesPrimitive,\n  FilesHighlight as FilesHighlightPrimitive,\n  FolderItem as FolderItemPrimitive,\n  FolderHeader as FolderHeaderPrimitive,\n  FolderTrigger as FolderTriggerPrimitive,\n  FolderHighlight as FolderHighlightPrimitive,\n  Folder as FolderPrimitive,\n  FolderIcon as FolderIconPrimitive,\n  FileLabel as FileLabelPrimitive,\n  FolderContent as FolderContentPrimitive,\n  FileHighlight as FileHighlightPrimitive,\n  File as FilePrimitive,\n  FileIcon as FileIconPrimitive,\n  type FilesProps as FilesPrimitiveProps,\n  type FolderItemProps as FolderItemPrimitiveProps,\n  type FolderContentProps as FolderContentPrimitiveProps,\n  type FileProps as FilePrimitiveProps,\n  type FileLabelProps as FileLabelPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/files';\nimport { cn } from '@/lib/utils';\n\ntype GitStatus = 'untracked' | 'modified' | 'deleted';\n\ntype FilesProps = FilesPrimitiveProps;\n\nfunction Files({ className, children, ...props }: FilesProps) {\n  return (\n    <FilesPrimitive className={cn('p-2 w-full', className)} {...props}>\n      <FilesHighlightPrimitive className=\"bg-accent rounded-lg pointer-events-none\">\n        {children}\n      </FilesHighlightPrimitive>\n    </FilesPrimitive>\n  );\n}\n\ntype SubFilesProps = FilesProps;\n\nfunction SubFiles(props: SubFilesProps) {\n  return <FilesPrimitive {...props} />;\n}\n\ntype FolderItemProps = FolderItemPrimitiveProps;\n\nfunction FolderItem(props: FolderItemProps) {\n  return <FolderItemPrimitive {...props} />;\n}\n\ntype FolderTriggerProps = FileLabelPrimitiveProps & {\n  gitStatus?: GitStatus;\n};\n\nfunction FolderTrigger({\n  children,\n  className,\n  gitStatus,\n  ...props\n}: FolderTriggerProps) {\n  return (\n    <FolderHeaderPrimitive>\n      <FolderTriggerPrimitive className=\"w-full text-start\">\n        <FolderHighlightPrimitive>\n          <FolderPrimitive className=\"flex items-center justify-between gap-2 p-2 pointer-events-none\">\n            <div\n              className={cn(\n                'flex items-center gap-2',\n                gitStatus === 'untracked' && 'text-green-400',\n                gitStatus === 'modified' && 'text-amber-400',\n                gitStatus === 'deleted' && 'text-red-400',\n              )}\n            >\n              <FolderIconPrimitive\n                closeIcon={<FolderIcon className=\"size-4.5\" />}\n                openIcon={<FolderOpenIcon className=\"size-4.5\" />}\n              />\n              <FileLabelPrimitive\n                className={cn('text-sm', className)}\n                {...props}\n              >\n                {children}\n              </FileLabelPrimitive>\n            </div>\n\n            {gitStatus && (\n              <span\n                className={cn(\n                  'rounded-full size-2',\n                  gitStatus === 'untracked' && 'bg-green-400',\n                  gitStatus === 'modified' && 'bg-amber-400',\n                  gitStatus === 'deleted' && 'bg-red-400',\n                )}\n              />\n            )}\n          </FolderPrimitive>\n        </FolderHighlightPrimitive>\n      </FolderTriggerPrimitive>\n    </FolderHeaderPrimitive>\n  );\n}\n\ntype FolderContentProps = FolderContentPrimitiveProps;\n\nfunction FolderContent(props: FolderContentProps) {\n  return (\n    <div className=\"relative ml-6 before:absolute before:-left-2 before:inset-y-0 before:w-px before:h-full before:bg-border\">\n      <FolderContentPrimitive {...props} />\n    </div>\n  );\n}\n\ntype FileItemProps = FilePrimitiveProps & {\n  icon?: React.ElementType;\n  gitStatus?: GitStatus;\n};\n\nfunction FileItem({\n  icon: Icon = FileIcon,\n  className,\n  children,\n  gitStatus,\n  ...props\n}: FileItemProps) {\n  return (\n    <FileHighlightPrimitive>\n      <FilePrimitive\n        className={cn(\n          'flex items-center justify-between gap-2 p-2 pointer-events-none',\n          gitStatus === 'untracked' && 'text-green-400',\n          gitStatus === 'modified' && 'text-amber-400',\n          gitStatus === 'deleted' && 'text-red-400',\n        )}\n      >\n        <div className=\"flex items-center gap-2\">\n          <FileIconPrimitive>\n            <Icon className=\"size-4.5\" />\n          </FileIconPrimitive>\n          <FileLabelPrimitive className={cn('text-sm', className)} {...props}>\n            {children}\n          </FileLabelPrimitive>\n        </div>\n\n        {gitStatus && (\n          <span className=\"text-sm font-medium\">\n            {gitStatus === 'untracked' && 'U'}\n            {gitStatus === 'modified' && 'M'}\n            {gitStatus === 'deleted' && 'D'}\n          </span>\n        )}\n      </FilePrimitive>\n    </FileHighlightPrimitive>\n  );\n}\n\nexport {\n  Files,\n  FolderItem,\n  FolderTrigger,\n  FolderContent,\n  FileItem,\n  SubFiles,\n  type FilesProps,\n  type FolderItemProps,\n  type FolderTriggerProps,\n  type FolderContentProps,\n  type FileItemProps,\n  type SubFilesProps,\n};",
       },
     ],
     keywords: [],
@@ -1462,7 +1692,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/radix/toggle-group.tsx',
         content:
-          "import * as React from 'react';\nimport { type VariantProps } from 'class-variance-authority';\n\nimport {\n  ToggleGroup as ToggleGroupPrimitive,\n  ToggleGroupItem as ToggleGroupItemPrimitive,\n  ToggleGroupHighlight as ToggleGroupHighlightPrimitive,\n  ToggleGroupHighlightItem as ToggleGroupHighlightItemPrimitive,\n  useToggleGroup as useToggleGroupPrimitive,\n  type ToggleGroupProps as ToggleGroupPrimitiveProps,\n  type ToggleGroupItemProps as ToggleGroupItemPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/toggle-group';\nimport { toggleVariants } from '@/components/animate-ui/components/radix/toggle';\nimport { cn } from '@/lib/utils';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<VariantProps<typeof toggleVariants>>('ToggleGroupContext');\n\ntype ToggleGroupProps = ToggleGroupPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  children,\n  ...props\n}: ToggleGroupProps) {\n  return (\n    <ToggleGroupPrimitive\n      data-variant={variant}\n      data-size={size}\n      className={cn(\n        'group/toggle-group flex gap-1 w-fit items-center rounded-md data-[variant=outline]:shadow-xs',\n        className,\n      )}\n      {...props}\n    >\n      <ToggleGroupProvider value={{ variant, size }}>\n        {props.type === 'single' ? (\n          <ToggleGroupHighlightPrimitive className=\"bg-accent rounded-md\">\n            {children}\n          </ToggleGroupHighlightPrimitive>\n        ) : (\n          children\n        )}\n      </ToggleGroupProvider>\n    </ToggleGroupPrimitive>\n  );\n}\n\ntype ToggleGroupItemProps = ToggleGroupItemPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroupItem({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: ToggleGroupItemProps) {\n  const { variant: contextVariant, size: contextSize } = useToggleGroup();\n  const { type } = useToggleGroupPrimitive();\n\n  return (\n    <ToggleGroupHighlightItemPrimitive\n      value={props.value}\n      className={cn(type === 'multiple' && 'bg-accent rounded-md')}\n    >\n      <ToggleGroupItemPrimitive\n        data-variant={contextVariant || variant}\n        data-size={contextSize || size}\n        className={cn(\n          toggleVariants({\n            variant: contextVariant || variant,\n            size: contextSize || size,\n          }),\n          'min-w-0 flex-1 shrink-0 shadow-none rounded-md focus:z-10 focus-visible:z-10',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </ToggleGroupItemPrimitive>\n    </ToggleGroupHighlightItemPrimitive>\n  );\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n};",
+          "import * as React from 'react';\nimport { type VariantProps } from 'class-variance-authority';\n\nimport {\n  ToggleGroup as ToggleGroupPrimitive,\n  ToggleGroupItem as ToggleGroupItemPrimitive,\n  ToggleGroupHighlight as ToggleGroupHighlightPrimitive,\n  ToggleGroupHighlightItem as ToggleGroupHighlightItemPrimitive,\n  useToggleGroup as useToggleGroupPrimitive,\n  type ToggleGroupProps as ToggleGroupPrimitiveProps,\n  type ToggleGroupItemProps as ToggleGroupItemPrimitiveProps,\n} from '@/components/animate-ui/primitives/radix/toggle-group';\nimport { toggleVariants } from '@/components/animate-ui/components/radix/toggle';\nimport { cn } from '@/lib/utils';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<VariantProps<typeof toggleVariants>>('ToggleGroupContext');\n\ntype ToggleGroupProps = ToggleGroupPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  children,\n  ...props\n}: ToggleGroupProps) {\n  return (\n    <ToggleGroupPrimitive\n      data-variant={variant}\n      data-size={size}\n      className={cn(\n        'group/toggle-group flex gap-0.5 w-fit items-center rounded-lg data-[variant=outline]:shadow-xs data-[variant=outline]:border data-[variant=outline]:p-0.5',\n        className,\n      )}\n      {...props}\n    >\n      <ToggleGroupProvider value={{ variant, size }}>\n        {props.type === 'single' ? (\n          <ToggleGroupHighlightPrimitive className=\"bg-accent rounded-md\">\n            {children}\n          </ToggleGroupHighlightPrimitive>\n        ) : (\n          children\n        )}\n      </ToggleGroupProvider>\n    </ToggleGroupPrimitive>\n  );\n}\n\ntype ToggleGroupItemProps = ToggleGroupItemPrimitiveProps &\n  VariantProps<typeof toggleVariants>;\n\nfunction ToggleGroupItem({\n  className,\n  children,\n  variant,\n  size,\n  ...props\n}: ToggleGroupItemProps) {\n  const { variant: contextVariant, size: contextSize } = useToggleGroup();\n  const { type } = useToggleGroupPrimitive();\n\n  return (\n    <ToggleGroupHighlightItemPrimitive\n      value={props.value}\n      className={cn(type === 'multiple' && 'bg-accent rounded-md')}\n    >\n      <ToggleGroupItemPrimitive\n        data-variant={contextVariant || variant}\n        data-size={contextSize || size}\n        className={cn(\n          toggleVariants({\n            variant: contextVariant || variant,\n            size: contextSize || size,\n          }),\n          'min-w-0 border-0 flex-1 shrink-0 shadow-none rounded-md focus:z-10 focus-visible:z-10',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </ToggleGroupItemPrimitive>\n    </ToggleGroupHighlightItemPrimitive>\n  );\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n  type ToggleGroupItemProps,\n};",
       },
     ],
     keywords: [],
@@ -1969,7 +2199,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/components/base/popover.tsx',
         content:
-          'import {\n  Popover,\n  PopoverTrigger,\n  PopoverPanel,\n} from \'@/components/animate-ui/components/base/popover\';\nimport { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\n\ninterface BasePopoverDemoProps {\n  side?: \'top\' | \'bottom\' | \'left\' | \'right\';\n  sideOffset?: number;\n  align?: \'start\' | \'center\' | \'end\';\n  alignOffset?: number;\n}\n\nexport const BasePopoverDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BasePopoverDemoProps) => {\n  return (\n    <Popover>\n      <PopoverTrigger\n        render={() => <Button variant="outline">Open popover</Button>}\n      />\n      <PopoverPanel\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className="w-80"\n      >\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="leading-none font-medium">Dimensions</h4>\n            <p className="text-muted-foreground text-sm">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverPanel>\n    </Popover>\n  );\n};',
+          'import {\n  Popover,\n  PopoverTrigger,\n  PopoverPanel,\n} from \'@/components/animate-ui/components/base/popover\';\nimport { Button } from \'@/components/ui/button\';\nimport { Input } from \'@/components/ui/input\';\nimport { Label } from \'@/components/ui/label\';\n\ninterface BasePopoverDemoProps {\n  side?: \'top\' | \'bottom\' | \'left\' | \'right\';\n  sideOffset?: number;\n  align?: \'start\' | \'center\' | \'end\';\n  alignOffset?: number;\n}\n\nexport const BasePopoverDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BasePopoverDemoProps) => {\n  return (\n    <Popover>\n      <PopoverTrigger\n        render={<Button variant="outline">Open popover</Button>}\n      />\n      <PopoverPanel\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className="w-80"\n      >\n        <div className="grid gap-4">\n          <div className="space-y-2">\n            <h4 className="leading-none font-medium">Dimensions</h4>\n            <p className="text-muted-foreground text-sm">\n              Set the dimensions for the layer.\n            </p>\n          </div>\n          <div className="grid gap-2">\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="width">Width</Label>\n              <Input\n                id="width"\n                defaultValue="100%"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxWidth">Max. width</Label>\n              <Input\n                id="maxWidth"\n                defaultValue="300px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="height">Height</Label>\n              <Input\n                id="height"\n                defaultValue="25px"\n                className="col-span-2 h-8"\n              />\n            </div>\n            <div className="grid grid-cols-3 items-center gap-4">\n              <Label htmlFor="maxHeight">Max. height</Label>\n              <Input\n                id="maxHeight"\n                defaultValue="none"\n                className="col-span-2 h-8"\n              />\n            </div>\n          </div>\n        </div>\n      </PopoverPanel>\n    </Popover>\n  );\n};',
       },
     ],
     keywords: [],
@@ -2011,6 +2241,301 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-components-base-popover',
+  },
+  'demo-components-base-preview-card': {
+    name: 'demo-components-base-preview-card',
+    description: 'Demo showing a preview card.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-base-preview-card',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/base/preview-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/base/preview-card.tsx',
+        content:
+          'import {\n  PreviewCard,\n  PreviewCardTrigger,\n  PreviewCardPanel,\n} from \'@/components/animate-ui/components/base/preview-card\';\n\ninterface BasePreviewCardDemoProps {\n  side?: \'top\' | \'bottom\' | \'left\' | \'right\';\n  sideOffset?: number;\n  align?: \'start\' | \'center\' | \'end\';\n  alignOffset?: number;\n}\n\nexport const BasePreviewCardDemo = ({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BasePreviewCardDemoProps) => {\n  return (\n    <PreviewCard>\n      <PreviewCardTrigger\n        render={\n          <a\n            className="size-12 border rounded-full overflow-hidden"\n            href="https://twitter.com/animate_ui"\n            target="_blank"\n            rel="noreferrer noopener"\n          >\n            <img\n              src="https://pbs.twimg.com/profile_images/1950218390741618688/72447Y7e_400x400.jpg"\n              alt="Animate UI"\n            />\n          </a>\n        }\n      />\n\n      <PreviewCardPanel\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n        className="w-80"\n      >\n        <div className="flex flex-col gap-4">\n          <img\n            className="size-16 rounded-full overflow-hidden border"\n            src="https://pbs.twimg.com/profile_images/1950218390741618688/72447Y7e_400x400.jpg"\n            alt="Animate UI"\n          />\n          <div className="flex flex-col gap-4">\n            <div>\n              <div className="font-bold">Animate UI</div>\n              <div className="text-sm text-muted-foreground">@animate_ui</div>\n            </div>\n            <div className="text-sm text-muted-foreground">\n              A fully animated, open-source component distribution built with\n              React, TypeScript, Tailwind CSS, and Motion.\n            </div>\n            <div className="flex gap-4">\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">0</div>{\' \'}\n                <div className="text-muted-foreground">Following</div>\n              </div>\n              <div className="flex gap-1 text-sm items-center">\n                <div className="font-bold">2,900</div>{\' \'}\n                <div className="text-muted-foreground">Followers</div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </PreviewCardPanel>\n    </PreviewCard>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/base/preview-card/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-base-preview-card';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        PreviewCardPanel: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+              'inline-start': 'inline-start',
+              'inline-end': 'inline-end',
+            },
+          },
+          sideOffset: { value: 4 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-base-preview-card',
+  },
+  'demo-components-base-progress': {
+    name: 'demo-components-base-progress',
+    description: 'Demo showing a progress bar.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-base-progress'],
+    files: [
+      {
+        path: 'registry/demo/components/base/progress/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/base/progress.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport {\n  Progress,\n  ProgressLabel,\n  ProgressTrack,\n  ProgressValue,\n} from \'@/components/animate-ui/components/base/progress\';\n\nexport const BaseProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return (\n    <Progress value={progress} className="w-[300px] space-y-2">\n      <div className="flex items-center justify-between gap-1">\n        <ProgressLabel>Export data</ProgressLabel>\n        <span className="text-sm">\n          <ProgressValue /> %\n        </span>\n      </div>\n      <ProgressTrack />\n    </Progress>\n  );\n};',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/base/progress/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-base-progress';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-base-progress',
+  },
+  'demo-components-base-switch': {
+    name: 'demo-components-base-switch',
+    description: 'Demo showing a switch.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-base-switch'],
+    files: [
+      {
+        path: 'registry/demo/components/base/switch/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/base/switch.tsx',
+        content:
+          'import { Label } from \'@/components/ui/label\';\nimport { Switch } from \'@/components/animate-ui/components/base/switch\';\n\nexport function BaseSwitchDemo() {\n  return (\n    <div className="flex items-center space-x-2">\n      <Switch id="airplane-mode" />\n      <Label htmlFor="airplane-mode">Airplane Mode</Label>\n    </div>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/base/switch/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-base-switch';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-base-switch',
+  },
+  'demo-components-base-toggle': {
+    name: 'demo-components-base-toggle',
+    description: 'Demo showing a toggle.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-base-toggle'],
+    files: [
+      {
+        path: 'registry/demo/components/base/toggle/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/base/toggle.tsx',
+        content:
+          "import { Toggle, type ToggleProps } from '@/components/animate-ui/components/base/toggle';\nimport { Bold } from 'lucide-react';\n\ninterface BaseToggleDemoProps {\n  variant: ToggleProps['variant'];\n  size: ToggleProps['size'];\n}\n\nexport function BaseToggleDemo({ variant, size }: BaseToggleDemoProps) {\n  return (\n    <Toggle aria-label=\"Toggle italic\" variant={variant} size={size}>\n      <Bold />\n    </Toggle>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/base/toggle/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-base-toggle';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        Toggle: {
+          variant: {
+            value: 'default',
+            options: { default: 'default', outline: 'outline' },
+          },
+          size: {
+            value: 'icon',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-base-toggle',
+  },
+  'demo-components-base-toggle-group': {
+    name: 'demo-components-base-toggle-group',
+    description: 'Demo showing a toggle group.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-base-toggle-group',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/base/toggle-group/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/base/toggle-group.tsx',
+        content:
+          'import {\n  Toggle,\n  ToggleGroup,\n  type ToggleGroupProps,\n} from \'@/components/animate-ui/components/base/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\ninterface BaseToggleGroupDemoProps {\n  toggleMultiple: boolean;\n  variant: ToggleGroupProps[\'variant\'];\n  size: ToggleGroupProps[\'size\'];\n}\n\nexport function BaseToggleGroupDemo({\n  toggleMultiple,\n  variant,\n  size,\n}: BaseToggleGroupDemoProps) {\n  return (\n    <ToggleGroup toggleMultiple={toggleMultiple} variant={variant} size={size}>\n      <Toggle value="bold" aria-label="Toggle bold">\n        <Bold />\n      </Toggle>\n      <Toggle value="italic" aria-label="Toggle italic">\n        <Italic />\n      </Toggle>\n      <Toggle value="strikethrough" aria-label="Toggle strikethrough">\n        <Underline />\n      </Toggle>\n    </ToggleGroup>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/base/toggle-group/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-base-toggle-group';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        ToggleGroup: {
+          toggleMultiple: { value: false },
+          variant: {
+            value: 'default',
+            options: { default: 'default', outline: 'outline' },
+          },
+          size: {
+            value: 'icon',
+            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-base-toggle-group',
+  },
+  'demo-components-base-tooltip': {
+    name: 'demo-components-base-tooltip',
+    description: 'Demo showing a tooltip.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-base-tooltip'],
+    files: [
+      {
+        path: 'registry/demo/components/base/tooltip/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/base/tooltip.tsx',
+        content:
+          "import {\n  Tooltip,\n  TooltipTrigger,\n  TooltipPanel,\n  type TooltipPanelProps,\n} from '@/components/animate-ui/components/base/tooltip';\nimport { Button } from '@/components/ui/button';\n\ninterface BaseTooltipDemoProps {\n  side: TooltipPanelProps['side'];\n  sideOffset: TooltipPanelProps['sideOffset'];\n  align: TooltipPanelProps['align'];\n  alignOffset: TooltipPanelProps['alignOffset'];\n}\n\nexport function BaseTooltipDemo({\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: BaseTooltipDemoProps) {\n  return (\n    <Tooltip>\n      <TooltipTrigger render={<Button variant=\"outline\">Hover</Button>} />\n      <TooltipPanel\n        side={side}\n        sideOffset={sideOffset}\n        align={align}\n        alignOffset={alignOffset}\n      >\n        <p>Add to library</p>\n      </TooltipPanel>\n    </Tooltip>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/base/tooltip/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-base-tooltip';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        TooltipPanel: {
+          side: {
+            value: 'top',
+            options: {
+              top: 'top',
+              bottom: 'bottom',
+              left: 'left',
+              right: 'right',
+              'inline-start': 'inline-start',
+              'inline-end': 'inline-end',
+            },
+          },
+          sideOffset: { value: 10 },
+          align: {
+            value: 'center',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 0 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-base-tooltip',
   },
   'demo-components-buttons-button': {
     name: 'demo-components-buttons-button',
@@ -3374,7 +3899,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/components/radix/toggle.tsx',
         content:
-          "import { Toggle, type ToggleProps } from '@/components/animate-ui/components/radix/toggle';\nimport { Bold } from 'lucide-react';\n\ninterface RadixToggleDemoProps {\n  variant: ToggleProps['variant'];\n  size: ToggleProps['size'];\n}\n\nexport function RadixToggleDemo({ variant, size }: RadixToggleDemoProps) {\n  return (\n    <Toggle aria-label=\"Toggle italic\" variant={variant} size={size}>\n      <Bold className=\"h-4 w-4\" />\n    </Toggle>\n  );\n}",
+          "import { Toggle, type ToggleProps } from '@/components/animate-ui/components/radix/toggle';\nimport { Bold } from 'lucide-react';\n\ninterface RadixToggleDemoProps {\n  variant: ToggleProps['variant'];\n  size: ToggleProps['size'];\n}\n\nexport function RadixToggleDemo({ variant, size }: RadixToggleDemoProps) {\n  return (\n    <Toggle aria-label=\"Toggle italic\" variant={variant} size={size}>\n      <Bold />\n    </Toggle>\n  );\n}",
       },
     ],
     keywords: [],
@@ -3425,7 +3950,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/demo/components/radix/toggle-group.tsx',
         content:
-          'import {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n} from \'@/components/animate-ui/components/radix/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\ninterface RadixToggleGroupDemoProps {\n  type: \'single\' | \'multiple\';\n  variant: ToggleGroupProps[\'variant\'];\n  size: ToggleGroupProps[\'size\'];\n}\n\nexport function RadixToggleGroupDemo({\n  type,\n  variant,\n  size,\n}: RadixToggleGroupDemoProps) {\n  return (\n    <ToggleGroup type={type} variant={variant} size={size}>\n      <ToggleGroupItem value="bold" aria-label="Toggle bold">\n        <Bold className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="italic" aria-label="Toggle italic">\n        <Italic className="h-4 w-4" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">\n        <Underline className="h-4 w-4" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n}',
+          'import {\n  ToggleGroup,\n  ToggleGroupItem,\n  type ToggleGroupProps,\n} from \'@/components/animate-ui/components/radix/toggle-group\';\nimport { Bold, Italic, Underline } from \'lucide-react\';\n\ninterface RadixToggleGroupDemoProps {\n  type: \'single\' | \'multiple\';\n  variant: ToggleGroupProps[\'variant\'];\n  size: ToggleGroupProps[\'size\'];\n}\n\nexport function RadixToggleGroupDemo({\n  type,\n  variant,\n  size,\n}: RadixToggleGroupDemoProps) {\n  return (\n    <ToggleGroup type={type} variant={variant} size={size}>\n      <ToggleGroupItem value="bold" aria-label="Toggle bold">\n        <Bold />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="italic" aria-label="Toggle italic">\n        <Italic />\n      </ToggleGroupItem>\n      <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">\n        <Underline />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n}',
       },
     ],
     keywords: [],

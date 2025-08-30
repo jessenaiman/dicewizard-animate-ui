@@ -38,6 +38,26 @@ author:
 />
 </div>
 
+<TypeTable
+  type={{
+    variant: {
+      description: 'The variant of the ToggleGroup component.',
+      type: '"default" | "outline"',
+      required: false,
+    },
+    size: {
+      description: 'The size of the ToggleGroup component.',
+      type: '"default" | "sm" | "lg" | "icon"',
+      required: false,
+    },
+    '...props': {
+      description: 'The props of the ToggleGroup component.',
+      type: 'HTMLMotionProps<"button">',
+      required: false,
+    },
+  }}
+/>
+
 ### ToggleGroupItem
 
 <div className="flex flex-col gap-2">
@@ -54,6 +74,16 @@ author:
 
 <TypeTable
   type={{
+    variant: {
+      description: 'The variant of the ToggleGroupItem component.',
+      type: '"default" | "outline"',
+      required: false,
+    },
+    size: {
+      description: 'The size of the ToggleGroupItem component.',
+      type: '"default" | "sm" | "lg" | "icon"',
+      required: false,
+    },
     '...props': {
       description: 'The props of the ToggleGroupItem component.',
       type: 'HTMLMotionProps<"button">',

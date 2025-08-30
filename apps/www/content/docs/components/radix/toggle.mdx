@@ -37,9 +37,14 @@ new: true
 
 <TypeTable
   type={{
-    '...props': {
-      description: 'The props of the Toggle component.',
-      type: 'HTMLMotionProps<"div">',
+    variant: {
+      description: 'The variant of the Toggle component.',
+      type: '"default" | "outline"',
+      required: false,
+    },
+    size: {
+      description: 'The size of the Toggle component.',
+      type: '"default" | "sm" | "lg" | "icon"',
       required: false,
     },
   }}

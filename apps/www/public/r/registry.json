@@ -181,6 +181,102 @@
       ]
     },
     {
+      "name": "components-base-preview-card",
+      "type": "registry:ui",
+      "title": "Preview Card",
+      "description": "A popup that appears when a link is hovered, showing a preview for sighted users.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-preview-card"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/preview-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/preview-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Displays the status of a task that takes a long time.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A control that indicates whether a setting is on or off.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be on or off.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Provides a shared state to a series of toggle buttons.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-base-tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that appears when an element is hovered or focused, showing a hint for sighted users.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-base-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/tooltip.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-buttons-button",
       "type": "registry:ui",
       "title": "Button",
@@ -982,6 +1078,211 @@
             },
             "sideOffset": {
               "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-base-preview-card",
+      "type": "registry:ui",
+      "title": "Preview Card Demo",
+      "description": "Demo showing a preview card.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-preview-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/preview-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/preview-card.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "PreviewCardPanel": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 4
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-base-progress",
+      "type": "registry:ui",
+      "title": "Progress Demo",
+      "description": "Demo showing a progress bar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/progress/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-base-switch",
+      "type": "registry:ui",
+      "title": "Switch Demo",
+      "description": "Demo showing a switch.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-base-toggle",
+      "type": "registry:ui",
+      "title": "Toggle Demo",
+      "description": "Demo showing a toggle.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/toggle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/toggle.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "Toggle": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "outline": "outline"
+              }
+            },
+            "size": {
+              "value": "icon",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-base-toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group Demo",
+      "description": "Demo showing a toggle group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/toggle-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/toggle-group.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ToggleGroup": {
+            "toggleMultiple": {
+              "value": false
+            },
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "outline": "outline"
+              }
+            },
+            "size": {
+              "value": "icon",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg",
+                "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-base-tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip Demo",
+      "description": "Demo showing a tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-base-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "TooltipPanel": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right",
+                "inline-start": "inline-start",
+                "inline-end": "inline-end"
+              }
+            },
+            "sideOffset": {
+              "value": 10
             },
             "align": {
               "value": "center",

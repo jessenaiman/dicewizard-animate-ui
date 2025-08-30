@@ -7,11 +7,17 @@ import {
   PopoverPopup as PopoverPopupPrimitive,
   PopoverPortal as PopoverPortalPrimitive,
   PopoverClose as PopoverClosePrimitive,
+  PopoverBackdrop as PopoverBackdropPrimitive,
+  PopoverTitle as PopoverTitlePrimitive,
+  PopoverDescription as PopoverDescriptionPrimitive,
   type PopoverProps as PopoverPrimitiveProps,
   type PopoverTriggerProps as PopoverTriggerPrimitiveProps,
   type PopoverPositionerProps as PopoverPositionerPrimitiveProps,
   type PopoverPopupProps as PopoverPopupPrimitiveProps,
   type PopoverCloseProps as PopoverClosePrimitiveProps,
+  type PopoverBackdropProps as PopoverBackdropPrimitiveProps,
+  type PopoverTitleProps as PopoverTitlePrimitiveProps,
+  type PopoverDescriptionProps as PopoverDescriptionPrimitiveProps,
 } from '@/registry/primitives/base/popover';
 import { cn } from '@workspace/ui/lib/utils';
 
@@ -70,13 +76,37 @@ function PopoverClose(props: PopoverCloseProps) {
   return <PopoverClosePrimitive {...props} />;
 }
 
+type PopoverBackdropProps = PopoverBackdropPrimitiveProps;
+
+function PopoverBackdrop(props: PopoverBackdropProps) {
+  return <PopoverBackdropPrimitive {...props} />;
+}
+
+type PopoverTitleProps = PopoverTitlePrimitiveProps;
+
+function PopoverTitle(props: PopoverTitleProps) {
+  return <PopoverTitlePrimitive {...props} />;
+}
+
+type PopoverDescriptionProps = PopoverDescriptionPrimitiveProps;
+
+function PopoverDescription(props: PopoverDescriptionProps) {
+  return <PopoverDescriptionPrimitive {...props} />;
+}
+
 export {
   Popover,
   PopoverTrigger,
   PopoverPanel,
   PopoverClose,
+  PopoverBackdrop,
+  PopoverTitle,
+  PopoverDescription,
   type PopoverProps,
   type PopoverTriggerProps,
   type PopoverPanelProps,
   type PopoverCloseProps,
+  type PopoverBackdropProps,
+  type PopoverTitleProps,
+  type PopoverDescriptionProps,
 };

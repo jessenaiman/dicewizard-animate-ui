@@ -9,7 +9,7 @@ interface RadixToggleDemoProps {
 export function RadixToggleDemo({ variant, size }: RadixToggleDemoProps) {
   return (
     <Toggle aria-label="Toggle italic" variant={variant} size={size}>
-      <Bold className="h-4 w-4" />
+      <Bold />
     </Toggle>
   );
 }
