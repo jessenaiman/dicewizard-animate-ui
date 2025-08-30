@@ -16,6 +16,8 @@ type CodeBlockProps = React.ComponentProps<'div'> & {
   duration?: number;
   delay?: number;
   onDone?: () => void;
+  onWrite?: (info: { index: number; length: number; done: boolean }) => void;
+  scrollContainerRef?: React.RefObject<HTMLElement | null>;
 } & UseIsInViewOptions;
 
 function CodeBlock({
@@ -31,6 +33,8 @@ function CodeBlock({
   duration = 5000,
   delay = 0,
   onDone,
+  onWrite,
+  scrollContainerRef,
   inView = false,
   inViewOnce = true,
   inViewMargin = '0px',
@@ -75,6 +79,7 @@ function CodeBlock({
     if (!writing) {
       setVisibleCode(code);
       onDone?.();
+      onWrite?.({ index: code.length, length: code.length, done: true });
       return;
     }
 
@@ -92,6 +97,11 @@ function CodeBlock({
           setVisibleCode((prev) => {
             const currentIndex = index;
             index += 1;
+            onWrite?.({
+              index: currentIndex + 1,
+              length: characters.length,
+              done: false,
+            });
             return prev + characters[currentIndex];
           });
           localRef.current?.scrollTo({
@@ -102,6 +112,11 @@ function CodeBlock({
           clearInterval(intervalId);
           setIsDone(true);
           onDone?.();
+          onWrite?.({
+            index: characters.length,
+            length: characters.length,
+            done: true,
+          });
         }
       }, interval);
     }, delay);
@@ -110,7 +125,24 @@ function CodeBlock({
       clearTimeout(timeout);
       clearInterval(intervalId);
     };
-  }, [code, duration, delay, isInView, writing, onDone]);
+  }, [code, duration, delay, isInView, writing, onDone, onWrite]);
+
+  React.useEffect(() => {
+    if (!writing || !isInView) return;
+    const el =
+      scrollContainerRef?.current ??
+      (localRef.current?.parentElement as HTMLElement | null) ??
+      (localRef.current as unknown as HTMLElement | null);
+
+    if (!el) return;
+
+    requestAnimationFrame(() => {
+      el.scrollTo({
+        top: el.scrollHeight,
+        behavior: 'smooth',
+      });
+    });
+  }, [highlightedCode, writing, isInView, scrollContainerRef]);
 
   return (
     <div

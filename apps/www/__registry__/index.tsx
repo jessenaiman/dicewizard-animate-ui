@@ -22,6 +22,130 @@ export const index: Record<string, any> = {
     component: null,
     command: 'https://animate-ui.com/r/index',
   },
+  'components-animate-code': {
+    name: 'components-animate-code',
+    description: 'A code component that animates the code as it is written.',
+    type: 'registry:ui',
+    dependencies: ['next-themes'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-code-block',
+      'https://animate-ui.com/r/components-buttons-copy',
+      'https://animate-ui.com/r/hooks-use-strict-context',
+    ],
+    files: [
+      {
+        path: 'registry/components/animate/code/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/animate/code.tsx',
+        content:
+          "import * as React from 'react';\nimport { useTheme } from 'next-themes';\n\nimport {\n  CodeBlock as CodeBlockPrimitive,\n  type CodeBlockProps as CodeBlockPropsPrimitive,\n} from '@/components/animate-ui/primitives/animate/code-block';\nimport { cn } from '@/lib/utils';\nimport { CopyButton } from '@/components/animate-ui/components/buttons/copy';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\n\ntype CodeContextType = {\n  code: string;\n};\n\nconst [CodeProvider, useCode] =\n  getStrictContext<CodeContextType>('CodeContext');\n\ntype CodeProps = React.ComponentProps<'div'> & {\n  code: string;\n};\n\nfunction Code({ className, code, ...props }: CodeProps) {\n  return (\n    <CodeProvider value={{ code }}>\n      <div\n        className={cn(\n          'relative flex flex-col overflow-hidden border bg-accent/50 rounded-lg',\n          className,\n        )}\n        {...props}\n      />\n    </CodeProvider>\n  );\n}\n\ntype CodeHeaderProps = React.ComponentProps<'div'> & {\n  icon?: React.ElementType;\n  copyButton?: boolean;\n};\n\nfunction CodeHeader({\n  className,\n  children,\n  icon: Icon,\n  copyButton = false,\n  ...props\n}: CodeHeaderProps) {\n  const { code } = useCode();\n\n  return (\n    <div\n      className={cn(\n        'bg-accent shrink-0 gap-x-2 border-b border-border/75 dark:border-border/50 text-sm flex text-muted-foreground items-center px-4 w-full h-10',\n        className,\n      )}\n      {...props}\n    >\n      {Icon && <Icon className=\"size-4\" />}\n      {children}\n      {copyButton && (\n        <CopyButton\n          content={code}\n          size=\"xs\"\n          variant=\"ghost\"\n          className=\"ml-auto w-auto h-auto p-2 -mr-2\"\n        />\n      )}\n    </div>\n  );\n}\n\ntype CodeBlockProps = Omit<CodeBlockPropsPrimitive, 'code'> & {\n  cursor?: boolean;\n};\n\nfunction CodeBlock({ cursor, className, ...props }: CodeBlockProps) {\n  const { resolvedTheme } = useTheme();\n  const { code } = useCode();\n  const scrollRef = React.useRef<HTMLDivElement>(null);\n\n  return (\n    <div\n      ref={scrollRef}\n      className={cn('relative text-sm p-4 overflow-auto', className)}\n    >\n      <CodeBlockPrimitive\n        theme={resolvedTheme === 'dark' ? 'dark' : 'light'}\n        scrollContainerRef={scrollRef}\n        className={cn(\n          '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px] [&_code_.line]:!px-0',\n          cursor &&\n            \"data-[done=false]:[&_.line:last-of-type::after]:content-['|'] data-[done=false]:[&_.line:last-of-type::after]:inline-block data-[done=false]:[&_.line:last-of-type::after]:w-[1ch] data-[done=false]:[&_.line:last-of-type::after]:-translate-px\",\n          className,\n        )}\n        code={code}\n        {...props}\n      />\n    </div>\n  );\n}\n\nexport {\n  Code,\n  CodeHeader,\n  CodeBlock,\n  type CodeProps,\n  type CodeHeaderProps,\n  type CodeBlockProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/animate/code/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-animate-code';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-animate-code',
+  },
+  'components-animate-counter': {
+    name: 'components-animate-counter',
+    description:
+      'A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-counter',
+    ],
+    files: [
+      {
+        path: 'registry/components/animate/counter/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/animate/counter.tsx',
+        content:
+          'import * as React from \'react\';\nimport { PlusIcon, MinusIcon } from \'lucide-react\';\n\nimport {\n  Counter as CounterPrimitive,\n  CounterNumber as CounterNumberPrimitive,\n  CounterMinusButton as CounterMinusButtonPrimitive,\n  CounterPlusButton as CounterPlusButtonPrimitive,\n  type CounterProps as CounterPropsPrimitive,\n} from \'@/components/animate-ui/primitives/animate/counter\';\nimport { cn } from \'@/lib/utils\';\nimport { Button } from \'@/components/animate-ui/components/buttons/button\';\n\ntype CounterProps = Omit<CounterPropsPrimitive, \'children\' | \'asChild\'>;\n\nfunction Counter({ className, ...props }: CounterProps) {\n  return (\n    <CounterPrimitive\n      className={cn(\'flex items-center p-1 border rounded-lg\', className)}\n      {...props}\n    >\n      <CounterMinusButtonPrimitive asChild>\n        <Button size="icon-sm" variant="accent" className="rounded-sm">\n          <MinusIcon className="size-4" />\n        </Button>\n      </CounterMinusButtonPrimitive>\n      <CounterNumberPrimitive className="px-2.5" />\n      <CounterPlusButtonPrimitive asChild>\n        <Button size="icon-sm" variant="accent" className="rounded-sm">\n          <PlusIcon className="size-4" />\n        </Button>\n      </CounterPlusButtonPrimitive>\n    </CounterPrimitive>\n  );\n}\n\nexport { Counter, type CounterProps };',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/animate/counter/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-animate-counter';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-animate-counter',
+  },
+  'components-animate-cursor': {
+    name: 'components-animate-cursor',
+    description:
+      'An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-animate-cursor',
+    ],
+    files: [
+      {
+        path: 'registry/components/animate/cursor/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/animate/cursor.tsx',
+        content:
+          "import * as React from 'react';\n\nimport {\n  CursorProvider as CursorProviderPrimitive,\n  Cursor as CursorPrimitive,\n  CursorFollow as CursorFollowPrimitive,\n  CursorContainer as CursorContainerPrimitive,\n  type CursorProviderProps as CursorProviderPropsPrimitive,\n  type CursorContainerProps as CursorContainerPropsPrimitive,\n  type CursorProps as CursorPropsPrimitive,\n  type CursorFollowProps as CursorFollowPropsPrimitive,\n} from '@/components/animate-ui/primitives/animate/cursor';\nimport { cn } from '@/lib/utils';\n\ntype CursorProviderProps = Omit<CursorProviderPropsPrimitive, 'children'> &\n  CursorContainerPropsPrimitive;\n\nfunction CursorProvider({ global, ...props }: CursorProviderProps) {\n  return (\n    <CursorProviderPrimitive global={global}>\n      <CursorContainerPrimitive {...props} />\n    </CursorProviderPrimitive>\n  );\n}\n\ntype CursorProps = Omit<CursorPropsPrimitive, 'children' | 'asChild'>;\n\nfunction Cursor({ className, ...props }: CursorProps) {\n  return (\n    <CursorPrimitive asChild {...props}>\n      <svg\n        className={cn('size-6 text-foreground', className)}\n        xmlns=\"http://www.w3.org/2000/svg\"\n        viewBox=\"0 0 40 40\"\n      >\n        <path\n          fill=\"currentColor\"\n          d=\"M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z\"\n        />\n      </svg>\n    </CursorPrimitive>\n  );\n}\n\ntype CursorFollowProps = Omit<CursorFollowPropsPrimitive, 'asChild'>;\n\nfunction CursorFollow({\n  className,\n  children,\n  sideOffset = 15,\n  alignOffset = 5,\n  ...props\n}: CursorFollowProps) {\n  return (\n    <CursorFollowPrimitive\n      sideOffset={sideOffset}\n      alignOffset={alignOffset}\n      asChild\n      {...props}\n    >\n      <div\n        className={cn(\n          'bg-foreground rounded-md text-background px-2 py-1 text-sm',\n          className,\n        )}\n      >\n        {children}\n      </div>\n    </CursorFollowPrimitive>\n  );\n}\n\nexport {\n  CursorProvider,\n  Cursor,\n  CursorFollow,\n  type CursorProviderProps,\n  type CursorProps,\n  type CursorFollowProps,\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/animate/cursor/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-animate-cursor';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-animate-cursor',
+  },
   'components-backgrounds-bubble': {
     name: 'components-backgrounds-bubble',
     description:
@@ -652,7 +776,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/buttons/button.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ButtonProps = ButtonPrimitiveProps & VariantProps<typeof buttonVariants>;\n\nfunction Button({ className, variant, size, ...props }: ButtonProps) {\n  return (\n    <ButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { Button, buttonVariants, type ButtonProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n        'icon-sm': 'size-8 rounded-md',\n        'icon-lg': 'size-10 rounded-md',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype ButtonProps = ButtonPrimitiveProps & VariantProps<typeof buttonVariants>;\n\nfunction Button({ className, variant, size, ...props }: ButtonProps) {\n  return (\n    <ButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { Button, buttonVariants, type ButtonProps };",
       },
     ],
     keywords: [],
@@ -676,6 +800,48 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/components-buttons-button',
+  },
+  'components-buttons-copy': {
+    name: 'components-buttons-copy',
+    description:
+      'A copy button component with a variety of styles and animations.',
+    type: 'registry:ui',
+    dependencies: ['motion', 'lucide-react', 'class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-button',
+      'https://animate-ui.com/r/hooks-use-controlled-state',
+    ],
+    files: [
+      {
+        path: 'registry/components/buttons/copy/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/buttons/copy.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { AnimatePresence, motion } from 'motion/react';\nimport { CheckIcon, CopyIcon } from 'lucide-react';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\nconst buttonVariants = cva(\n  \"flex items-center justify-center rounded-md transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'size-9',\n        xs: \"size-7 [&_svg:not([class*='size-'])]:size-3.5 rounded-md\",\n        sm: 'size-8 rounded-md',\n        lg: 'size-10 rounded-md',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype CopyButtonProps = Omit<ButtonPrimitiveProps, 'children'> &\n  VariantProps<typeof buttonVariants> & {\n    content: string;\n    copied?: boolean;\n    onCopiedChange?: (copied: boolean, content?: string) => void;\n    delay?: number;\n  };\n\nfunction CopyButton({\n  className,\n  content,\n  copied,\n  onCopiedChange,\n  onClick,\n  variant,\n  size,\n  delay = 3000,\n  ...props\n}: CopyButtonProps) {\n  const [isCopied, setIsCopied] = useControlledState({\n    value: copied,\n    onChange: onCopiedChange,\n  });\n\n  const handleCopy = React.useCallback(\n    (e: React.MouseEvent<HTMLButtonElement>) => {\n      onClick?.(e);\n      if (copied) return;\n      if (content) {\n        navigator.clipboard\n          .writeText(content)\n          .then(() => {\n            setIsCopied(true);\n            onCopiedChange?.(true, content);\n            setTimeout(() => {\n              setIsCopied(false);\n              onCopiedChange?.(false);\n            }, delay);\n          })\n          .catch((error) => {\n            console.error('Error copying command', error);\n          });\n      }\n    },\n    [onCopiedChange, delay],\n  );\n\n  const Icon = isCopied ? CheckIcon : CopyIcon;\n\n  return (\n    <ButtonPrimitive\n      data-slot=\"copy-button\"\n      className={cn(buttonVariants({ variant, size, className }))}\n      onClick={handleCopy}\n      {...props}\n    >\n      <AnimatePresence mode=\"wait\">\n        <motion.span\n          key={isCopied ? 'check' : 'copy'}\n          data-slot=\"copy-button-icon\"\n          initial={{ scale: 0 }}\n          animate={{ scale: 1 }}\n          exit={{ scale: 0 }}\n          transition={{ duration: 0.15 }}\n        >\n          <Icon />\n        </motion.span>\n      </AnimatePresence>\n    </ButtonPrimitive>\n  );\n}\n\nexport { CopyButton, buttonVariants, type CopyButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/buttons/copy/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-buttons-copy';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-buttons-copy',
   },
   'components-buttons-flip': {
     name: 'components-buttons-flip',
@@ -718,6 +884,89 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/components-buttons-flip',
   },
+  'components-buttons-github-stars': {
+    name: 'components-buttons-github-stars',
+    description:
+      'A clickable button that links to a GitHub repository and displays the number of stars.',
+    type: 'registry:ui',
+    dependencies: ['lucide-react'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-button',
+      'https://animate-ui.com/r/primitives-animate-github-stars',
+    ],
+    files: [
+      {
+        path: 'registry/components/buttons/github-stars/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/buttons/github-stars.tsx',
+        content:
+          "import * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { StarIcon } from 'lucide-react';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport {\n  GithubStars,\n  GithubStarsIcon,\n  GithubStarsLogo,\n  GithubStarsNumber,\n  GithubStarsParticles,\n  type GithubStarsProps,\n} from '@/components/animate-ui/primitives/animate/github-stars';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\nconst buttonStarVariants = cva('', {\n  variants: {\n    variant: {\n      default:\n        'fill-neutral-700 stroke-neutral-700 dark:fill-neutral-300 dark:stroke-neutral-300',\n      accent:\n        'fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700',\n      outline:\n        'fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700',\n      ghost:\n        'fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700',\n    },\n  },\n  defaultVariants: {\n    variant: 'default',\n  },\n});\n\ntype GitHubStarsButtonProps = Omit<\n  ButtonPrimitiveProps & GithubStarsProps,\n  'asChild' | 'children'\n> &\n  VariantProps<typeof buttonVariants>;\n\nfunction GitHubStarsButton({\n  className,\n  username,\n  repo,\n  value,\n  delay,\n  inView,\n  inViewMargin,\n  inViewOnce,\n  variant,\n  size,\n  ...props\n}: GitHubStarsButtonProps) {\n  return (\n    <GithubStars\n      asChild\n      username={username}\n      repo={repo}\n      value={value}\n      delay={delay}\n      inView={inView}\n      inViewMargin={inViewMargin}\n      inViewOnce={inViewOnce}\n    >\n      <ButtonPrimitive\n        className={cn(buttonVariants({ variant, size, className }))}\n        {...props}\n      >\n        <GithubStarsLogo />\n        <GithubStarsNumber />\n        <GithubStarsParticles>\n          <GithubStarsIcon\n            icon={StarIcon}\n            data-variant={variant}\n            className={cn(buttonStarVariants({ variant }))}\n            activeClassName=\"text-yellow-500\"\n            size={18}\n          />\n        </GithubStarsParticles>\n      </ButtonPrimitive>\n    </GithubStars>\n  );\n}\n\nexport { GitHubStarsButton, type GitHubStarsButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/buttons/github-stars/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-buttons-github-stars';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-buttons-github-stars',
+  },
+  'components-buttons-icon': {
+    name: 'components-buttons-icon',
+    description:
+      'An icon button component with a variety of styles and animations.',
+    type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/primitives-buttons-button',
+    ],
+    files: [
+      {
+        path: 'registry/components/buttons/icon/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/components/buttons/icon.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\nimport {\n  Particles,\n  ParticlesEffect,\n} from '@/components/animate-ui/primitives/effects/particles';\n\nconst buttonVariants = cva(\n  \"flex items-center justify-center rounded-md transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'size-9',\n        xs: \"size-7 [&_svg:not([class*='size-'])]:size-3.5 rounded-md\",\n        sm: 'size-8 rounded-md',\n        lg: 'size-10 rounded-md',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype IconButtonProps = Omit<ButtonPrimitiveProps, 'asChild'> &\n  VariantProps<typeof buttonVariants> & {\n    children?: React.ReactNode;\n  };\n\nfunction IconButton({\n  className,\n  onClick,\n  variant,\n  size,\n  children,\n  ...props\n}: IconButtonProps) {\n  const [isActive, setIsActive] = React.useState(false);\n  const [key, setKey] = React.useState(0);\n\n  return (\n    <Particles asChild animate={isActive} key={key}>\n      <ButtonPrimitive\n        data-slot=\"icon-button\"\n        className={cn(buttonVariants({ variant, size, className }))}\n        onClick={(e) => {\n          setKey((prev) => prev + 1);\n          setIsActive(true);\n          onClick?.(e);\n        }}\n        {...props}\n      >\n        {children}\n        <ParticlesEffect\n          data-variant={variant}\n          className=\"bg-neutral-500 size-1 rounded-full\"\n        />\n      </ButtonPrimitive>\n    </Particles>\n  );\n}\n\nexport { IconButton, buttonVariants, type IconButtonProps };",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/components/buttons/icon/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'components-buttons-icon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/components-buttons-icon',
+  },
   'components-buttons-liquid': {
     name: 'components-buttons-liquid',
     description: 'A button that fills on hover.',
@@ -733,7 +982,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/buttons/liquid.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  LiquidButton as LiquidButtonPrimitive,\n  type LiquidButtonProps as LiquidButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/liquid';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--primary)] text-primary hover:text-primary-foreground shadow-xs',\n        destructive:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--destructive)] text-white shadow-xs focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',\n        secondary:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--secondary)] text-secondary hover:text-secondary-foreground shadow-xs',\n        ghost:\n          '[--liquid-button-background-color:var(--transparent)] [--liquid-button-color:var(--primary)] text-primary hover:text-primary-foreground shadow-xs',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype LiquidButtonProps = LiquidButtonPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction LiquidButton({\n  className,\n  variant,\n  size,\n  ...props\n}: LiquidButtonProps) {\n  return (\n    <LiquidButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { LiquidButton, buttonVariants, type LiquidButtonProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\n\nimport {\n  LiquidButton as LiquidButtonPrimitive,\n  type LiquidButtonProps as LiquidButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/liquid';\nimport { cn } from '@/lib/utils';\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--primary)] text-primary hover:text-primary-foreground shadow-xs',\n        destructive:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--destructive)] text-white shadow-xs focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',\n        secondary:\n          '[--liquid-button-background-color:var(--accent)] [--liquid-button-color:var(--secondary)] text-secondary hover:text-secondary-foreground shadow-xs',\n        ghost:\n          '[--liquid-button-background-color:var(--transparent)] [--liquid-button-color:var(--primary)] text-primary hover:text-primary-foreground shadow-xs',\n      },\n      size: {\n        default: 'h-9 px-4 py-2 has-[>svg]:px-3',\n        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',\n        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',\n        icon: 'size-9',\n        'icon-sm': 'size-8 rounded-md',\n        'icon-lg': 'size-10 rounded-md',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype LiquidButtonProps = LiquidButtonPrimitiveProps &\n  VariantProps<typeof buttonVariants>;\n\nfunction LiquidButton({\n  className,\n  variant,\n  size,\n  ...props\n}: LiquidButtonProps) {\n  return (\n    <LiquidButtonPrimitive\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { LiquidButton, buttonVariants, type LiquidButtonProps };",
       },
     ],
     keywords: [],
@@ -1756,6 +2005,154 @@ export const index: Record<string, any> = {
     })(),
     command: 'https://animate-ui.com/r/components-radix-tooltip',
   },
+  'demo-components-animate-code': {
+    name: 'demo-components-animate-code',
+    description: 'Demo showing a code.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-animate-code'],
+    files: [
+      {
+        path: 'registry/demo/components/animate/code/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/animate/code.tsx',
+        content:
+          "'use client';\n\nimport {\n  Code,\n  CodeBlock,\n  CodeHeader,\n} from '@/components/animate-ui/components/animate/code';\nimport ReactIcon from '@/components/icons/react-icon';\nimport { File } from 'lucide-react';\n\ninterface CodeDemoProps {\n  duration: number;\n  delay: number;\n  writing: boolean;\n  cursor: boolean;\n}\n\nexport const CodeDemo = ({\n  duration,\n  delay,\n  writing,\n  cursor,\n}: CodeDemoProps) => {\n  return (\n    <Code\n      key={`${duration}-${delay}-${writing}-${cursor}`}\n      className=\"w-[420px] h-[372px]\"\n      code={`'use client';\n \nimport * as React from 'react';\n  \ntype MyComponentProps = {\n  myProps: string;\n} & React.ComponentProps<'div'>;\n  \nfunction MyComponent(props: MyComponentProps) {\n  return (\n    <div {...props}>\n      <p>My Component</p>\n    </div>\n  );\n}\n\nexport { MyComponent, type MyComponentProps };`}\n    >\n      <CodeHeader icon={ReactIcon} copyButton>\n        my-component.tsx\n      </CodeHeader>\n\n      <CodeBlock\n        cursor={cursor}\n        lang=\"tsx\"\n        writing={writing}\n        duration={duration}\n        delay={delay}\n      />\n    </Code>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/animate/code/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-animate-code';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        CodeBlock: {
+          delay: { value: 0, min: 0, max: 3000, step: 100 },
+          duration: { value: 10000, min: 0, max: 30000, step: 1000 },
+          writing: { value: true },
+          cursor: { value: true },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-animate-code',
+  },
+  'demo-components-animate-counter': {
+    name: 'demo-components-animate-counter',
+    description: 'Demo showing a counter.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-animate-counter',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/animate/counter/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/animate/counter.tsx',
+        content:
+          "'use client';\n\nimport { Counter } from '@/components/animate-ui/components/animate/counter';\n\nexport const CounterDemo = () => {\n  return <Counter />;\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/animate/counter/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-animate-counter';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-animate-counter',
+  },
+  'demo-components-animate-cursor': {
+    name: 'demo-components-animate-cursor',
+    description: 'Demo showing a cursor.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-animate-cursor',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/animate/cursor/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/animate/cursor.tsx',
+        content:
+          "import {\n  Cursor,\n  CursorFollow,\n  CursorProvider,\n  type CursorFollowProps,\n} from '@/components/animate-ui/components/animate/cursor';\n\ninterface CursorDemoProps {\n  global?: boolean;\n  enableCursor?: boolean;\n  enableCursorFollow?: boolean;\n  side?: CursorFollowProps['side'];\n  sideOffset?: number;\n  align?: CursorFollowProps['align'];\n  alignOffset?: number;\n}\n\nexport const CursorDemo = ({\n  global = false,\n  enableCursor = true,\n  enableCursorFollow = true,\n  side = 'bottom',\n  sideOffset = 15,\n  align = 'end',\n  alignOffset = 5,\n}: CursorDemoProps) => {\n  return (\n    <div\n      key={String(global)}\n      className=\"max-w-[400px] h-[400px] w-full bg-accent rounded-lg flex items-center justify-center\"\n    >\n      <p className=\"font-medium italic text-muted-foreground\">\n        Move your mouse over the div\n      </p>\n      <CursorProvider global={global}>\n        {enableCursor && <Cursor />}\n        {enableCursorFollow && (\n          <CursorFollow\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            Designer\n          </CursorFollow>\n        )}\n      </CursorProvider>\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/animate/cursor/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-animate-cursor';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        CursorProvider: {
+          global: { value: false },
+          enableCursor: { value: true },
+          enableCursorFollow: { value: true },
+        },
+        CursorFollow: {
+          side: {
+            value: 'bottom',
+            options: {
+              top: 'top',
+              right: 'right',
+              bottom: 'bottom',
+              left: 'left',
+            },
+          },
+          sideOffset: { value: 15 },
+          align: {
+            value: 'end',
+            options: { start: 'start', center: 'center', end: 'end' },
+          },
+          alignOffset: { value: 5 },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-animate-cursor',
+  },
   'demo-components-backgrounds-bubble': {
     name: 'demo-components-backgrounds-bubble',
     description: 'Demo showing a bubble background.',
@@ -2588,13 +2985,77 @@ export const index: Record<string, any> = {
           },
           size: {
             value: 'default',
-            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+            options: {
+              default: 'default',
+              sm: 'sm',
+              lg: 'lg',
+              icon: 'icon',
+              'icon-sm': 'icon-sm',
+              'icon-lg': 'icon-lg',
+            },
           },
         },
       };
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-components-buttons-button',
+  },
+  'demo-components-buttons-copy': {
+    name: 'demo-components-buttons-copy',
+    description: 'Demo showing a copy button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-buttons-copy'],
+    files: [
+      {
+        path: 'registry/demo/components/buttons/copy/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/buttons/copy.tsx',
+        content:
+          "import {\n  CopyButton,\n  type CopyButtonProps,\n} from '@/components/animate-ui/components/buttons/copy';\n\ninterface CopyButtonDemoProps {\n  variant: CopyButtonProps['variant'];\n  size: CopyButtonProps['size'];\n}\n\nexport default function CopyButtonDemo({ variant, size }: CopyButtonDemoProps) {\n  return <CopyButton variant={variant} size={size} content=\"Hello world!\" />;\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/buttons/copy/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-buttons-copy';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        CopyButton: {
+          variant: {
+            value: 'default',
+            options: {
+              default: 'default',
+              accent: 'accent',
+              destructive: 'destructive',
+              outline: 'outline',
+              secondary: 'secondary',
+              ghost: 'ghost',
+              link: 'link',
+            },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', xs: 'xs', sm: 'sm', lg: 'lg' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-buttons-copy',
   },
   'demo-components-buttons-flip': {
     name: 'demo-components-buttons-flip',
@@ -2645,7 +3106,14 @@ export const index: Record<string, any> = {
           },
           frontSize: {
             value: 'default',
-            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+            options: {
+              default: 'default',
+              sm: 'sm',
+              lg: 'lg',
+              icon: 'icon',
+              'icon-sm': 'icon-sm',
+              'icon-lg': 'icon-lg',
+            },
           },
         },
         FlipButtonBack: {
@@ -2670,6 +3138,117 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: 'https://animate-ui.com/r/demo-components-buttons-flip',
+  },
+  'demo-components-buttons-github-stars': {
+    name: 'demo-components-buttons-github-stars',
+    description: 'Demo showing a GitHub stars button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: [
+      'https://animate-ui.com/r/components-buttons-github-stars',
+    ],
+    files: [
+      {
+        path: 'registry/demo/components/buttons/github-stars/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/components/buttons/github-stars.tsx',
+        content:
+          "import {\n  GitHubStarsButton,\n  type GitHubStarsButtonProps,\n} from '@/components/animate-ui/components/buttons/github-stars';\n\ninterface GitHubStarsButtonDemoProps {\n  variant: GitHubStarsButtonProps['variant'];\n  size: GitHubStarsButtonProps['size'];\n}\n\nexport default function GitHubStarsButtonDemo({\n  variant,\n  size,\n}: GitHubStarsButtonDemoProps) {\n  return (\n    <GitHubStarsButton\n      variant={variant}\n      size={size}\n      username=\"imskyleen\"\n      repo=\"animate-ui\"\n    />\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/buttons/github-stars/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-buttons-github-stars';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        GitHubStarsButton: {
+          variant: {
+            value: 'default',
+            options: {
+              default: 'default',
+              accent: 'accent',
+              outline: 'outline',
+              ghost: 'ghost',
+            },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-buttons-github-stars',
+  },
+  'demo-components-buttons-icon': {
+    name: 'demo-components-buttons-icon',
+    description: 'Demo showing an icon button.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['https://animate-ui.com/r/components-buttons-icon'],
+    files: [
+      {
+        path: 'registry/demo/components/buttons/icon/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/demo/components/buttons/icon.tsx',
+        content:
+          "import {\n  IconButton,\n  type IconButtonProps,\n} from '@/components/animate-ui/components/buttons/icon';\nimport { StarIcon } from 'lucide-react';\n\ninterface IconButtonDemoProps {\n  variant: IconButtonProps['variant'];\n  size: IconButtonProps['size'];\n}\n\nexport default function IconButtonDemo({ variant, size }: IconButtonDemoProps) {\n  return (\n    <IconButton variant={variant} size={size}>\n      <StarIcon />\n    </IconButton>\n  );\n}",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/components/buttons/icon/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-components-buttons-icon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {
+        IconButton: {
+          variant: {
+            value: 'default',
+            options: {
+              default: 'default',
+              accent: 'accent',
+              outline: 'outline',
+              ghost: 'ghost',
+            },
+          },
+          size: {
+            value: 'default',
+            options: { default: 'default', sm: 'sm', lg: 'lg' },
+          },
+        },
+      };
+      return LazyComp;
+    })(),
+    command: 'https://animate-ui.com/r/demo-components-buttons-icon',
   },
   'demo-components-buttons-liquid': {
     name: 'demo-components-buttons-liquid',
@@ -2718,7 +3297,14 @@ export const index: Record<string, any> = {
           },
           size: {
             value: 'default',
-            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+            options: {
+              default: 'default',
+              sm: 'sm',
+              lg: 'lg',
+              icon: 'icon',
+              'icon-sm': 'icon-sm',
+              'icon-lg': 'icon-lg',
+            },
           },
         },
       };
@@ -2777,7 +3363,14 @@ export const index: Record<string, any> = {
           },
           size: {
             value: 'default',
-            options: { default: 'default', sm: 'sm', lg: 'lg', icon: 'icon' },
+            options: {
+              default: 'default',
+              sm: 'sm',
+              lg: 'lg',
+              icon: 'icon',
+              'icon-sm': 'icon-sm',
+              'icon-lg': 'icon-lg',
+            },
           },
         },
       };
@@ -7334,7 +7927,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/code-block.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype CodeBlockProps = React.ComponentProps<'div'> & {\n  code: string;\n  lang: string;\n  theme?: 'light' | 'dark';\n  themes?: { light: string; dark: string };\n  writing?: boolean;\n  duration?: number;\n  delay?: number;\n  onDone?: () => void;\n} & UseIsInViewOptions;\n\nfunction CodeBlock({\n  ref,\n  code,\n  lang,\n  theme = 'light',\n  themes = {\n    light: 'github-light',\n    dark: 'github-dark',\n  },\n  writing = false,\n  duration = 5000,\n  delay = 0,\n  onDone,\n  inView = false,\n  inViewOnce = true,\n  inViewMargin = '0px',\n  ...props\n}: CodeBlockProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const [visibleCode, setVisibleCode] = React.useState('');\n  const [highlightedCode, setHighlightedCode] = React.useState('');\n  const [isDone, setIsDone] = React.useState(false);\n\n  React.useEffect(() => {\n    if (!visibleCode.length || !isInView) return;\n\n    const loadHighlightedCode = async () => {\n      try {\n        const { codeToHtml } = await import('shiki');\n\n        const highlighted = await codeToHtml(visibleCode, {\n          lang,\n          themes,\n          defaultColor: theme,\n        });\n\n        setHighlightedCode(highlighted);\n      } catch (e) {\n        console.error(`Language \"${lang}\" could not be loaded.`, e);\n      }\n    };\n\n    loadHighlightedCode();\n  }, [lang, themes, writing, isInView, duration, delay, visibleCode]);\n\n  React.useEffect(() => {\n    if (!writing) {\n      setVisibleCode(code);\n      onDone?.();\n      return;\n    }\n\n    if (!code.length || !isInView) return;\n\n    const characters = Array.from(code);\n    let index = 0;\n    const totalDuration = duration;\n    const interval = totalDuration / characters.length;\n    let intervalId: NodeJS.Timeout;\n\n    const timeout = setTimeout(() => {\n      intervalId = setInterval(() => {\n        if (index < characters.length) {\n          setVisibleCode((prev) => {\n            const currentIndex = index;\n            index += 1;\n            return prev + characters[currentIndex];\n          });\n          localRef.current?.scrollTo({\n            top: localRef.current?.scrollHeight,\n            behavior: 'smooth',\n          });\n        } else {\n          clearInterval(intervalId);\n          setIsDone(true);\n          onDone?.();\n        }\n      }, interval);\n    }, delay);\n\n    return () => {\n      clearTimeout(timeout);\n      clearInterval(intervalId);\n    };\n  }, [code, duration, delay, isInView, writing, onDone]);\n\n  return (\n    <div\n      ref={localRef}\n      data-slot=\"code-block\"\n      data-writing={writing}\n      data-done={isDone}\n      dangerouslySetInnerHTML={{ __html: highlightedCode }}\n      {...props}\n    />\n  );\n}\n\nexport { CodeBlock, type CodeBlockProps };",
+          "'use client';\n\nimport * as React from 'react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/components/animate-ui/hooks/use-is-in-view';\n\ntype CodeBlockProps = React.ComponentProps<'div'> & {\n  code: string;\n  lang: string;\n  theme?: 'light' | 'dark';\n  themes?: { light: string; dark: string };\n  writing?: boolean;\n  duration?: number;\n  delay?: number;\n  onDone?: () => void;\n  onWrite?: (info: { index: number; length: number; done: boolean }) => void;\n  scrollContainerRef?: React.RefObject<HTMLElement | null>;\n} & UseIsInViewOptions;\n\nfunction CodeBlock({\n  ref,\n  code,\n  lang,\n  theme = 'light',\n  themes = {\n    light: 'github-light',\n    dark: 'github-dark',\n  },\n  writing = false,\n  duration = 5000,\n  delay = 0,\n  onDone,\n  onWrite,\n  scrollContainerRef,\n  inView = false,\n  inViewOnce = true,\n  inViewMargin = '0px',\n  ...props\n}: CodeBlockProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const [visibleCode, setVisibleCode] = React.useState('');\n  const [highlightedCode, setHighlightedCode] = React.useState('');\n  const [isDone, setIsDone] = React.useState(false);\n\n  React.useEffect(() => {\n    if (!visibleCode.length || !isInView) return;\n\n    const loadHighlightedCode = async () => {\n      try {\n        const { codeToHtml } = await import('shiki');\n\n        const highlighted = await codeToHtml(visibleCode, {\n          lang,\n          themes,\n          defaultColor: theme,\n        });\n\n        setHighlightedCode(highlighted);\n      } catch (e) {\n        console.error(`Language \"${lang}\" could not be loaded.`, e);\n      }\n    };\n\n    loadHighlightedCode();\n  }, [lang, themes, writing, isInView, duration, delay, visibleCode]);\n\n  React.useEffect(() => {\n    if (!writing) {\n      setVisibleCode(code);\n      onDone?.();\n      onWrite?.({ index: code.length, length: code.length, done: true });\n      return;\n    }\n\n    if (!code.length || !isInView) return;\n\n    const characters = Array.from(code);\n    let index = 0;\n    const totalDuration = duration;\n    const interval = totalDuration / characters.length;\n    let intervalId: NodeJS.Timeout;\n\n    const timeout = setTimeout(() => {\n      intervalId = setInterval(() => {\n        if (index < characters.length) {\n          setVisibleCode((prev) => {\n            const currentIndex = index;\n            index += 1;\n            onWrite?.({\n              index: currentIndex + 1,\n              length: characters.length,\n              done: false,\n            });\n            return prev + characters[currentIndex];\n          });\n          localRef.current?.scrollTo({\n            top: localRef.current?.scrollHeight,\n            behavior: 'smooth',\n          });\n        } else {\n          clearInterval(intervalId);\n          setIsDone(true);\n          onDone?.();\n          onWrite?.({\n            index: characters.length,\n            length: characters.length,\n            done: true,\n          });\n        }\n      }, interval);\n    }, delay);\n\n    return () => {\n      clearTimeout(timeout);\n      clearInterval(intervalId);\n    };\n  }, [code, duration, delay, isInView, writing, onDone, onWrite]);\n\n  React.useEffect(() => {\n    if (!writing || !isInView) return;\n    const el =\n      scrollContainerRef?.current ??\n      (localRef.current?.parentElement as HTMLElement | null) ??\n      (localRef.current as unknown as HTMLElement | null);\n\n    if (!el) return;\n\n    requestAnimationFrame(() => {\n      el.scrollTo({\n        top: el.scrollHeight,\n        behavior: 'smooth',\n      });\n    });\n  }, [highlightedCode, writing, isInView, scrollContainerRef]);\n\n  return (\n    <div\n      ref={localRef}\n      data-slot=\"code-block\"\n      data-writing={writing}\n      data-done={isDone}\n      dangerouslySetInnerHTML={{ __html: highlightedCode }}\n      {...props}\n    />\n  );\n}\n\nexport { CodeBlock, type CodeBlockProps };",
       },
     ],
     keywords: [],
@@ -7378,7 +7971,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/counter.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Transition } from 'motion/react';\n\nimport {\n  SlidingNumber,\n  type SlidingNumberProps,\n} from '@/components/animate-ui/primitives/texts/sliding-number';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype CounterContextType = {\n  value: number;\n  setValue: (value: number) => void;\n};\n\nconst [CounterProvider, useCounter] =\n  getStrictContext<CounterContextType>('CounterContext');\n\ntype BaseCounterProps = HTMLMotionProps<'div'> & {\n  children: React.ReactNode;\n  transition?: Transition;\n};\n\ntype UnControlledCounterProps = BaseCounterProps & {\n  defaultValue?: number;\n  value?: never;\n  onValueChange?: never;\n};\n\ntype ControlledCounterProps = BaseCounterProps & {\n  value: number;\n  defaultValue?: never;\n  onValueChange?: (value: number) => void;\n};\n\ntype CounterProps = WithAsChild<\n  UnControlledCounterProps | ControlledCounterProps\n>;\n\nfunction Counter({\n  value,\n  defaultValue = 0,\n  onValueChange,\n  transition = { type: 'spring', bounce: 0, stiffness: 300, damping: 30 },\n  asChild = false,\n  ...props\n}: CounterProps) {\n  const [number, setNumber] = useControlledState({\n    value,\n    defaultValue,\n    onChange: onValueChange,\n  });\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <CounterProvider value={{ value: number, setValue: setNumber }}>\n      <Component\n        data-slot=\"counter\"\n        layout\n        transition={transition}\n        {...props}\n      />\n    </CounterProvider>\n  );\n}\n\ntype CounterMinusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nconst CounterMinusButton = ({\n  onClick,\n  asChild = false,\n  ...props\n}: CounterMinusButtonProps) => {\n  const { setValue, value } = useCounter();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"counter-minus-button\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        setValue(value - 1);\n        onClick?.(e);\n      }}\n      {...props}\n    />\n  );\n};\n\ntype CounterPlusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nconst CounterPlusButton = ({\n  onClick,\n  asChild = false,\n  ...props\n}: CounterPlusButtonProps) => {\n  const { setValue, value } = useCounter();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"counter-plus-button\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        setValue(value + 1);\n        onClick?.(e);\n      }}\n      {...props}\n    />\n  );\n};\n\ntype CounterNumberProps = Omit<SlidingNumberProps, 'number'>;\n\nconst CounterNumber = (props: CounterNumberProps) => {\n  const { value } = useCounter();\n\n  return <SlidingNumber data-slot=\"counter-number\" number={value} {...props} />;\n};\n\nexport {\n  Counter,\n  CounterMinusButton,\n  CounterPlusButton,\n  CounterNumber,\n  type CounterProps,\n  type CounterMinusButtonProps,\n  type CounterPlusButtonProps,\n  type CounterContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Transition } from 'motion/react';\n\nimport {\n  SlidingNumber,\n  type SlidingNumberProps,\n} from '@/components/animate-ui/primitives/texts/sliding-number';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { useControlledState } from '@/components/animate-ui/hooks/use-controlled-state';\n\ntype CounterContextType = {\n  value: number;\n  setValue: (value: number) => void;\n};\n\nconst [CounterProvider, useCounter] =\n  getStrictContext<CounterContextType>('CounterContext');\n\ntype BaseCounterProps = HTMLMotionProps<'div'> & {\n  children: React.ReactNode;\n  transition?: Transition;\n};\n\ntype CounterControlProps = {\n  value?: number;\n  defaultValue?: number;\n  onValueChange?: (value: number) => void;\n};\n\ntype CounterProps = WithAsChild<BaseCounterProps & CounterControlProps>;\n\nfunction Counter({\n  value,\n  defaultValue = 0,\n  onValueChange,\n  transition = { type: 'spring', bounce: 0, stiffness: 300, damping: 30 },\n  asChild = false,\n  ...props\n}: CounterProps) {\n  const [number, setNumber] = useControlledState({\n    value,\n    defaultValue,\n    onChange: onValueChange,\n  });\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <CounterProvider value={{ value: number, setValue: setNumber }}>\n      <Component\n        data-slot=\"counter\"\n        layout\n        transition={transition}\n        {...props}\n      />\n    </CounterProvider>\n  );\n}\n\ntype CounterMinusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nconst CounterMinusButton = ({\n  onClick,\n  asChild = false,\n  ...props\n}: CounterMinusButtonProps) => {\n  const { setValue, value } = useCounter();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"counter-minus-button\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        setValue(value - 1);\n        onClick?.(e);\n      }}\n      {...props}\n    />\n  );\n};\n\ntype CounterPlusButtonProps = WithAsChild<HTMLMotionProps<'button'>>;\n\nconst CounterPlusButton = ({\n  onClick,\n  asChild = false,\n  ...props\n}: CounterPlusButtonProps) => {\n  const { setValue, value } = useCounter();\n\n  const Component = asChild ? Slot : motion.button;\n\n  return (\n    <Component\n      data-slot=\"counter-plus-button\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {\n        setValue(value + 1);\n        onClick?.(e);\n      }}\n      {...props}\n    />\n  );\n};\n\ntype CounterNumberProps = Omit<SlidingNumberProps, 'number'>;\n\nconst CounterNumber = (props: CounterNumberProps) => {\n  const { value } = useCounter();\n\n  return <SlidingNumber data-slot=\"counter-number\" number={value} {...props} />;\n};\n\nexport {\n  Counter,\n  CounterMinusButton,\n  CounterPlusButton,\n  CounterNumber,\n  type CounterProps,\n  type CounterMinusButtonProps,\n  type CounterPlusButtonProps,\n  type CounterContextType,\n};",
       },
     ],
     keywords: [],
@@ -7420,7 +8013,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/cursor.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype CursorContextType = {\n  cursorPos: { x: number; y: number };\n  active: boolean;\n  global: boolean;\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  cursorRef: React.RefObject<HTMLDivElement | null>;\n};\n\nconst [LocalCursorProvider, useCursor] =\n  getStrictContext<CursorContextType>('CursorContext');\n\ntype CursorProviderProps = {\n  children: React.ReactNode;\n  global?: boolean;\n};\n\nfunction CursorProvider({ children, global = false }: CursorProviderProps) {\n  const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });\n  const [active, setActive] = React.useState(false);\n\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  const cursorRef = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(() => {\n    const id = '__cursor_none_style__';\n    if (document.getElementById(id)) return;\n\n    const style = document.createElement('style');\n    style.id = id;\n    style.textContent = `\n      .animate-ui-cursor-none, .animate-ui-cursor-none * { cursor: none !important; }\n    `;\n    document.head.appendChild(style);\n  }, []);\n\n  React.useEffect(() => {\n    let removeListeners: () => void;\n\n    if (global) {\n      const handlePointerMove = (e: PointerEvent) => {\n        setCursorPos({ x: e.clientX, y: e.clientY });\n        setActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (e instanceof PointerEvent && e.relatedTarget === null) {\n          setActive(false);\n        }\n      };\n\n      const handleVisibilityChange = () => {\n        if (document.visibilityState === 'hidden') setActive(false);\n      };\n\n      window.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      window.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      window.addEventListener('mouseout', handlePointerOut, { passive: true });\n      document.addEventListener('visibilitychange', handleVisibilityChange);\n\n      removeListeners = () => {\n        window.removeEventListener('pointermove', handlePointerMove);\n        window.removeEventListener('pointerout', handlePointerOut);\n        window.removeEventListener('mouseout', handlePointerOut);\n        document.removeEventListener(\n          'visibilitychange',\n          handleVisibilityChange,\n        );\n      };\n    } else {\n      if (!containerRef.current) return;\n\n      const parent = containerRef.current.parentElement;\n      if (!parent) return;\n\n      if (getComputedStyle(parent).position === 'static') {\n        parent.style.position = 'relative';\n      }\n\n      const handlePointerMove = (e: PointerEvent) => {\n        const rect = parent.getBoundingClientRect();\n        setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n        setActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (\n          e.relatedTarget === null ||\n          !(parent as Node).contains(e.relatedTarget as Node)\n        ) {\n          setActive(false);\n        }\n      };\n\n      parent.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      parent.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      parent.addEventListener('mouseout', handlePointerOut, { passive: true });\n\n      removeListeners = () => {\n        parent.removeEventListener('pointermove', handlePointerMove);\n        parent.removeEventListener('pointerout', handlePointerOut);\n        parent.removeEventListener('mouseout', handlePointerOut);\n      };\n    }\n\n    return removeListeners;\n  }, [global]);\n\n  return (\n    <LocalCursorProvider\n      value={{ cursorPos, active, global, containerRef, cursorRef }}\n    >\n      {children}\n    </LocalCursorProvider>\n  );\n}\n\ntype CursorContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction CursorContainer({\n  ref,\n  asChild = false,\n  ...props\n}: CursorContainerProps) {\n  const { containerRef, global, active } = useCursor();\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={containerRef}\n      data-slot=\"cursor-provider\"\n      data-global={global}\n      data-active={active}\n      {...props}\n    />\n  );\n}\n\ntype CursorProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    children: React.ReactNode;\n  }\n>;\n\nfunction Cursor({ ref, asChild = false, style, ...props }: CursorProps) {\n  const { cursorPos, active, containerRef, cursorRef, global } = useCursor();\n  React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  React.useEffect(() => {\n    const target = global\n      ? document.documentElement\n      : containerRef.current?.parentElement;\n\n    if (!target) return;\n\n    if (active) {\n      target.classList.add('animate-ui-cursor-none');\n    } else {\n      target.classList.remove('animate-ui-cursor-none');\n    }\n\n    return () => {\n      target.classList.remove('animate-ui-cursor-none');\n    };\n  }, [active, global, containerRef]);\n\n  React.useEffect(() => {\n    x.set(cursorPos.x);\n    y.set(cursorPos.y);\n  }, [cursorPos, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {active && (\n        <Component\n          ref={cursorRef}\n          data-slot=\"cursor\"\n          data-global={global}\n          data-active={active}\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9999,\n            position: global ? 'fixed' : 'absolute',\n            top: y,\n            left: x,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype CursorFollowSide = 'top' | 'right' | 'bottom' | 'left';\ntype CursorFollowAlign = 'start' | 'center' | 'end';\n\ntype CursorFollowProps = WithAsChild<\n  Omit<HTMLMotionProps<'div'>, 'transition'> & {\n    side?: CursorFollowSide;\n    sideOffset?: number;\n    align?: CursorFollowAlign;\n    alignOffset?: number;\n    transition?: SpringOptions;\n    children: React.ReactNode;\n  }\n>;\n\nfunction CursorFollow({\n  ref,\n  asChild = false,\n  side = 'bottom',\n  sideOffset = 0,\n  align = 'end',\n  alignOffset = 0,\n  style,\n  transition = { stiffness: 500, damping: 50, bounce: 0 },\n  ...props\n}: CursorFollowProps) {\n  const { cursorPos, active, cursorRef, global } = useCursor();\n  const cursorFollowRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(\n    ref,\n    () => cursorFollowRef.current as HTMLDivElement,\n  );\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useSpring(x, transition);\n  const springY = useSpring(y, transition);\n\n  const calculateOffset = React.useCallback(() => {\n    const rect = cursorFollowRef.current?.getBoundingClientRect();\n    const width = rect?.width ?? 0;\n    const height = rect?.height ?? 0;\n\n    let offsetX = 0;\n    let offsetY = 0;\n\n    switch (side) {\n      case 'top':\n        offsetY = height + sideOffset;\n        switch (align) {\n          case 'start':\n            offsetX = width + alignOffset;\n            break;\n          case 'center':\n            offsetX = width / 2;\n            break;\n          case 'end':\n            offsetX = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'bottom':\n        offsetY = -sideOffset;\n        switch (align) {\n          case 'start':\n            offsetX = width + alignOffset;\n            break;\n          case 'center':\n            offsetX = width / 2;\n            break;\n          case 'end':\n            offsetX = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'left':\n        offsetX = width + sideOffset;\n        switch (align) {\n          case 'start':\n            offsetY = height + alignOffset;\n            break;\n          case 'center':\n            offsetY = height / 2;\n            break;\n          case 'end':\n            offsetY = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'right':\n        offsetX = -sideOffset;\n        switch (align) {\n          case 'start':\n            offsetY = height + alignOffset;\n            break;\n          case 'center':\n            offsetY = height / 2;\n            break;\n          case 'end':\n            offsetY = -alignOffset;\n            break;\n        }\n        break;\n    }\n\n    return { x: offsetX, y: offsetY };\n  }, [side, align, sideOffset, alignOffset]);\n\n  React.useEffect(() => {\n    const offset = calculateOffset();\n    const cursorRect = cursorRef.current?.getBoundingClientRect();\n    const cursorWidth = cursorRect?.width ?? 20;\n    const cursorHeight = cursorRect?.height ?? 20;\n\n    x.set(cursorPos.x - offset.x + cursorWidth / 2);\n    y.set(cursorPos.y - offset.y + cursorHeight / 2);\n  }, [calculateOffset, cursorPos, cursorRef, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {active && (\n        <Component\n          ref={cursorFollowRef}\n          data-slot=\"cursor-follow\"\n          data-global={global}\n          data-active={active}\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9998,\n            position: global ? 'fixed' : 'absolute',\n            top: springY,\n            left: springX,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  CursorProvider,\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  useCursor,\n  type CursorProviderProps,\n  type CursorProps,\n  type CursorContainerProps,\n  type CursorFollowProps,\n  type CursorFollowAlign,\n  type CursorFollowSide,\n  type CursorContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring,\n  AnimatePresence,\n  type HTMLMotionProps,\n  type SpringOptions,\n} from 'motion/react';\n\nimport { getStrictContext } from '@/components/animate-ui/hooks/use-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype CursorContextType = {\n  cursorPos: { x: number; y: number };\n  active: boolean;\n  global: boolean;\n  containerRef: React.RefObject<HTMLDivElement | null>;\n  cursorRef: React.RefObject<HTMLDivElement | null>;\n};\n\nconst [LocalCursorProvider, useCursor] =\n  getStrictContext<CursorContextType>('CursorContext');\n\ntype CursorProviderProps = {\n  children: React.ReactNode;\n  global?: boolean;\n};\n\nfunction CursorProvider({ children, global = false }: CursorProviderProps) {\n  const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });\n  const [active, setActive] = React.useState(false);\n\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  const cursorRef = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(() => {\n    const id = '__cursor_none_style__';\n    if (document.getElementById(id)) return;\n\n    const style = document.createElement('style');\n    style.id = id;\n    style.textContent = `\n      .animate-ui-cursor-none, .animate-ui-cursor-none * { cursor: none !important; }\n    `;\n    document.head.appendChild(style);\n  }, []);\n\n  React.useEffect(() => {\n    let removeListeners: () => void;\n\n    if (global) {\n      const handlePointerMove = (e: PointerEvent) => {\n        setCursorPos({ x: e.clientX, y: e.clientY });\n        setActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (e instanceof PointerEvent && e.relatedTarget === null) {\n          setActive(false);\n        }\n      };\n\n      const handleVisibilityChange = () => {\n        if (document.visibilityState === 'hidden') setActive(false);\n      };\n\n      window.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      window.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      window.addEventListener('mouseout', handlePointerOut, { passive: true });\n      document.addEventListener('visibilitychange', handleVisibilityChange);\n\n      removeListeners = () => {\n        window.removeEventListener('pointermove', handlePointerMove);\n        window.removeEventListener('pointerout', handlePointerOut);\n        window.removeEventListener('mouseout', handlePointerOut);\n        document.removeEventListener(\n          'visibilitychange',\n          handleVisibilityChange,\n        );\n      };\n    } else {\n      if (!containerRef.current) return;\n\n      const parent = containerRef.current.parentElement;\n      if (!parent) return;\n\n      if (getComputedStyle(parent).position === 'static') {\n        parent.style.position = 'relative';\n      }\n\n      const handlePointerMove = (e: PointerEvent) => {\n        const rect = parent.getBoundingClientRect();\n        setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n        setActive(true);\n      };\n\n      const handlePointerOut = (e: PointerEvent | MouseEvent) => {\n        if (\n          e.relatedTarget === null ||\n          !(parent as Node).contains(e.relatedTarget as Node)\n        ) {\n          setActive(false);\n        }\n      };\n\n      parent.addEventListener('pointermove', handlePointerMove, {\n        passive: true,\n      });\n      parent.addEventListener('pointerout', handlePointerOut, {\n        passive: true,\n      });\n      parent.addEventListener('mouseout', handlePointerOut, { passive: true });\n\n      removeListeners = () => {\n        parent.removeEventListener('pointermove', handlePointerMove);\n        parent.removeEventListener('pointerout', handlePointerOut);\n        parent.removeEventListener('mouseout', handlePointerOut);\n      };\n    }\n\n    return removeListeners;\n  }, [global]);\n\n  return (\n    <LocalCursorProvider\n      value={{ cursorPos, active, global, containerRef, cursorRef }}\n    >\n      {children}\n    </LocalCursorProvider>\n  );\n}\n\ntype CursorContainerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction CursorContainer({\n  ref,\n  asChild = false,\n  ...props\n}: CursorContainerProps) {\n  const { containerRef, global, active } = useCursor();\n  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={containerRef}\n      data-slot=\"cursor-container\"\n      data-global={global}\n      data-active={active}\n      {...props}\n    />\n  );\n}\n\ntype CursorProps = WithAsChild<\n  HTMLMotionProps<'div'> & {\n    children: React.ReactNode;\n  }\n>;\n\nfunction Cursor({ ref, asChild = false, style, ...props }: CursorProps) {\n  const { cursorPos, active, containerRef, cursorRef, global } = useCursor();\n  React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  React.useEffect(() => {\n    const target = global\n      ? document.documentElement\n      : containerRef.current?.parentElement;\n\n    if (!target) return;\n\n    if (active) {\n      target.classList.add('animate-ui-cursor-none');\n    } else {\n      target.classList.remove('animate-ui-cursor-none');\n    }\n\n    return () => {\n      target.classList.remove('animate-ui-cursor-none');\n    };\n  }, [active, global, containerRef]);\n\n  React.useEffect(() => {\n    x.set(cursorPos.x);\n    y.set(cursorPos.y);\n  }, [cursorPos, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {active && (\n        <Component\n          ref={cursorRef}\n          data-slot=\"cursor\"\n          data-global={global}\n          data-active={active}\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9999,\n            position: global ? 'fixed' : 'absolute',\n            top: y,\n            left: x,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype CursorFollowSide = 'top' | 'right' | 'bottom' | 'left';\ntype CursorFollowAlign = 'start' | 'center' | 'end';\n\ntype CursorFollowProps = WithAsChild<\n  Omit<HTMLMotionProps<'div'>, 'transition'> & {\n    side?: CursorFollowSide;\n    sideOffset?: number;\n    align?: CursorFollowAlign;\n    alignOffset?: number;\n    transition?: SpringOptions;\n    children: React.ReactNode;\n  }\n>;\n\nfunction CursorFollow({\n  ref,\n  asChild = false,\n  side = 'bottom',\n  sideOffset = 0,\n  align = 'end',\n  alignOffset = 0,\n  style,\n  transition = { stiffness: 500, damping: 50, bounce: 0 },\n  ...props\n}: CursorFollowProps) {\n  const { cursorPos, active, cursorRef, global } = useCursor();\n  const cursorFollowRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(\n    ref,\n    () => cursorFollowRef.current as HTMLDivElement,\n  );\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useSpring(x, transition);\n  const springY = useSpring(y, transition);\n\n  const calculateOffset = React.useCallback(() => {\n    const rect = cursorFollowRef.current?.getBoundingClientRect();\n    const width = rect?.width ?? 0;\n    const height = rect?.height ?? 0;\n\n    let offsetX = 0;\n    let offsetY = 0;\n\n    switch (side) {\n      case 'top':\n        offsetY = height + sideOffset;\n        switch (align) {\n          case 'start':\n            offsetX = width + alignOffset;\n            break;\n          case 'center':\n            offsetX = width / 2;\n            break;\n          case 'end':\n            offsetX = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'bottom':\n        offsetY = -sideOffset;\n        switch (align) {\n          case 'start':\n            offsetX = width + alignOffset;\n            break;\n          case 'center':\n            offsetX = width / 2;\n            break;\n          case 'end':\n            offsetX = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'left':\n        offsetX = width + sideOffset;\n        switch (align) {\n          case 'start':\n            offsetY = height + alignOffset;\n            break;\n          case 'center':\n            offsetY = height / 2;\n            break;\n          case 'end':\n            offsetY = -alignOffset;\n            break;\n        }\n        break;\n\n      case 'right':\n        offsetX = -sideOffset;\n        switch (align) {\n          case 'start':\n            offsetY = height + alignOffset;\n            break;\n          case 'center':\n            offsetY = height / 2;\n            break;\n          case 'end':\n            offsetY = -alignOffset;\n            break;\n        }\n        break;\n    }\n\n    return { x: offsetX, y: offsetY };\n  }, [side, align, sideOffset, alignOffset]);\n\n  React.useEffect(() => {\n    const offset = calculateOffset();\n    const cursorRect = cursorRef.current?.getBoundingClientRect();\n    const cursorWidth = cursorRect?.width ?? 20;\n    const cursorHeight = cursorRect?.height ?? 20;\n\n    x.set(cursorPos.x - offset.x + cursorWidth / 2);\n    y.set(cursorPos.y - offset.y + cursorHeight / 2);\n  }, [calculateOffset, cursorPos, cursorRef, x, y]);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence>\n      {active && (\n        <Component\n          ref={cursorFollowRef}\n          data-slot=\"cursor-follow\"\n          data-global={global}\n          data-active={active}\n          style={{\n            transform: 'translate(-50%,-50%)',\n            pointerEvents: 'none',\n            zIndex: 9998,\n            position: global ? 'fixed' : 'absolute',\n            top: springY,\n            left: springX,\n            ...style,\n          }}\n          initial={{ scale: 0, opacity: 0 }}\n          animate={{ scale: 1, opacity: 1 }}\n          exit={{ scale: 0, opacity: 0 }}\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\nexport {\n  CursorProvider,\n  Cursor,\n  CursorContainer,\n  CursorFollow,\n  useCursor,\n  type CursorProviderProps,\n  type CursorProps,\n  type CursorContainerProps,\n  type CursorFollowProps,\n  type CursorFollowAlign,\n  type CursorFollowSide,\n  type CursorContextType,\n};",
       },
     ],
     keywords: [],

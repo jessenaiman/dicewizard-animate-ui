@@ -24,21 +24,13 @@ type BaseCounterProps = HTMLMotionProps<'div'> & {
   transition?: Transition;
 };
 
-type UnControlledCounterProps = BaseCounterProps & {
+type CounterControlProps = {
+  value?: number;
   defaultValue?: number;
-  value?: never;
-  onValueChange?: never;
-};
-
-type ControlledCounterProps = BaseCounterProps & {
-  value: number;
-  defaultValue?: never;
   onValueChange?: (value: number) => void;
 };
 
-type CounterProps = WithAsChild<
-  UnControlledCounterProps | ControlledCounterProps
->;
+type CounterProps = WithAsChild<BaseCounterProps & CounterControlProps>;
 
 function Counter({
   value,

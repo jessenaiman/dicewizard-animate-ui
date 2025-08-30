@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "components-animate-counter",
+  "type": "registry:ui",
+  "title": "Counter",
+  "description": "A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/primitives-animate-counter"
+  ],
+  "files": [
+    {
+      "path": "registry/components/animate/counter/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/components/animate/counter.tsx"
+    }
+  ]
+}

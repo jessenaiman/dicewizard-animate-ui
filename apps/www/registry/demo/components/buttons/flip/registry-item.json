@@ -34,7 +34,9 @@
             "default": "default",
             "sm": "sm",
             "lg": "lg",
-            "icon": "icon"
+            "icon": "icon",
+            "icon-sm": "icon-sm",
+            "icon-lg": "icon-lg"
           }
         }
       },

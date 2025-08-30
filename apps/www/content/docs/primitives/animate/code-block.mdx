@@ -69,6 +69,16 @@ author:
       type: '() => void',
       required: false,
     },
+    onWrite: {
+      description: 'The callback function when the code is written.',
+      type: '(info: { index: number; length: number; done: boolean }) => void',
+      required: false,
+    },
+    scrollContainerRef: {
+      description: 'The reference to the scroll container.',
+      type: 'React.RefObject<HTMLElement | null>',
+      required: false,
+    },
     inView: {
       description: 'Whether the text is in view.',
       type: 'boolean',

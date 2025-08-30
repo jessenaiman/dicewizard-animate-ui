@@ -18,6 +18,62 @@
       "files": []
     },
     {
+      "name": "components-animate-code",
+      "type": "registry:ui",
+      "title": "Code",
+      "description": "A code component that animates the code as it is written.",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-code-block",
+        "https://animate-ui.com/r/components-buttons-copy",
+        "https://animate-ui.com/r/hooks-use-strict-context"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/code/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/code.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-animate-counter",
+      "type": "registry:ui",
+      "title": "Counter",
+      "description": "A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-counter"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/counter/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/counter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-animate-cursor",
+      "type": "registry:ui",
+      "title": "Cursor",
+      "description": "An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-cursor"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/cursor/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/cursor.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-backgrounds-bubble",
       "type": "registry:ui",
       "title": "Bubble Background",
@@ -296,6 +352,28 @@
       ]
     },
     {
+      "name": "components-buttons-copy",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "A copy button component with a variety of styles and animations.",
+      "dependencies": [
+        "motion",
+        "lucide-react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-button",
+        "https://animate-ui.com/r/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/copy/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/copy.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-buttons-flip",
       "type": "registry:ui",
       "title": "Flip Button",
@@ -312,6 +390,45 @@
           "path": "registry/components/buttons/flip/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/components/buttons/flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-buttons-github-stars",
+      "type": "registry:ui",
+      "title": "GitHub Stars Button",
+      "description": "A clickable button that links to a GitHub repository and displays the number of stars.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-button",
+        "https://animate-ui.com/r/primitives-animate-github-stars"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/github-stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/github-stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-buttons-icon",
+      "type": "registry:ui",
+      "title": "Icon Button",
+      "description": "An icon button component with a variety of styles and animations.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-buttons-button"
+      ],
+      "files": [
+        {
+          "path": "registry/components/buttons/icon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/buttons/icon.tsx"
         }
       ]
     },
@@ -788,6 +905,118 @@
           "target": "components/animate-ui/components/radix/tooltip.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-animate-code",
+      "type": "registry:ui",
+      "title": "Code Demo",
+      "description": "Demo showing a code.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-code"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/code/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/code.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "CodeBlock": {
+            "delay": {
+              "value": 0,
+              "min": 0,
+              "max": 3000,
+              "step": 100
+            },
+            "duration": {
+              "value": 10000,
+              "min": 0,
+              "max": 30000,
+              "step": 1000
+            },
+            "writing": {
+              "value": true
+            },
+            "cursor": {
+              "value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-animate-counter",
+      "type": "registry:ui",
+      "title": "Counter Demo",
+      "description": "Demo showing a counter.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-counter"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/counter/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/counter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-animate-cursor",
+      "type": "registry:ui",
+      "title": "Cursor Demo",
+      "description": "Demo showing a cursor.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-cursor"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/cursor/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/cursor.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "CursorProvider": {
+            "global": {
+              "value": false
+            },
+            "enableCursor": {
+              "value": true
+            },
+            "enableCursorFollow": {
+              "value": true
+            }
+          },
+          "CursorFollow": {
+            "side": {
+              "value": "bottom",
+              "options": {
+                "top": "top",
+                "right": "right",
+                "bottom": "bottom",
+                "left": "left"
+              }
+            },
+            "sideOffset": {
+              "value": 15
+            },
+            "align": {
+              "value": "end",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 5
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-components-backgrounds-bubble",
@@ -1338,7 +1567,52 @@
                 "default": "default",
                 "sm": "sm",
                 "lg": "lg",
-                "icon": "icon"
+                "icon": "icon",
+                "icon-sm": "icon-sm",
+                "icon-lg": "icon-lg"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-buttons-copy",
+      "type": "registry:ui",
+      "title": "Copy Button Demo",
+      "description": "Demo showing a copy button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-copy"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/copy/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/copy.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "CopyButton": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "destructive": "destructive",
+                "outline": "outline",
+                "secondary": "secondary",
+                "ghost": "ghost",
+                "link": "link"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "xs": "xs",
+                "sm": "sm",
+                "lg": "lg"
               }
             }
           }
@@ -1384,7 +1658,9 @@
                 "default": "default",
                 "sm": "sm",
                 "lg": "lg",
-                "icon": "icon"
+                "icon": "icon",
+                "icon-sm": "icon-sm",
+                "icon-lg": "icon-lg"
               }
             }
           },
@@ -1408,6 +1684,84 @@
                 "sm": "sm",
                 "lg": "lg",
                 "icon": "icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-buttons-github-stars",
+      "type": "registry:ui",
+      "title": "GitHub Stars Button Demo",
+      "description": "Demo showing a GitHub stars button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-github-stars"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/github-stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/github-stars.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "GitHubStarsButton": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "outline": "outline",
+                "ghost": "ghost"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-buttons-icon",
+      "type": "registry:ui",
+      "title": "Icon Button Demo",
+      "description": "Demo showing an icon button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-buttons-icon"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/buttons/icon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/buttons/icon.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "IconButton": {
+            "variant": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "accent": "accent",
+                "outline": "outline",
+                "ghost": "ghost"
+              }
+            },
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "lg": "lg"
               }
             }
           }
@@ -1449,7 +1803,9 @@
                 "default": "default",
                 "sm": "sm",
                 "lg": "lg",
-                "icon": "icon"
+                "icon": "icon",
+                "icon-sm": "icon-sm",
+                "icon-lg": "icon-lg"
               }
             }
           }
@@ -1495,7 +1851,9 @@
                 "default": "default",
                 "sm": "sm",
                 "lg": "lg",
-                "icon": "icon"
+                "icon": "icon",
+                "icon-sm": "icon-sm",
+                "icon-lg": "icon-lg"
               }
             }
           }

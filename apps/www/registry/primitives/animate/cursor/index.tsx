@@ -152,7 +152,7 @@ function CursorContainer({
   return (
     <Component
       ref={containerRef}
-      data-slot="cursor-provider"
+      data-slot="cursor-container"
       data-global={global}
       data-active={active}
       {...props}
