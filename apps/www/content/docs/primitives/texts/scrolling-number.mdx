@@ -58,6 +58,12 @@ new: true
       required: false,
       default: 'btt',
     },
+    onNumberChange: {
+      description:
+        'The callback to use when the number changes as the wheel spins.',
+      type: '(value: number) => void',
+      required: false,
+    },
     inView: {
       description: 'Whether the text is in view.',
       type: 'boolean',

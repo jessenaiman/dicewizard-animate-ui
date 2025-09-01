@@ -43,6 +43,7 @@ type ScrollingNumberContextType = {
   direction: ScrollingNumberDirection;
   isVertical: boolean;
   range: number[];
+  onNumberChange?: (value: number) => void;
 };
 
 const [ScrollingNumberProvider, useScrollingNumber] =
@@ -54,6 +55,7 @@ type ScrollingNumberContainerProps = React.ComponentProps<'div'> & {
   itemsSize?: number;
   sideItemsCount?: number;
   direction?: ScrollingNumberDirection;
+  onNumberChange?: (value: number) => void;
 } & UseIsInViewOptions;
 
 function ScrollingNumberContainer({
@@ -66,6 +68,7 @@ function ScrollingNumberContainer({
   inView = false,
   inViewMargin = '0px',
   inViewOnce = true,
+  onNumberChange,
   style,
   ...props
 }: ScrollingNumberContainerProps) {
@@ -103,6 +106,7 @@ function ScrollingNumberContainer({
         direction,
         isVertical,
         range,
+        onNumberChange,
       }}
     >
       <div
@@ -170,6 +174,7 @@ function ScrollingNumber({
     range,
     step,
     number,
+    onNumberChange,
   } = useScrollingNumber();
 
   const motionKey: 'x' | 'y' = isVertical ? 'y' : 'x';
@@ -217,6 +222,11 @@ function ScrollingNumber({
     (p) => Math.abs(p) / itemsSize + sideItemsCount,
   );
   const currentValue = useTransform(currentIndex, (idx) => idx * step);
+  const snappedValue = useTransform(
+    currentIndex,
+    (idx) => Math.round(idx) * step,
+  );
+
   const completedTransform = useTransform(
     currentValue,
     (val) => val >= number * 0.99,
@@ -228,6 +238,14 @@ function ScrollingNumber({
     });
     return unsubscribe;
   }, [completedTransform, onCompleted]);
+
+  React.useEffect(() => {
+    const unsub = snappedValue.on('change', (val) => {
+      const bounded = val < 0 ? 0 : val > number ? number : val;
+      onNumberChange?.(bounded);
+    });
+    return unsub;
+  }, [snappedValue, onNumberChange, number]);
 
   const directionMap: Record<
     ScrollingNumberDirection,

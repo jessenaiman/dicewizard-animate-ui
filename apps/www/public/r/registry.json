@@ -74,6 +74,60 @@
       ]
     },
     {
+      "name": "components-animate-github-stars-wheel",
+      "type": "registry:ui",
+      "title": "GitHub Stars Wheel",
+      "description": "A scrolling wheel that displays GitHub stars count.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-github-stars-wheel"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/github-stars-wheel/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/github-stars-wheel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-animate-tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A set of layered sections with the same height of content—known as tab panels—that are displayed one at a time.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "components-animate-tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A tooltip is a small box that appears when hovering over an element.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/tooltip.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-backgrounds-bubble",
       "type": "registry:ui",
       "title": "Bubble Background",
@@ -1013,6 +1067,118 @@
             },
             "alignOffset": {
               "value": 5
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-animate-github-stars-wheel",
+      "type": "registry:ui",
+      "title": "Animate GitHub Stars Wheel Demo",
+      "description": "Demo showing an animated github stars wheel.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-github-stars-wheel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/github-stars-wheel/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/github-stars-wheel.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "GitHubStarsWheel": {
+            "direction": {
+              "value": "btt",
+              "options": {
+                "btt": "btt",
+                "ttb": "ttb",
+                "ltr": "ltr",
+                "rtl": "rtl"
+              }
+            },
+            "delay": {
+              "value": 1000,
+              "min": 0,
+              "max": 3000,
+              "step": 100
+            },
+            "step": {
+              "value": 10,
+              "min": 10,
+              "max": 1000,
+              "step": 10
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-components-animate-tabs",
+      "type": "registry:ui",
+      "title": "Animate Tabs Demo",
+      "description": "Demo showing an animated tabs.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-animate-tooltip",
+      "type": "registry:ui",
+      "title": "Animate Tooltip Demo",
+      "description": "Demo showing an animated tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/tooltip.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "TooltipProvider": {
+            "openDelay": {
+              "value": 0
+            },
+            "closeDelay": {
+              "value": 300
+            }
+          },
+          "Tooltip": {
+            "side": {
+              "value": "top",
+              "options": {
+                "top": "top",
+                "bottom": "bottom",
+                "left": "left",
+                "right": "right"
+              }
+            },
+            "sideOffset": {
+              "value": 10
+            },
+            "align": {
+              "value": "center",
+              "options": {
+                "start": "start",
+                "center": "center",
+                "end": "end"
+              }
+            },
+            "alignOffset": {
+              "value": 0
             }
           }
         }

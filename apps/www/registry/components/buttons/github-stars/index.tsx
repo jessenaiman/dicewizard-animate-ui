@@ -96,7 +96,7 @@ function GitHubStarsButton({
       >
         <GithubStarsLogo />
         <GithubStarsNumber />
-        <GithubStarsParticles>
+        <GithubStarsParticles className="text-yellow-500">
           <GithubStarsIcon
             icon={StarIcon}
             data-variant={variant}

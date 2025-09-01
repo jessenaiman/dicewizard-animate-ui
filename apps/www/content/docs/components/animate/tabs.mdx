@@ -6,38 +6,13 @@ author:
   url: https://github.com/imskyleen
 ---
 
-<ComponentPreview name="demo-primitives-animate-tabs" />
+<ComponentPreview name="demo-components-animate-tabs" />
 
 ## Installation
 
-<ComponentInstallation name="primitives-animate-tabs" />
+<ComponentInstallation name="components-animate-tabs" />
 
 ## Usage
-
-### With Highlight
-
-```tsx
-<Tabs>
-  <TabsHighlight>
-    <TabsList>
-      <TabsHighlightItem value="account">
-        <TabsTrigger value="account">Account</TabsTrigger>
-      </TabsHighlightItem>
-      <TabsHighlightItem value="password">
-        <TabsTrigger value="password">Password</TabsTrigger>
-      </TabsHighlightItem>
-    </TabsList>
-  </TabsHighlight>
-  <TabContents>
-    <TabsContent value="account">
-      Make changes to your account here.
-    </TabsContent>
-    <TabsContent value="password">Change your password here.</TabsContent>
-  </TabContents>
-</Tabs>
-```
-
-### Without Highlight
 
 ```tsx
 <Tabs>
@@ -57,6 +32,11 @@ author:
 ## API Reference
 
 ### Tabs
+
+<ExternalLink
+  href="https://animate-ui.com/docs/primitives/animate/tabs#tabs"
+  text="Animate UI API Reference - Tabs Primitive"
+/>
 
 <TypeTable
   type={{
@@ -84,32 +64,12 @@ author:
   }}
 />
 
-### TabsHighlight
-
-<ExternalLink
-  href="https://animate-ui.com/docs/primitives/effects/highlight#highlight"
-  text="Animate UI API Reference - Highlight"
-/>
-
-<TypeTable
-  type={{
-    transition: {
-      description: 'The transition of the TabsHighlight component.',
-      type: 'Transition',
-      required: false,
-      default: '{ type: "spring", stiffness: 200, damping: 25 }',
-    },
-  }}
-/>
-
-### TabsHighlightItem
-
-<ExternalLink
-  href="https://animate-ui.com/docs/primitives/effects/highlight#highlightitem"
-  text="Animate UI API Reference - HighlightItem"
-/>
-
 ### TabsList
+
+<ExternalLink
+  href="https://animate-ui.com/docs/primitives/animate/tabs#tabslist"
+  text="Animate UI API Reference - TabsList Primitive"
+/>
 
 <TypeTable
   type={{
@@ -122,6 +82,11 @@ author:
 />
 
 ### TabsTrigger
+
+<ExternalLink
+  href="https://animate-ui.com/docs/primitives/animate/tabs#tabstrigger"
+  text="Animate UI API Reference - TabsTrigger Primitive"
+/>
 
 <TypeTable
   type={{
@@ -147,6 +112,11 @@ author:
 
 ### TabsContents
 
+<ExternalLink
+  href="https://animate-ui.com/docs/primitives/animate/tabs#tabscontents"
+  text="Animate UI API Reference - TabsContents Primitive"
+/>
+
 <TypeTable
   type={{
     transition: {
@@ -165,6 +135,11 @@ author:
 />
 
 ### TabsContent
+
+<ExternalLink
+  href="https://animate-ui.com/docs/primitives/animate/tabs#tabscontent"
+  text="Animate UI API Reference - TabsContent Primitive"
+/>
 
 <TypeTable
   type={{
@@ -187,3 +162,7 @@ author:
     },
   }}
 />
+
+## Credits
+
+- Credit to [shadcn/ui](https://ui.shadcn.com/docs/components/tabs) for style inspiration.

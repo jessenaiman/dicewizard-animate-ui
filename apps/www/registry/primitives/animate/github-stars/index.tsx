@@ -35,8 +35,8 @@ const [GithubStarsProvider, useGithubStars] =
 type GithubStarsProps = WithAsChild<
   {
     children: React.ReactNode;
-    username: string;
-    repo: string;
+    username?: string;
+    repo?: string;
     value?: number;
     delay?: number;
   } & UseIsInViewOptions &
@@ -72,7 +72,7 @@ function GithubStars({
   const Component = asChild ? Slot : motion.div;
 
   React.useEffect(() => {
-    if (value !== undefined) return;
+    if (value !== undefined && username && repo) return;
     if (!isInView) {
       setStars(0);
       setIsLoading(true);
