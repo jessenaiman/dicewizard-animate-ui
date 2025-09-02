@@ -70,6 +70,7 @@ type AvatarGroupProps = Omit<React.ComponentProps<'div'>, 'translate'> & {
 function AvatarGroup({
   ref,
   children,
+  id,
   transition = { type: 'spring', stiffness: 300, damping: 17 },
   invertOverlap = false,
   translate = '-30%',
@@ -85,6 +86,7 @@ function AvatarGroup({
 }: AvatarGroupProps) {
   return (
     <TooltipProvider
+      id={id}
       openDelay={openDelay}
       closeDelay={closeDelay}
       transition={tooltipTransition}

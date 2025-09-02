@@ -18,6 +18,25 @@
       "files": []
     },
     {
+      "name": "components-animate-avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "An animated avatar group that displays overlapping user images and smoothly shifts each avatar forward on hover to highlight it.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/avatar-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/avatar-group.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-animate-code",
       "type": "registry:ui",
       "title": "Code",
@@ -582,6 +601,25 @@
       ]
     },
     {
+      "name": "components-community-user-presence-avatar",
+      "type": "registry:ui",
+      "title": "User Presence Avatar",
+      "description": "A compact avatar group for showing online and offline users, with smooth animated transitions when presence changes.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/community/user-presence-avatar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/community/user-presence-avatar.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-headless-accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -957,6 +995,22 @@
           "path": "registry/components/radix/tooltip/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/components/radix/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-animate-avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group Demo",
+      "description": "Demo showing a avatar group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/avatar-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/avatar-group.tsx"
         }
       ]
     },
@@ -2071,6 +2125,22 @@
           "path": "registry/demo/components/community/playful-todolist/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/components/community/playful-todolist.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-community-user-presence-avatar",
+      "type": "registry:ui",
+      "title": "User Presence Avatar Demo",
+      "description": "Demo showing a user presence avatar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-community-user-presence-avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/community/user-presence-avatar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/community/user-presence-avatar.tsx"
         }
       ]
     },

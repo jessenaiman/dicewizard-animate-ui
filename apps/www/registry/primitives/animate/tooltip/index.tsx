@@ -69,13 +69,6 @@ const [LocalTooltipProvider, useTooltip] = getStrictContext<TooltipContextType>(
 
 type TooltipPosition = { x: number; y: number };
 
-type TooltipProviderProps = {
-  children: React.ReactNode;
-  openDelay?: number;
-  closeDelay?: number;
-  transition?: Transition;
-};
-
 function getResolvedSide(placement: Side | `${Side}-${Align}`) {
   if (placement.includes('-')) {
     return placement.split('-')[0] as Side;
@@ -90,8 +83,17 @@ function initialFromSide(side: Side): Partial<Record<'x' | 'y', number>> {
   return { x: -15 };
 }
 
+type TooltipProviderProps = {
+  children: React.ReactNode;
+  id?: string;
+  openDelay?: number;
+  closeDelay?: number;
+  transition?: Transition;
+};
+
 function TooltipProvider({
   children,
+  id,
   openDelay = 700,
   closeDelay = 300,
   transition = { type: 'spring', stiffness: 300, damping: 35 },
@@ -160,7 +162,7 @@ function TooltipProvider({
         hideImmediate,
         currentTooltip,
         transition,
-        globalId,
+        globalId: id ?? globalId,
         setReferenceEl,
         referenceElRef,
       }}
@@ -280,7 +282,7 @@ function TooltipOverlay() {
   const Component = rendered.data?.contentAsChild ? Slot : motion.div;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {rendered.data && ready && (
         <TooltipPortal>
           <div
