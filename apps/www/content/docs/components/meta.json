@@ -64,6 +64,7 @@
     "backgrounds/stars",
     "---Community---",
     "community/management-bar",
+    "community/notification-list",
     "community/pin-list",
     "community/playful-todolist",
     "community/user-presence-avatar"
