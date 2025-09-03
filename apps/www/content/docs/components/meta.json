@@ -23,6 +23,7 @@
     "radix/progress",
     "radix/radio-group",
     "radix/sheet",
+    "radix/sidebar",
     "radix/switch",
     "radix/tabs",
     "radix/toggle",

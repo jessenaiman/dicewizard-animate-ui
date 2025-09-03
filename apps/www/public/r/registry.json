@@ -911,6 +911,34 @@
       ]
     },
     {
+      "name": "components-radix-sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A composable, themeable and customizable sidebar component. Created by Shadcn and animated by Animate UI.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-radix-checkbox",
+        "https://animate-ui.com/r/hooks-use-strict-context",
+        "button",
+        "input",
+        "separator",
+        "skeleton",
+        "use-mobile"
+      ],
+      "files": [
+        {
+          "path": "registry/components/radix/sidebar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/radix/sidebar.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-radix-switch",
       "type": "registry:ui",
       "title": "Switch",
@@ -2742,6 +2770,22 @@
           }
         }
       }
+    },
+    {
+      "name": "demo-components-radix-sidebar",
+      "type": "registry:ui",
+      "title": "Radix Sidebar Demo",
+      "description": "Demo showing a radix sidebar.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-radix-sidebar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/radix/sidebar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/radix/sidebar.tsx"
+        }
+      ]
     },
     {
       "name": "demo-components-radix-switch",
