@@ -65,6 +65,7 @@ interface DefaultIconProps<T = string> {
   loopDelay?: number;
   onAnimateStart?: () => void;
   onAnimateEnd?: () => void;
+  delay?: number;
 }
 
 interface AnimateIconProps<T = string> extends DefaultIconProps<T> {
@@ -184,30 +185,48 @@ function AnimateIcon({
   loopDelay = 0,
   onAnimateStart,
   onAnimateEnd,
+  delay = 0,
   asChild = true,
   children,
 }: AnimateIconProps) {
   const controls = useAnimation();
   const [localAnimate, setLocalAnimate] = React.useState(!!animate);
   const currentAnimation = React.useRef<string | StaticAnimations>(animation);
+  const delayRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const startAnimation = React.useCallback(
     (trigger: TriggerProp) => {
       currentAnimation.current =
         typeof trigger === 'string' ? trigger : animation;
-      setLocalAnimate(true);
+      if (delayRef.current) {
+        clearTimeout(delayRef.current);
+        delayRef.current = null;
+      }
+      if (delay > 0) {
+        delayRef.current = setTimeout(() => {
+          setLocalAnimate(true);
+        }, delay);
+      } else {
+        setLocalAnimate(true);
+      }
     },
-    [animation],
+    [animation, delay],
   );
 
   const stopAnimation = React.useCallback(() => {
+    if (delayRef.current) {
+      clearTimeout(delayRef.current);
+      delayRef.current = null;
+    }
     setLocalAnimate(false);
   }, []);
 
   React.useEffect(() => {
     currentAnimation.current =
       typeof animate === 'string' ? animate : animation;
-    setLocalAnimate(!!animate);
+    if (animate === undefined) return;
+    if (animate) startAnimation(animate as TriggerProp);
+    else stopAnimation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animate]);
 
@@ -222,6 +241,12 @@ function AnimateIcon({
       if (localAnimate) onAnimateEnd?.();
     });
   }, [localAnimate, controls, onAnimateStart, onAnimateEnd]);
+
+  React.useEffect(() => {
+    return () => {
+      if (delayRef.current) clearTimeout(delayRef.current);
+    };
+  }, []);
 
   const viewOuterRef = React.useRef<any>(null);
   const { ref: inViewRef, isInView } = useIsInView<any>(viewOuterRef, {
@@ -322,6 +347,7 @@ function IconWrapper<T extends string>({
   loopDelay = 0,
   onAnimateStart,
   onAnimateEnd,
+  delay = 0,
   className,
   ...props
 }: IconWrapperProps<T>) {
@@ -382,6 +408,7 @@ function IconWrapper<T extends string>({
         loopDelay={loopDelay}
         onAnimateStart={onAnimateStart}
         onAnimateEnd={onAnimateEnd}
+        delay={delay}
         asChild
       >
         <IconComponent

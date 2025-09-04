@@ -158,6 +158,31 @@ But you can also specify it directly on the icon, which will be given priority.
       required: false,
       default: 'false',
     },
+    animateOnView: {
+      description:
+        'Whether to animate the icon on view. You can also specify the animation to use.',
+      type: 'boolean | string',
+      required: false,
+      default: 'false',
+    },
+    animateOnViewMargin: {
+      description: 'The margin of the in view area.',
+      type: 'string',
+      required: false,
+      default: '0px',
+    },
+    animateOnViewOnce: {
+      description: 'Whether the icon should only animate once.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    delay: {
+      description: 'The delay before animating the icon.',
+      type: 'number',
+      required: false,
+      default: '0',
+    },
     animation: {
       description: 'The animation to use',
       type: 'string',
