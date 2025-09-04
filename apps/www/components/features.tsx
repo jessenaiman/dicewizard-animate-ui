@@ -13,12 +13,13 @@ import { LoaderIcon } from '@/registry/icons/loader';
 import { SettingsIcon } from '@/registry/icons/settings';
 import { Disc3Icon } from '@/registry/icons/disc-3';
 import { BatteryFullIcon } from '@/registry/icons/battery-full';
-import { UsersIcon } from '@/registry/icons/users';
 import { MessageSquareMoreIcon } from '@/registry/icons/message-square-more';
 import { BellRingIcon } from '@/registry/icons/bell-ring';
 import { AlarmClockIcon } from '@/registry/icons/alarm-clock';
 import { ArrowRightIcon } from '@/registry/icons/arrow-right';
 import { SearchIcon } from '@/registry/icons/search';
+import { UserIcon } from '@/registry/icons/user';
+import { AnimateIcon } from '@/registry/icons/icon';
 
 const COMPONENTS = [
   {
@@ -35,36 +36,34 @@ const COMPONENTS = [
     name: 'Icons',
     href: '/docs/icons',
     icon: (
-      <div className="w-full flex flex-col gap-5 sm:gap-10 pt-10 justify-center items-center h-full aspect-[350/259.17] dark:text-neutral-500 text-neutral-400">
-        <div className="flex flex-row gap-7 sm:gap-10">
-          <SearchIcon
-            animate="find"
-            loop
-            loopDelay={0.2}
-            className="sm:size-9 size-6.5"
-          />
-          <ClockIcon
-            animate
-            loop
-            loopDelay={0.2}
-            className="sm:size-9 size-6.5"
-          />
-          <AudioLinesIcon animate className="sm:size-9 size-6.5" />
-          <LoaderIcon animate className="sm:size-9 size-6.5" />
+      <AnimateIcon asChild animateOnHover>
+        <div className="w-full flex flex-col gap-5 sm:gap-10 pt-10 justify-center items-center h-full aspect-[350/259.17] dark:text-neutral-500 text-neutral-400">
+          <div className="flex flex-row gap-7 sm:gap-10">
+            <WifiIcon className="sm:size-9 size-6.5" />
+            <ClockIcon className="sm:size-9 size-6.5" />
+            <AudioLinesIcon className="sm:size-9 size-6.5" />
+            <LoaderIcon className="sm:size-9 size-6.5" />
+          </div>
+          <div className="flex flex-row gap-7 sm:gap-10">
+            <SettingsIcon
+              animation="default-loop"
+              className="sm:size-9 size-6.5"
+            />
+            <Disc3Icon className="sm:size-9 size-6.5" />
+            <BatteryFullIcon className="sm:size-9 size-6.5" />
+            <UserIcon className="sm:size-9 size-6.5" />
+          </div>
+          <div className="flex flex-row gap-7 sm:gap-10">
+            <MessageSquareMoreIcon className="sm:size-9 size-6.5" />
+            <BellRingIcon className="sm:size-9 size-6.5" />
+            <AlarmClockIcon className="sm:size-9 size-6.5" />
+            <ArrowRightIcon
+              animation="default-loop"
+              className="sm:size-9 size-6.5"
+            />
+          </div>
         </div>
-        <div className="flex flex-row gap-7 sm:gap-10">
-          <SettingsIcon className="sm:size-9 size-6.5" />
-          <Disc3Icon className="sm:size-9 size-6.5" />
-          <BatteryFullIcon className="sm:size-9 size-6.5" />
-          <UsersIcon className="sm:size-9 size-6.5" />
-        </div>
-        <div className="flex flex-row gap-7 sm:gap-10">
-          <MessageSquareMoreIcon className="sm:size-9 size-6.5" />
-          <BellRingIcon className="sm:size-9 size-6.5" />
-          <AlarmClockIcon className="sm:size-9 size-6.5" />
-          <ArrowRightIcon className="sm:size-9 size-6.5" />
-        </div>
-      </div>
+      </AnimateIcon>
     ),
   },
   {

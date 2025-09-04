@@ -175,6 +175,7 @@ function Slot<E extends Element = HTMLElement>({
 function AnimateIcon({
   animate,
   onAnimateChange,
+  asChild = true,
   animateOnHover,
   animateOnTap,
   animateOnView,
@@ -186,22 +187,23 @@ function AnimateIcon({
   onAnimateStart,
   onAnimateEnd,
   delay = 0,
-  asChild = true,
   children,
 }: AnimateIconProps) {
   const controls = useAnimation();
   const [localAnimate, setLocalAnimate] = React.useState(!!animate);
-  const currentAnimation = React.useRef<string | StaticAnimations>(animation);
+  const [currentAnimation, setCurrentAnimation] = React.useState<
+    string | StaticAnimations
+  >(typeof animate === 'string' ? animate : animation);
   const delayRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const startAnimation = React.useCallback(
     (trigger: TriggerProp) => {
-      currentAnimation.current =
-        typeof trigger === 'string' ? trigger : animation;
+      const next = typeof trigger === 'string' ? trigger : animation;
       if (delayRef.current) {
         clearTimeout(delayRef.current);
         delayRef.current = null;
       }
+      setCurrentAnimation(next);
       if (delay > 0) {
         delayRef.current = setTimeout(() => {
           setLocalAnimate(true);
@@ -222,17 +224,16 @@ function AnimateIcon({
   }, []);
 
   React.useEffect(() => {
-    currentAnimation.current =
-      typeof animate === 'string' ? animate : animation;
     if (animate === undefined) return;
+    setCurrentAnimation(typeof animate === 'string' ? animate : animation);
     if (animate) startAnimation(animate as TriggerProp);
     else stopAnimation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animate]);
 
   React.useEffect(
-    () => onAnimateChange?.(localAnimate, currentAnimation.current),
-    [localAnimate, onAnimateChange],
+    () => onAnimateChange?.(localAnimate, currentAnimation),
+    [localAnimate, onAnimateChange, currentAnimation],
   );
 
   React.useEffect(() => {
@@ -319,7 +320,7 @@ function AnimateIcon({
     <AnimateIconContext.Provider
       value={{
         controls,
-        animation: currentAnimation.current,
+        animation: currentAnimation,
         loop,
         loopDelay,
       }}
