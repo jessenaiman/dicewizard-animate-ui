@@ -58,6 +58,26 @@
       ]
     },
     {
+      "name": "components-animate-code-tabs",
+      "type": "registry:ui",
+      "title": "Code Tabs",
+      "description": "A tabs component that displays code for different languages.",
+      "dependencies": [
+        "shiki"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/primitives-animate-tabs",
+        "https://animate-ui.com/r/components-buttons-copy"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animate/code-tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/animate/code-tabs.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-animate-counter",
       "type": "registry:ui",
       "title": "Counter",
@@ -1098,6 +1118,22 @@
           }
         }
       }
+    },
+    {
+      "name": "demo-components-animate-code-tabs",
+      "type": "registry:ui",
+      "title": "Code Tabs Demo",
+      "description": "Demo showing a code tabs.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-animate-code-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/animate/code-tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/animate/code-tabs.tsx"
+        }
+      ]
     },
     {
       "name": "demo-components-animate-counter",
@@ -5152,6 +5188,114 @@
           "target": "components/animate-ui/hooks/use-strict-context.tsx"
         }
       ]
+    },
+    {
+      "name": "icons-arrow-right",
+      "type": "registry:ui",
+      "title": "Arrow Right Icon",
+      "description": "Arrow right icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/arrow-right/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/arrow-right.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "arrow",
+          "right",
+          "forward",
+          "next",
+          "direction",
+          "east",
+          "->"
+        ]
+      }
+    },
+    {
+      "name": "icons-icon",
+      "type": "registry:ui",
+      "title": "Icon",
+      "description": "Base component to use animated icons.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/icon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icons-rotate-ccw",
+      "type": "registry:ui",
+      "title": "Rotate Ccw Icon",
+      "description": "Rotate ccw icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/rotate-ccw/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/rotate-ccw.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "rotate",
+          "arrow",
+          "left",
+          "counter-clockwise",
+          "restart",
+          "reload",
+          "rerun",
+          "refresh",
+          "backup",
+          "undo",
+          "replay",
+          "redo",
+          "retry",
+          "rewind",
+          "reverse"
+        ]
+      }
+    },
+    {
+      "name": "icons-x",
+      "type": "registry:ui",
+      "title": "X Icon",
+      "description": "X icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/x/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/x.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "cross",
+          "x",
+          "delete",
+          "close",
+          "cancel",
+          "remove",
+          "clear",
+          "math",
+          "multiply",
+          "multiplication"
+        ]
+      }
     },
     {
       "name": "primitives-animate-avatar-group",

@@ -3,5 +3,5 @@
   "description": "Animated Icons",
   "icon": "LucideIcons",
   "root": true,
-  "pages": ["---Icons---", "index"]
+  "pages": ["---Icons---", "get-started", "index"]
 }
