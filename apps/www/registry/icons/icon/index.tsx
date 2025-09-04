@@ -63,8 +63,8 @@ interface DefaultIconProps<T = string> {
 }
 
 interface AnimateIconProps<T = string> extends DefaultIconProps<T> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: React.ReactElement<any, any>;
+  children: React.ReactNode;
+  asChild?: boolean;
 }
 
 interface IconProps<T>
@@ -96,6 +96,76 @@ function useAnimateIconContext() {
   return context;
 }
 
+function composeEventHandlers<E extends React.SyntheticEvent<any>>(
+  theirs?: (event: E) => void,
+  ours?: (event: E) => void,
+) {
+  return (event: E) => {
+    theirs?.(event);
+    ours?.(event);
+  };
+}
+
+function mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {
+  return (value: T) => {
+    for (const ref of refs) {
+      if (!ref) continue;
+      if (typeof ref === 'function') ref(value);
+      else (ref as React.MutableRefObject<T | null>).current = value;
+    }
+  };
+}
+
+type AnyProps = Record<string, any>;
+
+type SlotProps<E extends Element = HTMLElement> = {
+  children: React.ReactElement<any, any>;
+} & React.HTMLAttributes<E> &
+  AnyProps;
+
+function Slot<E extends Element = HTMLElement>({
+  children,
+  ...slotProps
+}: SlotProps<E>) {
+  if (!React.isValidElement(children)) return children as any;
+
+  const {
+    className: slotClassName,
+    style: slotStyle,
+    ref: slotRef,
+    onMouseEnter: sOnMouseEnter,
+    onMouseLeave: sOnMouseLeave,
+    onPointerDown: sOnPointerDown,
+    onPointerUp: sOnPointerUp,
+    ...restSlot
+  } = slotProps;
+
+  const {
+    className: childClassName,
+    style: childStyle,
+    ref: childRef,
+    onMouseEnter: cOnMouseEnter,
+    onMouseLeave: cOnMouseLeave,
+    onPointerDown: cOnPointerDown,
+    onPointerUp: cOnPointerUp,
+    ...restChild
+  } = (children.props ?? {}) as AnyProps;
+
+  const mergedProps: AnyProps = {
+    ...restChild,
+    ...restSlot,
+    className: cn(childClassName, slotClassName),
+    style: { ...(childStyle || {}), ...(slotStyle || {}) },
+    ref: mergeRefs(childRef, slotRef),
+    onMouseEnter: composeEventHandlers(cOnMouseEnter, sOnMouseEnter),
+    onMouseLeave: composeEventHandlers(cOnMouseLeave, sOnMouseLeave),
+    onPointerDown: composeEventHandlers(cOnPointerDown, sOnPointerDown),
+    onPointerUp: composeEventHandlers(cOnPointerUp, sOnPointerUp),
+  };
+
+  return React.cloneElement(children, mergedProps);
+}
+
 function AnimateIcon({
   animate,
   onAnimateChange,
@@ -106,11 +176,12 @@ function AnimateIcon({
   loopDelay = 0,
   onAnimateStart,
   onAnimateEnd,
+  asChild = true,
   children,
 }: AnimateIconProps) {
   const controls = useAnimation();
   const [localAnimate, setLocalAnimate] = React.useState(!!animate);
-  const currentAnimation = React.useRef(animation);
+  const currentAnimation = React.useRef<string | StaticAnimations>(animation);
 
   const startAnimation = React.useCallback(
     (trigger: TriggerProp) => {
@@ -144,30 +215,57 @@ function AnimateIcon({
     });
   }, [localAnimate, controls, onAnimateStart, onAnimateEnd]);
 
-  const handleMouseEnter = (e: MouseEvent) => {
-    if (animateOnHover) startAnimation(animateOnHover);
-    children.props?.onMouseEnter?.(e);
-  };
-  const handleMouseLeave = (e: MouseEvent) => {
-    if (animateOnHover || animateOnTap) stopAnimation();
-    children.props?.onMouseLeave?.(e);
-  };
-  const handlePointerDown = (e: PointerEvent) => {
-    if (animateOnTap) startAnimation(animateOnTap);
-    children.props?.onPointerDown?.(e);
-  };
-  const handlePointerUp = (e: PointerEvent) => {
-    if (animateOnTap) stopAnimation();
-    children.props?.onPointerUp?.(e);
-  };
+  const childProps = (
+    React.isValidElement(children) ? (children as React.ReactElement).props : {}
+  ) as AnyProps;
 
-  const child = React.Children.only(children);
-  const cloned = React.cloneElement(child, {
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave,
-    onPointerDown: handlePointerDown,
-    onPointerUp: handlePointerUp,
+  const handleMouseEnter = composeEventHandlers<React.MouseEvent<HTMLElement>>(
+    childProps.onMouseEnter,
+    () => {
+      if (animateOnHover) startAnimation(animateOnHover);
+    },
+  );
+
+  const handleMouseLeave = composeEventHandlers<React.MouseEvent<HTMLElement>>(
+    childProps.onMouseLeave,
+    () => {
+      if (animateOnHover || animateOnTap) stopAnimation();
+    },
+  );
+
+  const handlePointerDown = composeEventHandlers<
+    React.PointerEvent<HTMLElement>
+  >(childProps.onPointerDown, () => {
+    if (animateOnTap) startAnimation(animateOnTap);
   });
+
+  const handlePointerUp = composeEventHandlers<React.PointerEvent<HTMLElement>>(
+    childProps.onPointerUp,
+    () => {
+      if (animateOnTap) stopAnimation();
+    },
+  );
+
+  const content = asChild ? (
+    <Slot
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+    >
+      {children as React.ReactElement}
+    </Slot>
+  ) : (
+    <span
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      style={{ display: 'contents' }}
+    >
+      {children}
+    </span>
+  );
 
   return (
     <AnimateIconContext.Provider
@@ -178,7 +276,7 @@ function AnimateIcon({
         loopDelay,
       }}
     >
-      {cloned}
+      {content}
     </AnimateIconContext.Provider>
   );
 }
@@ -254,6 +352,7 @@ function IconWrapper<T extends string>({
         loopDelay={loopDelay}
         onAnimateStart={onAnimateStart}
         onAnimateEnd={onAnimateEnd}
+        asChild
       >
         <IconComponent
           size={size}

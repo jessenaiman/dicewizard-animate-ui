@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRightIcon, PartyPopper } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 import { SplittingText } from '@/registry/primitives/texts/splitting';
 import ReactIcon from '@workspace/ui/components/icons/react-icon';
 import TSIcon from '@workspace/ui/components/icons/ts-icon';
@@ -10,6 +10,7 @@ import { Button } from '@workspace/ui/components/ui/button';
 import Link from 'next/link';
 import { MotionEffect } from './effects/motion-effect';
 import { HeroBackground } from './hero-background';
+import { PartyPopper } from '@/registry/icons/party-popper';
 
 const ICONS = [ReactIcon, TSIcon, TailwindIcon, MotionIcon, ShadcnIcon];
 
@@ -30,7 +31,7 @@ export const Hero = () => {
         >
           <div className="mb-10 rounded-full bg-accent py-1 pl-3 pr-1 text-sm flex items-center gap-2">
             <p className="flex items-center gap-2 text-accent-foreground">
-              <PartyPopper className="size-4 text-muted-foreground" />{' '}
+              <PartyPopper animate className="size-4 text-muted-foreground" />{' '}
               Introducing Animate UI{' '}
               <span className="bg-white dark:bg-neutral-950 rounded-full font-bold -ml-0.5 tracking-tighter px-[7px] py-1.5 text-xs">
                 1.0

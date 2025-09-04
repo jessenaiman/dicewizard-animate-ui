@@ -17,7 +17,7 @@ import {
   TabsTrigger,
   TabsContent,
   TabsContents,
-} from '@/registry/primitives/animate/tabs';
+} from '@/registry/components/animate/tabs';
 import ReactIcon from '@workspace/ui/components/icons/react-icon';
 import {
   Select,
@@ -38,19 +38,20 @@ import { RotateCcw } from '@/registry/icons/rotate-ccw';
 const staticAnimationsLength = Object.keys(staticAnimations).length;
 
 const NEW_ICONS = [
-  'accessibility-icon',
-  'airplay-icon',
-  'binary-icon',
-  'terminal-icon',
-  'badge-check-icon',
-  'cast-icon',
-  'cctv-icon',
-  'chart-line-icon',
-  'chart-spline-icon',
-  'contrast-icon',
-  'cross-icon',
-  'ellipsis-icon',
-  'ellipsis-vertical-icon',
+  'icons-accessibility',
+  'icons-airplay',
+  'icons-binary',
+  'icons-terminal',
+  'icons-badge-check',
+  'icons-cast',
+  'icons-cctv',
+  'icons-chart-line',
+  'icons-chart-spline',
+  'icons-contrast',
+  'icons-cross',
+  'icons-ellipsis',
+  'icons-ellipsis-vertical',
+  'icons-party-popper',
 ];
 
 export const Icons = () => {
@@ -60,9 +61,10 @@ export const Icons = () => {
   const [activeTab, setActiveTab] = useState<string>('cli');
   const [isCopied, setIsCopied] = useState(false);
   const [activeAnimation, setActiveAnimation] = useState<string>('default');
+  const [isMounted, setIsMounted] = useState(false);
 
-  const icons = Object.values(index).filter((icon) =>
-    icon.name.endsWith('-icon'),
+  const icons = Object.values(index).filter(
+    (icon) => icon.name.startsWith('icons-') && icon.name !== 'icons-icon',
   );
 
   const fuse = useMemo(() => {
@@ -86,7 +88,7 @@ export const Icons = () => {
   const iconName = useMemo(
     () =>
       icon?.name
-        .replace('-icon', '')
+        .replace('icons-', '')
         .split('-')
         .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(''),
@@ -97,10 +99,24 @@ export const Icons = () => {
     setActiveAnimation('default');
   }, [activeIcon]);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
     <div className="-mt-4.5 text-black dark:text-white">
       <p className="text-sm text-muted-foreground">
-        {filteredIcons.length} icons {search.length ? 'found' : 'available'}
+        {filteredIcons.length} icons {search.length ? 'found' : 'available'}{' '}
+        {NEW_ICONS.length ? (
+          <span>
+            •{' '}
+            <span className="text-blue-500">{`${NEW_ICONS.length} new icons`}</span>
+          </span>
+        ) : (
+          ''
+        )}
       </p>
 
       <Input
@@ -115,21 +131,25 @@ export const Icons = () => {
             <TooltipProvider>
               <Highlight
                 hover
-                className="ring-2 ring-blue-500 bg-transparent rounded-lg -z-1"
+                className="absolute inset-0 ring-2 ring-blue-500 bg-transparent rounded-lg -z-1"
               >
                 {filteredIcons.map((icon) => {
                   const animationsLength = Object.keys(
                     icon?.component?.animations ?? {},
                   ).length;
+                  const totalAnimationsLength =
+                    staticAnimationsLength + animationsLength;
                   return (
-                    <Tooltip side="bottom" key={icon.name}>
+                    <Tooltip side="bottom" sideOffset={14} key={icon.name}>
                       <TooltipTrigger>
                         <div>
                           <AnimateIcon animateOnHover>
-                            <button>test</button>
-                            {/* <button
+                            <button
                               data-value={icon.name}
-                              onClick={() => setActiveIcon(icon.name)}
+                              onClick={() => {
+                                console.log('clicked', icon.name);
+                                setActiveIcon(icon.name);
+                              }}
                               className="relative group flex items-center justify-center size-full aspect-square rounded-lg p-3.5"
                             >
                               {icon?.component && (
@@ -146,17 +166,17 @@ export const Icons = () => {
                                 <div className="absolute -top-1 -right-1 size-2.5 border border-background bg-blue-500 rounded-full" />
                               )}
 
-                              <div className="absolute -bottom-2.5 -right-2.5 flex items-center justify-center text-muted-foreground font-medium size-5 bg-background border group-hover:border-blue-500 group-hover:ring group-hover:ring-blue-500 transition-colors duration-200 rounded-full">
+                              <div className="absolute z-10 -bottom-2.5 -right-2.5 flex items-center justify-center text-muted-foreground font-medium size-5 bg-background border group-hover:border-blue-500 group-hover:ring group-hover:ring-blue-500 transition-colors duration-200 rounded-full">
                                 <span className="text-[11px] leading-none">
-                                  {staticAnimationsLength + animationsLength}
+                                  {totalAnimationsLength}
                                 </span>
                               </div>
-                            </button> */}
+                            </button>
                           </AnimateIcon>
                         </div>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>{icon.name.replace('-icon', '')}</p>
+                        <p>{icon.name.replace('icons-', '')}</p>
                       </TooltipContent>
                     </Tooltip>
                   );
@@ -179,7 +199,7 @@ export const Icons = () => {
         transition={{ type: 'spring', stiffness: 150, damping: 25 }}
       >
         <h2 className="text-lg font-medium mt-1.5">
-          {activeIcon?.replace('-icon', '')}
+          {activeIcon?.replace('icons-', '')}
         </h2>
         <AnimateIcon animateOnHover>
           <button
@@ -271,7 +291,7 @@ export const Icons = () => {
             <div className="space-y-4">
               {activeIcon && (
                 <>
-                  <div className="relative h-[200px] w-full mx-auto rounded-2xl aspect-square bg-muted/50 border flex items-center justify-center">
+                  <div className="relative h-[180px] w-full mx-auto rounded-2xl aspect-square bg-muted/50 border flex items-center justify-center">
                     {icon?.component && (
                       <icon.component
                         key={`${activeAnimation}-${activeIcon}-${animationKey}`}

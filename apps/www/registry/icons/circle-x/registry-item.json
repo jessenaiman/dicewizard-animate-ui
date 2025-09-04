@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icons-circle-x",
+  "type": "registry:ui",
+  "title": "Circle X Icon",
+  "description": "Circle x icon component.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/icons/circle-x/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icons/circle-x.tsx"
+    }
+  ],
+  "meta": {
+    "keywords": [
+      "x",
+      "circle",
+      "cross",
+      "delete",
+      "close",
+      "cancel",
+      "remove",
+      "clear",
+      "math",
+      "multiply",
+      "multiplication"
+    ]
+  }
+}

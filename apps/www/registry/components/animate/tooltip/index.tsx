@@ -17,7 +17,7 @@ import { cn } from '@workspace/ui/lib/utils';
 type TooltipProviderProps = TooltipProviderPrimitiveProps;
 
 function TooltipProvider({ openDelay = 0, ...props }: TooltipProviderProps) {
-  return <TooltipProviderPrimitive {...props} />;
+  return <TooltipProviderPrimitive openDelay={openDelay} {...props} />;
 }
 
 type TooltipProps = TooltipPrimitiveProps;
