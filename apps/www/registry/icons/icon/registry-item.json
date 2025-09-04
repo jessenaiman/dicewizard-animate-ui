@@ -5,6 +5,7 @@
   "title": "Icon",
   "description": "Base component to use animated icons.",
   "dependencies": ["motion"],
+  "registryDependencies": ["https://animate-ui.com/r/hooks-use-is-in-view"],
   "files": [
     {
       "path": "registry/icons/icon/index.tsx",

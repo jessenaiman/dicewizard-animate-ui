@@ -7047,6 +7047,9 @@
       "dependencies": [
         "motion"
       ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/hooks-use-is-in-view"
+      ],
       "files": [
         {
           "path": "registry/icons/icon/index.tsx",

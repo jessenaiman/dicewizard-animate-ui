@@ -31,7 +31,11 @@ export const Hero = () => {
         >
           <div className="mb-10 rounded-full bg-accent py-1 pl-3 pr-1 text-sm flex items-center gap-2">
             <p className="flex items-center gap-2 text-accent-foreground">
-              <PartyPopper animate className="size-4 text-muted-foreground" />{' '}
+              <PartyPopper
+                animateOnView
+                animateOnViewOnce={false}
+                className="size-4 text-muted-foreground"
+              />{' '}
               Introducing Animate UI{' '}
               <span className="bg-white dark:bg-neutral-950 rounded-full font-bold -ml-0.5 tracking-tighter px-[7px] py-1.5 text-xs">
                 1.0

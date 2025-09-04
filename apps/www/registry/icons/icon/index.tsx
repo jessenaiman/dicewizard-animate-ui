@@ -4,11 +4,13 @@ import * as React from 'react';
 import {
   SVGMotionProps,
   useAnimation,
+  UseInViewOptions,
   type LegacyAnimationControls,
   type Variants,
 } from 'motion/react';
 
 import { cn } from '@workspace/ui/lib/utils';
+import { useIsInView } from '@/registry/hooks/use-is-in-view';
 
 const staticAnimations = {
   path: {
@@ -55,6 +57,9 @@ interface DefaultIconProps<T = string> {
   ) => void;
   animateOnHover?: TriggerProp<T>;
   animateOnTap?: TriggerProp<T>;
+  animateOnView?: TriggerProp<T>;
+  animateOnViewMargin?: UseInViewOptions['margin'];
+  animateOnViewOnce?: boolean;
   animation?: T | StaticAnimations;
   loop?: boolean;
   loopDelay?: number;
@@ -171,6 +176,9 @@ function AnimateIcon({
   onAnimateChange,
   animateOnHover,
   animateOnTap,
+  animateOnView,
+  animateOnViewMargin = '0px',
+  animateOnViewOnce = true,
   animation = 'default',
   loop = false,
   loopDelay = 0,
@@ -215,6 +223,19 @@ function AnimateIcon({
     });
   }, [localAnimate, controls, onAnimateStart, onAnimateEnd]);
 
+  const viewOuterRef = React.useRef<any>(null);
+  const { ref: inViewRef, isInView } = useIsInView<any>(viewOuterRef, {
+    inView: !!animateOnView,
+    inViewOnce: animateOnViewOnce,
+    inViewMargin: animateOnViewMargin,
+  });
+
+  React.useEffect(() => {
+    if (!animateOnView) return;
+    if (isInView) startAnimation(animateOnView);
+    else stopAnimation();
+  }, [isInView, animateOnView, startAnimation, stopAnimation]);
+
   const childProps = (
     React.isValidElement(children) ? (children as React.ReactElement).props : {}
   ) as AnyProps;
@@ -248,6 +269,7 @@ function AnimateIcon({
 
   const content = asChild ? (
     <Slot
+      ref={inViewRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onPointerDown={handlePointerDown}
@@ -257,6 +279,7 @@ function AnimateIcon({
     </Slot>
   ) : (
     <span
+      ref={inViewRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onPointerDown={handlePointerDown}
@@ -291,6 +314,9 @@ function IconWrapper<T extends string>({
   onAnimateChange,
   animateOnHover = false,
   animateOnTap = false,
+  animateOnView = false,
+  animateOnViewMargin = '0px',
+  animateOnViewOnce = true,
   icon: IconComponent,
   loop = false,
   loopDelay = 0,
@@ -339,6 +365,7 @@ function IconWrapper<T extends string>({
     onAnimateChange !== undefined ||
     animateOnHover ||
     animateOnTap ||
+    animateOnView ||
     animationProp
   ) {
     return (
@@ -347,6 +374,9 @@ function IconWrapper<T extends string>({
         onAnimateChange={onAnimateChange}
         animateOnHover={animateOnHover}
         animateOnTap={animateOnTap}
+        animateOnView={animateOnView}
+        animateOnViewMargin={animateOnViewMargin}
+        animateOnViewOnce={animateOnViewOnce}
         animation={animationProp}
         loop={loop}
         loopDelay={loopDelay}
