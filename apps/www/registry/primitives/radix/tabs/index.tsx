@@ -2,12 +2,7 @@
 
 import * as React from 'react';
 import { Tabs as TabsPrimitive } from 'radix-ui';
-import {
-  motion,
-  AnimatePresence,
-  LayoutGroup,
-  type HTMLMotionProps,
-} from 'motion/react';
+import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
 import {
   Highlight,
@@ -15,7 +10,7 @@ import {
   type HighlightProps,
   type HighlightItemProps,
 } from '@/registry/primitives/effects/highlight';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type TabsContextType = {
@@ -37,7 +32,11 @@ function Tabs(props: TabsProps) {
 
   return (
     <TabsProvider value={{ value, setValue }}>
-      <TabsPrimitive.Root data-slot="tabs" {...props} />
+      <TabsPrimitive.Root
+        data-slot="tabs"
+        {...props}
+        onValueChange={setValue}
+      />
     </TabsProvider>
   );
 }
@@ -56,6 +55,7 @@ function TabsHighlight({
       controlledItems
       value={value}
       transition={transition}
+      click={false}
       {...props}
     />
   );
@@ -96,6 +96,7 @@ function TabsContent({
         <motion.div
           data-slot="tabs-content"
           layout
+          layoutDependency={value}
           initial={{ opacity: 0, filter: 'blur(4px)' }}
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(4px)' }}
@@ -112,19 +113,20 @@ type TabsContentsProps = HTMLMotionProps<'div'> & {
 };
 
 function TabsContents({
-  transition = { type: 'spring', stiffness: 200, damping: 25 },
+  transition = { type: 'spring', stiffness: 200, damping: 30 },
   ...props
 }: TabsContentsProps) {
+  const { value } = useTabs();
+
   return (
-    <LayoutGroup id="tabs-contents-group">
-      <motion.div
-        data-slot="tabs-contents"
-        layout="size"
-        style={{ overflow: 'hidden' }}
-        transition={{ layout: transition }}
-        {...props}
-      />
-    </LayoutGroup>
+    <motion.div
+      data-slot="tabs-contents"
+      layout="size"
+      layoutDependency={value}
+      style={{ overflow: 'hidden' }}
+      transition={{ layout: transition }}
+      {...props}
+    />
   );
 }
 

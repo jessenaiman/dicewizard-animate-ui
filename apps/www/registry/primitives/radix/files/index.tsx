@@ -21,7 +21,7 @@ import {
   type AccordionTriggerProps,
   type AccordionContentProps,
 } from '@/registry/primitives/radix/accordion';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type FilesContextType = {

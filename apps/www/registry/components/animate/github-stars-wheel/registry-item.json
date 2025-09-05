@@ -6,7 +6,8 @@
   "description": "A scrolling wheel that displays GitHub stars count.",
   "dependencies": ["motion"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-github-stars-wheel"
+    "https://animate-ui.com/r/primitives-effects-particles",
+    "https://animate-ui.com/r/primitives-texts-scrolling-number"
   ],
   "files": [
     {

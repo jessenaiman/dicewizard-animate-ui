@@ -8,7 +8,7 @@
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-animate-code-block",
     "https://animate-ui.com/r/components-buttons-copy",
-    "https://animate-ui.com/r/hooks-use-strict-context"
+    "https://animate-ui.com/r/lib-get-strict-context"
   ],
   "files": [
     {

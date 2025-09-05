@@ -108,33 +108,14 @@ export function ComponentPreview({
     >
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
         <div className="flex items-center justify-between pb-2">
-          <TabsList
-            className="justify-start rounded-xl h-10 bg-transparent p-0"
-            activeClassName="bg-neutral-100 dark:bg-neutral-800 shadow-none rounded-lg"
-          >
-            <TabsTrigger
-              value="preview"
-              className="relative border-none rounded-lg px-4 py-2 h-full font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:text-foreground data-[state=active]:shadow-none"
-            >
-              Preview
-            </TabsTrigger>
-            <TabsTrigger
-              value="code"
-              className="relative border-none rounded-lg px-4 py-2 h-full font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:text-foreground data-[state=active]:shadow-none"
-            >
-              Code
-            </TabsTrigger>
+          <TabsList>
+            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
         </div>
 
         <TabsContents>
-          <TabsContent
-            value="preview"
-            className="relative rounded-md h-full"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-          >
+          <TabsContent value="preview" className="relative rounded-md h-full">
             <ComponentWrapper
               name={name}
               iframe={iframe}

@@ -7,6 +7,11 @@ import { ComponentInstallation } from '@/components/docs/component-installation'
 import { ExternalLink } from '@/components/docs/external-link';
 import { Steps, Step } from 'fumadocs-ui/components/steps';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
+import {
+  CodeBlock,
+  Pre,
+  type CodeBlockProps,
+} from './components/docs/codeblock';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -31,5 +36,10 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ExternalLink,
     Steps,
     Step,
+    pre: (props: CodeBlockProps) => (
+      <CodeBlock {...props}>
+        <Pre>{props.children}</Pre>
+      </CodeBlock>
+    ),
   };
 }

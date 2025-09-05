@@ -7,7 +7,7 @@ import {
   useIsInView,
   type UseIsInViewOptions,
 } from '@/registry/hooks/use-is-in-view';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 type RotatingTextContextType = {
   currentText: string;

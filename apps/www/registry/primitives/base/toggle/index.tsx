@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';
 import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type ToggleContextType = {

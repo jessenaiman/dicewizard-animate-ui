@@ -11,7 +11,7 @@ import {
   type HTMLMotionProps,
 } from 'motion/react';
 
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 type CheckboxContextType = {
   isChecked: boolean;

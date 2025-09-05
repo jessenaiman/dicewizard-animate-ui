@@ -6,7 +6,7 @@
   "description": "A popup that appears when an element is hovered or focused, showing a hint for sighted users.",
   "dependencies": ["motion", "@base-ui-components/react"],
   "registryDependencies": [
-    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/lib-get-strict-context",
     "https://animate-ui.com/r/hooks-use-controlled-state"
   ],
   "files": [

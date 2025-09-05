@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { LayoutGroup, motion, type Transition } from 'motion/react';
+import { motion, type Transition } from 'motion/react';
 import {
   TabGroup as TabGroupPrimitive,
   TabList as TabListPrimitive,
@@ -21,7 +21,7 @@ import {
   HighlightItemProps,
   HighlightProps,
 } from '@/registry/primitives/effects/highlight';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 type TabsContextType = {
   selectedIndex: number;
@@ -163,6 +163,8 @@ type TabPanelsProps<TTag extends React.ElementType = typeof motion.div> = Omit<
 function TabPanels<TTag extends React.ElementType = typeof motion.div>(
   props: TabPanelsProps<TTag>,
 ) {
+  const { selectedIndex } = useTabs();
+
   const {
     as = motion.div,
     transition = { type: 'spring', stiffness: 200, damping: 25 },
@@ -170,16 +172,15 @@ function TabPanels<TTag extends React.ElementType = typeof motion.div>(
   } = props;
 
   return (
-    <LayoutGroup id="tabs-contents-group">
-      <TabPanelsPrimitive
-        data-slot="tabs-contents"
-        layout="size"
-        style={{ overflow: 'hidden' }}
-        transition={{ layout: transition }}
-        as={as as React.ElementType}
-        {...rest}
-      />
-    </LayoutGroup>
+    <TabPanelsPrimitive
+      data-slot="tabs-contents"
+      layout="size"
+      layoutDependency={selectedIndex.toString()}
+      style={{ overflow: 'hidden' }}
+      transition={{ layout: transition }}
+      as={as as React.ElementType}
+      {...rest}
+    />
   );
 }
 

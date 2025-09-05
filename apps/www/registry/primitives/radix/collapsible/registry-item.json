@@ -6,7 +6,7 @@
   "description": "An interactive component which expands/collapses a panel.",
   "dependencies": ["motion", "radix-ui"],
   "registryDependencies": [
-    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/lib-get-strict-context",
     "https://animate-ui.com/r/hooks-use-controlled-state"
   ],
   "files": [

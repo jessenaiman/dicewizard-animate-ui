@@ -9,7 +9,7 @@ import {
   type HighlightItemProps,
   type HighlightProps,
 } from '@/registry/primitives/effects/highlight';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type TabsContextType = {
@@ -122,6 +122,7 @@ function TabsHighlight({
       controlledItems
       value={activeValue}
       transition={transition}
+      click={false}
       {...props}
     />
   );

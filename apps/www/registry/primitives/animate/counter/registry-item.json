@@ -8,7 +8,7 @@
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-animate-slot",
     "https://animate-ui.com/r/primitives-animate-sliding-number",
-    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/lib-get-strict-context",
     "https://animate-ui.com/r/hooks-use-controlled-state"
   ],
   "files": [

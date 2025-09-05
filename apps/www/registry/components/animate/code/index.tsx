@@ -9,7 +9,7 @@ import {
 } from '@/registry/primitives/animate/code-block';
 import { cn } from '@workspace/ui/lib/utils';
 import { CopyButton } from '@/registry/components/buttons/copy';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 type CodeContextType = {
   code: string;
@@ -82,23 +82,20 @@ function CodeBlock({ cursor, className, ...props }: CodeBlockProps) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <div
+    <CodeBlockPrimitive
       ref={scrollRef}
-      className={cn('relative text-sm p-4 overflow-auto', className)}
-    >
-      <CodeBlockPrimitive
-        theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        scrollContainerRef={scrollRef}
-        className={cn(
-          '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px] [&_code_.line]:!px-0',
-          cursor &&
-            "data-[done=false]:[&_.line:last-of-type::after]:content-['|'] data-[done=false]:[&_.line:last-of-type::after]:inline-block data-[done=false]:[&_.line:last-of-type::after]:w-[1ch] data-[done=false]:[&_.line:last-of-type::after]:-translate-px",
-          className,
-        )}
-        code={code}
-        {...props}
-      />
-    </div>
+      theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
+      scrollContainerRef={scrollRef}
+      className={cn(
+        'relative text-sm p-4 overflow-auto',
+        '[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px] [&_code_.line]:!px-0',
+        cursor &&
+          "data-[done=false]:[&_.line:last-of-type::after]:content-['|'] data-[done=false]:[&_.line:last-of-type::after]:inline-block data-[done=false]:[&_.line:last-of-type::after]:w-[1ch] data-[done=false]:[&_.line:last-of-type::after]:-translate-px",
+        className,
+      )}
+      code={code}
+      {...props}
+    />
   );
 }
 

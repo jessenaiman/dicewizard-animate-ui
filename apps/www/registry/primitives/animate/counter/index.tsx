@@ -8,7 +8,7 @@ import {
   type SlidingNumberProps,
 } from '@/registry/primitives/texts/sliding-number';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CounterContextType = {

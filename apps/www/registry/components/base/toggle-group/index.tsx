@@ -12,7 +12,7 @@ import {
 } from '@/registry/primitives/base/toggle-group';
 import { toggleVariants } from '@/registry/components/base/toggle';
 import { cn } from '@workspace/ui/lib/utils';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 const [ToggleGroupProvider, useToggleGroup] =
   getStrictContext<VariantProps<typeof toggleVariants>>('ToggleGroupContext');

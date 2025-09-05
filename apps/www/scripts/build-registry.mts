@@ -19,6 +19,12 @@ function replaceRegistryPaths(inputStr: string): string {
   return inputStr.replace(/(['"])([\s\S]*?)\1/g, (match, quote, content) => {
     if (content.startsWith('@/registry/')) {
       const rest = content.slice('@/registry/'.length);
+      if (rest.startsWith('lib/')) {
+        return `${quote}@/${rest}${quote}`;
+      }
+      if (rest.startsWith('hooks/')) {
+        return `${quote}@/${rest}${quote}`;
+      }
       return `${quote}@/components/animate-ui/${rest}${quote}`;
     } else if (content.startsWith('@workspace/ui/')) {
       const rest = content.slice('@workspace/ui/'.length);

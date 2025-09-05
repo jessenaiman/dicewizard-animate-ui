@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Tooltip as TooltipPrimitive } from '@base-ui-components/react/tooltip';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';
 
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type TooltipContextType = {

@@ -136,12 +136,10 @@ function CodeTabs({
               className="w-full"
               value={code}
             >
-              <div className="w-full text-sm overflow-auto flex items-center p-4">
-                <div
-                  className="[&>pre,_&_code]:!bg-transparent [&_code_.line]:!px-0 [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px] w-full"
-                  dangerouslySetInnerHTML={{ __html: val }}
-                />
-              </div>
+              <div
+                className="w-full text-sm overflow-auto flex items-center p-4 [&>pre,_&_code]:!bg-transparent [&_code_.line]:!px-0 [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px]"
+                dangerouslySetInnerHTML={{ __html: val }}
+              />
             </TabsContent>
           ))}
       </TabsContents>

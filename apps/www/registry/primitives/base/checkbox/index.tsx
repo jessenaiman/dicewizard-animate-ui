@@ -8,7 +8,7 @@ import {
   type SVGMotionProps,
 } from 'motion/react';
 
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CheckboxContextType = {

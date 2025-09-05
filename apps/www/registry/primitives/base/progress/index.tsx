@@ -8,7 +8,7 @@ import {
   CountingNumber,
   type CountingNumberProps,
 } from '@/registry/primitives/texts/counting-number';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 type ProgressContextType = {
   value: number;

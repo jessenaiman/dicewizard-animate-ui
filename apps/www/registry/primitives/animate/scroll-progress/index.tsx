@@ -11,7 +11,7 @@ import {
 } from 'motion/react';
 
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useMotionValueState } from '@/registry/hooks/use-motion-value-state';
 
 type ScrollProgressDirection = 'horizontal' | 'vertical';

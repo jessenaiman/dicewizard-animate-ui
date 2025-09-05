@@ -9,7 +9,7 @@ import {
   type FlipButtonFrontProps as FlipButtonFrontPrimitiveProps,
   type FlipButtonBackProps as FlipButtonBackPrimitiveProps,
 } from '@/registry/primitives/buttons/flip';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { buttonVariants } from '@/registry/components/buttons/button';
 import { cn } from '@workspace/ui/lib/utils';
 

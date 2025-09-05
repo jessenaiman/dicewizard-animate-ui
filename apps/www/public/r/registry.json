@@ -47,7 +47,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-code-block",
         "https://animate-ui.com/r/components-buttons-copy",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -121,7 +121,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-github-stars-wheel"
+        "https://animate-ui.com/r/primitives-effects-particles",
+        "https://animate-ui.com/r/primitives-texts-scrolling-number"
       ],
       "files": [
         {
@@ -960,7 +961,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-radix-checkbox",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "button",
         "input",
         "separator",
@@ -1037,7 +1038,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-radix-toggle-group",
         "https://animate-ui.com/r/components-radix-toggle",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -5123,33 +5124,33 @@
     },
     {
       "name": "hooks-use-controlled-state",
-      "type": "registry:ui",
+      "type": "registry:hook",
       "title": "useControlledState",
       "description": "A hook that allows you to control a state.",
       "files": [
         {
           "path": "registry/hooks/use-controlled-state/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/hooks/use-controlled-state.tsx"
+          "type": "registry:hook",
+          "target": "hooks/use-controlled-state.tsx"
         }
       ]
     },
     {
       "name": "hooks-use-data-state",
-      "type": "registry:ui",
+      "type": "registry:hook",
       "title": "useDataState",
       "description": "A hook that allows you to get the data-state of an element.",
       "files": [
         {
           "path": "registry/hooks/use-data-state/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/hooks/use-data-state.tsx"
+          "type": "registry:hook",
+          "target": "hooks/use-data-state.tsx"
         }
       ]
     },
     {
       "name": "hooks-use-is-in-view",
-      "type": "registry:ui",
+      "type": "registry:hook",
       "title": "useIsInView",
       "description": "A hook that allows you to check if an element is in view.",
       "dependencies": [
@@ -5158,34 +5159,21 @@
       "files": [
         {
           "path": "registry/hooks/use-is-in-view/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/hooks/use-is-in-view.tsx"
+          "type": "registry:hook",
+          "target": "hooks/use-is-in-view.tsx"
         }
       ]
     },
     {
       "name": "hooks-use-motion-value-state",
-      "type": "registry:ui",
+      "type": "registry:hook",
       "title": "useMotionValueState",
       "description": "A hook that allows you to use a motion value state.",
       "files": [
         {
           "path": "registry/hooks/use-motion-value-state/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/hooks/use-motion-value-state.tsx"
-        }
-      ]
-    },
-    {
-      "name": "hooks-use-strict-context",
-      "type": "registry:ui",
-      "title": "getStrictContext",
-      "description": "A hook that allows you to create a strict context.",
-      "files": [
-        {
-          "path": "registry/hooks/use-strict-context/index.tsx",
-          "type": "registry:ui",
-          "target": "components/animate-ui/hooks/use-strict-context.tsx"
+          "type": "registry:hook",
+          "target": "hooks/use-motion-value-state.tsx"
         }
       ]
     },
@@ -9683,6 +9671,19 @@
       }
     },
     {
+      "name": "lib-get-strict-context",
+      "type": "registry:lib",
+      "title": "getStrictContext",
+      "description": "A hook that allows you to create a strict context.",
+      "files": [
+        {
+          "path": "registry/lib/get-strict-context/index.tsx",
+          "type": "registry:lib",
+          "target": "lib/get-strict-context.tsx"
+        }
+      ]
+    },
+    {
       "name": "primitives-animate-avatar-group",
       "type": "registry:ui",
       "title": "Avatar Group",
@@ -9731,7 +9732,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
         "https://animate-ui.com/r/primitives-animate-sliding-number",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -9752,7 +9753,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -9774,7 +9775,7 @@
         "https://animate-ui.com/r/primitives-animate-slot",
         "https://animate-ui.com/r/primitives-animate-sliding-number",
         "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -9794,7 +9795,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -9833,7 +9834,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-motion-value-state"
       ],
       "files": [
@@ -9870,7 +9871,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-motion-value-state"
       ],
       "files": [
@@ -9892,7 +9893,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-effects-highlight",
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -9913,7 +9914,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -9933,7 +9934,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -9954,7 +9955,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -9975,7 +9976,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -9997,7 +9998,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-base-accordion",
         "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10018,7 +10019,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10039,7 +10040,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10060,7 +10061,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/primitives-texts-counting-number"
       ],
       "files": [
@@ -10081,7 +10082,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10102,7 +10103,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10123,7 +10124,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state",
         "https://animate-ui.com/r/primitives-effects-highlight"
       ],
@@ -10145,7 +10146,7 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10184,7 +10185,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/primitives-animate-slot"
       ],
       "files": [
@@ -10204,7 +10205,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/primitives-animate-slot"
       ],
       "files": [
@@ -10224,7 +10225,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/primitives-animate-slot"
       ],
       "files": [
@@ -10434,7 +10435,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10454,7 +10455,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10474,7 +10475,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10494,7 +10495,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/primitives-effects-highlight"
       ],
       "files": [
@@ -10516,7 +10517,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10537,7 +10538,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10557,7 +10558,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10579,7 +10580,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10601,7 +10602,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-effects-highlight",
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10622,7 +10623,7 @@
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-radix-accordion",
         "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10644,7 +10645,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10665,7 +10666,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10685,7 +10686,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10705,7 +10706,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10726,7 +10727,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10747,7 +10748,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10769,7 +10770,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10790,7 +10791,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10812,7 +10813,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/hooks-use-strict-context",
+        "https://animate-ui.com/r/lib-get-strict-context",
         "https://animate-ui.com/r/hooks-use-controlled-state"
       ],
       "files": [
@@ -10834,7 +10835,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10927,7 +10928,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10947,7 +10948,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {
@@ -11025,7 +11026,7 @@
       ],
       "registryDependencies": [
         "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/hooks-use-strict-context"
+        "https://animate-ui.com/r/lib-get-strict-context"
       ],
       "files": [
         {

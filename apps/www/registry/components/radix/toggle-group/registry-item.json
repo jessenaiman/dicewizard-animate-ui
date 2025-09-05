@@ -8,7 +8,7 @@
   "registryDependencies": [
     "https://animate-ui.com/r/primitives-radix-toggle-group",
     "https://animate-ui.com/r/components-radix-toggle",
-    "https://animate-ui.com/r/hooks-use-strict-context"
+    "https://animate-ui.com/r/lib-get-strict-context"
   ],
   "files": [
     {

@@ -9,7 +9,7 @@ import {
 } from 'motion/react';
 
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 
 type PinnedListContextType = {
   movingId: string | null;

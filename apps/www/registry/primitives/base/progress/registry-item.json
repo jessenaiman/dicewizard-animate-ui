@@ -6,7 +6,7 @@
   "description": "Displays the status of a task that takes a long time.",
   "dependencies": ["motion", "@base-ui-components/react"],
   "registryDependencies": [
-    "https://animate-ui.com/r/hooks-use-strict-context",
+    "https://animate-ui.com/r/lib-get-strict-context",
     "https://animate-ui.com/r/primitives-texts-counting-number"
   ],
   "files": [

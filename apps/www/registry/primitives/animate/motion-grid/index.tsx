@@ -4,7 +4,7 @@ import * as React from 'react';
 import { motion, type HTMLMotionProps } from 'motion/react';
 
 import { cn } from '@workspace/ui/lib/utils';
-import { getStrictContext } from '@/registry/hooks/use-strict-context';
+import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { Slot, type WithAsChild } from '@/registry/primitives/animate/slot';
 
 type FrameDot = [number, number];

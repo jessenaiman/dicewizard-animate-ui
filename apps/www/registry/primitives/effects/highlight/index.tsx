@@ -23,6 +23,7 @@ type HighlightContextType<T extends string> = {
   clearBounds: () => void;
   id: string;
   hover: boolean;
+  click: boolean;
   className?: string;
   style?: React.CSSProperties;
   activeClassName?: string;
@@ -58,6 +59,7 @@ type BaseHighlightProps<T extends React.ElementType = 'div'> = {
   style?: React.CSSProperties;
   transition?: Transition;
   hover?: boolean;
+  click?: boolean;
   disabled?: boolean;
   enabled?: boolean;
   exitDelay?: number;
@@ -122,6 +124,7 @@ function Highlight<T extends React.ElementType = 'div'>({
     style,
     transition = { type: 'spring', stiffness: 350, damping: 35 },
     hover = false,
+    click = true,
     enabled = true,
     controlledItems,
     disabled = false,
@@ -188,6 +191,7 @@ function Highlight<T extends React.ElementType = 'div'>({
   }, []);
 
   React.useEffect(() => {
+    console.log('value', value);
     if (value !== undefined) setActiveValue(value);
     else if (defaultValue !== undefined) setActiveValue(defaultValue);
   }, [value, defaultValue]);
@@ -278,6 +282,7 @@ function Highlight<T extends React.ElementType = 'div'>({
         setActiveValue: safeSetActiveValue,
         id,
         hover,
+        click,
         className,
         style,
         transition,
@@ -372,6 +377,7 @@ function HighlightItem<T extends React.ElementType>({
     setBounds,
     clearBounds,
     hover,
+    click,
     enabled,
     className: contextClassName,
     style: contextStyle,
@@ -464,12 +470,14 @@ function HighlightItem<T extends React.ElementType>({
           element.props.onMouseLeave?.(e);
         },
       }
-    : {
-        onClick: (e: React.MouseEvent<HTMLDivElement>) => {
-          setActiveValue(childValue);
-          element.props.onClick?.(e);
-        },
-      };
+    : click
+      ? {
+          onClick: (e: React.MouseEvent<HTMLDivElement>) => {
+            setActiveValue(childValue);
+            element.props.onClick?.(e);
+          },
+        }
+      : {};
 
   if (asChild) {
     if (mode === 'children') {
