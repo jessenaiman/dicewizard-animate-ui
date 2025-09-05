@@ -20,6 +20,11 @@ Visit [animate-ui.com](https://animate-ui.com/docs) to view the documentation.
 
 Visit our [contributing guide](https://github.com/imskyleen/animate-ui/blob/main/CONTRIBUTING.md) to learn how to contribute.
 
+## Code of Conduct
+
+This project follows a Code of Conduct to help create a welcoming community.
+Please read [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) before contributing.
+
 ## License
 
 Licensed under the [MIT license](https://github.com/imskyleen/animate-ui/blob/main/LICENSE.md).
