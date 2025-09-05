@@ -56,6 +56,11 @@ export const baseOptions: BaseLayoutProps = {
       secondary: false,
     },
     {
+      text: 'Roadmap',
+      url: '/docs/roadmap',
+      secondary: false,
+    },
+    {
       text: 'Other animated distributions',
       url: '/docs/other-animated-distributions',
       secondary: false,
