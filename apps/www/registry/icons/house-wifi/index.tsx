@@ -50,8 +50,6 @@ const animations = {
   })() satisfies Record<string, Variants>,
 } as const;
 
-console.log('animations', animations);
-
 function IconComponent({ size, ...props }: HouseWifiProps) {
   const { controls } = useAnimateIconContext();
   const variants = getVariants(animations);

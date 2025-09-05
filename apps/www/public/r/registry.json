@@ -953,7 +953,7 @@
       "title": "Sidebar",
       "description": "A composable, themeable and customizable sidebar component. Created by Shadcn and animated by Animate UI.",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "radix-ui",
         "class-variance-authority",
         "motion",
         "lucide-react"

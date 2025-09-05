@@ -25,10 +25,10 @@ export function ComponentInstallation({
   const component = index[name];
 
   const commands = {
-    npm: `npx shadcn@latest add "${component.command}"`,
-    pnpm: `pnpm dlx shadcn@latest add "${component.command}"`,
-    yarn: `npx shadcn@latest add "${component.command}"`,
-    bun: `bun x --bun shadcn@latest add "${component.command}"`,
+    npm: `npx shadcn@latest add ${component.command}`,
+    pnpm: `pnpm dlx shadcn@latest add ${component.command}`,
+    yarn: `npx shadcn@latest add ${component.command}`,
+    bun: `bun x --bun shadcn@latest add ${component.command}`,
   };
 
   return (

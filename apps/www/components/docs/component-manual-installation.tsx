@@ -23,7 +23,17 @@ const getDepsCommands = (dependencies?: string[]) => {
 
 const getRegistryDepsCommands = (dependencies?: string[]) => {
   if (!dependencies) return undefined;
-  const quotedDependencies = dependencies.map((dep) => `"${dep}"`).join(' ');
+  const quotedDependencies = dependencies
+    .map((dep) => {
+      if (dep.startsWith('https://animate-ui.com/r/')) {
+        return dep.replace('https://animate-ui.com/r/', '@animate-ui/');
+      }
+      if (dep.startsWith('https://')) {
+        return `"${dep}"`;
+      }
+      return dep;
+    })
+    .join(' ');
   return {
     npm: `npx shadcn@latest add ${quotedDependencies}`,
     pnpm: `pnpm dlx shadcn@latest add ${quotedDependencies}`,

@@ -107,7 +107,7 @@ function CodeTabs({
                   <TabsTrigger
                     key={code}
                     value={code}
-                    className="text-muted-foreground text-sm font-medium data-[state=active]:text-current px-0"
+                    className="text-muted-foreground h-full text-sm font-medium data-[state=active]:text-current px-0"
                   >
                     {code}
                   </TabsTrigger>

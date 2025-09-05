@@ -20,7 +20,7 @@ export const index: Record<string, any> = {
     files: [],
     keywords: [],
     component: null,
-    command: 'https://animate-ui.com/r/index',
+    command: '@animate-ui/index',
   },
   'components-animate-avatar-group': {
     name: 'components-animate-avatar-group',
@@ -61,7 +61,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-avatar-group',
+    command: '@animate-ui/components-animate-avatar-group',
   },
   'components-animate-code': {
     name: 'components-animate-code',
@@ -103,7 +103,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-code',
+    command: '@animate-ui/components-animate-code',
   },
   'components-animate-code-tabs': {
     name: 'components-animate-code-tabs',
@@ -144,7 +144,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-code-tabs',
+    command: '@animate-ui/components-animate-code-tabs',
   },
   'components-animate-counter': {
     name: 'components-animate-counter',
@@ -185,7 +185,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-counter',
+    command: '@animate-ui/components-animate-counter',
   },
   'components-animate-cursor': {
     name: 'components-animate-cursor',
@@ -226,7 +226,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-cursor',
+    command: '@animate-ui/components-animate-cursor',
   },
   'components-animate-github-stars-wheel': {
     name: 'components-animate-github-stars-wheel',
@@ -267,7 +267,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-github-stars-wheel',
+    command: '@animate-ui/components-animate-github-stars-wheel',
   },
   'components-animate-tabs': {
     name: 'components-animate-tabs',
@@ -306,7 +306,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-tabs',
+    command: '@animate-ui/components-animate-tabs',
   },
   'components-animate-tooltip': {
     name: 'components-animate-tooltip',
@@ -347,7 +347,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-animate-tooltip',
+    command: '@animate-ui/components-animate-tooltip',
   },
   'components-backgrounds-bubble': {
     name: 'components-backgrounds-bubble',
@@ -386,7 +386,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-backgrounds-bubble',
+    command: '@animate-ui/components-backgrounds-bubble',
   },
   'components-backgrounds-fireworks': {
     name: 'components-backgrounds-fireworks',
@@ -424,7 +424,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-backgrounds-fireworks',
+    command: '@animate-ui/components-backgrounds-fireworks',
   },
   'components-backgrounds-gradient': {
     name: 'components-backgrounds-gradient',
@@ -463,7 +463,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-backgrounds-gradient',
+    command: '@animate-ui/components-backgrounds-gradient',
   },
   'components-backgrounds-hexagon': {
     name: 'components-backgrounds-hexagon',
@@ -502,7 +502,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-backgrounds-hexagon',
+    command: '@animate-ui/components-backgrounds-hexagon',
   },
   'components-backgrounds-hole': {
     name: 'components-backgrounds-hole',
@@ -540,7 +540,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-backgrounds-hole',
+    command: '@animate-ui/components-backgrounds-hole',
   },
   'components-backgrounds-stars': {
     name: 'components-backgrounds-stars',
@@ -579,7 +579,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-backgrounds-stars',
+    command: '@animate-ui/components-backgrounds-stars',
   },
   'components-base-accordion': {
     name: 'components-base-accordion',
@@ -619,7 +619,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-accordion',
+    command: '@animate-ui/components-base-accordion',
   },
   'components-base-checkbox': {
     name: 'components-base-checkbox',
@@ -657,7 +657,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-checkbox',
+    command: '@animate-ui/components-base-checkbox',
   },
   'components-base-files': {
     name: 'components-base-files',
@@ -694,7 +694,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-files',
+    command: '@animate-ui/components-base-files',
   },
   'components-base-popover': {
     name: 'components-base-popover',
@@ -732,7 +732,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-popover',
+    command: '@animate-ui/components-base-popover',
   },
   'components-base-preview-card': {
     name: 'components-base-preview-card',
@@ -773,7 +773,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-preview-card',
+    command: '@animate-ui/components-base-preview-card',
   },
   'components-base-progress': {
     name: 'components-base-progress',
@@ -811,7 +811,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-progress',
+    command: '@animate-ui/components-base-progress',
   },
   'components-base-switch': {
     name: 'components-base-switch',
@@ -847,7 +847,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-switch',
+    command: '@animate-ui/components-base-switch',
   },
   'components-base-toggle': {
     name: 'components-base-toggle',
@@ -883,7 +883,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-toggle',
+    command: '@animate-ui/components-base-toggle',
   },
   'components-base-toggle-group': {
     name: 'components-base-toggle-group',
@@ -923,7 +923,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-toggle-group',
+    command: '@animate-ui/components-base-toggle-group',
   },
   'components-base-tooltip': {
     name: 'components-base-tooltip',
@@ -962,7 +962,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-base-tooltip',
+    command: '@animate-ui/components-base-tooltip',
   },
   'components-buttons-button': {
     name: 'components-buttons-button',
@@ -1002,7 +1002,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-button',
+    command: '@animate-ui/components-buttons-button',
   },
   'components-buttons-copy': {
     name: 'components-buttons-copy',
@@ -1044,7 +1044,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-copy',
+    command: '@animate-ui/components-buttons-copy',
   },
   'components-buttons-flip': {
     name: 'components-buttons-flip',
@@ -1085,7 +1085,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-flip',
+    command: '@animate-ui/components-buttons-flip',
   },
   'components-buttons-github-stars': {
     name: 'components-buttons-github-stars',
@@ -1127,7 +1127,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-github-stars',
+    command: '@animate-ui/components-buttons-github-stars',
   },
   'components-buttons-icon': {
     name: 'components-buttons-icon',
@@ -1168,7 +1168,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-icon',
+    command: '@animate-ui/components-buttons-icon',
   },
   'components-buttons-liquid': {
     name: 'components-buttons-liquid',
@@ -1208,7 +1208,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-liquid',
+    command: '@animate-ui/components-buttons-liquid',
   },
   'components-buttons-ripple': {
     name: 'components-buttons-ripple',
@@ -1249,7 +1249,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-buttons-ripple',
+    command: '@animate-ui/components-buttons-ripple',
   },
   'components-community-management-bar': {
     name: 'components-community-management-bar',
@@ -1289,7 +1289,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-community-management-bar',
+    command: '@animate-ui/components-community-management-bar',
   },
   'components-community-notification-list': {
     name: 'components-community-notification-list',
@@ -1329,7 +1329,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-community-notification-list',
+    command: '@animate-ui/components-community-notification-list',
   },
   'components-community-pin-list': {
     name: 'components-community-pin-list',
@@ -1368,7 +1368,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-community-pin-list',
+    command: '@animate-ui/components-community-pin-list',
   },
   'components-community-playful-todolist': {
     name: 'components-community-playful-todolist',
@@ -1410,7 +1410,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-community-playful-todolist',
+    command: '@animate-ui/components-community-playful-todolist',
   },
   'components-community-user-presence-avatar': {
     name: 'components-community-user-presence-avatar',
@@ -1452,8 +1452,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/components-community-user-presence-avatar',
+    command: '@animate-ui/components-community-user-presence-avatar',
   },
   'components-headless-accordion': {
     name: 'components-headless-accordion',
@@ -1494,7 +1493,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-headless-accordion',
+    command: '@animate-ui/components-headless-accordion',
   },
   'components-headless-checkbox': {
     name: 'components-headless-checkbox',
@@ -1535,7 +1534,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-headless-checkbox',
+    command: '@animate-ui/components-headless-checkbox',
   },
   'components-headless-dialog': {
     name: 'components-headless-dialog',
@@ -1576,7 +1575,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-headless-dialog',
+    command: '@animate-ui/components-headless-dialog',
   },
   'components-headless-popover': {
     name: 'components-headless-popover',
@@ -1617,7 +1616,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-headless-popover',
+    command: '@animate-ui/components-headless-popover',
   },
   'components-headless-switch': {
     name: 'components-headless-switch',
@@ -1658,7 +1657,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-headless-switch',
+    command: '@animate-ui/components-headless-switch',
   },
   'components-headless-tabs': {
     name: 'components-headless-tabs',
@@ -1697,7 +1696,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-headless-tabs',
+    command: '@animate-ui/components-headless-tabs',
   },
   'components-radix-accordion': {
     name: 'components-radix-accordion',
@@ -1738,7 +1737,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-accordion',
+    command: '@animate-ui/components-radix-accordion',
   },
   'components-radix-checkbox': {
     name: 'components-radix-checkbox',
@@ -1779,7 +1778,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-checkbox',
+    command: '@animate-ui/components-radix-checkbox',
   },
   'components-radix-dialog': {
     name: 'components-radix-dialog',
@@ -1818,7 +1817,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-dialog',
+    command: '@animate-ui/components-radix-dialog',
   },
   'components-radix-dropdown-menu': {
     name: 'components-radix-dropdown-menu',
@@ -1859,7 +1858,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-dropdown-menu',
+    command: '@animate-ui/components-radix-dropdown-menu',
   },
   'components-radix-files': {
     name: 'components-radix-files',
@@ -1896,7 +1895,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-files',
+    command: '@animate-ui/components-radix-files',
   },
   'components-radix-hover-card': {
     name: 'components-radix-hover-card',
@@ -1937,7 +1936,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-hover-card',
+    command: '@animate-ui/components-radix-hover-card',
   },
   'components-radix-popover': {
     name: 'components-radix-popover',
@@ -1975,7 +1974,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-popover',
+    command: '@animate-ui/components-radix-popover',
   },
   'components-radix-progress': {
     name: 'components-radix-progress',
@@ -2016,7 +2015,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-progress',
+    command: '@animate-ui/components-radix-progress',
   },
   'components-radix-radio-group': {
     name: 'components-radix-radio-group',
@@ -2057,7 +2056,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-radio-group',
+    command: '@animate-ui/components-radix-radio-group',
   },
   'components-radix-sheet': {
     name: 'components-radix-sheet',
@@ -2094,7 +2093,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-sheet',
+    command: '@animate-ui/components-radix-sheet',
   },
   'components-radix-sidebar': {
     name: 'components-radix-sidebar',
@@ -2102,7 +2101,7 @@ export const index: Record<string, any> = {
       'A composable, themeable and customizable sidebar component. Created by Shadcn and animated by Animate UI.',
     type: 'registry:ui',
     dependencies: [
-      '@radix-ui/react-slot',
+      'radix-ui',
       'class-variance-authority',
       'motion',
       'lucide-react',
@@ -2146,7 +2145,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-sidebar',
+    command: '@animate-ui/components-radix-sidebar',
   },
   'components-radix-switch': {
     name: 'components-radix-switch',
@@ -2185,7 +2184,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-switch',
+    command: '@animate-ui/components-radix-switch',
   },
   'components-radix-tabs': {
     name: 'components-radix-tabs',
@@ -2222,7 +2221,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-tabs',
+    command: '@animate-ui/components-radix-tabs',
   },
   'components-radix-toggle': {
     name: 'components-radix-toggle',
@@ -2260,7 +2259,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-toggle',
+    command: '@animate-ui/components-radix-toggle',
   },
   'components-radix-toggle-group': {
     name: 'components-radix-toggle-group',
@@ -2302,7 +2301,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-toggle-group',
+    command: '@animate-ui/components-radix-toggle-group',
   },
   'components-radix-tooltip': {
     name: 'components-radix-tooltip',
@@ -2341,7 +2340,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/components-radix-tooltip',
+    command: '@animate-ui/components-radix-tooltip',
   },
   'demo-components-animate-avatar-group': {
     name: 'demo-components-animate-avatar-group',
@@ -2382,7 +2381,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-avatar-group',
+    command: '@animate-ui/demo-components-animate-avatar-group',
   },
   'demo-components-animate-code': {
     name: 'demo-components-animate-code',
@@ -2427,7 +2426,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-code',
+    command: '@animate-ui/demo-components-animate-code',
   },
   'demo-components-animate-code-tabs': {
     name: 'demo-components-animate-code-tabs',
@@ -2467,7 +2466,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-code-tabs',
+    command: '@animate-ui/demo-components-animate-code-tabs',
   },
   'demo-components-animate-counter': {
     name: 'demo-components-animate-counter',
@@ -2507,7 +2506,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-counter',
+    command: '@animate-ui/demo-components-animate-counter',
   },
   'demo-components-animate-cursor': {
     name: 'demo-components-animate-cursor',
@@ -2570,7 +2569,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-cursor',
+    command: '@animate-ui/demo-components-animate-cursor',
   },
   'demo-components-animate-github-stars-wheel': {
     name: 'demo-components-animate-github-stars-wheel',
@@ -2620,8 +2619,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-animate-github-stars-wheel',
+    command: '@animate-ui/demo-components-animate-github-stars-wheel',
   },
   'demo-components-animate-tabs': {
     name: 'demo-components-animate-tabs',
@@ -2659,7 +2657,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-tabs',
+    command: '@animate-ui/demo-components-animate-tabs',
   },
   'demo-components-animate-tooltip': {
     name: 'demo-components-animate-tooltip',
@@ -2721,7 +2719,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-animate-tooltip',
+    command: '@animate-ui/demo-components-animate-tooltip',
   },
   'demo-components-backgrounds-bubble': {
     name: 'demo-components-backgrounds-bubble',
@@ -2763,7 +2761,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-backgrounds-bubble',
+    command: '@animate-ui/demo-components-backgrounds-bubble',
   },
   'demo-components-backgrounds-fireworks': {
     name: 'demo-components-backgrounds-fireworks',
@@ -2808,7 +2806,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-backgrounds-fireworks',
+    command: '@animate-ui/demo-components-backgrounds-fireworks',
   },
   'demo-components-backgrounds-fireworks-circle': {
     name: 'demo-components-backgrounds-fireworks-circle',
@@ -2857,8 +2855,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-backgrounds-fireworks-circle',
+    command: '@animate-ui/demo-components-backgrounds-fireworks-circle',
   },
   'demo-components-backgrounds-gradient': {
     name: 'demo-components-backgrounds-gradient',
@@ -2899,7 +2896,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-backgrounds-gradient',
+    command: '@animate-ui/demo-components-backgrounds-gradient',
   },
   'demo-components-backgrounds-hexagon': {
     name: 'demo-components-backgrounds-hexagon',
@@ -2939,7 +2936,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-backgrounds-hexagon',
+    command: '@animate-ui/demo-components-backgrounds-hexagon',
   },
   'demo-components-backgrounds-hole': {
     name: 'demo-components-backgrounds-hole',
@@ -2979,7 +2976,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-backgrounds-hole',
+    command: '@animate-ui/demo-components-backgrounds-hole',
   },
   'demo-components-backgrounds-stars': {
     name: 'demo-components-backgrounds-stars',
@@ -3019,7 +3016,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-backgrounds-stars',
+    command: '@animate-ui/demo-components-backgrounds-stars',
   },
   'demo-components-base-accordion': {
     name: 'demo-components-base-accordion',
@@ -3063,7 +3060,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-accordion',
+    command: '@animate-ui/demo-components-base-accordion',
   },
   'demo-components-base-checkbox': {
     name: 'demo-components-base-checkbox',
@@ -3113,7 +3110,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-checkbox',
+    command: '@animate-ui/demo-components-base-checkbox',
   },
   'demo-components-base-files': {
     name: 'demo-components-base-files',
@@ -3151,7 +3148,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-files',
+    command: '@animate-ui/demo-components-base-files',
   },
   'demo-components-base-popover': {
     name: 'demo-components-base-popover',
@@ -3207,7 +3204,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-popover',
+    command: '@animate-ui/demo-components-base-popover',
   },
   'demo-components-base-preview-card': {
     name: 'demo-components-base-preview-card',
@@ -3267,7 +3264,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-preview-card',
+    command: '@animate-ui/demo-components-base-preview-card',
   },
   'demo-components-base-progress': {
     name: 'demo-components-base-progress',
@@ -3305,7 +3302,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-progress',
+    command: '@animate-ui/demo-components-base-progress',
   },
   'demo-components-base-switch': {
     name: 'demo-components-base-switch',
@@ -3343,7 +3340,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-switch',
+    command: '@animate-ui/demo-components-base-switch',
   },
   'demo-components-base-toggle': {
     name: 'demo-components-base-toggle',
@@ -3392,7 +3389,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-toggle',
+    command: '@animate-ui/demo-components-base-toggle',
   },
   'demo-components-base-toggle-group': {
     name: 'demo-components-base-toggle-group',
@@ -3444,7 +3441,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-toggle-group',
+    command: '@animate-ui/demo-components-base-toggle-group',
   },
   'demo-components-base-tooltip': {
     name: 'demo-components-base-tooltip',
@@ -3502,7 +3499,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-base-tooltip',
+    command: '@animate-ui/demo-components-base-tooltip',
   },
   'demo-components-buttons-button': {
     name: 'demo-components-buttons-button',
@@ -3568,7 +3565,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-button',
+    command: '@animate-ui/demo-components-buttons-button',
   },
   'demo-components-buttons-copy': {
     name: 'demo-components-buttons-copy',
@@ -3625,7 +3622,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-copy',
+    command: '@animate-ui/demo-components-buttons-copy',
   },
   'demo-components-buttons-flip': {
     name: 'demo-components-buttons-flip',
@@ -3707,7 +3704,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-flip',
+    command: '@animate-ui/demo-components-buttons-flip',
   },
   'demo-components-buttons-github-stars': {
     name: 'demo-components-buttons-github-stars',
@@ -3764,7 +3761,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-github-stars',
+    command: '@animate-ui/demo-components-buttons-github-stars',
   },
   'demo-components-buttons-icon': {
     name: 'demo-components-buttons-icon',
@@ -3818,7 +3815,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-icon',
+    command: '@animate-ui/demo-components-buttons-icon',
   },
   'demo-components-buttons-liquid': {
     name: 'demo-components-buttons-liquid',
@@ -3880,7 +3877,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-liquid',
+    command: '@animate-ui/demo-components-buttons-liquid',
   },
   'demo-components-buttons-ripple': {
     name: 'demo-components-buttons-ripple',
@@ -3946,7 +3943,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-buttons-ripple',
+    command: '@animate-ui/demo-components-buttons-ripple',
   },
   'demo-components-community-management-bar': {
     name: 'demo-components-community-management-bar',
@@ -3987,8 +3984,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-community-management-bar',
+    command: '@animate-ui/demo-components-community-management-bar',
   },
   'demo-components-community-notification-list': {
     name: 'demo-components-community-notification-list',
@@ -4029,8 +4025,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-community-notification-list',
+    command: '@animate-ui/demo-components-community-notification-list',
   },
   'demo-components-community-pin-list': {
     name: 'demo-components-community-pin-list',
@@ -4070,7 +4065,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-community-pin-list',
+    command: '@animate-ui/demo-components-community-pin-list',
   },
   'demo-components-community-playful-todolist': {
     name: 'demo-components-community-playful-todolist',
@@ -4111,8 +4106,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-community-playful-todolist',
+    command: '@animate-ui/demo-components-community-playful-todolist',
   },
   'demo-components-community-user-presence-avatar': {
     name: 'demo-components-community-user-presence-avatar',
@@ -4153,8 +4147,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-community-user-presence-avatar',
+    command: '@animate-ui/demo-components-community-user-presence-avatar',
   },
   'demo-components-headless-accordion': {
     name: 'demo-components-headless-accordion',
@@ -4197,7 +4190,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-headless-accordion',
+    command: '@animate-ui/demo-components-headless-accordion',
   },
   'demo-components-headless-checkbox': {
     name: 'demo-components-headless-checkbox',
@@ -4249,7 +4242,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-headless-checkbox',
+    command: '@animate-ui/demo-components-headless-checkbox',
   },
   'demo-components-headless-dialog': {
     name: 'demo-components-headless-dialog',
@@ -4302,7 +4295,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-headless-dialog',
+    command: '@animate-ui/demo-components-headless-dialog',
   },
   'demo-components-headless-popover': {
     name: 'demo-components-headless-popover',
@@ -4363,7 +4356,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-headless-popover',
+    command: '@animate-ui/demo-components-headless-popover',
   },
   'demo-components-headless-switch': {
     name: 'demo-components-headless-switch',
@@ -4403,7 +4396,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-headless-switch',
+    command: '@animate-ui/demo-components-headless-switch',
   },
   'demo-components-headless-tabs': {
     name: 'demo-components-headless-tabs',
@@ -4441,7 +4434,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-headless-tabs',
+    command: '@animate-ui/demo-components-headless-tabs',
   },
   'demo-components-radix-accordion': {
     name: 'demo-components-radix-accordion',
@@ -4485,7 +4478,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-accordion',
+    command: '@animate-ui/demo-components-radix-accordion',
   },
   'demo-components-radix-checkbox': {
     name: 'demo-components-radix-checkbox',
@@ -4544,7 +4537,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-checkbox',
+    command: '@animate-ui/demo-components-radix-checkbox',
   },
   'demo-components-radix-dialog': {
     name: 'demo-components-radix-dialog',
@@ -4595,7 +4588,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-dialog',
+    command: '@animate-ui/demo-components-radix-dialog',
   },
   'demo-components-radix-dropdown-menu': {
     name: 'demo-components-radix-dropdown-menu',
@@ -4653,7 +4646,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-dropdown-menu',
+    command: '@animate-ui/demo-components-radix-dropdown-menu',
   },
   'demo-components-radix-dropdown-menu-checkbox': {
     name: 'demo-components-radix-dropdown-menu-checkbox',
@@ -4712,8 +4705,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-radix-dropdown-menu-checkbox',
+    command: '@animate-ui/demo-components-radix-dropdown-menu-checkbox',
   },
   'demo-components-radix-dropdown-menu-radio': {
     name: 'demo-components-radix-dropdown-menu-radio',
@@ -4772,8 +4764,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command:
-      'https://animate-ui.com/r/demo-components-radix-dropdown-menu-radio',
+    command: '@animate-ui/demo-components-radix-dropdown-menu-radio',
   },
   'demo-components-radix-files': {
     name: 'demo-components-radix-files',
@@ -4811,7 +4802,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-files',
+    command: '@animate-ui/demo-components-radix-files',
   },
   'demo-components-radix-hover-card': {
     name: 'demo-components-radix-hover-card',
@@ -4869,7 +4860,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-hover-card',
+    command: '@animate-ui/demo-components-radix-hover-card',
   },
   'demo-components-radix-popover': {
     name: 'demo-components-radix-popover',
@@ -4925,7 +4916,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-popover',
+    command: '@animate-ui/demo-components-radix-popover',
   },
   'demo-components-radix-progress': {
     name: 'demo-components-radix-progress',
@@ -4965,7 +4956,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-progress',
+    command: '@animate-ui/demo-components-radix-progress',
   },
   'demo-components-radix-radio-group': {
     name: 'demo-components-radix-radio-group',
@@ -5005,7 +4996,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-radio-group',
+    command: '@animate-ui/demo-components-radix-radio-group',
   },
   'demo-components-radix-sheet': {
     name: 'demo-components-radix-sheet',
@@ -5055,7 +5046,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-sheet',
+    command: '@animate-ui/demo-components-radix-sheet',
   },
   'demo-components-radix-sidebar': {
     name: 'demo-components-radix-sidebar',
@@ -5093,7 +5084,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-sidebar',
+    command: '@animate-ui/demo-components-radix-sidebar',
   },
   'demo-components-radix-switch': {
     name: 'demo-components-radix-switch',
@@ -5131,7 +5122,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-switch',
+    command: '@animate-ui/demo-components-radix-switch',
   },
   'demo-components-radix-tabs': {
     name: 'demo-components-radix-tabs',
@@ -5169,7 +5160,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-tabs',
+    command: '@animate-ui/demo-components-radix-tabs',
   },
   'demo-components-radix-toggle': {
     name: 'demo-components-radix-toggle',
@@ -5218,7 +5209,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-toggle',
+    command: '@animate-ui/demo-components-radix-toggle',
   },
   'demo-components-radix-toggle-group': {
     name: 'demo-components-radix-toggle-group',
@@ -5273,7 +5264,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-toggle-group',
+    command: '@animate-ui/demo-components-radix-toggle-group',
   },
   'demo-components-radix-tooltip': {
     name: 'demo-components-radix-tooltip',
@@ -5329,7 +5320,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-components-radix-tooltip',
+    command: '@animate-ui/demo-components-radix-tooltip',
   },
   'demo-primitives-animate-avatar-group': {
     name: 'demo-primitives-animate-avatar-group',
@@ -5370,7 +5361,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-avatar-group',
+    command: '@animate-ui/demo-primitives-animate-avatar-group',
   },
   'demo-primitives-animate-code-block': {
     name: 'demo-primitives-animate-code-block',
@@ -5417,7 +5408,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-code-block',
+    command: '@animate-ui/demo-primitives-animate-code-block',
   },
   'demo-primitives-animate-counter': {
     name: 'demo-primitives-animate-counter',
@@ -5457,7 +5448,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-counter',
+    command: '@animate-ui/demo-primitives-animate-counter',
   },
   'demo-primitives-animate-cursor': {
     name: 'demo-primitives-animate-cursor',
@@ -5520,7 +5511,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-cursor',
+    command: '@animate-ui/demo-primitives-animate-cursor',
   },
   'demo-primitives-animate-github-stars': {
     name: 'demo-primitives-animate-github-stars',
@@ -5561,7 +5552,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-github-stars',
+    command: '@animate-ui/demo-primitives-animate-github-stars',
   },
   'demo-primitives-animate-motion-grid': {
     name: 'demo-primitives-animate-motion-grid',
@@ -5602,7 +5593,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-motion-grid',
+    command: '@animate-ui/demo-primitives-animate-motion-grid',
   },
   'demo-primitives-animate-pinned-list': {
     name: 'demo-primitives-animate-pinned-list',
@@ -5642,7 +5633,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-pinned-list',
+    command: '@animate-ui/demo-primitives-animate-pinned-list',
   },
   'demo-primitives-animate-scroll-progress': {
     name: 'demo-primitives-animate-scroll-progress',
@@ -5691,7 +5682,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-scroll-progress',
+    command: '@animate-ui/demo-primitives-animate-scroll-progress',
   },
   'demo-primitives-animate-spring': {
     name: 'demo-primitives-animate-spring',
@@ -5731,7 +5722,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-spring',
+    command: '@animate-ui/demo-primitives-animate-spring',
   },
   'demo-primitives-animate-tabs': {
     name: 'demo-primitives-animate-tabs',
@@ -5769,7 +5760,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-tabs',
+    command: '@animate-ui/demo-primitives-animate-tabs',
   },
   'demo-primitives-animate-tooltip': {
     name: 'demo-primitives-animate-tooltip',
@@ -5832,7 +5823,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-animate-tooltip',
+    command: '@animate-ui/demo-primitives-animate-tooltip',
   },
   'demo-primitives-base-accordion': {
     name: 'demo-primitives-base-accordion',
@@ -5875,7 +5866,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-accordion',
+    command: '@animate-ui/demo-primitives-base-accordion',
   },
   'demo-primitives-base-checkbox': {
     name: 'demo-primitives-base-checkbox',
@@ -5913,7 +5904,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = { Checkbox: { indeterminate: { value: false } } };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-checkbox',
+    command: '@animate-ui/demo-primitives-base-checkbox',
   },
   'demo-primitives-base-collapsible': {
     name: 'demo-primitives-base-collapsible',
@@ -5955,7 +5946,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-collapsible',
+    command: '@animate-ui/demo-primitives-base-collapsible',
   },
   'demo-primitives-base-files': {
     name: 'demo-primitives-base-files',
@@ -5993,7 +5984,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-files',
+    command: '@animate-ui/demo-primitives-base-files',
   },
   'demo-primitives-base-popover': {
     name: 'demo-primitives-base-popover',
@@ -6051,7 +6042,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-popover',
+    command: '@animate-ui/demo-primitives-base-popover',
   },
   'demo-primitives-base-preview-card': {
     name: 'demo-primitives-base-preview-card',
@@ -6111,7 +6102,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-preview-card',
+    command: '@animate-ui/demo-primitives-base-preview-card',
   },
   'demo-primitives-base-progress': {
     name: 'demo-primitives-base-progress',
@@ -6149,7 +6140,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-progress',
+    command: '@animate-ui/demo-primitives-base-progress',
   },
   'demo-primitives-base-switch': {
     name: 'demo-primitives-base-switch',
@@ -6187,7 +6178,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-switch',
+    command: '@animate-ui/demo-primitives-base-switch',
   },
   'demo-primitives-base-toggle': {
     name: 'demo-primitives-base-toggle',
@@ -6225,7 +6216,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-toggle',
+    command: '@animate-ui/demo-primitives-base-toggle',
   },
   'demo-primitives-base-toggle-group': {
     name: 'demo-primitives-base-toggle-group',
@@ -6267,7 +6258,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-toggle-group',
+    command: '@animate-ui/demo-primitives-base-toggle-group',
   },
   'demo-primitives-base-tooltip': {
     name: 'demo-primitives-base-tooltip',
@@ -6325,7 +6316,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-base-tooltip',
+    command: '@animate-ui/demo-primitives-base-tooltip',
   },
   'demo-primitives-buttons-button': {
     name: 'demo-primitives-buttons-button',
@@ -6370,7 +6361,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-buttons-button',
+    command: '@animate-ui/demo-primitives-buttons-button',
   },
   'demo-primitives-buttons-flip': {
     name: 'demo-primitives-buttons-flip',
@@ -6421,7 +6412,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-buttons-flip',
+    command: '@animate-ui/demo-primitives-buttons-flip',
   },
   'demo-primitives-buttons-liquid': {
     name: 'demo-primitives-buttons-liquid',
@@ -6468,7 +6459,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-buttons-liquid',
+    command: '@animate-ui/demo-primitives-buttons-liquid',
   },
   'demo-primitives-buttons-ripple': {
     name: 'demo-primitives-buttons-ripple',
@@ -6513,7 +6504,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-buttons-ripple',
+    command: '@animate-ui/demo-primitives-buttons-ripple',
   },
   'demo-primitives-effects-blur': {
     name: 'demo-primitives-effects-blur',
@@ -6557,7 +6548,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-blur',
+    command: '@animate-ui/demo-primitives-effects-blur',
   },
   'demo-primitives-effects-effect': {
     name: 'demo-primitives-effects-effect',
@@ -6605,7 +6596,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-effect',
+    command: '@animate-ui/demo-primitives-effects-effect',
   },
   'demo-primitives-effects-fade': {
     name: 'demo-primitives-effects-fade',
@@ -6649,7 +6640,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-fade',
+    command: '@animate-ui/demo-primitives-effects-fade',
   },
   'demo-primitives-effects-highlight': {
     name: 'demo-primitives-effects-highlight',
@@ -6698,7 +6689,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-highlight',
+    command: '@animate-ui/demo-primitives-effects-highlight',
   },
   'demo-primitives-effects-magnetic': {
     name: 'demo-primitives-effects-magnetic',
@@ -6744,7 +6735,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-magnetic',
+    command: '@animate-ui/demo-primitives-effects-magnetic',
   },
   'demo-primitives-effects-particles': {
     name: 'demo-primitives-effects-particles',
@@ -6808,7 +6799,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-particles',
+    command: '@animate-ui/demo-primitives-effects-particles',
   },
   'demo-primitives-effects-slide': {
     name: 'demo-primitives-effects-slide',
@@ -6855,7 +6846,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-slide',
+    command: '@animate-ui/demo-primitives-effects-slide',
   },
   'demo-primitives-effects-zoom': {
     name: 'demo-primitives-effects-zoom',
@@ -6899,7 +6890,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-effects-zoom',
+    command: '@animate-ui/demo-primitives-effects-zoom',
   },
   'demo-primitives-headless-checkbox': {
     name: 'demo-primitives-headless-checkbox',
@@ -6939,7 +6930,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = { Checkbox: { indeterminate: { value: false } } };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-headless-checkbox',
+    command: '@animate-ui/demo-primitives-headless-checkbox',
   },
   'demo-primitives-headless-dialog': {
     name: 'demo-primitives-headless-dialog',
@@ -6991,7 +6982,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-headless-dialog',
+    command: '@animate-ui/demo-primitives-headless-dialog',
   },
   'demo-primitives-headless-disclosure': {
     name: 'demo-primitives-headless-disclosure',
@@ -7033,7 +7024,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-headless-disclosure',
+    command: '@animate-ui/demo-primitives-headless-disclosure',
   },
   'demo-primitives-headless-popover': {
     name: 'demo-primitives-headless-popover',
@@ -7094,7 +7085,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-headless-popover',
+    command: '@animate-ui/demo-primitives-headless-popover',
   },
   'demo-primitives-headless-switch': {
     name: 'demo-primitives-headless-switch',
@@ -7134,7 +7125,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-headless-switch',
+    command: '@animate-ui/demo-primitives-headless-switch',
   },
   'demo-primitives-headless-tabs': {
     name: 'demo-primitives-headless-tabs',
@@ -7172,7 +7163,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-headless-tabs',
+    command: '@animate-ui/demo-primitives-headless-tabs',
   },
   'demo-primitives-radix-accordion': {
     name: 'demo-primitives-radix-accordion',
@@ -7215,7 +7206,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-accordion',
+    command: '@animate-ui/demo-primitives-radix-accordion',
   },
   'demo-primitives-radix-checkbox': {
     name: 'demo-primitives-radix-checkbox',
@@ -7266,7 +7257,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-checkbox',
+    command: '@animate-ui/demo-primitives-radix-checkbox',
   },
   'demo-primitives-radix-collapsible': {
     name: 'demo-primitives-radix-collapsible',
@@ -7308,7 +7299,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-collapsible',
+    command: '@animate-ui/demo-primitives-radix-collapsible',
   },
   'demo-primitives-radix-dialog': {
     name: 'demo-primitives-radix-dialog',
@@ -7358,7 +7349,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-dialog',
+    command: '@animate-ui/demo-primitives-radix-dialog',
   },
   'demo-primitives-radix-dropdown-menu': {
     name: 'demo-primitives-radix-dropdown-menu',
@@ -7416,7 +7407,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-dropdown-menu',
+    command: '@animate-ui/demo-primitives-radix-dropdown-menu',
   },
   'demo-primitives-radix-files': {
     name: 'demo-primitives-radix-files',
@@ -7454,7 +7445,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-files',
+    command: '@animate-ui/demo-primitives-radix-files',
   },
   'demo-primitives-radix-hover-card': {
     name: 'demo-primitives-radix-hover-card',
@@ -7512,7 +7503,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-hover-card',
+    command: '@animate-ui/demo-primitives-radix-hover-card',
   },
   'demo-primitives-radix-popover': {
     name: 'demo-primitives-radix-popover',
@@ -7568,7 +7559,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-popover',
+    command: '@animate-ui/demo-primitives-radix-popover',
   },
   'demo-primitives-radix-progress': {
     name: 'demo-primitives-radix-progress',
@@ -7608,7 +7599,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-progress',
+    command: '@animate-ui/demo-primitives-radix-progress',
   },
   'demo-primitives-radix-radio-group': {
     name: 'demo-primitives-radix-radio-group',
@@ -7648,7 +7639,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-radio-group',
+    command: '@animate-ui/demo-primitives-radix-radio-group',
   },
   'demo-primitives-radix-sheet': {
     name: 'demo-primitives-radix-sheet',
@@ -7698,7 +7689,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-sheet',
+    command: '@animate-ui/demo-primitives-radix-sheet',
   },
   'demo-primitives-radix-switch': {
     name: 'demo-primitives-radix-switch',
@@ -7736,7 +7727,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-switch',
+    command: '@animate-ui/demo-primitives-radix-switch',
   },
   'demo-primitives-radix-tabs': {
     name: 'demo-primitives-radix-tabs',
@@ -7774,7 +7765,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-tabs',
+    command: '@animate-ui/demo-primitives-radix-tabs',
   },
   'demo-primitives-radix-toggle': {
     name: 'demo-primitives-radix-toggle',
@@ -7812,7 +7803,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-toggle',
+    command: '@animate-ui/demo-primitives-radix-toggle',
   },
   'demo-primitives-radix-toggle-group': {
     name: 'demo-primitives-radix-toggle-group',
@@ -7859,7 +7850,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-toggle-group',
+    command: '@animate-ui/demo-primitives-radix-toggle-group',
   },
   'demo-primitives-radix-tooltip': {
     name: 'demo-primitives-radix-tooltip',
@@ -7915,7 +7906,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-radix-tooltip',
+    command: '@animate-ui/demo-primitives-radix-tooltip',
   },
   'demo-primitives-texts-counting-number': {
     name: 'demo-primitives-texts-counting-number',
@@ -7965,7 +7956,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-counting-number',
+    command: '@animate-ui/demo-primitives-texts-counting-number',
   },
   'demo-primitives-texts-gradient': {
     name: 'demo-primitives-texts-gradient',
@@ -8005,7 +7996,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = { GradientText: { neon: { value: false } } };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-gradient',
+    command: '@animate-ui/demo-primitives-texts-gradient',
   },
   'demo-primitives-texts-highlight': {
     name: 'demo-primitives-texts-highlight',
@@ -8047,7 +8038,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-highlight',
+    command: '@animate-ui/demo-primitives-texts-highlight',
   },
   'demo-primitives-texts-rolling': {
     name: 'demo-primitives-texts-rolling',
@@ -8087,7 +8078,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-rolling',
+    command: '@animate-ui/demo-primitives-texts-rolling',
   },
   'demo-primitives-texts-rotating': {
     name: 'demo-primitives-texts-rotating',
@@ -8133,7 +8124,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-rotating',
+    command: '@animate-ui/demo-primitives-texts-rotating',
   },
   'demo-primitives-texts-scrolling-number': {
     name: 'demo-primitives-texts-scrolling-number',
@@ -8184,7 +8175,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-scrolling-number',
+    command: '@animate-ui/demo-primitives-texts-scrolling-number',
   },
   'demo-primitives-texts-shimmering': {
     name: 'demo-primitives-texts-shimmering',
@@ -8229,7 +8220,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-shimmering',
+    command: '@animate-ui/demo-primitives-texts-shimmering',
   },
   'demo-primitives-texts-sliding-number': {
     name: 'demo-primitives-texts-sliding-number',
@@ -8279,7 +8270,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-sliding-number',
+    command: '@animate-ui/demo-primitives-texts-sliding-number',
   },
   'demo-primitives-texts-splitting': {
     name: 'demo-primitives-texts-splitting',
@@ -8331,7 +8322,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-splitting',
+    command: '@animate-ui/demo-primitives-texts-splitting',
   },
   'demo-primitives-texts-typing': {
     name: 'demo-primitives-texts-typing',
@@ -8376,7 +8367,7 @@ export const index: Record<string, any> = {
       };
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/demo-primitives-texts-typing',
+    command: '@animate-ui/demo-primitives-texts-typing',
   },
   'hooks-use-controlled-state': {
     name: 'hooks-use-controlled-state',
@@ -8414,7 +8405,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/hooks-use-controlled-state',
+    command: '@animate-ui/hooks-use-controlled-state',
   },
   'hooks-use-data-state': {
     name: 'hooks-use-data-state',
@@ -8450,7 +8441,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/hooks-use-data-state',
+    command: '@animate-ui/hooks-use-data-state',
   },
   'hooks-use-is-in-view': {
     name: 'hooks-use-is-in-view',
@@ -8486,7 +8477,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/hooks-use-is-in-view',
+    command: '@animate-ui/hooks-use-is-in-view',
   },
   'hooks-use-motion-value-state': {
     name: 'hooks-use-motion-value-state',
@@ -8524,7 +8515,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/hooks-use-motion-value-state',
+    command: '@animate-ui/hooks-use-motion-value-state',
   },
   'hooks-use-strict-context': {
     name: 'hooks-use-strict-context',
@@ -8562,7 +8553,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/hooks-use-strict-context',
+    command: '@animate-ui/hooks-use-strict-context',
   },
   'icons-accessibility': {
     name: 'icons-accessibility',
@@ -8598,7 +8589,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-accessibility',
+    command: '@animate-ui/icons-accessibility',
   },
   'icons-activity': {
     name: 'icons-activity',
@@ -8652,7 +8643,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-activity',
+    command: '@animate-ui/icons-activity',
   },
   'icons-airplay': {
     name: 'icons-airplay',
@@ -8696,7 +8687,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-airplay',
+    command: '@animate-ui/icons-airplay',
   },
   'icons-alarm-clock': {
     name: 'icons-alarm-clock',
@@ -8732,7 +8723,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-alarm-clock',
+    command: '@animate-ui/icons-alarm-clock',
   },
   'icons-arrow-down': {
     name: 'icons-arrow-down',
@@ -8768,7 +8759,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-arrow-down',
+    command: '@animate-ui/icons-arrow-down',
   },
   'icons-arrow-left': {
     name: 'icons-arrow-left',
@@ -8804,7 +8795,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-arrow-left',
+    command: '@animate-ui/icons-arrow-left',
   },
   'icons-arrow-right': {
     name: 'icons-arrow-right',
@@ -8840,7 +8831,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-arrow-right',
+    command: '@animate-ui/icons-arrow-right',
   },
   'icons-arrow-up': {
     name: 'icons-arrow-up',
@@ -8876,7 +8867,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-arrow-up',
+    command: '@animate-ui/icons-arrow-up',
   },
   'icons-audio-lines': {
     name: 'icons-audio-lines',
@@ -8936,7 +8927,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-audio-lines',
+    command: '@animate-ui/icons-audio-lines',
   },
   'icons-axe': {
     name: 'icons-axe',
@@ -8985,7 +8976,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-axe',
+    command: '@animate-ui/icons-axe',
   },
   'icons-badge-check': {
     name: 'icons-badge-check',
@@ -9021,7 +9012,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-badge-check',
+    command: '@animate-ui/icons-badge-check',
   },
   'icons-battery-charging': {
     name: 'icons-battery-charging',
@@ -9057,7 +9048,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-battery-charging',
+    command: '@animate-ui/icons-battery-charging',
   },
   'icons-battery-full': {
     name: 'icons-battery-full',
@@ -9093,7 +9084,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-battery-full',
+    command: '@animate-ui/icons-battery-full',
   },
   'icons-battery-low': {
     name: 'icons-battery-low',
@@ -9129,7 +9120,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-battery-low',
+    command: '@animate-ui/icons-battery-low',
   },
   'icons-battery-medium': {
     name: 'icons-battery-medium',
@@ -9165,7 +9156,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-battery-medium',
+    command: '@animate-ui/icons-battery-medium',
   },
   'icons-bell': {
     name: 'icons-bell',
@@ -9201,7 +9192,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-bell',
+    command: '@animate-ui/icons-bell',
   },
   'icons-bell-off': {
     name: 'icons-bell-off',
@@ -9237,7 +9228,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-bell-off',
+    command: '@animate-ui/icons-bell-off',
   },
   'icons-bell-ring': {
     name: 'icons-bell-ring',
@@ -9273,7 +9264,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-bell-ring',
+    command: '@animate-ui/icons-bell-ring',
   },
   'icons-binary': {
     name: 'icons-binary',
@@ -9309,7 +9300,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-binary',
+    command: '@animate-ui/icons-binary',
   },
   'icons-bot': {
     name: 'icons-bot',
@@ -9345,7 +9336,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-bot',
+    command: '@animate-ui/icons-bot',
   },
   'icons-bot-message-square': {
     name: 'icons-bot-message-square',
@@ -9383,7 +9374,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-bot-message-square',
+    command: '@animate-ui/icons-bot-message-square',
   },
   'icons-bot-off': {
     name: 'icons-bot-off',
@@ -9419,7 +9410,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-bot-off',
+    command: '@animate-ui/icons-bot-off',
   },
   'icons-brush': {
     name: 'icons-brush',
@@ -9464,7 +9455,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-brush',
+    command: '@animate-ui/icons-brush',
   },
   'icons-brush-cleaning': {
     name: 'icons-brush-cleaning',
@@ -9532,7 +9523,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-brush-cleaning',
+    command: '@animate-ui/icons-brush-cleaning',
   },
   'icons-cast': {
     name: 'icons-cast',
@@ -9568,7 +9559,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cast',
+    command: '@animate-ui/icons-cast',
   },
   'icons-cctv': {
     name: 'icons-cctv',
@@ -9612,7 +9603,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cctv',
+    command: '@animate-ui/icons-cctv',
   },
   'icons-chart-line': {
     name: 'icons-chart-line',
@@ -9648,7 +9639,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chart-line',
+    command: '@animate-ui/icons-chart-line',
   },
   'icons-chart-spline': {
     name: 'icons-chart-spline',
@@ -9696,7 +9687,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chart-spline',
+    command: '@animate-ui/icons-chart-spline',
   },
   'icons-cherry': {
     name: 'icons-cherry',
@@ -9732,7 +9723,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cherry',
+    command: '@animate-ui/icons-cherry',
   },
   'icons-chevron-down': {
     name: 'icons-chevron-down',
@@ -9768,7 +9759,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chevron-down',
+    command: '@animate-ui/icons-chevron-down',
   },
   'icons-chevron-left': {
     name: 'icons-chevron-left',
@@ -9804,7 +9795,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chevron-left',
+    command: '@animate-ui/icons-chevron-left',
   },
   'icons-chevron-left-right': {
     name: 'icons-chevron-left-right',
@@ -9842,7 +9833,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chevron-left-right',
+    command: '@animate-ui/icons-chevron-left-right',
   },
   'icons-chevron-right': {
     name: 'icons-chevron-right',
@@ -9891,7 +9882,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chevron-right',
+    command: '@animate-ui/icons-chevron-right',
   },
   'icons-chevron-up': {
     name: 'icons-chevron-up',
@@ -9940,7 +9931,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chevron-up',
+    command: '@animate-ui/icons-chevron-up',
   },
   'icons-chevron-up-down': {
     name: 'icons-chevron-up-down',
@@ -9976,7 +9967,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-chevron-up-down',
+    command: '@animate-ui/icons-chevron-up-down',
   },
   'icons-circle-plus': {
     name: 'icons-circle-plus',
@@ -10025,7 +10016,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-circle-plus',
+    command: '@animate-ui/icons-circle-plus',
   },
   'icons-circle-x': {
     name: 'icons-circle-x',
@@ -10073,7 +10064,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-circle-x',
+    command: '@animate-ui/icons-circle-x',
   },
   'icons-clock': {
     name: 'icons-clock',
@@ -10109,7 +10100,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock',
+    command: '@animate-ui/icons-clock',
   },
   'icons-clock-1': {
     name: 'icons-clock-1',
@@ -10145,7 +10136,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-1',
+    command: '@animate-ui/icons-clock-1',
   },
   'icons-clock-10': {
     name: 'icons-clock-10',
@@ -10181,7 +10172,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-10',
+    command: '@animate-ui/icons-clock-10',
   },
   'icons-clock-11': {
     name: 'icons-clock-11',
@@ -10217,7 +10208,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-11',
+    command: '@animate-ui/icons-clock-11',
   },
   'icons-clock-12': {
     name: 'icons-clock-12',
@@ -10253,7 +10244,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-12',
+    command: '@animate-ui/icons-clock-12',
   },
   'icons-clock-2': {
     name: 'icons-clock-2',
@@ -10289,7 +10280,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-2',
+    command: '@animate-ui/icons-clock-2',
   },
   'icons-clock-3': {
     name: 'icons-clock-3',
@@ -10325,7 +10316,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-3',
+    command: '@animate-ui/icons-clock-3',
   },
   'icons-clock-4': {
     name: 'icons-clock-4',
@@ -10361,7 +10352,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-4',
+    command: '@animate-ui/icons-clock-4',
   },
   'icons-clock-5': {
     name: 'icons-clock-5',
@@ -10397,7 +10388,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-5',
+    command: '@animate-ui/icons-clock-5',
   },
   'icons-clock-6': {
     name: 'icons-clock-6',
@@ -10433,7 +10424,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-6',
+    command: '@animate-ui/icons-clock-6',
   },
   'icons-clock-7': {
     name: 'icons-clock-7',
@@ -10469,7 +10460,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-7',
+    command: '@animate-ui/icons-clock-7',
   },
   'icons-clock-8': {
     name: 'icons-clock-8',
@@ -10505,7 +10496,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-8',
+    command: '@animate-ui/icons-clock-8',
   },
   'icons-clock-9': {
     name: 'icons-clock-9',
@@ -10541,7 +10532,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-clock-9',
+    command: '@animate-ui/icons-clock-9',
   },
   'icons-cloud-download': {
     name: 'icons-cloud-download',
@@ -10577,7 +10568,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cloud-download',
+    command: '@animate-ui/icons-cloud-download',
   },
   'icons-cloud-upload': {
     name: 'icons-cloud-upload',
@@ -10613,7 +10604,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cloud-upload',
+    command: '@animate-ui/icons-cloud-upload',
   },
   'icons-cog': {
     name: 'icons-cog',
@@ -10662,7 +10653,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cog',
+    command: '@animate-ui/icons-cog',
   },
   'icons-compass': {
     name: 'icons-compass',
@@ -10706,7 +10697,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-compass',
+    command: '@animate-ui/icons-compass',
   },
   'icons-contrast': {
     name: 'icons-contrast',
@@ -10742,7 +10733,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-contrast',
+    command: '@animate-ui/icons-contrast',
   },
   'icons-copy': {
     name: 'icons-copy',
@@ -10778,7 +10769,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-copy',
+    command: '@animate-ui/icons-copy',
   },
   'icons-cross': {
     name: 'icons-cross',
@@ -10814,7 +10805,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-cross',
+    command: '@animate-ui/icons-cross',
   },
   'icons-disc-3': {
     name: 'icons-disc-3',
@@ -10862,7 +10853,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-disc-3',
+    command: '@animate-ui/icons-disc-3',
   },
   'icons-download': {
     name: 'icons-download',
@@ -10898,7 +10889,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-download',
+    command: '@animate-ui/icons-download',
   },
   'icons-ellipsis': {
     name: 'icons-ellipsis',
@@ -10956,7 +10947,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-ellipsis',
+    command: '@animate-ui/icons-ellipsis',
   },
   'icons-ellipsis-vertical': {
     name: 'icons-ellipsis-vertical',
@@ -11005,7 +10996,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-ellipsis-vertical',
+    command: '@animate-ui/icons-ellipsis-vertical',
   },
   'icons-expand': {
     name: 'icons-expand',
@@ -11041,7 +11032,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-expand',
+    command: '@animate-ui/icons-expand',
   },
   'icons-external-link': {
     name: 'icons-external-link',
@@ -11077,7 +11068,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-external-link',
+    command: '@animate-ui/icons-external-link',
   },
   'icons-fingerprint': {
     name: 'icons-fingerprint',
@@ -11113,7 +11104,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-fingerprint',
+    command: '@animate-ui/icons-fingerprint',
   },
   'icons-forklift': {
     name: 'icons-forklift',
@@ -11149,7 +11140,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-forklift',
+    command: '@animate-ui/icons-forklift',
   },
   'icons-gauge': {
     name: 'icons-gauge',
@@ -11193,7 +11184,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-gauge',
+    command: '@animate-ui/icons-gauge',
   },
   'icons-gavel': {
     name: 'icons-gavel',
@@ -11229,7 +11220,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-gavel',
+    command: '@animate-ui/icons-gavel',
   },
   'icons-hammer': {
     name: 'icons-hammer',
@@ -11265,7 +11256,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-hammer',
+    command: '@animate-ui/icons-hammer',
   },
   'icons-heart': {
     name: 'icons-heart',
@@ -11301,7 +11292,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-heart',
+    command: '@animate-ui/icons-heart',
   },
   'icons-house-wifi': {
     name: 'icons-house-wifi',
@@ -11316,7 +11307,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/house-wifi.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype HouseWifiProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: 0,\n          scale: 0,\n          transition: {\n            opacity: {\n              duration: 0.2,\n              ease: \'easeInOut\',\n              repeat: 1,\n              repeatType: \'reverse\',\n              repeatDelay: 0.2,\n              delay: 0.2 * (i - 1),\n            },\n            scale: {\n              duration: 0.2,\n              ease: \'easeInOut\',\n              repeat: 1,\n              repeatType: \'reverse\',\n              repeatDelay: 0.2,\n              delay: 0.2 * (i - 1),\n            },\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nconsole.log(\'animations\', animations);\n\nfunction IconComponent({ size, ...props }: HouseWifiProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M12 17h.01"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M9.5 13.866a4 4 0 0 1 5 .01"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M7 10.754a8 8 0 0 1 10 0"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction HouseWifi(props: HouseWifiProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  HouseWifi,\n  HouseWifi as HouseWifiIcon,\n  type HouseWifiProps,\n  type HouseWifiProps as HouseWifiIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype HouseWifiProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: 0,\n          scale: 0,\n          transition: {\n            opacity: {\n              duration: 0.2,\n              ease: \'easeInOut\',\n              repeat: 1,\n              repeatType: \'reverse\',\n              repeatDelay: 0.2,\n              delay: 0.2 * (i - 1),\n            },\n            scale: {\n              duration: 0.2,\n              ease: \'easeInOut\',\n              repeat: 1,\n              repeatType: \'reverse\',\n              repeatDelay: 0.2,\n              delay: 0.2 * (i - 1),\n            },\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: HouseWifiProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M12 17h.01"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M9.5 13.866a4 4 0 0 1 5 .01"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M7 10.754a8 8 0 0 1 10 0"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction HouseWifi(props: HouseWifiProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  HouseWifi,\n  HouseWifi as HouseWifiIcon,\n  type HouseWifiProps,\n  type HouseWifiProps as HouseWifiIconProps,\n};',
       },
     ],
     keywords: ['home', 'living', 'building', 'wifi', 'connectivity'],
@@ -11337,7 +11328,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-house-wifi',
+    command: '@animate-ui/icons-house-wifi',
   },
   'icons-icon': {
     name: 'icons-icon',
@@ -11373,7 +11364,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-icon',
+    command: '@animate-ui/icons-icon',
   },
   'icons-kanban': {
     name: 'icons-kanban',
@@ -11424,7 +11415,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-kanban',
+    command: '@animate-ui/icons-kanban',
   },
   'icons-layers': {
     name: 'icons-layers',
@@ -11468,7 +11459,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-layers',
+    command: '@animate-ui/icons-layers',
   },
   'icons-layers-2': {
     name: 'icons-layers-2',
@@ -11515,7 +11506,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-layers-2',
+    command: '@animate-ui/icons-layers-2',
   },
   'icons-layout-dashboard': {
     name: 'icons-layout-dashboard',
@@ -11551,7 +11542,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-layout-dashboard',
+    command: '@animate-ui/icons-layout-dashboard',
   },
   'icons-lightbulb': {
     name: 'icons-lightbulb',
@@ -11587,7 +11578,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-lightbulb',
+    command: '@animate-ui/icons-lightbulb',
   },
   'icons-lightbulb-off': {
     name: 'icons-lightbulb-off',
@@ -11623,7 +11614,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-lightbulb-off',
+    command: '@animate-ui/icons-lightbulb-off',
   },
   'icons-loader': {
     name: 'icons-loader',
@@ -11667,7 +11658,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-loader',
+    command: '@animate-ui/icons-loader',
   },
   'icons-loader-circle': {
     name: 'icons-loader-circle',
@@ -11712,7 +11703,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-loader-circle',
+    command: '@animate-ui/icons-loader-circle',
   },
   'icons-loader-pinwheel': {
     name: 'icons-loader-pinwheel',
@@ -11759,7 +11750,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-loader-pinwheel',
+    command: '@animate-ui/icons-loader-pinwheel',
   },
   'icons-log-in': {
     name: 'icons-log-in',
@@ -11795,7 +11786,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-log-in',
+    command: '@animate-ui/icons-log-in',
   },
   'icons-log-out': {
     name: 'icons-log-out',
@@ -11831,7 +11822,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-log-out',
+    command: '@animate-ui/icons-log-out',
   },
   'icons-map-pin': {
     name: 'icons-map-pin',
@@ -11867,7 +11858,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-map-pin',
+    command: '@animate-ui/icons-map-pin',
   },
   'icons-map-pin-off': {
     name: 'icons-map-pin-off',
@@ -11903,7 +11894,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-map-pin-off',
+    command: '@animate-ui/icons-map-pin-off',
   },
   'icons-maximize': {
     name: 'icons-maximize',
@@ -11939,7 +11930,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-maximize',
+    command: '@animate-ui/icons-maximize',
   },
   'icons-menu': {
     name: 'icons-menu',
@@ -11975,7 +11966,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-menu',
+    command: '@animate-ui/icons-menu',
   },
   'icons-message-circle': {
     name: 'icons-message-circle',
@@ -12018,7 +12009,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle',
+    command: '@animate-ui/icons-message-circle',
   },
   'icons-message-circle-code': {
     name: 'icons-message-circle-code',
@@ -12065,7 +12056,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-code',
+    command: '@animate-ui/icons-message-circle-code',
   },
   'icons-message-circle-dashed': {
     name: 'icons-message-circle-dashed',
@@ -12111,7 +12102,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-dashed',
+    command: '@animate-ui/icons-message-circle-dashed',
   },
   'icons-message-circle-heart': {
     name: 'icons-message-circle-heart',
@@ -12163,7 +12154,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-heart',
+    command: '@animate-ui/icons-message-circle-heart',
   },
   'icons-message-circle-more': {
     name: 'icons-message-circle-more',
@@ -12215,7 +12206,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-more',
+    command: '@animate-ui/icons-message-circle-more',
   },
   'icons-message-circle-off': {
     name: 'icons-message-circle-off',
@@ -12268,7 +12259,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-off',
+    command: '@animate-ui/icons-message-circle-off',
   },
   'icons-message-circle-plus': {
     name: 'icons-message-circle-plus',
@@ -12314,7 +12305,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-plus',
+    command: '@animate-ui/icons-message-circle-plus',
   },
   'icons-message-circle-question': {
     name: 'icons-message-circle-question',
@@ -12360,7 +12351,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-question',
+    command: '@animate-ui/icons-message-circle-question',
   },
   'icons-message-circle-warning': {
     name: 'icons-message-circle-warning',
@@ -12413,7 +12404,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-warning',
+    command: '@animate-ui/icons-message-circle-warning',
   },
   'icons-message-circle-x': {
     name: 'icons-message-circle-x',
@@ -12464,7 +12455,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-circle-x',
+    command: '@animate-ui/icons-message-circle-x',
   },
   'icons-message-square': {
     name: 'icons-message-square',
@@ -12507,7 +12498,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square',
+    command: '@animate-ui/icons-message-square',
   },
   'icons-message-square-code': {
     name: 'icons-message-square-code',
@@ -12554,7 +12545,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-code',
+    command: '@animate-ui/icons-message-square-code',
   },
   'icons-message-square-dashed': {
     name: 'icons-message-square-dashed',
@@ -12600,7 +12591,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-dashed',
+    command: '@animate-ui/icons-message-square-dashed',
   },
   'icons-message-square-diff': {
     name: 'icons-message-square-diff',
@@ -12656,7 +12647,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-diff',
+    command: '@animate-ui/icons-message-square-diff',
   },
   'icons-message-square-dot': {
     name: 'icons-message-square-dot',
@@ -12703,7 +12694,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-dot',
+    command: '@animate-ui/icons-message-square-dot',
   },
   'icons-message-square-heart': {
     name: 'icons-message-square-heart',
@@ -12755,7 +12746,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-heart',
+    command: '@animate-ui/icons-message-square-heart',
   },
   'icons-message-square-more': {
     name: 'icons-message-square-more',
@@ -12807,7 +12798,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-more',
+    command: '@animate-ui/icons-message-square-more',
   },
   'icons-message-square-off': {
     name: 'icons-message-square-off',
@@ -12860,7 +12851,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-off',
+    command: '@animate-ui/icons-message-square-off',
   },
   'icons-message-square-plus': {
     name: 'icons-message-square-plus',
@@ -12906,7 +12897,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-plus',
+    command: '@animate-ui/icons-message-square-plus',
   },
   'icons-message-square-quote': {
     name: 'icons-message-square-quote',
@@ -12956,7 +12947,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-quote',
+    command: '@animate-ui/icons-message-square-quote',
   },
   'icons-message-square-share': {
     name: 'icons-message-square-share',
@@ -13003,7 +12994,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-share',
+    command: '@animate-ui/icons-message-square-share',
   },
   'icons-message-square-text': {
     name: 'icons-message-square-text',
@@ -13048,7 +13039,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-text',
+    command: '@animate-ui/icons-message-square-text',
   },
   'icons-message-square-warning': {
     name: 'icons-message-square-warning',
@@ -13101,7 +13092,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-warning',
+    command: '@animate-ui/icons-message-square-warning',
   },
   'icons-message-square-x': {
     name: 'icons-message-square-x',
@@ -13152,7 +13143,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-message-square-x',
+    command: '@animate-ui/icons-message-square-x',
   },
   'icons-minimize': {
     name: 'icons-minimize',
@@ -13188,7 +13179,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-minimize',
+    command: '@animate-ui/icons-minimize',
   },
   'icons-move-down': {
     name: 'icons-move-down',
@@ -13224,7 +13215,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-move-down',
+    command: '@animate-ui/icons-move-down',
   },
   'icons-move-left': {
     name: 'icons-move-left',
@@ -13269,7 +13260,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-move-left',
+    command: '@animate-ui/icons-move-left',
   },
   'icons-move-right': {
     name: 'icons-move-right',
@@ -13314,7 +13305,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-move-right',
+    command: '@animate-ui/icons-move-right',
   },
   'icons-move-up': {
     name: 'icons-move-up',
@@ -13350,7 +13341,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-move-up',
+    command: '@animate-ui/icons-move-up',
   },
   'icons-paintbrush': {
     name: 'icons-paintbrush',
@@ -13394,7 +13385,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-paintbrush',
+    command: '@animate-ui/icons-paintbrush',
   },
   'icons-panel-bottom': {
     name: 'icons-panel-bottom',
@@ -13430,7 +13421,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-panel-bottom',
+    command: '@animate-ui/icons-panel-bottom',
   },
   'icons-panel-left': {
     name: 'icons-panel-left',
@@ -13466,7 +13457,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-panel-left',
+    command: '@animate-ui/icons-panel-left',
   },
   'icons-panel-right': {
     name: 'icons-panel-right',
@@ -13502,7 +13493,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-panel-right',
+    command: '@animate-ui/icons-panel-right',
   },
   'icons-panel-top': {
     name: 'icons-panel-top',
@@ -13538,7 +13529,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-panel-top',
+    command: '@animate-ui/icons-panel-top',
   },
   'icons-party-popper': {
     name: 'icons-party-popper',
@@ -13586,7 +13577,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-party-popper',
+    command: '@animate-ui/icons-party-popper',
   },
   'icons-pause': {
     name: 'icons-pause',
@@ -13622,7 +13613,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-pause',
+    command: '@animate-ui/icons-pause',
   },
   'icons-pickaxe': {
     name: 'icons-pickaxe',
@@ -13668,7 +13659,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-pickaxe',
+    command: '@animate-ui/icons-pickaxe',
   },
   'icons-pin': {
     name: 'icons-pin',
@@ -13704,7 +13695,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-pin',
+    command: '@animate-ui/icons-pin',
   },
   'icons-pin-off': {
     name: 'icons-pin-off',
@@ -13740,7 +13731,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-pin-off',
+    command: '@animate-ui/icons-pin-off',
   },
   'icons-play': {
     name: 'icons-play',
@@ -13776,7 +13767,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-play',
+    command: '@animate-ui/icons-play',
   },
   'icons-plus': {
     name: 'icons-plus',
@@ -13824,7 +13815,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-plus',
+    command: '@animate-ui/icons-plus',
   },
   'icons-refresh-ccw': {
     name: 'icons-refresh-ccw',
@@ -13868,7 +13859,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-refresh-ccw',
+    command: '@animate-ui/icons-refresh-ccw',
   },
   'icons-refresh-ccw-dot': {
     name: 'icons-refresh-ccw-dot',
@@ -13916,7 +13907,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-refresh-ccw-dot',
+    command: '@animate-ui/icons-refresh-ccw-dot',
   },
   'icons-refresh-cw': {
     name: 'icons-refresh-cw',
@@ -13960,7 +13951,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-refresh-cw',
+    command: '@animate-ui/icons-refresh-cw',
   },
   'icons-refresh-cw-off': {
     name: 'icons-refresh-cw-off',
@@ -14010,7 +14001,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-refresh-cw-off',
+    command: '@animate-ui/icons-refresh-cw-off',
   },
   'icons-rotate-ccw': {
     name: 'icons-rotate-ccw',
@@ -14062,7 +14053,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-rotate-ccw',
+    command: '@animate-ui/icons-rotate-ccw',
   },
   'icons-rotate-cw': {
     name: 'icons-rotate-cw',
@@ -14107,7 +14098,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-rotate-cw',
+    command: '@animate-ui/icons-rotate-cw',
   },
   'icons-search': {
     name: 'icons-search',
@@ -14143,7 +14134,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-search',
+    command: '@animate-ui/icons-search',
   },
   'icons-send': {
     name: 'icons-send',
@@ -14179,7 +14170,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-send',
+    command: '@animate-ui/icons-send',
   },
   'icons-send-horizontal': {
     name: 'icons-send-horizontal',
@@ -14215,7 +14206,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-send-horizontal',
+    command: '@animate-ui/icons-send-horizontal',
   },
   'icons-settings': {
     name: 'icons-settings',
@@ -14251,7 +14242,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-settings',
+    command: '@animate-ui/icons-settings',
   },
   'icons-shrink': {
     name: 'icons-shrink',
@@ -14287,7 +14278,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-shrink',
+    command: '@animate-ui/icons-shrink',
   },
   'icons-square-arrow-out-down-left': {
     name: 'icons-square-arrow-out-down-left',
@@ -14325,7 +14316,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-arrow-out-down-left',
+    command: '@animate-ui/icons-square-arrow-out-down-left',
   },
   'icons-square-arrow-out-down-right': {
     name: 'icons-square-arrow-out-down-right',
@@ -14363,7 +14354,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-arrow-out-down-right',
+    command: '@animate-ui/icons-square-arrow-out-down-right',
   },
   'icons-square-arrow-out-up-left': {
     name: 'icons-square-arrow-out-up-left',
@@ -14401,7 +14392,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-arrow-out-up-left',
+    command: '@animate-ui/icons-square-arrow-out-up-left',
   },
   'icons-square-arrow-out-up-right': {
     name: 'icons-square-arrow-out-up-right',
@@ -14448,7 +14439,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-arrow-out-up-right',
+    command: '@animate-ui/icons-square-arrow-out-up-right',
   },
   'icons-square-dashed-kanban': {
     name: 'icons-square-dashed-kanban',
@@ -14501,7 +14492,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-dashed-kanban',
+    command: '@animate-ui/icons-square-dashed-kanban',
   },
   'icons-square-kanban': {
     name: 'icons-square-kanban',
@@ -14552,7 +14543,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-kanban',
+    command: '@animate-ui/icons-square-kanban',
   },
   'icons-square-plus': {
     name: 'icons-square-plus',
@@ -14602,7 +14593,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-plus',
+    command: '@animate-ui/icons-square-plus',
   },
   'icons-square-x': {
     name: 'icons-square-x',
@@ -14650,7 +14641,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-square-x',
+    command: '@animate-ui/icons-square-x',
   },
   'icons-star': {
     name: 'icons-star',
@@ -14686,7 +14677,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-star',
+    command: '@animate-ui/icons-star',
   },
   'icons-terminal': {
     name: 'icons-terminal',
@@ -14722,7 +14713,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-terminal',
+    command: '@animate-ui/icons-terminal',
   },
   'icons-thumbs-down': {
     name: 'icons-thumbs-down',
@@ -14758,7 +14749,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-thumbs-down',
+    command: '@animate-ui/icons-thumbs-down',
   },
   'icons-thumbs-up': {
     name: 'icons-thumbs-up',
@@ -14794,7 +14785,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-thumbs-up',
+    command: '@animate-ui/icons-thumbs-up',
   },
   'icons-timer': {
     name: 'icons-timer',
@@ -14830,7 +14821,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-timer',
+    command: '@animate-ui/icons-timer',
   },
   'icons-timer-off': {
     name: 'icons-timer-off',
@@ -14866,7 +14857,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-timer-off',
+    command: '@animate-ui/icons-timer-off',
   },
   'icons-toggle-left': {
     name: 'icons-toggle-left',
@@ -14902,7 +14893,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-toggle-left',
+    command: '@animate-ui/icons-toggle-left',
   },
   'icons-toggle-right': {
     name: 'icons-toggle-right',
@@ -14938,7 +14929,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-toggle-right',
+    command: '@animate-ui/icons-toggle-right',
   },
   'icons-trash': {
     name: 'icons-trash',
@@ -14974,7 +14965,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-trash',
+    command: '@animate-ui/icons-trash',
   },
   'icons-trash-2': {
     name: 'icons-trash-2',
@@ -15010,7 +15001,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-trash-2',
+    command: '@animate-ui/icons-trash-2',
   },
   'icons-upload': {
     name: 'icons-upload',
@@ -15046,7 +15037,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-upload',
+    command: '@animate-ui/icons-upload',
   },
   'icons-user': {
     name: 'icons-user',
@@ -15082,7 +15073,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-user',
+    command: '@animate-ui/icons-user',
   },
   'icons-user-round': {
     name: 'icons-user-round',
@@ -15118,7 +15109,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-user-round',
+    command: '@animate-ui/icons-user-round',
   },
   'icons-users': {
     name: 'icons-users',
@@ -15154,7 +15145,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-users',
+    command: '@animate-ui/icons-users',
   },
   'icons-users-round': {
     name: 'icons-users-round',
@@ -15190,7 +15181,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-users-round',
+    command: '@animate-ui/icons-users-round',
   },
   'icons-volume-1': {
     name: 'icons-volume-1',
@@ -15226,7 +15217,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-volume-1',
+    command: '@animate-ui/icons-volume-1',
   },
   'icons-volume-2': {
     name: 'icons-volume-2',
@@ -15262,7 +15253,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-volume-2',
+    command: '@animate-ui/icons-volume-2',
   },
   'icons-volume-off': {
     name: 'icons-volume-off',
@@ -15298,7 +15289,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-volume-off',
+    command: '@animate-ui/icons-volume-off',
   },
   'icons-wifi': {
     name: 'icons-wifi',
@@ -15334,7 +15325,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-wifi',
+    command: '@animate-ui/icons-wifi',
   },
   'icons-wifi-high': {
     name: 'icons-wifi-high',
@@ -15370,7 +15361,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-wifi-high',
+    command: '@animate-ui/icons-wifi-high',
   },
   'icons-wifi-low': {
     name: 'icons-wifi-low',
@@ -15406,7 +15397,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-wifi-low',
+    command: '@animate-ui/icons-wifi-low',
   },
   'icons-x': {
     name: 'icons-x',
@@ -15453,7 +15444,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/icons-x',
+    command: '@animate-ui/icons-x',
   },
   'primitives-animate-avatar-group': {
     name: 'primitives-animate-avatar-group',
@@ -15494,7 +15485,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-avatar-group',
+    command: '@animate-ui/primitives-animate-avatar-group',
   },
   'primitives-animate-code-block': {
     name: 'primitives-animate-code-block',
@@ -15533,7 +15524,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-code-block',
+    command: '@animate-ui/primitives-animate-code-block',
   },
   'primitives-animate-counter': {
     name: 'primitives-animate-counter',
@@ -15577,7 +15568,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-counter',
+    command: '@animate-ui/primitives-animate-counter',
   },
   'primitives-animate-cursor': {
     name: 'primitives-animate-cursor',
@@ -15619,7 +15610,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-cursor',
+    command: '@animate-ui/primitives-animate-cursor',
   },
   'primitives-animate-github-stars': {
     name: 'primitives-animate-github-stars',
@@ -15663,7 +15654,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-github-stars',
+    command: '@animate-ui/primitives-animate-github-stars',
   },
   'primitives-animate-motion-grid': {
     name: 'primitives-animate-motion-grid',
@@ -15704,7 +15695,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-motion-grid',
+    command: '@animate-ui/primitives-animate-motion-grid',
   },
   'primitives-animate-pinned-list': {
     name: 'primitives-animate-pinned-list',
@@ -15743,7 +15734,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-pinned-list',
+    command: '@animate-ui/primitives-animate-pinned-list',
   },
   'primitives-animate-scroll-progress': {
     name: 'primitives-animate-scroll-progress',
@@ -15786,7 +15777,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-scroll-progress',
+    command: '@animate-ui/primitives-animate-scroll-progress',
   },
   'primitives-animate-slot': {
     name: 'primitives-animate-slot',
@@ -15825,7 +15816,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-slot',
+    command: '@animate-ui/primitives-animate-slot',
   },
   'primitives-animate-spring': {
     name: 'primitives-animate-spring',
@@ -15868,7 +15859,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-spring',
+    command: '@animate-ui/primitives-animate-spring',
   },
   'primitives-animate-tabs': {
     name: 'primitives-animate-tabs',
@@ -15911,7 +15902,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-tabs',
+    command: '@animate-ui/primitives-animate-tabs',
   },
   'primitives-animate-tooltip': {
     name: 'primitives-animate-tooltip',
@@ -15953,7 +15944,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-animate-tooltip',
+    command: '@animate-ui/primitives-animate-tooltip',
   },
   'primitives-base-accordion': {
     name: 'primitives-base-accordion',
@@ -15994,7 +15985,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-accordion',
+    command: '@animate-ui/primitives-base-accordion',
   },
   'primitives-base-checkbox': {
     name: 'primitives-base-checkbox',
@@ -16035,7 +16026,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-checkbox',
+    command: '@animate-ui/primitives-base-checkbox',
   },
   'primitives-base-collapsible': {
     name: 'primitives-base-collapsible',
@@ -16076,7 +16067,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-collapsible',
+    command: '@animate-ui/primitives-base-collapsible',
   },
   'primitives-base-files': {
     name: 'primitives-base-files',
@@ -16118,7 +16109,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-files',
+    command: '@animate-ui/primitives-base-files',
   },
   'primitives-base-popover': {
     name: 'primitives-base-popover',
@@ -16159,7 +16150,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-popover',
+    command: '@animate-ui/primitives-base-popover',
   },
   'primitives-base-preview-card': {
     name: 'primitives-base-preview-card',
@@ -16201,7 +16192,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-preview-card',
+    command: '@animate-ui/primitives-base-preview-card',
   },
   'primitives-base-progress': {
     name: 'primitives-base-progress',
@@ -16242,7 +16233,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-progress',
+    command: '@animate-ui/primitives-base-progress',
   },
   'primitives-base-switch': {
     name: 'primitives-base-switch',
@@ -16281,7 +16272,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-switch',
+    command: '@animate-ui/primitives-base-switch',
   },
   'primitives-base-toggle': {
     name: 'primitives-base-toggle',
@@ -16320,7 +16311,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-toggle',
+    command: '@animate-ui/primitives-base-toggle',
   },
   'primitives-base-toggle-group': {
     name: 'primitives-base-toggle-group',
@@ -16362,7 +16353,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-toggle-group',
+    command: '@animate-ui/primitives-base-toggle-group',
   },
   'primitives-base-tooltip': {
     name: 'primitives-base-tooltip',
@@ -16404,7 +16395,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-base-tooltip',
+    command: '@animate-ui/primitives-base-tooltip',
   },
   'primitives-buttons-button': {
     name: 'primitives-buttons-button',
@@ -16442,7 +16433,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-buttons-button',
+    command: '@animate-ui/primitives-buttons-button',
   },
   'primitives-buttons-flip': {
     name: 'primitives-buttons-flip',
@@ -16483,7 +16474,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-buttons-flip',
+    command: '@animate-ui/primitives-buttons-flip',
   },
   'primitives-buttons-liquid': {
     name: 'primitives-buttons-liquid',
@@ -16524,7 +16515,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-buttons-liquid',
+    command: '@animate-ui/primitives-buttons-liquid',
   },
   'primitives-buttons-ripple': {
     name: 'primitives-buttons-ripple',
@@ -16565,7 +16556,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-buttons-ripple',
+    command: '@animate-ui/primitives-buttons-ripple',
   },
   'primitives-effects-blur': {
     name: 'primitives-effects-blur',
@@ -16607,7 +16598,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-blur',
+    command: '@animate-ui/primitives-effects-blur',
   },
   'primitives-effects-effect': {
     name: 'primitives-effects-effect',
@@ -16649,7 +16640,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-effect',
+    command: '@animate-ui/primitives-effects-effect',
   },
   'primitives-effects-fade': {
     name: 'primitives-effects-fade',
@@ -16691,7 +16682,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-fade',
+    command: '@animate-ui/primitives-effects-fade',
   },
   'primitives-effects-highlight': {
     name: 'primitives-effects-highlight',
@@ -16730,7 +16721,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-highlight',
+    command: '@animate-ui/primitives-effects-highlight',
   },
   'primitives-effects-magnetic': {
     name: 'primitives-effects-magnetic',
@@ -16769,7 +16760,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-magnetic',
+    command: '@animate-ui/primitives-effects-magnetic',
   },
   'primitives-effects-particles': {
     name: 'primitives-effects-particles',
@@ -16810,7 +16801,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-particles',
+    command: '@animate-ui/primitives-effects-particles',
   },
   'primitives-effects-slide': {
     name: 'primitives-effects-slide',
@@ -16852,7 +16843,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-slide',
+    command: '@animate-ui/primitives-effects-slide',
   },
   'primitives-effects-zoom': {
     name: 'primitives-effects-zoom',
@@ -16894,7 +16885,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-effects-zoom',
+    command: '@animate-ui/primitives-effects-zoom',
   },
   'primitives-headless-checkbox': {
     name: 'primitives-headless-checkbox',
@@ -16933,7 +16924,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-headless-checkbox',
+    command: '@animate-ui/primitives-headless-checkbox',
   },
   'primitives-headless-dialog': {
     name: 'primitives-headless-dialog',
@@ -16972,7 +16963,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-headless-dialog',
+    command: '@animate-ui/primitives-headless-dialog',
   },
   'primitives-headless-disclosure': {
     name: 'primitives-headless-disclosure',
@@ -17011,7 +17002,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-headless-disclosure',
+    command: '@animate-ui/primitives-headless-disclosure',
   },
   'primitives-headless-popover': {
     name: 'primitives-headless-popover',
@@ -17050,7 +17041,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-headless-popover',
+    command: '@animate-ui/primitives-headless-popover',
   },
   'primitives-headless-switch': {
     name: 'primitives-headless-switch',
@@ -17089,7 +17080,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-headless-switch',
+    command: '@animate-ui/primitives-headless-switch',
   },
   'primitives-headless-tabs': {
     name: 'primitives-headless-tabs',
@@ -17131,7 +17122,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-headless-tabs',
+    command: '@animate-ui/primitives-headless-tabs',
   },
   'primitives-radix-accordion': {
     name: 'primitives-radix-accordion',
@@ -17173,7 +17164,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-accordion',
+    command: '@animate-ui/primitives-radix-accordion',
   },
   'primitives-radix-checkbox': {
     name: 'primitives-radix-checkbox',
@@ -17215,7 +17206,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-checkbox',
+    command: '@animate-ui/primitives-radix-checkbox',
   },
   'primitives-radix-collapsible': {
     name: 'primitives-radix-collapsible',
@@ -17256,7 +17247,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-collapsible',
+    command: '@animate-ui/primitives-radix-collapsible',
   },
   'primitives-radix-dialog': {
     name: 'primitives-radix-dialog',
@@ -17298,7 +17289,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-dialog',
+    command: '@animate-ui/primitives-radix-dialog',
   },
   'primitives-radix-dropdown-menu': {
     name: 'primitives-radix-dropdown-menu',
@@ -17341,7 +17332,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-dropdown-menu',
+    command: '@animate-ui/primitives-radix-dropdown-menu',
   },
   'primitives-radix-files': {
     name: 'primitives-radix-files',
@@ -17383,7 +17374,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-files',
+    command: '@animate-ui/primitives-radix-files',
   },
   'primitives-radix-hover-card': {
     name: 'primitives-radix-hover-card',
@@ -17425,7 +17416,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-hover-card',
+    command: '@animate-ui/primitives-radix-hover-card',
   },
   'primitives-radix-popover': {
     name: 'primitives-radix-popover',
@@ -17466,7 +17457,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-popover',
+    command: '@animate-ui/primitives-radix-popover',
   },
   'primitives-radix-progress': {
     name: 'primitives-radix-progress',
@@ -17505,7 +17496,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-progress',
+    command: '@animate-ui/primitives-radix-progress',
   },
   'primitives-radix-radio-group': {
     name: 'primitives-radix-radio-group',
@@ -17547,7 +17538,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-radio-group',
+    command: '@animate-ui/primitives-radix-radio-group',
   },
   'primitives-radix-sheet': {
     name: 'primitives-radix-sheet',
@@ -17587,7 +17578,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-sheet',
+    command: '@animate-ui/primitives-radix-sheet',
   },
   'primitives-radix-switch': {
     name: 'primitives-radix-switch',
@@ -17629,7 +17620,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-switch',
+    command: '@animate-ui/primitives-radix-switch',
   },
   'primitives-radix-tabs': {
     name: 'primitives-radix-tabs',
@@ -17670,7 +17661,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-tabs',
+    command: '@animate-ui/primitives-radix-tabs',
   },
   'primitives-radix-toggle': {
     name: 'primitives-radix-toggle',
@@ -17711,7 +17702,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-toggle',
+    command: '@animate-ui/primitives-radix-toggle',
   },
   'primitives-radix-toggle-group': {
     name: 'primitives-radix-toggle-group',
@@ -17753,7 +17744,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-toggle-group',
+    command: '@animate-ui/primitives-radix-toggle-group',
   },
   'primitives-radix-tooltip': {
     name: 'primitives-radix-tooltip',
@@ -17795,7 +17786,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-radix-tooltip',
+    command: '@animate-ui/primitives-radix-tooltip',
   },
   'primitives-texts-counting-number': {
     name: 'primitives-texts-counting-number',
@@ -17833,7 +17824,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-counting-number',
+    command: '@animate-ui/primitives-texts-counting-number',
   },
   'primitives-texts-gradient': {
     name: 'primitives-texts-gradient',
@@ -17871,7 +17862,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-gradient',
+    command: '@animate-ui/primitives-texts-gradient',
   },
   'primitives-texts-highlight': {
     name: 'primitives-texts-highlight',
@@ -17909,7 +17900,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-highlight',
+    command: '@animate-ui/primitives-texts-highlight',
   },
   'primitives-texts-rolling': {
     name: 'primitives-texts-rolling',
@@ -17947,7 +17938,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-rolling',
+    command: '@animate-ui/primitives-texts-rolling',
   },
   'primitives-texts-rotating': {
     name: 'primitives-texts-rotating',
@@ -17988,7 +17979,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-rotating',
+    command: '@animate-ui/primitives-texts-rotating',
   },
   'primitives-texts-scrolling-number': {
     name: 'primitives-texts-scrolling-number',
@@ -18029,7 +18020,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-scrolling-number',
+    command: '@animate-ui/primitives-texts-scrolling-number',
   },
   'primitives-texts-shimmering': {
     name: 'primitives-texts-shimmering',
@@ -18067,7 +18058,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-shimmering',
+    command: '@animate-ui/primitives-texts-shimmering',
   },
   'primitives-texts-sliding-number': {
     name: 'primitives-texts-sliding-number',
@@ -18105,7 +18096,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-sliding-number',
+    command: '@animate-ui/primitives-texts-sliding-number',
   },
   'primitives-texts-splitting': {
     name: 'primitives-texts-splitting',
@@ -18143,7 +18134,7 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-splitting',
+    command: '@animate-ui/primitives-texts-splitting',
   },
   'primitives-texts-typing': {
     name: 'primitives-texts-typing',
@@ -18184,6 +18175,6 @@ export const index: Record<string, any> = {
       LazyComp.demoProps = {};
       return LazyComp;
     })(),
-    command: 'https://animate-ui.com/r/primitives-texts-typing',
+    command: '@animate-ui/primitives-texts-typing',
   },
 };
