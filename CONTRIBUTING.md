@@ -1,8 +1,53 @@
 # Contributing to Animate UI
 
-Thank you for your interest in **contributing to Animate UI**! Your support is highly appreciated, and we look forward to your contributions. This guide will help you understand the project structure and provide detailed instructions for adding a new component or effect to Animate UI.
+Thank you for your interest in **contributing to Animate UI**! Your support is highly appreciated, and we look forward to your contributions. This guide will help you understand the project structure and provide detailed instructions for adding a new component to Animate UI.
 
-**Note:** You only need to modify a few files to add a new component, and it should take you around 10 minutes to complete.
+## Introduction
+
+This repository is a monorepo.
+
+- We use [pnpm](https://pnpm.io) and [workspaces](https://pnpm.io/workspaces) for development.
+- We use [Turborepo](https://turbo.build/repo) as our build system.
+
+## Structure
+
+This repository is structured as follows:
+
+```
+apps
+└── www
+    ├── app
+    ├── components
+    ├── content
+    ├── lib
+    └── registry
+        ├── components
+        │   ├── animate (Animate UI Components)
+        │   ├── backgrounds
+        │   ├── base (Base UI Components)
+        │   ├── buttons
+        │   ├── community (Community Components)
+        │   ├── headless (Headless UI Components)
+        │   └── radix (Radix UI Components)
+        ├── demo
+        │   ├── components
+        │   └── primitives
+        ├── hooks
+        ├── icons
+        ├── lib
+        └── primitives
+            ├── animate (Animate UI Primitives)
+            ├── base (Base UI Primitives)
+            ├── buttons
+            ├── effects
+            ├── headless (Headless UI Primitives)
+            ├── radix (Radix UI Primitives)
+            └── texts
+packages
+├── eslint-config
+├── typescript-config
+└── ui (Internal UI components)
+```
 
 ## Getting Started
 
@@ -42,64 +87,57 @@ pnpm i
 pnpm dev
 ```
 
-## Edit a Component
+## Components
 
-If you need to modify a component to correct or improve it, you must :
+We use the shadcn/ui registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by categories.
 
-- add a screenshot (photo or video as appropriate) of before and after the modification
-- clearly explain why you made the modification
+Each component is in a folder organized as follows:
 
-### Edit the code
-
-Edit the component in the `registry` folder. Don't forget to adapt the demo and documentation if necessary.
-
-You shouldn't change your behavior completely unless there's a good reason.
-
-### Build the Registry
-
-To update the registry, run the following command:
-
-```bash
-pnpm registry:build
+```
+my-component
+├── index.tsx (the component code)
+└── registry-item.json (information for the shadcn registry)
 ```
 
-## Adding a New Component
+### Primitives
 
-The addition of a new component must comply with certain rules:
+Primitives are unstyled components to which we add animations.
 
-- The component must be animated in some way (css, motion, ...).
-- You can't just copy/paste component code from other libraries. You can be inspired by a component, but it must have added value. For example, I took Shadcn's components and animated them. So I didn't copy and paste the component, I added something to it.
-- If you take inspiration from a component (CodePen, another library, etc.), remember to add the “Credits” section to your documentation. It's important to respect the work of other developers.
+When adding or modifying primitive, please ensure that:
 
-To submit your component, please include a demo video in the MR. Once the component has been submitted, it must be validated by @imskyleen.
+1. You have modified or created the associated component.
+2. You have modified or created the associated documentation.
+3. You have created or modified the demo(s).
+4. You run `pnpm registry:build` to update the registry.
 
-To **add a new component to Animate UI**, you will need to update several files. Follow these steps:
+### Components
 
-### Create the Component
+The components use animated primitives (except for certain components such as backgrounds) and are styled with Tailwind.
 
-#### Basics
+When adding or modifying a component, please ensure that:
 
-Create your main component in `apps/www/registry/[category]/my-component/index.tsx`.
+1. You have modified or created the associated primitive.
+2. You have modified or created the associated documentation.
+3. You have created or modified the demo(s).
+4. You run `pnpm registry:build` to update the registry.
 
-```tsx title="my-component/index.tsx"
-'use client';
+### Icons
 
-import * as React from 'react';
+We exclusively animate icons from [Lucide Icons](https://lucide.dev/icons/).
 
-type MyComponentProps = {
-  myProps: string;
-} & React.ComponentProps<'div'>;
+When adding or modifying an icon, please ensure that:
 
-function MyComponent({ myProps, ...props }) {
-  return <div {...props}>{/* Your component */}</div>;
-}
+1. You animated an icon Lucide Icons.
+2. You have correctly filled in the same categories as Lucide Icons in the `registry-item.json` file.
+3. You run `pnpm registry:build` to update the registry.
 
-export { MyComponent, type MyComponentProps };
-```
+**Note: You don't need to create documentation or make a demo for the icons.**
 
-#### Registry item
+### Registry Item
 
-Create a `apps/www/registry/[category]/my-component/registry-item.json` file to export your component :
+The registry-item.json file is required to make the component available in the registry.
+
+This is what it should look like:
 
 ```json title="my-component/registry-item.json"
 {
@@ -109,87 +147,38 @@ Create a `apps/www/registry/[category]/my-component/registry-item.json` file to 
   "title": "My Component",
   "description": "My Component Description",
   "dependencies": [...],
+  "registryDependencies": [...],
   "devDependencies": [...],
   "files": [
     {
-      "path": "registry/[category]/my-component/index.tsx",
+      "path": "registry/[primitives/components/icons]/[category]/my-component/index.tsx",
       "type": "registry:ui",
-      "target": "components/animate-ui/demo/[category]/my-component.tsx"
+      "target": "components/animate-ui/[primitives/components/icons]/[category]/my-component.tsx"
     }
   ]
 }
 ```
 
-### Create a demo
+[Click here](https://ui.shadcn.com/docs/registry/registry-item-json) to see the `registry-item.json` documentation.
 
-#### Basics
+### Demo
 
-Create your demo in `apps/www/registry/demo/[category]/my-component/index.tsx`.
+A demo is required to make your component visible in the Animate UI documentation.
 
-```tsx title="my-component/index.tsx"
-'use client';
+The demo is structured as a component, but is located in the demo folder.
 
-import {
-  MyComponent,
-  type MyComponentProps,
-} from '@/registry/[category]/my-component';
-
-type MyComponentDemoProps = {
-  myProps: string;
-} & MyComponentProps;
-
-export const MyComponentDemo = ({ myProps }) => {
-  return <MyComponent myProps={myProps} />;
-};
 ```
-
-#### Registry item
-
-```json title="my-component/registry-item.json"
-{
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "my-component-demo",
-  "type": "registry:ui",
-  "title": "My Component Deo",
-  "description": "Demo showing my component",
-  "registryDependencies": ["https://animate-ui.com/r/my-component"],
-  "files": [
-    {
-      "path": "registry/demo/[category]/my-component/index.tsx",
-      "type": "registry:ui",
-      "target": "components/[category]/demo/my-component.tsx"
-    }
-  ]
-}
+demo
+└── [primitives/components]
+    └── [category]
+        └── my-component
+            ├── index.tsx (the demo component code)
+            └── registry-item.json (information for the shadcn registry)
 ```
 
 #### Add a Tweakpane
 
-You can add a Tweakpane allowing users to play with your demo props.
-
-Your demo must accept the props you want in your tweakpane :
-
-```tsx title="my-component-demo/index.tsx"
-import { MyComponent } from '@/registry/[category]/my-component';
-
-type MyComponentDemoProps = {
-  props1: number;
-  props2: number;
-  props3: string;
-  props4: string;
-  props5: boolean;
-};
-
-export function MyComponentDemo({
-  props1,
-  props2,
-  props3,
-  props4,
-  props5,
-}: MyComponentDemoProps) {
-  return <MyComponent />;
-}
-```
+You can add a Tweakpane allowing users to play with your demo props. Your demo must accept the props you want in your tweakpane.
 
 You must then specify the demo props information in your demo's `registry-item.json` file:
 
@@ -220,7 +209,7 @@ You must then specify the demo props information in your demo's `registry-item.j
 
 **You need to run `pnpm registry:build` to see the updated tweakpane in the demo.**
 
-#### How to use `demoProps`
+So, how to use `demoProps`?
 
 ##### Number
 
@@ -276,25 +265,34 @@ Select:
 "myBoolean": { "value": true }
 ```
 
-### Update the Documentation Sidebar
+### Documentation
 
-Add your component to the documentation sidebar by updating the file `content/docs/meta.json`.
+The documentation is located in the `apps/www/content` folder and follows a structure similar to the registry folder.
 
-```json title="meta.json"
-{
-  "title": "Animate UI",
-  "root": true,
-  "pages": [
-    ...,
-    "[category]/my-component"
-    ...
-  ]
-}
+```
+apps
+└── www
+    └── content
+        ├── components
+        │   ├── animate
+        │   ├── backgrounds
+        │   ├── base
+        │   ├── buttons
+        │   ├── community
+        │   ├── headless
+        │   └── radix
+        ├── icons
+        └── primitives
+            ├── animate
+            ├── base
+            ├── buttons
+            ├── effects
+            ├── headless
+            ├── radix
+            └── texts
 ```
 
-### Create the Component Documentation
-
-Create an MDX file to document your component in `content/docs/[category]/my-component.mdx`.
+Voici un exemple:
 
 ```mdx
 ---
@@ -306,7 +304,7 @@ author:
 new: true
 ---
 
-<ComponentPreview name="my-component-demo" />
+<ComponentPreview name="demo-my-component" />
 
 ## Installation
 
@@ -316,7 +314,9 @@ new: true
 
 [Basic usage of the component]
 
-## Props
+## API Reference
+
+### MyComponent
 
 <TypeTable
   type={{
@@ -331,14 +331,6 @@ new: true
 ## Credits
 
 - Credits to [you](https://link-to-your-profile.com) for creating the component
-```
-
-### Build the Registry
-
-To update the registry, run the following command:
-
-```bash
-pnpm registry:build
 ```
 
 ## Ask for Help
