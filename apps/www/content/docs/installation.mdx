@@ -24,12 +24,31 @@ npx shadcn@latest init
 </Step>
 <Step>
 
+### Add @animate-ui in your components.json
+
+```json title="components.json"
+{
+  "registries": {
+    "@animate-ui": "https://animate-ui.com/r/{name}.json"
+  }
+}
+```
+
+<Callout type="info">
+  **Note:** This step should soon no longer be necessary manually. We have
+  submitted a PR to add @animate-ui as a trusted repository. See the [PR
+  here](https://github.com/shadcn-ui/ui/pull/8162).
+</Callout>
+
+</Step>
+<Step>
+
 ### Add Components
 
 Run the `add` command to add a component to your project.
 
 ```bash
-npx shadcn@latest add "https://animate-ui.com/r/writing-text"
+npx shadcn@latest add @animate-ui/primitives-texts-sliding-number
 ```
 
 </Step>
@@ -40,12 +59,12 @@ npx shadcn@latest add "https://animate-ui.com/r/writing-text"
 Import the component to your project.
 
 ```tsx
-import { WritingText } from '@/components/animate-ui/writing-text';
+import { SlidingNumber } from '@/components/animate-ui/primitives/texts/sliding-number';
 
 export default function Home() {
   return (
     <div>
-      <WritingText />
+      <SlidingNumber />
     </div>
   );
 }

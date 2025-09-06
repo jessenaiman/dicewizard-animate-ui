@@ -15,3 +15,197 @@ Animate UI is now divided into three parts:
 - **Icons**: Animated icons based on Lucide Icons.
 
 **All components have been reworked** to be improved and optimized.
+
+<Callout type="info">
+  **Note:** This update contains significant changes compared to the last beta
+  version. As Animate UI is no longer in beta, this structure should remain
+  stable over time. We recommend that you use only the components in this new
+  version.
+</Callout>
+
+### Primitives
+
+**Animate UI**:
+
+- New `AvatarGroup` primitive.
+- New `CodeBlock` primitive.
+- New `Counter` primitive.
+- New `Cursor` primitive.
+- New `GithubStars` primitive.
+- New `MotionGrid` primitive.
+- New `PinnedList` primitive.
+- New `ScrollProgress` primitive.
+- New `Slot` primitive.
+- New `Spring` primitive.
+- New `Tabs` primitive.
+- New `Tooltip` primitive.
+
+**Radix UI**:
+
+- New `Accordion` primitive.
+- New `Checkbox` primitive.
+- New `Collapsible` primitive.
+- New `Dialog` primitive.
+- New `DropdownMenu` primitive.
+- New `Files` primitive.
+- New `HoverCard` primitive.
+- New `Popover` primitive.
+- New `Progress` primitive.
+- New `RadioGroup` primitive.
+- New `Sheet` primitive.
+- New `Sidebar` primitive.
+- New `Switch` primitive.
+- New `Tabs` primitive.
+- New `Toggle` primitive.
+- New `ToggleGroup` primitive.
+- New `Tooltip` primitive.
+
+**Base UI**:
+
+- New `Accordion` primitive.
+- New `Checkbox` primitive.
+- New `Collapsible` primitive.
+- New `Files` primitive.
+- New `Popover` primitive.
+- New `PreviewCard` primitive.
+- New `Progress` primitive.
+- New `Switch` primitive.
+- New `Toggle` primitive.
+- New `ToggleGroup` primitive.
+- New `Tooltip` primitive.
+
+**Headless UI**:
+
+- New `Checkbox` primitive.
+- New `Dialog` primitive.
+- New `Disclosure` primitive.
+- New `Popover` primitive.
+- New `Switch` primitive.
+- New `Tabs` primitive.
+
+**Buttons**:
+
+- New `Button` primitive.
+- New `Flip` primitive.
+- New `Liquid` primitive.
+- New `Ripple` primitive.
+
+**Texts**:
+
+- New `ScrollingNumber` primitive.
+
+_All other texts have been updated to be optimized and fix some bugs._
+
+**Effects**:
+
+- New `Blur` primitive.
+- New `Fade` primitive.
+- New `Particles` primitive.
+- New `Slide` primitive.
+- New `Zoom` primitive.
+
+_All other effects have been updated to be optimized and fix some bugs._
+
+### Components
+
+**Animate UI**:
+
+_All components have been reworked to use the new animated primitives._
+
+**Radix UI**:
+
+- New `Toggle` component.
+
+_All other components have been reworked to use the new animated primitives._
+
+**Base UI**:
+
+- New `Files` component.
+- New `Toggle` component.
+
+_All other components have been reworked to use the new animated primitives._
+
+**Headless UI**:
+
+_All components have been reworked to use the new animated primitives._
+
+**Buttons**:
+
+- New `Button` component.
+
+_All other components have been reworked to use the new animated primitives._
+
+**Backgrounds**:
+
+_No changes to backgrounds._
+
+**Community**:
+
+The new community category contains animated components contributed by the community. Unlike other Animate UI components, they aren’t required to use our primitives, so their APIs may vary and some may offer limited configuration (few or no props).
+
+The goal is to make it easy for anyone to publish and share animated components with the community.
+
+### Icons
+
+The `AnimateIcon` wrapper has been updated to fix some bugs and add 4 new props:
+
+- `animateOnView`
+- `animateOnViewMargin`
+- `animateOnViewOnce`
+- `delay`
+
+There are **24 new icons**:
+
+- `accessibility`
+- `airplay`
+- `binary`
+- `terminal`
+- `badge-check`
+- `cast`
+- `cctv`
+- `chart-bar`
+- `chart-bar-increasing`
+- `chart-bar-decreasing`
+- `chart-column`
+- `chart-column-increasing`
+- `chart-column-decreasing`
+- `chart-line`
+- `chart-no-axes-column`
+- `chart-no-axes-column-increasing`
+- `chart-no-axes-column-decreasing`
+- `chart-scatter`
+- `chart-spline`
+- `contrast`
+- `cross`
+- `ellipsis`
+- `ellipsis-vertical`
+- `party-popper`
+
+### Changelog
+
+Now, all changes will be detailed month by month on this page for greater transparency.
+In addition, each time components/primitives are updated, a changelog section will be added to the relevant documentation page.
+
+### Roadmap
+
+We have added a roadmap page to give you more visibility into the future of Animate UI. This may evolve over time.
+
+See the [roadmap page here](./roadmap).
+
+### Shadcn CLI V3
+
+We have updated our installation method to use the new feature of CLI shadcn/ui version 3. Now, to install a component, you can use `@animate-ui/[type]-[category]-[name]`. For example, to install the Base UI accordion primitive, you can use `@animate-ui/primitives-base-accordion`.
+
+See the [getting started guide here](./installation).
+
+### MCP
+
+We have updated the MCP page to show you how to use the MCP shadcn/ui with Animate UI.
+
+See the [MCP page here](./mcp).
+
+### Other animated distributions
+
+We have added a page to show you other animated distributions that you can use with Animate UI.
+
+See the [other animated distributions page here](./other-animated-distributions).

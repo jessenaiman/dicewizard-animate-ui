@@ -5,7 +5,11 @@ beta: true
 ---
 
 import { Icons } from '@/components/docs/icons';
+import { IconsFallback } from '@/components/docs/icons-fallback';
+import { Suspense } from 'react';
 
 ## List of icons
 
-<Icons />
+<Suspense fallback={<IconsFallback />}>
+  <Icons />
+</Suspense>
