@@ -6,6 +6,7 @@ interface SlidingNumberDemoProps {
   padStart: boolean;
   decimalSeparator: string;
   decimalPlaces: number;
+  thousandSeparator: string;
   delay: number;
 }
 
@@ -15,6 +16,7 @@ export const SlidingNumberDemo = ({
   padStart,
   decimalSeparator,
   decimalPlaces,
+  thousandSeparator,
   delay,
 }: SlidingNumberDemoProps) => {
   return (
@@ -26,6 +28,7 @@ export const SlidingNumberDemo = ({
       padStart={padStart}
       decimalSeparator={decimalSeparator}
       decimalPlaces={decimalPlaces}
+      thousandSeparator={thousandSeparator}
       className="text-4xl font-semibold"
     />
   );

@@ -27,10 +27,13 @@
           "value": true
         },
         "decimalSeparator": {
-          "value": "."
+          "value": ","
         },
         "decimalPlaces": {
           "value": 0
+        },
+        "thousandSeparator": {
+          "value": "."
         },
         "delay": {
           "value": 0,

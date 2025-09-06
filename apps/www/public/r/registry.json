@@ -639,6 +639,24 @@
       ]
     },
     {
+      "name": "components-community-share-button",
+      "type": "registry:ui",
+      "title": "Share Button",
+      "description": "This is a button for sharing.",
+      "dependencies": [
+        "motion",
+        "lucide-react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/components/community/share-button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/community/share-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-community-user-presence-avatar",
       "type": "registry:ui",
       "title": "User Presence Avatar",
@@ -2225,6 +2243,44 @@
           "target": "components/animate-ui/demo/components/community/playful-todolist.tsx"
         }
       ]
+    },
+    {
+      "name": "demo-components-community-share-button",
+      "type": "registry:ui",
+      "title": "Share Button Demo",
+      "description": "Demo showing a share button.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/components-community-share-button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/community/share-button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/community/share-button.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "ShareButton": {
+            "size": {
+              "value": "default",
+              "options": {
+                "default": "default",
+                "sm": "sm",
+                "md": "md",
+                "lg": "lg"
+              }
+            },
+            "icon": {
+              "value": "prefix",
+              "options": {
+                "prefix": "prefix",
+                "suffix": "suffix"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-components-community-user-presence-avatar",
@@ -5023,10 +5079,13 @@
               "value": true
             },
             "decimalSeparator": {
-              "value": "."
+              "value": ","
             },
             "decimalPlaces": {
               "value": 0
+            },
+            "thousandSeparator": {
+              "value": "."
             },
             "delay": {
               "value": 0,
