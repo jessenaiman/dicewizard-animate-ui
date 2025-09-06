@@ -45,7 +45,17 @@ const NEW_ICONS = [
   'icons-badge-check',
   'icons-cast',
   'icons-cctv',
+  'icons-chart-bar',
+  'icons-chart-bar-increasing',
+  'icons-chart-bar-decreasing',
+  'icons-chart-column',
+  'icons-chart-column-increasing',
+  'icons-chart-column-decreasing',
   'icons-chart-line',
+  'icons-chart-no-axes-column',
+  'icons-chart-no-axes-column-decreasing',
+  'icons-chart-no-axes-column-increasing',
+  'icons-chart-scatter',
   'icons-chart-spline',
   'icons-contrast',
   'icons-cross',
@@ -112,7 +122,7 @@ export const Icons = () => {
         {NEW_ICONS.length ? (
           <span>
             •{' '}
-            <span className="text-blue-500">{`${NEW_ICONS.length} new icons`}</span>
+            <span className="text-foreground">{`${NEW_ICONS.length} new icons`}</span>
           </span>
         ) : (
           ''
@@ -131,7 +141,7 @@ export const Icons = () => {
             <TooltipProvider>
               <Highlight
                 hover
-                className="absolute inset-0 ring-2 ring-blue-500 bg-transparent rounded-lg -z-1"
+                className="absolute inset-0 ring-2 ring-foreground bg-transparent rounded-lg -z-1"
               >
                 {filteredIcons.map((icon) => {
                   const animationsLength = Object.keys(
@@ -158,15 +168,16 @@ export const Icons = () => {
                               <div
                                 className={cn(
                                   'absolute inset-0 bg-muted rounded-lg -z-2 transition-colors duration-200',
-                                  activeIcon === icon.name && 'bg-blue-500/20',
+                                  activeIcon === icon.name &&
+                                    'bg-foreground/20',
                                 )}
                               />
 
                               {NEW_ICONS.includes(icon.name) && (
-                                <div className="absolute -top-1 -right-1 size-2.5 border border-background bg-blue-500 rounded-full" />
+                                <div className="absolute -top-1 -right-1 size-2.5 border border-background bg-foreground rounded-full" />
                               )}
 
-                              <div className="absolute z-10 -bottom-2.5 -right-2.5 flex items-center justify-center text-muted-foreground font-medium size-5 bg-background border group-hover:border-blue-500 group-hover:ring group-hover:ring-blue-500 transition-colors duration-200 rounded-full">
+                              <div className="absolute z-10 -bottom-2.5 -right-2.5 flex items-center justify-center text-muted-foreground font-medium size-5 bg-background border group-hover:border-foreground group-hover:ring group-hover:ring-foreground transition-colors duration-200 rounded-full">
                                 <span className="text-[11px] leading-none">
                                   {totalAnimationsLength}
                                 </span>
@@ -291,7 +302,7 @@ export const Icons = () => {
             <div className="space-y-4">
               {activeIcon && (
                 <>
-                  <div className="relative h-[180px] w-full mx-auto rounded-2xl aspect-square bg-muted/50 border flex items-center justify-center">
+                  <div className="relative h-[150px] w-full mx-auto rounded-2xl aspect-square bg-muted/50 border flex items-center justify-center">
                     {icon?.component && (
                       <icon.component
                         key={`${activeAnimation}-${activeIcon}-${animationKey}`}

@@ -325,7 +325,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/animate/tooltip.tsx',
         content:
-          "import * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport {\n  TooltipProvider as TooltipProviderPrimitive,\n  Tooltip as TooltipPrimitive,\n  TooltipTrigger as TooltipTriggerPrimitive,\n  TooltipContent as TooltipContentPrimitive,\n  TooltipArrow as TooltipArrowPrimitive,\n  type TooltipProviderProps as TooltipProviderPrimitiveProps,\n  type TooltipProps as TooltipPrimitiveProps,\n  type TooltipTriggerProps as TooltipTriggerPrimitiveProps,\n  type TooltipContentProps as TooltipContentPrimitiveProps,\n} from '@/components/animate-ui/primitives/animate/tooltip';\nimport { cn } from '@/lib/utils';\n\ntype TooltipProviderProps = TooltipProviderPrimitiveProps;\n\nfunction TooltipProvider({ openDelay = 0, ...props }: TooltipProviderProps) {\n  return <TooltipProviderPrimitive openDelay={openDelay} {...props} />;\n}\n\ntype TooltipProps = TooltipPrimitiveProps;\n\nfunction Tooltip({ sideOffset = 10, ...props }: TooltipProps) {\n  return <TooltipPrimitive sideOffset={sideOffset} {...props} />;\n}\n\ntype TooltipTriggerProps = TooltipTriggerPrimitiveProps;\n\nfunction TooltipTrigger({ ...props }: TooltipTriggerProps) {\n  return <TooltipTriggerPrimitive {...props} />;\n}\n\ntype TooltipContentProps = Omit<TooltipContentPrimitiveProps, 'asChild'> & {\n  children: React.ReactNode;\n  layout?: boolean | 'position' | 'size' | 'preserve-aspect';\n};\n\nfunction TooltipContent({\n  className,\n  children,\n  layout = 'preserve-aspect',\n  ...props\n}: TooltipContentProps) {\n  return (\n    <TooltipContentPrimitive\n      className={cn(\n        'bg-primary text-primary-foreground z-50 w-fit rounded-md px-3 py-1.5 text-xs text-balance',\n        className,\n      )}\n      {...props}\n    >\n      <motion.div layout={layout} className=\"overflow-hidden\">\n        {children}\n      </motion.div>\n      <TooltipArrowPrimitive\n        className=\"fill-primary size-3 data-[side='bottom']:translate-y-[1px] data-[side='right']:translate-x-[1px] data-[side='left']:translate-x-[-1px] data-[side='top']:translate-y-[-1px]\"\n        tipRadius={2}\n      />\n    </TooltipContentPrimitive>\n  );\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipContentProps,\n};",
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport {\n  TooltipProvider as TooltipProviderPrimitive,\n  Tooltip as TooltipPrimitive,\n  TooltipTrigger as TooltipTriggerPrimitive,\n  TooltipContent as TooltipContentPrimitive,\n  TooltipArrow as TooltipArrowPrimitive,\n  type TooltipProviderProps as TooltipProviderPrimitiveProps,\n  type TooltipProps as TooltipPrimitiveProps,\n  type TooltipTriggerProps as TooltipTriggerPrimitiveProps,\n  type TooltipContentProps as TooltipContentPrimitiveProps,\n} from '@/components/animate-ui/primitives/animate/tooltip';\nimport { cn } from '@/lib/utils';\n\ntype TooltipProviderProps = TooltipProviderPrimitiveProps;\n\nfunction TooltipProvider({ openDelay = 0, ...props }: TooltipProviderProps) {\n  return <TooltipProviderPrimitive openDelay={openDelay} {...props} />;\n}\n\ntype TooltipProps = TooltipPrimitiveProps;\n\nfunction Tooltip({ sideOffset = 10, ...props }: TooltipProps) {\n  return <TooltipPrimitive sideOffset={sideOffset} {...props} />;\n}\n\ntype TooltipTriggerProps = TooltipTriggerPrimitiveProps;\n\nfunction TooltipTrigger({ ...props }: TooltipTriggerProps) {\n  return <TooltipTriggerPrimitive {...props} />;\n}\n\ntype TooltipContentProps = Omit<TooltipContentPrimitiveProps, 'asChild'> & {\n  children: React.ReactNode;\n  layout?: boolean | 'position' | 'size' | 'preserve-aspect';\n};\n\nfunction TooltipContent({\n  className,\n  children,\n  layout = 'preserve-aspect',\n  ...props\n}: TooltipContentProps) {\n  return (\n    <TooltipContentPrimitive\n      className={cn(\n        'z-50 w-fit bg-primary text-primary-foreground rounded-md',\n        className,\n      )}\n      {...props}\n    >\n      <motion.div className=\"overflow-hidden px-3 py-1.5 text-xs text-balance\">\n        <motion.div layout={layout}>{children}</motion.div>\n      </motion.div>\n      <TooltipArrowPrimitive\n        className=\"fill-primary size-3 data-[side='bottom']:translate-y-[1px] data-[side='right']:translate-x-[1px] data-[side='left']:translate-x-[-1px] data-[side='top']:translate-y-[-1px]\"\n        tipRadius={2}\n      />\n    </TooltipContentPrimitive>\n  );\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipTrigger,\n  TooltipContent,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipContentProps,\n};",
       },
     ],
     keywords: [],
@@ -9568,6 +9568,230 @@ export const index: Record<string, any> = {
     })(),
     command: '@animate-ui/icons-cctv',
   },
+  'icons-chart-bar': {
+    name: 'icons-chart-bar',
+    description: 'Chart bar icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-bar/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-bar.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartBarProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  increasing: {\n    path1: {\n      initial: { d: 'M7 6h3' },\n      animate: {\n        d: 'M7 6h3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M7 11h12' },\n      animate: {\n        d: 'M7 11h8',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M7 16h8' },\n      animate: {\n        d: 'M7 16h12',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: 'M7 6h3' },\n      animate: {\n        d: 'M7 6h12',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M7 11h12' },\n      animate: {\n        d: 'M7 11h8',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M7 16h8' },\n      animate: {\n        d: 'M7 16h3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartBarProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M7 6h3\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M7 11h12\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M7 16h8\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M3 3v16a2 2 0 0 0 2 2h16\"\n        variants={variants.path4}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartBar(props: ChartBarProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartBar,\n  ChartBar as ChartBarIcon,\n  type ChartBarProps,\n  type ChartBarProps as ChartBarIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/chart-bar/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-bar';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-bar',
+  },
+  'icons-chart-bar-decreasing': {
+    name: 'icons-chart-bar-decreasing',
+    description: 'Chart bar decreasing icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-bar-decreasing/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-bar-decreasing.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartBarDecreasingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: 'M7 6h12' },\n      animate: {\n        d: 'M7 6h3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M7 11h8' },\n      animate: {\n        d: 'M7 11h8',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M7 16h3' },\n      animate: {\n        d: 'M7 16h12',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartBarDecreasingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M7 6h12\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M7 11h8\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M7 16h3\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M3 3v16a2 2 0 0 0 2 2h16\"\n        variants={variants.path4}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartBarDecreasing(props: ChartBarDecreasingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartBarDecreasing,\n  ChartBarDecreasing as ChartBarDecreasingIcon,\n  type ChartBarDecreasingProps,\n  type ChartBarDecreasingProps as ChartBarDecreasingIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph', 'trending down'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-bar-decreasing/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-bar-decreasing';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-bar-decreasing',
+  },
+  'icons-chart-bar-increasing': {
+    name: 'icons-chart-bar-increasing',
+    description: 'Chart bar increasing icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-bar-increasing/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-bar-increasing.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartBarIncreasingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: 'M7 6h3' },\n      animate: {\n        d: 'M7 6h12',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M7 11h8' },\n      animate: {\n        d: 'M7 11h8',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M7 16h12' },\n      animate: {\n        d: 'M7 16h3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartBarIncreasingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M7 6h3\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M7 11h8\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M7 16h12\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M3 3v16a2 2 0 0 0 2 2h16\"\n        variants={variants.path4}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartBarIncreasing(props: ChartBarIncreasingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartBarIncreasing,\n  ChartBarIncreasing as ChartBarIncreasingIcon,\n  type ChartBarIncreasingProps,\n  type ChartBarIncreasingProps as ChartBarIncreasingIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph', 'trending up'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-bar-increasing/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-bar-increasing';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-bar-increasing',
+  },
+  'icons-chart-column': {
+    name: 'icons-chart-column',
+    description: 'Chart column icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-column/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-column.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartColumnProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  increasing: {\n    path1: {\n      initial: { d: 'M8 17V13' },\n      animate: {\n        d: 'M8 17V13',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M13 17V5' },\n      animate: {\n        d: 'M13 17V9',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M18 17V9' },\n      animate: {\n        d: 'M18 17V5',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: 'M8 17V13' },\n      animate: {\n        d: 'M8 17V5',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M13 17V5' },\n      animate: {\n        d: 'M13 17V9',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M18 17V9' },\n      animate: {\n        d: 'M18 17V13',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartColumnProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M8 17V13\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M13 17V5\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M18 17V9\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M3 3v16a2 2 0 0 0 2 2h16\"\n        variants={variants.path4}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartColumn(props: ChartColumnProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartColumn,\n  ChartColumn as ChartColumnIcon,\n  type ChartColumnProps,\n  type ChartColumnProps as ChartColumnIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/chart-column/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-column';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-column',
+  },
+  'icons-chart-column-decreasing': {
+    name: 'icons-chart-column-decreasing',
+    description: 'Chart column decreasing icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-column-decreasing/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-column-decreasing.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartColumnDecreasingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: \'easeInOut\',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  \'default-loop\': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: \'easeInOut\',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  increasing: {\n    path1: {\n      initial: { d: \'M8 17V5\' },\n      animate: {\n        d: \'M8 17V13\',\n        transition: { duration: 0.5, ease: \'easeInOut\' },\n      },\n    },\n    path2: {},\n    path3: {\n      initial: { d: \'M18 17V13\' },\n      animate: {\n        d: \'M18 17V5\',\n        transition: { duration: 0.5, ease: \'easeInOut\' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartColumnDecreasingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M8 17V5"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M13 17V9"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M18 17V13"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartColumnDecreasing(props: ChartColumnDecreasingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartColumnDecreasing,\n  ChartColumnDecreasing as ChartColumnDecreasingIcon,\n  type ChartColumnDecreasingProps,\n  type ChartColumnDecreasingProps as ChartColumnDecreasingIconProps,\n};',
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph', 'trending down'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-column-decreasing/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-column-decreasing';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-column-decreasing',
+  },
+  'icons-chart-column-increasing': {
+    name: 'icons-chart-column-increasing',
+    description: 'Chart column increasing icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-column-increasing/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-column-increasing.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartColumnIncreasingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path4: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: \'easeInOut\',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  \'default-loop\': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: \'easeInOut\',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: \'M8 17V13\' },\n      animate: {\n        d: \'M8 17V5\',\n        transition: { duration: 0.5, ease: \'easeInOut\' },\n      },\n    },\n    path2: {},\n    path3: {\n      initial: { d: \'M18 17V5\' },\n      animate: {\n        d: \'M18 17V13\',\n        transition: { duration: 0.5, ease: \'easeInOut\' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartColumnIncreasingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M8 17V13"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M13 17V9"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M18 17V5"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartColumnIncreasing(props: ChartColumnIncreasingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartColumnIncreasing,\n  ChartColumnIncreasing as ChartColumnIncreasingIcon,\n  type ChartColumnIncreasingProps,\n  type ChartColumnIncreasingProps as ChartColumnIncreasingIconProps,\n};',
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph', 'trending up'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-column-increasing/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-column-increasing';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-column-increasing',
+  },
   'icons-chart-line': {
     name: 'icons-chart-line',
     description: 'Chart line icon component.',
@@ -9581,7 +9805,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/chart-line.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartLineProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1, pathOffset: 0 },\n      animate: {\n        opacity: [0, 1],\n        pathLength: [0, 1],\n        pathOffset: [1, 0],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  \'default-loop\': {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1, pathOffset: 0 },\n      animate: {\n        opacity: [1, 0, 1],\n        pathLength: [1, 0, 1],\n        pathOffset: [0, 1, 0],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartLineProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m19 9-5 5-4-4-3 3"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartLine(props: ChartLineProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartLine,\n  ChartLine as ChartLineIcon,\n  type ChartLineProps,\n  type ChartLineProps as ChartLineIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartLineProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1, pathOffset: 0 },\n      animate: {\n        opacity: [0, 1],\n        pathLength: [0, 1],\n        pathOffset: [1, 0],\n        transition: {\n          duration: 0.8,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  \'default-loop\': {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1, pathOffset: 0 },\n      animate: {\n        opacity: [1, 0, 1],\n        pathLength: [1, 0, 1],\n        pathOffset: [0, 1, 0],\n        transition: {\n          duration: 1.6,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartLineProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m19 9-5 5-4-4-3 3"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartLine(props: ChartLineProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartLine,\n  ChartLine as ChartLineIcon,\n  type ChartLineProps,\n  type ChartLineProps as ChartLineIconProps,\n};',
       },
     ],
     keywords: ['statistics', 'analytics', 'diagram', 'graph'],
@@ -9604,6 +9828,158 @@ export const index: Record<string, any> = {
     })(),
     command: '@animate-ui/icons-chart-line',
   },
+  'icons-chart-no-axes-column': {
+    name: 'icons-chart-no-axes-column',
+    description: 'Chart no axes column icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-no-axes-column/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-no-axes-column.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartNoAxesColumnProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: 'M5 21V15' },\n      animate: {\n        d: 'M5 21V15',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M12 21V3' },\n      animate: {\n        d: 'M12 21V9',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M19 21V9' },\n      animate: {\n        d: 'M19 21V3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  increasing: {\n    path1: {\n      initial: { d: 'M5 21V15' },\n      animate: {\n        d: 'M5 21V3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {\n      initial: { d: 'M12 21V3' },\n      animate: {\n        d: 'M12 21V9',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path3: {\n      initial: { d: 'M19 21V9' },\n      animate: {\n        d: 'M19 21V15',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartNoAxesColumnProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M5 21V15\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M12 21V3\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M19 21V9\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartNoAxesColumn(props: ChartNoAxesColumnProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartNoAxesColumn,\n  ChartNoAxesColumn as ChartNoAxesColumnIcon,\n  type ChartNoAxesColumnProps,\n  type ChartNoAxesColumnProps as ChartNoAxesColumnIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-no-axes-column/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-no-axes-column';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-no-axes-column',
+  },
+  'icons-chart-no-axes-column-decreasing': {
+    name: 'icons-chart-no-axes-column-decreasing',
+    description: 'Chart no axes column decreasing icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-no-axes-column-decreasing/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/icons/chart-no-axes-column-decreasing.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartNoAxesColumnDecreasingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  increasing: {\n    path1: {\n      initial: { d: 'M5 21V3' },\n      animate: {\n        d: 'M5 21V15',\n        transition: { duration: 0.4, ease: 'easeInOut' },\n      },\n    },\n    path2: {},\n    path3: {\n      initial: { d: 'M19 21V15' },\n      animate: {\n        d: 'M19 21V3',\n        transition: { duration: 0.4, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartNoAxesColumnDecreasingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M5 21V3\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M12 21V9\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M19 21V15\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartNoAxesColumnDecreasing(props: ChartNoAxesColumnDecreasingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartNoAxesColumnDecreasing,\n  ChartNoAxesColumnDecreasing as ChartNoAxesColumnDecreasingIcon,\n  type ChartNoAxesColumnDecreasingProps,\n  type ChartNoAxesColumnDecreasingProps as ChartNoAxesColumnDecreasingIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph', 'trending down'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-no-axes-column-decreasing/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-no-axes-column-decreasing';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-no-axes-column-decreasing',
+  },
+  'icons-chart-no-axes-column-increasing': {
+    name: 'icons-chart-no-axes-column-increasing',
+    description: 'Chart no axes column increasing icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-no-axes-column-increasing/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/icons/chart-no-axes-column-increasing.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype ChartNoAxesColumnIncreasingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: 0.4,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  'default-loop': (() => {\n    const n = 3;\n    const delayStep = 0.3;\n    const segDuration = 0.4;\n\n    const startOut = (i: number) => (n - i) * delayStep;\n    const endOut = (i: number) => startOut(i) + segDuration;\n\n    const outTotal = Math.max(\n      ...Array.from({ length: n }, (_, k) => endOut(k + 1)),\n    );\n\n    const startIn = (i: number) => outTotal + (i - 1) * delayStep;\n    const endIn = (i: number) => startIn(i) + segDuration;\n\n    const totalDuration = Math.max(\n      ...Array.from({ length: n }, (_, k) => endIn(k + 1)),\n    );\n\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= n; i++) {\n      const tSO = startOut(i) / totalDuration;\n      const tEO = endOut(i) / totalDuration;\n      const tSI = startIn(i) / totalDuration;\n      const tEI = endIn(i) / totalDuration;\n\n      animation[`path${i}`] = {\n        initial: { opacity: 1, pathLength: 1 },\n        animate: {\n          pathLength: [1, 1, 0, 0, 1],\n          opacity: [1, 1, 0, 0, 1],\n          transition: {\n            ease: 'easeInOut',\n            duration: totalDuration,\n            times: [0, tSO, tEO, tSI, tEI],\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n  decreasing: {\n    path1: {\n      initial: { d: 'M5 21V15' },\n      animate: {\n        d: 'M5 21V3',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n    path2: {},\n    path3: {\n      initial: { d: 'M19 21V3' },\n      animate: {\n        d: 'M19 21V15',\n        transition: { duration: 0.5, ease: 'easeInOut' },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartNoAxesColumnIncreasingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      {...props}\n    >\n      <motion.path\n        d=\"M5 21V15\"\n        variants={variants.path1}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M12 21V9\"\n        variants={variants.path2}\n        initial=\"initial\"\n        animate={controls}\n      />\n      <motion.path\n        d=\"M19 21V3\"\n        variants={variants.path3}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartNoAxesColumnIncreasing(props: ChartNoAxesColumnIncreasingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartNoAxesColumnIncreasing,\n  ChartNoAxesColumnIncreasing as ChartNoAxesColumnIncreasingIcon,\n  type ChartNoAxesColumnIncreasingProps,\n  type ChartNoAxesColumnIncreasingProps as ChartNoAxesColumnIncreasingIconProps,\n};",
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph', 'trending up'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/icons/chart-no-axes-column-increasing/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-no-axes-column-increasing';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-no-axes-column-increasing',
+  },
+  'icons-chart-scatter': {
+    name: 'icons-chart-scatter',
+    description: 'Chart scatter icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/icons/chart-scatter/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/chart-scatter.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartScatterProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {};\n\n    for (let i = 1; i <= 5; i++) {\n      animation[`circle${i}`] = {\n        initial: { opacity: 1 },\n        animate: {\n          opacity: [0, 1],\n          scale: [0, 1],\n          transition: {\n            ease: \'easeInOut\',\n            duration: 0.3,\n            delay: (i - 1) * 0.3,\n          },\n        },\n      };\n    }\n\n    return animation as Record<string, Variants>;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartScatterProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.circle\n        cx="7.5"\n        cy="7.5"\n        r=".5"\n        variants={variants.circle1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="18.5"\n        cy="5.5"\n        r=".5"\n        variants={variants.circle2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="11.5"\n        cy="11.5"\n        r=".5"\n        variants={variants.circle3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="7.5"\n        cy="16.5"\n        r=".5"\n        variants={variants.circle4}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="17.5"\n        cy="14.5"\n        r=".5"\n        variants={variants.circle5}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartScatter(props: ChartScatterProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartScatter,\n  ChartScatter as ChartScatterIcon,\n  type ChartScatterProps,\n  type ChartScatterProps as ChartScatterIconProps,\n};',
+      },
+    ],
+    keywords: ['statistics', 'analytics', 'diagram', 'graph'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/chart-scatter/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-chart-scatter';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-chart-scatter',
+  },
   'icons-chart-spline': {
     name: 'icons-chart-spline',
     description: 'Chart spline icon component.',
@@ -9617,7 +9993,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/chart-spline.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartSplineProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1 },\n      animate: {\n        opacity: [0, 1],\n        pathLength: [0.05, 1],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  \'default-loop\': {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1 },\n      animate: {\n        opacity: [1, 0, 1],\n        pathLength: [1, 0.05, 1],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartSplineProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartSpline(props: ChartSplineProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartSpline,\n  ChartSpline as ChartSplineIcon,\n  type ChartSplineProps,\n  type ChartSplineProps as ChartSplineIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype ChartSplineProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1 },\n      animate: {\n        opacity: [0, 1],\n        pathLength: [0.05, 1],\n        transition: {\n          duration: 0.8,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  \'default-loop\': {\n    path1: {},\n    path2: {\n      initial: { opacity: 1, pathLength: 1 },\n      animate: {\n        opacity: [1, 0, 1],\n        pathLength: [1, 0.05, 1],\n        transition: {\n          duration: 1.6,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: ChartSplineProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3 3v16a2 2 0 0 0 2 2h16"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction ChartSpline(props: ChartSplineProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  ChartSpline,\n  ChartSpline as ChartSplineIcon,\n  type ChartSplineProps,\n  type ChartSplineProps as ChartSplineIconProps,\n};',
       },
     ],
     keywords: [

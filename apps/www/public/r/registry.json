@@ -5887,6 +5887,154 @@
       }
     },
     {
+      "name": "icons-chart-bar",
+      "type": "registry:ui",
+      "title": "Chart Bar Icon",
+      "description": "Chart bar icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-bar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-bar.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-bar-decreasing",
+      "type": "registry:ui",
+      "title": "Chart Bar Decreasing Icon",
+      "description": "Chart bar decreasing icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-bar-decreasing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-bar-decreasing.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "trending down"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-bar-increasing",
+      "type": "registry:ui",
+      "title": "Chart Bar Increasing Icon",
+      "description": "Chart bar increasing icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-bar-increasing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-bar-increasing.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "trending up"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-column",
+      "type": "registry:ui",
+      "title": "Chart Column Icon",
+      "description": "Chart column icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-column/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-column.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-column-decreasing",
+      "type": "registry:ui",
+      "title": "Chart Column Decreasing Icon",
+      "description": "Chart column decreasing icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-column-decreasing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-column-decreasing.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "trending down"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-column-increasing",
+      "type": "registry:ui",
+      "title": "Chart Column Increasing Icon",
+      "description": "Chart column increasing icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-column-increasing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-column-increasing.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "trending up"
+        ]
+      }
+    },
+    {
       "name": "icons-chart-line",
       "type": "registry:ui",
       "title": "Chart Line Icon",
@@ -5899,6 +6047,104 @@
           "path": "registry/icons/chart-line/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/icons/chart-line.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-no-axes-column",
+      "type": "registry:ui",
+      "title": "Chart No Axes Column Icon",
+      "description": "Chart no axes column icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-no-axes-column/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-no-axes-column.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-no-axes-column-decreasing",
+      "type": "registry:ui",
+      "title": "Chart No Axes Column Decreasing Icon",
+      "description": "Chart no axes column decreasing icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-no-axes-column-decreasing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-no-axes-column-decreasing.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "trending down"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-no-axes-column-increasing",
+      "type": "registry:ui",
+      "title": "Chart No Axes Column Increasing Icon",
+      "description": "Chart no axes column increasing icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-no-axes-column-increasing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-no-axes-column-increasing.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "statistics",
+          "analytics",
+          "diagram",
+          "graph",
+          "trending up"
+        ]
+      }
+    },
+    {
+      "name": "icons-chart-scatter",
+      "type": "registry:ui",
+      "title": "Chart Scatter Icon",
+      "description": "Chart scatter icon component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/chart-scatter/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/chart-scatter.tsx"
         }
       ],
       "meta": {

@@ -22,7 +22,7 @@ const animations = {
         pathLength: [0, 1],
         pathOffset: [1, 0],
         transition: {
-          duration: 0.6,
+          duration: 0.8,
           ease: 'easeInOut',
           opacity: { duration: 0.01 },
         },
@@ -38,7 +38,7 @@ const animations = {
         pathLength: [1, 0, 1],
         pathOffset: [0, 1, 0],
         transition: {
-          duration: 1.2,
+          duration: 1.6,
           ease: 'easeInOut',
           opacity: { duration: 0.01 },
         },
