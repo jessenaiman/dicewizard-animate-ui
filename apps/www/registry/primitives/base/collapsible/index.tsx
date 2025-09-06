@@ -9,7 +9,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CollapsibleContextType = {
   isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
+  setIsOpen: CollapsibleProps['onOpenChange'];
 };
 
 const [CollapsibleProvider, useCollapsible] =

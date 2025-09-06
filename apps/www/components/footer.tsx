@@ -1,5 +1,3 @@
-import { MotionEffect } from './effects/motion-effect';
-
 export const Footer = () => {
   return (
     <div className="h-16">

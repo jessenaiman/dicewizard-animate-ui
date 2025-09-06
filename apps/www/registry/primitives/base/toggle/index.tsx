@@ -9,7 +9,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type ToggleContextType = {
   isPressed: boolean;
-  setIsPressed: (isPressed: boolean, event: Event) => void;
+  setIsPressed: ToggleProps['onPressedChange'];
   disabled?: boolean;
 };
 

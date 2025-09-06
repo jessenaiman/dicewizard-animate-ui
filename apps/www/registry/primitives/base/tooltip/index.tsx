@@ -9,11 +9,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type TooltipContextType = {
   isOpen: boolean;
-  setIsOpen: (
-    isOpen: boolean,
-    event: Event | undefined,
-    reason: TooltipPrimitive.Root.OpenChangeReason | undefined,
-  ) => void;
+  setIsOpen: TooltipProps['onOpenChange'];
 };
 
 const [LocalTooltipProvider, useTooltip] =

@@ -9,11 +9,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type PreviewCardContextType = {
   isOpen: boolean;
-  setIsOpen: (
-    isOpen: boolean,
-    event: Event | undefined,
-    reason: PreviewCardPrimitive.Root.OpenChangeReason | undefined,
-  ) => void;
+  setIsOpen: PreviewCardProps['onOpenChange'];
 };
 
 const [PreviewCardProvider, usePreviewCard] =

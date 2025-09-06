@@ -1,5 +1,4 @@
 import { Logo } from '@/components/logo';
-import AnimateUIIcon from '@workspace/ui/components/icons/animateui-icon';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 /**

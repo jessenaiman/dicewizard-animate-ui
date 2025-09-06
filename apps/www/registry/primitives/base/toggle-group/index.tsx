@@ -16,7 +16,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type ToggleGroupContextType = {
   value: any[];
-  setValue: (groupValue: any[], event: Event) => void;
+  setValue: ToggleGroupProps['onValueChange'];
   toggleMultiple: boolean | undefined;
 };
 

@@ -9,11 +9,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type PopoverContextType = {
   isOpen: boolean;
-  setIsOpen: (
-    isOpen: boolean,
-    event: Event | undefined,
-    reason: PopoverPrimitive.Root.OpenChangeReason | undefined,
-  ) => void;
+  setIsOpen: PopoverProps['onOpenChange'];
 };
 
 const [PopoverProvider, usePopover] =

@@ -27,7 +27,7 @@ type RadioGroupProps = React.ComponentProps<typeof RadioGroupPrimitive.Root>;
 
 function RadioGroup(props: RadioGroupProps) {
   const [value, setValue] = useControlledState({
-    value: props.value,
+    value: props.value ?? undefined,
     defaultValue: props.defaultValue,
     onChange: props.onValueChange,
   });

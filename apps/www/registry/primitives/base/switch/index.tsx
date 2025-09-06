@@ -15,7 +15,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type SwitchContextType = {
   isChecked: boolean;
-  setIsChecked: (isChecked: boolean, event: Event) => void;
+  setIsChecked: SwitchProps['onCheckedChange'];
   isPressed: boolean;
   setIsPressed: (isPressed: boolean) => void;
 };

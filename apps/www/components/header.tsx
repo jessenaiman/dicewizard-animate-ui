@@ -3,7 +3,6 @@
 import { motion } from 'motion/react';
 
 import { Logo } from '@/components/logo';
-import GithubIcon from '@workspace/ui/components/icons/github-icon';
 import XIcon from '@workspace/ui/components/icons/x-icon';
 import { useIsMobile } from '@workspace/ui/hooks/use-mobile';
 import { ThemeSwitcher } from './animate/theme-switcher';

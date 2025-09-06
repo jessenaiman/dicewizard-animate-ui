@@ -18,20 +18,17 @@ import { cn } from '@workspace/ui/lib/utils';
 
 type TooltipProviderProps = TooltipProviderPrimitiveProps;
 
-function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: TooltipProviderProps) {
-  return <TooltipProviderPrimitive delayDuration={delayDuration} {...props} />;
+function TooltipProvider({ delay = 0, ...props }: TooltipProviderProps) {
+  return <TooltipProviderPrimitive delay={delay} {...props} />;
 }
 
 type TooltipProps = TooltipPrimitiveProps & {
-  delayDuration?: TooltipPrimitiveProps['delayDuration'];
+  delay?: TooltipPrimitiveProps['delay'];
 };
 
-function Tooltip({ delayDuration = 0, ...props }: TooltipProps) {
+function Tooltip({ delay = 0, ...props }: TooltipProps) {
   return (
-    <TooltipProvider delayDuration={delayDuration}>
+    <TooltipProvider delay={delay}>
       <TooltipPrimitive {...props} />
     </TooltipProvider>
   );

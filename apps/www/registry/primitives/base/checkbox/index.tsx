@@ -13,7 +13,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type CheckboxContextType = {
   isChecked: boolean;
-  setIsChecked: (checked: boolean, event: Event) => void;
+  setIsChecked: CheckboxProps['onCheckedChange'];
   isIndeterminate: boolean | undefined;
 };
 
