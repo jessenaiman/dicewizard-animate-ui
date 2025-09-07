@@ -102,7 +102,7 @@ function useAnimateIconContext() {
   return context;
 }
 
-function composeEventHandlers<E extends React.SyntheticEvent<any>>(
+function composeEventHandlers<E extends React.SyntheticEvent<unknown>>(
   theirs?: (event: E) => void,
   ours?: (event: E) => void,
 ) {
@@ -122,10 +122,11 @@ function mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyProps = Record<string, any>;
 
 type SlotProps<E extends Element = HTMLElement> = {
-  children: React.ReactElement<any, any>;
+  children: React.ReactElement;
 } & React.HTMLAttributes<E> &
   AnyProps;
 
@@ -133,7 +134,7 @@ function Slot<E extends Element = HTMLElement>({
   children,
   ...slotProps
 }: SlotProps<E>) {
-  if (!React.isValidElement(children)) return children as any;
+  if (!React.isValidElement(children)) return children;
 
   const {
     className: slotClassName,
@@ -249,8 +250,8 @@ function AnimateIcon({
     };
   }, []);
 
-  const viewOuterRef = React.useRef<any>(null);
-  const { ref: inViewRef, isInView } = useIsInView<any>(viewOuterRef, {
+  const viewOuterRef = React.useRef<HTMLElement>(null);
+  const { ref: inViewRef, isInView } = useIsInView(viewOuterRef, {
     inView: !!animateOnView,
     inViewOnce: animateOnViewOnce,
     inViewMargin: animateOnViewMargin,
