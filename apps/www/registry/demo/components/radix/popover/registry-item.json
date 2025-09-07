@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Popover Demo",
   "description": "Demo showing a popover.",
-  "registryDependencies": ["https://animate-ui.com/r/components-radix-popover"],
+  "registryDependencies": ["@animate-ui/components-radix-popover"],
   "files": [
     {
       "path": "registry/demo/components/radix/popover/index.tsx",

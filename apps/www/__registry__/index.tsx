@@ -29,9 +29,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-avatar-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-avatar-group'],
     files: [
       {
         path: 'registry/components/animate/avatar-group/index.tsx',
@@ -70,9 +68,9 @@ export const index: Record<string, any> = {
     dependencies: ['next-themes'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-code-block',
-      'https://animate-ui.com/r/components-buttons-copy',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-animate-code-block',
+      '@animate-ui/components-buttons-copy',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -112,8 +110,8 @@ export const index: Record<string, any> = {
     dependencies: ['shiki'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-tabs',
-      'https://animate-ui.com/r/components-buttons-copy',
+      '@animate-ui/primitives-animate-tabs',
+      '@animate-ui/components-buttons-copy',
     ],
     files: [
       {
@@ -153,9 +151,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-counter',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-counter'],
     files: [
       {
         path: 'registry/components/animate/counter/index.tsx',
@@ -194,9 +190,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-cursor',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-cursor'],
     files: [
       {
         path: 'registry/components/animate/cursor/index.tsx',
@@ -235,8 +229,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-particles',
-      'https://animate-ui.com/r/primitives-texts-scrolling-number',
+      '@animate-ui/primitives-effects-particles',
+      '@animate-ui/primitives-texts-scrolling-number',
     ],
     files: [
       {
@@ -277,7 +271,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-animate-tabs'],
+    registryDependencies: ['@animate-ui/primitives-animate-tabs'],
     files: [
       {
         path: 'registry/components/animate/tabs/index.tsx',
@@ -316,9 +310,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-tooltip',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-tooltip'],
     files: [
       {
         path: 'registry/components/animate/tooltip/index.tsx',
@@ -588,9 +580,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-accordion',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-accordion'],
     files: [
       {
         path: 'registry/components/base/accordion/index.tsx',
@@ -628,7 +618,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-checkbox'],
+    registryDependencies: ['@animate-ui/primitives-base-checkbox'],
     files: [
       {
         path: 'registry/components/base/checkbox/index.tsx',
@@ -667,7 +657,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-files'],
+    registryDependencies: ['@animate-ui/primitives-base-files'],
     files: [
       {
         path: 'registry/components/base/files/index.tsx',
@@ -703,7 +693,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-popover'],
+    registryDependencies: ['@animate-ui/primitives-base-popover'],
     files: [
       {
         path: 'registry/components/base/popover/index.tsx',
@@ -742,9 +732,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-preview-card',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-preview-card'],
     files: [
       {
         path: 'registry/components/base/preview-card/index.tsx',
@@ -782,7 +770,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-progress'],
+    registryDependencies: ['@animate-ui/primitives-base-progress'],
     files: [
       {
         path: 'registry/components/base/progress/index.tsx',
@@ -820,7 +808,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-switch'],
+    registryDependencies: ['@animate-ui/primitives-base-switch'],
     files: [
       {
         path: 'registry/components/base/switch/index.tsx',
@@ -856,7 +844,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-toggle'],
+    registryDependencies: ['@animate-ui/primitives-base-toggle'],
     files: [
       {
         path: 'registry/components/base/toggle/index.tsx',
@@ -892,9 +880,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-toggle-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-toggle-group'],
     files: [
       {
         path: 'registry/components/base/toggle-group/index.tsx',
@@ -933,7 +919,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-tooltip'],
+    registryDependencies: ['@animate-ui/primitives-base-tooltip'],
     files: [
       {
         path: 'registry/components/base/tooltip/index.tsx',
@@ -971,9 +957,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-button',
-    ],
+    registryDependencies: ['@animate-ui/primitives-buttons-button'],
     files: [
       {
         path: 'registry/components/buttons/button/index.tsx',
@@ -1013,8 +997,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'lucide-react', 'class-variance-authority'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-button',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/primitives-buttons-button',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -1054,8 +1038,8 @@ export const index: Record<string, any> = {
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/components-buttons-button',
-      'https://animate-ui.com/r/primitives-buttons-flip',
+      '@animate-ui/components-buttons-button',
+      '@animate-ui/primitives-buttons-flip',
     ],
     files: [
       {
@@ -1096,8 +1080,8 @@ export const index: Record<string, any> = {
     dependencies: ['lucide-react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-button',
-      'https://animate-ui.com/r/primitives-animate-github-stars',
+      '@animate-ui/primitives-buttons-button',
+      '@animate-ui/primitives-animate-github-stars',
     ],
     files: [
       {
@@ -1137,9 +1121,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-button',
-    ],
+    registryDependencies: ['@animate-ui/primitives-buttons-button'],
     files: [
       {
         path: 'registry/components/buttons/icon/index.tsx',
@@ -1177,9 +1159,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-liquid',
-    ],
+    registryDependencies: ['@animate-ui/primitives-buttons-liquid'],
     files: [
       {
         path: 'registry/components/buttons/liquid/index.tsx',
@@ -1218,8 +1198,8 @@ export const index: Record<string, any> = {
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/components-buttons-button',
-      'https://animate-ui.com/r/primitives-buttons-ripple',
+      '@animate-ui/components-buttons-button',
+      '@animate-ui/primitives-buttons-ripple',
     ],
     files: [
       {
@@ -1258,9 +1238,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-sliding-number',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-sliding-number'],
     files: [
       {
         path: 'registry/components/community/management-bar/index.tsx',
@@ -1378,9 +1356,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-checkbox'],
     files: [
       {
         path: 'registry/components/community/playful-todolist/index.tsx',
@@ -1458,9 +1434,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-tooltip',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-tooltip'],
     files: [
       {
         path: 'registry/components/community/user-presence-avatar/index.tsx',
@@ -1500,9 +1474,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-accordion',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-accordion'],
     files: [
       {
         path: 'registry/components/headless/accordion/index.tsx',
@@ -1541,9 +1513,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority', 'motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-checkbox'],
     files: [
       {
         path: 'registry/components/headless/checkbox/index.tsx',
@@ -1582,9 +1552,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react', 'motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-dialog',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-dialog'],
     files: [
       {
         path: 'registry/components/headless/dialog/index.tsx',
@@ -1623,9 +1591,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-popover',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-popover'],
     files: [
       {
         path: 'registry/components/headless/popover/index.tsx',
@@ -1664,9 +1630,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-switch',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-switch'],
     files: [
       {
         path: 'registry/components/headless/switch/index.tsx',
@@ -1705,7 +1669,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion/react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-headless-tabs'],
+    registryDependencies: ['@animate-ui/primitives-headless-tabs'],
     files: [
       {
         path: 'registry/components/headless/tabs/index.tsx',
@@ -1744,9 +1708,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-accordion',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-accordion'],
     files: [
       {
         path: 'registry/components/radix/accordion/index.tsx',
@@ -1785,9 +1747,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-checkbox'],
     files: [
       {
         path: 'registry/components/radix/checkbox/index.tsx',
@@ -1826,7 +1786,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-dialog'],
+    registryDependencies: ['@animate-ui/primitives-radix-dialog'],
     files: [
       {
         path: 'registry/components/radix/dialog/index.tsx',
@@ -1865,9 +1825,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-dropdown-menu',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-dropdown-menu'],
     files: [
       {
         path: 'registry/components/radix/dropdown-menu/index.tsx',
@@ -1906,7 +1864,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-files'],
+    registryDependencies: ['@animate-ui/primitives-radix-files'],
     files: [
       {
         path: 'registry/components/radix/files/index.tsx',
@@ -1943,9 +1901,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-hover-card',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-hover-card'],
     files: [
       {
         path: 'registry/components/radix/hover-card/index.tsx',
@@ -1983,7 +1939,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-popover'],
+    registryDependencies: ['@animate-ui/primitives-radix-popover'],
     files: [
       {
         path: 'registry/components/radix/popover/index.tsx',
@@ -2022,9 +1978,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-progress',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-progress'],
     files: [
       {
         path: 'registry/components/radix/progress/index.tsx',
@@ -2063,9 +2017,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-radio-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-radio-group'],
     files: [
       {
         path: 'registry/components/radix/radio-group/index.tsx',
@@ -2104,7 +2056,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-sheet'],
+    registryDependencies: ['@animate-ui/primitives-radix-sheet'],
     files: [
       {
         path: 'registry/components/radix/sheet/index.tsx',
@@ -2147,8 +2099,8 @@ export const index: Record<string, any> = {
     ],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-checkbox',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-radix-checkbox',
+      '@animate-ui/lib-get-strict-context',
       'button',
       'input',
       'separator',
@@ -2193,7 +2145,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-switch'],
+    registryDependencies: ['@animate-ui/primitives-radix-switch'],
     files: [
       {
         path: 'registry/components/radix/switch/index.tsx',
@@ -2232,7 +2184,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tabs'],
+    registryDependencies: ['@animate-ui/primitives-radix-tabs'],
     files: [
       {
         path: 'registry/components/radix/tabs/index.tsx',
@@ -2268,7 +2220,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-toggle'],
+    registryDependencies: ['@animate-ui/primitives-radix-toggle'],
     files: [
       {
         path: 'registry/components/radix/toggle/index.tsx',
@@ -2307,9 +2259,9 @@ export const index: Record<string, any> = {
     dependencies: ['class-variance-authority'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-toggle-group',
-      'https://animate-ui.com/r/components-radix-toggle',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-radix-toggle-group',
+      '@animate-ui/components-radix-toggle',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -2349,7 +2301,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tooltip'],
+    registryDependencies: ['@animate-ui/primitives-radix-tooltip'],
     files: [
       {
         path: 'registry/components/radix/tooltip/index.tsx',
@@ -2387,9 +2339,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-avatar-group',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-avatar-group'],
     files: [
       {
         path: 'registry/demo/components/animate/avatar-group/index.tsx',
@@ -2428,7 +2378,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-animate-code'],
+    registryDependencies: ['@animate-ui/components-animate-code'],
     files: [
       {
         path: 'registry/demo/components/animate/code/index.tsx',
@@ -2473,16 +2423,14 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-code-tabs',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-code-tabs'],
     files: [
       {
         path: 'registry/demo/components/animate/code-tabs/index.tsx',
         type: 'registry:ui',
         target: 'components/animate-ui/demo/components/animate/code-tabs.tsx',
         content:
-          'import { CodeTabs } from \'@/components/animate-ui/components/animate/code-tabs\';\n\nconst CODES = {\n  Cursor: `// Copy and paste the code into .cursor/mcp.json\n{\n  "mcpServers": {\n    "shadcn": {\n      "command": "npx",\n      "args": ["-y", "shadcn@canary", "registry:mcp"],\n      "env": {\n        "REGISTRY_URL": "https://animate-ui.com/r/registry.json"\n      }\n    }\n  }\n}`,\n  Windsurf: `// Copy and paste the code into .codeium/windsurf/mcp_config.json\n{\n  "mcpServers": {\n    "shadcn": {\n      "command": "npx",\n      "args": ["-y", "shadcn@canary", "registry:mcp"],\n      "env": {\n        "REGISTRY_URL": "https://animate-ui.com/r/registry.json"\n      }\n    }\n  }\n}`,\n};\n\nexport const CodeTabsDemo = () => {\n  return <CodeTabs lang="json" codes={CODES} />;\n};',
+          'import { CodeTabs } from \'@/components/animate-ui/components/animate/code-tabs\';\n\nconst CODES = {\n  Cursor: `// Copy and paste the code into .cursor/mcp.json\n{\n  "mcpServers": {\n    "shadcn": {\n      "command": "npx",\n      "args": ["-y", "shadcn@canary", "registry:mcp"],\n      "env": {\n        "REGISTRY_URL": "@animate-ui/registry.json"\n      }\n    }\n  }\n}`,\n  Windsurf: `// Copy and paste the code into .codeium/windsurf/mcp_config.json\n{\n  "mcpServers": {\n    "shadcn": {\n      "command": "npx",\n      "args": ["-y", "shadcn@canary", "registry:mcp"],\n      "env": {\n        "REGISTRY_URL": "@animate-ui/registry.json"\n      }\n    }\n  }\n}`,\n};\n\nexport const CodeTabsDemo = () => {\n  return <CodeTabs lang="json" codes={CODES} />;\n};',
       },
     ],
     keywords: [],
@@ -2513,9 +2461,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-counter',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-counter'],
     files: [
       {
         path: 'registry/demo/components/animate/counter/index.tsx',
@@ -2553,9 +2499,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-cursor',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-cursor'],
     files: [
       {
         path: 'registry/demo/components/animate/cursor/index.tsx',
@@ -2616,9 +2560,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-github-stars-wheel',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-github-stars-wheel'],
     files: [
       {
         path: 'registry/demo/components/animate/github-stars-wheel/index.tsx',
@@ -2666,7 +2608,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-animate-tabs'],
+    registryDependencies: ['@animate-ui/components-animate-tabs'],
     files: [
       {
         path: 'registry/demo/components/animate/tabs/index.tsx',
@@ -2704,9 +2646,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-animate-tooltip',
-    ],
+    registryDependencies: ['@animate-ui/components-animate-tooltip'],
     files: [
       {
         path: 'registry/demo/components/animate/tooltip/index.tsx',
@@ -2766,9 +2706,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-bubble',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-bubble'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/bubble/index.tsx',
@@ -2808,9 +2746,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-fireworks',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-fireworks'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/fireworks/index.tsx',
@@ -2853,9 +2789,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-fireworks',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-fireworks'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/fireworks-circle/index.tsx',
@@ -2902,9 +2836,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-gradient',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-gradient'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/gradient/index.tsx',
@@ -2943,9 +2875,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-hexagon',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-hexagon'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/hexagon/index.tsx',
@@ -2983,9 +2913,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-hole',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-hole'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/hole/index.tsx',
@@ -3023,9 +2951,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-backgrounds-stars',
-    ],
+    registryDependencies: ['@animate-ui/components-backgrounds-stars'],
     files: [
       {
         path: 'registry/demo/components/backgrounds/stars/index.tsx',
@@ -3063,9 +2989,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-base-accordion',
-    ],
+    registryDependencies: ['@animate-ui/components-base-accordion'],
     files: [
       {
         path: 'registry/demo/components/base/accordion/index.tsx',
@@ -3107,7 +3031,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-checkbox'],
+    registryDependencies: ['@animate-ui/components-base-checkbox'],
     files: [
       {
         path: 'registry/demo/components/base/checkbox/index.tsx',
@@ -3157,7 +3081,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-files'],
+    registryDependencies: ['@animate-ui/components-base-files'],
     files: [
       {
         path: 'registry/demo/components/base/files/index.tsx',
@@ -3195,7 +3119,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-popover'],
+    registryDependencies: ['@animate-ui/components-base-popover'],
     files: [
       {
         path: 'registry/demo/components/base/popover/index.tsx',
@@ -3251,9 +3175,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-base-preview-card',
-    ],
+    registryDependencies: ['@animate-ui/components-base-preview-card'],
     files: [
       {
         path: 'registry/demo/components/base/preview-card/index.tsx',
@@ -3311,7 +3233,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-progress'],
+    registryDependencies: ['@animate-ui/components-base-progress'],
     files: [
       {
         path: 'registry/demo/components/base/progress/index.tsx',
@@ -3349,7 +3271,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-switch'],
+    registryDependencies: ['@animate-ui/components-base-switch'],
     files: [
       {
         path: 'registry/demo/components/base/switch/index.tsx',
@@ -3387,7 +3309,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-toggle'],
+    registryDependencies: ['@animate-ui/components-base-toggle'],
     files: [
       {
         path: 'registry/demo/components/base/toggle/index.tsx',
@@ -3436,9 +3358,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-base-toggle-group',
-    ],
+    registryDependencies: ['@animate-ui/components-base-toggle-group'],
     files: [
       {
         path: 'registry/demo/components/base/toggle-group/index.tsx',
@@ -3488,7 +3408,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-base-tooltip'],
+    registryDependencies: ['@animate-ui/components-base-tooltip'],
     files: [
       {
         path: 'registry/demo/components/base/tooltip/index.tsx',
@@ -3546,9 +3466,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-buttons-button',
-    ],
+    registryDependencies: ['@animate-ui/components-buttons-button'],
     files: [
       {
         path: 'registry/demo/components/buttons/button/index.tsx',
@@ -3612,7 +3530,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-buttons-copy'],
+    registryDependencies: ['@animate-ui/components-buttons-copy'],
     files: [
       {
         path: 'registry/demo/components/buttons/copy/index.tsx',
@@ -3669,7 +3587,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-buttons-flip'],
+    registryDependencies: ['@animate-ui/components-buttons-flip'],
     files: [
       {
         path: 'registry/demo/components/buttons/flip/index.tsx',
@@ -3751,9 +3669,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-buttons-github-stars',
-    ],
+    registryDependencies: ['@animate-ui/components-buttons-github-stars'],
     files: [
       {
         path: 'registry/demo/components/buttons/github-stars/index.tsx',
@@ -3808,7 +3724,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-buttons-icon'],
+    registryDependencies: ['@animate-ui/components-buttons-icon'],
     files: [
       {
         path: 'registry/demo/components/buttons/icon/index.tsx',
@@ -3862,9 +3778,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-buttons-liquid',
-    ],
+    registryDependencies: ['@animate-ui/components-buttons-liquid'],
     files: [
       {
         path: 'registry/demo/components/buttons/liquid/index.tsx',
@@ -3924,9 +3838,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-buttons-ripple',
-    ],
+    registryDependencies: ['@animate-ui/components-buttons-ripple'],
     files: [
       {
         path: 'registry/demo/components/buttons/ripple/index.tsx',
@@ -3990,9 +3902,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-community-management-bar',
-    ],
+    registryDependencies: ['@animate-ui/components-community-management-bar'],
     files: [
       {
         path: 'registry/demo/components/community/management-bar/index.tsx',
@@ -4032,7 +3942,7 @@ export const index: Record<string, any> = {
     dependencies: undefined,
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/components-community-notification-list',
+      '@animate-ui/components-community-notification-list',
     ],
     files: [
       {
@@ -4072,9 +3982,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-community-pin-list',
-    ],
+    registryDependencies: ['@animate-ui/components-community-pin-list'],
     files: [
       {
         path: 'registry/demo/components/community/pin-list/index.tsx',
@@ -4112,9 +4020,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-community-playful-todolist',
-    ],
+    registryDependencies: ['@animate-ui/components-community-playful-todolist'],
     files: [
       {
         path: 'registry/demo/components/community/playful-todolist/index.tsx',
@@ -4153,9 +4059,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-community-share-button',
-    ],
+    registryDependencies: ['@animate-ui/components-community-share-button'],
     files: [
       {
         path: 'registry/demo/components/community/share-button/index.tsx',
@@ -4206,7 +4110,7 @@ export const index: Record<string, any> = {
     dependencies: undefined,
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/components-community-user-presence-avatar',
+      '@animate-ui/components-community-user-presence-avatar',
     ],
     files: [
       {
@@ -4246,9 +4150,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-headless-accordion',
-    ],
+    registryDependencies: ['@animate-ui/components-headless-accordion'],
     files: [
       {
         path: 'registry/demo/components/headless/accordion/index.tsx',
@@ -4289,9 +4191,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-headless-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/components-headless-checkbox'],
     files: [
       {
         path: 'registry/demo/components/headless/checkbox/index.tsx',
@@ -4341,9 +4241,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-headless-dialog',
-    ],
+    registryDependencies: ['@animate-ui/components-headless-dialog'],
     files: [
       {
         path: 'registry/demo/components/headless/dialog/index.tsx',
@@ -4394,9 +4292,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-headless-popover',
-    ],
+    registryDependencies: ['@animate-ui/components-headless-popover'],
     files: [
       {
         path: 'registry/demo/components/headless/popover/index.tsx',
@@ -4455,9 +4351,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-headless-switch',
-    ],
+    registryDependencies: ['@animate-ui/components-headless-switch'],
     files: [
       {
         path: 'registry/demo/components/headless/switch/index.tsx',
@@ -4495,7 +4389,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-headless-tabs'],
+    registryDependencies: ['@animate-ui/components-headless-tabs'],
     files: [
       {
         path: 'registry/demo/components/headless/tabs/index.tsx',
@@ -4533,9 +4427,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-accordion',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-accordion'],
     files: [
       {
         path: 'registry/demo/components/radix/accordion/index.tsx',
@@ -4577,9 +4469,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-checkbox'],
     files: [
       {
         path: 'registry/demo/components/radix/checkbox/index.tsx',
@@ -4636,7 +4526,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-dialog'],
+    registryDependencies: ['@animate-ui/components-radix-dialog'],
     files: [
       {
         path: 'registry/demo/components/radix/dialog/index.tsx',
@@ -4687,9 +4577,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-dropdown-menu',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-dropdown-menu'],
     files: [
       {
         path: 'registry/demo/components/radix/dropdown-menu/index.tsx',
@@ -4745,9 +4633,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-dropdown-menu',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-dropdown-menu'],
     files: [
       {
         path: 'registry/demo/components/radix/dropdown-menu-checkbox/index.tsx',
@@ -4804,9 +4690,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-dropdown-menu',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-dropdown-menu'],
     files: [
       {
         path: 'registry/demo/components/radix/dropdown-menu-radio/index.tsx',
@@ -4863,7 +4747,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-files'],
+    registryDependencies: ['@animate-ui/components-radix-files'],
     files: [
       {
         path: 'registry/demo/components/radix/files/index.tsx',
@@ -4901,9 +4785,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-hover-card',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-hover-card'],
     files: [
       {
         path: 'registry/demo/components/radix/hover-card/index.tsx',
@@ -4959,7 +4841,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-popover'],
+    registryDependencies: ['@animate-ui/components-radix-popover'],
     files: [
       {
         path: 'registry/demo/components/radix/popover/index.tsx',
@@ -5015,9 +4897,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-progress',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-progress'],
     files: [
       {
         path: 'registry/demo/components/radix/progress/index.tsx',
@@ -5055,9 +4935,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-radio-group',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-radio-group'],
     files: [
       {
         path: 'registry/demo/components/radix/radio-group/index.tsx',
@@ -5095,7 +4973,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-sheet'],
+    registryDependencies: ['@animate-ui/components-radix-sheet'],
     files: [
       {
         path: 'registry/demo/components/radix/sheet/index.tsx',
@@ -5145,7 +5023,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-sidebar'],
+    registryDependencies: ['@animate-ui/components-radix-sidebar'],
     files: [
       {
         path: 'registry/demo/components/radix/sidebar/index.tsx',
@@ -5183,7 +5061,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-switch'],
+    registryDependencies: ['@animate-ui/components-radix-switch'],
     files: [
       {
         path: 'registry/demo/components/radix/switch/index.tsx',
@@ -5221,7 +5099,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-tabs'],
+    registryDependencies: ['@animate-ui/components-radix-tabs'],
     files: [
       {
         path: 'registry/demo/components/radix/tabs/index.tsx',
@@ -5259,7 +5137,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-toggle'],
+    registryDependencies: ['@animate-ui/components-radix-toggle'],
     files: [
       {
         path: 'registry/demo/components/radix/toggle/index.tsx',
@@ -5308,9 +5186,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/components-radix-toggle-group',
-    ],
+    registryDependencies: ['@animate-ui/components-radix-toggle-group'],
     files: [
       {
         path: 'registry/demo/components/radix/toggle-group/index.tsx',
@@ -5363,7 +5239,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/components-radix-tooltip'],
+    registryDependencies: ['@animate-ui/components-radix-tooltip'],
     files: [
       {
         path: 'registry/demo/components/radix/tooltip/index.tsx',
@@ -5419,9 +5295,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-avatar-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-avatar-group'],
     files: [
       {
         path: 'registry/demo/primitives/animate/avatar-group/index.tsx',
@@ -5460,9 +5334,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-code-block',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-code-block'],
     files: [
       {
         path: 'registry/demo/primitives/animate/code-block/index.tsx',
@@ -5507,9 +5379,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-counter',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-counter'],
     files: [
       {
         path: 'registry/demo/primitives/animate/counter/index.tsx',
@@ -5547,9 +5417,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-cursor',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-cursor'],
     files: [
       {
         path: 'registry/demo/primitives/animate/cursor/index.tsx',
@@ -5610,9 +5478,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-github-stars',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-github-stars'],
     files: [
       {
         path: 'registry/demo/primitives/animate/github-stars/index.tsx',
@@ -5652,8 +5518,8 @@ export const index: Record<string, any> = {
     dependencies: undefined,
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-motion-grid',
-      'https://animate-ui.com/r/primitives-texts-rotating',
+      '@animate-ui/primitives-animate-motion-grid',
+      '@animate-ui/primitives-texts-rotating',
     ],
     files: [
       {
@@ -5692,9 +5558,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-pinned-list',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-pinned-list'],
     files: [
       {
         path: 'registry/demo/primitives/animate/pinned-list/index.tsx',
@@ -5732,9 +5596,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-scroll-progress',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-scroll-progress'],
     files: [
       {
         path: 'registry/demo/primitives/animate/scroll-progress/index.tsx',
@@ -5781,9 +5643,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-spring',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-spring'],
     files: [
       {
         path: 'registry/demo/primitives/animate/spring/index.tsx',
@@ -5821,7 +5681,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-animate-tabs'],
+    registryDependencies: ['@animate-ui/primitives-animate-tabs'],
     files: [
       {
         path: 'registry/demo/primitives/animate/tabs/index.tsx',
@@ -5859,9 +5719,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-tooltip',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-tooltip'],
     files: [
       {
         path: 'registry/demo/primitives/animate/tooltip/index.tsx',
@@ -5922,9 +5780,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-accordion',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-accordion'],
     files: [
       {
         path: 'registry/demo/primitives/base/accordion/index.tsx',
@@ -5965,7 +5821,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-checkbox'],
+    registryDependencies: ['@animate-ui/primitives-base-checkbox'],
     files: [
       {
         path: 'registry/demo/primitives/base/checkbox/index.tsx',
@@ -6003,9 +5859,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-collapsible',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-collapsible'],
     files: [
       {
         path: 'registry/demo/primitives/base/collapsible/index.tsx',
@@ -6045,7 +5899,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-files'],
+    registryDependencies: ['@animate-ui/primitives-base-files'],
     files: [
       {
         path: 'registry/demo/primitives/base/files/index.tsx',
@@ -6083,7 +5937,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-popover'],
+    registryDependencies: ['@animate-ui/primitives-base-popover'],
     files: [
       {
         path: 'registry/demo/primitives/base/popover/index.tsx',
@@ -6141,9 +5995,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-preview-card',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-preview-card'],
     files: [
       {
         path: 'registry/demo/primitives/base/preview-card/index.tsx',
@@ -6201,7 +6053,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-progress'],
+    registryDependencies: ['@animate-ui/primitives-base-progress'],
     files: [
       {
         path: 'registry/demo/primitives/base/progress/index.tsx',
@@ -6239,7 +6091,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-switch'],
+    registryDependencies: ['@animate-ui/primitives-base-switch'],
     files: [
       {
         path: 'registry/demo/primitives/base/switch/index.tsx',
@@ -6277,7 +6129,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-toggle'],
+    registryDependencies: ['@animate-ui/primitives-base-toggle'],
     files: [
       {
         path: 'registry/demo/primitives/base/toggle/index.tsx',
@@ -6315,9 +6167,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-toggle-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-base-toggle-group'],
     files: [
       {
         path: 'registry/demo/primitives/base/toggle-group/index.tsx',
@@ -6357,7 +6207,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-base-tooltip'],
+    registryDependencies: ['@animate-ui/primitives-base-tooltip'],
     files: [
       {
         path: 'registry/demo/primitives/base/tooltip/index.tsx',
@@ -6415,9 +6265,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-button',
-    ],
+    registryDependencies: ['@animate-ui/primitives-buttons-button'],
     files: [
       {
         path: 'registry/demo/primitives/buttons/button/index.tsx',
@@ -6460,7 +6308,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-buttons-flip'],
+    registryDependencies: ['@animate-ui/primitives-buttons-flip'],
     files: [
       {
         path: 'registry/demo/primitives/buttons/flip/index.tsx',
@@ -6511,9 +6359,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-liquid',
-    ],
+    registryDependencies: ['@animate-ui/primitives-buttons-liquid'],
     files: [
       {
         path: 'registry/demo/primitives/buttons/liquid/index.tsx',
@@ -6558,9 +6404,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-buttons-ripple',
-    ],
+    registryDependencies: ['@animate-ui/primitives-buttons-ripple'],
     files: [
       {
         path: 'registry/demo/primitives/buttons/ripple/index.tsx',
@@ -6603,7 +6447,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-effects-blur'],
+    registryDependencies: ['@animate-ui/primitives-effects-blur'],
     files: [
       {
         path: 'registry/demo/primitives/effects/blur/index.tsx',
@@ -6647,9 +6491,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-effect',
-    ],
+    registryDependencies: ['@animate-ui/primitives-effects-effect'],
     files: [
       {
         path: 'registry/demo/primitives/effects/effect/index.tsx',
@@ -6695,7 +6537,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-effects-fade'],
+    registryDependencies: ['@animate-ui/primitives-effects-fade'],
     files: [
       {
         path: 'registry/demo/primitives/effects/fade/index.tsx',
@@ -6739,9 +6581,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-highlight',
-    ],
+    registryDependencies: ['@animate-ui/primitives-effects-highlight'],
     files: [
       {
         path: 'registry/demo/primitives/effects/highlight/index.tsx',
@@ -6788,9 +6628,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-magnetic',
-    ],
+    registryDependencies: ['@animate-ui/primitives-effects-magnetic'],
     files: [
       {
         path: 'registry/demo/primitives/effects/magnetic/index.tsx',
@@ -6834,9 +6672,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-particles',
-    ],
+    registryDependencies: ['@animate-ui/primitives-effects-particles'],
     files: [
       {
         path: 'registry/demo/primitives/effects/particles/index.tsx',
@@ -6898,7 +6734,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-effects-slide'],
+    registryDependencies: ['@animate-ui/primitives-effects-slide'],
     files: [
       {
         path: 'registry/demo/primitives/effects/slide/index.tsx',
@@ -6945,7 +6781,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-effects-zoom'],
+    registryDependencies: ['@animate-ui/primitives-effects-zoom'],
     files: [
       {
         path: 'registry/demo/primitives/effects/zoom/index.tsx',
@@ -6989,9 +6825,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-checkbox'],
     files: [
       {
         path: 'registry/demo/primitives/headless/checkbox/index.tsx',
@@ -7029,9 +6863,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-dialog',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-dialog'],
     files: [
       {
         path: 'registry/demo/primitives/headless/dialog/index.tsx',
@@ -7081,9 +6913,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-disclosure',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-disclosure'],
     files: [
       {
         path: 'registry/demo/primitives/headless/disclosure/index.tsx',
@@ -7123,9 +6953,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-popover',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-popover'],
     files: [
       {
         path: 'registry/demo/primitives/headless/popover/index.tsx',
@@ -7184,9 +7012,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-headless-switch',
-    ],
+    registryDependencies: ['@animate-ui/primitives-headless-switch'],
     files: [
       {
         path: 'registry/demo/primitives/headless/switch/index.tsx',
@@ -7224,7 +7050,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-headless-tabs'],
+    registryDependencies: ['@animate-ui/primitives-headless-tabs'],
     files: [
       {
         path: 'registry/demo/primitives/headless/tabs/index.tsx',
@@ -7262,9 +7088,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-accordion',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-accordion'],
     files: [
       {
         path: 'registry/demo/primitives/radix/accordion/index.tsx',
@@ -7305,9 +7129,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-checkbox',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-checkbox'],
     files: [
       {
         path: 'registry/demo/primitives/radix/checkbox/index.tsx',
@@ -7356,9 +7178,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-collapsible',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-collapsible'],
     files: [
       {
         path: 'registry/demo/primitives/radix/collapsible/index.tsx',
@@ -7398,7 +7218,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-dialog'],
+    registryDependencies: ['@animate-ui/primitives-radix-dialog'],
     files: [
       {
         path: 'registry/demo/primitives/radix/dialog/index.tsx',
@@ -7448,9 +7268,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-dropdown-menu',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-dropdown-menu'],
     files: [
       {
         path: 'registry/demo/primitives/radix/dropdown-menu/index.tsx',
@@ -7506,7 +7324,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-files'],
+    registryDependencies: ['@animate-ui/primitives-radix-files'],
     files: [
       {
         path: 'registry/demo/primitives/radix/files/index.tsx',
@@ -7544,9 +7362,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-hover-card',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-hover-card'],
     files: [
       {
         path: 'registry/demo/primitives/radix/hover-card/index.tsx',
@@ -7602,7 +7418,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-popover'],
+    registryDependencies: ['@animate-ui/primitives-radix-popover'],
     files: [
       {
         path: 'registry/demo/primitives/radix/popover/index.tsx',
@@ -7658,9 +7474,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-progress',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-progress'],
     files: [
       {
         path: 'registry/demo/primitives/radix/progress/index.tsx',
@@ -7698,9 +7512,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-radio-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-radio-group'],
     files: [
       {
         path: 'registry/demo/primitives/radix/radio-group/index.tsx',
@@ -7738,7 +7550,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-sheet'],
+    registryDependencies: ['@animate-ui/primitives-radix-sheet'],
     files: [
       {
         path: 'registry/demo/primitives/radix/sheet/index.tsx',
@@ -7788,7 +7600,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-switch'],
+    registryDependencies: ['@animate-ui/primitives-radix-switch'],
     files: [
       {
         path: 'registry/demo/primitives/radix/switch/index.tsx',
@@ -7826,7 +7638,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tabs'],
+    registryDependencies: ['@animate-ui/primitives-radix-tabs'],
     files: [
       {
         path: 'registry/demo/primitives/radix/tabs/index.tsx',
@@ -7864,7 +7676,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-toggle'],
+    registryDependencies: ['@animate-ui/primitives-radix-toggle'],
     files: [
       {
         path: 'registry/demo/primitives/radix/toggle/index.tsx',
@@ -7902,9 +7714,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-toggle-group',
-    ],
+    registryDependencies: ['@animate-ui/primitives-radix-toggle-group'],
     files: [
       {
         path: 'registry/demo/primitives/radix/toggle-group/index.tsx',
@@ -7949,7 +7759,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-radix-tooltip'],
+    registryDependencies: ['@animate-ui/primitives-radix-tooltip'],
     files: [
       {
         path: 'registry/demo/primitives/radix/tooltip/index.tsx',
@@ -8005,9 +7815,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-counting-number',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-counting-number'],
     files: [
       {
         path: 'registry/demo/primitives/texts/counting-number/index.tsx',
@@ -8055,9 +7863,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-gradient',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-gradient'],
     files: [
       {
         path: 'registry/demo/primitives/texts/gradient/index.tsx',
@@ -8095,9 +7901,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-highlight',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-highlight'],
     files: [
       {
         path: 'registry/demo/primitives/texts/highlight/index.tsx',
@@ -8137,7 +7941,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-texts-rolling'],
+    registryDependencies: ['@animate-ui/primitives-texts-rolling'],
     files: [
       {
         path: 'registry/demo/primitives/texts/rolling/index.tsx',
@@ -8177,9 +7981,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-rotating',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-rotating'],
     files: [
       {
         path: 'registry/demo/primitives/texts/rotating/index.tsx',
@@ -8223,9 +8025,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-scrolling-number',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-scrolling-number'],
     files: [
       {
         path: 'registry/demo/primitives/texts/scrolling-number/index.tsx',
@@ -8274,9 +8074,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-shimmering',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-shimmering'],
     files: [
       {
         path: 'registry/demo/primitives/texts/shimmering/index.tsx',
@@ -8319,9 +8117,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-sliding-number',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-sliding-number'],
     files: [
       {
         path: 'registry/demo/primitives/texts/sliding-number/index.tsx',
@@ -8370,9 +8166,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-texts-splitting',
-    ],
+    registryDependencies: ['@animate-ui/primitives-texts-splitting'],
     files: [
       {
         path: 'registry/demo/primitives/texts/splitting/index.tsx',
@@ -8422,7 +8216,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: undefined,
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-texts-typing'],
+    registryDependencies: ['@animate-ui/primitives-texts-typing'],
     files: [
       {
         path: 'registry/demo/primitives/texts/typing/index.tsx',
@@ -11766,7 +11560,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/icons/icon/index.tsx',
@@ -15919,9 +15713,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-tooltip',
-    ],
+    registryDependencies: ['@animate-ui/primitives-animate-tooltip'],
     files: [
       {
         path: 'registry/primitives/animate/avatar-group/index.tsx',
@@ -15960,7 +15752,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['shiki'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/animate/code-block/index.tsx',
@@ -16000,10 +15792,10 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/primitives-animate-sliding-number',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/primitives-animate-sliding-number',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16044,8 +15836,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -16086,10 +15878,10 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/primitives-animate-sliding-number',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/primitives-animate-sliding-number',
+      '@animate-ui/hooks-use-is-in-view',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -16129,8 +15921,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -16170,7 +15962,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-animate-slot'],
+    registryDependencies: ['@animate-ui/primitives-animate-slot'],
     files: [
       {
         path: 'registry/primitives/animate/pinned-list/index.tsx',
@@ -16210,9 +16002,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-motion-value-state',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-motion-value-state',
     ],
     files: [
       {
@@ -16292,9 +16084,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-motion-value-state',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-motion-value-state',
     ],
     files: [
       {
@@ -16335,9 +16127,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-highlight',
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-effects-highlight',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -16378,8 +16170,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@floating-ui/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -16419,8 +16211,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16460,8 +16252,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16501,8 +16293,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16543,10 +16335,10 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-base-accordion',
-      'https://animate-ui.com/r/primitives-effects-highlight',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/primitives-base-accordion',
+      '@animate-ui/primitives-effects-highlight',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16584,8 +16376,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16626,8 +16418,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16667,8 +16459,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/primitives-texts-counting-number',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/primitives-texts-counting-number',
     ],
     files: [
       {
@@ -16708,8 +16500,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16747,8 +16539,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16786,9 +16578,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/primitives-effects-highlight',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/primitives-effects-highlight',
     ],
     files: [
       {
@@ -16829,8 +16621,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@base-ui-components/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -16869,7 +16661,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-animate-slot'],
+    registryDependencies: ['@animate-ui/primitives-animate-slot'],
     files: [
       {
         path: 'registry/primitives/buttons/button/index.tsx',
@@ -16908,8 +16700,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
     ],
     files: [
       {
@@ -16949,8 +16741,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
     ],
     files: [
       {
@@ -16990,8 +16782,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/primitives-animate-slot',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/primitives-animate-slot',
     ],
     files: [
       {
@@ -17032,8 +16824,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/hooks-use-is-in-view',
     ],
     files: [
       {
@@ -17074,8 +16866,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/hooks-use-is-in-view',
     ],
     files: [
       {
@@ -17116,8 +16908,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/hooks-use-is-in-view',
     ],
     files: [
       {
@@ -17196,7 +16988,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/primitives-animate-slot'],
+    registryDependencies: ['@animate-ui/primitives-animate-slot'],
     files: [
       {
         path: 'registry/primitives/effects/magnetic/index.tsx',
@@ -17235,8 +17027,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/hooks-use-is-in-view',
     ],
     files: [
       {
@@ -17277,8 +17069,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/hooks-use-is-in-view',
     ],
     files: [
       {
@@ -17319,8 +17111,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-animate-slot',
-      'https://animate-ui.com/r/hooks-use-is-in-view',
+      '@animate-ui/primitives-animate-slot',
+      '@animate-ui/hooks-use-is-in-view',
     ],
     files: [
       {
@@ -17438,7 +17230,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', '@headlessui/react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/lib-get-strict-context'],
+    registryDependencies: ['@animate-ui/lib-get-strict-context'],
     files: [
       {
         path: 'registry/primitives/headless/disclosure/index.tsx',
@@ -17477,7 +17269,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', '@headlessui/react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/lib-get-strict-context'],
+    registryDependencies: ['@animate-ui/lib-get-strict-context'],
     files: [
       {
         path: 'registry/primitives/headless/popover/index.tsx',
@@ -17516,7 +17308,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', '@headlessui/react'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/lib-get-strict-context'],
+    registryDependencies: ['@animate-ui/lib-get-strict-context'],
     files: [
       {
         path: 'registry/primitives/headless/switch/index.tsx',
@@ -17556,8 +17348,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', '@headlessui/react'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/primitives-effects-highlight',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/primitives-effects-highlight',
     ],
     files: [
       {
@@ -17598,8 +17390,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -17640,8 +17432,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -17681,8 +17473,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -17723,8 +17515,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -17765,9 +17557,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-highlight',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/primitives-effects-highlight',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -17808,10 +17600,10 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-radix-accordion',
-      'https://animate-ui.com/r/primitives-effects-highlight',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/primitives-radix-accordion',
+      '@animate-ui/primitives-effects-highlight',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -17850,8 +17642,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -17891,8 +17683,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -17932,7 +17724,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/lib-get-strict-context'],
+    registryDependencies: ['@animate-ui/lib-get-strict-context'],
     files: [
       {
         path: 'registry/primitives/radix/progress/index.tsx',
@@ -17972,8 +17764,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -18014,8 +17806,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -18054,8 +17846,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -18096,9 +17888,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-highlight',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/primitives-effects-highlight',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -18136,8 +17928,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -18177,9 +17969,9 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/primitives-effects-highlight',
-      'https://animate-ui.com/r/lib-get-strict-context',
-      'https://animate-ui.com/r/hooks-use-controlled-state',
+      '@animate-ui/primitives-effects-highlight',
+      '@animate-ui/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
     ],
     files: [
       {
@@ -18220,8 +18012,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion', 'radix-ui'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-controlled-state',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-controlled-state',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -18260,7 +18052,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/texts/counting-number/index.tsx',
@@ -18336,7 +18128,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/texts/highlight/index.tsx',
@@ -18374,7 +18166,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/texts/rolling/index.tsx',
@@ -18413,8 +18205,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-is-in-view',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-is-in-view',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -18454,8 +18246,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-is-in-view',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-is-in-view',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {
@@ -18494,7 +18286,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/texts/shimmering/index.tsx',
@@ -18532,7 +18324,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion', 'react-use-measure'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/texts/sliding-number/index.tsx',
@@ -18570,7 +18362,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: ['https://animate-ui.com/r/hooks-use-is-in-view'],
+    registryDependencies: ['@animate-ui/hooks-use-is-in-view'],
     files: [
       {
         path: 'registry/primitives/texts/splitting/index.tsx',
@@ -18609,8 +18401,8 @@ export const index: Record<string, any> = {
     dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: [
-      'https://animate-ui.com/r/hooks-use-is-in-view',
-      'https://animate-ui.com/r/lib-get-strict-context',
+      '@animate-ui/hooks-use-is-in-view',
+      '@animate-ui/lib-get-strict-context',
     ],
     files: [
       {

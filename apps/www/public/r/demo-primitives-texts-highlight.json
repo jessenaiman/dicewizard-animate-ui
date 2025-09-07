@@ -5,7 +5,7 @@
   "title": "Highlight Text Demo",
   "description": "Demo showing an animated highlight text.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-highlight"
+    "@animate-ui/primitives-texts-highlight"
   ],
   "files": [
     {

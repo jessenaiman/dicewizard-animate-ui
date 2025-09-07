@@ -5,7 +5,7 @@
   "title": "Toggle Group",
   "description": "Provides a shared state to a series of toggle buttons.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-toggle-group"
+    "@animate-ui/primitives-base-toggle-group"
   ],
   "files": [
     {

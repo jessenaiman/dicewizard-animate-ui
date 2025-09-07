@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Dropdown Menu Demo",
   "description": "Demo showing an animated radix dropdown menu.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-dropdown-menu"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-dropdown-menu"],
   "files": [
     {
       "path": "registry/demo/primitives/radix/dropdown-menu/index.tsx",

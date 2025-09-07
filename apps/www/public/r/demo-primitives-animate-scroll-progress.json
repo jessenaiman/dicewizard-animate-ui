@@ -5,7 +5,7 @@
   "title": "Animate Scroll Progress Demo",
   "description": "Demo showing an animated scroll progress.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-scroll-progress"
+    "@animate-ui/primitives-animate-scroll-progress"
   ],
   "files": [
     {

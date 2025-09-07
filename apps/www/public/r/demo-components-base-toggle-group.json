@@ -5,7 +5,7 @@
   "title": "Toggle Group Demo",
   "description": "Demo showing a toggle group.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-base-toggle-group"
+    "@animate-ui/components-base-toggle-group"
   ],
   "files": [
     {

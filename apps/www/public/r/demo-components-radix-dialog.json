@@ -5,7 +5,7 @@
   "title": "Dialog Demo",
   "description": "Demo showing a dialog.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-radix-dialog"
+    "@animate-ui/components-radix-dialog"
   ],
   "files": [
     {

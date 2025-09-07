@@ -5,7 +5,7 @@
   "title": "Liquid Button Demo",
   "description": "Demo showing an animated liquid button.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-buttons-liquid"
+    "@animate-ui/primitives-buttons-liquid"
   ],
   "files": [
     {

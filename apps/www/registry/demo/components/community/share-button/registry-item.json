@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Share Button Demo",
   "description": "Demo showing a share button.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-community-share-button"
-  ],
+  "registryDependencies": ["@animate-ui/components-community-share-button"],
   "files": [
     {
       "path": "registry/demo/components/community/share-button/index.tsx",

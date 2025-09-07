@@ -5,7 +5,7 @@
   "title": "Flip Button Demo",
   "description": "Demo showing a flip button.",
   "dependencies": ["lucide-react"],
-  "registryDependencies": ["https://animate-ui.com/r/components-buttons-flip"],
+  "registryDependencies": ["@animate-ui/components-buttons-flip"],
   "files": [
     {
       "path": "registry/demo/components/buttons/flip/index.tsx",

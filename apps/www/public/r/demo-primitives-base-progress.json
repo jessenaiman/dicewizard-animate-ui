@@ -5,7 +5,7 @@
   "title": "Base Progress Demo",
   "description": "Demo showing an animated base progress.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-progress"
+    "@animate-ui/primitives-base-progress"
   ],
   "files": [
     {

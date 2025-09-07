@@ -5,7 +5,7 @@
   "title": "Particles Demo",
   "description": "Demo showing an animated particles.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-particles"
+    "@animate-ui/primitives-effects-particles"
   ],
   "files": [
     {

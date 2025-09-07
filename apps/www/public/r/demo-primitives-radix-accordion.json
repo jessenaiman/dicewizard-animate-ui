@@ -5,7 +5,7 @@
   "title": "Radix Accordion Demo",
   "description": "Demo showing an animated radix accordion.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-accordion"
+    "@animate-ui/primitives-radix-accordion"
   ],
   "files": [
     {

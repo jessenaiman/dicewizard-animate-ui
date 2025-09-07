@@ -5,7 +5,7 @@
   "title": "Toggle Demo",
   "description": "Demo showing a toggle.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-base-toggle"
+    "@animate-ui/components-base-toggle"
   ],
   "files": [
     {

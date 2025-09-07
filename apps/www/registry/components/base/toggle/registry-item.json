@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Toggle",
   "description": "A two-state button that can be on or off.",
-  "registryDependencies": ["https://animate-ui.com/r/primitives-base-toggle"],
+  "registryDependencies": ["@animate-ui/primitives-base-toggle"],
   "files": [
     {
       "path": "registry/components/base/toggle/index.tsx",

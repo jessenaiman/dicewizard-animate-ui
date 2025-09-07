@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Counter Demo",
   "description": "Demo showing a counter.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-counter"
-  ],
+  "registryDependencies": ["@animate-ui/components-animate-counter"],
   "files": [
     {
       "path": "registry/demo/components/animate/counter/index.tsx",

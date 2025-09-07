@@ -5,7 +5,7 @@
   "title": "Slide Demo",
   "description": "Demo showing an animated slide.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-slide"
+    "@animate-ui/primitives-effects-slide"
   ],
   "files": [
     {

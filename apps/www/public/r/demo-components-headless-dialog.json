@@ -5,7 +5,7 @@
   "title": "Dialog Demo",
   "description": "Demo showing a dialog.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-headless-dialog"
+    "@animate-ui/components-headless-dialog"
   ],
   "files": [
     {

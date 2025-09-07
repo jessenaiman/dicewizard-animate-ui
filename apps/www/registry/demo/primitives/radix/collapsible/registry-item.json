@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Collapsible Demo",
   "description": "Demo showing an animated radix collapsible.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-collapsible"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-collapsible"],
   "files": [
     {
       "path": "registry/demo/primitives/radix/collapsible/index.tsx",

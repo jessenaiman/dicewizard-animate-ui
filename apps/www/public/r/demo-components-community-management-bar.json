@@ -5,7 +5,7 @@
   "title": "Management Bar Demo",
   "description": "Demo showing a management bar.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-community-management-bar"
+    "@animate-ui/components-community-management-bar"
   ],
   "files": [
     {

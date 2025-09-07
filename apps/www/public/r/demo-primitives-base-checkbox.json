@@ -5,7 +5,7 @@
   "title": "Base Checkbox Demo",
   "description": "Demo showing an animated base checkbox.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-checkbox"
+    "@animate-ui/primitives-base-checkbox"
   ],
   "files": [
     {

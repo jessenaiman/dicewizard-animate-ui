@@ -5,7 +5,7 @@
   "title": "Headless Switch",
   "description": "Switches are a pleasant interface for toggling a value between two states, and offer the same semantics and keyboard navigation as native checkbox elements.",
   "dependencies": ["motion", "@headlessui/react"],
-  "registryDependencies": ["https://animate-ui.com/r/lib-get-strict-context"],
+  "registryDependencies": ["@animate-ui/lib-get-strict-context"],
   "files": [
     {
       "path": "registry/primitives/headless/switch/index.tsx",

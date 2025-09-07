@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Popover",
   "description": "Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-popover"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-headless-popover"],
   "files": [
     {
       "path": "registry/components/headless/popover/index.tsx",

@@ -5,7 +5,7 @@
   "title": "Base Collapsible Demo",
   "description": "Demo showing an animated base collapsible.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-collapsible"
+    "@animate-ui/primitives-base-collapsible"
   ],
   "files": [
     {

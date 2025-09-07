@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Switch",
   "description": "A control that allows the user to toggle between checked and not checked.",
-  "registryDependencies": ["https://animate-ui.com/r/primitives-radix-switch"],
+  "registryDependencies": ["@animate-ui/primitives-radix-switch"],
   "files": [
     {
       "path": "registry/components/radix/switch/index.tsx",

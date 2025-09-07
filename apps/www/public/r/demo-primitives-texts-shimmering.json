@@ -5,7 +5,7 @@
   "title": "Shimmering Text Demo",
   "description": "Demo showing an animated shimmering text.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-shimmering"
+    "@animate-ui/primitives-texts-shimmering"
   ],
   "files": [
     {

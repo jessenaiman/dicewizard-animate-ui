@@ -5,7 +5,7 @@
   "title": "Effect Demo",
   "description": "Demo showing an animated effect.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-effect"
+    "@animate-ui/primitives-effects-effect"
   ],
   "files": [
     {

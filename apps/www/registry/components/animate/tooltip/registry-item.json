@@ -5,9 +5,7 @@
   "title": "Tooltip",
   "description": "A tooltip is a small box that appears when hovering over an element.",
   "dependencies": ["motion"],
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-tooltip"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-animate-tooltip"],
   "files": [
     {
       "path": "registry/components/animate/tooltip/index.tsx",

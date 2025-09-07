@@ -8,7 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-avatar-group"
+    "@animate-ui/primitives-animate-avatar-group"
   ],
   "files": [
     {

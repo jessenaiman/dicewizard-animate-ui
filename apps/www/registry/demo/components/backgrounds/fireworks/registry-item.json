@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Fireworks Background Demo",
   "description": "Demo showing a fireworks background.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-backgrounds-fireworks"
-  ],
+  "registryDependencies": ["@animate-ui/components-backgrounds-fireworks"],
   "files": [
     {
       "path": "registry/demo/components/backgrounds/fireworks/index.tsx",

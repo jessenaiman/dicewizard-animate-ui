@@ -5,7 +5,7 @@
   "title": "GitHub Stars Demo",
   "description": "Demo showing an animated github stars counter.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-github-stars"
+    "@animate-ui/primitives-animate-github-stars"
   ],
   "files": [
     {

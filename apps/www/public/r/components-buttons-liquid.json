@@ -8,7 +8,7 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-buttons-liquid"
+    "@animate-ui/primitives-buttons-liquid"
   ],
   "files": [
     {

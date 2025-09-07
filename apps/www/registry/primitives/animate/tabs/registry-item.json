@@ -6,9 +6,9 @@
   "description": "A tabs component that allows you to switch between different views.",
   "dependencies": ["motion"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-highlight",
-    "https://animate-ui.com/r/primitives-animate-slot",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/primitives-effects-highlight",
+    "@animate-ui/primitives-animate-slot",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

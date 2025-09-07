@@ -5,9 +5,7 @@
   "title": "Button Demo",
   "description": "Demo showing a button.",
   "dependencies": ["lucide-react"],
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-buttons-button"
-  ],
+  "registryDependencies": ["@animate-ui/components-buttons-button"],
   "files": [
     {
       "path": "registry/demo/components/buttons/button/index.tsx",

@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Headless Tabs Demo",
   "description": "Demo showing a headless tabs.",
-  "registryDependencies": ["https://animate-ui.com/r/components-headless-tabs"],
+  "registryDependencies": ["@animate-ui/components-headless-tabs"],
   "files": [
     {
       "path": "registry/demo/components/headless/tabs/index.tsx",

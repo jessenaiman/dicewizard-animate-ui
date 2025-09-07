@@ -5,7 +5,7 @@
   "title": "Base Popover Demo",
   "description": "Demo showing an animated base popover.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-popover"
+    "@animate-ui/primitives-base-popover"
   ],
   "files": [
     {

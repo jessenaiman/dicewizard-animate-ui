@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Radio Group Demo",
   "description": "Demo showing an animated radix radio group.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-radio-group"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-radio-group"],
   "files": [
     {
       "path": "registry/demo/primitives/radix/radio-group/index.tsx",

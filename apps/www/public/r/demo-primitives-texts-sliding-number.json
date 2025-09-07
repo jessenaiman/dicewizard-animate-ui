@@ -5,7 +5,7 @@
   "title": "Sliding Number Demo",
   "description": "Demo showing an animated sliding number.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-sliding-number"
+    "@animate-ui/primitives-texts-sliding-number"
   ],
   "files": [
     {

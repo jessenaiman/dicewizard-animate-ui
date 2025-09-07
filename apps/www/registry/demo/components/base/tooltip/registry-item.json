@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Tooltip Demo",
   "description": "Demo showing a tooltip.",
-  "registryDependencies": ["https://animate-ui.com/r/components-base-tooltip"],
+  "registryDependencies": ["@animate-ui/components-base-tooltip"],
   "files": [
     {
       "path": "registry/demo/components/base/tooltip/index.tsx",

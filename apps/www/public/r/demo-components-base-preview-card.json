@@ -5,7 +5,7 @@
   "title": "Preview Card Demo",
   "description": "Demo showing a preview card.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-base-preview-card"
+    "@animate-ui/components-base-preview-card"
   ],
   "files": [
     {

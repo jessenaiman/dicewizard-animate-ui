@@ -9,7 +9,7 @@
     "@headlessui/react"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

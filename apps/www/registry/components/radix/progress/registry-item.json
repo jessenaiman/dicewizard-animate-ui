@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Progress",
   "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-progress"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-progress"],
   "files": [
     {
       "path": "registry/components/radix/progress/index.tsx",

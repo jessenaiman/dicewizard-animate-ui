@@ -5,7 +5,7 @@
   "title": "Base Toggle Demo",
   "description": "Demo showing an animated base toggle.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-toggle"
+    "@animate-ui/primitives-base-toggle"
   ],
   "files": [
     {

@@ -8,9 +8,9 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-toggle-group",
-    "https://animate-ui.com/r/components-radix-toggle",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/primitives-radix-toggle-group",
+    "@animate-ui/components-radix-toggle",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

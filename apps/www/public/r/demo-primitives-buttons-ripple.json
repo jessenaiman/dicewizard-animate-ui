@@ -5,7 +5,7 @@
   "title": "Ripple Button Demo",
   "description": "Demo showing a ripple button.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-buttons-ripple"
+    "@animate-ui/primitives-buttons-ripple"
   ],
   "files": [
     {

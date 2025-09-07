@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Liquid Button Demo",
   "description": "Demo showing an animated liquid button.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-buttons-liquid"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-buttons-liquid"],
   "files": [
     {
       "path": "registry/demo/primitives/buttons/liquid/index.tsx",

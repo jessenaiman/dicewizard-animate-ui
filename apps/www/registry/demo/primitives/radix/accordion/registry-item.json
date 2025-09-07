@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Accordion Demo",
   "description": "Demo showing an animated radix accordion.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-accordion"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-accordion"],
   "files": [
     {
       "path": "registry/demo/primitives/radix/accordion/index.tsx",

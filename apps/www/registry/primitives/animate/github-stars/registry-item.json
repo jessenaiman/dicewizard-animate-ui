@@ -6,10 +6,10 @@
   "description": "A component that animates a number of stars, smoothly animating number transitions using the SlidingNumber component.",
   "dependencies": ["motion"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-slot",
-    "https://animate-ui.com/r/primitives-animate-sliding-number",
-    "https://animate-ui.com/r/hooks-use-is-in-view",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/primitives-animate-slot",
+    "@animate-ui/primitives-animate-sliding-number",
+    "@animate-ui/hooks-use-is-in-view",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

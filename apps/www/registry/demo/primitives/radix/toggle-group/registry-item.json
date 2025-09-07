@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Toggle Group Demo",
   "description": "Demo showing an animated radix toggle group.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-toggle-group"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-toggle-group"],
   "files": [
     {
       "path": "registry/demo/primitives/radix/toggle-group/index.tsx",

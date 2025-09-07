@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Highlight Demo",
   "description": "Demo showing an animated highlight.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-highlight"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-effects-highlight"],
   "files": [
     {
       "path": "registry/demo/primitives/effects/highlight/index.tsx",

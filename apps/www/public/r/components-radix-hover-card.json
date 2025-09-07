@@ -5,7 +5,7 @@
   "title": "Hover Card",
   "description": "For sighted users to preview content available behind a link.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-hover-card"
+    "@animate-ui/primitives-radix-hover-card"
   ],
   "files": [
     {

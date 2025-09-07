@@ -5,7 +5,7 @@
   "title": "Headless Dialog Demo",
   "description": "Demo showing an animated headless dialog.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-dialog"
+    "@animate-ui/primitives-headless-dialog"
   ],
   "files": [
     {

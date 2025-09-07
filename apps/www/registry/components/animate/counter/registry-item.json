@@ -5,9 +5,7 @@
   "title": "Counter",
   "description": "A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.",
   "dependencies": ["lucide-react"],
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-counter"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-animate-counter"],
   "files": [
     {
       "path": "registry/components/animate/counter/index.tsx",

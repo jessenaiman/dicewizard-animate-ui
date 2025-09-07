@@ -5,7 +5,7 @@
   "title": "Radix Sheet Demo",
   "description": "Demo showing an animated radix sheet.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-sheet"
+    "@animate-ui/primitives-radix-sheet"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Switch",
   "description": "A control that indicates whether a setting is on or off.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-switch"
+    "@animate-ui/primitives-base-switch"
   ],
   "files": [
     {

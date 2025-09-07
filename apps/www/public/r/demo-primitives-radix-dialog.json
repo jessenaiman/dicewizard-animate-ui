@@ -5,7 +5,7 @@
   "title": "Radix Dialog Demo",
   "description": "Demo showing an animated radix dialog.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-dialog"
+    "@animate-ui/primitives-radix-dialog"
   ],
   "files": [
     {

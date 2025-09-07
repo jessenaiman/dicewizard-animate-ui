@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Animate Counter Demo",
   "description": "Demo showing an animated counter.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-counter"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-animate-counter"],
   "files": [
     {
       "path": "registry/demo/primitives/animate/counter/index.tsx",

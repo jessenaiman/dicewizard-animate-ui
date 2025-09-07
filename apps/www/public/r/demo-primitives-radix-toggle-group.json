@@ -5,7 +5,7 @@
   "title": "Radix Toggle Group Demo",
   "description": "Demo showing an animated radix toggle group.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-toggle-group"
+    "@animate-ui/primitives-radix-toggle-group"
   ],
   "files": [
     {

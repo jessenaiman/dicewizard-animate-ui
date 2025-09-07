@@ -5,7 +5,7 @@
   "title": "Rolling Text Demo",
   "description": "Demo showing an animated rolling text.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-rolling"
+    "@animate-ui/primitives-texts-rolling"
   ],
   "files": [
     {

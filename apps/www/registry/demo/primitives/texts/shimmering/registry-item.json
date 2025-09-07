@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Shimmering Text Demo",
   "description": "Demo showing an animated shimmering text.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-shimmering"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-texts-shimmering"],
   "files": [
     {
       "path": "registry/demo/primitives/texts/shimmering/index.tsx",

@@ -5,9 +5,7 @@
   "title": "Liquid Button Demo",
   "description": "Demo showing a liquid button.",
   "dependencies": ["lucide-react"],
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-buttons-liquid"
-  ],
+  "registryDependencies": ["@animate-ui/components-buttons-liquid"],
   "files": [
     {
       "path": "registry/demo/components/buttons/liquid/index.tsx",

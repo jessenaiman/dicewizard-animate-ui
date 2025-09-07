@@ -5,7 +5,7 @@
   "title": "Counting Number Demo",
   "description": "Demo showing an animated counting number.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-counting-number"
+    "@animate-ui/primitives-texts-counting-number"
   ],
   "files": [
     {

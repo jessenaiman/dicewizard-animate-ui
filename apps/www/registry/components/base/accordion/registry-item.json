@@ -5,9 +5,7 @@
   "title": "Accordion",
   "description": "A set of collapsible panels with headings.",
   "dependencies": ["lucide-react"],
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-accordion"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-base-accordion"],
   "files": [
     {
       "path": "registry/components/base/accordion/index.tsx",

@@ -5,7 +5,7 @@
   "title": "Radix Sidebar Demo",
   "description": "Demo showing a radix sidebar.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-radix-sidebar"
+    "@animate-ui/components-radix-sidebar"
   ],
   "files": [
     {

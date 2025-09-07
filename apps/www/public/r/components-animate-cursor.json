@@ -5,7 +5,7 @@
   "title": "Cursor",
   "description": "An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-cursor"
+    "@animate-ui/primitives-animate-cursor"
   ],
   "files": [
     {

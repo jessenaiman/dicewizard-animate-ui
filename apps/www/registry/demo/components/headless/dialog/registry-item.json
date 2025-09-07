@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Dialog Demo",
   "description": "Demo showing a dialog.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-headless-dialog"
-  ],
+  "registryDependencies": ["@animate-ui/components-headless-dialog"],
   "files": [
     {
       "path": "registry/demo/components/headless/dialog/index.tsx",

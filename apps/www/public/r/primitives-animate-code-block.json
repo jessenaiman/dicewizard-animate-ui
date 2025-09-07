@@ -8,7 +8,7 @@
     "shiki"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/hooks-use-is-in-view"
+    "@animate-ui/hooks-use-is-in-view"
   ],
   "files": [
     {

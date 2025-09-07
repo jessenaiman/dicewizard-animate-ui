@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Code Demo",
   "description": "Demo showing a code.",
-  "registryDependencies": ["https://animate-ui.com/r/components-animate-code"],
+  "registryDependencies": ["@animate-ui/components-animate-code"],
   "files": [
     {
       "path": "registry/demo/components/animate/code/index.tsx",

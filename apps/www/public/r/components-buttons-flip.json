@@ -8,8 +8,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/components-buttons-button",
-    "https://animate-ui.com/r/primitives-buttons-flip"
+    "@animate-ui/components-buttons-button",
+    "@animate-ui/primitives-buttons-flip"
   ],
   "files": [
     {

@@ -26,7 +26,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-avatar-group"
+        "@animate-ui/primitives-animate-avatar-group"
       ],
       "files": [
         {
@@ -45,9 +45,9 @@
         "next-themes"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-code-block",
-        "https://animate-ui.com/r/components-buttons-copy",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-animate-code-block",
+        "@animate-ui/components-buttons-copy",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -66,8 +66,8 @@
         "shiki"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-tabs",
-        "https://animate-ui.com/r/components-buttons-copy"
+        "@animate-ui/primitives-animate-tabs",
+        "@animate-ui/components-buttons-copy"
       ],
       "files": [
         {
@@ -86,7 +86,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-counter"
+        "@animate-ui/primitives-animate-counter"
       ],
       "files": [
         {
@@ -102,7 +102,7 @@
       "title": "Cursor",
       "description": "An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-cursor"
+        "@animate-ui/primitives-animate-cursor"
       ],
       "files": [
         {
@@ -121,8 +121,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-particles",
-        "https://animate-ui.com/r/primitives-texts-scrolling-number"
+        "@animate-ui/primitives-effects-particles",
+        "@animate-ui/primitives-texts-scrolling-number"
       ],
       "files": [
         {
@@ -138,7 +138,7 @@
       "title": "Tabs",
       "description": "A set of layered sections with the same height of content—known as tab panels—that are displayed one at a time.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-tabs"
+        "@animate-ui/primitives-animate-tabs"
       ],
       "files": [
         {
@@ -157,7 +157,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-tooltip"
+        "@animate-ui/primitives-animate-tooltip"
       ],
       "files": [
         {
@@ -266,7 +266,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-accordion"
+        "@animate-ui/primitives-base-accordion"
       ],
       "files": [
         {
@@ -285,7 +285,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-checkbox"
+        "@animate-ui/primitives-base-checkbox"
       ],
       "files": [
         {
@@ -304,7 +304,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-files"
+        "@animate-ui/primitives-base-files"
       ],
       "files": [
         {
@@ -320,7 +320,7 @@
       "title": "Popover",
       "description": "An accessible popup anchored to a button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-popover"
+        "@animate-ui/primitives-base-popover"
       ],
       "files": [
         {
@@ -336,7 +336,7 @@
       "title": "Preview Card",
       "description": "A popup that appears when a link is hovered, showing a preview for sighted users.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-preview-card"
+        "@animate-ui/primitives-base-preview-card"
       ],
       "files": [
         {
@@ -352,7 +352,7 @@
       "title": "Progress",
       "description": "Displays the status of a task that takes a long time.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-progress"
+        "@animate-ui/primitives-base-progress"
       ],
       "files": [
         {
@@ -368,7 +368,7 @@
       "title": "Switch",
       "description": "A control that indicates whether a setting is on or off.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-switch"
+        "@animate-ui/primitives-base-switch"
       ],
       "files": [
         {
@@ -384,7 +384,7 @@
       "title": "Toggle",
       "description": "A two-state button that can be on or off.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-toggle"
+        "@animate-ui/primitives-base-toggle"
       ],
       "files": [
         {
@@ -400,7 +400,7 @@
       "title": "Toggle Group",
       "description": "Provides a shared state to a series of toggle buttons.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-toggle-group"
+        "@animate-ui/primitives-base-toggle-group"
       ],
       "files": [
         {
@@ -416,7 +416,7 @@
       "title": "Tooltip",
       "description": "A popup that appears when an element is hovered or focused, showing a hint for sighted users.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-tooltip"
+        "@animate-ui/primitives-base-tooltip"
       ],
       "files": [
         {
@@ -435,7 +435,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-button"
+        "@animate-ui/primitives-buttons-button"
       ],
       "files": [
         {
@@ -456,8 +456,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-button",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/primitives-buttons-button",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -476,8 +476,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-button",
-        "https://animate-ui.com/r/primitives-buttons-flip"
+        "@animate-ui/components-buttons-button",
+        "@animate-ui/primitives-buttons-flip"
       ],
       "files": [
         {
@@ -496,8 +496,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-button",
-        "https://animate-ui.com/r/primitives-animate-github-stars"
+        "@animate-ui/primitives-buttons-button",
+        "@animate-ui/primitives-animate-github-stars"
       ],
       "files": [
         {
@@ -516,7 +516,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-button"
+        "@animate-ui/primitives-buttons-button"
       ],
       "files": [
         {
@@ -535,7 +535,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-liquid"
+        "@animate-ui/primitives-buttons-liquid"
       ],
       "files": [
         {
@@ -554,8 +554,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-button",
-        "https://animate-ui.com/r/primitives-buttons-ripple"
+        "@animate-ui/components-buttons-button",
+        "@animate-ui/primitives-buttons-ripple"
       ],
       "files": [
         {
@@ -575,7 +575,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-sliding-number"
+        "@animate-ui/primitives-texts-sliding-number"
       ],
       "files": [
         {
@@ -628,7 +628,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-checkbox"
+        "@animate-ui/primitives-radix-checkbox"
       ],
       "files": [
         {
@@ -665,7 +665,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-tooltip"
+        "@animate-ui/components-animate-tooltip"
       ],
       "files": [
         {
@@ -684,7 +684,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-accordion"
+        "@animate-ui/primitives-headless-accordion"
       ],
       "files": [
         {
@@ -704,7 +704,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-checkbox"
+        "@animate-ui/primitives-headless-checkbox"
       ],
       "files": [
         {
@@ -724,7 +724,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-dialog"
+        "@animate-ui/primitives-headless-dialog"
       ],
       "files": [
         {
@@ -740,7 +740,7 @@
       "title": "Popover",
       "description": "Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-popover"
+        "@animate-ui/primitives-headless-popover"
       ],
       "files": [
         {
@@ -756,7 +756,7 @@
       "title": "Switch",
       "description": "Switches are a pleasant interface for toggling a value between two states, and offer the same semantics and keyboard navigation as native checkbox elements.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-switch"
+        "@animate-ui/primitives-headless-switch"
       ],
       "files": [
         {
@@ -775,7 +775,7 @@
         "motion/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-tabs"
+        "@animate-ui/primitives-headless-tabs"
       ],
       "files": [
         {
@@ -794,7 +794,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-accordion"
+        "@animate-ui/primitives-radix-accordion"
       ],
       "files": [
         {
@@ -813,7 +813,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-checkbox"
+        "@animate-ui/primitives-radix-checkbox"
       ],
       "files": [
         {
@@ -832,7 +832,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-dialog"
+        "@animate-ui/primitives-radix-dialog"
       ],
       "files": [
         {
@@ -851,7 +851,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-dropdown-menu"
+        "@animate-ui/primitives-radix-dropdown-menu"
       ],
       "files": [
         {
@@ -870,7 +870,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-files"
+        "@animate-ui/primitives-radix-files"
       ],
       "files": [
         {
@@ -886,7 +886,7 @@
       "title": "Hover Card",
       "description": "For sighted users to preview content available behind a link.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-hover-card"
+        "@animate-ui/primitives-radix-hover-card"
       ],
       "files": [
         {
@@ -902,7 +902,7 @@
       "title": "Popover",
       "description": "Displays rich content in a portal, triggered by a button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-popover"
+        "@animate-ui/primitives-radix-popover"
       ],
       "files": [
         {
@@ -918,7 +918,7 @@
       "title": "Progress",
       "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-progress"
+        "@animate-ui/primitives-radix-progress"
       ],
       "files": [
         {
@@ -937,7 +937,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-radio-group"
+        "@animate-ui/primitives-radix-radio-group"
       ],
       "files": [
         {
@@ -956,7 +956,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-sheet"
+        "@animate-ui/primitives-radix-sheet"
       ],
       "files": [
         {
@@ -978,8 +978,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-checkbox",
-        "https://animate-ui.com/r/lib-get-strict-context",
+        "@animate-ui/primitives-radix-checkbox",
+        "@animate-ui/lib-get-strict-context",
         "button",
         "input",
         "separator",
@@ -1000,7 +1000,7 @@
       "title": "Switch",
       "description": "A control that allows the user to toggle between checked and not checked.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-switch"
+        "@animate-ui/primitives-radix-switch"
       ],
       "files": [
         {
@@ -1016,7 +1016,7 @@
       "title": "Tabs",
       "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-tabs"
+        "@animate-ui/primitives-radix-tabs"
       ],
       "files": [
         {
@@ -1035,7 +1035,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-toggle"
+        "@animate-ui/primitives-radix-toggle"
       ],
       "files": [
         {
@@ -1054,9 +1054,9 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-toggle-group",
-        "https://animate-ui.com/r/components-radix-toggle",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-radix-toggle-group",
+        "@animate-ui/components-radix-toggle",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -1072,7 +1072,7 @@
       "title": "Tooltip",
       "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-tooltip"
+        "@animate-ui/primitives-radix-tooltip"
       ],
       "files": [
         {
@@ -1088,7 +1088,7 @@
       "title": "Avatar Group Demo",
       "description": "Demo showing a avatar group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-avatar-group"
+        "@animate-ui/components-animate-avatar-group"
       ],
       "files": [
         {
@@ -1104,7 +1104,7 @@
       "title": "Code Demo",
       "description": "Demo showing a code.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-code"
+        "@animate-ui/components-animate-code"
       ],
       "files": [
         {
@@ -1144,7 +1144,7 @@
       "title": "Code Tabs Demo",
       "description": "Demo showing a code tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-code-tabs"
+        "@animate-ui/components-animate-code-tabs"
       ],
       "files": [
         {
@@ -1160,7 +1160,7 @@
       "title": "Counter Demo",
       "description": "Demo showing a counter.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-counter"
+        "@animate-ui/components-animate-counter"
       ],
       "files": [
         {
@@ -1176,7 +1176,7 @@
       "title": "Cursor Demo",
       "description": "Demo showing a cursor.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-cursor"
+        "@animate-ui/components-animate-cursor"
       ],
       "files": [
         {
@@ -1232,7 +1232,7 @@
       "title": "Animate GitHub Stars Wheel Demo",
       "description": "Demo showing an animated github stars wheel.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-github-stars-wheel"
+        "@animate-ui/components-animate-github-stars-wheel"
       ],
       "files": [
         {
@@ -1275,7 +1275,7 @@
       "title": "Animate Tabs Demo",
       "description": "Demo showing an animated tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-tabs"
+        "@animate-ui/components-animate-tabs"
       ],
       "files": [
         {
@@ -1291,7 +1291,7 @@
       "title": "Animate Tooltip Demo",
       "description": "Demo showing an animated tooltip.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-animate-tooltip"
+        "@animate-ui/components-animate-tooltip"
       ],
       "files": [
         {
@@ -1344,7 +1344,7 @@
       "title": "Bubble Background Demo",
       "description": "Demo showing a bubble background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-bubble"
+        "@animate-ui/components-backgrounds-bubble"
       ],
       "files": [
         {
@@ -1369,7 +1369,7 @@
       "title": "Fireworks Background Demo",
       "description": "Demo showing a fireworks background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-fireworks"
+        "@animate-ui/components-backgrounds-fireworks"
       ],
       "files": [
         {
@@ -1397,7 +1397,7 @@
       "title": "Fireworks Circle Background Demo",
       "description": "Demo showing a fireworks circle background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-fireworks"
+        "@animate-ui/components-backgrounds-fireworks"
       ],
       "files": [
         {
@@ -1449,7 +1449,7 @@
       "title": "Gradient Background Demo",
       "description": "Demo showing a gradient background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-gradient"
+        "@animate-ui/components-backgrounds-gradient"
       ],
       "files": [
         {
@@ -1465,7 +1465,7 @@
       "title": "Hexagon Background Demo",
       "description": "Demo showing a hexagon background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-hexagon"
+        "@animate-ui/components-backgrounds-hexagon"
       ],
       "files": [
         {
@@ -1481,7 +1481,7 @@
       "title": "Hole Background Demo",
       "description": "Demo showing a hole background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-hole"
+        "@animate-ui/components-backgrounds-hole"
       ],
       "files": [
         {
@@ -1497,7 +1497,7 @@
       "title": "Stars Background Demo",
       "description": "Demo showing a stars background.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-backgrounds-stars"
+        "@animate-ui/components-backgrounds-stars"
       ],
       "files": [
         {
@@ -1513,7 +1513,7 @@
       "title": "Accordion Demo",
       "description": "Demo showing a accordion.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-accordion"
+        "@animate-ui/components-base-accordion"
       ],
       "files": [
         {
@@ -1548,7 +1548,7 @@
       "title": "Checkbox Demo",
       "description": "Demo showing a checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-checkbox"
+        "@animate-ui/components-base-checkbox"
       ],
       "files": [
         {
@@ -1588,7 +1588,7 @@
       "title": "Files Demo",
       "description": "Demo showing a files.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-files"
+        "@animate-ui/components-base-files"
       ],
       "files": [
         {
@@ -1604,7 +1604,7 @@
       "title": "Popover Demo",
       "description": "Demo showing a popover.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-popover"
+        "@animate-ui/components-base-popover"
       ],
       "files": [
         {
@@ -1649,7 +1649,7 @@
       "title": "Preview Card Demo",
       "description": "Demo showing a preview card.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-preview-card"
+        "@animate-ui/components-base-preview-card"
       ],
       "files": [
         {
@@ -1696,7 +1696,7 @@
       "title": "Progress Demo",
       "description": "Demo showing a progress bar.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-progress"
+        "@animate-ui/components-base-progress"
       ],
       "files": [
         {
@@ -1712,7 +1712,7 @@
       "title": "Switch Demo",
       "description": "Demo showing a switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-switch"
+        "@animate-ui/components-base-switch"
       ],
       "files": [
         {
@@ -1728,7 +1728,7 @@
       "title": "Toggle Demo",
       "description": "Demo showing a toggle.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-toggle"
+        "@animate-ui/components-base-toggle"
       ],
       "files": [
         {
@@ -1766,7 +1766,7 @@
       "title": "Toggle Group Demo",
       "description": "Demo showing a toggle group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-toggle-group"
+        "@animate-ui/components-base-toggle-group"
       ],
       "files": [
         {
@@ -1807,7 +1807,7 @@
       "title": "Tooltip Demo",
       "description": "Demo showing a tooltip.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-base-tooltip"
+        "@animate-ui/components-base-tooltip"
       ],
       "files": [
         {
@@ -1857,7 +1857,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-button"
+        "@animate-ui/components-buttons-button"
       ],
       "files": [
         {
@@ -1902,7 +1902,7 @@
       "title": "Copy Button Demo",
       "description": "Demo showing a copy button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-copy"
+        "@animate-ui/components-buttons-copy"
       ],
       "files": [
         {
@@ -1948,7 +1948,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-flip"
+        "@animate-ui/components-buttons-flip"
       ],
       "files": [
         {
@@ -2016,7 +2016,7 @@
       "title": "GitHub Stars Button Demo",
       "description": "Demo showing a GitHub stars button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-github-stars"
+        "@animate-ui/components-buttons-github-stars"
       ],
       "files": [
         {
@@ -2055,7 +2055,7 @@
       "title": "Icon Button Demo",
       "description": "Demo showing an icon button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-icon"
+        "@animate-ui/components-buttons-icon"
       ],
       "files": [
         {
@@ -2097,7 +2097,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-liquid"
+        "@animate-ui/components-buttons-liquid"
       ],
       "files": [
         {
@@ -2141,7 +2141,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/components-buttons-ripple"
+        "@animate-ui/components-buttons-ripple"
       ],
       "files": [
         {
@@ -2186,7 +2186,7 @@
       "title": "Management Bar Demo",
       "description": "Demo showing a management bar.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-community-management-bar"
+        "@animate-ui/components-community-management-bar"
       ],
       "files": [
         {
@@ -2202,7 +2202,7 @@
       "title": "Notification List Demo",
       "description": "Demo showing a notification list.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-community-notification-list"
+        "@animate-ui/components-community-notification-list"
       ],
       "files": [
         {
@@ -2218,7 +2218,7 @@
       "title": "Pin List Demo",
       "description": "Demo showing a pin list.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-community-pin-list"
+        "@animate-ui/components-community-pin-list"
       ],
       "files": [
         {
@@ -2234,7 +2234,7 @@
       "title": "Playful Todolist Demo",
       "description": "Demo showing a playful todolist.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-community-playful-todolist"
+        "@animate-ui/components-community-playful-todolist"
       ],
       "files": [
         {
@@ -2250,7 +2250,7 @@
       "title": "Share Button Demo",
       "description": "Demo showing a share button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-community-share-button"
+        "@animate-ui/components-community-share-button"
       ],
       "files": [
         {
@@ -2288,7 +2288,7 @@
       "title": "User Presence Avatar Demo",
       "description": "Demo showing a user presence avatar.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-community-user-presence-avatar"
+        "@animate-ui/components-community-user-presence-avatar"
       ],
       "files": [
         {
@@ -2304,7 +2304,7 @@
       "title": "Accordion Demo",
       "description": "Demo showing a accordion.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-headless-accordion"
+        "@animate-ui/components-headless-accordion"
       ],
       "files": [
         {
@@ -2334,7 +2334,7 @@
       "title": "Checkbox Demo",
       "description": "Demo showing a checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-headless-checkbox"
+        "@animate-ui/components-headless-checkbox"
       ],
       "files": [
         {
@@ -2374,7 +2374,7 @@
       "title": "Dialog Demo",
       "description": "Demo showing a dialog.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-headless-dialog"
+        "@animate-ui/components-headless-dialog"
       ],
       "files": [
         {
@@ -2408,7 +2408,7 @@
       "title": "Popover Demo",
       "description": "Demo showing a popover.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-headless-popover"
+        "@animate-ui/components-headless-popover"
       ],
       "files": [
         {
@@ -2450,7 +2450,7 @@
       "title": "Headless Switch Demo",
       "description": "Demo showing a headless switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-headless-switch"
+        "@animate-ui/components-headless-switch"
       ],
       "files": [
         {
@@ -2466,7 +2466,7 @@
       "title": "Headless Tabs Demo",
       "description": "Demo showing a headless tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-headless-tabs"
+        "@animate-ui/components-headless-tabs"
       ],
       "files": [
         {
@@ -2482,7 +2482,7 @@
       "title": "Accordion Demo",
       "description": "Demo showing a accordion.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-accordion"
+        "@animate-ui/components-radix-accordion"
       ],
       "files": [
         {
@@ -2520,7 +2520,7 @@
       "title": "Checkbox Demo",
       "description": "Demo showing a checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-checkbox"
+        "@animate-ui/components-radix-checkbox"
       ],
       "files": [
         {
@@ -2565,7 +2565,7 @@
       "title": "Dialog Demo",
       "description": "Demo showing a dialog.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-dialog"
+        "@animate-ui/components-radix-dialog"
       ],
       "files": [
         {
@@ -2599,7 +2599,7 @@
       "title": "Dropdown Menu Demo",
       "description": "Demo showing a dropdown menu.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-dropdown-menu"
+        "@animate-ui/components-radix-dropdown-menu"
       ],
       "files": [
         {
@@ -2644,7 +2644,7 @@
       "title": "Dropdown Menu Checkbox Demo",
       "description": "Demo showing a dropdown menu with a checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-dropdown-menu"
+        "@animate-ui/components-radix-dropdown-menu"
       ],
       "files": [
         {
@@ -2689,7 +2689,7 @@
       "title": "Dropdown Menu Radio Demo",
       "description": "Demo showing a dropdown menu with a radio.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-dropdown-menu"
+        "@animate-ui/components-radix-dropdown-menu"
       ],
       "files": [
         {
@@ -2734,7 +2734,7 @@
       "title": "Files Demo",
       "description": "Demo showing a files.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-files"
+        "@animate-ui/components-radix-files"
       ],
       "files": [
         {
@@ -2750,7 +2750,7 @@
       "title": "Hover Card Demo",
       "description": "Demo showing a hover card.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-hover-card"
+        "@animate-ui/components-radix-hover-card"
       ],
       "files": [
         {
@@ -2795,7 +2795,7 @@
       "title": "Popover Demo",
       "description": "Demo showing a popover.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-popover"
+        "@animate-ui/components-radix-popover"
       ],
       "files": [
         {
@@ -2840,7 +2840,7 @@
       "title": "Radix Progress Demo",
       "description": "Demo showing a radix progress.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-progress"
+        "@animate-ui/components-radix-progress"
       ],
       "files": [
         {
@@ -2856,7 +2856,7 @@
       "title": "Radix Radio Group Demo",
       "description": "Demo showing a radix radio group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-radio-group"
+        "@animate-ui/components-radix-radio-group"
       ],
       "files": [
         {
@@ -2872,7 +2872,7 @@
       "title": "Radix Sheet Demo",
       "description": "Demo showing a radix sheet.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-sheet"
+        "@animate-ui/components-radix-sheet"
       ],
       "files": [
         {
@@ -2903,7 +2903,7 @@
       "title": "Radix Sidebar Demo",
       "description": "Demo showing a radix sidebar.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-sidebar"
+        "@animate-ui/components-radix-sidebar"
       ],
       "files": [
         {
@@ -2919,7 +2919,7 @@
       "title": "Radix Switch Demo",
       "description": "Demo showing a radix switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-switch"
+        "@animate-ui/components-radix-switch"
       ],
       "files": [
         {
@@ -2935,7 +2935,7 @@
       "title": "Radix Tabs Demo",
       "description": "Demo showing a radix tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-tabs"
+        "@animate-ui/components-radix-tabs"
       ],
       "files": [
         {
@@ -2951,7 +2951,7 @@
       "title": "Radix Toggle Demo",
       "description": "Demo showing a radix toggle.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-toggle"
+        "@animate-ui/components-radix-toggle"
       ],
       "files": [
         {
@@ -2989,7 +2989,7 @@
       "title": "Radix Toggle Group Demo",
       "description": "Demo showing a radix toggle group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-toggle-group"
+        "@animate-ui/components-radix-toggle-group"
       ],
       "files": [
         {
@@ -3034,7 +3034,7 @@
       "title": "Radix Tooltip Demo",
       "description": "Demo showing a radix tooltip.",
       "registryDependencies": [
-        "https://animate-ui.com/r/components-radix-tooltip"
+        "@animate-ui/components-radix-tooltip"
       ],
       "files": [
         {
@@ -3082,7 +3082,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-avatar-group"
+        "@animate-ui/primitives-animate-avatar-group"
       ],
       "files": [
         {
@@ -3098,7 +3098,7 @@
       "title": "Animate Code Block Demo",
       "description": "Demo showing an animated code block.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-code-block"
+        "@animate-ui/primitives-animate-code-block"
       ],
       "files": [
         {
@@ -3138,7 +3138,7 @@
       "title": "Animate Counter Demo",
       "description": "Demo showing an animated counter.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-counter"
+        "@animate-ui/primitives-animate-counter"
       ],
       "files": [
         {
@@ -3154,7 +3154,7 @@
       "title": "Animate Cursor Demo",
       "description": "Demo showing an animated cursor.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-cursor"
+        "@animate-ui/primitives-animate-cursor"
       ],
       "files": [
         {
@@ -3210,7 +3210,7 @@
       "title": "GitHub Stars Demo",
       "description": "Demo showing an animated github stars counter.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-github-stars"
+        "@animate-ui/primitives-animate-github-stars"
       ],
       "files": [
         {
@@ -3226,8 +3226,8 @@
       "title": "Animate Motion Grid Demo",
       "description": "Demo showing an animated motion grid.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-motion-grid",
-        "https://animate-ui.com/r/primitives-texts-rotating"
+        "@animate-ui/primitives-animate-motion-grid",
+        "@animate-ui/primitives-texts-rotating"
       ],
       "files": [
         {
@@ -3243,7 +3243,7 @@
       "title": "Animate Pinned List Demo",
       "description": "Demo showing an animated pinned list.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-pinned-list"
+        "@animate-ui/primitives-animate-pinned-list"
       ],
       "files": [
         {
@@ -3259,7 +3259,7 @@
       "title": "Animate Scroll Progress Demo",
       "description": "Demo showing an animated scroll progress.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-scroll-progress"
+        "@animate-ui/primitives-animate-scroll-progress"
       ],
       "files": [
         {
@@ -3291,7 +3291,7 @@
       "title": "Animate Spring Demo",
       "description": "Demo showing an animated spring.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-spring"
+        "@animate-ui/primitives-animate-spring"
       ],
       "files": [
         {
@@ -3307,7 +3307,7 @@
       "title": "Animate Tabs Demo",
       "description": "Demo showing an animated tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-tabs"
+        "@animate-ui/primitives-animate-tabs"
       ],
       "files": [
         {
@@ -3326,7 +3326,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-tooltip"
+        "@animate-ui/primitives-animate-tooltip"
       ],
       "files": [
         {
@@ -3384,7 +3384,7 @@
       "title": "Base Accordion Demo",
       "description": "Demo showing an animated base accordion.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-accordion"
+        "@animate-ui/primitives-base-accordion"
       ],
       "files": [
         {
@@ -3414,7 +3414,7 @@
       "title": "Base Checkbox Demo",
       "description": "Demo showing an animated base checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-checkbox"
+        "@animate-ui/primitives-base-checkbox"
       ],
       "files": [
         {
@@ -3439,7 +3439,7 @@
       "title": "Base Collapsible Demo",
       "description": "Demo showing an animated base collapsible.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-collapsible"
+        "@animate-ui/primitives-base-collapsible"
       ],
       "files": [
         {
@@ -3467,7 +3467,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-files"
+        "@animate-ui/primitives-base-files"
       ],
       "files": [
         {
@@ -3483,7 +3483,7 @@
       "title": "Base Popover Demo",
       "description": "Demo showing an animated base popover.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-popover"
+        "@animate-ui/primitives-base-popover"
       ],
       "files": [
         {
@@ -3530,7 +3530,7 @@
       "title": "Base Preview Card Demo",
       "description": "Demo showing an animated base preview card.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-preview-card"
+        "@animate-ui/primitives-base-preview-card"
       ],
       "files": [
         {
@@ -3577,7 +3577,7 @@
       "title": "Base Progress Demo",
       "description": "Demo showing an animated base progress.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-progress"
+        "@animate-ui/primitives-base-progress"
       ],
       "files": [
         {
@@ -3593,7 +3593,7 @@
       "title": "Base Switch Demo",
       "description": "Demo showing an animated base switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-switch"
+        "@animate-ui/primitives-base-switch"
       ],
       "files": [
         {
@@ -3609,7 +3609,7 @@
       "title": "Base Toggle Demo",
       "description": "Demo showing an animated base toggle.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-toggle"
+        "@animate-ui/primitives-base-toggle"
       ],
       "files": [
         {
@@ -3625,7 +3625,7 @@
       "title": "Base Toggle Group Demo",
       "description": "Demo showing an animated base toggle group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-toggle-group"
+        "@animate-ui/primitives-base-toggle-group"
       ],
       "files": [
         {
@@ -3650,7 +3650,7 @@
       "title": "Base Tooltip Demo",
       "description": "Demo showing an animated base tooltip.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-tooltip"
+        "@animate-ui/primitives-base-tooltip"
       ],
       "files": [
         {
@@ -3697,7 +3697,7 @@
       "title": "Button Demo",
       "description": "Demo showing a button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-button"
+        "@animate-ui/primitives-buttons-button"
       ],
       "files": [
         {
@@ -3731,7 +3731,7 @@
       "title": "Flip Button Demo",
       "description": "Demo showing an animated flip button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-flip"
+        "@animate-ui/primitives-buttons-flip"
       ],
       "files": [
         {
@@ -3768,7 +3768,7 @@
       "title": "Liquid Button Demo",
       "description": "Demo showing an animated liquid button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-liquid"
+        "@animate-ui/primitives-buttons-liquid"
       ],
       "files": [
         {
@@ -3814,7 +3814,7 @@
       "title": "Ripple Button Demo",
       "description": "Demo showing a ripple button.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-buttons-ripple"
+        "@animate-ui/primitives-buttons-ripple"
       ],
       "files": [
         {
@@ -3848,7 +3848,7 @@
       "title": "Blur Demo",
       "description": "Demo showing an animated blur.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-blur"
+        "@animate-ui/primitives-effects-blur"
       ],
       "files": [
         {
@@ -3888,7 +3888,7 @@
       "title": "Effect Demo",
       "description": "Demo showing an animated effect.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-effect"
+        "@animate-ui/primitives-effects-effect"
       ],
       "files": [
         {
@@ -3928,7 +3928,7 @@
       "title": "Fade Demo",
       "description": "Demo showing an animated fade.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-fade"
+        "@animate-ui/primitives-effects-fade"
       ],
       "files": [
         {
@@ -3968,7 +3968,7 @@
       "title": "Highlight Demo",
       "description": "Demo showing an animated highlight.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-highlight"
+        "@animate-ui/primitives-effects-highlight"
       ],
       "files": [
         {
@@ -4006,7 +4006,7 @@
       "title": "Magnetic Demo",
       "description": "Demo showing a magnetic effect.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-magnetic"
+        "@animate-ui/primitives-effects-magnetic"
       ],
       "files": [
         {
@@ -4040,7 +4040,7 @@
       "title": "Particles Demo",
       "description": "Demo showing an animated particles.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-particles"
+        "@animate-ui/primitives-effects-particles"
       ],
       "files": [
         {
@@ -4127,7 +4127,7 @@
       "title": "Slide Demo",
       "description": "Demo showing an animated slide.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-slide"
+        "@animate-ui/primitives-effects-slide"
       ],
       "files": [
         {
@@ -4170,7 +4170,7 @@
       "title": "Zoom Demo",
       "description": "Demo showing an animated zoom.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-zoom"
+        "@animate-ui/primitives-effects-zoom"
       ],
       "files": [
         {
@@ -4210,7 +4210,7 @@
       "title": "Headless Checkbox Demo",
       "description": "Demo showing an animated headless checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-checkbox"
+        "@animate-ui/primitives-headless-checkbox"
       ],
       "files": [
         {
@@ -4235,7 +4235,7 @@
       "title": "Headless Dialog Demo",
       "description": "Demo showing an animated headless dialog.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-dialog"
+        "@animate-ui/primitives-headless-dialog"
       ],
       "files": [
         {
@@ -4266,7 +4266,7 @@
       "title": "Headless Disclosure Demo",
       "description": "Demo showing an animated headless disclosure.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-disclosure"
+        "@animate-ui/primitives-headless-disclosure"
       ],
       "files": [
         {
@@ -4291,7 +4291,7 @@
       "title": "Headless Popover Demo",
       "description": "Demo showing an animated headless popover.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-popover"
+        "@animate-ui/primitives-headless-popover"
       ],
       "files": [
         {
@@ -4333,7 +4333,7 @@
       "title": "Headless Switch Demo",
       "description": "Demo showing an animated headless switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-switch"
+        "@animate-ui/primitives-headless-switch"
       ],
       "files": [
         {
@@ -4349,7 +4349,7 @@
       "title": "Headless Tabs Demo",
       "description": "Demo showing an animated headless tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-headless-tabs"
+        "@animate-ui/primitives-headless-tabs"
       ],
       "files": [
         {
@@ -4365,7 +4365,7 @@
       "title": "Radix Accordion Demo",
       "description": "Demo showing an animated radix accordion.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-accordion"
+        "@animate-ui/primitives-radix-accordion"
       ],
       "files": [
         {
@@ -4398,7 +4398,7 @@
       "title": "Radix Checkbox Demo",
       "description": "Demo showing an animated radix checkbox.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-checkbox"
+        "@animate-ui/primitives-radix-checkbox"
       ],
       "files": [
         {
@@ -4428,7 +4428,7 @@
       "title": "Radix Collapsible Demo",
       "description": "Demo showing an animated radix collapsible.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-collapsible"
+        "@animate-ui/primitives-radix-collapsible"
       ],
       "files": [
         {
@@ -4453,7 +4453,7 @@
       "title": "Radix Dialog Demo",
       "description": "Demo showing an animated radix dialog.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-dialog"
+        "@animate-ui/primitives-radix-dialog"
       ],
       "files": [
         {
@@ -4484,7 +4484,7 @@
       "title": "Radix Dropdown Menu Demo",
       "description": "Demo showing an animated radix dropdown menu.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-dropdown-menu"
+        "@animate-ui/primitives-radix-dropdown-menu"
       ],
       "files": [
         {
@@ -4532,7 +4532,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-files"
+        "@animate-ui/primitives-radix-files"
       ],
       "files": [
         {
@@ -4548,7 +4548,7 @@
       "title": "Radix Hover Card Demo",
       "description": "Demo showing an animated radix hover card.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-hover-card"
+        "@animate-ui/primitives-radix-hover-card"
       ],
       "files": [
         {
@@ -4593,7 +4593,7 @@
       "title": "Radix Popover Demo",
       "description": "Demo showing an animated radix popover.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-popover"
+        "@animate-ui/primitives-radix-popover"
       ],
       "files": [
         {
@@ -4638,7 +4638,7 @@
       "title": "Radix Progress Demo",
       "description": "Demo showing an animated radix progress.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-progress"
+        "@animate-ui/primitives-radix-progress"
       ],
       "files": [
         {
@@ -4654,7 +4654,7 @@
       "title": "Radix Radio Group Demo",
       "description": "Demo showing an animated radix radio group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-radio-group"
+        "@animate-ui/primitives-radix-radio-group"
       ],
       "files": [
         {
@@ -4670,7 +4670,7 @@
       "title": "Radix Sheet Demo",
       "description": "Demo showing an animated radix sheet.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-sheet"
+        "@animate-ui/primitives-radix-sheet"
       ],
       "files": [
         {
@@ -4701,7 +4701,7 @@
       "title": "Radix Switch Demo",
       "description": "Demo showing an animated radix switch.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-switch"
+        "@animate-ui/primitives-radix-switch"
       ],
       "files": [
         {
@@ -4717,7 +4717,7 @@
       "title": "Radix Tabs Demo",
       "description": "Demo showing an animated radix tabs.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-tabs"
+        "@animate-ui/primitives-radix-tabs"
       ],
       "files": [
         {
@@ -4733,7 +4733,7 @@
       "title": "Radix Toggle Demo",
       "description": "Demo showing an animated radix toggle.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-toggle"
+        "@animate-ui/primitives-radix-toggle"
       ],
       "files": [
         {
@@ -4749,7 +4749,7 @@
       "title": "Radix Toggle Group Demo",
       "description": "Demo showing an animated radix toggle group.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-toggle-group"
+        "@animate-ui/primitives-radix-toggle-group"
       ],
       "files": [
         {
@@ -4778,7 +4778,7 @@
       "title": "Radix Tooltip Demo",
       "description": "Demo showing an animated radix tooltip.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-tooltip"
+        "@animate-ui/primitives-radix-tooltip"
       ],
       "files": [
         {
@@ -4823,7 +4823,7 @@
       "title": "Counting Number Demo",
       "description": "Demo showing an animated counting number.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-counting-number"
+        "@animate-ui/primitives-texts-counting-number"
       ],
       "files": [
         {
@@ -4866,7 +4866,7 @@
       "title": "Gradient Text Demo",
       "description": "Demo showing an animated gradient text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-gradient"
+        "@animate-ui/primitives-texts-gradient"
       ],
       "files": [
         {
@@ -4891,7 +4891,7 @@
       "title": "Highlight Text Demo",
       "description": "Demo showing an animated highlight text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-highlight"
+        "@animate-ui/primitives-texts-highlight"
       ],
       "files": [
         {
@@ -4919,7 +4919,7 @@
       "title": "Rolling Text Demo",
       "description": "Demo showing an animated rolling text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-rolling"
+        "@animate-ui/primitives-texts-rolling"
       ],
       "files": [
         {
@@ -4947,7 +4947,7 @@
       "title": "Rotating Text Demo",
       "description": "Demo showing an animated rotating text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-rotating"
+        "@animate-ui/primitives-texts-rotating"
       ],
       "files": [
         {
@@ -4987,7 +4987,7 @@
       "title": "Scrolling Number Demo",
       "description": "Demo showing an animated scrolling number.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-scrolling-number"
+        "@animate-ui/primitives-texts-scrolling-number"
       ],
       "files": [
         {
@@ -5026,7 +5026,7 @@
       "title": "Shimmering Text Demo",
       "description": "Demo showing an animated shimmering text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-shimmering"
+        "@animate-ui/primitives-texts-shimmering"
       ],
       "files": [
         {
@@ -5057,7 +5057,7 @@
       "title": "Sliding Number Demo",
       "description": "Demo showing an animated sliding number.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-sliding-number"
+        "@animate-ui/primitives-texts-sliding-number"
       ],
       "files": [
         {
@@ -5103,7 +5103,7 @@
       "title": "Splitting Text Demo",
       "description": "Demo showing an animated splitting text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-splitting"
+        "@animate-ui/primitives-texts-splitting"
       ],
       "files": [
         {
@@ -5147,7 +5147,7 @@
       "title": "Typing Text Demo",
       "description": "Demo showing an animated typing text.",
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-texts-typing"
+        "@animate-ui/primitives-texts-typing"
       ],
       "files": [
         {
@@ -7341,7 +7341,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -9997,7 +9997,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-tooltip"
+        "@animate-ui/primitives-animate-tooltip"
       ],
       "files": [
         {
@@ -10016,7 +10016,7 @@
         "shiki"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10035,10 +10035,10 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/primitives-animate-sliding-number",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/primitives-animate-sliding-number",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10057,8 +10057,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10077,10 +10077,10 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/primitives-animate-sliding-number",
-        "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/primitives-animate-sliding-number",
+        "@animate-ui/hooks-use-is-in-view",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10099,8 +10099,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10119,7 +10119,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot"
+        "@animate-ui/primitives-animate-slot"
       ],
       "files": [
         {
@@ -10138,9 +10138,9 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-motion-value-state"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-motion-value-state"
       ],
       "files": [
         {
@@ -10175,9 +10175,9 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-motion-value-state"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-motion-value-state"
       ],
       "files": [
         {
@@ -10196,9 +10196,9 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10218,8 +10218,8 @@
         "@floating-ui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10239,8 +10239,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10260,8 +10260,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10281,8 +10281,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10301,10 +10301,10 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-base-accordion",
-        "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/primitives-base-accordion",
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10324,8 +10324,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10345,8 +10345,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10366,8 +10366,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/primitives-texts-counting-number"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/primitives-texts-counting-number"
       ],
       "files": [
         {
@@ -10387,8 +10387,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10408,8 +10408,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10429,9 +10429,9 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/primitives-effects-highlight"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/primitives-effects-highlight"
       ],
       "files": [
         {
@@ -10451,8 +10451,8 @@
         "@base-ui-components/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10471,7 +10471,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot"
+        "@animate-ui/primitives-animate-slot"
       ],
       "files": [
         {
@@ -10490,8 +10490,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/primitives-animate-slot"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/primitives-animate-slot"
       ],
       "files": [
         {
@@ -10510,8 +10510,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/primitives-animate-slot"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/primitives-animate-slot"
       ],
       "files": [
         {
@@ -10530,8 +10530,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/primitives-animate-slot"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/primitives-animate-slot"
       ],
       "files": [
         {
@@ -10550,8 +10550,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10570,8 +10570,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10590,8 +10590,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10626,7 +10626,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot"
+        "@animate-ui/primitives-animate-slot"
       ],
       "files": [
         {
@@ -10645,8 +10645,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10665,8 +10665,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10685,8 +10685,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-animate-slot",
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/primitives-animate-slot",
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -10740,7 +10740,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10760,7 +10760,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10780,7 +10780,7 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10800,8 +10800,8 @@
         "@headlessui/react"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/primitives-effects-highlight"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/primitives-effects-highlight"
       ],
       "files": [
         {
@@ -10821,8 +10821,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10842,8 +10842,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10863,8 +10863,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10884,8 +10884,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10905,9 +10905,9 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10926,10 +10926,10 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-radix-accordion",
-        "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/primitives-radix-accordion",
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -10949,8 +10949,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10970,8 +10970,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -10991,7 +10991,7 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -11011,8 +11011,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -11032,8 +11032,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -11053,8 +11053,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -11074,9 +11074,9 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -11096,8 +11096,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -11117,9 +11117,9 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/primitives-effects-highlight",
-        "https://animate-ui.com/r/lib-get-strict-context",
-        "https://animate-ui.com/r/hooks-use-controlled-state"
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
       ],
       "files": [
         {
@@ -11139,8 +11139,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-controlled-state",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-controlled-state",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -11159,7 +11159,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -11194,7 +11194,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -11213,7 +11213,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -11232,8 +11232,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-is-in-view",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -11252,8 +11252,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-is-in-view",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {
@@ -11272,7 +11272,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -11292,7 +11292,7 @@
         "react-use-measure"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -11311,7 +11311,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view"
+        "@animate-ui/hooks-use-is-in-view"
       ],
       "files": [
         {
@@ -11330,8 +11330,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://animate-ui.com/r/hooks-use-is-in-view",
-        "https://animate-ui.com/r/lib-get-strict-context"
+        "@animate-ui/hooks-use-is-in-view",
+        "@animate-ui/lib-get-strict-context"
       ],
       "files": [
         {

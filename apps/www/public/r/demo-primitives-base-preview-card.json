@@ -5,7 +5,7 @@
   "title": "Base Preview Card Demo",
   "description": "Demo showing an animated base preview card.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-preview-card"
+    "@animate-ui/primitives-base-preview-card"
   ],
   "files": [
     {

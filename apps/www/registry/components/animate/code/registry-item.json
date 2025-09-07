@@ -6,9 +6,9 @@
   "description": "A code component that animates the code as it is written.",
   "dependencies": ["next-themes"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-code-block",
-    "https://animate-ui.com/r/components-buttons-copy",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/primitives-animate-code-block",
+    "@animate-ui/components-buttons-copy",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Radix Popover Demo",
   "description": "Demo showing an animated radix popover.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-popover"
+    "@animate-ui/primitives-radix-popover"
   ],
   "files": [
     {

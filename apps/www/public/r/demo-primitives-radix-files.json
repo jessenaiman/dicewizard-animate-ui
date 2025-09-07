@@ -8,7 +8,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-files"
+    "@animate-ui/primitives-radix-files"
   ],
   "files": [
     {

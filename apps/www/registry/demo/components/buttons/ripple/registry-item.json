@@ -5,9 +5,7 @@
   "title": "Ripple Button Demo",
   "description": "Demo showing a ripple button.",
   "dependencies": ["lucide-react"],
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-buttons-ripple"
-  ],
+  "registryDependencies": ["@animate-ui/components-buttons-ripple"],
   "files": [
     {
       "path": "registry/demo/components/buttons/ripple/index.tsx",

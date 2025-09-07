@@ -5,7 +5,7 @@
   "title": "Radix Tabs Demo",
   "description": "Demo showing a radix tabs.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-radix-tabs"
+    "@animate-ui/components-radix-tabs"
   ],
   "files": [
     {

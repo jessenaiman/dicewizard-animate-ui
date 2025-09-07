@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Button Demo",
   "description": "Demo showing a button.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-buttons-button"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-buttons-button"],
   "files": [
     {
       "path": "registry/demo/primitives/buttons/button/index.tsx",

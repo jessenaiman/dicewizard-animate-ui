@@ -10,8 +10,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-buttons-button",
-    "https://animate-ui.com/r/hooks-use-controlled-state"
+    "@animate-ui/primitives-buttons-button",
+    "@animate-ui/hooks-use-controlled-state"
   ],
   "files": [
     {

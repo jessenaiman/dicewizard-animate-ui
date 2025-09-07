@@ -5,7 +5,7 @@
   "title": "Hexagon Background Demo",
   "description": "Demo showing a hexagon background.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-backgrounds-hexagon"
+    "@animate-ui/components-backgrounds-hexagon"
   ],
   "files": [
     {

@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Animate Code Block Demo",
   "description": "Demo showing an animated code block.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-code-block"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-animate-code-block"],
   "files": [
     {
       "path": "registry/demo/primitives/animate/code-block/index.tsx",

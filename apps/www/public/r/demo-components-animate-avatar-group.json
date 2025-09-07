@@ -5,7 +5,7 @@
   "title": "Avatar Group Demo",
   "description": "Demo showing a avatar group.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-avatar-group"
+    "@animate-ui/components-animate-avatar-group"
   ],
   "files": [
     {

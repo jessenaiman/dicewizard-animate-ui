@@ -5,7 +5,7 @@
   "title": "Tooltip Demo",
   "description": "Demo showing a tooltip.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-base-tooltip"
+    "@animate-ui/components-base-tooltip"
   ],
   "files": [
     {

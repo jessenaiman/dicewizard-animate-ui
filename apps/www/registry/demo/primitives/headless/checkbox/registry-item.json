@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Headless Checkbox Demo",
   "description": "Demo showing an animated headless checkbox.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-checkbox"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-headless-checkbox"],
   "files": [
     {
       "path": "registry/demo/primitives/headless/checkbox/index.tsx",

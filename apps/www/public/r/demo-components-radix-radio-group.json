@@ -5,7 +5,7 @@
   "title": "Radix Radio Group Demo",
   "description": "Demo showing a radix radio group.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-radix-radio-group"
+    "@animate-ui/components-radix-radio-group"
   ],
   "files": [
     {

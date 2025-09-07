@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "GitHub Stars Demo",
   "description": "Demo showing an animated github stars counter.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-github-stars"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-animate-github-stars"],
   "files": [
     {
       "path": "registry/demo/primitives/animate/github-stars/index.tsx",

@@ -5,7 +5,7 @@
   "title": "Zoom Demo",
   "description": "Demo showing an animated zoom.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-zoom"
+    "@animate-ui/primitives-effects-zoom"
   ],
   "files": [
     {

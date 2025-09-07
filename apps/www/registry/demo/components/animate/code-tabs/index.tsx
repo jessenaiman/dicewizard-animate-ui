@@ -8,7 +8,7 @@ const CODES = {
       "command": "npx",
       "args": ["-y", "shadcn@canary", "registry:mcp"],
       "env": {
-        "REGISTRY_URL": "https://animate-ui.com/r/registry.json"
+        "REGISTRY_URL": "@animate-ui/registry.json"
       }
     }
   }
@@ -20,7 +20,7 @@ const CODES = {
       "command": "npx",
       "args": ["-y", "shadcn@canary", "registry:mcp"],
       "env": {
-        "REGISTRY_URL": "https://animate-ui.com/r/registry.json"
+        "REGISTRY_URL": "@animate-ui/registry.json"
       }
     }
   }

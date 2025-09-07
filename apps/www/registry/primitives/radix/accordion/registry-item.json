@@ -6,8 +6,8 @@
   "description": "A vertically stacked set of interactive headings that each reveal an associated section of content.",
   "dependencies": ["motion", "radix-ui"],
   "registryDependencies": [
-    "https://animate-ui.com/r/hooks-use-controlled-state",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/hooks-use-controlled-state",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

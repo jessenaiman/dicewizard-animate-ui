@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Headless Disclosure Demo",
   "description": "Demo showing an animated headless disclosure.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-disclosure"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-headless-disclosure"],
   "files": [
     {
       "path": "registry/demo/primitives/headless/disclosure/index.tsx",

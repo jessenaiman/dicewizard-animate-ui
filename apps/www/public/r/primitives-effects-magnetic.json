@@ -8,7 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-slot"
+    "@animate-ui/primitives-animate-slot"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Dropdown Menu Checkbox Demo",
   "description": "Demo showing a dropdown menu with a checkbox.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-radix-dropdown-menu"
+    "@animate-ui/components-radix-dropdown-menu"
   ],
   "files": [
     {

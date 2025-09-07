@@ -5,7 +5,7 @@
   "title": "Animate Counter Demo",
   "description": "Demo showing an animated counter.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-counter"
+    "@animate-ui/primitives-animate-counter"
   ],
   "files": [
     {

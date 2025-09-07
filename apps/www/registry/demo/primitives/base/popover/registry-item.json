@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Base Popover Demo",
   "description": "Demo showing an animated base popover.",
-  "registryDependencies": ["https://animate-ui.com/r/primitives-base-popover"],
+  "registryDependencies": ["@animate-ui/primitives-base-popover"],
   "files": [
     {
       "path": "registry/demo/primitives/base/popover/index.tsx",

@@ -5,7 +5,7 @@
   "title": "Radix Progress",
   "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   "dependencies": ["motion", "radix-ui"],
-  "registryDependencies": ["https://animate-ui.com/r/lib-get-strict-context"],
+  "registryDependencies": ["@animate-ui/lib-get-strict-context"],
   "files": [
     {
       "path": "registry/primitives/radix/progress/index.tsx",

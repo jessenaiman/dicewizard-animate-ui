@@ -5,7 +5,7 @@
   "title": "Base Accordion Demo",
   "description": "Demo showing an animated base accordion.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-accordion"
+    "@animate-ui/primitives-base-accordion"
   ],
   "files": [
     {

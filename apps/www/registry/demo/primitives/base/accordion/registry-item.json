@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Base Accordion Demo",
   "description": "Demo showing an animated base accordion.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-accordion"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-base-accordion"],
   "files": [
     {
       "path": "registry/demo/primitives/base/accordion/index.tsx",

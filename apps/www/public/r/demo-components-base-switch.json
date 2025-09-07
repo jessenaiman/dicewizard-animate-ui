@@ -5,7 +5,7 @@
   "title": "Switch Demo",
   "description": "Demo showing a switch.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-base-switch"
+    "@animate-ui/components-base-switch"
   ],
   "files": [
     {

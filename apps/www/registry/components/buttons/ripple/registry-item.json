@@ -6,8 +6,8 @@
   "description": "A button that animates on tap with a ripple effect.",
   "dependencies": ["class-variance-authority"],
   "registryDependencies": [
-    "https://animate-ui.com/r/components-buttons-button",
-    "https://animate-ui.com/r/primitives-buttons-ripple"
+    "@animate-ui/components-buttons-button",
+    "@animate-ui/primitives-buttons-ripple"
   ],
   "files": [
     {

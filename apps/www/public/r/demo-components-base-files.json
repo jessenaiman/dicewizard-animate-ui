@@ -5,7 +5,7 @@
   "title": "Files Demo",
   "description": "Demo showing a files.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-base-files"
+    "@animate-ui/components-base-files"
   ],
   "files": [
     {

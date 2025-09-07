@@ -5,7 +5,7 @@
   "title": "Base Tooltip Demo",
   "description": "Demo showing an animated base tooltip.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-tooltip"
+    "@animate-ui/primitives-base-tooltip"
   ],
   "files": [
     {

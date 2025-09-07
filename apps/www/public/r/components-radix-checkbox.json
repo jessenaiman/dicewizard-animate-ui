@@ -8,7 +8,7 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-checkbox"
+    "@animate-ui/primitives-radix-checkbox"
   ],
   "files": [
     {

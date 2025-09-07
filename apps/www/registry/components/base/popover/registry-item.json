@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Popover",
   "description": "An accessible popup anchored to a button.",
-  "registryDependencies": ["https://animate-ui.com/r/primitives-base-popover"],
+  "registryDependencies": ["@animate-ui/primitives-base-popover"],
   "files": [
     {
       "path": "registry/components/base/popover/index.tsx",

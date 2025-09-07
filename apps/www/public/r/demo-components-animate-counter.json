@@ -5,7 +5,7 @@
   "title": "Counter Demo",
   "description": "Demo showing a counter.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-counter"
+    "@animate-ui/components-animate-counter"
   ],
   "files": [
     {

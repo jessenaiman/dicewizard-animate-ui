@@ -5,7 +5,7 @@
   "title": "Code Demo",
   "description": "Demo showing a code.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-code"
+    "@animate-ui/components-animate-code"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Highlight Demo",
   "description": "Demo showing an animated highlight.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-effects-highlight"
+    "@animate-ui/primitives-effects-highlight"
   ],
   "files": [
     {

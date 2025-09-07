@@ -5,7 +5,7 @@
   "title": "Tooltip",
   "description": "A popup that appears when an element is hovered or focused, showing a hint for sighted users.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-tooltip"
+    "@animate-ui/primitives-base-tooltip"
   ],
   "files": [
     {

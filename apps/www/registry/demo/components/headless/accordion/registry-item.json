@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Accordion Demo",
   "description": "Demo showing a accordion.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-headless-accordion"
-  ],
+  "registryDependencies": ["@animate-ui/components-headless-accordion"],
   "files": [
     {
       "path": "registry/demo/components/headless/accordion/index.tsx",

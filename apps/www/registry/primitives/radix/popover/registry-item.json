@@ -6,8 +6,8 @@
   "description": "Displays rich content in a portal, triggered by a button.",
   "dependencies": ["motion", "radix-ui"],
   "registryDependencies": [
-    "https://animate-ui.com/r/hooks-use-controlled-state",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/hooks-use-controlled-state",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Radix Checkbox Demo",
   "description": "Demo showing an animated radix checkbox.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-checkbox"
+    "@animate-ui/primitives-radix-checkbox"
   ],
   "files": [
     {

@@ -8,7 +8,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-counter"
+    "@animate-ui/primitives-animate-counter"
   ],
   "files": [
     {

@@ -8,7 +8,7 @@
     "motion/react"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-tabs"
+    "@animate-ui/primitives-headless-tabs"
   ],
   "files": [
     {

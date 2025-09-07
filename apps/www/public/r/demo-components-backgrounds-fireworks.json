@@ -5,7 +5,7 @@
   "title": "Fireworks Background Demo",
   "description": "Demo showing a fireworks background.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-backgrounds-fireworks"
+    "@animate-ui/components-backgrounds-fireworks"
   ],
   "files": [
     {

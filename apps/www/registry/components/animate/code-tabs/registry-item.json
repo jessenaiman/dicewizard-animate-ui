@@ -6,8 +6,8 @@
   "description": "A tabs component that displays code for different languages.",
   "dependencies": ["shiki"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-tabs",
-    "https://animate-ui.com/r/components-buttons-copy"
+    "@animate-ui/primitives-animate-tabs",
+    "@animate-ui/components-buttons-copy"
   ],
   "files": [
     {

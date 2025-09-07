@@ -5,7 +5,7 @@
   "title": "Radix Hover Card Demo",
   "description": "Demo showing an animated radix hover card.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-hover-card"
+    "@animate-ui/primitives-radix-hover-card"
   ],
   "files": [
     {

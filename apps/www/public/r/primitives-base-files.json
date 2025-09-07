@@ -8,10 +8,10 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-accordion",
-    "https://animate-ui.com/r/primitives-effects-highlight",
-    "https://animate-ui.com/r/lib-get-strict-context",
-    "https://animate-ui.com/r/hooks-use-controlled-state"
+    "@animate-ui/primitives-base-accordion",
+    "@animate-ui/primitives-effects-highlight",
+    "@animate-ui/lib-get-strict-context",
+    "@animate-ui/hooks-use-controlled-state"
   ],
   "files": [
     {

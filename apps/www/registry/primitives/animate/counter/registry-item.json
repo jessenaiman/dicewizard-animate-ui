@@ -6,10 +6,10 @@
   "description": "A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.",
   "dependencies": ["motion"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-slot",
-    "https://animate-ui.com/r/primitives-animate-sliding-number",
-    "https://animate-ui.com/r/lib-get-strict-context",
-    "https://animate-ui.com/r/hooks-use-controlled-state"
+    "@animate-ui/primitives-animate-slot",
+    "@animate-ui/primitives-animate-sliding-number",
+    "@animate-ui/lib-get-strict-context",
+    "@animate-ui/hooks-use-controlled-state"
   ],
   "files": [
     {

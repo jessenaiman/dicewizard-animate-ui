@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Radix Progress Demo",
   "description": "Demo showing an animated radix progress.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-progress"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-radix-progress"],
   "files": [
     {
       "path": "registry/demo/primitives/radix/progress/index.tsx",

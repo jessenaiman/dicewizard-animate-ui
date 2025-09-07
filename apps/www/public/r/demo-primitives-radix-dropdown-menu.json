@@ -5,7 +5,7 @@
   "title": "Radix Dropdown Menu Demo",
   "description": "Demo showing an animated radix dropdown menu.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-dropdown-menu"
+    "@animate-ui/primitives-radix-dropdown-menu"
   ],
   "files": [
     {

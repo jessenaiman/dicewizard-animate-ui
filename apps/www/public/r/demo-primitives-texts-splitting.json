@@ -5,7 +5,7 @@
   "title": "Splitting Text Demo",
   "description": "Demo showing an animated splitting text.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-splitting"
+    "@animate-ui/primitives-texts-splitting"
   ],
   "files": [
     {

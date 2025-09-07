@@ -8,7 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-tooltip"
+    "@animate-ui/components-animate-tooltip"
   ],
   "files": [
     {

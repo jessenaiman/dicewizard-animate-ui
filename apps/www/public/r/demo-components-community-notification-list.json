@@ -5,7 +5,7 @@
   "title": "Notification List Demo",
   "description": "Demo showing a notification list.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-community-notification-list"
+    "@animate-ui/components-community-notification-list"
   ],
   "files": [
     {

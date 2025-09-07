@@ -5,7 +5,7 @@
   "title": "Headless Switch Demo",
   "description": "Demo showing an animated headless switch.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-switch"
+    "@animate-ui/primitives-headless-switch"
   ],
   "files": [
     {

@@ -5,8 +5,8 @@
   "title": "Animate Motion Grid Demo",
   "description": "Demo showing an animated motion grid.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-motion-grid",
-    "https://animate-ui.com/r/primitives-texts-rotating"
+    "@animate-ui/primitives-animate-motion-grid",
+    "@animate-ui/primitives-texts-rotating"
   ],
   "files": [
     {

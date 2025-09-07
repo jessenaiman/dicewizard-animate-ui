@@ -8,7 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-tooltip"
+    "@animate-ui/primitives-animate-tooltip"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Headless Disclosure Demo",
   "description": "Demo showing an animated headless disclosure.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-headless-disclosure"
+    "@animate-ui/primitives-headless-disclosure"
   ],
   "files": [
     {

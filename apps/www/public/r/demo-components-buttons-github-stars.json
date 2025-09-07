@@ -5,7 +5,7 @@
   "title": "GitHub Stars Button Demo",
   "description": "Demo showing a GitHub stars button.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-buttons-github-stars"
+    "@animate-ui/components-buttons-github-stars"
   ],
   "files": [
     {

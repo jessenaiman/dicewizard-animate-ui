@@ -5,7 +5,7 @@
   "title": "Pin List Demo",
   "description": "Demo showing a pin list.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-community-pin-list"
+    "@animate-ui/components-community-pin-list"
   ],
   "files": [
     {

@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Cursor Demo",
   "description": "Demo showing a cursor.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-cursor"
-  ],
+  "registryDependencies": ["@animate-ui/components-animate-cursor"],
   "files": [
     {
       "path": "registry/demo/components/animate/cursor/index.tsx",

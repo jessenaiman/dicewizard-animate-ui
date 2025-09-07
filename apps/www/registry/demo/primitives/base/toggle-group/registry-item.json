@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Base Toggle Group Demo",
   "description": "Demo showing an animated base toggle group.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-base-toggle-group"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-base-toggle-group"],
   "files": [
     {
       "path": "registry/demo/primitives/base/toggle-group/index.tsx",

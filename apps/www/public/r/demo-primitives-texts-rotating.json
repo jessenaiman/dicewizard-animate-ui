@@ -5,7 +5,7 @@
   "title": "Rotating Text Demo",
   "description": "Demo showing an animated rotating text.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-texts-rotating"
+    "@animate-ui/primitives-texts-rotating"
   ],
   "files": [
     {

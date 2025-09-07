@@ -5,7 +5,7 @@
   "title": "Switch",
   "description": "A control that allows the user to toggle between checked and not checked.",
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-radix-switch"
+    "@animate-ui/primitives-radix-switch"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Cursor Demo",
   "description": "Demo showing a cursor.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-animate-cursor"
+    "@animate-ui/components-animate-cursor"
   ],
   "files": [
     {

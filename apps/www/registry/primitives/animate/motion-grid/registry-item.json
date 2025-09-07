@@ -6,8 +6,8 @@
   "description": "A grid that displays animations in a grid.",
   "dependencies": ["motion"],
   "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-slot",
-    "https://animate-ui.com/r/lib-get-strict-context"
+    "@animate-ui/primitives-animate-slot",
+    "@animate-ui/lib-get-strict-context"
   ],
   "files": [
     {

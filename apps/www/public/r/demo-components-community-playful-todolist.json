@@ -5,7 +5,7 @@
   "title": "Playful Todolist Demo",
   "description": "Demo showing a playful todolist.",
   "registryDependencies": [
-    "https://animate-ui.com/r/components-community-playful-todolist"
+    "@animate-ui/components-community-playful-todolist"
   ],
   "files": [
     {

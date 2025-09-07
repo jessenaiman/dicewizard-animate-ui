@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Animate Pinned List Demo",
   "description": "Demo showing an animated pinned list.",
-  "registryDependencies": [
-    "https://animate-ui.com/r/primitives-animate-pinned-list"
-  ],
+  "registryDependencies": ["@animate-ui/primitives-animate-pinned-list"],
   "files": [
     {
       "path": "registry/demo/primitives/animate/pinned-list/index.tsx",
