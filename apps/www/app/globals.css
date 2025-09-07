@@ -262,3 +262,11 @@
     }
   }
 }
+
+.screenshot-mode #nd-sidebar,
+.screenshot-mode #nd-toc,
+.screenshot-mode #nd-page article > *:not(#docs-body),
+.screenshot-mode #nd-page #docs-body > *:not(#component-preview),
+.screenshot-mode #component-preview-tab-list {
+  opacity: 0 !important;
+}

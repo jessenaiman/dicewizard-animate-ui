@@ -52,7 +52,7 @@ export default async function Page(props: {
         />
       </div>
 
-      <DocsBody className="pb-10 pt-4">
+      <DocsBody id="docs-body" className="pb-10 pt-4">
         <MDXContent
           components={getMDXComponents({
             a: createRelativeLink(source, page),

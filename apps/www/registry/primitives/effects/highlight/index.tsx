@@ -191,7 +191,6 @@ function Highlight<T extends React.ElementType = 'div'>({
   }, []);
 
   React.useEffect(() => {
-    console.log('value', value);
     if (value !== undefined) setActiveValue(value);
     else if (defaultValue !== undefined) setActiveValue(defaultValue);
   }, [value, defaultValue]);
