@@ -191,28 +191,26 @@ function Spring({ style, ...props }: SpringProps) {
   const { path } = useSpring();
 
   return (
-    <>
-      <svg
-        width="100vw"
-        height="100vh"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          pointerEvents: 'none',
-          ...style,
-        }}
-        {...props}
-      >
-        <path
-          d={path}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          stroke="currentColor"
-          strokeWidth={2}
-          fill="none"
-        />
-      </svg>
-    </>
+    <svg
+      width="100vw"
+      height="100vh"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        pointerEvents: 'none',
+        ...style,
+      }}
+      {...props}
+    >
+      <path
+        d={path}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        strokeWidth={2}
+        fill="none"
+      />
+    </svg>
   );
 }
 

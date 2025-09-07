@@ -22,17 +22,20 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   bigScreen?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function flattenFirstLevel<T>(input: Record<string, any>): T {
   return Object.values(input).reduce((acc, current) => {
     return { ...acc, ...current };
   }, {} as T);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function unwrapValues(obj: Record<string, any>): Record<string, any> {
   if (obj !== null && typeof obj === 'object' && !Array.isArray(obj)) {
     if ('value' in obj) {
       return obj.value;
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const result: Record<string, any> = {};
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -115,7 +118,13 @@ export function ComponentPreview({
         </div>
 
         <TabsContents>
-          <TabsContent value="preview" className="relative rounded-md h-full">
+          <TabsContent
+            value="preview"
+            className="relative rounded-md h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <ComponentWrapper
               name={name}
               iframe={iframe}
@@ -138,9 +147,9 @@ export function ComponentPreview({
           </TabsContent>
           <TabsContent
             value="code"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
             <div className="flex flex-col space-y-4">
               <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[400px] [&_pre]:overflow-auto">

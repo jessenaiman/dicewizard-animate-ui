@@ -4,6 +4,7 @@ description: How to install dependencies and structure your app.
 ---
 
 import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { CodeTabs } from '@/registry/components/animate/code-tabs';
 
 <Callout>
   **Note:** We use installation process as
@@ -17,9 +18,14 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Run the `init` command to create a new project with shadcn/ui or setup an existing one.
 
-```bash
-npx shadcn@latest init
-```
+<CodeTabs
+  codes={{
+    pnpm: `pnpm dlx shadcn@latest init`,
+    npm: `npx shadcn@latest init`,
+    yarn: `yarn shadcn@latest init`,
+    bun: `bunx --bun shadcn@latest init`,
+  }}
+/>
 
 </Step>
 <Step>
@@ -47,9 +53,14 @@ npx shadcn@latest init
 
 Run the `add` command to add a component to your project.
 
-```bash
-npx shadcn@latest add @animate-ui/primitives-texts-sliding-number
-```
+<CodeTabs
+  codes={{
+    pnpm: `pnpm dlx shadcn@latest add @animate-ui/primitives-texts-sliding-number`,
+    npm: `npx shadcn@latest add @animate-ui/primitives-texts-sliding-number`,
+    yarn: `npx shadcn@latest add @animate-ui/primitives-texts-sliding-number`,
+    bun: `bunx --bun shadcn@latest add @animate-ui/primitives-texts-sliding-number`,
+  }}
+/>
 
 </Step>
 <Step>
