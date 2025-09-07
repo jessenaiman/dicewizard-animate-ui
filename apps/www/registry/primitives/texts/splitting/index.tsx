@@ -55,26 +55,6 @@ const SplittingText: React.FC<SplittingTextProps> = ({
   disableAnimation = false,
   ...props
 }) => {
-  const items = React.useMemo<React.ReactNode[]>(() => {
-    if (Array.isArray(text)) {
-      return text.flatMap((line, i) => [
-        <React.Fragment key={`line-${i}`}>{line}</React.Fragment>,
-        i < text.length - 1 ? <br key={`br-${i}`} /> : null,
-      ]);
-    }
-
-    if (type === 'words') {
-      const tokens = text.match(/\S+\s*/g) || [];
-      return tokens.map((token, i) => (
-        <React.Fragment key={i}>{token}</React.Fragment>
-      ));
-    }
-
-    return text
-      .split('')
-      .map((char, i) => <React.Fragment key={i}>{char}</React.Fragment>);
-  }, [text, type]);
-
   const containerVariants: Variants = {
     hidden: {},
     visible: {

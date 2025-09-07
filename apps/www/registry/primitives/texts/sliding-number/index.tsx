@@ -159,23 +159,22 @@ function SlidingNumber({
 
   const prevNumberRef = React.useRef<number>(0);
 
-  const motionVal = fromNumber != null ? useMotionValue(fromNumber) : null;
-  const springVal = motionVal
-    ? useSpring(motionVal, { stiffness: 90, damping: 50 })
-    : null;
+  const hasAnimated = fromNumber !== undefined;
+  const motionVal = useMotionValue(fromNumber ?? 0);
+  const springVal = useSpring(motionVal, { stiffness: 90, damping: 50 });
 
   React.useEffect(() => {
+    if (!hasAnimated) return;
     const timeoutId = setTimeout(() => {
-      if (isInView && motionVal) motionVal.set(number);
+      if (isInView) motionVal.set(number);
     }, delay);
-
     return () => clearTimeout(timeoutId);
-  }, [isInView, number, motionVal, delay]);
+  }, [hasAnimated, isInView, number, motionVal, delay]);
 
   const [effectiveNumber, setEffectiveNumber] = React.useState(0);
 
   React.useEffect(() => {
-    if (fromNumber !== undefined && springVal) {
+    if (hasAnimated) {
       const inferredDecimals =
         typeof decimalPlaces === 'number' && decimalPlaces >= 0
           ? decimalPlaces
@@ -203,10 +202,10 @@ function SlidingNumber({
       setEffectiveNumber(!isInView ? 0 : Math.abs(Number(number)));
     }
   }, [
+    hasAnimated,
     springVal,
     isInView,
     number,
-    fromNumber,
     decimalPlaces,
     onNumberChange,
     effectiveNumber,
