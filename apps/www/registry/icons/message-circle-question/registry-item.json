@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Circle Question Icon",
   "description": "Message circle question icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -76,7 +76,7 @@ function GitHubStarsWheel({
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [username, repo, value]);
+  }, [username, repo, value, delay]);
 
   return (
     !isLoading && (

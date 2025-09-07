@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Chart No Axes Column Decreasing Icon",
   "description": "Chart no axes column decreasing icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

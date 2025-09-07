@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Circle Heart Icon",
   "description": "Message circle heart icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

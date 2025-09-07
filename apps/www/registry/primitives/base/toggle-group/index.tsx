@@ -15,6 +15,7 @@ import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type ToggleGroupContextType = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any[];
   setValue: ToggleGroupProps['onValueChange'];
   toggleMultiple: boolean | undefined;
@@ -27,7 +28,9 @@ type ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive>;
 
 function ToggleGroup(props: ToggleGroupProps) {
   const [value, setValue] = useControlledState({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: props.value as any[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     defaultValue: props.defaultValue as any[],
     onChange: props.onValueChange,
   });

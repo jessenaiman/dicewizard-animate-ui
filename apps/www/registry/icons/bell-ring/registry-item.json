@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Bell Ring Icon",
   "description": "Bell ring icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

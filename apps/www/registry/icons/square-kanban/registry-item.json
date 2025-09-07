@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Square Kanban Icon",
   "description": "Square Kanban icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

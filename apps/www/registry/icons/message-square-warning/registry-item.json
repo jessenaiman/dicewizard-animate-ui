@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Square Warning Icon",
   "description": "Message square warning icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

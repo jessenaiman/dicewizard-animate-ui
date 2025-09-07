@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Activity Icon",
   "description": "Activity icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

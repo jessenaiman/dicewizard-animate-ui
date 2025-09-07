@@ -207,6 +207,7 @@ function TooltipArrow({
   const { side, align, open } = useRenderedTooltip();
   const { context, arrowRef } = useFloatingContext();
   const { transition, globalId } = useGlobalTooltip();
+  React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);
 
   const resolvedSide = getResolvedSide(context.placement);
   const deg = { top: 0, right: 90, bottom: 180, left: -90 }[resolvedSide];
@@ -273,7 +274,6 @@ function TooltipOverlay() {
   React.useLayoutEffect(() => {
     if (referenceElRef.current) {
       refs.setReference(referenceElRef.current);
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       update();
     }
   }, [referenceElRef, refs, update, rendered.data]);

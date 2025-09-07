@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Square Plus Icon",
   "description": "Square plus icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Bot Message Square Icon",
   "description": "Bot message square icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Arrow Down Icon",
   "description": "Arrow down icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

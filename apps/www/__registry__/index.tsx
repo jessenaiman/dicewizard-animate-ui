@@ -239,7 +239,7 @@ export const index: Record<string, any> = {
         target:
           'components/animate-ui/components/animate/github-stars-wheel.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { StarIcon } from 'lucide-react';\n\nimport {\n  ScrollingNumber as ScrollingNumberPrimitive,\n  ScrollingNumberContainer as ScrollingNumberContainerPrimitive,\n  ScrollingNumberItems as ScrollingNumberItemsPrimitive,\n  ScrollingNumberHighlight as ScrollingNumberHighlightPrimitive,\n  type ScrollingNumberContainerProps as ScrollingNumberContainerPrimitiveProps,\n} from '@/components/animate-ui/primitives/texts/scrolling-number';\nimport { cn } from '@/lib/utils';\nimport {\n  Particles,\n  ParticlesEffect,\n} from '@/components/animate-ui/primitives/effects/particles';\n\nfunction percentageBetween(value: number, min: number, max: number): number {\n  return ((value - min) / (max - min)) * 100;\n}\n\ntype GitHubStarsWheelProps = {\n  username?: string;\n  repo?: string;\n  direction?: 'btt' | 'ttb';\n  delay?: number;\n  value?: number;\n  step?: number;\n} & Omit<\n  ScrollingNumberContainerPrimitiveProps,\n  'direction' | 'number' | 'step'\n>;\n\nfunction GitHubStarsWheel({\n  username,\n  repo,\n  direction = 'btt',\n  itemsSize = 35,\n  sideItemsCount = 2,\n  delay = 0,\n  step = 100,\n  value,\n  className,\n  ...props\n}: GitHubStarsWheelProps) {\n  const [stars, setStars] = React.useState(value ?? 0);\n  const [currentStars, setCurrentStars] = React.useState(0);\n  const [isLoading, setIsLoading] = React.useState(true);\n  const roundedStars = React.useMemo(\n    () => Math.round(stars / step) * step,\n    [stars, step],\n  );\n  const isCompleted = React.useMemo(\n    () => currentStars === roundedStars,\n    [currentStars, roundedStars],\n  );\n  const fillPercentage = React.useMemo(\n    () => percentageBetween(currentStars, 0, roundedStars),\n    [currentStars, roundedStars],\n  );\n\n  React.useEffect(() => {\n    if (value !== undefined && username && repo) return;\n\n    const timeout = setTimeout(() => {\n      fetch(`https://api.github.com/repos/${username}/${repo}`)\n        .then((response) => response.json())\n        .then((data) => {\n          if (data && typeof data.stargazers_count === 'number') {\n            setStars(data.stargazers_count);\n          }\n        })\n        .catch(console.error)\n        .finally(() => setIsLoading(false));\n    }, delay);\n\n    return () => clearTimeout(timeout);\n  }, [username, repo, value]);\n\n  return (\n    !isLoading && (\n      <ScrollingNumberContainerPrimitive\n        key={direction}\n        className={cn('w-28', className)}\n        direction={direction}\n        number={roundedStars}\n        step={step}\n        itemsSize={itemsSize}\n        onNumberChange={setCurrentStars}\n        {...props}\n      >\n        <div\n          className=\"absolute top-0 left-0 w-full bg-gradient-to-t from-transparent to-background z-10\"\n          style={{\n            height: `${itemsSize * sideItemsCount}px`,\n          }}\n        />\n        <div\n          className=\"absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background z-10\"\n          style={{\n            height: `${itemsSize * sideItemsCount}px`,\n          }}\n        />\n        <ScrollingNumberPrimitive delay={delay}>\n          <ScrollingNumberItemsPrimitive className=\"flex items-center justify-start pl-8\" />\n        </ScrollingNumberPrimitive>\n        <ScrollingNumberHighlightPrimitive className=\"bg-accent/40 border rounded-md size-full flex items-center pl-2\">\n          <Particles animate={isCompleted}>\n            <StarIcon\n              aria-hidden=\"true\"\n              className=\"fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700 size-4\"\n            />\n            <StarIcon\n              aria-hidden=\"true\"\n              className=\"absolute top-0 left-0 size-4 fill-yellow-500 stroke-yellow-500\"\n              style={{\n                clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,\n              }}\n            />\n            <ParticlesEffect\n              delay={0.5}\n              className=\"size-1 rounded-full bg-yellow-500\"\n            />\n          </Particles>\n        </ScrollingNumberHighlightPrimitive>\n      </ScrollingNumberContainerPrimitive>\n    )\n  );\n}\n\nexport { GitHubStarsWheel, type GitHubStarsWheelProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { StarIcon } from 'lucide-react';\n\nimport {\n  ScrollingNumber as ScrollingNumberPrimitive,\n  ScrollingNumberContainer as ScrollingNumberContainerPrimitive,\n  ScrollingNumberItems as ScrollingNumberItemsPrimitive,\n  ScrollingNumberHighlight as ScrollingNumberHighlightPrimitive,\n  type ScrollingNumberContainerProps as ScrollingNumberContainerPrimitiveProps,\n} from '@/components/animate-ui/primitives/texts/scrolling-number';\nimport { cn } from '@/lib/utils';\nimport {\n  Particles,\n  ParticlesEffect,\n} from '@/components/animate-ui/primitives/effects/particles';\n\nfunction percentageBetween(value: number, min: number, max: number): number {\n  return ((value - min) / (max - min)) * 100;\n}\n\ntype GitHubStarsWheelProps = {\n  username?: string;\n  repo?: string;\n  direction?: 'btt' | 'ttb';\n  delay?: number;\n  value?: number;\n  step?: number;\n} & Omit<\n  ScrollingNumberContainerPrimitiveProps,\n  'direction' | 'number' | 'step'\n>;\n\nfunction GitHubStarsWheel({\n  username,\n  repo,\n  direction = 'btt',\n  itemsSize = 35,\n  sideItemsCount = 2,\n  delay = 0,\n  step = 100,\n  value,\n  className,\n  ...props\n}: GitHubStarsWheelProps) {\n  const [stars, setStars] = React.useState(value ?? 0);\n  const [currentStars, setCurrentStars] = React.useState(0);\n  const [isLoading, setIsLoading] = React.useState(true);\n  const roundedStars = React.useMemo(\n    () => Math.round(stars / step) * step,\n    [stars, step],\n  );\n  const isCompleted = React.useMemo(\n    () => currentStars === roundedStars,\n    [currentStars, roundedStars],\n  );\n  const fillPercentage = React.useMemo(\n    () => percentageBetween(currentStars, 0, roundedStars),\n    [currentStars, roundedStars],\n  );\n\n  React.useEffect(() => {\n    if (value !== undefined && username && repo) return;\n\n    const timeout = setTimeout(() => {\n      fetch(`https://api.github.com/repos/${username}/${repo}`)\n        .then((response) => response.json())\n        .then((data) => {\n          if (data && typeof data.stargazers_count === 'number') {\n            setStars(data.stargazers_count);\n          }\n        })\n        .catch(console.error)\n        .finally(() => setIsLoading(false));\n    }, delay);\n\n    return () => clearTimeout(timeout);\n  }, [username, repo, value, delay]);\n\n  return (\n    !isLoading && (\n      <ScrollingNumberContainerPrimitive\n        key={direction}\n        className={cn('w-28', className)}\n        direction={direction}\n        number={roundedStars}\n        step={step}\n        itemsSize={itemsSize}\n        onNumberChange={setCurrentStars}\n        {...props}\n      >\n        <div\n          className=\"absolute top-0 left-0 w-full bg-gradient-to-t from-transparent to-background z-10\"\n          style={{\n            height: `${itemsSize * sideItemsCount}px`,\n          }}\n        />\n        <div\n          className=\"absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background z-10\"\n          style={{\n            height: `${itemsSize * sideItemsCount}px`,\n          }}\n        />\n        <ScrollingNumberPrimitive delay={delay}>\n          <ScrollingNumberItemsPrimitive className=\"flex items-center justify-start pl-8\" />\n        </ScrollingNumberPrimitive>\n        <ScrollingNumberHighlightPrimitive className=\"bg-accent/40 border rounded-md size-full flex items-center pl-2\">\n          <Particles animate={isCompleted}>\n            <StarIcon\n              aria-hidden=\"true\"\n              className=\"fill-neutral-300 stroke-neutral-300 dark:fill-neutral-700 dark:stroke-neutral-700 size-4\"\n            />\n            <StarIcon\n              aria-hidden=\"true\"\n              className=\"absolute top-0 left-0 size-4 fill-yellow-500 stroke-yellow-500\"\n              style={{\n                clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,\n              }}\n            />\n            <ParticlesEffect\n              delay={0.5}\n              className=\"size-1 rounded-full bg-yellow-500\"\n            />\n          </Particles>\n        </ScrollingNumberHighlightPrimitive>\n      </ScrollingNumberContainerPrimitive>\n    )\n  );\n}\n\nexport { GitHubStarsWheel, type GitHubStarsWheelProps };",
       },
     ],
     keywords: [],
@@ -510,7 +510,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/backgrounds/hole.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype HoleBackgroundProps = React.ComponentProps<'div'> & {\n  strokeColor?: string;\n  numberOfLines?: number;\n  numberOfDiscs?: number;\n  particleRGBColor?: [number, number, number];\n};\n\nfunction HoleBackground({\n  strokeColor = '#737373',\n  numberOfLines = 50,\n  numberOfDiscs = 50,\n  particleRGBColor = [255, 255, 255],\n  className,\n  children,\n  ...props\n}: HoleBackgroundProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null);\n  const animationFrameIdRef = React.useRef<number>(0);\n  const stateRef = React.useRef<any>({\n    discs: [] as any[],\n    lines: [] as any[],\n    particles: [] as any[],\n    clip: {},\n    startDisc: {},\n    endDisc: {},\n    rect: { width: 0, height: 0 },\n    render: { width: 0, height: 0, dpi: 1 },\n    particleArea: {},\n    linesCanvas: null,\n  });\n\n  const linear = (p: number) => p;\n  const easeInExpo = (p: number) => (p === 0 ? 0 : Math.pow(2, 10 * (p - 1)));\n\n  const tweenValue = React.useCallback(\n    (start: number, end: number, p: number, ease: 'inExpo' | null = null) => {\n      const delta = end - start;\n      const easeFn = ease === 'inExpo' ? easeInExpo : linear;\n      return start + delta * easeFn(p);\n    },\n    [],\n  );\n\n  const tweenDisc = React.useCallback(\n    (disc: any) => {\n      const { startDisc, endDisc } = stateRef.current;\n      disc.x = tweenValue(startDisc.x, endDisc.x, disc.p);\n      disc.y = tweenValue(startDisc.y, endDisc.y, disc.p, 'inExpo');\n      disc.w = tweenValue(startDisc.w, endDisc.w, disc.p);\n      disc.h = tweenValue(startDisc.h, endDisc.h, disc.p);\n    },\n    [tweenValue],\n  );\n\n  const setSize = React.useCallback(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const rect = canvas.getBoundingClientRect();\n    stateRef.current.rect = { width: rect.width, height: rect.height };\n    stateRef.current.render = {\n      width: rect.width,\n      height: rect.height,\n      dpi: window.devicePixelRatio || 1,\n    };\n    canvas.width = stateRef.current.render.width * stateRef.current.render.dpi;\n    canvas.height =\n      stateRef.current.render.height * stateRef.current.render.dpi;\n  }, []);\n\n  const setDiscs = React.useCallback(() => {\n    const { width, height } = stateRef.current.rect;\n    stateRef.current.discs = [];\n    stateRef.current.startDisc = {\n      x: width * 0.5,\n      y: height * 0.45,\n      w: width * 0.75,\n      h: height * 0.7,\n    };\n    stateRef.current.endDisc = {\n      x: width * 0.5,\n      y: height * 0.95,\n      w: 0,\n      h: 0,\n    };\n    let prevBottom = height;\n    stateRef.current.clip = {};\n    for (let i = 0; i < numberOfDiscs; i++) {\n      const p = i / numberOfDiscs;\n      const disc = { p, x: 0, y: 0, w: 0, h: 0 };\n      tweenDisc(disc);\n      const bottom = disc.y + disc.h;\n      if (bottom <= prevBottom) {\n        stateRef.current.clip = { disc: { ...disc }, i };\n      }\n      prevBottom = bottom;\n      stateRef.current.discs.push(disc);\n    }\n    const clipPath = new Path2D();\n    const disc = stateRef.current.clip.disc;\n    clipPath.ellipse(disc.x, disc.y, disc.w, disc.h, 0, 0, Math.PI * 2);\n    clipPath.rect(disc.x - disc.w, 0, disc.w * 2, disc.y);\n    stateRef.current.clip.path = clipPath;\n  }, [numberOfDiscs, tweenDisc]);\n\n  const setLines = React.useCallback(() => {\n    const { width, height } = stateRef.current.rect;\n    stateRef.current.lines = [];\n    const linesAngle = (Math.PI * 2) / numberOfLines;\n    for (let i = 0; i < numberOfLines; i++) {\n      stateRef.current.lines.push([]);\n    }\n    stateRef.current.discs.forEach((disc: any) => {\n      for (let i = 0; i < numberOfLines; i++) {\n        const angle = i * linesAngle;\n        const p = {\n          x: disc.x + Math.cos(angle) * disc.w,\n          y: disc.y + Math.sin(angle) * disc.h,\n        };\n        stateRef.current.lines[i].push(p);\n      }\n    });\n    const offCanvas = document.createElement('canvas');\n    offCanvas.width = width;\n    offCanvas.height = height;\n    const ctx = offCanvas.getContext('2d');\n    if (!ctx) return;\n    stateRef.current.lines.forEach((line: any) => {\n      ctx.save();\n      let lineIsIn = false;\n      line.forEach((p1: any, j: number) => {\n        if (j === 0) return;\n        const p0 = line[j - 1];\n        if (\n          !lineIsIn &&\n          (ctx.isPointInPath(stateRef.current.clip.path, p1.x, p1.y) ||\n            ctx.isPointInStroke(stateRef.current.clip.path, p1.x, p1.y))\n        ) {\n          lineIsIn = true;\n        } else if (lineIsIn) {\n          ctx.clip(stateRef.current.clip.path);\n        }\n        ctx.beginPath();\n        ctx.moveTo(p0.x, p0.y);\n        ctx.lineTo(p1.x, p1.y);\n        ctx.strokeStyle = strokeColor;\n        ctx.lineWidth = 2;\n        ctx.stroke();\n        ctx.closePath();\n      });\n      ctx.restore();\n    });\n    stateRef.current.linesCanvas = offCanvas;\n  }, [numberOfLines, strokeColor]);\n\n  const initParticle = React.useCallback(\n    (start: boolean = false) => {\n      const sx =\n        stateRef.current.particleArea.sx +\n        stateRef.current.particleArea.sw * Math.random();\n      const ex =\n        stateRef.current.particleArea.ex +\n        stateRef.current.particleArea.ew * Math.random();\n      const dx = ex - sx;\n      const y = start\n        ? stateRef.current.particleArea.h * Math.random()\n        : stateRef.current.particleArea.h;\n      const r = 0.5 + Math.random() * 4;\n      const vy = 0.5 + Math.random();\n      return {\n        x: sx,\n        sx,\n        dx,\n        y,\n        vy,\n        p: 0,\n        r,\n        c: `rgba(${particleRGBColor[0]}, ${particleRGBColor[1]}, ${particleRGBColor[2]}, ${Math.random()})`,\n      };\n    },\n    [particleRGBColor],\n  );\n\n  const setParticles = React.useCallback(() => {\n    const { width, height } = stateRef.current.rect;\n    stateRef.current.particles = [];\n    const disc = stateRef.current.clip.disc;\n    stateRef.current.particleArea = {\n      sw: disc.w * 0.5,\n      ew: disc.w * 2,\n      h: height * 0.85,\n    };\n    stateRef.current.particleArea.sx =\n      (width - stateRef.current.particleArea.sw) / 2;\n    stateRef.current.particleArea.ex =\n      (width - stateRef.current.particleArea.ew) / 2;\n    const totalParticles = 100;\n    for (let i = 0; i < totalParticles; i++) {\n      stateRef.current.particles.push(initParticle(true));\n    }\n  }, [initParticle]);\n\n  const drawDiscs = React.useCallback(\n    (ctx: CanvasRenderingContext2D) => {\n      ctx.strokeStyle = strokeColor;\n      ctx.lineWidth = 2;\n      const outerDisc = stateRef.current.startDisc;\n      ctx.beginPath();\n      ctx.ellipse(\n        outerDisc.x,\n        outerDisc.y,\n        outerDisc.w,\n        outerDisc.h,\n        0,\n        0,\n        Math.PI * 2,\n      );\n      ctx.stroke();\n      ctx.closePath();\n      stateRef.current.discs.forEach((disc: any, i: number) => {\n        if (i % 5 !== 0) return;\n        if (disc.w < stateRef.current.clip.disc.w - 5) {\n          ctx.save();\n          ctx.clip(stateRef.current.clip.path);\n        }\n        ctx.beginPath();\n        ctx.ellipse(disc.x, disc.y, disc.w, disc.h, 0, 0, Math.PI * 2);\n        ctx.stroke();\n        ctx.closePath();\n        if (disc.w < stateRef.current.clip.disc.w - 5) {\n          ctx.restore();\n        }\n      });\n    },\n    [strokeColor],\n  );\n\n  const drawLines = React.useCallback((ctx: CanvasRenderingContext2D) => {\n    if (stateRef.current.linesCanvas) {\n      ctx.drawImage(stateRef.current.linesCanvas, 0, 0);\n    }\n  }, []);\n\n  const drawParticles = React.useCallback((ctx: CanvasRenderingContext2D) => {\n    ctx.save();\n    ctx.clip(stateRef.current.clip.path);\n    stateRef.current.particles.forEach((particle: any) => {\n      ctx.fillStyle = particle.c;\n      ctx.beginPath();\n      ctx.rect(particle.x, particle.y, particle.r, particle.r);\n      ctx.closePath();\n      ctx.fill();\n    });\n    ctx.restore();\n  }, []);\n\n  const moveDiscs = React.useCallback(() => {\n    stateRef.current.discs.forEach((disc: any) => {\n      disc.p = (disc.p + 0.001) % 1;\n      tweenDisc(disc);\n    });\n  }, [tweenDisc]);\n\n  const moveParticles = React.useCallback(() => {\n    stateRef.current.particles.forEach((particle: any, idx: number) => {\n      particle.p = 1 - particle.y / stateRef.current.particleArea.h;\n      particle.x = particle.sx + particle.dx * particle.p;\n      particle.y -= particle.vy;\n      if (particle.y < 0) {\n        stateRef.current.particles[idx] = initParticle();\n      }\n    });\n  }, [initParticle]);\n\n  const tick = React.useCallback(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const ctx = canvas.getContext('2d');\n    if (!ctx) return;\n    ctx.clearRect(0, 0, canvas.width, canvas.height);\n    ctx.save();\n    ctx.scale(stateRef.current.render.dpi, stateRef.current.render.dpi);\n    moveDiscs();\n    moveParticles();\n    drawDiscs(ctx);\n    drawLines(ctx);\n    drawParticles(ctx);\n    ctx.restore();\n    animationFrameIdRef.current = requestAnimationFrame(tick);\n  }, [moveDiscs, moveParticles, drawDiscs, drawLines, drawParticles]);\n\n  const init = React.useCallback(() => {\n    setSize();\n    setDiscs();\n    setLines();\n    setParticles();\n  }, [setSize, setDiscs, setLines, setParticles]);\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    init();\n    tick();\n    const handleResize = () => {\n      setSize();\n      setDiscs();\n      setLines();\n      setParticles();\n    };\n    window.addEventListener('resize', handleResize);\n    return () => {\n      window.removeEventListener('resize', handleResize);\n      cancelAnimationFrame(animationFrameIdRef.current);\n    };\n  }, [init, tick, setSize, setDiscs, setLines, setParticles]);\n\n  return (\n    <div\n      data-slot=\"hole-background\"\n      className={cn(\n        'relative size-full overflow-hidden',\n        'before:content-[\"\"] before:absolute before:top-1/2 before:left-1/2 before:block before:size-[140%] dark:before:[background:radial-gradient(ellipse_at_50%_55%,transparent_10%,black_50%)] before:[background:radial-gradient(ellipse_at_50%_55%,transparent_10%,white_50%)] before:[transform:translate3d(-50%,-50%,0)]',\n        'after:content-[\"\"] after:absolute after:z-[5] after:top-1/2 after:left-1/2 after:block after:size-full after:[background:radial-gradient(ellipse_at_50%_75%,#a900ff_20%,transparent_75%)] after:[transform:translate3d(-50%,-50%,0)] after:mix-blend-overlay',\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      <canvas\n        ref={canvasRef}\n        className=\"absolute inset-0 block size-full dark:opacity-20 opacity-10\"\n      />\n      <motion.div\n        className={cn(\n          'absolute top-[-71.5%] left-1/2 z-[3] w-[30%] h-[140%] rounded-b-full blur-3xl opacity-75 dark:mix-blend-plus-lighter mix-blend-plus-darker [transform:translate3d(-50%,0,0)] [background-position:0%_100%] [background-size:100%_200%]',\n          'dark:[background:linear-gradient(20deg,#00f8f1,#ffbd1e20_16.5%,#fe848f_33%,#fe848f20_49.5%,#00f8f1_66%,#00f8f160_85.5%,#ffbd1e_100%)_0_100%_/_100%_200%] [background:linear-gradient(20deg,#00f8f1,#ffbd1e40_16.5%,#fe848f_33%,#fe848f40_49.5%,#00f8f1_66%,#00f8f180_85.5%,#ffbd1e_100%)_0_100%_/_100%_200%]',\n        )}\n        animate={{ backgroundPosition: '0% 300%' }}\n        transition={{ duration: 5, ease: 'linear', repeat: Infinity }}\n      />\n      <div className=\"absolute top-0 left-0 z-[7] size-full dark:[background:repeating-linear-gradient(transparent,transparent_1px,white_1px,white_2px)] mix-blend-overlay opacity-50\" />\n    </div>\n  );\n}\n\nexport { HoleBackground, type HoleBackgroundProps };",
+          "/* eslint-disable @typescript-eslint/no-explicit-any */\n\n'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype HoleBackgroundProps = React.ComponentProps<'div'> & {\n  strokeColor?: string;\n  numberOfLines?: number;\n  numberOfDiscs?: number;\n  particleRGBColor?: [number, number, number];\n};\n\nfunction HoleBackground({\n  strokeColor = '#737373',\n  numberOfLines = 50,\n  numberOfDiscs = 50,\n  particleRGBColor = [255, 255, 255],\n  className,\n  children,\n  ...props\n}: HoleBackgroundProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null);\n  const animationFrameIdRef = React.useRef<number>(0);\n  const stateRef = React.useRef<any>({\n    discs: [] as any[],\n    lines: [] as any[],\n    particles: [] as any[],\n    clip: {},\n    startDisc: {},\n    endDisc: {},\n    rect: { width: 0, height: 0 },\n    render: { width: 0, height: 0, dpi: 1 },\n    particleArea: {},\n    linesCanvas: null,\n  });\n\n  const linear = (p: number) => p;\n  const easeInExpo = (p: number) => (p === 0 ? 0 : Math.pow(2, 10 * (p - 1)));\n\n  const tweenValue = React.useCallback(\n    (start: number, end: number, p: number, ease: 'inExpo' | null = null) => {\n      const delta = end - start;\n      const easeFn = ease === 'inExpo' ? easeInExpo : linear;\n      return start + delta * easeFn(p);\n    },\n    [],\n  );\n\n  const tweenDisc = React.useCallback(\n    (disc: any) => {\n      const { startDisc, endDisc } = stateRef.current;\n      disc.x = tweenValue(startDisc.x, endDisc.x, disc.p);\n      disc.y = tweenValue(startDisc.y, endDisc.y, disc.p, 'inExpo');\n      disc.w = tweenValue(startDisc.w, endDisc.w, disc.p);\n      disc.h = tweenValue(startDisc.h, endDisc.h, disc.p);\n    },\n    [tweenValue],\n  );\n\n  const setSize = React.useCallback(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const rect = canvas.getBoundingClientRect();\n    stateRef.current.rect = { width: rect.width, height: rect.height };\n    stateRef.current.render = {\n      width: rect.width,\n      height: rect.height,\n      dpi: window.devicePixelRatio || 1,\n    };\n    canvas.width = stateRef.current.render.width * stateRef.current.render.dpi;\n    canvas.height =\n      stateRef.current.render.height * stateRef.current.render.dpi;\n  }, []);\n\n  const setDiscs = React.useCallback(() => {\n    const { width, height } = stateRef.current.rect;\n    stateRef.current.discs = [];\n    stateRef.current.startDisc = {\n      x: width * 0.5,\n      y: height * 0.45,\n      w: width * 0.75,\n      h: height * 0.7,\n    };\n    stateRef.current.endDisc = {\n      x: width * 0.5,\n      y: height * 0.95,\n      w: 0,\n      h: 0,\n    };\n    let prevBottom = height;\n    stateRef.current.clip = {};\n    for (let i = 0; i < numberOfDiscs; i++) {\n      const p = i / numberOfDiscs;\n      const disc = { p, x: 0, y: 0, w: 0, h: 0 };\n      tweenDisc(disc);\n      const bottom = disc.y + disc.h;\n      if (bottom <= prevBottom) {\n        stateRef.current.clip = { disc: { ...disc }, i };\n      }\n      prevBottom = bottom;\n      stateRef.current.discs.push(disc);\n    }\n    const clipPath = new Path2D();\n    const disc = stateRef.current.clip.disc;\n    clipPath.ellipse(disc.x, disc.y, disc.w, disc.h, 0, 0, Math.PI * 2);\n    clipPath.rect(disc.x - disc.w, 0, disc.w * 2, disc.y);\n    stateRef.current.clip.path = clipPath;\n  }, [numberOfDiscs, tweenDisc]);\n\n  const setLines = React.useCallback(() => {\n    const { width, height } = stateRef.current.rect;\n    stateRef.current.lines = [];\n    const linesAngle = (Math.PI * 2) / numberOfLines;\n    for (let i = 0; i < numberOfLines; i++) {\n      stateRef.current.lines.push([]);\n    }\n    stateRef.current.discs.forEach((disc: any) => {\n      for (let i = 0; i < numberOfLines; i++) {\n        const angle = i * linesAngle;\n        const p = {\n          x: disc.x + Math.cos(angle) * disc.w,\n          y: disc.y + Math.sin(angle) * disc.h,\n        };\n        stateRef.current.lines[i].push(p);\n      }\n    });\n    const offCanvas = document.createElement('canvas');\n    offCanvas.width = width;\n    offCanvas.height = height;\n    const ctx = offCanvas.getContext('2d');\n    if (!ctx) return;\n    stateRef.current.lines.forEach((line: any) => {\n      ctx.save();\n      let lineIsIn = false;\n      line.forEach((p1: any, j: number) => {\n        if (j === 0) return;\n        const p0 = line[j - 1];\n        if (\n          !lineIsIn &&\n          (ctx.isPointInPath(stateRef.current.clip.path, p1.x, p1.y) ||\n            ctx.isPointInStroke(stateRef.current.clip.path, p1.x, p1.y))\n        ) {\n          lineIsIn = true;\n        } else if (lineIsIn) {\n          ctx.clip(stateRef.current.clip.path);\n        }\n        ctx.beginPath();\n        ctx.moveTo(p0.x, p0.y);\n        ctx.lineTo(p1.x, p1.y);\n        ctx.strokeStyle = strokeColor;\n        ctx.lineWidth = 2;\n        ctx.stroke();\n        ctx.closePath();\n      });\n      ctx.restore();\n    });\n    stateRef.current.linesCanvas = offCanvas;\n  }, [numberOfLines, strokeColor]);\n\n  const initParticle = React.useCallback(\n    (start: boolean = false) => {\n      const sx =\n        stateRef.current.particleArea.sx +\n        stateRef.current.particleArea.sw * Math.random();\n      const ex =\n        stateRef.current.particleArea.ex +\n        stateRef.current.particleArea.ew * Math.random();\n      const dx = ex - sx;\n      const y = start\n        ? stateRef.current.particleArea.h * Math.random()\n        : stateRef.current.particleArea.h;\n      const r = 0.5 + Math.random() * 4;\n      const vy = 0.5 + Math.random();\n      return {\n        x: sx,\n        sx,\n        dx,\n        y,\n        vy,\n        p: 0,\n        r,\n        c: `rgba(${particleRGBColor[0]}, ${particleRGBColor[1]}, ${particleRGBColor[2]}, ${Math.random()})`,\n      };\n    },\n    [particleRGBColor],\n  );\n\n  const setParticles = React.useCallback(() => {\n    const { width, height } = stateRef.current.rect;\n    stateRef.current.particles = [];\n    const disc = stateRef.current.clip.disc;\n    stateRef.current.particleArea = {\n      sw: disc.w * 0.5,\n      ew: disc.w * 2,\n      h: height * 0.85,\n    };\n    stateRef.current.particleArea.sx =\n      (width - stateRef.current.particleArea.sw) / 2;\n    stateRef.current.particleArea.ex =\n      (width - stateRef.current.particleArea.ew) / 2;\n    const totalParticles = 100;\n    for (let i = 0; i < totalParticles; i++) {\n      stateRef.current.particles.push(initParticle(true));\n    }\n  }, [initParticle]);\n\n  const drawDiscs = React.useCallback(\n    (ctx: CanvasRenderingContext2D) => {\n      ctx.strokeStyle = strokeColor;\n      ctx.lineWidth = 2;\n      const outerDisc = stateRef.current.startDisc;\n      ctx.beginPath();\n      ctx.ellipse(\n        outerDisc.x,\n        outerDisc.y,\n        outerDisc.w,\n        outerDisc.h,\n        0,\n        0,\n        Math.PI * 2,\n      );\n      ctx.stroke();\n      ctx.closePath();\n      stateRef.current.discs.forEach((disc: any, i: number) => {\n        if (i % 5 !== 0) return;\n        if (disc.w < stateRef.current.clip.disc.w - 5) {\n          ctx.save();\n          ctx.clip(stateRef.current.clip.path);\n        }\n        ctx.beginPath();\n        ctx.ellipse(disc.x, disc.y, disc.w, disc.h, 0, 0, Math.PI * 2);\n        ctx.stroke();\n        ctx.closePath();\n        if (disc.w < stateRef.current.clip.disc.w - 5) {\n          ctx.restore();\n        }\n      });\n    },\n    [strokeColor],\n  );\n\n  const drawLines = React.useCallback((ctx: CanvasRenderingContext2D) => {\n    if (stateRef.current.linesCanvas) {\n      ctx.drawImage(stateRef.current.linesCanvas, 0, 0);\n    }\n  }, []);\n\n  const drawParticles = React.useCallback((ctx: CanvasRenderingContext2D) => {\n    ctx.save();\n    ctx.clip(stateRef.current.clip.path);\n    stateRef.current.particles.forEach((particle: any) => {\n      ctx.fillStyle = particle.c;\n      ctx.beginPath();\n      ctx.rect(particle.x, particle.y, particle.r, particle.r);\n      ctx.closePath();\n      ctx.fill();\n    });\n    ctx.restore();\n  }, []);\n\n  const moveDiscs = React.useCallback(() => {\n    stateRef.current.discs.forEach((disc: any) => {\n      disc.p = (disc.p + 0.001) % 1;\n      tweenDisc(disc);\n    });\n  }, [tweenDisc]);\n\n  const moveParticles = React.useCallback(() => {\n    stateRef.current.particles.forEach((particle: any, idx: number) => {\n      particle.p = 1 - particle.y / stateRef.current.particleArea.h;\n      particle.x = particle.sx + particle.dx * particle.p;\n      particle.y -= particle.vy;\n      if (particle.y < 0) {\n        stateRef.current.particles[idx] = initParticle();\n      }\n    });\n  }, [initParticle]);\n\n  const tick = React.useCallback(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const ctx = canvas.getContext('2d');\n    if (!ctx) return;\n    ctx.clearRect(0, 0, canvas.width, canvas.height);\n    ctx.save();\n    ctx.scale(stateRef.current.render.dpi, stateRef.current.render.dpi);\n    moveDiscs();\n    moveParticles();\n    drawDiscs(ctx);\n    drawLines(ctx);\n    drawParticles(ctx);\n    ctx.restore();\n    animationFrameIdRef.current = requestAnimationFrame(tick);\n  }, [moveDiscs, moveParticles, drawDiscs, drawLines, drawParticles]);\n\n  const init = React.useCallback(() => {\n    setSize();\n    setDiscs();\n    setLines();\n    setParticles();\n  }, [setSize, setDiscs, setLines, setParticles]);\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    init();\n    tick();\n    const handleResize = () => {\n      setSize();\n      setDiscs();\n      setLines();\n      setParticles();\n    };\n    window.addEventListener('resize', handleResize);\n    return () => {\n      window.removeEventListener('resize', handleResize);\n      cancelAnimationFrame(animationFrameIdRef.current);\n    };\n  }, [init, tick, setSize, setDiscs, setLines, setParticles]);\n\n  return (\n    <div\n      data-slot=\"hole-background\"\n      className={cn(\n        'relative size-full overflow-hidden',\n        'before:content-[\"\"] before:absolute before:top-1/2 before:left-1/2 before:block before:size-[140%] dark:before:[background:radial-gradient(ellipse_at_50%_55%,transparent_10%,black_50%)] before:[background:radial-gradient(ellipse_at_50%_55%,transparent_10%,white_50%)] before:[transform:translate3d(-50%,-50%,0)]',\n        'after:content-[\"\"] after:absolute after:z-[5] after:top-1/2 after:left-1/2 after:block after:size-full after:[background:radial-gradient(ellipse_at_50%_75%,#a900ff_20%,transparent_75%)] after:[transform:translate3d(-50%,-50%,0)] after:mix-blend-overlay',\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      <canvas\n        ref={canvasRef}\n        className=\"absolute inset-0 block size-full dark:opacity-20 opacity-10\"\n      />\n      <motion.div\n        className={cn(\n          'absolute top-[-71.5%] left-1/2 z-[3] w-[30%] h-[140%] rounded-b-full blur-3xl opacity-75 dark:mix-blend-plus-lighter mix-blend-plus-darker [transform:translate3d(-50%,0,0)] [background-position:0%_100%] [background-size:100%_200%]',\n          'dark:[background:linear-gradient(20deg,#00f8f1,#ffbd1e20_16.5%,#fe848f_33%,#fe848f20_49.5%,#00f8f1_66%,#00f8f160_85.5%,#ffbd1e_100%)_0_100%_/_100%_200%] [background:linear-gradient(20deg,#00f8f1,#ffbd1e40_16.5%,#fe848f_33%,#fe848f40_49.5%,#00f8f1_66%,#00f8f180_85.5%,#ffbd1e_100%)_0_100%_/_100%_200%]',\n        )}\n        animate={{ backgroundPosition: '0% 300%' }}\n        transition={{ duration: 5, ease: 'linear', repeat: Infinity }}\n      />\n      <div className=\"absolute top-0 left-0 z-[7] size-full dark:[background:repeating-linear-gradient(transparent,transparent_1px,white_1px,white_2px)] mix-blend-overlay opacity-50\" />\n    </div>\n  );\n}\n\nexport { HoleBackground, type HoleBackgroundProps };",
       },
     ],
     keywords: [],
@@ -1006,7 +1006,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/buttons/copy.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { AnimatePresence, motion } from 'motion/react';\nimport { CheckIcon, CopyIcon } from 'lucide-react';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\nimport { useControlledState } from '@/hooks/use-controlled-state';\n\nconst buttonVariants = cva(\n  \"flex items-center justify-center rounded-md transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'size-9',\n        xs: \"size-7 [&_svg:not([class*='size-'])]:size-3.5 rounded-md\",\n        sm: 'size-8 rounded-md',\n        lg: 'size-10 rounded-md',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype CopyButtonProps = Omit<ButtonPrimitiveProps, 'children'> &\n  VariantProps<typeof buttonVariants> & {\n    content: string;\n    copied?: boolean;\n    onCopiedChange?: (copied: boolean, content?: string) => void;\n    delay?: number;\n  };\n\nfunction CopyButton({\n  className,\n  content,\n  copied,\n  onCopiedChange,\n  onClick,\n  variant,\n  size,\n  delay = 3000,\n  ...props\n}: CopyButtonProps) {\n  const [isCopied, setIsCopied] = useControlledState({\n    value: copied,\n    onChange: onCopiedChange,\n  });\n\n  const handleCopy = React.useCallback(\n    (e: React.MouseEvent<HTMLButtonElement>) => {\n      onClick?.(e);\n      if (copied) return;\n      if (content) {\n        navigator.clipboard\n          .writeText(content)\n          .then(() => {\n            setIsCopied(true);\n            onCopiedChange?.(true, content);\n            setTimeout(() => {\n              setIsCopied(false);\n              onCopiedChange?.(false);\n            }, delay);\n          })\n          .catch((error) => {\n            console.error('Error copying command', error);\n          });\n      }\n    },\n    [onCopiedChange, delay],\n  );\n\n  const Icon = isCopied ? CheckIcon : CopyIcon;\n\n  return (\n    <ButtonPrimitive\n      data-slot=\"copy-button\"\n      className={cn(buttonVariants({ variant, size, className }))}\n      onClick={handleCopy}\n      {...props}\n    >\n      <AnimatePresence mode=\"wait\">\n        <motion.span\n          key={isCopied ? 'check' : 'copy'}\n          data-slot=\"copy-button-icon\"\n          initial={{ scale: 0 }}\n          animate={{ scale: 1 }}\n          exit={{ scale: 0 }}\n          transition={{ duration: 0.15 }}\n        >\n          <Icon />\n        </motion.span>\n      </AnimatePresence>\n    </ButtonPrimitive>\n  );\n}\n\nexport { CopyButton, buttonVariants, type CopyButtonProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { AnimatePresence, motion } from 'motion/react';\nimport { CheckIcon, CopyIcon } from 'lucide-react';\n\nimport {\n  Button as ButtonPrimitive,\n  type ButtonProps as ButtonPrimitiveProps,\n} from '@/components/animate-ui/primitives/buttons/button';\nimport { cn } from '@/lib/utils';\nimport { useControlledState } from '@/hooks/use-controlled-state';\n\nconst buttonVariants = cva(\n  \"flex items-center justify-center rounded-md transition-[box-shadow,_color,_background-color,_border-color,_outline-color,_text-decoration-color,_fill,_stroke] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',\n        accent: 'bg-accent text-accent-foreground shadow-xs hover:bg-accent/90',\n        destructive:\n          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',\n        outline:\n          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',\n        secondary:\n          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',\n        ghost:\n          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'size-9',\n        xs: \"size-7 [&_svg:not([class*='size-'])]:size-3.5 rounded-md\",\n        sm: 'size-8 rounded-md',\n        lg: 'size-10 rounded-md',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\ntype CopyButtonProps = Omit<ButtonPrimitiveProps, 'children'> &\n  VariantProps<typeof buttonVariants> & {\n    content: string;\n    copied?: boolean;\n    onCopiedChange?: (copied: boolean, content?: string) => void;\n    delay?: number;\n  };\n\nfunction CopyButton({\n  className,\n  content,\n  copied,\n  onCopiedChange,\n  onClick,\n  variant,\n  size,\n  delay = 3000,\n  ...props\n}: CopyButtonProps) {\n  const [isCopied, setIsCopied] = useControlledState({\n    value: copied,\n    onChange: onCopiedChange,\n  });\n\n  const handleCopy = React.useCallback(\n    (e: React.MouseEvent<HTMLButtonElement>) => {\n      onClick?.(e);\n      if (copied) return;\n      if (content) {\n        navigator.clipboard\n          .writeText(content)\n          .then(() => {\n            setIsCopied(true);\n            onCopiedChange?.(true, content);\n            setTimeout(() => {\n              setIsCopied(false);\n              onCopiedChange?.(false);\n            }, delay);\n          })\n          .catch((error) => {\n            console.error('Error copying command', error);\n          });\n      }\n    },\n    [onClick, copied, content, setIsCopied, onCopiedChange, delay],\n  );\n\n  const Icon = isCopied ? CheckIcon : CopyIcon;\n\n  return (\n    <ButtonPrimitive\n      data-slot=\"copy-button\"\n      className={cn(buttonVariants({ variant, size, className }))}\n      onClick={handleCopy}\n      {...props}\n    >\n      <AnimatePresence mode=\"wait\">\n        <motion.span\n          key={isCopied ? 'check' : 'copy'}\n          data-slot=\"copy-button-icon\"\n          initial={{ scale: 0 }}\n          animate={{ scale: 1 }}\n          exit={{ scale: 0 }}\n          transition={{ duration: 0.15 }}\n        >\n          <Icon />\n        </motion.span>\n      </AnimatePresence>\n    </ButtonPrimitive>\n  );\n}\n\nexport { CopyButton, buttonVariants, type CopyButtonProps };",
       },
     ],
     keywords: [],
@@ -1481,7 +1481,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/components/headless/accordion.tsx',
         content:
-          "import * as React from 'react';\nimport { motion } from 'motion/react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    children: React.ReactNode;\n    as?: TTag;\n  };\n\nfunction Accordion<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: AccordionProps<TTag>) {\n  return <Component data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag>;\n\nfunction AccordionItem<TTag extends React.ElementType = 'div'>({\n  className,\n  children,\n  ...props\n}: AccordionItemProps<TTag>) {\n  return (\n    <DisclosurePrimitive {...props}>\n      {(bag) => (\n        <div className={cn('border-b last:border-b-0', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePrimitive>\n  );\n}\n\ntype AccordionButtonProps = DisclosureButtonPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionButton({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionButtonProps) {\n  return (\n    <DisclosureButtonPrimitive\n      className={cn(\n        'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 w-full rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-open]>svg]:rotate-180',\n        className,\n      )}\n      {...props}\n    >\n      {(bag) => (\n        <>\n          {typeof children === 'function' ? children(bag) : children}\n          {showArrow && (\n            <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n          )}\n        </>\n      )}\n    </DisclosureButtonPrimitive>\n  );\n}\n\ntype AccordionPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  DisclosurePanelPrimitiveProps<TTag>;\n\nfunction AccordionPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  children,\n  ...props\n}: AccordionPanelProps<TTag>) {\n  return (\n    <DisclosurePanelPrimitive<any> {...props}>\n      {(bag) => (\n        <div className={cn('text-sm pt-0 pb-4', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePanelPrimitive>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionButtonProps,\n  type AccordionPanelProps,\n};",
+          "import * as React from 'react';\nimport { motion } from 'motion/react';\nimport { ChevronDownIcon } from 'lucide-react';\n\nimport {\n  Disclosure as DisclosurePrimitive,\n  DisclosureButton as DisclosureButtonPrimitive,\n  DisclosurePanel as DisclosurePanelPrimitive,\n  type DisclosureProps as DisclosurePrimitiveProps,\n  type DisclosureButtonProps as DisclosureButtonPrimitiveProps,\n  type DisclosurePanelProps as DisclosurePanelPrimitiveProps,\n} from '@/components/animate-ui/primitives/headless/disclosure';\nimport { cn } from '@/lib/utils';\n\ntype AccordionProps<TTag extends React.ElementType = 'div'> =\n  React.ComponentProps<TTag> & {\n    children: React.ReactNode;\n    as?: TTag;\n  };\n\nfunction Accordion<TTag extends React.ElementType = 'div'>({\n  as: Component = 'div',\n  ...props\n}: AccordionProps<TTag>) {\n  return <Component data-slot=\"accordion\" {...props} />;\n}\n\ntype AccordionItemProps<TTag extends React.ElementType = 'div'> =\n  DisclosurePrimitiveProps<TTag>;\n\nfunction AccordionItem<TTag extends React.ElementType = 'div'>({\n  className,\n  children,\n  ...props\n}: AccordionItemProps<TTag>) {\n  return (\n    <DisclosurePrimitive {...props}>\n      {(bag) => (\n        <div className={cn('border-b last:border-b-0', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePrimitive>\n  );\n}\n\ntype AccordionButtonProps = DisclosureButtonPrimitiveProps & {\n  showArrow?: boolean;\n};\n\nfunction AccordionButton({\n  className,\n  children,\n  showArrow = true,\n  ...props\n}: AccordionButtonProps) {\n  return (\n    <DisclosureButtonPrimitive\n      className={cn(\n        'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 w-full rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-open]>svg]:rotate-180',\n        className,\n      )}\n      {...props}\n    >\n      {(bag) => (\n        <>\n          {typeof children === 'function' ? children(bag) : children}\n          {showArrow && (\n            <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n          )}\n        </>\n      )}\n    </DisclosureButtonPrimitive>\n  );\n}\n\ntype AccordionPanelProps<TTag extends React.ElementType = typeof motion.div> =\n  DisclosurePanelPrimitiveProps<TTag>;\n\nfunction AccordionPanel<TTag extends React.ElementType = typeof motion.div>({\n  className,\n  children,\n  ...props\n}: AccordionPanelProps<TTag>) {\n  return (\n    // eslint-disable-next-line @typescript-eslint/no-explicit-any\n    <DisclosurePanelPrimitive<any> {...props}>\n      {(bag) => (\n        <div className={cn('text-sm pt-0 pb-4', className)}>\n          {typeof children === 'function' ? children(bag) : children}\n        </div>\n      )}\n    </DisclosurePanelPrimitive>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n  type AccordionProps,\n  type AccordionItemProps,\n  type AccordionButtonProps,\n  type AccordionPanelProps,\n};",
       },
     ],
     keywords: [],
@@ -8409,7 +8409,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/accessibility/index.tsx',
@@ -8445,7 +8445,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/activity/index.tsx',
@@ -8499,7 +8499,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/airplay/index.tsx',
@@ -8543,7 +8543,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/alarm-clock/index.tsx',
@@ -8579,7 +8579,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/arrow-down/index.tsx',
@@ -8615,7 +8615,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/arrow-left/index.tsx',
@@ -8651,7 +8651,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/arrow-right/index.tsx',
@@ -8687,7 +8687,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/arrow-up/index.tsx',
@@ -8723,7 +8723,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/audio-lines/index.tsx',
@@ -8783,7 +8783,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/axe/index.tsx',
@@ -8832,7 +8832,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/badge-check/index.tsx',
@@ -8868,7 +8868,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/battery-charging/index.tsx',
@@ -8904,7 +8904,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/battery-full/index.tsx',
@@ -8940,7 +8940,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/battery-low/index.tsx',
@@ -8976,7 +8976,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/battery-medium/index.tsx',
@@ -9012,7 +9012,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/bell/index.tsx',
@@ -9048,7 +9048,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/bell-off/index.tsx',
@@ -9084,7 +9084,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/bell-ring/index.tsx',
@@ -9120,7 +9120,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/binary/index.tsx',
@@ -9156,7 +9156,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/bot/index.tsx',
@@ -9192,7 +9192,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/bot-message-square/index.tsx',
@@ -9230,7 +9230,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/bot-off/index.tsx',
@@ -9266,7 +9266,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/brush/index.tsx',
@@ -9311,7 +9311,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/brush-cleaning/index.tsx',
@@ -9379,7 +9379,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cast/index.tsx',
@@ -9415,7 +9415,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cctv/index.tsx',
@@ -9459,7 +9459,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-bar/index.tsx',
@@ -9495,7 +9495,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-bar-decreasing/index.tsx',
@@ -9533,7 +9533,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-bar-increasing/index.tsx',
@@ -9571,7 +9571,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-column/index.tsx',
@@ -9607,7 +9607,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-column-decreasing/index.tsx',
@@ -9645,7 +9645,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-column-increasing/index.tsx',
@@ -9683,7 +9683,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-line/index.tsx',
@@ -9719,7 +9719,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-no-axes-column/index.tsx',
@@ -9757,7 +9757,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-no-axes-column-decreasing/index.tsx',
@@ -9796,7 +9796,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-no-axes-column-increasing/index.tsx',
@@ -9835,7 +9835,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-scatter/index.tsx',
@@ -9871,7 +9871,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chart-spline/index.tsx',
@@ -9919,7 +9919,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cherry/index.tsx',
@@ -9955,7 +9955,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chevron-down/index.tsx',
@@ -9991,7 +9991,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chevron-left/index.tsx',
@@ -10027,7 +10027,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chevron-left-right/index.tsx',
@@ -10065,7 +10065,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chevron-right/index.tsx',
@@ -10114,7 +10114,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chevron-up/index.tsx',
@@ -10163,7 +10163,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/chevron-up-down/index.tsx',
@@ -10199,7 +10199,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/circle-plus/index.tsx',
@@ -10248,7 +10248,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/circle-x/index.tsx',
@@ -10296,7 +10296,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock/index.tsx',
@@ -10332,7 +10332,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-1/index.tsx',
@@ -10368,7 +10368,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-10/index.tsx',
@@ -10404,7 +10404,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-11/index.tsx',
@@ -10440,7 +10440,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-12/index.tsx',
@@ -10476,7 +10476,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-2/index.tsx',
@@ -10512,7 +10512,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-3/index.tsx',
@@ -10548,7 +10548,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-4/index.tsx',
@@ -10584,7 +10584,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-5/index.tsx',
@@ -10620,7 +10620,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-6/index.tsx',
@@ -10656,7 +10656,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-7/index.tsx',
@@ -10692,7 +10692,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-8/index.tsx',
@@ -10728,7 +10728,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/clock-9/index.tsx',
@@ -10764,7 +10764,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cloud-download/index.tsx',
@@ -10800,7 +10800,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cloud-upload/index.tsx',
@@ -10836,7 +10836,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cog/index.tsx',
@@ -10885,7 +10885,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/compass/index.tsx',
@@ -10929,7 +10929,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/contrast/index.tsx',
@@ -10965,7 +10965,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/copy/index.tsx',
@@ -11001,7 +11001,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/cross/index.tsx',
@@ -11037,7 +11037,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/disc-3/index.tsx',
@@ -11085,7 +11085,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/download/index.tsx',
@@ -11121,7 +11121,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/ellipsis/index.tsx',
@@ -11179,7 +11179,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/ellipsis-vertical/index.tsx',
@@ -11228,7 +11228,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/expand/index.tsx',
@@ -11264,7 +11264,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/external-link/index.tsx',
@@ -11300,7 +11300,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/fingerprint/index.tsx',
@@ -11336,7 +11336,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/forklift/index.tsx',
@@ -11372,7 +11372,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/gauge/index.tsx',
@@ -11416,7 +11416,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/gavel/index.tsx',
@@ -11452,7 +11452,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/hammer/index.tsx',
@@ -11488,7 +11488,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/heart/index.tsx',
@@ -11524,7 +11524,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/house-wifi/index.tsx',
@@ -11596,7 +11596,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/kanban/index.tsx',
@@ -11647,7 +11647,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/layers/index.tsx',
@@ -11691,7 +11691,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/layers-2/index.tsx',
@@ -11738,7 +11738,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/layout-dashboard/index.tsx',
@@ -11774,7 +11774,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/lightbulb/index.tsx',
@@ -11810,7 +11810,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/lightbulb-off/index.tsx',
@@ -11846,7 +11846,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/loader/index.tsx',
@@ -11890,7 +11890,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/loader-circle/index.tsx',
@@ -11935,7 +11935,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/loader-pinwheel/index.tsx',
@@ -11982,7 +11982,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/log-in/index.tsx',
@@ -12018,7 +12018,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/log-out/index.tsx',
@@ -12054,7 +12054,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/map-pin/index.tsx',
@@ -12090,7 +12090,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/map-pin-off/index.tsx',
@@ -12126,7 +12126,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/maximize/index.tsx',
@@ -12162,7 +12162,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/menu/index.tsx',
@@ -12198,7 +12198,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle/index.tsx',
@@ -12241,7 +12241,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-code/index.tsx',
@@ -12288,7 +12288,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-dashed/index.tsx',
@@ -12334,7 +12334,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-heart/index.tsx',
@@ -12386,7 +12386,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-more/index.tsx',
@@ -12438,7 +12438,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-off/index.tsx',
@@ -12491,7 +12491,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-plus/index.tsx',
@@ -12537,7 +12537,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-question/index.tsx',
@@ -12583,7 +12583,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-warning/index.tsx',
@@ -12636,7 +12636,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-circle-x/index.tsx',
@@ -12687,7 +12687,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square/index.tsx',
@@ -12730,7 +12730,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-code/index.tsx',
@@ -12777,7 +12777,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-dashed/index.tsx',
@@ -12823,7 +12823,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-diff/index.tsx',
@@ -12879,7 +12879,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-dot/index.tsx',
@@ -12926,7 +12926,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-heart/index.tsx',
@@ -12978,7 +12978,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-more/index.tsx',
@@ -13030,7 +13030,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-off/index.tsx',
@@ -13083,7 +13083,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-plus/index.tsx',
@@ -13129,7 +13129,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-quote/index.tsx',
@@ -13179,7 +13179,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-share/index.tsx',
@@ -13226,7 +13226,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-text/index.tsx',
@@ -13271,7 +13271,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-warning/index.tsx',
@@ -13324,7 +13324,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/message-square-x/index.tsx',
@@ -13375,7 +13375,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/minimize/index.tsx',
@@ -13411,7 +13411,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/move-down/index.tsx',
@@ -13447,7 +13447,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/move-left/index.tsx',
@@ -13492,7 +13492,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/move-right/index.tsx',
@@ -13537,7 +13537,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/move-up/index.tsx',
@@ -13573,7 +13573,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/paintbrush/index.tsx',
@@ -13617,7 +13617,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/panel-bottom/index.tsx',
@@ -13653,7 +13653,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/panel-left/index.tsx',
@@ -13689,7 +13689,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/panel-right/index.tsx',
@@ -13725,7 +13725,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/panel-top/index.tsx',
@@ -13761,7 +13761,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/party-popper/index.tsx',
@@ -13809,7 +13809,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/pause/index.tsx',
@@ -13845,7 +13845,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/pickaxe/index.tsx',
@@ -13891,7 +13891,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/pin/index.tsx',
@@ -13927,7 +13927,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/pin-off/index.tsx',
@@ -13963,7 +13963,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/play/index.tsx',
@@ -13999,7 +13999,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/plus/index.tsx',
@@ -14047,7 +14047,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/refresh-ccw/index.tsx',
@@ -14091,7 +14091,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/refresh-ccw-dot/index.tsx',
@@ -14139,7 +14139,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/refresh-cw/index.tsx',
@@ -14183,7 +14183,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/refresh-cw-off/index.tsx',
@@ -14233,7 +14233,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/rotate-ccw/index.tsx',
@@ -14285,7 +14285,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/rotate-cw/index.tsx',
@@ -14330,7 +14330,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/search/index.tsx',
@@ -14366,7 +14366,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/send/index.tsx',
@@ -14402,7 +14402,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/send-horizontal/index.tsx',
@@ -14438,7 +14438,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/settings/index.tsx',
@@ -14474,7 +14474,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/shrink/index.tsx',
@@ -14510,7 +14510,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-arrow-out-down-left/index.tsx',
@@ -14548,7 +14548,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-arrow-out-down-right/index.tsx',
@@ -14586,7 +14586,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-arrow-out-up-left/index.tsx',
@@ -14624,7 +14624,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-arrow-out-up-right/index.tsx',
@@ -14671,7 +14671,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-dashed-kanban/index.tsx',
@@ -14724,7 +14724,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-kanban/index.tsx',
@@ -14775,7 +14775,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-plus/index.tsx',
@@ -14825,7 +14825,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/square-x/index.tsx',
@@ -14873,7 +14873,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/star/index.tsx',
@@ -14909,7 +14909,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/terminal/index.tsx',
@@ -14945,7 +14945,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/thumbs-down/index.tsx',
@@ -14981,7 +14981,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/thumbs-up/index.tsx',
@@ -15017,7 +15017,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/timer/index.tsx',
@@ -15053,7 +15053,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/timer-off/index.tsx',
@@ -15089,7 +15089,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/toggle-left/index.tsx',
@@ -15125,7 +15125,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/toggle-right/index.tsx',
@@ -15161,7 +15161,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/trash/index.tsx',
@@ -15197,7 +15197,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/trash-2/index.tsx',
@@ -15233,7 +15233,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/upload/index.tsx',
@@ -15269,7 +15269,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/user/index.tsx',
@@ -15305,7 +15305,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/user-round/index.tsx',
@@ -15341,7 +15341,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/users/index.tsx',
@@ -15377,7 +15377,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/users-round/index.tsx',
@@ -15413,7 +15413,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/volume-1/index.tsx',
@@ -15449,7 +15449,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/volume-2/index.tsx',
@@ -15485,7 +15485,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/volume-off/index.tsx',
@@ -15521,7 +15521,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/wifi/index.tsx',
@@ -15557,7 +15557,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/wifi-high/index.tsx',
@@ -15593,7 +15593,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/wifi-low/index.tsx',
@@ -15629,7 +15629,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['motion'],
     devDependencies: undefined,
-    registryDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
     files: [
       {
         path: 'registry/icons/x/index.tsx',
@@ -15759,7 +15759,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/code-block.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/hooks/use-is-in-view';\n\ntype CodeBlockProps = React.ComponentProps<'div'> & {\n  code: string;\n  lang: string;\n  theme?: 'light' | 'dark';\n  themes?: { light: string; dark: string };\n  writing?: boolean;\n  duration?: number;\n  delay?: number;\n  onDone?: () => void;\n  onWrite?: (info: { index: number; length: number; done: boolean }) => void;\n  scrollContainerRef?: React.RefObject<HTMLElement | null>;\n} & UseIsInViewOptions;\n\nfunction CodeBlock({\n  ref,\n  code,\n  lang,\n  theme = 'light',\n  themes = {\n    light: 'github-light',\n    dark: 'github-dark',\n  },\n  writing = false,\n  duration = 5000,\n  delay = 0,\n  onDone,\n  onWrite,\n  scrollContainerRef,\n  inView = false,\n  inViewOnce = true,\n  inViewMargin = '0px',\n  ...props\n}: CodeBlockProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const [visibleCode, setVisibleCode] = React.useState('');\n  const [highlightedCode, setHighlightedCode] = React.useState('');\n  const [isDone, setIsDone] = React.useState(false);\n\n  React.useEffect(() => {\n    if (!visibleCode.length || !isInView) return;\n\n    const loadHighlightedCode = async () => {\n      try {\n        const { codeToHtml } = await import('shiki');\n\n        const highlighted = await codeToHtml(visibleCode, {\n          lang,\n          themes,\n          defaultColor: theme,\n        });\n\n        setHighlightedCode(highlighted);\n      } catch (e) {\n        console.error(`Language \"${lang}\" could not be loaded.`, e);\n      }\n    };\n\n    loadHighlightedCode();\n  }, [lang, themes, writing, isInView, duration, delay, visibleCode]);\n\n  React.useEffect(() => {\n    if (!writing) {\n      setVisibleCode(code);\n      onDone?.();\n      onWrite?.({ index: code.length, length: code.length, done: true });\n      return;\n    }\n\n    if (!code.length || !isInView) return;\n\n    const characters = Array.from(code);\n    let index = 0;\n    const totalDuration = duration;\n    const interval = totalDuration / characters.length;\n    let intervalId: NodeJS.Timeout;\n\n    const timeout = setTimeout(() => {\n      intervalId = setInterval(() => {\n        if (index < characters.length) {\n          setVisibleCode((prev) => {\n            const currentIndex = index;\n            index += 1;\n            onWrite?.({\n              index: currentIndex + 1,\n              length: characters.length,\n              done: false,\n            });\n            return prev + characters[currentIndex];\n          });\n          localRef.current?.scrollTo({\n            top: localRef.current?.scrollHeight,\n            behavior: 'smooth',\n          });\n        } else {\n          clearInterval(intervalId);\n          setIsDone(true);\n          onDone?.();\n          onWrite?.({\n            index: characters.length,\n            length: characters.length,\n            done: true,\n          });\n        }\n      }, interval);\n    }, delay);\n\n    return () => {\n      clearTimeout(timeout);\n      clearInterval(intervalId);\n    };\n  }, [code, duration, delay, isInView, writing, onDone, onWrite]);\n\n  React.useEffect(() => {\n    if (!writing || !isInView) return;\n    const el =\n      scrollContainerRef?.current ??\n      (localRef.current?.parentElement as HTMLElement | null) ??\n      (localRef.current as unknown as HTMLElement | null);\n\n    if (!el) return;\n\n    requestAnimationFrame(() => {\n      el.scrollTo({\n        top: el.scrollHeight,\n        behavior: 'smooth',\n      });\n    });\n  }, [highlightedCode, writing, isInView, scrollContainerRef]);\n\n  return (\n    <div\n      ref={localRef}\n      data-slot=\"code-block\"\n      data-writing={writing}\n      data-done={isDone}\n      dangerouslySetInnerHTML={{ __html: highlightedCode }}\n      {...props}\n    />\n  );\n}\n\nexport { CodeBlock, type CodeBlockProps };",
+          "'use client';\n\nimport * as React from 'react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/hooks/use-is-in-view';\n\ntype CodeBlockProps = React.ComponentProps<'div'> & {\n  code: string;\n  lang: string;\n  theme?: 'light' | 'dark';\n  themes?: { light: string; dark: string };\n  writing?: boolean;\n  duration?: number;\n  delay?: number;\n  onDone?: () => void;\n  onWrite?: (info: { index: number; length: number; done: boolean }) => void;\n  scrollContainerRef?: React.RefObject<HTMLElement | null>;\n} & UseIsInViewOptions;\n\nfunction CodeBlock({\n  ref,\n  code,\n  lang,\n  theme = 'light',\n  themes = {\n    light: 'github-light',\n    dark: 'github-dark',\n  },\n  writing = false,\n  duration = 5000,\n  delay = 0,\n  onDone,\n  onWrite,\n  scrollContainerRef,\n  inView = false,\n  inViewOnce = true,\n  inViewMargin = '0px',\n  ...props\n}: CodeBlockProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const [visibleCode, setVisibleCode] = React.useState('');\n  const [highlightedCode, setHighlightedCode] = React.useState('');\n  const [isDone, setIsDone] = React.useState(false);\n\n  React.useEffect(() => {\n    if (!visibleCode.length || !isInView) return;\n\n    const loadHighlightedCode = async () => {\n      try {\n        const { codeToHtml } = await import('shiki');\n\n        const highlighted = await codeToHtml(visibleCode, {\n          lang,\n          themes,\n          defaultColor: theme,\n        });\n\n        setHighlightedCode(highlighted);\n      } catch (e) {\n        console.error(`Language \"${lang}\" could not be loaded.`, e);\n      }\n    };\n\n    loadHighlightedCode();\n  }, [lang, themes, writing, isInView, duration, delay, visibleCode, theme]);\n\n  React.useEffect(() => {\n    if (!writing) {\n      setVisibleCode(code);\n      onDone?.();\n      onWrite?.({ index: code.length, length: code.length, done: true });\n      return;\n    }\n\n    if (!code.length || !isInView) return;\n\n    const characters = Array.from(code);\n    let index = 0;\n    const totalDuration = duration;\n    const interval = totalDuration / characters.length;\n    let intervalId: NodeJS.Timeout;\n\n    const timeout = setTimeout(() => {\n      intervalId = setInterval(() => {\n        if (index < characters.length) {\n          setVisibleCode((prev) => {\n            const currentIndex = index;\n            index += 1;\n            onWrite?.({\n              index: currentIndex + 1,\n              length: characters.length,\n              done: false,\n            });\n            return prev + characters[currentIndex];\n          });\n          localRef.current?.scrollTo({\n            top: localRef.current?.scrollHeight,\n            behavior: 'smooth',\n          });\n        } else {\n          clearInterval(intervalId);\n          setIsDone(true);\n          onDone?.();\n          onWrite?.({\n            index: characters.length,\n            length: characters.length,\n            done: true,\n          });\n        }\n      }, interval);\n    }, delay);\n\n    return () => {\n      clearTimeout(timeout);\n      clearInterval(intervalId);\n    };\n  }, [code, duration, delay, isInView, writing, onDone, onWrite, localRef]);\n\n  React.useEffect(() => {\n    if (!writing || !isInView) return;\n    const el =\n      scrollContainerRef?.current ??\n      (localRef.current?.parentElement as HTMLElement | null) ??\n      (localRef.current as unknown as HTMLElement | null);\n\n    if (!el) return;\n\n    requestAnimationFrame(() => {\n      el.scrollTo({\n        top: el.scrollHeight,\n        behavior: 'smooth',\n      });\n    });\n  }, [highlightedCode, writing, isInView, scrollContainerRef, localRef]);\n\n  return (\n    <div\n      ref={localRef}\n      data-slot=\"code-block\"\n      data-writing={writing}\n      data-done={isDone}\n      dangerouslySetInnerHTML={{ __html: highlightedCode }}\n      {...props}\n    />\n  );\n}\n\nexport { CodeBlock, type CodeBlockProps };",
       },
     ],
     keywords: [],
@@ -15793,7 +15793,7 @@ export const index: Record<string, any> = {
     devDependencies: undefined,
     registryDependencies: [
       '@animate-ui/primitives-animate-slot',
-      '@animate-ui/primitives-animate-sliding-number',
+      '@animate-ui/primitives-texts-sliding-number',
       '@animate-ui/lib-get-strict-context',
       '@animate-ui/hooks-use-controlled-state',
     ],
@@ -15879,7 +15879,7 @@ export const index: Record<string, any> = {
     devDependencies: undefined,
     registryDependencies: [
       '@animate-ui/primitives-animate-slot',
-      '@animate-ui/primitives-animate-sliding-number',
+      '@animate-ui/primitives-texts-sliding-number',
       '@animate-ui/hooks-use-is-in-view',
       '@animate-ui/lib-get-strict-context',
     ],
@@ -15889,7 +15889,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/github-stars.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/hooks/use-is-in-view';\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport {\n  SlidingNumber,\n  type SlidingNumberProps,\n} from '@/components/animate-ui/primitives/texts/sliding-number';\nimport {\n  Particles,\n  ParticlesEffect,\n  type ParticlesEffectProps,\n} from '@/components/animate-ui/primitives/effects/particles';\nimport { cn } from '@/lib/utils';\n\ntype GithubStarsContextType = {\n  stars: number;\n  setStars: (stars: number) => void;\n  currentStars: number;\n  setCurrentStars: (stars: number) => void;\n  isCompleted: boolean;\n  isLoading: boolean;\n};\n\nconst [GithubStarsProvider, useGithubStars] =\n  getStrictContext<GithubStarsContextType>('GithubStarsContext');\n\ntype GithubStarsProps = WithAsChild<\n  {\n    children: React.ReactNode;\n    username?: string;\n    repo?: string;\n    value?: number;\n    delay?: number;\n  } & UseIsInViewOptions &\n    HTMLMotionProps<'div'>\n>;\n\nfunction GithubStars({\n  ref,\n  children,\n  username,\n  repo,\n  value,\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  asChild = false,\n  ...props\n}: GithubStarsProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    { inView, inViewOnce, inViewMargin },\n  );\n\n  const [stars, setStars] = React.useState(value ?? 0);\n  const [currentStars, setCurrentStars] = React.useState(0);\n  const [isLoading, setIsLoading] = React.useState(true);\n  const isCompleted = React.useMemo(\n    () => currentStars === stars,\n    [currentStars, stars],\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  React.useEffect(() => {\n    if (value !== undefined && username && repo) return;\n    if (!isInView) {\n      setStars(0);\n      setIsLoading(true);\n      return;\n    }\n\n    const timeout = setTimeout(() => {\n      fetch(`https://api.github.com/repos/${username}/${repo}`)\n        .then((response) => response.json())\n        .then((data) => {\n          if (data && typeof data.stargazers_count === 'number') {\n            setStars(data.stargazers_count);\n          }\n        })\n        .catch(console.error)\n        .finally(() => setIsLoading(false));\n    }, delay);\n\n    return () => clearTimeout(timeout);\n  }, [username, repo, value, isInView]);\n\n  return (\n    <GithubStarsProvider\n      value={{\n        stars,\n        currentStars,\n        isCompleted,\n        isLoading,\n        setStars,\n        setCurrentStars,\n      }}\n    >\n      {!isLoading && (\n        <Component ref={localRef} {...props}>\n          {children}\n        </Component>\n      )}\n    </GithubStarsProvider>\n  );\n}\n\ntype GithubStarsNumberProps = Omit<SlidingNumberProps, 'number' | 'fromNumber'>;\n\nfunction GithubStarsNumber({\n  padStart = true,\n  ...props\n}: GithubStarsNumberProps) {\n  const { stars, setCurrentStars } = useGithubStars();\n\n  return (\n    <SlidingNumber\n      number={stars}\n      fromNumber={0}\n      onNumberChange={setCurrentStars}\n      padStart={padStart}\n      {...props}\n    />\n  );\n}\n\ntype GithubStarsIconProps<T extends React.ElementType> = {\n  icon: React.ReactElement<T>;\n  color?: string;\n  activeClassName?: string;\n} & React.ComponentProps<T>;\n\nfunction GithubStarsIcon<T extends React.ElementType>({\n  icon: Icon,\n  color = 'currentColor',\n  activeClassName,\n  className,\n  ...props\n}: GithubStarsIconProps<T>) {\n  const { stars, currentStars, isCompleted } = useGithubStars();\n  const fillPercentage = (currentStars / stars) * 100;\n\n  return (\n    <div style={{ position: 'relative' }}>\n      <Icon aria-hidden=\"true\" className={cn(className)} {...props} />\n      <Icon\n        aria-hidden=\"true\"\n        style={{\n          position: 'absolute',\n          top: 0,\n          left: 0,\n          fill: color,\n          stroke: color,\n          clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,\n        }}\n        className={cn(className, activeClassName)}\n        {...props}\n      />\n    </div>\n  );\n}\n\ntype GithubStarsParticlesProps = ParticlesEffectProps & {\n  children: React.ReactElement;\n  size?: number;\n};\n\nfunction GithubStarsParticles({\n  children,\n  size = 4,\n  style,\n  ...props\n}: GithubStarsParticlesProps) {\n  const { isCompleted } = useGithubStars();\n\n  return (\n    <Particles animate={isCompleted}>\n      {children}\n      <ParticlesEffect\n        style={{\n          backgroundColor: 'currentcolor',\n          borderRadius: '50%',\n          width: size,\n          height: size,\n          ...style,\n        }}\n        {...props}\n      />\n    </Particles>\n  );\n}\n\ntype GithubStarsLogoProps = React.SVGProps<SVGSVGElement>;\n\nfunction GithubStarsLogo(props: GithubStarsLogoProps) {\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      fill=\"currentColor\"\n      aria-label=\"GitHub\"\n      {...props}\n    >\n      <path d=\"M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12\"></path>\n    </svg>\n  );\n}\n\nexport {\n  GithubStars,\n  GithubStarsNumber,\n  GithubStarsIcon,\n  GithubStarsParticles,\n  GithubStarsLogo,\n  useGithubStars,\n  type GithubStarsProps,\n  type GithubStarsNumberProps,\n  type GithubStarsIconProps,\n  type GithubStarsParticlesProps,\n  type GithubStarsLogoProps,\n  type GithubStarsContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/hooks/use-is-in-view';\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\nimport {\n  SlidingNumber,\n  type SlidingNumberProps,\n} from '@/components/animate-ui/primitives/texts/sliding-number';\nimport {\n  Particles,\n  ParticlesEffect,\n  type ParticlesEffectProps,\n} from '@/components/animate-ui/primitives/effects/particles';\nimport { cn } from '@/lib/utils';\n\ntype GithubStarsContextType = {\n  stars: number;\n  setStars: (stars: number) => void;\n  currentStars: number;\n  setCurrentStars: (stars: number) => void;\n  isCompleted: boolean;\n  isLoading: boolean;\n};\n\nconst [GithubStarsProvider, useGithubStars] =\n  getStrictContext<GithubStarsContextType>('GithubStarsContext');\n\ntype GithubStarsProps = WithAsChild<\n  {\n    children: React.ReactNode;\n    username?: string;\n    repo?: string;\n    value?: number;\n    delay?: number;\n  } & UseIsInViewOptions &\n    HTMLMotionProps<'div'>\n>;\n\nfunction GithubStars({\n  ref,\n  children,\n  username,\n  repo,\n  value,\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  asChild = false,\n  ...props\n}: GithubStarsProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLDivElement>,\n    { inView, inViewOnce, inViewMargin },\n  );\n\n  const [stars, setStars] = React.useState(value ?? 0);\n  const [currentStars, setCurrentStars] = React.useState(0);\n  const [isLoading, setIsLoading] = React.useState(true);\n  const isCompleted = React.useMemo(\n    () => currentStars === stars,\n    [currentStars, stars],\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  React.useEffect(() => {\n    if (value !== undefined && username && repo) return;\n    if (!isInView) {\n      setStars(0);\n      setIsLoading(true);\n      return;\n    }\n\n    const timeout = setTimeout(() => {\n      fetch(`https://api.github.com/repos/${username}/${repo}`)\n        .then((response) => response.json())\n        .then((data) => {\n          if (data && typeof data.stargazers_count === 'number') {\n            setStars(data.stargazers_count);\n          }\n        })\n        .catch(console.error)\n        .finally(() => setIsLoading(false));\n    }, delay);\n\n    return () => clearTimeout(timeout);\n  }, [username, repo, value, isInView, delay]);\n\n  return (\n    <GithubStarsProvider\n      value={{\n        stars,\n        currentStars,\n        isCompleted,\n        isLoading,\n        setStars,\n        setCurrentStars,\n      }}\n    >\n      {!isLoading && (\n        <Component ref={localRef} {...props}>\n          {children}\n        </Component>\n      )}\n    </GithubStarsProvider>\n  );\n}\n\ntype GithubStarsNumberProps = Omit<SlidingNumberProps, 'number' | 'fromNumber'>;\n\nfunction GithubStarsNumber({\n  padStart = true,\n  ...props\n}: GithubStarsNumberProps) {\n  const { stars, setCurrentStars } = useGithubStars();\n\n  return (\n    <SlidingNumber\n      number={stars}\n      fromNumber={0}\n      onNumberChange={setCurrentStars}\n      padStart={padStart}\n      {...props}\n    />\n  );\n}\n\ntype GithubStarsIconProps<T extends React.ElementType> = {\n  icon: React.ReactElement<T>;\n  color?: string;\n  activeClassName?: string;\n} & React.ComponentProps<T>;\n\nfunction GithubStarsIcon<T extends React.ElementType>({\n  icon: Icon,\n  color = 'currentColor',\n  activeClassName,\n  className,\n  ...props\n}: GithubStarsIconProps<T>) {\n  const { stars, currentStars, isCompleted } = useGithubStars();\n  const fillPercentage = (currentStars / stars) * 100;\n\n  return (\n    <div style={{ position: 'relative' }}>\n      <Icon aria-hidden=\"true\" className={cn(className)} {...props} />\n      <Icon\n        aria-hidden=\"true\"\n        style={{\n          position: 'absolute',\n          top: 0,\n          left: 0,\n          fill: color,\n          stroke: color,\n          clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,\n        }}\n        className={cn(className, activeClassName)}\n        {...props}\n      />\n    </div>\n  );\n}\n\ntype GithubStarsParticlesProps = ParticlesEffectProps & {\n  children: React.ReactElement;\n  size?: number;\n};\n\nfunction GithubStarsParticles({\n  children,\n  size = 4,\n  style,\n  ...props\n}: GithubStarsParticlesProps) {\n  const { isCompleted } = useGithubStars();\n\n  return (\n    <Particles animate={isCompleted}>\n      {children}\n      <ParticlesEffect\n        style={{\n          backgroundColor: 'currentcolor',\n          borderRadius: '50%',\n          width: size,\n          height: size,\n          ...style,\n        }}\n        {...props}\n      />\n    </Particles>\n  );\n}\n\ntype GithubStarsLogoProps = React.SVGProps<SVGSVGElement>;\n\nfunction GithubStarsLogo(props: GithubStarsLogoProps) {\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      fill=\"currentColor\"\n      aria-label=\"GitHub\"\n      {...props}\n    >\n      <path d=\"M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12\"></path>\n    </svg>\n  );\n}\n\nexport {\n  GithubStars,\n  GithubStarsNumber,\n  GithubStarsIcon,\n  GithubStarsParticles,\n  GithubStarsLogo,\n  useGithubStars,\n  type GithubStarsProps,\n  type GithubStarsNumberProps,\n  type GithubStarsIconProps,\n  type GithubStarsParticlesProps,\n  type GithubStarsLogoProps,\n  type GithubStarsContextType,\n};",
       },
     ],
     keywords: [],
@@ -16094,7 +16094,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/spring.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring as useMotionSpring,\n  type SpringOptions,\n  type HTMLMotionProps,\n  type MotionValue,\n} from 'motion/react';\n\nimport { useMotionValueState } from '@/hooks/use-motion-value-state';\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SpringPathConfig = {\n  coilCount?: number;\n  amplitudeMin?: number;\n  amplitudeMax?: number;\n  curveRatioMin?: number;\n  curveRatioMax?: number;\n  bezierOffset?: number;\n};\n\nfunction generateSpringPath(\n  x1: number,\n  y1: number,\n  x2: number,\n  y2: number,\n  pathConfig: SpringPathConfig = {},\n) {\n  const {\n    coilCount = 8,\n    amplitudeMin = 8,\n    amplitudeMax = 20,\n    curveRatioMin = 0.5,\n    curveRatioMax = 1,\n    bezierOffset = 8,\n  } = pathConfig;\n\n  const dx = x2 - x1;\n  const dy = y2 - y1;\n  const dist = Math.sqrt(dx * dx + dy * dy);\n  if (dist < 2) return `M${x1},${y1}`;\n  const d = dist / coilCount;\n  const h = Math.max(0.8, 1 - (dist - 40) / 200);\n  const amplitude = Math.max(\n    amplitudeMin,\n    Math.min(amplitudeMax, amplitudeMax * h),\n  );\n  const curveRatio =\n    dist <= 40\n      ? curveRatioMax\n      : dist <= 120\n        ? curveRatioMax - ((dist - 40) / 80) * (curveRatioMax - curveRatioMin)\n        : curveRatioMin;\n  const ux = dx / dist,\n    uy = dy / dist;\n  const perpX = -uy,\n    perpY = ux;\n\n  let path = [];\n  for (let i = 0; i < coilCount; i++) {\n    const sx = x1 + ux * (i * d);\n    const sy = y1 + uy * (i * d);\n    const ex = x1 + ux * ((i + 1) * d);\n    const ey = y1 + uy * ((i + 1) * d);\n\n    const mx = x1 + ux * ((i + 0.5) * d) + perpX * amplitude;\n    const my = y1 + uy * ((i + 0.5) * d) + perpY * amplitude;\n\n    const c1x = sx + d * curveRatio * ux;\n    const c1y = sy + d * curveRatio * uy;\n    const c2x = mx + ux * bezierOffset;\n    const c2y = my + uy * bezierOffset;\n    const c3x = mx - ux * bezierOffset;\n    const c3y = my - uy * bezierOffset;\n    const c4x = ex - d * curveRatio * ux;\n    const c4y = ey - d * curveRatio * uy;\n\n    if (i === 0) path.push(`M${sx},${sy}`);\n    else path.push(`L${sx},${sy}`);\n    path.push(`C${c1x},${c1y} ${c2x},${c2y} ${mx},${my}`);\n    path.push(`C${c3x},${c3y} ${c4x},${c4y} ${ex},${ey}`);\n  }\n  return path.join(' ');\n}\n\ntype SpringContextType = {\n  dragElastic?: number;\n  childRef: React.RefObject<HTMLDivElement | null>;\n  springX: MotionValue<number>;\n  springY: MotionValue<number>;\n  x: MotionValue<number>;\n  y: MotionValue<number>;\n  isDragging: boolean;\n  setIsDragging: (isDragging: boolean) => void;\n  path: string;\n};\n\nconst [LocalSpringProvider, useSpring] =\n  getStrictContext<SpringContextType>('SpringContext');\n\ntype SpringProviderProps = {\n  children: React.ReactNode;\n  dragElastic?: number;\n  pathConfig?: SpringPathConfig;\n  transition?: SpringOptions;\n};\n\nfunction SpringProvider({\n  dragElastic = 0.2,\n  transition = { stiffness: 200, damping: 16 },\n  pathConfig = {},\n  ...props\n}: SpringProviderProps) {\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useMotionSpring(x, transition);\n  const springY = useMotionSpring(y, transition);\n\n  const sx = useMotionValueState(springX);\n  const sy = useMotionValueState(springY);\n\n  const childRef = React.useRef<HTMLDivElement>(null);\n\n  const [center, setCenter] = React.useState({ x: 0, y: 0 });\n  const [isDragging, setIsDragging] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    function update() {\n      if (childRef.current) {\n        const rect = childRef.current.getBoundingClientRect();\n        setCenter({\n          x: rect.left + rect.width / 2,\n          y: rect.top + rect.height / 2,\n        });\n      }\n    }\n\n    update();\n\n    window.addEventListener('resize', update);\n    window.addEventListener('scroll', update, true);\n\n    return () => {\n      window.removeEventListener('resize', update);\n      window.removeEventListener('scroll', update, true);\n    };\n  }, []);\n\n  React.useEffect(() => {\n    if (isDragging) {\n      document.body.style.cursor = 'grabbing';\n    } else {\n      document.body.style.cursor = 'default';\n    }\n  }, [isDragging]);\n\n  const path = generateSpringPath(\n    center.x,\n    center.y,\n    center.x + sx,\n    center.y + sy,\n    pathConfig,\n  );\n\n  return (\n    <LocalSpringProvider\n      value={{\n        springX,\n        springY,\n        x,\n        y,\n        isDragging,\n        setIsDragging,\n        dragElastic,\n        childRef,\n        path,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype SpringProps = React.SVGProps<SVGSVGElement>;\n\nfunction Spring({ style, ...props }: SpringProps) {\n  const { path } = useSpring();\n\n  return (\n    <>\n      <svg\n        width=\"100vw\"\n        height=\"100vh\"\n        style={{\n          position: 'fixed',\n          inset: 0,\n          pointerEvents: 'none',\n          ...style,\n        }}\n        {...props}\n      >\n        <path\n          d={path}\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          stroke=\"currentColor\"\n          strokeWidth={2}\n          fill=\"none\"\n        />\n      </svg>\n    </>\n  );\n}\n\ntype SpringElementProps = WithAsChild<\n  Omit<HTMLMotionProps<'div'>, 'children'> & {\n    children: React.ReactElement;\n  }\n>;\n\nfunction SpringElement({\n  ref,\n  asChild = false,\n  style,\n  ...props\n}: SpringElementProps) {\n  const {\n    childRef,\n    dragElastic,\n    isDragging,\n    setIsDragging,\n    springX,\n    springY,\n    x,\n    y,\n  } = useSpring();\n\n  React.useImperativeHandle(ref, () => childRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={childRef}\n      style={{\n        cursor: isDragging ? 'grabbing' : 'grab',\n        x: springX,\n        y: springY,\n        ...style,\n      }}\n      drag\n      dragElastic={dragElastic}\n      dragMomentum={false}\n      onDragStart={() => {\n        setIsDragging(true);\n      }}\n      onDrag={(_, info) => {\n        x.set(info.offset.x);\n        y.set(info.offset.y);\n      }}\n      onDragEnd={() => {\n        x.set(0);\n        y.set(0);\n        setIsDragging(false);\n      }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  SpringProvider,\n  Spring,\n  SpringElement,\n  useSpring,\n  type SpringProviderProps,\n  type SpringProps,\n  type SpringElementProps,\n  type SpringPathConfig,\n  type SpringContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useMotionValue,\n  useSpring as useMotionSpring,\n  type SpringOptions,\n  type HTMLMotionProps,\n  type MotionValue,\n} from 'motion/react';\n\nimport { useMotionValueState } from '@/hooks/use-motion-value-state';\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype SpringPathConfig = {\n  coilCount?: number;\n  amplitudeMin?: number;\n  amplitudeMax?: number;\n  curveRatioMin?: number;\n  curveRatioMax?: number;\n  bezierOffset?: number;\n};\n\nfunction generateSpringPath(\n  x1: number,\n  y1: number,\n  x2: number,\n  y2: number,\n  pathConfig: SpringPathConfig = {},\n) {\n  const {\n    coilCount = 8,\n    amplitudeMin = 8,\n    amplitudeMax = 20,\n    curveRatioMin = 0.5,\n    curveRatioMax = 1,\n    bezierOffset = 8,\n  } = pathConfig;\n\n  const dx = x2 - x1;\n  const dy = y2 - y1;\n  const dist = Math.sqrt(dx * dx + dy * dy);\n  if (dist < 2) return `M${x1},${y1}`;\n  const d = dist / coilCount;\n  const h = Math.max(0.8, 1 - (dist - 40) / 200);\n  const amplitude = Math.max(\n    amplitudeMin,\n    Math.min(amplitudeMax, amplitudeMax * h),\n  );\n  const curveRatio =\n    dist <= 40\n      ? curveRatioMax\n      : dist <= 120\n        ? curveRatioMax - ((dist - 40) / 80) * (curveRatioMax - curveRatioMin)\n        : curveRatioMin;\n  const ux = dx / dist,\n    uy = dy / dist;\n  const perpX = -uy,\n    perpY = ux;\n\n  const path: string[] = [];\n  for (let i = 0; i < coilCount; i++) {\n    const sx = x1 + ux * (i * d);\n    const sy = y1 + uy * (i * d);\n    const ex = x1 + ux * ((i + 1) * d);\n    const ey = y1 + uy * ((i + 1) * d);\n\n    const mx = x1 + ux * ((i + 0.5) * d) + perpX * amplitude;\n    const my = y1 + uy * ((i + 0.5) * d) + perpY * amplitude;\n\n    const c1x = sx + d * curveRatio * ux;\n    const c1y = sy + d * curveRatio * uy;\n    const c2x = mx + ux * bezierOffset;\n    const c2y = my + uy * bezierOffset;\n    const c3x = mx - ux * bezierOffset;\n    const c3y = my - uy * bezierOffset;\n    const c4x = ex - d * curveRatio * ux;\n    const c4y = ey - d * curveRatio * uy;\n\n    if (i === 0) path.push(`M${sx},${sy}`);\n    else path.push(`L${sx},${sy}`);\n    path.push(`C${c1x},${c1y} ${c2x},${c2y} ${mx},${my}`);\n    path.push(`C${c3x},${c3y} ${c4x},${c4y} ${ex},${ey}`);\n  }\n  return path.join(' ');\n}\n\ntype SpringContextType = {\n  dragElastic?: number;\n  childRef: React.RefObject<HTMLDivElement | null>;\n  springX: MotionValue<number>;\n  springY: MotionValue<number>;\n  x: MotionValue<number>;\n  y: MotionValue<number>;\n  isDragging: boolean;\n  setIsDragging: (isDragging: boolean) => void;\n  path: string;\n};\n\nconst [LocalSpringProvider, useSpring] =\n  getStrictContext<SpringContextType>('SpringContext');\n\ntype SpringProviderProps = {\n  children: React.ReactNode;\n  dragElastic?: number;\n  pathConfig?: SpringPathConfig;\n  transition?: SpringOptions;\n};\n\nfunction SpringProvider({\n  dragElastic = 0.2,\n  transition = { stiffness: 200, damping: 16 },\n  pathConfig = {},\n  ...props\n}: SpringProviderProps) {\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const springX = useMotionSpring(x, transition);\n  const springY = useMotionSpring(y, transition);\n\n  const sx = useMotionValueState(springX);\n  const sy = useMotionValueState(springY);\n\n  const childRef = React.useRef<HTMLDivElement>(null);\n\n  const [center, setCenter] = React.useState({ x: 0, y: 0 });\n  const [isDragging, setIsDragging] = React.useState(false);\n\n  React.useLayoutEffect(() => {\n    function update() {\n      if (childRef.current) {\n        const rect = childRef.current.getBoundingClientRect();\n        setCenter({\n          x: rect.left + rect.width / 2,\n          y: rect.top + rect.height / 2,\n        });\n      }\n    }\n\n    update();\n\n    window.addEventListener('resize', update);\n    window.addEventListener('scroll', update, true);\n\n    return () => {\n      window.removeEventListener('resize', update);\n      window.removeEventListener('scroll', update, true);\n    };\n  }, []);\n\n  React.useEffect(() => {\n    if (isDragging) {\n      document.body.style.cursor = 'grabbing';\n    } else {\n      document.body.style.cursor = 'default';\n    }\n  }, [isDragging]);\n\n  const path = generateSpringPath(\n    center.x,\n    center.y,\n    center.x + sx,\n    center.y + sy,\n    pathConfig,\n  );\n\n  return (\n    <LocalSpringProvider\n      value={{\n        springX,\n        springY,\n        x,\n        y,\n        isDragging,\n        setIsDragging,\n        dragElastic,\n        childRef,\n        path,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype SpringProps = React.SVGProps<SVGSVGElement>;\n\nfunction Spring({ style, ...props }: SpringProps) {\n  const { path } = useSpring();\n\n  return (\n    <>\n      <svg\n        width=\"100vw\"\n        height=\"100vh\"\n        style={{\n          position: 'fixed',\n          inset: 0,\n          pointerEvents: 'none',\n          ...style,\n        }}\n        {...props}\n      >\n        <path\n          d={path}\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          stroke=\"currentColor\"\n          strokeWidth={2}\n          fill=\"none\"\n        />\n      </svg>\n    </>\n  );\n}\n\ntype SpringElementProps = WithAsChild<\n  Omit<HTMLMotionProps<'div'>, 'children'> & {\n    children: React.ReactElement;\n  }\n>;\n\nfunction SpringElement({\n  ref,\n  asChild = false,\n  style,\n  ...props\n}: SpringElementProps) {\n  const {\n    childRef,\n    dragElastic,\n    isDragging,\n    setIsDragging,\n    springX,\n    springY,\n    x,\n    y,\n  } = useSpring();\n\n  React.useImperativeHandle(ref, () => childRef.current as HTMLDivElement);\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={childRef}\n      style={{\n        cursor: isDragging ? 'grabbing' : 'grab',\n        x: springX,\n        y: springY,\n        ...style,\n      }}\n      drag\n      dragElastic={dragElastic}\n      dragMomentum={false}\n      onDragStart={() => {\n        setIsDragging(true);\n      }}\n      onDrag={(_, info) => {\n        x.set(info.offset.x);\n        y.set(info.offset.y);\n      }}\n      onDragEnd={() => {\n        x.set(0);\n        y.set(0);\n        setIsDragging(false);\n      }}\n      {...props}\n    />\n  );\n}\n\nexport {\n  SpringProvider,\n  Spring,\n  SpringElement,\n  useSpring,\n  type SpringProviderProps,\n  type SpringProps,\n  type SpringElementProps,\n  type SpringPathConfig,\n  type SpringContextType,\n};",
       },
     ],
     keywords: [],
@@ -16179,7 +16179,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/animate/tooltip.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  AnimatePresence,\n  LayoutGroup,\n  type Transition,\n  type HTMLMotionProps,\n} from 'motion/react';\nimport {\n  useFloating,\n  autoUpdate,\n  offset as floatingOffset,\n  flip,\n  shift,\n  arrow as floatingArrow,\n  FloatingPortal,\n  FloatingArrow,\n  type UseFloatingReturn,\n} from '@floating-ui/react';\n\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\ntype Align = 'start' | 'center' | 'end';\n\ntype TooltipData = {\n  contentProps: HTMLMotionProps<'div'>;\n  contentAsChild: boolean;\n  rect: DOMRect;\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  id: string;\n};\n\ntype GlobalTooltipContextType = {\n  showTooltip: (data: TooltipData) => void;\n  hideTooltip: () => void;\n  hideImmediate: () => void;\n  currentTooltip: TooltipData | null;\n  transition: Transition;\n  globalId: string;\n  setReferenceEl: (el: HTMLElement | null) => void;\n  referenceElRef: React.RefObject<HTMLElement | null>;\n};\n\nconst [GlobalTooltipProvider, useGlobalTooltip] =\n  getStrictContext<GlobalTooltipContextType>('GlobalTooltipProvider');\n\ntype TooltipContextType = {\n  props: HTMLMotionProps<'div'>;\n  setProps: React.Dispatch<React.SetStateAction<HTMLMotionProps<'div'>>>;\n  asChild: boolean;\n  setAsChild: React.Dispatch<React.SetStateAction<boolean>>;\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  id: string;\n};\n\nconst [LocalTooltipProvider, useTooltip] = getStrictContext<TooltipContextType>(\n  'LocalTooltipProvider',\n);\n\ntype TooltipPosition = { x: number; y: number };\n\nfunction getResolvedSide(placement: Side | `${Side}-${Align}`) {\n  if (placement.includes('-')) {\n    return placement.split('-')[0] as Side;\n  }\n  return placement as Side;\n}\n\nfunction initialFromSide(side: Side): Partial<Record<'x' | 'y', number>> {\n  if (side === 'top') return { y: 15 };\n  if (side === 'bottom') return { y: -15 };\n  if (side === 'left') return { x: 15 };\n  return { x: -15 };\n}\n\ntype TooltipProviderProps = {\n  children: React.ReactNode;\n  id?: string;\n  openDelay?: number;\n  closeDelay?: number;\n  transition?: Transition;\n};\n\nfunction TooltipProvider({\n  children,\n  id,\n  openDelay = 700,\n  closeDelay = 300,\n  transition = { type: 'spring', stiffness: 300, damping: 35 },\n}: TooltipProviderProps) {\n  const globalId = React.useId();\n  const [currentTooltip, setCurrentTooltip] =\n    React.useState<TooltipData | null>(null);\n  const timeoutRef = React.useRef<number | null>(null);\n  const lastCloseTimeRef = React.useRef<number>(0);\n  const referenceElRef = React.useRef<HTMLElement | null>(null);\n\n  const showTooltip = React.useCallback(\n    (data: TooltipData) => {\n      if (timeoutRef.current) clearTimeout(timeoutRef.current);\n      if (currentTooltip !== null) {\n        setCurrentTooltip(data);\n        return;\n      }\n      const now = Date.now();\n      const delay = now - lastCloseTimeRef.current < closeDelay ? 0 : openDelay;\n      timeoutRef.current = window.setTimeout(\n        () => setCurrentTooltip(data),\n        delay,\n      );\n    },\n    [openDelay, closeDelay, currentTooltip],\n  );\n\n  const hideTooltip = React.useCallback(() => {\n    if (timeoutRef.current) clearTimeout(timeoutRef.current);\n    timeoutRef.current = window.setTimeout(() => {\n      setCurrentTooltip(null);\n      lastCloseTimeRef.current = Date.now();\n    }, closeDelay);\n  }, [closeDelay]);\n\n  const hideImmediate = React.useCallback(() => {\n    if (timeoutRef.current) clearTimeout(timeoutRef.current);\n    setCurrentTooltip(null);\n    lastCloseTimeRef.current = Date.now();\n  }, []);\n\n  const setReferenceEl = React.useCallback((el: HTMLElement | null) => {\n    referenceElRef.current = el;\n  }, []);\n\n  React.useEffect(() => {\n    const onKeyDown = (e: KeyboardEvent) => {\n      if (e.key === 'Escape') hideImmediate();\n    };\n    window.addEventListener('keydown', onKeyDown, true);\n    window.addEventListener('scroll', hideImmediate, true);\n    window.addEventListener('resize', hideImmediate, true);\n    return () => {\n      window.removeEventListener('keydown', onKeyDown, true);\n      window.removeEventListener('scroll', hideImmediate, true);\n      window.removeEventListener('resize', hideImmediate, true);\n    };\n  }, [hideImmediate]);\n\n  return (\n    <GlobalTooltipProvider\n      value={{\n        showTooltip,\n        hideTooltip,\n        hideImmediate,\n        currentTooltip,\n        transition,\n        globalId: id ?? globalId,\n        setReferenceEl,\n        referenceElRef,\n      }}\n    >\n      <LayoutGroup>{children}</LayoutGroup>\n      <TooltipOverlay />\n    </GlobalTooltipProvider>\n  );\n}\n\ntype RenderedTooltipContextType = {\n  side: Side;\n  align: Align;\n  open: boolean;\n};\n\nconst [RenderedTooltipProvider, useRenderedTooltip] =\n  getStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');\n\ntype FloatingContextType = {\n  context: UseFloatingReturn['context'];\n  arrowRef: React.RefObject<SVGSVGElement | null>;\n};\n\nconst [FloatingProvider, useFloatingContext] =\n  getStrictContext<FloatingContextType>('FloatingContext');\n\nconst MotionTooltipArrow = motion.create(FloatingArrow);\n\ntype TooltipArrowProps = Omit<\n  React.ComponentProps<typeof MotionTooltipArrow>,\n  'context'\n> & {\n  withTransition?: boolean;\n};\n\nfunction TooltipArrow({\n  ref,\n  withTransition = true,\n  ...props\n}: TooltipArrowProps) {\n  const { side, align, open } = useRenderedTooltip();\n  const { context, arrowRef } = useFloatingContext();\n  const { transition, globalId } = useGlobalTooltip();\n\n  const resolvedSide = getResolvedSide(context.placement);\n  const deg = { top: 0, right: 90, bottom: 180, left: -90 }[resolvedSide];\n\n  return (\n    <MotionTooltipArrow\n      ref={arrowRef}\n      context={context}\n      data-state={open ? 'open' : 'closed'}\n      data-resolved-side={resolvedSide}\n      data-side={side}\n      data-align={align}\n      data-slot=\"tooltip-arrow\"\n      style={{ rotate: deg }}\n      layoutId={withTransition ? `tooltip-arrow-${globalId}` : undefined}\n      transition={withTransition ? transition : undefined}\n      {...props}\n    />\n  );\n}\n\ntype TooltipPortalProps = React.ComponentProps<typeof FloatingPortal>;\n\nfunction TooltipPortal(props: TooltipPortalProps) {\n  return <FloatingPortal {...props} />;\n}\n\nfunction TooltipOverlay() {\n  const { currentTooltip, transition, globalId, referenceElRef } =\n    useGlobalTooltip();\n\n  const [rendered, setRendered] = React.useState<{\n    data: TooltipData | null;\n    open: boolean;\n  }>({ data: null, open: false });\n\n  const arrowRef = React.useRef<SVGSVGElement | null>(null);\n\n  const side = rendered.data?.side ?? 'top';\n  const align = rendered.data?.align ?? 'center';\n\n  const { refs, x, y, strategy, context, update } = useFloating({\n    placement: align === 'center' ? side : `${side}-${align}`,\n    whileElementsMounted: autoUpdate,\n    middleware: [\n      floatingOffset({\n        mainAxis: rendered.data?.sideOffset ?? 0,\n        crossAxis: rendered.data?.alignOffset ?? 0,\n      }),\n      flip(),\n      shift({ padding: 8 }),\n      floatingArrow({ element: arrowRef }),\n    ],\n  });\n\n  React.useEffect(() => {\n    if (currentTooltip) {\n      setRendered({ data: currentTooltip, open: true });\n    } else {\n      setRendered((p) => (p.data ? { ...p, open: false } : p));\n    }\n  }, [currentTooltip]);\n\n  React.useLayoutEffect(() => {\n    if (referenceElRef.current) {\n      refs.setReference(referenceElRef.current);\n      // eslint-disable-next-line @typescript-eslint/no-floating-promises\n      update();\n    }\n  }, [referenceElRef, refs, update, rendered.data]);\n\n  const ready = x != null && y != null;\n  const Component = rendered.data?.contentAsChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      {rendered.data && ready && (\n        <TooltipPortal>\n          <div\n            ref={refs.setFloating}\n            data-slot=\"tooltip-overlay\"\n            data-resolved-side={getResolvedSide(context.placement)}\n            data-side={rendered.data.side}\n            data-align={rendered.data.align}\n            data-state={rendered.open ? 'open' : 'closed'}\n            style={{\n              position: strategy,\n              top: 0,\n              left: 0,\n              zIndex: 50,\n              transform: `translate3d(${x!}px, ${y!}px, 0)`,\n            }}\n          >\n            <FloatingProvider value={{ context, arrowRef }}>\n              <RenderedTooltipProvider\n                value={{\n                  side: rendered.data.side,\n                  align: rendered.data.align,\n                  open: rendered.open,\n                }}\n              >\n                <Component\n                  data-slot=\"tooltip-content\"\n                  data-resolved-side={getResolvedSide(context.placement)}\n                  data-side={rendered.data.side}\n                  data-align={rendered.data.align}\n                  data-state={rendered.open ? 'open' : 'closed'}\n                  layoutId={`tooltip-content-${globalId}`}\n                  initial={{\n                    opacity: 0,\n                    scale: 0,\n                    ...initialFromSide(rendered.data.side),\n                  }}\n                  animate={\n                    rendered.open\n                      ? { opacity: 1, scale: 1, x: 0, y: 0 }\n                      : {\n                          opacity: 0,\n                          scale: 0,\n                          ...initialFromSide(rendered.data.side),\n                        }\n                  }\n                  exit={{\n                    opacity: 0,\n                    scale: 0,\n                    ...initialFromSide(rendered.data.side),\n                  }}\n                  onAnimationComplete={() => {\n                    if (!rendered.open)\n                      setRendered({ data: null, open: false });\n                  }}\n                  transition={transition}\n                  {...rendered.data.contentProps}\n                  style={{\n                    position: 'relative',\n                    ...(rendered.data.contentProps?.style || {}),\n                  }}\n                />\n              </RenderedTooltipProvider>\n            </FloatingProvider>\n          </div>\n        </TooltipPortal>\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype TooltipProps = {\n  children: React.ReactNode;\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n};\n\nfunction Tooltip({\n  children,\n  side = 'top',\n  sideOffset = 0,\n  align = 'center',\n  alignOffset = 0,\n}: TooltipProps) {\n  const id = React.useId();\n  const [props, setProps] = React.useState<HTMLMotionProps<'div'>>({});\n  const [asChild, setAsChild] = React.useState(false);\n\n  return (\n    <LocalTooltipProvider\n      value={{\n        props,\n        setProps,\n        asChild,\n        setAsChild,\n        side,\n        sideOffset,\n        align,\n        alignOffset,\n        id,\n      }}\n    >\n      {children}\n    </LocalTooltipProvider>\n  );\n}\n\ntype TooltipContentProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction shallowEqualWithoutChildren(\n  a?: HTMLMotionProps<'div'>,\n  b?: HTMLMotionProps<'div'>,\n) {\n  if (a === b) return true;\n  if (!a || !b) return false;\n  const keysA = Object.keys(a).filter((k) => k !== 'children');\n  const keysB = Object.keys(b).filter((k) => k !== 'children');\n  if (keysA.length !== keysB.length) return false;\n  for (const k of keysA) {\n    // @ts-expect-error index\n    if (a[k] !== b[k]) return false;\n  }\n  return true;\n}\n\nfunction TooltipContent({ asChild = false, ...props }: TooltipContentProps) {\n  const { setProps, setAsChild } = useTooltip();\n  const lastPropsRef = React.useRef<HTMLMotionProps<'div'> | undefined>(\n    undefined,\n  );\n\n  React.useEffect(() => {\n    if (!shallowEqualWithoutChildren(lastPropsRef.current, props)) {\n      lastPropsRef.current = props;\n      setProps(props);\n    }\n  }, [props, setProps]);\n\n  React.useEffect(() => {\n    setAsChild(asChild);\n  }, [asChild, setAsChild]);\n\n  return null;\n}\n\ntype TooltipTriggerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction TooltipTrigger({\n  ref,\n  onMouseEnter,\n  onMouseLeave,\n  onFocus,\n  onBlur,\n  onPointerDown,\n  asChild = false,\n  ...props\n}: TooltipTriggerProps) {\n  const {\n    props: contentProps,\n    asChild: contentAsChild,\n    side,\n    sideOffset,\n    align,\n    alignOffset,\n    id,\n  } = useTooltip();\n  const {\n    showTooltip,\n    hideTooltip,\n    hideImmediate,\n    currentTooltip,\n    setReferenceEl,\n  } = useGlobalTooltip();\n\n  const triggerRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement);\n\n  const suppressNextFocusRef = React.useRef(false);\n\n  const handleOpen = React.useCallback(() => {\n    if (!triggerRef.current) return;\n    setReferenceEl(triggerRef.current);\n    const rect = triggerRef.current.getBoundingClientRect();\n    showTooltip({\n      contentProps,\n      contentAsChild,\n      rect,\n      side,\n      sideOffset,\n      align,\n      alignOffset,\n      id,\n    });\n  }, [\n    showTooltip,\n    setReferenceEl,\n    contentProps,\n    contentAsChild,\n    side,\n    sideOffset,\n    align,\n    alignOffset,\n    id,\n  ]);\n\n  const handlePointerDown = React.useCallback(\n    (e: React.PointerEvent<HTMLDivElement>) => {\n      onPointerDown?.(e);\n      if (currentTooltip?.id === id) {\n        suppressNextFocusRef.current = true;\n        hideImmediate();\n        Promise.resolve().then(() => {\n          suppressNextFocusRef.current = false;\n        });\n      }\n    },\n    [onPointerDown, currentTooltip?.id, id, hideImmediate],\n  );\n\n  const handleMouseEnter = React.useCallback(\n    (e: React.MouseEvent<HTMLDivElement>) => {\n      onMouseEnter?.(e);\n      handleOpen();\n    },\n    [handleOpen, onMouseEnter],\n  );\n\n  const handleMouseLeave = React.useCallback(\n    (e: React.MouseEvent<HTMLDivElement>) => {\n      onMouseLeave?.(e);\n      hideTooltip();\n    },\n    [hideTooltip, onMouseLeave],\n  );\n\n  const handleFocus = React.useCallback(\n    (e: React.FocusEvent<HTMLDivElement>) => {\n      onFocus?.(e);\n      if (suppressNextFocusRef.current) return;\n      handleOpen();\n    },\n    [handleOpen, onFocus],\n  );\n\n  const handleBlur = React.useCallback(\n    (e: React.FocusEvent<HTMLDivElement>) => {\n      onBlur?.(e);\n      hideTooltip();\n    },\n    [hideTooltip, onBlur],\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={triggerRef}\n      onPointerDown={handlePointerDown}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onFocus={handleFocus}\n      onBlur={handleBlur}\n      data-slot=\"tooltip-trigger\"\n      data-side={side}\n      data-align={align}\n      data-state={currentTooltip?.id === id ? 'open' : 'closed'}\n      {...props}\n    />\n  );\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n  TooltipArrow,\n  useGlobalTooltip,\n  useTooltip,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipContentProps,\n  type TooltipTriggerProps,\n  type TooltipArrowProps,\n  type TooltipPosition,\n  type GlobalTooltipContextType,\n  type TooltipContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  AnimatePresence,\n  LayoutGroup,\n  type Transition,\n  type HTMLMotionProps,\n} from 'motion/react';\nimport {\n  useFloating,\n  autoUpdate,\n  offset as floatingOffset,\n  flip,\n  shift,\n  arrow as floatingArrow,\n  FloatingPortal,\n  FloatingArrow,\n  type UseFloatingReturn,\n} from '@floating-ui/react';\n\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype Side = 'top' | 'bottom' | 'left' | 'right';\ntype Align = 'start' | 'center' | 'end';\n\ntype TooltipData = {\n  contentProps: HTMLMotionProps<'div'>;\n  contentAsChild: boolean;\n  rect: DOMRect;\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  id: string;\n};\n\ntype GlobalTooltipContextType = {\n  showTooltip: (data: TooltipData) => void;\n  hideTooltip: () => void;\n  hideImmediate: () => void;\n  currentTooltip: TooltipData | null;\n  transition: Transition;\n  globalId: string;\n  setReferenceEl: (el: HTMLElement | null) => void;\n  referenceElRef: React.RefObject<HTMLElement | null>;\n};\n\nconst [GlobalTooltipProvider, useGlobalTooltip] =\n  getStrictContext<GlobalTooltipContextType>('GlobalTooltipProvider');\n\ntype TooltipContextType = {\n  props: HTMLMotionProps<'div'>;\n  setProps: React.Dispatch<React.SetStateAction<HTMLMotionProps<'div'>>>;\n  asChild: boolean;\n  setAsChild: React.Dispatch<React.SetStateAction<boolean>>;\n  side: Side;\n  sideOffset: number;\n  align: Align;\n  alignOffset: number;\n  id: string;\n};\n\nconst [LocalTooltipProvider, useTooltip] = getStrictContext<TooltipContextType>(\n  'LocalTooltipProvider',\n);\n\ntype TooltipPosition = { x: number; y: number };\n\nfunction getResolvedSide(placement: Side | `${Side}-${Align}`) {\n  if (placement.includes('-')) {\n    return placement.split('-')[0] as Side;\n  }\n  return placement as Side;\n}\n\nfunction initialFromSide(side: Side): Partial<Record<'x' | 'y', number>> {\n  if (side === 'top') return { y: 15 };\n  if (side === 'bottom') return { y: -15 };\n  if (side === 'left') return { x: 15 };\n  return { x: -15 };\n}\n\ntype TooltipProviderProps = {\n  children: React.ReactNode;\n  id?: string;\n  openDelay?: number;\n  closeDelay?: number;\n  transition?: Transition;\n};\n\nfunction TooltipProvider({\n  children,\n  id,\n  openDelay = 700,\n  closeDelay = 300,\n  transition = { type: 'spring', stiffness: 300, damping: 35 },\n}: TooltipProviderProps) {\n  const globalId = React.useId();\n  const [currentTooltip, setCurrentTooltip] =\n    React.useState<TooltipData | null>(null);\n  const timeoutRef = React.useRef<number | null>(null);\n  const lastCloseTimeRef = React.useRef<number>(0);\n  const referenceElRef = React.useRef<HTMLElement | null>(null);\n\n  const showTooltip = React.useCallback(\n    (data: TooltipData) => {\n      if (timeoutRef.current) clearTimeout(timeoutRef.current);\n      if (currentTooltip !== null) {\n        setCurrentTooltip(data);\n        return;\n      }\n      const now = Date.now();\n      const delay = now - lastCloseTimeRef.current < closeDelay ? 0 : openDelay;\n      timeoutRef.current = window.setTimeout(\n        () => setCurrentTooltip(data),\n        delay,\n      );\n    },\n    [openDelay, closeDelay, currentTooltip],\n  );\n\n  const hideTooltip = React.useCallback(() => {\n    if (timeoutRef.current) clearTimeout(timeoutRef.current);\n    timeoutRef.current = window.setTimeout(() => {\n      setCurrentTooltip(null);\n      lastCloseTimeRef.current = Date.now();\n    }, closeDelay);\n  }, [closeDelay]);\n\n  const hideImmediate = React.useCallback(() => {\n    if (timeoutRef.current) clearTimeout(timeoutRef.current);\n    setCurrentTooltip(null);\n    lastCloseTimeRef.current = Date.now();\n  }, []);\n\n  const setReferenceEl = React.useCallback((el: HTMLElement | null) => {\n    referenceElRef.current = el;\n  }, []);\n\n  React.useEffect(() => {\n    const onKeyDown = (e: KeyboardEvent) => {\n      if (e.key === 'Escape') hideImmediate();\n    };\n    window.addEventListener('keydown', onKeyDown, true);\n    window.addEventListener('scroll', hideImmediate, true);\n    window.addEventListener('resize', hideImmediate, true);\n    return () => {\n      window.removeEventListener('keydown', onKeyDown, true);\n      window.removeEventListener('scroll', hideImmediate, true);\n      window.removeEventListener('resize', hideImmediate, true);\n    };\n  }, [hideImmediate]);\n\n  return (\n    <GlobalTooltipProvider\n      value={{\n        showTooltip,\n        hideTooltip,\n        hideImmediate,\n        currentTooltip,\n        transition,\n        globalId: id ?? globalId,\n        setReferenceEl,\n        referenceElRef,\n      }}\n    >\n      <LayoutGroup>{children}</LayoutGroup>\n      <TooltipOverlay />\n    </GlobalTooltipProvider>\n  );\n}\n\ntype RenderedTooltipContextType = {\n  side: Side;\n  align: Align;\n  open: boolean;\n};\n\nconst [RenderedTooltipProvider, useRenderedTooltip] =\n  getStrictContext<RenderedTooltipContextType>('RenderedTooltipContext');\n\ntype FloatingContextType = {\n  context: UseFloatingReturn['context'];\n  arrowRef: React.RefObject<SVGSVGElement | null>;\n};\n\nconst [FloatingProvider, useFloatingContext] =\n  getStrictContext<FloatingContextType>('FloatingContext');\n\nconst MotionTooltipArrow = motion.create(FloatingArrow);\n\ntype TooltipArrowProps = Omit<\n  React.ComponentProps<typeof MotionTooltipArrow>,\n  'context'\n> & {\n  withTransition?: boolean;\n};\n\nfunction TooltipArrow({\n  ref,\n  withTransition = true,\n  ...props\n}: TooltipArrowProps) {\n  const { side, align, open } = useRenderedTooltip();\n  const { context, arrowRef } = useFloatingContext();\n  const { transition, globalId } = useGlobalTooltip();\n  React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);\n\n  const resolvedSide = getResolvedSide(context.placement);\n  const deg = { top: 0, right: 90, bottom: 180, left: -90 }[resolvedSide];\n\n  return (\n    <MotionTooltipArrow\n      ref={arrowRef}\n      context={context}\n      data-state={open ? 'open' : 'closed'}\n      data-resolved-side={resolvedSide}\n      data-side={side}\n      data-align={align}\n      data-slot=\"tooltip-arrow\"\n      style={{ rotate: deg }}\n      layoutId={withTransition ? `tooltip-arrow-${globalId}` : undefined}\n      transition={withTransition ? transition : undefined}\n      {...props}\n    />\n  );\n}\n\ntype TooltipPortalProps = React.ComponentProps<typeof FloatingPortal>;\n\nfunction TooltipPortal(props: TooltipPortalProps) {\n  return <FloatingPortal {...props} />;\n}\n\nfunction TooltipOverlay() {\n  const { currentTooltip, transition, globalId, referenceElRef } =\n    useGlobalTooltip();\n\n  const [rendered, setRendered] = React.useState<{\n    data: TooltipData | null;\n    open: boolean;\n  }>({ data: null, open: false });\n\n  const arrowRef = React.useRef<SVGSVGElement | null>(null);\n\n  const side = rendered.data?.side ?? 'top';\n  const align = rendered.data?.align ?? 'center';\n\n  const { refs, x, y, strategy, context, update } = useFloating({\n    placement: align === 'center' ? side : `${side}-${align}`,\n    whileElementsMounted: autoUpdate,\n    middleware: [\n      floatingOffset({\n        mainAxis: rendered.data?.sideOffset ?? 0,\n        crossAxis: rendered.data?.alignOffset ?? 0,\n      }),\n      flip(),\n      shift({ padding: 8 }),\n      floatingArrow({ element: arrowRef }),\n    ],\n  });\n\n  React.useEffect(() => {\n    if (currentTooltip) {\n      setRendered({ data: currentTooltip, open: true });\n    } else {\n      setRendered((p) => (p.data ? { ...p, open: false } : p));\n    }\n  }, [currentTooltip]);\n\n  React.useLayoutEffect(() => {\n    if (referenceElRef.current) {\n      refs.setReference(referenceElRef.current);\n      update();\n    }\n  }, [referenceElRef, refs, update, rendered.data]);\n\n  const ready = x != null && y != null;\n  const Component = rendered.data?.contentAsChild ? Slot : motion.div;\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      {rendered.data && ready && (\n        <TooltipPortal>\n          <div\n            ref={refs.setFloating}\n            data-slot=\"tooltip-overlay\"\n            data-resolved-side={getResolvedSide(context.placement)}\n            data-side={rendered.data.side}\n            data-align={rendered.data.align}\n            data-state={rendered.open ? 'open' : 'closed'}\n            style={{\n              position: strategy,\n              top: 0,\n              left: 0,\n              zIndex: 50,\n              transform: `translate3d(${x!}px, ${y!}px, 0)`,\n            }}\n          >\n            <FloatingProvider value={{ context, arrowRef }}>\n              <RenderedTooltipProvider\n                value={{\n                  side: rendered.data.side,\n                  align: rendered.data.align,\n                  open: rendered.open,\n                }}\n              >\n                <Component\n                  data-slot=\"tooltip-content\"\n                  data-resolved-side={getResolvedSide(context.placement)}\n                  data-side={rendered.data.side}\n                  data-align={rendered.data.align}\n                  data-state={rendered.open ? 'open' : 'closed'}\n                  layoutId={`tooltip-content-${globalId}`}\n                  initial={{\n                    opacity: 0,\n                    scale: 0,\n                    ...initialFromSide(rendered.data.side),\n                  }}\n                  animate={\n                    rendered.open\n                      ? { opacity: 1, scale: 1, x: 0, y: 0 }\n                      : {\n                          opacity: 0,\n                          scale: 0,\n                          ...initialFromSide(rendered.data.side),\n                        }\n                  }\n                  exit={{\n                    opacity: 0,\n                    scale: 0,\n                    ...initialFromSide(rendered.data.side),\n                  }}\n                  onAnimationComplete={() => {\n                    if (!rendered.open)\n                      setRendered({ data: null, open: false });\n                  }}\n                  transition={transition}\n                  {...rendered.data.contentProps}\n                  style={{\n                    position: 'relative',\n                    ...(rendered.data.contentProps?.style || {}),\n                  }}\n                />\n              </RenderedTooltipProvider>\n            </FloatingProvider>\n          </div>\n        </TooltipPortal>\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype TooltipProps = {\n  children: React.ReactNode;\n  side?: Side;\n  sideOffset?: number;\n  align?: Align;\n  alignOffset?: number;\n};\n\nfunction Tooltip({\n  children,\n  side = 'top',\n  sideOffset = 0,\n  align = 'center',\n  alignOffset = 0,\n}: TooltipProps) {\n  const id = React.useId();\n  const [props, setProps] = React.useState<HTMLMotionProps<'div'>>({});\n  const [asChild, setAsChild] = React.useState(false);\n\n  return (\n    <LocalTooltipProvider\n      value={{\n        props,\n        setProps,\n        asChild,\n        setAsChild,\n        side,\n        sideOffset,\n        align,\n        alignOffset,\n        id,\n      }}\n    >\n      {children}\n    </LocalTooltipProvider>\n  );\n}\n\ntype TooltipContentProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction shallowEqualWithoutChildren(\n  a?: HTMLMotionProps<'div'>,\n  b?: HTMLMotionProps<'div'>,\n) {\n  if (a === b) return true;\n  if (!a || !b) return false;\n  const keysA = Object.keys(a).filter((k) => k !== 'children');\n  const keysB = Object.keys(b).filter((k) => k !== 'children');\n  if (keysA.length !== keysB.length) return false;\n  for (const k of keysA) {\n    // @ts-expect-error index\n    if (a[k] !== b[k]) return false;\n  }\n  return true;\n}\n\nfunction TooltipContent({ asChild = false, ...props }: TooltipContentProps) {\n  const { setProps, setAsChild } = useTooltip();\n  const lastPropsRef = React.useRef<HTMLMotionProps<'div'> | undefined>(\n    undefined,\n  );\n\n  React.useEffect(() => {\n    if (!shallowEqualWithoutChildren(lastPropsRef.current, props)) {\n      lastPropsRef.current = props;\n      setProps(props);\n    }\n  }, [props, setProps]);\n\n  React.useEffect(() => {\n    setAsChild(asChild);\n  }, [asChild, setAsChild]);\n\n  return null;\n}\n\ntype TooltipTriggerProps = WithAsChild<HTMLMotionProps<'div'>>;\n\nfunction TooltipTrigger({\n  ref,\n  onMouseEnter,\n  onMouseLeave,\n  onFocus,\n  onBlur,\n  onPointerDown,\n  asChild = false,\n  ...props\n}: TooltipTriggerProps) {\n  const {\n    props: contentProps,\n    asChild: contentAsChild,\n    side,\n    sideOffset,\n    align,\n    alignOffset,\n    id,\n  } = useTooltip();\n  const {\n    showTooltip,\n    hideTooltip,\n    hideImmediate,\n    currentTooltip,\n    setReferenceEl,\n  } = useGlobalTooltip();\n\n  const triggerRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement);\n\n  const suppressNextFocusRef = React.useRef(false);\n\n  const handleOpen = React.useCallback(() => {\n    if (!triggerRef.current) return;\n    setReferenceEl(triggerRef.current);\n    const rect = triggerRef.current.getBoundingClientRect();\n    showTooltip({\n      contentProps,\n      contentAsChild,\n      rect,\n      side,\n      sideOffset,\n      align,\n      alignOffset,\n      id,\n    });\n  }, [\n    showTooltip,\n    setReferenceEl,\n    contentProps,\n    contentAsChild,\n    side,\n    sideOffset,\n    align,\n    alignOffset,\n    id,\n  ]);\n\n  const handlePointerDown = React.useCallback(\n    (e: React.PointerEvent<HTMLDivElement>) => {\n      onPointerDown?.(e);\n      if (currentTooltip?.id === id) {\n        suppressNextFocusRef.current = true;\n        hideImmediate();\n        Promise.resolve().then(() => {\n          suppressNextFocusRef.current = false;\n        });\n      }\n    },\n    [onPointerDown, currentTooltip?.id, id, hideImmediate],\n  );\n\n  const handleMouseEnter = React.useCallback(\n    (e: React.MouseEvent<HTMLDivElement>) => {\n      onMouseEnter?.(e);\n      handleOpen();\n    },\n    [handleOpen, onMouseEnter],\n  );\n\n  const handleMouseLeave = React.useCallback(\n    (e: React.MouseEvent<HTMLDivElement>) => {\n      onMouseLeave?.(e);\n      hideTooltip();\n    },\n    [hideTooltip, onMouseLeave],\n  );\n\n  const handleFocus = React.useCallback(\n    (e: React.FocusEvent<HTMLDivElement>) => {\n      onFocus?.(e);\n      if (suppressNextFocusRef.current) return;\n      handleOpen();\n    },\n    [handleOpen, onFocus],\n  );\n\n  const handleBlur = React.useCallback(\n    (e: React.FocusEvent<HTMLDivElement>) => {\n      onBlur?.(e);\n      hideTooltip();\n    },\n    [hideTooltip, onBlur],\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={triggerRef}\n      onPointerDown={handlePointerDown}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onFocus={handleFocus}\n      onBlur={handleBlur}\n      data-slot=\"tooltip-trigger\"\n      data-side={side}\n      data-align={align}\n      data-state={currentTooltip?.id === id ? 'open' : 'closed'}\n      {...props}\n    />\n  );\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n  TooltipArrow,\n  useGlobalTooltip,\n  useTooltip,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipContentProps,\n  type TooltipTriggerProps,\n  type TooltipArrowProps,\n  type TooltipPosition,\n  type GlobalTooltipContextType,\n  type TooltipContextType,\n};",
       },
     ],
     keywords: [],
@@ -16588,7 +16588,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/base/toggle-group.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { ToggleGroup as ToggleGroupPrimitive } from '@base-ui-components/react/toggle-group';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { useControlledState } from '@/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  value: any[];\n  setValue: ToggleGroupProps['onValueChange'];\n  toggleMultiple: boolean | undefined;\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState({\n    value: props.value as any[],\n    defaultValue: props.defaultValue as any[],\n    onChange: props.onValueChange,\n  });\n\n  return (\n    <ToggleGroupProvider\n      value={{ value, setValue, toggleMultiple: props.toggleMultiple }}\n    >\n      <ToggleGroupPrimitive\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  return (\n    <TogglePrimitive\n      value={value}\n      disabled={disabled}\n      pressed={pressed}\n      defaultPressed={defaultPressed}\n      onPressedChange={onPressedChange}\n      nativeButton={nativeButton}\n      render={\n        <motion.button\n          data-slot=\"toggle\"\n          whileTap={{ scale: 0.95 }}\n          {...props}\n        />\n      }\n    />\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={value?.[0] ?? null}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleHighlightProps = HighlightItemProps &\n  HTMLMotionProps<'div'> & {\n    children: React.ReactElement;\n  };\n\nfunction ToggleHighlight({ children, style, ...props }: ToggleHighlightProps) {\n  const { toggleMultiple, value } = useToggleGroup();\n\n  if (!toggleMultiple) {\n    return (\n      <HighlightItem\n        data-slot=\"toggle-highlight\"\n        style={{ inset: 0, ...style }}\n        {...props}\n      >\n        {children}\n      </HighlightItem>\n    );\n  }\n\n  if (toggleMultiple && React.isValidElement(children)) {\n    const isActive = props.value && value && value.includes(props.value);\n\n    const element = children as React.ReactElement<React.ComponentProps<'div'>>;\n\n    return React.cloneElement(\n      children,\n      {\n        style: {\n          ...element.props.style,\n          position: 'relative',\n        },\n        ...element.props,\n      },\n      <>\n        <AnimatePresence>\n          {isActive && (\n            <motion.div\n              data-slot=\"toggle-highlight\"\n              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              {...props}\n            />\n          )}\n        </AnimatePresence>\n\n        <div\n          style={{\n            position: 'relative',\n            zIndex: 1,\n          }}\n        >\n          {element.props.children}\n        </div>\n      </>,\n    );\n  }\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupHighlight,\n  Toggle,\n  ToggleHighlight,\n  useToggleGroup,\n  type ToggleGroupProps,\n  type ToggleGroupHighlightProps,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleGroupContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';\nimport { ToggleGroup as ToggleGroupPrimitive } from '@base-ui-components/react/toggle-group';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  Highlight,\n  HighlightItem,\n  type HighlightItemProps,\n  type HighlightProps,\n} from '@/components/animate-ui/primitives/effects/highlight';\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { useControlledState } from '@/hooks/use-controlled-state';\n\ntype ToggleGroupContextType = {\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  value: any[];\n  setValue: ToggleGroupProps['onValueChange'];\n  toggleMultiple: boolean | undefined;\n};\n\nconst [ToggleGroupProvider, useToggleGroup] =\n  getStrictContext<ToggleGroupContextType>('ToggleGroupContext');\n\ntype ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive>;\n\nfunction ToggleGroup(props: ToggleGroupProps) {\n  const [value, setValue] = useControlledState({\n    // eslint-disable-next-line @typescript-eslint/no-explicit-any\n    value: props.value as any[],\n    // eslint-disable-next-line @typescript-eslint/no-explicit-any\n    defaultValue: props.defaultValue as any[],\n    onChange: props.onValueChange,\n  });\n\n  return (\n    <ToggleGroupProvider\n      value={{ value, setValue, toggleMultiple: props.toggleMultiple }}\n    >\n      <ToggleGroupPrimitive\n        data-slot=\"toggle-group\"\n        {...props}\n        onValueChange={setValue}\n      />\n    </ToggleGroupProvider>\n  );\n}\n\ntype ToggleProps = Omit<\n  React.ComponentProps<typeof TogglePrimitive>,\n  'render'\n> &\n  HTMLMotionProps<'button'>;\n\nfunction Toggle({\n  value,\n  pressed,\n  defaultPressed,\n  onPressedChange,\n  nativeButton,\n  disabled,\n  ...props\n}: ToggleProps) {\n  return (\n    <TogglePrimitive\n      value={value}\n      disabled={disabled}\n      pressed={pressed}\n      defaultPressed={defaultPressed}\n      onPressedChange={onPressedChange}\n      nativeButton={nativeButton}\n      render={\n        <motion.button\n          data-slot=\"toggle\"\n          whileTap={{ scale: 0.95 }}\n          {...props}\n        />\n      }\n    />\n  );\n}\n\ntype ToggleGroupHighlightProps = Omit<HighlightProps, 'controlledItems'>;\n\nfunction ToggleGroupHighlight({\n  transition = { type: 'spring', stiffness: 200, damping: 25 },\n  ...props\n}: ToggleGroupHighlightProps) {\n  const { value } = useToggleGroup();\n\n  return (\n    <Highlight\n      data-slot=\"toggle-group-highlight\"\n      controlledItems\n      value={value?.[0] ?? null}\n      exitDelay={0}\n      transition={transition}\n      {...props}\n    />\n  );\n}\n\ntype ToggleHighlightProps = HighlightItemProps &\n  HTMLMotionProps<'div'> & {\n    children: React.ReactElement;\n  };\n\nfunction ToggleHighlight({ children, style, ...props }: ToggleHighlightProps) {\n  const { toggleMultiple, value } = useToggleGroup();\n\n  if (!toggleMultiple) {\n    return (\n      <HighlightItem\n        data-slot=\"toggle-highlight\"\n        style={{ inset: 0, ...style }}\n        {...props}\n      >\n        {children}\n      </HighlightItem>\n    );\n  }\n\n  if (toggleMultiple && React.isValidElement(children)) {\n    const isActive = props.value && value && value.includes(props.value);\n\n    const element = children as React.ReactElement<React.ComponentProps<'div'>>;\n\n    return React.cloneElement(\n      children,\n      {\n        style: {\n          ...element.props.style,\n          position: 'relative',\n        },\n        ...element.props,\n      },\n      <>\n        <AnimatePresence>\n          {isActive && (\n            <motion.div\n              data-slot=\"toggle-highlight\"\n              style={{ position: 'absolute', inset: 0, zIndex: 0, ...style }}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              {...props}\n            />\n          )}\n        </AnimatePresence>\n\n        <div\n          style={{\n            position: 'relative',\n            zIndex: 1,\n          }}\n        >\n          {element.props.children}\n        </div>\n      </>,\n    );\n  }\n}\n\nexport {\n  ToggleGroup,\n  ToggleGroupHighlight,\n  Toggle,\n  ToggleHighlight,\n  useToggleGroup,\n  type ToggleGroupProps,\n  type ToggleGroupHighlightProps,\n  type ToggleProps,\n  type ToggleHighlightProps,\n  type ToggleGroupContextType,\n};",
       },
     ],
     keywords: [],
@@ -16917,7 +16917,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/effects/fade.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps, type Variant } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/hooks/use-is-in-view';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype FadeProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    delay?: number;\n    initialOpacity?: number;\n    opacity?: number;\n    ref?: React.Ref<HTMLElement>;\n  } & UseIsInViewOptions &\n    HTMLMotionProps<'div'>\n>;\n\nfunction Fade({\n  ref,\n  transition = { type: 'spring', stiffness: 200, damping: 20 },\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  initialOpacity = 0,\n  opacity = 1,\n  asChild = false,\n  ...props\n}: FadeProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={localRef as React.Ref<HTMLDivElement>}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      exit=\"hidden\"\n      variants={{\n        hidden: { opacity: initialOpacity },\n        visible: { opacity },\n      }}\n      transition={{\n        ...transition,\n        delay: (transition?.delay ?? 0) + delay / 1000,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype FadeListProps = Omit<FadeProps, 'children'> & {\n  children: React.ReactElement | React.ReactElement[];\n  holdDelay?: number;\n};\n\nfunction Fades({\n  children,\n  delay = 0,\n  holdDelay = 0,\n  ...props\n}: FadeListProps) {\n  const array = React.Children.toArray(children) as React.ReactElement[];\n\n  return (\n    <>\n      {array.map((child, index) => (\n        <Fade\n          key={child.key ?? index}\n          delay={delay + index * holdDelay}\n          {...props}\n        >\n          {child}\n        </Fade>\n      ))}\n    </>\n  );\n}\n\nexport { Fade, Fades, type FadeProps, type FadeListProps };",
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type HTMLMotionProps } from 'motion/react';\n\nimport {\n  useIsInView,\n  type UseIsInViewOptions,\n} from '@/hooks/use-is-in-view';\nimport { Slot, type WithAsChild } from '@/components/animate-ui/primitives/animate/slot';\n\ntype FadeProps = WithAsChild<\n  {\n    children?: React.ReactNode;\n    delay?: number;\n    initialOpacity?: number;\n    opacity?: number;\n    ref?: React.Ref<HTMLElement>;\n  } & UseIsInViewOptions &\n    HTMLMotionProps<'div'>\n>;\n\nfunction Fade({\n  ref,\n  transition = { type: 'spring', stiffness: 200, damping: 20 },\n  delay = 0,\n  inView = false,\n  inViewMargin = '0px',\n  inViewOnce = true,\n  initialOpacity = 0,\n  opacity = 1,\n  asChild = false,\n  ...props\n}: FadeProps) {\n  const { ref: localRef, isInView } = useIsInView(\n    ref as React.Ref<HTMLElement>,\n    {\n      inView,\n      inViewOnce,\n      inViewMargin,\n    },\n  );\n\n  const Component = asChild ? Slot : motion.div;\n\n  return (\n    <Component\n      ref={localRef as React.Ref<HTMLDivElement>}\n      initial=\"hidden\"\n      animate={isInView ? 'visible' : 'hidden'}\n      exit=\"hidden\"\n      variants={{\n        hidden: { opacity: initialOpacity },\n        visible: { opacity },\n      }}\n      transition={{\n        ...transition,\n        delay: (transition?.delay ?? 0) + delay / 1000,\n      }}\n      {...props}\n    />\n  );\n}\n\ntype FadeListProps = Omit<FadeProps, 'children'> & {\n  children: React.ReactElement | React.ReactElement[];\n  holdDelay?: number;\n};\n\nfunction Fades({\n  children,\n  delay = 0,\n  holdDelay = 0,\n  ...props\n}: FadeListProps) {\n  const array = React.Children.toArray(children) as React.ReactElement[];\n\n  return (\n    <>\n      {array.map((child, index) => (\n        <Fade\n          key={child.key ?? index}\n          delay={delay + index * holdDelay}\n          {...props}\n        >\n          {child}\n        </Fade>\n      ))}\n    </>\n  );\n}\n\nexport { Fade, Fades, type FadeProps, type FadeListProps };",
       },
     ],
     keywords: [],
@@ -16956,7 +16956,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/effects/highlight.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, Transition, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype HighlightMode = 'children' | 'parent';\n\ntype Bounds = {\n  top: number;\n  left: number;\n  width: number;\n  height: number;\n};\n\ntype HighlightContextType<T extends string> = {\n  as?: keyof HTMLElementTagNameMap;\n  mode: HighlightMode;\n  activeValue: T | null;\n  setActiveValue: (value: T | null) => void;\n  setBounds: (bounds: DOMRect) => void;\n  clearBounds: () => void;\n  id: string;\n  hover: boolean;\n  click: boolean;\n  className?: string;\n  style?: React.CSSProperties;\n  activeClassName?: string;\n  setActiveClassName: (className: string) => void;\n  transition?: Transition;\n  disabled?: boolean;\n  enabled?: boolean;\n  exitDelay?: number;\n  forceUpdateBounds?: boolean;\n};\n\nconst HighlightContext = React.createContext<\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  HighlightContextType<any> | undefined\n>(undefined);\n\nfunction useHighlight<T extends string>(): HighlightContextType<T> {\n  const context = React.useContext(HighlightContext);\n  if (!context) {\n    throw new Error('useHighlight must be used within a HighlightProvider');\n  }\n  return context as unknown as HighlightContextType<T>;\n}\n\ntype BaseHighlightProps<T extends React.ElementType = 'div'> = {\n  as?: T;\n  ref?: React.Ref<HTMLDivElement>;\n  mode?: HighlightMode;\n  value?: string | null;\n  defaultValue?: string | null;\n  onValueChange?: (value: string | null) => void;\n  className?: string;\n  style?: React.CSSProperties;\n  transition?: Transition;\n  hover?: boolean;\n  click?: boolean;\n  disabled?: boolean;\n  enabled?: boolean;\n  exitDelay?: number;\n};\n\ntype ParentModeHighlightProps = {\n  boundsOffset?: Partial<Bounds>;\n  containerClassName?: string;\n  forceUpdateBounds?: boolean;\n};\n\ntype ControlledParentModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> &\n    ParentModeHighlightProps & {\n      mode: 'parent';\n      controlledItems: true;\n      children: React.ReactNode;\n    };\n\ntype ControlledChildrenModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> & {\n    mode?: 'children' | undefined;\n    controlledItems: true;\n    children: React.ReactNode;\n  };\n\ntype UncontrolledParentModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> &\n    ParentModeHighlightProps & {\n      mode: 'parent';\n      controlledItems?: false;\n      itemsClassName?: string;\n      children: React.ReactElement | React.ReactElement[];\n    };\n\ntype UncontrolledChildrenModeHighlightProps<\n  T extends React.ElementType = 'div',\n> = BaseHighlightProps<T> & {\n  mode?: 'children';\n  controlledItems?: false;\n  itemsClassName?: string;\n  children: React.ReactElement | React.ReactElement[];\n};\n\ntype HighlightProps<T extends React.ElementType = 'div'> =\n  | ControlledParentModeHighlightProps<T>\n  | ControlledChildrenModeHighlightProps<T>\n  | UncontrolledParentModeHighlightProps<T>\n  | UncontrolledChildrenModeHighlightProps<T>;\n\nfunction Highlight<T extends React.ElementType = 'div'>({\n  ref,\n  ...props\n}: HighlightProps<T>) {\n  const {\n    as: Component = 'div',\n    children,\n    value,\n    defaultValue,\n    onValueChange,\n    className,\n    style,\n    transition = { type: 'spring', stiffness: 350, damping: 35 },\n    hover = false,\n    click = true,\n    enabled = true,\n    controlledItems,\n    disabled = false,\n    exitDelay = 200,\n    mode = 'children',\n  } = props;\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const [activeValue, setActiveValue] = React.useState<string | null>(\n    value ?? defaultValue ?? null,\n  );\n  const [boundsState, setBoundsState] = React.useState<Bounds | null>(null);\n  const [activeClassNameState, setActiveClassNameState] =\n    React.useState<string>('');\n\n  const safeSetActiveValue = React.useCallback(\n    (id: string | null) => {\n      setActiveValue((prev) => (prev === id ? prev : id));\n      if (id !== activeValue) onValueChange?.(id);\n    },\n    [activeValue, onValueChange],\n  );\n\n  const safeSetBounds = React.useCallback(\n    (bounds: DOMRect) => {\n      if (!localRef.current) return;\n\n      const boundsOffset = (props as ParentModeHighlightProps)\n        ?.boundsOffset ?? {\n        top: 0,\n        left: 0,\n        width: 0,\n        height: 0,\n      };\n\n      const containerRect = localRef.current.getBoundingClientRect();\n      const newBounds: Bounds = {\n        top: bounds.top - containerRect.top + (boundsOffset.top ?? 0),\n        left: bounds.left - containerRect.left + (boundsOffset.left ?? 0),\n        width: bounds.width + (boundsOffset.width ?? 0),\n        height: bounds.height + (boundsOffset.height ?? 0),\n      };\n\n      setBoundsState((prev) => {\n        if (\n          prev &&\n          prev.top === newBounds.top &&\n          prev.left === newBounds.left &&\n          prev.width === newBounds.width &&\n          prev.height === newBounds.height\n        ) {\n          return prev;\n        }\n        return newBounds;\n      });\n    },\n    [props],\n  );\n\n  const clearBounds = React.useCallback(() => {\n    setBoundsState((prev) => (prev === null ? prev : null));\n  }, []);\n\n  React.useEffect(() => {\n    console.log('value', value);\n    if (value !== undefined) setActiveValue(value);\n    else if (defaultValue !== undefined) setActiveValue(defaultValue);\n  }, [value, defaultValue]);\n\n  const id = React.useId();\n\n  React.useEffect(() => {\n    if (mode !== 'parent') return;\n    const container = localRef.current;\n    if (!container) return;\n\n    const onScroll = () => {\n      if (!activeValue) return;\n      const activeEl = container.querySelector<HTMLElement>(\n        `[data-value=\"${activeValue}\"][data-highlight=\"true\"]`,\n      );\n      if (activeEl) safeSetBounds(activeEl.getBoundingClientRect());\n    };\n\n    container.addEventListener('scroll', onScroll, { passive: true });\n    return () => container.removeEventListener('scroll', onScroll);\n  }, [mode, activeValue, safeSetBounds]);\n\n  const render = React.useCallback(\n    (children: React.ReactNode) => {\n      if (mode === 'parent') {\n        return (\n          <Component\n            ref={localRef}\n            data-slot=\"motion-highlight-container\"\n            style={{ position: 'relative', zIndex: 1 }}\n            className={(props as ParentModeHighlightProps)?.containerClassName}\n          >\n            <AnimatePresence initial={false} mode=\"wait\">\n              {boundsState && (\n                <motion.div\n                  data-slot=\"motion-highlight\"\n                  animate={{\n                    top: boundsState.top,\n                    left: boundsState.left,\n                    width: boundsState.width,\n                    height: boundsState.height,\n                    opacity: 1,\n                  }}\n                  initial={{\n                    top: boundsState.top,\n                    left: boundsState.left,\n                    width: boundsState.width,\n                    height: boundsState.height,\n                    opacity: 0,\n                  }}\n                  exit={{\n                    opacity: 0,\n                    transition: {\n                      ...transition,\n                      delay: (transition?.delay ?? 0) + (exitDelay ?? 0) / 1000,\n                    },\n                  }}\n                  transition={transition}\n                  style={{ position: 'absolute', zIndex: 0, ...style }}\n                  className={cn(className, activeClassNameState)}\n                />\n              )}\n            </AnimatePresence>\n            {children}\n          </Component>\n        );\n      }\n\n      return children;\n    },\n    [\n      mode,\n      props,\n      boundsState,\n      transition,\n      exitDelay,\n      className,\n      activeClassNameState,\n    ],\n  );\n\n  return (\n    <HighlightContext.Provider\n      value={{\n        mode,\n        activeValue,\n        setActiveValue: safeSetActiveValue,\n        id,\n        hover,\n        click,\n        className,\n        style,\n        transition,\n        disabled,\n        enabled,\n        exitDelay,\n        setBounds: safeSetBounds,\n        clearBounds,\n        activeClassName: activeClassNameState,\n        setActiveClassName: setActiveClassNameState,\n        forceUpdateBounds: (props as ParentModeHighlightProps)\n          ?.forceUpdateBounds,\n      }}\n    >\n      {enabled\n        ? controlledItems\n          ? render(children)\n          : render(\n              React.Children.map(children, (child, index) => (\n                <HighlightItem key={index} className={props?.itemsClassName}>\n                  {child}\n                </HighlightItem>\n              )),\n            )\n        : children}\n    </HighlightContext.Provider>\n  );\n}\n\nfunction getNonOverridingDataAttributes(\n  element: React.ReactElement,\n  dataAttributes: Record<string, unknown>,\n): Record<string, unknown> {\n  return Object.keys(dataAttributes).reduce<Record<string, unknown>>(\n    (acc, key) => {\n      if ((element.props as Record<string, unknown>)[key] === undefined) {\n        acc[key] = dataAttributes[key];\n      }\n      return acc;\n    },\n    {},\n  );\n}\n\ntype ExtendedChildProps = React.ComponentProps<'div'> & {\n  id?: string;\n  ref?: React.Ref<HTMLElement>;\n  'data-active'?: string;\n  'data-value'?: string;\n  'data-disabled'?: boolean;\n  'data-highlight'?: boolean;\n  'data-slot'?: string;\n};\n\ntype HighlightItemProps<T extends React.ElementType = 'div'> =\n  React.ComponentProps<T> & {\n    as?: T;\n    children: React.ReactElement;\n    id?: string;\n    value?: string;\n    className?: string;\n    style?: React.CSSProperties;\n    transition?: Transition;\n    activeClassName?: string;\n    disabled?: boolean;\n    exitDelay?: number;\n    asChild?: boolean;\n    forceUpdateBounds?: boolean;\n  };\n\nfunction HighlightItem<T extends React.ElementType>({\n  ref,\n  as,\n  children,\n  id,\n  value,\n  className,\n  style,\n  transition,\n  disabled = false,\n  activeClassName,\n  exitDelay,\n  asChild = false,\n  forceUpdateBounds,\n  ...props\n}: HighlightItemProps<T>) {\n  const itemId = React.useId();\n  const {\n    activeValue,\n    setActiveValue,\n    mode,\n    setBounds,\n    clearBounds,\n    hover,\n    click,\n    enabled,\n    className: contextClassName,\n    style: contextStyle,\n    transition: contextTransition,\n    id: contextId,\n    disabled: contextDisabled,\n    exitDelay: contextExitDelay,\n    forceUpdateBounds: contextForceUpdateBounds,\n    setActiveClassName,\n  } = useHighlight();\n\n  const Component = as ?? 'div';\n  const element = children as React.ReactElement<ExtendedChildProps>;\n  const childValue =\n    id ?? value ?? element.props?.['data-value'] ?? element.props?.id ?? itemId;\n  const isActive = activeValue === childValue;\n  const isDisabled = disabled === undefined ? contextDisabled : disabled;\n  const itemTransition = transition ?? contextTransition;\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  React.useEffect(() => {\n    if (mode !== 'parent') return;\n    let rafId: number;\n    let previousBounds: Bounds | null = null;\n    const shouldUpdateBounds =\n      forceUpdateBounds === true ||\n      (contextForceUpdateBounds && forceUpdateBounds !== false);\n\n    const updateBounds = () => {\n      if (!localRef.current) return;\n\n      const bounds = localRef.current.getBoundingClientRect();\n\n      if (shouldUpdateBounds) {\n        if (\n          previousBounds &&\n          previousBounds.top === bounds.top &&\n          previousBounds.left === bounds.left &&\n          previousBounds.width === bounds.width &&\n          previousBounds.height === bounds.height\n        ) {\n          rafId = requestAnimationFrame(updateBounds);\n          return;\n        }\n        previousBounds = bounds;\n        rafId = requestAnimationFrame(updateBounds);\n      }\n\n      setBounds(bounds);\n    };\n\n    if (isActive) {\n      updateBounds();\n      setActiveClassName(activeClassName ?? '');\n    } else if (!activeValue) clearBounds();\n\n    if (shouldUpdateBounds) return () => cancelAnimationFrame(rafId);\n  }, [\n    mode,\n    isActive,\n    activeValue,\n    setBounds,\n    clearBounds,\n    activeClassName,\n    setActiveClassName,\n    forceUpdateBounds,\n    contextForceUpdateBounds,\n  ]);\n\n  if (!React.isValidElement(children)) return children;\n\n  const dataAttributes = {\n    'data-active': isActive ? 'true' : 'false',\n    'aria-selected': isActive,\n    'data-disabled': isDisabled,\n    'data-value': childValue,\n    'data-highlight': true,\n  };\n\n  const commonHandlers = hover\n    ? {\n        onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(childValue);\n          element.props.onMouseEnter?.(e);\n        },\n        onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(null);\n          element.props.onMouseLeave?.(e);\n        },\n      }\n    : click\n      ? {\n          onClick: (e: React.MouseEvent<HTMLDivElement>) => {\n            setActiveValue(childValue);\n            element.props.onClick?.(e);\n          },\n        }\n      : {};\n\n  if (asChild) {\n    if (mode === 'children') {\n      return React.cloneElement(\n        element,\n        {\n          key: childValue,\n          ref: localRef,\n          className: cn('relative', element.props.className),\n          ...getNonOverridingDataAttributes(element, {\n            ...dataAttributes,\n            'data-slot': 'motion-highlight-item-container',\n          }),\n          ...commonHandlers,\n          ...props,\n        },\n        <>\n          <AnimatePresence initial={false} mode=\"wait\">\n            {isActive && !isDisabled && (\n              <motion.div\n                layoutId={`transition-background-${contextId}`}\n                data-slot=\"motion-highlight\"\n                style={{\n                  position: 'absolute',\n                  zIndex: 0,\n                  ...contextStyle,\n                  ...style,\n                }}\n                className={cn(contextClassName, activeClassName)}\n                transition={itemTransition}\n                initial={{ opacity: 0 }}\n                animate={{ opacity: 1 }}\n                exit={{\n                  opacity: 0,\n                  transition: {\n                    ...itemTransition,\n                    delay:\n                      (itemTransition?.delay ?? 0) +\n                      (exitDelay ?? contextExitDelay ?? 0) / 1000,\n                  },\n                }}\n                {...dataAttributes}\n              />\n            )}\n          </AnimatePresence>\n\n          <Component\n            data-slot=\"motion-highlight-item\"\n            style={{ position: 'relative', zIndex: 1 }}\n            className={className}\n            {...dataAttributes}\n          >\n            {children}\n          </Component>\n        </>,\n      );\n    }\n\n    return React.cloneElement(element, {\n      ref: localRef,\n      ...getNonOverridingDataAttributes(element, {\n        ...dataAttributes,\n        'data-slot': 'motion-highlight-item',\n      }),\n      ...commonHandlers,\n    });\n  }\n\n  return enabled ? (\n    <Component\n      key={childValue}\n      ref={localRef}\n      data-slot=\"motion-highlight-item-container\"\n      className={cn(mode === 'children' && 'relative', className)}\n      {...dataAttributes}\n      {...props}\n      {...commonHandlers}\n    >\n      {mode === 'children' && (\n        <AnimatePresence initial={false} mode=\"wait\">\n          {isActive && !isDisabled && (\n            <motion.div\n              layoutId={`transition-background-${contextId}`}\n              data-slot=\"motion-highlight\"\n              style={{\n                position: 'absolute',\n                zIndex: 0,\n                ...contextStyle,\n                ...style,\n              }}\n              className={cn(contextClassName, activeClassName)}\n              transition={itemTransition}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{\n                opacity: 0,\n                transition: {\n                  ...itemTransition,\n                  delay:\n                    (itemTransition?.delay ?? 0) +\n                    (exitDelay ?? contextExitDelay ?? 0) / 1000,\n                },\n              }}\n              {...dataAttributes}\n            />\n          )}\n        </AnimatePresence>\n      )}\n\n      {React.cloneElement(element, {\n        style: { position: 'relative', zIndex: 1 },\n        className: element.props.className,\n        ...getNonOverridingDataAttributes(element, {\n          ...dataAttributes,\n          'data-slot': 'motion-highlight-item',\n        }),\n      })}\n    </Component>\n  ) : (\n    children\n  );\n}\n\nexport {\n  Highlight,\n  HighlightItem,\n  useHighlight,\n  type HighlightProps,\n  type HighlightItemProps,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { AnimatePresence, Transition, motion } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype HighlightMode = 'children' | 'parent';\n\ntype Bounds = {\n  top: number;\n  left: number;\n  width: number;\n  height: number;\n};\n\ntype HighlightContextType<T extends string> = {\n  as?: keyof HTMLElementTagNameMap;\n  mode: HighlightMode;\n  activeValue: T | null;\n  setActiveValue: (value: T | null) => void;\n  setBounds: (bounds: DOMRect) => void;\n  clearBounds: () => void;\n  id: string;\n  hover: boolean;\n  click: boolean;\n  className?: string;\n  style?: React.CSSProperties;\n  activeClassName?: string;\n  setActiveClassName: (className: string) => void;\n  transition?: Transition;\n  disabled?: boolean;\n  enabled?: boolean;\n  exitDelay?: number;\n  forceUpdateBounds?: boolean;\n};\n\nconst HighlightContext = React.createContext<\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  HighlightContextType<any> | undefined\n>(undefined);\n\nfunction useHighlight<T extends string>(): HighlightContextType<T> {\n  const context = React.useContext(HighlightContext);\n  if (!context) {\n    throw new Error('useHighlight must be used within a HighlightProvider');\n  }\n  return context as unknown as HighlightContextType<T>;\n}\n\ntype BaseHighlightProps<T extends React.ElementType = 'div'> = {\n  as?: T;\n  ref?: React.Ref<HTMLDivElement>;\n  mode?: HighlightMode;\n  value?: string | null;\n  defaultValue?: string | null;\n  onValueChange?: (value: string | null) => void;\n  className?: string;\n  style?: React.CSSProperties;\n  transition?: Transition;\n  hover?: boolean;\n  click?: boolean;\n  disabled?: boolean;\n  enabled?: boolean;\n  exitDelay?: number;\n};\n\ntype ParentModeHighlightProps = {\n  boundsOffset?: Partial<Bounds>;\n  containerClassName?: string;\n  forceUpdateBounds?: boolean;\n};\n\ntype ControlledParentModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> &\n    ParentModeHighlightProps & {\n      mode: 'parent';\n      controlledItems: true;\n      children: React.ReactNode;\n    };\n\ntype ControlledChildrenModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> & {\n    mode?: 'children' | undefined;\n    controlledItems: true;\n    children: React.ReactNode;\n  };\n\ntype UncontrolledParentModeHighlightProps<T extends React.ElementType = 'div'> =\n  BaseHighlightProps<T> &\n    ParentModeHighlightProps & {\n      mode: 'parent';\n      controlledItems?: false;\n      itemsClassName?: string;\n      children: React.ReactElement | React.ReactElement[];\n    };\n\ntype UncontrolledChildrenModeHighlightProps<\n  T extends React.ElementType = 'div',\n> = BaseHighlightProps<T> & {\n  mode?: 'children';\n  controlledItems?: false;\n  itemsClassName?: string;\n  children: React.ReactElement | React.ReactElement[];\n};\n\ntype HighlightProps<T extends React.ElementType = 'div'> =\n  | ControlledParentModeHighlightProps<T>\n  | ControlledChildrenModeHighlightProps<T>\n  | UncontrolledParentModeHighlightProps<T>\n  | UncontrolledChildrenModeHighlightProps<T>;\n\nfunction Highlight<T extends React.ElementType = 'div'>({\n  ref,\n  ...props\n}: HighlightProps<T>) {\n  const {\n    as: Component = 'div',\n    children,\n    value,\n    defaultValue,\n    onValueChange,\n    className,\n    style,\n    transition = { type: 'spring', stiffness: 350, damping: 35 },\n    hover = false,\n    click = true,\n    enabled = true,\n    controlledItems,\n    disabled = false,\n    exitDelay = 200,\n    mode = 'children',\n  } = props;\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  const [activeValue, setActiveValue] = React.useState<string | null>(\n    value ?? defaultValue ?? null,\n  );\n  const [boundsState, setBoundsState] = React.useState<Bounds | null>(null);\n  const [activeClassNameState, setActiveClassNameState] =\n    React.useState<string>('');\n\n  const safeSetActiveValue = React.useCallback(\n    (id: string | null) => {\n      setActiveValue((prev) => (prev === id ? prev : id));\n      if (id !== activeValue) onValueChange?.(id);\n    },\n    [activeValue, onValueChange],\n  );\n\n  const safeSetBounds = React.useCallback(\n    (bounds: DOMRect) => {\n      if (!localRef.current) return;\n\n      const boundsOffset = (props as ParentModeHighlightProps)\n        ?.boundsOffset ?? {\n        top: 0,\n        left: 0,\n        width: 0,\n        height: 0,\n      };\n\n      const containerRect = localRef.current.getBoundingClientRect();\n      const newBounds: Bounds = {\n        top: bounds.top - containerRect.top + (boundsOffset.top ?? 0),\n        left: bounds.left - containerRect.left + (boundsOffset.left ?? 0),\n        width: bounds.width + (boundsOffset.width ?? 0),\n        height: bounds.height + (boundsOffset.height ?? 0),\n      };\n\n      setBoundsState((prev) => {\n        if (\n          prev &&\n          prev.top === newBounds.top &&\n          prev.left === newBounds.left &&\n          prev.width === newBounds.width &&\n          prev.height === newBounds.height\n        ) {\n          return prev;\n        }\n        return newBounds;\n      });\n    },\n    [props],\n  );\n\n  const clearBounds = React.useCallback(() => {\n    setBoundsState((prev) => (prev === null ? prev : null));\n  }, []);\n\n  React.useEffect(() => {\n    console.log('value', value);\n    if (value !== undefined) setActiveValue(value);\n    else if (defaultValue !== undefined) setActiveValue(defaultValue);\n  }, [value, defaultValue]);\n\n  const id = React.useId();\n\n  React.useEffect(() => {\n    if (mode !== 'parent') return;\n    const container = localRef.current;\n    if (!container) return;\n\n    const onScroll = () => {\n      if (!activeValue) return;\n      const activeEl = container.querySelector<HTMLElement>(\n        `[data-value=\"${activeValue}\"][data-highlight=\"true\"]`,\n      );\n      if (activeEl) safeSetBounds(activeEl.getBoundingClientRect());\n    };\n\n    container.addEventListener('scroll', onScroll, { passive: true });\n    return () => container.removeEventListener('scroll', onScroll);\n  }, [mode, activeValue, safeSetBounds]);\n\n  const render = React.useCallback(\n    (children: React.ReactNode) => {\n      if (mode === 'parent') {\n        return (\n          <Component\n            ref={localRef}\n            data-slot=\"motion-highlight-container\"\n            style={{ position: 'relative', zIndex: 1 }}\n            className={(props as ParentModeHighlightProps)?.containerClassName}\n          >\n            <AnimatePresence initial={false} mode=\"wait\">\n              {boundsState && (\n                <motion.div\n                  data-slot=\"motion-highlight\"\n                  animate={{\n                    top: boundsState.top,\n                    left: boundsState.left,\n                    width: boundsState.width,\n                    height: boundsState.height,\n                    opacity: 1,\n                  }}\n                  initial={{\n                    top: boundsState.top,\n                    left: boundsState.left,\n                    width: boundsState.width,\n                    height: boundsState.height,\n                    opacity: 0,\n                  }}\n                  exit={{\n                    opacity: 0,\n                    transition: {\n                      ...transition,\n                      delay: (transition?.delay ?? 0) + (exitDelay ?? 0) / 1000,\n                    },\n                  }}\n                  transition={transition}\n                  style={{ position: 'absolute', zIndex: 0, ...style }}\n                  className={cn(className, activeClassNameState)}\n                />\n              )}\n            </AnimatePresence>\n            {children}\n          </Component>\n        );\n      }\n\n      return children;\n    },\n    [\n      mode,\n      Component,\n      props,\n      boundsState,\n      transition,\n      exitDelay,\n      style,\n      className,\n      activeClassNameState,\n    ],\n  );\n\n  return (\n    <HighlightContext.Provider\n      value={{\n        mode,\n        activeValue,\n        setActiveValue: safeSetActiveValue,\n        id,\n        hover,\n        click,\n        className,\n        style,\n        transition,\n        disabled,\n        enabled,\n        exitDelay,\n        setBounds: safeSetBounds,\n        clearBounds,\n        activeClassName: activeClassNameState,\n        setActiveClassName: setActiveClassNameState,\n        forceUpdateBounds: (props as ParentModeHighlightProps)\n          ?.forceUpdateBounds,\n      }}\n    >\n      {enabled\n        ? controlledItems\n          ? render(children)\n          : render(\n              React.Children.map(children, (child, index) => (\n                <HighlightItem key={index} className={props?.itemsClassName}>\n                  {child}\n                </HighlightItem>\n              )),\n            )\n        : children}\n    </HighlightContext.Provider>\n  );\n}\n\nfunction getNonOverridingDataAttributes(\n  element: React.ReactElement,\n  dataAttributes: Record<string, unknown>,\n): Record<string, unknown> {\n  return Object.keys(dataAttributes).reduce<Record<string, unknown>>(\n    (acc, key) => {\n      if ((element.props as Record<string, unknown>)[key] === undefined) {\n        acc[key] = dataAttributes[key];\n      }\n      return acc;\n    },\n    {},\n  );\n}\n\ntype ExtendedChildProps = React.ComponentProps<'div'> & {\n  id?: string;\n  ref?: React.Ref<HTMLElement>;\n  'data-active'?: string;\n  'data-value'?: string;\n  'data-disabled'?: boolean;\n  'data-highlight'?: boolean;\n  'data-slot'?: string;\n};\n\ntype HighlightItemProps<T extends React.ElementType = 'div'> =\n  React.ComponentProps<T> & {\n    as?: T;\n    children: React.ReactElement;\n    id?: string;\n    value?: string;\n    className?: string;\n    style?: React.CSSProperties;\n    transition?: Transition;\n    activeClassName?: string;\n    disabled?: boolean;\n    exitDelay?: number;\n    asChild?: boolean;\n    forceUpdateBounds?: boolean;\n  };\n\nfunction HighlightItem<T extends React.ElementType>({\n  ref,\n  as,\n  children,\n  id,\n  value,\n  className,\n  style,\n  transition,\n  disabled = false,\n  activeClassName,\n  exitDelay,\n  asChild = false,\n  forceUpdateBounds,\n  ...props\n}: HighlightItemProps<T>) {\n  const itemId = React.useId();\n  const {\n    activeValue,\n    setActiveValue,\n    mode,\n    setBounds,\n    clearBounds,\n    hover,\n    click,\n    enabled,\n    className: contextClassName,\n    style: contextStyle,\n    transition: contextTransition,\n    id: contextId,\n    disabled: contextDisabled,\n    exitDelay: contextExitDelay,\n    forceUpdateBounds: contextForceUpdateBounds,\n    setActiveClassName,\n  } = useHighlight();\n\n  const Component = as ?? 'div';\n  const element = children as React.ReactElement<ExtendedChildProps>;\n  const childValue =\n    id ?? value ?? element.props?.['data-value'] ?? element.props?.id ?? itemId;\n  const isActive = activeValue === childValue;\n  const isDisabled = disabled === undefined ? contextDisabled : disabled;\n  const itemTransition = transition ?? contextTransition;\n\n  const localRef = React.useRef<HTMLDivElement>(null);\n  React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n  React.useEffect(() => {\n    if (mode !== 'parent') return;\n    let rafId: number;\n    let previousBounds: Bounds | null = null;\n    const shouldUpdateBounds =\n      forceUpdateBounds === true ||\n      (contextForceUpdateBounds && forceUpdateBounds !== false);\n\n    const updateBounds = () => {\n      if (!localRef.current) return;\n\n      const bounds = localRef.current.getBoundingClientRect();\n\n      if (shouldUpdateBounds) {\n        if (\n          previousBounds &&\n          previousBounds.top === bounds.top &&\n          previousBounds.left === bounds.left &&\n          previousBounds.width === bounds.width &&\n          previousBounds.height === bounds.height\n        ) {\n          rafId = requestAnimationFrame(updateBounds);\n          return;\n        }\n        previousBounds = bounds;\n        rafId = requestAnimationFrame(updateBounds);\n      }\n\n      setBounds(bounds);\n    };\n\n    if (isActive) {\n      updateBounds();\n      setActiveClassName(activeClassName ?? '');\n    } else if (!activeValue) clearBounds();\n\n    if (shouldUpdateBounds) return () => cancelAnimationFrame(rafId);\n  }, [\n    mode,\n    isActive,\n    activeValue,\n    setBounds,\n    clearBounds,\n    activeClassName,\n    setActiveClassName,\n    forceUpdateBounds,\n    contextForceUpdateBounds,\n  ]);\n\n  if (!React.isValidElement(children)) return children;\n\n  const dataAttributes = {\n    'data-active': isActive ? 'true' : 'false',\n    'aria-selected': isActive,\n    'data-disabled': isDisabled,\n    'data-value': childValue,\n    'data-highlight': true,\n  };\n\n  const commonHandlers = hover\n    ? {\n        onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(childValue);\n          element.props.onMouseEnter?.(e);\n        },\n        onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {\n          setActiveValue(null);\n          element.props.onMouseLeave?.(e);\n        },\n      }\n    : click\n      ? {\n          onClick: (e: React.MouseEvent<HTMLDivElement>) => {\n            setActiveValue(childValue);\n            element.props.onClick?.(e);\n          },\n        }\n      : {};\n\n  if (asChild) {\n    if (mode === 'children') {\n      return React.cloneElement(\n        element,\n        {\n          key: childValue,\n          ref: localRef,\n          className: cn('relative', element.props.className),\n          ...getNonOverridingDataAttributes(element, {\n            ...dataAttributes,\n            'data-slot': 'motion-highlight-item-container',\n          }),\n          ...commonHandlers,\n          ...props,\n        },\n        <>\n          <AnimatePresence initial={false} mode=\"wait\">\n            {isActive && !isDisabled && (\n              <motion.div\n                layoutId={`transition-background-${contextId}`}\n                data-slot=\"motion-highlight\"\n                style={{\n                  position: 'absolute',\n                  zIndex: 0,\n                  ...contextStyle,\n                  ...style,\n                }}\n                className={cn(contextClassName, activeClassName)}\n                transition={itemTransition}\n                initial={{ opacity: 0 }}\n                animate={{ opacity: 1 }}\n                exit={{\n                  opacity: 0,\n                  transition: {\n                    ...itemTransition,\n                    delay:\n                      (itemTransition?.delay ?? 0) +\n                      (exitDelay ?? contextExitDelay ?? 0) / 1000,\n                  },\n                }}\n                {...dataAttributes}\n              />\n            )}\n          </AnimatePresence>\n\n          <Component\n            data-slot=\"motion-highlight-item\"\n            style={{ position: 'relative', zIndex: 1 }}\n            className={className}\n            {...dataAttributes}\n          >\n            {children}\n          </Component>\n        </>,\n      );\n    }\n\n    return React.cloneElement(element, {\n      ref: localRef,\n      ...getNonOverridingDataAttributes(element, {\n        ...dataAttributes,\n        'data-slot': 'motion-highlight-item',\n      }),\n      ...commonHandlers,\n    });\n  }\n\n  return enabled ? (\n    <Component\n      key={childValue}\n      ref={localRef}\n      data-slot=\"motion-highlight-item-container\"\n      className={cn(mode === 'children' && 'relative', className)}\n      {...dataAttributes}\n      {...props}\n      {...commonHandlers}\n    >\n      {mode === 'children' && (\n        <AnimatePresence initial={false} mode=\"wait\">\n          {isActive && !isDisabled && (\n            <motion.div\n              layoutId={`transition-background-${contextId}`}\n              data-slot=\"motion-highlight\"\n              style={{\n                position: 'absolute',\n                zIndex: 0,\n                ...contextStyle,\n                ...style,\n              }}\n              className={cn(contextClassName, activeClassName)}\n              transition={itemTransition}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{\n                opacity: 0,\n                transition: {\n                  ...itemTransition,\n                  delay:\n                    (itemTransition?.delay ?? 0) +\n                    (exitDelay ?? contextExitDelay ?? 0) / 1000,\n                },\n              }}\n              {...dataAttributes}\n            />\n          )}\n        </AnimatePresence>\n      )}\n\n      {React.cloneElement(element, {\n        style: { position: 'relative', zIndex: 1 },\n        className: element.props.className,\n        ...getNonOverridingDataAttributes(element, {\n          ...dataAttributes,\n          'data-slot': 'motion-highlight-item',\n        }),\n      })}\n    </Component>\n  ) : (\n    children\n  );\n}\n\nexport {\n  Highlight,\n  HighlightItem,\n  useHighlight,\n  type HighlightProps,\n  type HighlightItemProps,\n};",
       },
     ],
     keywords: [],
@@ -18021,7 +18021,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/primitives/radix/tooltip.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport { Tooltip as TooltipPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { useControlledState } from '@/hooks/use-controlled-state';\n\ntype TooltipContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [LocalTooltipProvider, useTooltip] =\n  getStrictContext<TooltipContextType>('TooltipContext');\n\ntype TooltipProviderProps = React.ComponentProps<\n  typeof TooltipPrimitive.Provider\n>;\n\nfunction TooltipProvider(props: TooltipProviderProps) {\n  return <TooltipPrimitive.Provider data-slot=\"tooltip-provider\" {...props} />;\n}\n\ntype TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;\n\nfunction Tooltip(props: TooltipProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <LocalTooltipProvider value={{ isOpen, setIsOpen }}>\n      <TooltipPrimitive.Root\n        data-slot=\"tooltip\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </LocalTooltipProvider>\n  );\n}\n\ntype TooltipTriggerProps = React.ComponentProps<\n  typeof TooltipPrimitive.Trigger\n>;\n\nfunction TooltipTrigger(props: TooltipTriggerProps) {\n  return <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" {...props} />;\n}\n\ntype TooltipPortalProps = Omit<\n  React.ComponentProps<typeof TooltipPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction TooltipPortal(props: TooltipPortalProps) {\n  const { isOpen } = useTooltip();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <TooltipPrimitive.Portal\n          forceMount\n          data-slot=\"tooltip-portal\"\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype TooltipContentProps = Omit<\n  React.ComponentProps<typeof TooltipPrimitive.Content>,\n  'forceMount' | 'asChild'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction TooltipContent({\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  ...props\n}: TooltipContentProps) {\n  return (\n    <TooltipPrimitive.Content\n      asChild\n      forceMount\n      align={align}\n      alignOffset={alignOffset}\n      side={side}\n      sideOffset={sideOffset}\n      avoidCollisions={avoidCollisions}\n      collisionBoundary={collisionBoundary}\n      collisionPadding={collisionPadding}\n      arrowPadding={arrowPadding}\n      sticky={sticky}\n      hideWhenDetached={hideWhenDetached}\n    >\n      <motion.div\n        key=\"popover-content\"\n        data-slot=\"popover-content\"\n        initial={{ opacity: 0, scale: 0.5 }}\n        animate={{ opacity: 1, scale: 1 }}\n        exit={{ opacity: 0, scale: 0.5 }}\n        transition={transition}\n        {...props}\n      />\n    </TooltipPrimitive.Content>\n  );\n}\n\ntype TooltipArrowProps = React.ComponentProps<typeof TooltipPrimitive.Arrow>;\n\nfunction TooltipArrow(props: TooltipArrowProps) {\n  return <TooltipPrimitive.Arrow data-slot=\"tooltip-arrow\" {...props} />;\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipTrigger,\n  TooltipPortal,\n  TooltipContent,\n  TooltipArrow,\n  useTooltip,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipPortalProps,\n  type TooltipContentProps,\n  type TooltipArrowProps,\n  type TooltipContextType,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport { Tooltip as TooltipPrimitive } from 'radix-ui';\nimport { AnimatePresence, motion, type HTMLMotionProps } from 'motion/react';\n\nimport { getStrictContext } from '@/lib/get-strict-context';\nimport { useControlledState } from '@/hooks/use-controlled-state';\n\ntype TooltipContextType = {\n  isOpen: boolean;\n  setIsOpen: (isOpen: boolean) => void;\n};\n\nconst [LocalTooltipProvider, useTooltip] =\n  getStrictContext<TooltipContextType>('TooltipContext');\n\ntype TooltipProviderProps = React.ComponentProps<\n  typeof TooltipPrimitive.Provider\n>;\n\nfunction TooltipProvider(props: TooltipProviderProps) {\n  return <TooltipPrimitive.Provider data-slot=\"tooltip-provider\" {...props} />;\n}\n\ntype TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;\n\nfunction Tooltip(props: TooltipProps) {\n  const [isOpen, setIsOpen] = useControlledState({\n    value: props?.open,\n    defaultValue: props?.defaultOpen,\n    onChange: props?.onOpenChange,\n  });\n\n  return (\n    <LocalTooltipProvider value={{ isOpen, setIsOpen }}>\n      <TooltipPrimitive.Root\n        data-slot=\"tooltip\"\n        {...props}\n        onOpenChange={setIsOpen}\n      />\n    </LocalTooltipProvider>\n  );\n}\n\ntype TooltipTriggerProps = React.ComponentProps<\n  typeof TooltipPrimitive.Trigger\n>;\n\nfunction TooltipTrigger(props: TooltipTriggerProps) {\n  return <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" {...props} />;\n}\n\ntype TooltipPortalProps = Omit<\n  React.ComponentProps<typeof TooltipPrimitive.Portal>,\n  'forceMount'\n>;\n\nfunction TooltipPortal(props: TooltipPortalProps) {\n  const { isOpen } = useTooltip();\n\n  return (\n    <AnimatePresence>\n      {isOpen && (\n        <TooltipPrimitive.Portal\n          forceMount\n          data-slot=\"tooltip-portal\"\n          {...props}\n        />\n      )}\n    </AnimatePresence>\n  );\n}\n\ntype TooltipContentProps = Omit<\n  React.ComponentProps<typeof TooltipPrimitive.Content>,\n  'forceMount' | 'asChild'\n> &\n  HTMLMotionProps<'div'>;\n\nfunction TooltipContent({\n  onEscapeKeyDown,\n  onPointerDownOutside,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n  avoidCollisions,\n  collisionBoundary,\n  collisionPadding,\n  arrowPadding,\n  sticky,\n  hideWhenDetached,\n  transition = { type: 'spring', stiffness: 300, damping: 25 },\n  ...props\n}: TooltipContentProps) {\n  return (\n    <TooltipPrimitive.Content\n      asChild\n      forceMount\n      align={align}\n      alignOffset={alignOffset}\n      side={side}\n      sideOffset={sideOffset}\n      avoidCollisions={avoidCollisions}\n      collisionBoundary={collisionBoundary}\n      collisionPadding={collisionPadding}\n      arrowPadding={arrowPadding}\n      sticky={sticky}\n      hideWhenDetached={hideWhenDetached}\n      onEscapeKeyDown={onEscapeKeyDown}\n      onPointerDownOutside={onPointerDownOutside}\n    >\n      <motion.div\n        key=\"popover-content\"\n        data-slot=\"popover-content\"\n        initial={{ opacity: 0, scale: 0.5 }}\n        animate={{ opacity: 1, scale: 1 }}\n        exit={{ opacity: 0, scale: 0.5 }}\n        transition={transition}\n        {...props}\n      />\n    </TooltipPrimitive.Content>\n  );\n}\n\ntype TooltipArrowProps = React.ComponentProps<typeof TooltipPrimitive.Arrow>;\n\nfunction TooltipArrow(props: TooltipArrowProps) {\n  return <TooltipPrimitive.Arrow data-slot=\"tooltip-arrow\" {...props} />;\n}\n\nexport {\n  TooltipProvider,\n  Tooltip,\n  TooltipTrigger,\n  TooltipPortal,\n  TooltipContent,\n  TooltipArrow,\n  useTooltip,\n  type TooltipProviderProps,\n  type TooltipProps,\n  type TooltipTriggerProps,\n  type TooltipPortalProps,\n  type TooltipContentProps,\n  type TooltipArrowProps,\n  type TooltipContextType,\n};",
       },
     ],
     keywords: [],

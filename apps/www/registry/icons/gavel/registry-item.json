@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Gavel Icon",
   "description": "Gavel icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

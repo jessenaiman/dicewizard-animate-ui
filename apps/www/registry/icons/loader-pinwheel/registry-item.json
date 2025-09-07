@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Loader Pinwheel Icon",
   "description": "Loader pinwheel icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Ellipsis Vertical Icon",
   "description": "Ellipsis vertical icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

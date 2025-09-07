@@ -83,6 +83,7 @@ function AccordionPanel<TTag extends React.ElementType = typeof motion.div>({
   ...props
 }: AccordionPanelProps<TTag>) {
   return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <DisclosurePanelPrimitive<any> {...props}>
       {(bag) => (
         <div className={cn('text-sm pt-0 pb-4', className)}>

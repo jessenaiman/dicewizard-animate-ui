@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Battery Charging Icon",
   "description": "Battery Charging icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

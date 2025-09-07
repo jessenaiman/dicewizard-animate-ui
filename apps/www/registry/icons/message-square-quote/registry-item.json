@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Square Quote Icon",
   "description": "Message square quote icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

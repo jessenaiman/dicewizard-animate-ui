@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Wifi Low Icon",
   "description": "Wifi low icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

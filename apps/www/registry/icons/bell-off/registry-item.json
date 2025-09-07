@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Bell Off Icon",
   "description": "Bell off icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

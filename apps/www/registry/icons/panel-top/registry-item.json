@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Panel Top Icon",
   "description": "Panel top icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

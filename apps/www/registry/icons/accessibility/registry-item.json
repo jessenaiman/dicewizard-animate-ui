@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Accessibility Icon",
   "description": "Accessibility icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

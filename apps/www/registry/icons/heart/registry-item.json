@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Heart Icon",
   "description": "Heart icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

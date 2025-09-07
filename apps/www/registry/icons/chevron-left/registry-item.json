@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Chevron Left Icon",
   "description": "Chevron left icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

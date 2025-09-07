@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Chart Column Increasing Icon",
   "description": "Chart column increasing icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

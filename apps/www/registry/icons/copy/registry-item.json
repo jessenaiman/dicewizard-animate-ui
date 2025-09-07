@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Copy Icon",
   "description": "Copy icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

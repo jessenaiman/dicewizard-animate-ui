@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Chart Bar Increasing Icon",
   "description": "Chart bar increasing icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

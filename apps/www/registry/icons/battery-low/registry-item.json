@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Battery Low Icon",
   "description": "Battery Low icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

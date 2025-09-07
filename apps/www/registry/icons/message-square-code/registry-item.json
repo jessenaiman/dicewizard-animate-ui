@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Square Code Icon",
   "description": "Message square code icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

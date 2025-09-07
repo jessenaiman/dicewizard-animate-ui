@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Contrast Icon",
   "description": "Contrast icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

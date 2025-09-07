@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Badge Check Icon",
   "description": "Badge check icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

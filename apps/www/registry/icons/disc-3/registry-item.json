@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Disc 3 Icon",
   "description": "Disc 3 icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

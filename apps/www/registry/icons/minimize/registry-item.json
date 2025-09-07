@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Minimize Icon",
   "description": "Minimize icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

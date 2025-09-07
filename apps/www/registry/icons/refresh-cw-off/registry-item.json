@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Refresh Cw Off Icon",
   "description": "Refresh cw off icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

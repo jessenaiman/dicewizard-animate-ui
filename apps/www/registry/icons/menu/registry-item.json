@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Menu Icon",
   "description": "Menu icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

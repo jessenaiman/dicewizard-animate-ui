@@ -88,7 +88,7 @@ function CopyButton({
           });
       }
     },
-    [onCopiedChange, delay],
+    [onClick, copied, content, setIsCopied, onCopiedChange, delay],
   );
 
   const Icon = isCopied ? CheckIcon : CopyIcon;

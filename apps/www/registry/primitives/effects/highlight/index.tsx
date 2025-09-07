@@ -265,10 +265,12 @@ function Highlight<T extends React.ElementType = 'div'>({
     },
     [
       mode,
+      Component,
       props,
       boundsState,
       transition,
       exitDelay,
+      style,
       className,
       activeClassNameState,
     ],

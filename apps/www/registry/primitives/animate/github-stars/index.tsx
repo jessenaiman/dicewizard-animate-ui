@@ -92,7 +92,7 @@ function GithubStars({
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [username, repo, value, isInView]);
+  }, [username, repo, value, isInView, delay]);
 
   return (
     <GithubStarsProvider

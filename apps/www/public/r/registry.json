@@ -5241,6 +5241,9 @@
       "type": "registry:ui",
       "title": "Accessibility Icon",
       "description": "Accessibility icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5265,6 +5268,9 @@
       "type": "registry:ui",
       "title": "Activity Icon",
       "description": "Activity icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5302,6 +5308,9 @@
       "type": "registry:ui",
       "title": "Airplay Icon",
       "description": "Airplay icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5329,6 +5338,9 @@
       "type": "registry:ui",
       "title": "Alarm Clock Icon",
       "description": "Alarm clock icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5350,6 +5362,9 @@
       "type": "registry:ui",
       "title": "Arrow Down Icon",
       "description": "Arrow down icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5375,6 +5390,9 @@
       "type": "registry:ui",
       "title": "Arrow Left Icon",
       "description": "Arrow left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5402,6 +5420,9 @@
       "type": "registry:ui",
       "title": "Arrow Right Icon",
       "description": "Arrow right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5429,6 +5450,9 @@
       "type": "registry:ui",
       "title": "Arrow Up Icon",
       "description": "Arrow up icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5454,6 +5478,9 @@
       "type": "registry:ui",
       "title": "Audio Lines Icon",
       "description": "Audio Lines icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5497,6 +5524,9 @@
       "type": "registry:ui",
       "title": "Axe Icon",
       "description": "Axe icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5529,6 +5559,9 @@
       "type": "registry:ui",
       "title": "Badge Check Icon",
       "description": "Badge check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5551,6 +5584,9 @@
       "type": "registry:ui",
       "title": "Battery Charging Icon",
       "description": "Battery Charging icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5576,6 +5612,9 @@
       "type": "registry:ui",
       "title": "Battery Full Icon",
       "description": "Battery Full icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5601,6 +5640,9 @@
       "type": "registry:ui",
       "title": "Battery Low Icon",
       "description": "Battery Low icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5626,6 +5668,9 @@
       "type": "registry:ui",
       "title": "Battery Medium Icon",
       "description": "Battery Medium icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5651,6 +5696,9 @@
       "type": "registry:ui",
       "title": "Bell Icon",
       "description": "Bell icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5675,6 +5723,9 @@
       "type": "registry:ui",
       "title": "Bell Off Icon",
       "description": "Bell off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5699,6 +5750,9 @@
       "type": "registry:ui",
       "title": "Bell Ring Icon",
       "description": "Bell ring icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5723,6 +5777,9 @@
       "type": "registry:ui",
       "title": "Binary Icon",
       "description": "Binary icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5749,6 +5806,9 @@
       "type": "registry:ui",
       "title": "Bot Icon",
       "description": "Bot icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5773,6 +5833,9 @@
       "type": "registry:ui",
       "title": "Bot Message Square Icon",
       "description": "Bot message square icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5797,6 +5860,9 @@
       "type": "registry:ui",
       "title": "Bot Off Icon",
       "description": "Bot off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5821,6 +5887,9 @@
       "type": "registry:ui",
       "title": "Brush Icon",
       "description": "Brush icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5849,6 +5918,9 @@
       "type": "registry:ui",
       "title": "Brush Cleaning Icon",
       "description": "Brush cleaning icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5900,6 +5972,9 @@
       "type": "registry:ui",
       "title": "Cast Icon",
       "description": "Cast icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5923,6 +5998,9 @@
       "type": "registry:ui",
       "title": "CCTV Icon",
       "description": "CCTV icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5950,6 +6028,9 @@
       "type": "registry:ui",
       "title": "Chart Bar Icon",
       "description": "Chart bar icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5974,6 +6055,9 @@
       "type": "registry:ui",
       "title": "Chart Bar Decreasing Icon",
       "description": "Chart bar decreasing icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -5999,6 +6083,9 @@
       "type": "registry:ui",
       "title": "Chart Bar Increasing Icon",
       "description": "Chart bar increasing icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6024,6 +6111,9 @@
       "type": "registry:ui",
       "title": "Chart Column Icon",
       "description": "Chart column icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6048,6 +6138,9 @@
       "type": "registry:ui",
       "title": "Chart Column Decreasing Icon",
       "description": "Chart column decreasing icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6073,6 +6166,9 @@
       "type": "registry:ui",
       "title": "Chart Column Increasing Icon",
       "description": "Chart column increasing icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6098,6 +6194,9 @@
       "type": "registry:ui",
       "title": "Chart Line Icon",
       "description": "Chart line icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6122,6 +6221,9 @@
       "type": "registry:ui",
       "title": "Chart No Axes Column Icon",
       "description": "Chart no axes column icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6146,6 +6248,9 @@
       "type": "registry:ui",
       "title": "Chart No Axes Column Decreasing Icon",
       "description": "Chart no axes column decreasing icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6171,6 +6276,9 @@
       "type": "registry:ui",
       "title": "Chart No Axes Column Increasing Icon",
       "description": "Chart no axes column increasing icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6196,6 +6304,9 @@
       "type": "registry:ui",
       "title": "Chart Scatter Icon",
       "description": "Chart scatter icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6220,6 +6331,9 @@
       "type": "registry:ui",
       "title": "Chart Spline Icon",
       "description": "Chart spline icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6251,6 +6365,9 @@
       "type": "registry:ui",
       "title": "Cherry Icon",
       "description": "Cherry icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6273,6 +6390,9 @@
       "type": "registry:ui",
       "title": "Chevron Down Icon",
       "description": "Chevron down icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6297,6 +6417,9 @@
       "type": "registry:ui",
       "title": "Chevron Left Icon",
       "description": "Chevron left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6323,6 +6446,9 @@
       "type": "registry:ui",
       "title": "Chevron Left Right Icon",
       "description": "Chevron left right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6347,6 +6473,9 @@
       "type": "registry:ui",
       "title": "Chevron Right Icon",
       "description": "Chevron right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6379,6 +6508,9 @@
       "type": "registry:ui",
       "title": "Chevron Up Icon",
       "description": "Chevron up icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6411,6 +6543,9 @@
       "type": "registry:ui",
       "title": "Chevron Up Down Icon",
       "description": "Chevron up down icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6434,6 +6569,9 @@
       "type": "registry:ui",
       "title": "Circle Plus Icon",
       "description": "Circle plus icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6466,6 +6604,9 @@
       "type": "registry:ui",
       "title": "Circle X Icon",
       "description": "Circle x icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6497,6 +6638,9 @@
       "type": "registry:ui",
       "title": "Clock Icon",
       "description": "Clock icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6522,6 +6666,9 @@
       "type": "registry:ui",
       "title": "Clock 1 Icon",
       "description": "Clock 1 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6547,6 +6694,9 @@
       "type": "registry:ui",
       "title": "Clock 10 Icon",
       "description": "Clock 10 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6572,6 +6722,9 @@
       "type": "registry:ui",
       "title": "Clock 11 Icon",
       "description": "Clock 11 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6597,6 +6750,9 @@
       "type": "registry:ui",
       "title": "Clock 12 Icon",
       "description": "Clock 12 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6622,6 +6778,9 @@
       "type": "registry:ui",
       "title": "Clock 2 Icon",
       "description": "Clock 2 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6647,6 +6806,9 @@
       "type": "registry:ui",
       "title": "Clock 3 Icon",
       "description": "Clock 3 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6672,6 +6834,9 @@
       "type": "registry:ui",
       "title": "Clock 4 Icon",
       "description": "Clock 4 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6697,6 +6862,9 @@
       "type": "registry:ui",
       "title": "Clock 5 Icon",
       "description": "Clock 5 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6722,6 +6890,9 @@
       "type": "registry:ui",
       "title": "Clock 6 Icon",
       "description": "Clock 6 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6747,6 +6918,9 @@
       "type": "registry:ui",
       "title": "Clock 7 Icon",
       "description": "Clock 7 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6772,6 +6946,9 @@
       "type": "registry:ui",
       "title": "Clock 8 Icon",
       "description": "Clock 8 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6797,6 +6974,9 @@
       "type": "registry:ui",
       "title": "Clock 9 Icon",
       "description": "Clock 9 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6822,6 +7002,9 @@
       "type": "registry:ui",
       "title": "Cloud Download Icon",
       "description": "Cloud download icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6843,6 +7026,9 @@
       "type": "registry:ui",
       "title": "Cloud Upload Icon",
       "description": "Cloud upload icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6864,6 +7050,9 @@
       "type": "registry:ui",
       "title": "Cog Icon",
       "description": "Cog icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6896,6 +7085,9 @@
       "type": "registry:ui",
       "title": "Compass Icon",
       "description": "Compass icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6923,6 +7115,9 @@
       "type": "registry:ui",
       "title": "Contrast Icon",
       "description": "Contrast icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6945,6 +7140,9 @@
       "type": "registry:ui",
       "title": "Copy Icon",
       "description": "Copy icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6968,6 +7166,9 @@
       "type": "registry:ui",
       "title": "Cross Icon",
       "description": "Cross icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -6990,6 +7191,9 @@
       "type": "registry:ui",
       "title": "Disc 3 Icon",
       "description": "Disc 3 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7021,6 +7225,9 @@
       "type": "registry:ui",
       "title": "Download Icon",
       "description": "Download icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7044,6 +7251,9 @@
       "type": "registry:ui",
       "title": "Ellipsis Icon",
       "description": "Ellipsis icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7085,6 +7295,9 @@
       "type": "registry:ui",
       "title": "Ellipsis Vertical Icon",
       "description": "Ellipsis vertical icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7115,6 +7328,9 @@
       "type": "registry:ui",
       "title": "Expand Icon",
       "description": "Expand icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7140,6 +7356,9 @@
       "type": "registry:ui",
       "title": "External Link Icon",
       "description": "External link icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7163,6 +7382,9 @@
       "type": "registry:ui",
       "title": "Fingerprint Icon",
       "description": "Fingerprint icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7188,6 +7410,9 @@
       "type": "registry:ui",
       "title": "Forklift Icon",
       "description": "Forklift icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7211,6 +7436,9 @@
       "type": "registry:ui",
       "title": "Gauge Icon",
       "description": "Gauge icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7238,6 +7466,9 @@
       "type": "registry:ui",
       "title": "Gavel Icon",
       "description": "Gavel icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7260,6 +7491,9 @@
       "type": "registry:ui",
       "title": "Hammer Icon",
       "description": "Hammer icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7286,6 +7520,9 @@
       "type": "registry:ui",
       "title": "Heart Icon",
       "description": "Heart icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7312,6 +7549,9 @@
       "type": "registry:ui",
       "title": "House Wifi Icon",
       "description": "House wifi icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7356,6 +7596,9 @@
       "type": "registry:ui",
       "title": "Kanban Icon",
       "description": "Kanban icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7390,6 +7633,9 @@
       "type": "registry:ui",
       "title": "Layers Icon",
       "description": "Layers icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7417,6 +7663,9 @@
       "type": "registry:ui",
       "title": "Layers 2 Icon",
       "description": "Layers 2 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7447,6 +7696,9 @@
       "type": "registry:ui",
       "title": "Layout Dashboard Icon",
       "description": "Layout dashboard icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7469,6 +7721,9 @@
       "type": "registry:ui",
       "title": "Lightbulb Icon",
       "description": "Lightbulb icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7492,6 +7747,9 @@
       "type": "registry:ui",
       "title": "Lightbulb Off Icon",
       "description": "Lightbulb off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7513,6 +7771,9 @@
       "type": "registry:ui",
       "title": "Loader Icon",
       "description": "Loader icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7540,6 +7801,9 @@
       "type": "registry:ui",
       "title": "Loader Circle Icon",
       "description": "Loader circle icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7568,6 +7832,9 @@
       "type": "registry:ui",
       "title": "Loader Pinwheel Icon",
       "description": "Loader pinwheel icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7598,6 +7865,9 @@
       "type": "registry:ui",
       "title": "Log In Icon",
       "description": "Log in icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7622,6 +7892,9 @@
       "type": "registry:ui",
       "title": "Log Out Icon",
       "description": "Log out icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7646,6 +7919,9 @@
       "type": "registry:ui",
       "title": "Map Pin Icon",
       "description": "Map pin icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7672,6 +7948,9 @@
       "type": "registry:ui",
       "title": "Map Pin Off Icon",
       "description": "Map pin off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7696,6 +7975,9 @@
       "type": "registry:ui",
       "title": "Maximize Icon",
       "description": "Maximize icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7719,6 +8001,9 @@
       "type": "registry:ui",
       "title": "Menu Icon",
       "description": "Menu icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7743,6 +8028,9 @@
       "type": "registry:ui",
       "title": "Message Circle Icon",
       "description": "Message circle icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7769,6 +8057,9 @@
       "type": "registry:ui",
       "title": "Message Circle Code Icon",
       "description": "Message circle code icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7797,6 +8088,9 @@
       "type": "registry:ui",
       "title": "Message Circle Dashed Icon",
       "description": "Message circle dashed icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7824,6 +8118,9 @@
       "type": "registry:ui",
       "title": "Message Circle Heart Icon",
       "description": "Message circle heart icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7857,6 +8154,9 @@
       "type": "registry:ui",
       "title": "Message Circle More Icon",
       "description": "Message circle more icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7890,6 +8190,9 @@
       "type": "registry:ui",
       "title": "Message Circle Off Icon",
       "description": "Message circle off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7924,6 +8227,9 @@
       "type": "registry:ui",
       "title": "Message Circle Plus Icon",
       "description": "Message circle plus icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7951,6 +8257,9 @@
       "type": "registry:ui",
       "title": "Message Circle Question Icon",
       "description": "Message circle question icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -7978,6 +8287,9 @@
       "type": "registry:ui",
       "title": "Message Circle Warning Icon",
       "description": "Message circle warning icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8012,6 +8324,9 @@
       "type": "registry:ui",
       "title": "Message Circle X Icon",
       "description": "Message circle x icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8046,6 +8361,9 @@
       "type": "registry:ui",
       "title": "Message Square Icon",
       "description": "Message square icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8072,6 +8390,9 @@
       "type": "registry:ui",
       "title": "Message Square Code Icon",
       "description": "Message square code icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8100,6 +8421,9 @@
       "type": "registry:ui",
       "title": "Message Square Dashed Icon",
       "description": "Message square dashed icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8127,6 +8451,9 @@
       "type": "registry:ui",
       "title": "Message Square Diff Icon",
       "description": "Message square diff icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8164,6 +8491,9 @@
       "type": "registry:ui",
       "title": "Message Square Dot Icon",
       "description": "Message square dot icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8192,6 +8522,9 @@
       "type": "registry:ui",
       "title": "Message Square Heart Icon",
       "description": "Message square heart icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8225,6 +8558,9 @@
       "type": "registry:ui",
       "title": "Message Square More Icon",
       "description": "Message square more icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8258,6 +8594,9 @@
       "type": "registry:ui",
       "title": "Message Square Off Icon",
       "description": "Message square off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8292,6 +8631,9 @@
       "type": "registry:ui",
       "title": "Message Square Plus Icon",
       "description": "Message square plus icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8319,6 +8661,9 @@
       "type": "registry:ui",
       "title": "Message Square Quote Icon",
       "description": "Message square quote icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8350,6 +8695,9 @@
       "type": "registry:ui",
       "title": "Message Square Share Icon",
       "description": "Message square share icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8378,6 +8726,9 @@
       "type": "registry:ui",
       "title": "Message Square Text Icon",
       "description": "Message square text icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8404,6 +8755,9 @@
       "type": "registry:ui",
       "title": "Message Square Warning Icon",
       "description": "Message square warning icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8438,6 +8792,9 @@
       "type": "registry:ui",
       "title": "Message Square X Icon",
       "description": "Message square x icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8472,6 +8829,9 @@
       "type": "registry:ui",
       "title": "Minimize Icon",
       "description": "Minimize icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8495,6 +8855,9 @@
       "type": "registry:ui",
       "title": "Move Down Icon",
       "description": "Move down icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8521,6 +8884,9 @@
       "type": "registry:ui",
       "title": "Move Left Icon",
       "description": "Move left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8549,6 +8915,9 @@
       "type": "registry:ui",
       "title": "Move Right Icon",
       "description": "Move right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8577,6 +8946,9 @@
       "type": "registry:ui",
       "title": "Move Up Icon",
       "description": "Move up icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8603,6 +8975,9 @@
       "type": "registry:ui",
       "title": "Paintbrush Icon",
       "description": "Paintbrush icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8630,6 +9005,9 @@
       "type": "registry:ui",
       "title": "Panel Bottom Icon",
       "description": "Panel bottom icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8656,6 +9034,9 @@
       "type": "registry:ui",
       "title": "Panel Left Icon",
       "description": "Panel left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8682,6 +9063,9 @@
       "type": "registry:ui",
       "title": "Panel Right Icon",
       "description": "Panel right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8708,6 +9092,9 @@
       "type": "registry:ui",
       "title": "Panel Top Icon",
       "description": "Panel top icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8734,6 +9121,9 @@
       "type": "registry:ui",
       "title": "Party Popper Icon",
       "description": "Party popper icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8765,6 +9155,9 @@
       "type": "registry:ui",
       "title": "Pause Icon",
       "description": "Pause icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8787,6 +9180,9 @@
       "type": "registry:ui",
       "title": "Pickaxe Icon",
       "description": "Pickaxe icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8816,6 +9212,9 @@
       "type": "registry:ui",
       "title": "Pin Icon",
       "description": "Pin icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8842,6 +9241,9 @@
       "type": "registry:ui",
       "title": "Pin Off Icon",
       "description": "Pin off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8868,6 +9270,9 @@
       "type": "registry:ui",
       "title": "Play Icon",
       "description": "Play icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8893,6 +9298,9 @@
       "type": "registry:ui",
       "title": "Plus Icon",
       "description": "Plus icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8924,6 +9332,9 @@
       "type": "registry:ui",
       "title": "Refresh Ccw Icon",
       "description": "Refresh ccw icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8951,6 +9362,9 @@
       "type": "registry:ui",
       "title": "Refresh Ccw Dot Icon",
       "description": "Refresh ccw dot icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -8982,6 +9396,9 @@
       "type": "registry:ui",
       "title": "Refresh Cw Icon",
       "description": "Refresh cw icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9009,6 +9426,9 @@
       "type": "registry:ui",
       "title": "Refresh Cw Off Icon",
       "description": "Refresh cw off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9042,6 +9462,9 @@
       "type": "registry:ui",
       "title": "Rotate Ccw Icon",
       "description": "Rotate ccw icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9077,6 +9500,9 @@
       "type": "registry:ui",
       "title": "Rotate Cw Icon",
       "description": "Rotate cw icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9105,6 +9531,9 @@
       "type": "registry:ui",
       "title": "Search Icon",
       "description": "Search icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9130,6 +9559,9 @@
       "type": "registry:ui",
       "title": "Send Icon",
       "description": "Send icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9156,6 +9588,9 @@
       "type": "registry:ui",
       "title": "Send Horizontal Icon",
       "description": "Send horizontal icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9182,6 +9617,9 @@
       "type": "registry:ui",
       "title": "Settings Icon",
       "description": "Settings icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9206,6 +9644,9 @@
       "type": "registry:ui",
       "title": "Shrink Icon",
       "description": "Shrink icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9231,6 +9672,9 @@
       "type": "registry:ui",
       "title": "Square Arrow Out Down Left Icon",
       "description": "Square arrow out down left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9255,6 +9699,9 @@
       "type": "registry:ui",
       "title": "Square Arrow Out Down Right Icon",
       "description": "Square arrow out down right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9279,6 +9726,9 @@
       "type": "registry:ui",
       "title": "Square Arrow Out Up Left Icon",
       "description": "Square arrow out up left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9303,6 +9753,9 @@
       "type": "registry:ui",
       "title": "Square Arrow Out Up Right Icon",
       "description": "Square arrow out up right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9331,6 +9784,9 @@
       "type": "registry:ui",
       "title": "Square Dashed Kanban Icon",
       "description": "Square Dashed Kanban icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9365,6 +9821,9 @@
       "type": "registry:ui",
       "title": "Square Kanban Icon",
       "description": "Square Kanban icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9399,6 +9858,9 @@
       "type": "registry:ui",
       "title": "Square Plus Icon",
       "description": "Square plus icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9432,6 +9894,9 @@
       "type": "registry:ui",
       "title": "Square X Icon",
       "description": "Square x icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9463,6 +9928,9 @@
       "type": "registry:ui",
       "title": "Star Icon",
       "description": "Star icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9488,6 +9956,9 @@
       "type": "registry:ui",
       "title": "Terminal Icon",
       "description": "Terminal icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9512,6 +9983,9 @@
       "type": "registry:ui",
       "title": "Thumbs Down Icon",
       "description": "Thumbs down icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9535,6 +10009,9 @@
       "type": "registry:ui",
       "title": "Thumbs Up Icon",
       "description": "Thumbs up icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9558,6 +10035,9 @@
       "type": "registry:ui",
       "title": "Timer Icon",
       "description": "Timer icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9581,6 +10061,9 @@
       "type": "registry:ui",
       "title": "Timer Off Icon",
       "description": "Timer off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9604,6 +10087,9 @@
       "type": "registry:ui",
       "title": "Toggle Left Icon",
       "description": "Toggle left icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9628,6 +10114,9 @@
       "type": "registry:ui",
       "title": "Toggle Right Icon",
       "description": "Toggle right icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9652,6 +10141,9 @@
       "type": "registry:ui",
       "title": "Trash Icon",
       "description": "Trash icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9676,6 +10168,9 @@
       "type": "registry:ui",
       "title": "Trash 2 Icon",
       "description": "Trash 2 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9700,6 +10195,9 @@
       "type": "registry:ui",
       "title": "Upload Icon",
       "description": "Upload icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9721,6 +10219,9 @@
       "type": "registry:ui",
       "title": "User Icon",
       "description": "User icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9744,6 +10245,9 @@
       "type": "registry:ui",
       "title": "User Round Icon",
       "description": "User round icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9767,6 +10271,9 @@
       "type": "registry:ui",
       "title": "Users Icon",
       "description": "Users icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9789,6 +10296,9 @@
       "type": "registry:ui",
       "title": "Users Round Icon",
       "description": "Users round icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9811,6 +10321,9 @@
       "type": "registry:ui",
       "title": "Volume 1 Icon",
       "description": "Volume 1 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9834,6 +10347,9 @@
       "type": "registry:ui",
       "title": "Volume 2 Icon",
       "description": "Volume 2 icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9857,6 +10373,9 @@
       "type": "registry:ui",
       "title": "Volume Off Icon",
       "description": "Volume off icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9881,6 +10400,9 @@
       "type": "registry:ui",
       "title": "Wifi Icon",
       "description": "Wifi icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9904,6 +10426,9 @@
       "type": "registry:ui",
       "title": "Wifi High Icon",
       "description": "Wifi high icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9927,6 +10452,9 @@
       "type": "registry:ui",
       "title": "Wifi Low Icon",
       "description": "Wifi low icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -9950,6 +10478,9 @@
       "type": "registry:ui",
       "title": "X Icon",
       "description": "X icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
       "dependencies": [
         "motion"
       ],
@@ -10036,7 +10567,7 @@
       ],
       "registryDependencies": [
         "@animate-ui/primitives-animate-slot",
-        "@animate-ui/primitives-animate-sliding-number",
+        "@animate-ui/primitives-texts-sliding-number",
         "@animate-ui/lib-get-strict-context",
         "@animate-ui/hooks-use-controlled-state"
       ],
@@ -10078,7 +10609,7 @@
       ],
       "registryDependencies": [
         "@animate-ui/primitives-animate-slot",
-        "@animate-ui/primitives-animate-sliding-number",
+        "@animate-ui/primitives-texts-sliding-number",
         "@animate-ui/hooks-use-is-in-view",
         "@animate-ui/lib-get-strict-context"
       ],

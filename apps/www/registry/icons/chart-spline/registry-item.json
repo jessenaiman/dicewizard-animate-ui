@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Chart Spline Icon",
   "description": "Chart spline icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

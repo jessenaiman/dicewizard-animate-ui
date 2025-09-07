@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "House Wifi Icon",
   "description": "House wifi icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

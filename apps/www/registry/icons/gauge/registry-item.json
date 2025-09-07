@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Gauge Icon",
   "description": "Gauge icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

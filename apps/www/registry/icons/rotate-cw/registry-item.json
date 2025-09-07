@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Rotate Cw Icon",
   "description": "Rotate cw icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

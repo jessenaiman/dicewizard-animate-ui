@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Move Right Icon",
   "description": "Move right icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

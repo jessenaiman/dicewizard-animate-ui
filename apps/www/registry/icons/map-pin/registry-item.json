@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Map Pin Icon",
   "description": "Map pin icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

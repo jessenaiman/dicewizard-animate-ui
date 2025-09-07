@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Circle X Icon",
   "description": "Message circle x icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

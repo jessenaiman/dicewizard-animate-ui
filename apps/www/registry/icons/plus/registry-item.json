@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Plus Icon",
   "description": "Plus icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

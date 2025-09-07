@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Lightbulb Icon",
   "description": "Lightbulb icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Square Dashed Kanban Icon",
   "description": "Square Dashed Kanban icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

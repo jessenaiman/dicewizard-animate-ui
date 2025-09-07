@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Alarm Clock Icon",
   "description": "Alarm clock icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

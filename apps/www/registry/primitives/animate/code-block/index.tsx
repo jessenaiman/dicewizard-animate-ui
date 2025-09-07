@@ -73,7 +73,7 @@ function CodeBlock({
     };
 
     loadHighlightedCode();
-  }, [lang, themes, writing, isInView, duration, delay, visibleCode]);
+  }, [lang, themes, writing, isInView, duration, delay, visibleCode, theme]);
 
   React.useEffect(() => {
     if (!writing) {
@@ -125,7 +125,7 @@ function CodeBlock({
       clearTimeout(timeout);
       clearInterval(intervalId);
     };
-  }, [code, duration, delay, isInView, writing, onDone, onWrite]);
+  }, [code, duration, delay, isInView, writing, onDone, onWrite, localRef]);
 
   React.useEffect(() => {
     if (!writing || !isInView) return;
@@ -142,7 +142,7 @@ function CodeBlock({
         behavior: 'smooth',
       });
     });
-  }, [highlightedCode, writing, isInView, scrollContainerRef]);
+  }, [highlightedCode, writing, isInView, scrollContainerRef, localRef]);
 
   return (
     <div

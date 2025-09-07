@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Cast Icon",
   "description": "Cast icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Panel Bottom Icon",
   "description": "Panel bottom icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

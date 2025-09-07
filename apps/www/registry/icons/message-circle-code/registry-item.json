@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Circle Code Icon",
   "description": "Message circle code icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

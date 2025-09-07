@@ -108,6 +108,8 @@ function TooltipContent({
       arrowPadding={arrowPadding}
       sticky={sticky}
       hideWhenDetached={hideWhenDetached}
+      onEscapeKeyDown={onEscapeKeyDown}
+      onPointerDownOutside={onPointerDownOutside}
     >
       <motion.div
         key="popover-content"

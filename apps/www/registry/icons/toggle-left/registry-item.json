@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Toggle Left Icon",
   "description": "Toggle left icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -7,6 +7,9 @@
   "dependencies": [
     "motion"
   ],
+  "registryDependencies": [
+    "@animate-ui/icons-icon"
+  ],
   "files": [
     {
       "path": "registry/icons/star/index.tsx",

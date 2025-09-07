@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Message Square X Icon",
   "description": "Message square x icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

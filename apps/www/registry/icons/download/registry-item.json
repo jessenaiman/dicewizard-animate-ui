@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Download Icon",
   "description": "Download icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

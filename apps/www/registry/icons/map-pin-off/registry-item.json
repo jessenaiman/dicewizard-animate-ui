@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Map Pin Off Icon",
   "description": "Map pin off icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

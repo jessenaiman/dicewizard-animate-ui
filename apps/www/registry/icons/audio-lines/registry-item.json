@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Audio Lines Icon",
   "description": "Audio Lines icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

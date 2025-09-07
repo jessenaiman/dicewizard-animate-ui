@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Shrink Icon",
   "description": "Shrink icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

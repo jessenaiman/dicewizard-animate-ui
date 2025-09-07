@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Settings Icon",
   "description": "Settings icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

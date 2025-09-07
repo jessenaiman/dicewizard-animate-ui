@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Party Popper Icon",
   "description": "Party popper icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

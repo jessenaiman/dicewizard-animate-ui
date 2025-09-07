@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Square Arrow Out Down Right Icon",
   "description": "Square arrow out down right icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {

@@ -4,6 +4,7 @@
   "type": "registry:ui",
   "title": "Users Round Icon",
   "description": "Users round icon component.",
+  "registryDependencies": ["@animate-ui/icons-icon"],
   "dependencies": ["motion"],
   "files": [
     {
