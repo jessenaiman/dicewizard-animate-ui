@@ -1,6 +1,6 @@
 'use client';
 
-import { SidebarIcon, SparklesIcon } from 'lucide-react';
+import { SidebarIcon } from 'lucide-react';
 import { cn } from '@workspace/ui/lib/utils';
 import {
   Sidebar,

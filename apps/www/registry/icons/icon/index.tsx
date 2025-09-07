@@ -191,10 +191,16 @@ function AnimateIcon({
   children,
 }: AnimateIconProps) {
   const controls = useAnimation();
-  const [localAnimate, setLocalAnimate] = React.useState(!!animate);
+
+  const [localAnimate, setLocalAnimate] = React.useState<boolean>(() => {
+    if (animate === undefined || animate === false) return false;
+    return delay <= 0;
+  });
+
   const [currentAnimation, setCurrentAnimation] = React.useState<
     string | StaticAnimations
   >(typeof animate === 'string' ? animate : animation);
+
   const delayRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const startAnimation = React.useCallback(
@@ -206,6 +212,7 @@ function AnimateIcon({
       }
       setCurrentAnimation(next);
       if (delay > 0) {
+        setLocalAnimate(false);
         delayRef.current = setTimeout(() => {
           setLocalAnimate(true);
         }, delay);

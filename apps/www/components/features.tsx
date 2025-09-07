@@ -17,7 +17,6 @@ import { MessageSquareMoreIcon } from '@/registry/icons/message-square-more';
 import { BellRingIcon } from '@/registry/icons/bell-ring';
 import { AlarmClockIcon } from '@/registry/icons/alarm-clock';
 import { ArrowRightIcon } from '@/registry/icons/arrow-right';
-import { SearchIcon } from '@/registry/icons/search';
 import { UserIcon } from '@/registry/icons/user';
 import { AnimateIcon } from '@/registry/icons/icon';
 

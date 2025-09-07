@@ -98,7 +98,7 @@ function RotatingText({
       {isInView && (
         <motion.div
           key={currentText}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+          transition={transition}
           initial={{ opacity: 0, y: -y }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y }}
