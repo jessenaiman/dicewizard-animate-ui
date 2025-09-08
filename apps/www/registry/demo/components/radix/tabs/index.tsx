@@ -26,7 +26,7 @@ export function RadixTabsDemo() {
           <TabsTrigger value="password">Password</TabsTrigger>
         </TabsList>
         <TabsContents>
-          <Card>
+          <Card className="shadow-none">
             <TabsContent value="account" className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Account</CardTitle>

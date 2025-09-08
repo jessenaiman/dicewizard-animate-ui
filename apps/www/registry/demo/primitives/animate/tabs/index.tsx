@@ -31,7 +31,7 @@ export function AnimateTabsDemo() {
           </TabsHighlightItem>
         </TabsList>
       </TabsHighlight>
-      <TabsContents className="bg-background p-3 border border-t-0">
+      <TabsContents className="bg-background p-3 border-4 border-accent border-t-0">
         <TabsContent value="account" className="space-y-4">
           <p className="text-sm text-muted-foreground">
             Make changes to your account here. Click save when you&apos;re done.

@@ -38,6 +38,7 @@
     "base/preview-card",
     "base/progress",
     "base/switch",
+    "base/tabs",
     "base/toggle",
     "base/toggle-group",
     "base/tooltip",

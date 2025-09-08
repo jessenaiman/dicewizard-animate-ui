@@ -3,17 +3,17 @@ import * as React from 'react';
 import {
   Tabs as TabsPrimitive,
   TabsList as TabsListPrimitive,
-  TabsTrigger as TabsTriggerPrimitive,
-  TabsContent as TabsContentPrimitive,
-  TabsContents as TabsContentsPrimitive,
+  TabsTab as TabsTabPrimitive,
+  TabsPanel as TabsPanelPrimitive,
+  TabsPanels as TabsPanelsPrimitive,
   TabsHighlight as TabsHighlightPrimitive,
   TabsHighlightItem as TabsHighlightItemPrimitive,
   type TabsProps as TabsPrimitiveProps,
   type TabsListProps as TabsListPrimitiveProps,
-  type TabsTriggerProps as TabsTriggerPrimitiveProps,
-  type TabsContentProps as TabsContentPrimitiveProps,
-  type TabsContentsProps as TabsContentsPrimitiveProps,
-} from '@/registry/primitives/radix/tabs';
+  type TabsTabProps as TabsTabPrimitiveProps,
+  type TabsPanelProps as TabsPanelPrimitiveProps,
+  type TabsPanelsProps as TabsPanelsPrimitiveProps,
+} from '@/registry/primitives/base/tabs';
 import { cn } from '@workspace/ui/lib/utils';
 
 type TabsProps = TabsPrimitiveProps;
@@ -43,14 +43,14 @@ function TabsList({ className, ...props }: TabsListProps) {
   );
 }
 
-type TabsTriggerProps = TabsTriggerPrimitiveProps;
+type TabsTabProps = TabsTabPrimitiveProps;
 
-function TabsTrigger({ className, ...props }: TabsTriggerProps) {
+function TabsTab({ className, ...props }: TabsTabProps) {
   return (
     <TabsHighlightItemPrimitive value={props.value} className="flex-1">
-      <TabsTriggerPrimitive
+      <TabsTabPrimitive
         className={cn(
-          "data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md w-full px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors duration-500 ease-in-out focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+          "data-[selected]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md w-full px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors duration-500 ease-in-out focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
           className,
         )}
         {...props}
@@ -59,17 +59,17 @@ function TabsTrigger({ className, ...props }: TabsTriggerProps) {
   );
 }
 
-type TabsContentsProps = TabsContentsPrimitiveProps;
+type TabsPanelsProps = TabsPanelsPrimitiveProps;
 
-function TabsContents(props: TabsContentsProps) {
-  return <TabsContentsPrimitive {...props} />;
+function TabsPanels(props: TabsPanelsProps) {
+  return <TabsPanelsPrimitive {...props} />;
 }
 
-type TabsContentProps = TabsContentPrimitiveProps;
+type TabsPanelProps = TabsPanelPrimitiveProps;
 
-function TabsContent({ className, ...props }: TabsContentProps) {
+function TabsPanel({ className, ...props }: TabsPanelProps) {
   return (
-    <TabsContentPrimitive
+    <TabsPanelPrimitive
       className={cn('flex-1 outline-none', className)}
       {...props}
     />
@@ -79,12 +79,12 @@ function TabsContent({ className, ...props }: TabsContentProps) {
 export {
   Tabs,
   TabsList,
-  TabsTrigger,
-  TabsContents,
-  TabsContent,
+  TabsTab,
+  TabsPanels,
+  TabsPanel,
   type TabsProps,
   type TabsListProps,
-  type TabsTriggerProps,
-  type TabsContentsProps,
-  type TabsContentProps,
+  type TabsTabProps,
+  type TabsPanelsProps,
+  type TabsPanelProps,
 };

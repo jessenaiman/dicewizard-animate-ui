@@ -1,10 +1,10 @@
 import {
-  TabGroup,
-  TabPanel,
-  TabPanels,
-  TabList,
-  Tab,
-} from '@/registry/components/headless/tabs';
+  Tabs,
+  TabsPanel,
+  TabsPanels,
+  TabsList,
+  TabsTab,
+} from '@/registry/components/base/tabs';
 import { Button } from '@workspace/ui/components/ui/button';
 import {
   Card,
@@ -17,21 +17,17 @@ import {
 import { Input } from '@workspace/ui/components/ui/input';
 import { Label } from '@workspace/ui/components/ui/label';
 
-export function RadixTabsDemo() {
+export function BaseTabsDemo() {
   return (
     <div className="flex w-full max-w-sm flex-col gap-6">
-      <TabGroup defaultValue="account">
-        <TabList>
-          <Tab index={0} value="account">
-            Account
-          </Tab>
-          <Tab index={1} value="password">
-            Password
-          </Tab>
-        </TabList>
-        <TabPanels>
+      <Tabs defaultValue="account">
+        <TabsList>
+          <TabsTab value="account">Account</TabsTab>
+          <TabsTab value="password">Password</TabsTab>
+        </TabsList>
+        <TabsPanels>
           <Card className="shadow-none">
-            <TabPanel className="flex flex-col gap-6">
+            <TabsPanel value="account" className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
                 <CardDescription>
@@ -48,8 +44,8 @@ export function RadixTabsDemo() {
               <CardFooter>
                 <Button>Save changes</Button>
               </CardFooter>
-            </TabPanel>
-            <TabPanel className="flex flex-col gap-6">
+            </TabsPanel>
+            <TabsPanel value="password" className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Password</CardTitle>
                 <CardDescription>
@@ -70,10 +66,10 @@ export function RadixTabsDemo() {
               <CardFooter>
                 <Button>Save password</Button>
               </CardFooter>
-            </TabPanel>
+            </TabsPanel>
           </Card>
-        </TabPanels>
-      </TabGroup>
+        </TabsPanels>
+      </Tabs>
     </div>
   );
 }
