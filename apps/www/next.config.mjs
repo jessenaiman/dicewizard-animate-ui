@@ -9,6 +9,9 @@ const config = {
       {
         hostname: 'ui.aceternity.com',
       },
+      {
+        hostname: 'ui.paceui.com',
+      },
     ],
   },
   reactStrictMode: false,
