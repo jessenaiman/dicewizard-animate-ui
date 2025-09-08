@@ -56,6 +56,7 @@
     "buttons/icon",
     "buttons/liquid",
     "buttons/ripple",
+    "buttons/theme-toggler",
     "---Backgrounds---",
     "backgrounds/bubble",
     "backgrounds/fireworks",

@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import '@workspace/ui/globals.css';
 import './globals.css';
 import { jsonLd } from '@/lib/json-ld';
+import { cn } from '@workspace/ui/lib/utils';
 
 export const metadata: Metadata = {
   title: {
@@ -96,7 +97,13 @@ export default function Layout({ children }: { children: ReactNode }) {
         />
       </head>
 
-      <body className="flex flex-col min-h-screen">
+      <body
+        className={cn(
+          'flex flex-col min-h-screen',
+          // Allows to make more attractive video recordings
+          // 'screenshot-mode',
+        )}
+      >
         <RootProvider theme={{ defaultTheme: 'dark' }}>{children}</RootProvider>
       </body>
     </html>
