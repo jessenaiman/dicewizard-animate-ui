@@ -99,6 +99,7 @@ function Tab<TTag extends React.ElementType = 'button'>(props: TabProps<TTag>) {
     <TabPrimitive
       data-slot="tabs-trigger"
       as={as as React.ElementType}
+      index={index}
       {...rest}
     />
   );
@@ -168,6 +169,7 @@ function TabPanels<TTag extends React.ElementType = typeof motion.div>(
   const {
     as = motion.div,
     transition = { type: 'spring', stiffness: 200, damping: 25 },
+    style,
     ...rest
   } = props;
 
@@ -176,7 +178,7 @@ function TabPanels<TTag extends React.ElementType = typeof motion.div>(
       data-slot="tabs-contents"
       layout="size"
       layoutDependency={selectedIndex.toString()}
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', ...style }}
       transition={{ layout: transition }}
       as={as as React.ElementType}
       {...rest}

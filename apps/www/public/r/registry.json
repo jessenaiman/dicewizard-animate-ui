@@ -379,6 +379,22 @@
       ]
     },
     {
+      "name": "components-base-tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A component for toggling between related panels on the same page.",
+      "registryDependencies": [
+        "@animate-ui/primitives-base-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/components/base/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/components/base/tabs.tsx"
+        }
+      ]
+    },
+    {
       "name": "components-base-toggle",
       "type": "registry:ui",
       "title": "Toggle",
@@ -1741,6 +1757,22 @@
           "path": "registry/demo/components/base/switch/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/components/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-components-base-tabs",
+      "type": "registry:ui",
+      "title": "Base Tabs Demo",
+      "description": "Demo showing a base tabs.",
+      "registryDependencies": [
+        "@animate-ui/components-base-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/base/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/components/base/tabs.tsx"
         }
       ]
     },
@@ -3676,6 +3708,22 @@
           "path": "registry/demo/primitives/base/switch/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "demo-primitives-base-tabs",
+      "type": "registry:ui",
+      "title": "Base Tabs Demo",
+      "description": "Demo showing an animated base tabs.",
+      "registryDependencies": [
+        "@animate-ui/primitives-base-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/base/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/base/tabs.tsx"
         }
       ]
     },
@@ -11033,6 +11081,28 @@
           "path": "registry/primitives/base/switch/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/base/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-base-tabs",
+      "type": "registry:ui",
+      "title": "Base Tabs",
+      "description": "A component for toggling between related panels on the same page.",
+      "dependencies": [
+        "motion",
+        "@base-ui-components/react"
+      ],
+      "registryDependencies": [
+        "@animate-ui/primitives-effects-highlight",
+        "@animate-ui/lib-get-strict-context",
+        "@animate-ui/hooks-use-controlled-state"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/base/tabs/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/base/tabs.tsx"
         }
       ]
     },

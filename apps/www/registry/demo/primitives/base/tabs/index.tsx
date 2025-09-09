@@ -1,38 +1,38 @@
 import {
   Tabs,
-  TabsContent,
-  TabsContents,
+  TabsPanel,
+  TabsPanels,
   TabsHighlight,
   TabsHighlightItem,
   TabsList,
-  TabsTrigger,
-} from '@/registry/primitives/radix/tabs';
+  TabsTab,
+} from '@/registry/primitives/base/tabs';
 
-export function RadixTabsDemo() {
+export function BaseTabsDemo() {
   return (
     <Tabs defaultValue="account" className="w-[500px]">
       <TabsHighlight className="bg-background absolute z-0 inset-0">
         <TabsList className="h-10 inline-flex p-1 bg-accent w-full">
           <TabsHighlightItem value="account" className="flex-1">
-            <TabsTrigger
+            <TabsTab
               value="account"
               className="h-full px-4 py-2 leading-0 w-full text-sm"
             >
               Account
-            </TabsTrigger>
+            </TabsTab>
           </TabsHighlightItem>
           <TabsHighlightItem value="password" className="flex-1">
-            <TabsTrigger
+            <TabsTab
               value="password"
               className="h-full px-4 py-2 leading-0 w-full text-sm"
             >
               Password
-            </TabsTrigger>
+            </TabsTab>
           </TabsHighlightItem>
         </TabsList>
       </TabsHighlight>
-      <TabsContents className="bg-background p-3 border-4 border-accent border-t-0">
-        <TabsContent value="account" className="space-y-4">
+      <TabsPanels className="bg-background p-3 border-4 border-accent border-t-0">
+        <TabsPanel value="account" className="space-y-4">
           <p className="text-sm text-muted-foreground">
             Make changes to your account here. Click save when you&apos;re done.
           </p>
@@ -63,8 +63,8 @@ export function RadixTabsDemo() {
           <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm">
             Save changes
           </button>
-        </TabsContent>
-        <TabsContent value="password" className="space-y-4">
+        </TabsPanel>
+        <TabsPanel value="password" className="space-y-4">
           <p className="text-sm text-muted-foreground">
             Change your password here. After saving, you&apos;ll be logged out.
           </p>
@@ -104,8 +104,8 @@ export function RadixTabsDemo() {
           <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm">
             Save password
           </button>
-        </TabsContent>
-      </TabsContents>
+        </TabsPanel>
+      </TabsPanels>
     </Tabs>
   );
 }

@@ -27,7 +27,7 @@ export function AnimateTabsDemo() {
         </TabsList>
         <TabsContents>
           <TabsContent value="account">
-            <Card>
+            <Card className="shadow-none">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
                 <CardDescription>
@@ -47,7 +47,7 @@ export function AnimateTabsDemo() {
             </Card>
           </TabsContent>
           <TabsContent value="password">
-            <Card>
+            <Card className="shadow-none">
               <CardHeader>
                 <CardTitle>Password</CardTitle>
                 <CardDescription>

@@ -31,7 +31,7 @@ export function HeadlessTabsDemo() {
           </TabHighlightItem>
         </TabList>
       </TabHighlight>
-      <TabPanels className="bg-background p-3 border border-t-0">
+      <TabPanels className="bg-background p-3 border-4 border-accent border-t-0">
         <TabPanel className="space-y-4">
           <p className="text-sm text-muted-foreground">
             Make changes to your account here. Click save when you&apos;re done.
