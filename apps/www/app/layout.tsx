@@ -1,4 +1,5 @@
 import { RootProvider } from 'fumadocs-ui/provider';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { Outfit } from 'next/font/google';
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
@@ -104,7 +105,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           // 'screenshot-mode',
         )}
       >
-        <RootProvider theme={{ defaultTheme: 'dark' }}>{children}</RootProvider>
+        <RootProvider theme={{ defaultTheme: 'dark' }}>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </RootProvider>
       </body>
     </html>
   );

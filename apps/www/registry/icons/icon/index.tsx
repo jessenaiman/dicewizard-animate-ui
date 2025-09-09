@@ -41,12 +41,22 @@ const staticAnimations = {
 
 type StaticAnimations = keyof typeof staticAnimations;
 type TriggerProp<T = string> = boolean | StaticAnimations | T;
+type Trigger = TriggerProp<string>;
 
 interface AnimateIconContextValue {
   controls: LegacyAnimationControls | undefined;
   animation: StaticAnimations | string;
   loop: boolean;
   loopDelay: number;
+  active: boolean;
+  animate?: Trigger;
+  animateOnHover?: Trigger;
+  animateOnTap?: Trigger;
+  animateOnView?: Trigger;
+  animateOnViewMargin?: UseInViewOptions['margin'];
+  animateOnViewOnce?: boolean;
+  initialOnAnimateEnd?: boolean;
+  delay?: number;
 }
 
 interface DefaultIconProps<T = string> {
@@ -65,6 +75,7 @@ interface DefaultIconProps<T = string> {
   loopDelay?: number;
   onAnimateStart?: () => void;
   onAnimateEnd?: () => void;
+  initialOnAnimateEnd?: boolean;
   delay?: number;
 }
 
@@ -98,6 +109,15 @@ function useAnimateIconContext() {
       animation: 'default',
       loop: false,
       loopDelay: 0,
+      active: false,
+      animate: undefined,
+      animateOnHover: undefined,
+      animateOnTap: undefined,
+      animateOnView: undefined,
+      animateOnViewMargin: '0px' as UseInViewOptions['margin'],
+      animateOnViewOnce: true,
+      initialOnAnimateEnd: false,
+      delay: 0,
     };
   return context;
 }
@@ -187,6 +207,7 @@ function AnimateIcon({
   loopDelay = 0,
   onAnimateStart,
   onAnimateEnd,
+  initialOnAnimateEnd = false,
   delay = 0,
   children,
 }: AnimateIconProps) {
@@ -196,7 +217,6 @@ function AnimateIcon({
     if (animate === undefined || animate === false) return false;
     return delay <= 0;
   });
-
   const [currentAnimation, setCurrentAnimation] = React.useState<
     string | StaticAnimations
   >(typeof animate === 'string' ? animate : animation);
@@ -245,13 +265,6 @@ function AnimateIcon({
   );
 
   React.useEffect(() => {
-    if (localAnimate) onAnimateStart?.();
-    controls.start(localAnimate ? 'animate' : 'initial').then(() => {
-      if (localAnimate) onAnimateEnd?.();
-    });
-  }, [localAnimate, controls, onAnimateStart, onAnimateEnd]);
-
-  React.useEffect(() => {
     return () => {
       if (delayRef.current) clearTimeout(delayRef.current);
     };
@@ -269,6 +282,49 @@ function AnimateIcon({
     if (isInView) startAnimation(animateOnView);
     else stopAnimation();
   }, [isInView, animateOnView, startAnimation, stopAnimation]);
+
+  React.useEffect(() => {
+    async function run() {
+      if (!localAnimate) {
+        controls.start('initial');
+        return;
+      }
+
+      onAnimateStart?.();
+
+      try {
+        await controls.start('animate');
+      } catch {
+        return;
+      }
+
+      onAnimateEnd?.();
+
+      if (initialOnAnimateEnd || loop) {
+        try {
+          controls.set('initial');
+        } catch {
+          return;
+        }
+      }
+      if (loop) {
+        if (loopDelay > 0) {
+          await new Promise((r) => setTimeout(r, loopDelay));
+        }
+        await run();
+      }
+    }
+
+    void run();
+  }, [
+    localAnimate,
+    loop,
+    loopDelay,
+    controls,
+    onAnimateStart,
+    onAnimateEnd,
+    initialOnAnimateEnd,
+  ]);
 
   const childProps = (
     React.isValidElement(children) ? (children as React.ReactElement).props : {}
@@ -331,6 +387,15 @@ function AnimateIcon({
         animation: currentAnimation,
         loop,
         loopDelay,
+        active: localAnimate,
+        animate,
+        animateOnHover,
+        animateOnTap,
+        animateOnView,
+        animateOnViewMargin,
+        animateOnViewOnce,
+        initialOnAnimateEnd,
+        delay,
       }}
     >
       {content}
@@ -356,6 +421,7 @@ function IconWrapper<T extends string>({
   loopDelay = 0,
   onAnimateStart,
   onAnimateEnd,
+  initialOnAnimateEnd = false,
   delay = 0,
   className,
   ...props
@@ -368,10 +434,72 @@ function IconWrapper<T extends string>({
       animation: parentAnimation,
       loop: parentLoop,
       loopDelay: parentLoopDelay,
+      active: parentActive,
+      animate: parentAnimate,
+      animateOnHover: parentAnimateOnHover,
+      animateOnTap: parentAnimateOnTap,
+      animateOnView: parentAnimateOnView,
+      animateOnViewMargin: parentAnimateOnViewMargin,
+      animateOnViewOnce: parentAnimateOnViewOnce,
+      initialOnAnimateEnd: parentInitialOnAnimateEnd,
+      delay: parentDelay,
     } = context;
+
+    const hasOverrides =
+      animate !== undefined ||
+      animationProp !== undefined ||
+      animateOnHover !== false ||
+      animateOnTap !== false ||
+      animateOnView !== false ||
+      loop !== false ||
+      loopDelay !== 0 ||
+      initialOnAnimateEnd !== false ||
+      delay !== 0;
+
+    if (hasOverrides) {
+      const inheritedAnimate: Trigger = parentActive
+        ? (animationProp ?? parentAnimation ?? 'default')
+        : false;
+
+      const finalAnimate: Trigger = (animate ??
+        parentAnimate ??
+        inheritedAnimate) as Trigger;
+
+      return (
+        <AnimateIcon
+          animate={finalAnimate}
+          animateOnHover={animateOnHover ?? parentAnimateOnHover}
+          animateOnTap={animateOnTap ?? parentAnimateOnTap}
+          animateOnView={animateOnView ?? parentAnimateOnView}
+          animateOnViewMargin={animateOnViewMargin ?? parentAnimateOnViewMargin}
+          animateOnViewOnce={animateOnViewOnce ?? parentAnimateOnViewOnce}
+          animation={animationProp ?? parentAnimation}
+          loop={loop ?? parentLoop}
+          loopDelay={loopDelay ?? parentLoopDelay}
+          onAnimateChange={onAnimateChange}
+          onAnimateStart={onAnimateStart}
+          onAnimateEnd={onAnimateEnd}
+          initialOnAnimateEnd={initialOnAnimateEnd ?? parentInitialOnAnimateEnd}
+          delay={delay ?? parentDelay}
+          asChild
+        >
+          <IconComponent
+            size={size}
+            className={cn(
+              className,
+              ((animationProp ?? parentAnimation) === 'path' ||
+                (animationProp ?? parentAnimation) === 'path-loop') &&
+                pathClassName,
+            )}
+            {...props}
+          />
+        </AnimateIcon>
+      );
+    }
+
     const animationToUse = animationProp ?? parentAnimation;
-    const loopToUse = loop || parentLoop;
-    const loopDelayToUse = loopDelay || parentLoopDelay;
+    const loopToUse = parentLoop;
+    const loopDelayToUse = parentLoopDelay;
 
     return (
       <AnimateIconContext.Provider
@@ -380,6 +508,15 @@ function IconWrapper<T extends string>({
           animation: animationToUse,
           loop: loopToUse,
           loopDelay: loopDelayToUse,
+          active: parentActive,
+          animate: parentAnimate,
+          animateOnHover: parentAnimateOnHover,
+          animateOnTap: parentAnimateOnTap,
+          animateOnView: parentAnimateOnView,
+          animateOnViewMargin: parentAnimateOnViewMargin,
+          animateOnViewOnce: parentAnimateOnViewOnce,
+          initialOnAnimateEnd: parentInitialOnAnimateEnd,
+          delay: parentDelay,
         }}
       >
         <IconComponent
@@ -451,7 +588,7 @@ function getVariants<
   T extends Record<string, Variants>,
 >(animations: V): T {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { animation: animationType, loop, loopDelay } = useAnimateIconContext();
+  const { animation: animationType } = useAnimateIconContext();
 
   let result: T;
 
@@ -468,43 +605,6 @@ function getVariants<
     }
   } else {
     result = (animations[animationType as keyof V] as T) ?? animations.default;
-  }
-
-  if (loop) {
-    for (const key in result) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const state = result[key] as any;
-      const transition = state.animate?.transition;
-      if (!transition) continue;
-
-      const hasNestedKeys = Object.values(transition).some(
-        (v) =>
-          typeof v === 'object' &&
-          v !== null &&
-          ('ease' in v || 'duration' in v || 'times' in v),
-      );
-
-      if (hasNestedKeys) {
-        for (const prop in transition) {
-          const subTrans = transition[prop];
-          if (typeof subTrans === 'object' && subTrans !== null) {
-            transition[prop] = {
-              ...subTrans,
-              repeat: Infinity,
-              repeatType: 'loop',
-              repeatDelay: loopDelay,
-            };
-          }
-        }
-      } else {
-        state.animate.transition = {
-          ...transition,
-          repeat: Infinity,
-          repeatType: 'loop',
-          repeatDelay: loopDelay,
-        };
-      }
-    }
   }
 
   return result;
