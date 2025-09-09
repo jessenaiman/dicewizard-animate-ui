@@ -209,15 +209,13 @@ function TooltipArrow({
   const { transition, globalId } = useGlobalTooltip();
   React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);
 
-  const resolvedSide = getResolvedSide(context.placement);
-  const deg = { top: 0, right: 90, bottom: 180, left: -90 }[resolvedSide];
+  const deg = { top: 0, right: 90, bottom: 180, left: -90 }[side];
 
   return (
     <MotionTooltipArrow
       ref={arrowRef}
       context={context}
       data-state={open ? 'open' : 'closed'}
-      data-resolved-side={resolvedSide}
       data-side={side}
       data-align={align}
       data-slot="tooltip-arrow"
@@ -280,6 +278,7 @@ function TooltipOverlay() {
 
   const ready = x != null && y != null;
   const Component = rendered.data?.contentAsChild ? Slot : motion.div;
+  const resolvedSide = getResolvedSide(context.placement);
 
   return (
     <AnimatePresence mode="wait">
@@ -288,8 +287,7 @@ function TooltipOverlay() {
           <div
             ref={refs.setFloating}
             data-slot="tooltip-overlay"
-            data-resolved-side={getResolvedSide(context.placement)}
-            data-side={rendered.data.side}
+            data-side={resolvedSide}
             data-align={rendered.data.align}
             data-state={rendered.open ? 'open' : 'closed'}
             style={{
@@ -303,15 +301,14 @@ function TooltipOverlay() {
             <FloatingProvider value={{ context, arrowRef }}>
               <RenderedTooltipProvider
                 value={{
-                  side: rendered.data.side,
+                  side: resolvedSide,
                   align: rendered.data.align,
                   open: rendered.open,
                 }}
               >
                 <Component
                   data-slot="tooltip-content"
-                  data-resolved-side={getResolvedSide(context.placement)}
-                  data-side={rendered.data.side}
+                  data-side={resolvedSide}
                   data-align={rendered.data.align}
                   data-state={rendered.open ? 'open' : 'closed'}
                   layoutId={`tooltip-content-${globalId}`}
