@@ -722,7 +722,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "@animate-ui/primitives-headless-accordion"
+        "@animate-ui/primitives-headless-disclosure"
       ],
       "files": [
         {
@@ -810,7 +810,7 @@
       "title": "Tabs",
       "description": "Easily create accessible, fully customizable tab interfaces, with robust focus management and keyboard navigation support.",
       "dependencies": [
-        "motion/react"
+        "motion"
       ],
       "registryDependencies": [
         "@animate-ui/primitives-headless-tabs"

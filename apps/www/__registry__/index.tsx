@@ -1552,7 +1552,7 @@ export const index: Record<string, any> = {
     type: 'registry:ui',
     dependencies: ['lucide-react'],
     devDependencies: undefined,
-    registryDependencies: ['@animate-ui/primitives-headless-accordion'],
+    registryDependencies: ['@animate-ui/primitives-headless-disclosure'],
     files: [
       {
         path: 'registry/components/headless/accordion/index.tsx',
@@ -1745,7 +1745,7 @@ export const index: Record<string, any> = {
     description:
       'Easily create accessible, fully customizable tab interfaces, with robust focus management and keyboard navigation support.',
     type: 'registry:ui',
-    dependencies: ['motion/react'],
+    dependencies: ['motion'],
     devDependencies: undefined,
     registryDependencies: ['@animate-ui/primitives-headless-tabs'],
     files: [
