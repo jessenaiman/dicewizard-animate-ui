@@ -9099,7 +9099,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/badge-check.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BadgeCheckProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: { scale: 1 },\n      animate: {\n        scale: [1, 0.9, 1],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {\n      initial: { pathLength: 1, opacity: 1 },\n      animate: {\n        pathLength: [1, 0, 1],\n        opacity: [1, 0, 1],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  check: {\n    path2: {\n      initial: { pathLength: 1, opacity: 1 },\n      animate: {\n        pathLength: [0, 1],\n        opacity: [0, 1],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BadgeCheckProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m9 12 2 2 4-4"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction BadgeCheck(props: BadgeCheckProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  BadgeCheck,\n  BadgeCheck as BadgeCheckIcon,\n  type BadgeCheckProps,\n  type BadgeCheckProps as BadgeCheckIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BadgeCheckProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: { scale: 1 },\n      animate: {\n        scale: [1, 0.9, 1],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {\n      initial: { pathLength: 1, opacity: 1 },\n      animate: {\n        pathLength: [1, 0, 1],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  check: {\n    path2: {\n      initial: { pathLength: 1, opacity: 1 },\n      animate: {\n        pathLength: [0, 1],\n        opacity: [0, 1],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n          opacity: { duration: 0.01 },\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BadgeCheckProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m9 12 2 2 4-4"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction BadgeCheck(props: BadgeCheckProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  BadgeCheck,\n  BadgeCheck as BadgeCheckIcon,\n  type BadgeCheckProps,\n  type BadgeCheckProps as BadgeCheckIconProps,\n};',
       },
     ],
     keywords: ['verified', 'check'],
@@ -9135,7 +9135,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/battery-charging.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BatteryChargingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path3: {\n      initial: {\n        opacity: 1,\n        scale: 1,\n      },\n      animate: {\n        opacity: [1, 0.5, 1, 0.5, 1],\n        scale: [1, 0.9, 1, 0.9, 1],\n        transition: {\n          duration: 1.8,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BatteryChargingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m11 7-3 5h4l-3 5"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1={22}\n        x2={22}\n        y1={11}\n        y2={13}\n        variants={variants.line}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction BatteryCharging(props: BatteryChargingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  BatteryCharging,\n  BatteryCharging as BatteryChargingIcon,\n  type BatteryChargingProps,\n  type BatteryChargingProps as BatteryChargingIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype BatteryChargingProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {},\n    path3: {\n      initial: {\n        opacity: 1,\n        scale: 1,\n      },\n      animate: {\n        opacity: [1, 0.5, 1, 0.5, 1],\n        scale: [1, 0.9, 1, 0.9, 1],\n        transition: {\n          duration: 1.8,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    line: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: BatteryChargingProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m11 7-3 5h4l-3 5"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1={22}\n        x2={22}\n        y1={11}\n        y2={13}\n        variants={variants.line}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction BatteryCharging(props: BatteryChargingProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  BatteryCharging,\n  BatteryCharging as BatteryChargingIcon,\n  type BatteryChargingProps,\n  type BatteryChargingProps as BatteryChargingIconProps,\n};',
       },
     ],
     keywords: ['power', 'electricity', 'energy', 'accumulator', 'charge'],
@@ -11054,6 +11054,366 @@ export const index: Record<string, any> = {
     })(),
     command: '@animate-ui/icons-cloud-download',
   },
+  'icons-cloud-drizzle': {
+    name: 'icons-cloud-drizzle',
+    description: 'Cloud drizzle icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-drizzle/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-drizzle.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudDrizzleProps = IconProps<keyof typeof animations>;\n\nconst drizzleAnimation: Variants = {\n  initial: { opacity: 1 },\n  animate: (i: number = 0) => ({\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 1.2,\n      ease: \'easeInOut\',\n      repeat: Infinity,\n      delay: i * 0.2,\n    },\n  }),\n};\n\nconst animations = {\n  default: {\n    group: {\n      initial: {},\n      animate: {},\n    },\n    path1: {},\n    path2: drizzleAnimation,\n    path3: drizzleAnimation,\n    path4: drizzleAnimation,\n    path5: drizzleAnimation,\n    path6: drizzleAnimation,\n    path7: drizzleAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudDrizzleProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="M8 14v1" variants={variants.path2} custom={0} />\n        <motion.path d="M12 21v1" variants={variants.path3} custom={1} />\n        <motion.path d="M16 14v1" variants={variants.path4} custom={2} />\n        <motion.path d="M12 16v1" variants={variants.path7} custom={3} />\n        <motion.path d="M16 19v1" variants={variants.path6} custom={4} />\n        <motion.path d="M8 19v1" variants={variants.path5} custom={5} />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction CloudDrizzle(props: CloudDrizzleProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudDrizzle,\n  CloudDrizzle as CloudDrizzleIcon,\n  type CloudDrizzleProps,\n  type CloudDrizzleProps as CloudDrizzleIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'shower'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-drizzle/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-drizzle';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-drizzle',
+  },
+  'icons-cloud-hail': {
+    name: 'icons-cloud-hail',
+    description: 'Cloud hail icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-hail/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-hail.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudHailProps = IconProps<keyof typeof animations>;\n\nconst hailAnimation: Variants = {\n  initial: { opacity: 1 },\n  animate: (i: number = 0) => ({\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 1.2,\n      ease: \'easeInOut\',\n      repeat: Infinity,\n      delay: i * 0.2,\n    },\n  }),\n};\n\nconst animations = {\n  default: {\n    group: {\n      initial: {},\n      animate: {},\n    },\n    path1: {},\n    path2: hailAnimation,\n    path3: hailAnimation,\n    path4: hailAnimation,\n    path5: hailAnimation,\n    path6: hailAnimation,\n    path7: hailAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudHailProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="M8 14v2" variants={variants.path2} custom={0} />\n        <motion.path d="M12 22h.01" variants={variants.path3} custom={1} />\n        <motion.path d="M16 14v2" variants={variants.path4} custom={2} />\n        <motion.path d="M12 16v2" variants={variants.path7} custom={3} />\n        <motion.path d="M16 20h.01" variants={variants.path6} custom={4} />\n        <motion.path d="M8 20h.01" variants={variants.path5} custom={5} />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction CloudHail(props: CloudHailProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudHail,\n  CloudHail as CloudHailIcon,\n  type CloudHailProps,\n  type CloudHailProps as CloudHailIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'rainfall'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-hail/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-hail';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-hail',
+  },
+  'icons-cloud-lightning': {
+    name: 'icons-cloud-lightning',
+    description: 'Cloud lightning icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-lightning/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-lightning.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudLightningProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {},\n    path2: {\n      initial: {\n        opacity: 1,\n        scale: 1,\n      },\n      animate: {\n        opacity: [1, 0.5, 1, 0.5, 1],\n        scale: [1, 0.9, 1, 0.9, 1],\n        transition: {\n          duration: 1.8,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudLightningProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m13 12-3 5h4l-3 5"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction CloudLightning(props: CloudLightningProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudLightning,\n  CloudLightning as CloudLightningIcon,\n  type CloudLightningProps,\n  type CloudLightningProps as CloudLightningIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'bolt'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-lightning/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-lightning';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-lightning',
+  },
+  'icons-cloud-moon': {
+    name: 'icons-cloud-moon',
+    description: 'Cloud moon icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-moon/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-moon.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudMoonProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: {\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        x: [0, -1, 1, 0],\n        y: [0, -1, 1, 0],\n        transition: {\n          duration: 1.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {\n      initial: {\n        rotate: 0,\n      },\n      animate: {\n        rotate: [0, 6, -8, 0],\n        transition: {\n          duration: 1.4,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudMoonProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M13 16a3 3 0 0 1 0 6H7a5 5 0 1 1 4.9-6z"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M18.376 14.512a6 6 0 0 0 3.461-4.127c.148-.625-.659-.97-1.248-.714a4 4 0 0 1-5.259-5.26c.255-.589-.09-1.395-.716-1.248a6 6 0 0 0-4.594 5.36"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction CloudMoon(props: CloudMoonProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudMoon,\n  CloudMoon as CloudMoonIcon,\n  type CloudMoonProps,\n  type CloudMoonProps as CloudMoonIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'night'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-moon/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-moon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-moon',
+  },
+  'icons-cloud-moon-rain': {
+    name: 'icons-cloud-moon-rain',
+    description: 'Cloud moon rain icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-moon-rain/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-moon-rain.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudMoonRainProps = IconProps<keyof typeof animations>;\n\nconst rainAnimation: Variants = {\n  initial: {\n    opacity: 1,\n  },\n  animate: {\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 0.8,\n      repeat: Infinity,\n      ease: \'easeInOut\',\n    },\n  },\n};\n\nconst animations = {\n  default: {\n    group: {\n      animate: {\n        transition: {\n          staggerChildren: 0.3,\n        },\n      },\n    },\n    path1: {},\n    path2: {},\n    path3: rainAnimation,\n    path4: rainAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudMoonRainProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M18.376 14.512a6 6 0 0 0 3.461-4.127c.148-.625-.659-.97-1.248-.714a4 4 0 0 1-5.259-5.26c.255-.589-.09-1.395-.716-1.248a6 6 0 0 0-4.594 5.36"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 20a5 5 0 1 1 8.9-4H13a3 3 0 0 1 2 5.24"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="M7 19v2" variants={variants.path3} />\n        <motion.path d="M11 20v2" variants={variants.path4} />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction CloudMoonRain(props: CloudMoonRainProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudMoonRain,\n  CloudMoonRain as CloudMoonRainIcon,\n  type CloudMoonRainProps,\n  type CloudMoonRainProps as CloudMoonRainIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'partly', 'night', 'rainfall'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-moon-rain/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-moon-rain';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-moon-rain',
+  },
+  'icons-cloud-rain': {
+    name: 'icons-cloud-rain',
+    description: 'Cloud rain icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-rain/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-rain.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudRainProps = IconProps<keyof typeof animations>;\n\nconst rainAnimation: Variants = {\n  initial: {\n    opacity: 1,\n  },\n  animate: {\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 1.2,\n      repeat: Infinity,\n      ease: \'easeInOut\',\n    },\n  },\n};\n\nconst animations = {\n  default: {\n    group: {\n      animate: {\n        transition: {\n          staggerChildren: 0.3,\n        },\n      },\n    },\n    path1: {},\n    path2: rainAnimation,\n    path3: rainAnimation,\n    path4: rainAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudRainProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="M16 14v6" variants={variants.path2} />\n        <motion.path d="M8 14v6" variants={variants.path3} />\n        <motion.path d="M12 16v6" variants={variants.path4} />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction CloudRain(props: CloudRainProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudRain,\n  CloudRain as CloudRainIcon,\n  type CloudRainProps,\n  type CloudRainProps as CloudRainIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'rainfall'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-rain/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-rain';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-rain',
+  },
+  'icons-cloud-rain-wind': {
+    name: 'icons-cloud-rain-wind',
+    description: 'Cloud rain wind icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-rain-wind/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-rain-wind.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudRainWindProps = IconProps<keyof typeof animations>;\n\nconst rainAnimation: Variants = {\n  initial: {\n    opacity: 1,\n  },\n  animate: {\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 1.2,\n      repeat: Infinity,\n      ease: \'easeInOut\',\n    },\n  },\n};\n\nconst animations = {\n  default: {\n    group: {\n      animate: {\n        transition: {\n          staggerChildren: 0.3,\n        },\n      },\n    },\n    path1: {},\n    path2: rainAnimation,\n    path3: rainAnimation,\n    path4: rainAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudRainWindProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="m9.2 22 3-7" variants={variants.path2} />\n        <motion.path d="m9 13-3 7" variants={variants.path3} />\n        <motion.path d="m17 13-3 7" variants={variants.path4} />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction CloudRainWind(props: CloudRainWindProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudRainWind,\n  CloudRainWind as CloudRainWindIcon,\n  type CloudRainWindProps,\n  type CloudRainWindProps as CloudRainWindIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'rainfall'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-rain-wind/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-rain-wind';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-rain-wind',
+  },
+  'icons-cloud-snow': {
+    name: 'icons-cloud-snow',
+    description: 'Cloud snow icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-snow/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-snow.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudSnowProps = IconProps<keyof typeof animations>;\n\nconst snowAnimation: Variants = {\n  initial: { opacity: 1 },\n  animate: (i: number = 0) => ({\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 1.2,\n      ease: \'easeInOut\',\n      repeat: Infinity,\n      delay: i * 0.2,\n    },\n  }),\n};\n\nconst animations = {\n  default: {\n    group: {\n      initial: {},\n      animate: {},\n    },\n    path1: {},\n    path2: snowAnimation,\n    path3: snowAnimation,\n    path4: snowAnimation,\n    path5: snowAnimation,\n    path6: snowAnimation,\n    path7: snowAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudSnowProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="M8 15h.01" variants={variants.path2} custom={0} />\n        <motion.path d="M12 21h.01" variants={variants.path3} custom={1} />\n        <motion.path d="M16 15h.01" variants={variants.path4} custom={2} />\n        <motion.path d="M12 17h.01" variants={variants.path7} custom={3} />\n        <motion.path d="M16 19h.01" variants={variants.path6} custom={4} />\n        <motion.path d="M8 19h.01" variants={variants.path5} custom={5} />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction CloudSnow(props: CloudSnowProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudSnow,\n  CloudSnow as CloudSnowIcon,\n  type CloudSnowProps,\n  type CloudSnowProps as CloudSnowIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'blizzard'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-snow/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-snow';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-snow',
+  },
+  'icons-cloud-sun': {
+    name: 'icons-cloud-sun',
+    description: 'Cloud sun icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-sun/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-sun.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudSunProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path1: {\n        initial: {\n          x: 0,\n          y: 0,\n        },\n        animate: {\n          x: [0, -1, 1, 0],\n          y: [0, -1, 1, 0],\n          transition: {\n            duration: 1.4,\n            ease: \'easeInOut\',\n          },\n        },\n      },\n      path2: {},\n    };\n\n    for (let i = 1; i <= 4; i++) {\n      animation[`line${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n            delay: (i - 1) * 0.15,\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudSunProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M13,22h-6c-2.8,0-5-2.2-5-5,0-2.8,2.2-5,5-5,2.4,0,4.4,1.7,4.9,4h1.1c1.7,0,3,1.3,3,3s-1.3,3-3,3Z"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M15.9,12.6c.4-2.2-1.1-4.2-3.3-4.6-.9-.1-1.8,0-2.6.5"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="6.3"\n        y1="6.3"\n        x2="4.9"\n        y2="4.9"\n        variants={variants.line1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="4"\n        x2="12"\n        y2="2"\n        variants={variants.line2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="6.3"\n        x2="19.1"\n        y2="4.9"\n        variants={variants.line3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="20"\n        y1="12"\n        x2="22"\n        y2="12"\n        variants={variants.line4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction CloudSun(props: CloudSunProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudSun,\n  CloudSun as CloudSunIcon,\n  type CloudSunProps,\n  type CloudSunProps as CloudSunIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'partly'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-sun/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-sun';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-sun',
+  },
+  'icons-cloud-sun-rain': {
+    name: 'icons-cloud-sun-rain',
+    description: 'Cloud sun rain icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/cloud-sun-rain/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/cloud-sun-rain.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype CloudSunRainProps = IconProps<keyof typeof animations>;\n\nconst rainAnimation: Variants = {\n  initial: {\n    opacity: 1,\n  },\n  animate: {\n    opacity: [1, 0.4, 1],\n    transition: {\n      duration: 0.8,\n      repeat: Infinity,\n      ease: \'easeInOut\',\n    },\n  },\n};\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path1: {},\n      path2: {},\n      group: {\n        animate: {\n          transition: {\n            staggerChildren: 0.3,\n          },\n        },\n      },\n      path3: rainAnimation,\n      path4: rainAnimation,\n    };\n\n    for (let i = 1; i <= 4; i++) {\n      animation[`line${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n            delay: (i - 1) * 0.15,\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: CloudSunRainProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M15.947 12.65a4 4 0 0 0-5.925-4.128"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3 20a5 5 0 1 1 8.9-4H13a3 3 0 0 1 2 5.24"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path d="M7 19v2" variants={variants.path3} />\n        <motion.path d="M11 20v2" variants={variants.path4} />\n      </motion.g>\n\n      <motion.line\n        x1="6.3"\n        y1="6.3"\n        x2="4.9"\n        y2="4.9"\n        variants={variants.line1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="4"\n        x2="12"\n        y2="2"\n        variants={variants.line2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="6.3"\n        x2="19.1"\n        y2="4.9"\n        variants={variants.line3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="20"\n        y1="12"\n        x2="22"\n        y2="12"\n        variants={variants.line4}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction CloudSunRain(props: CloudSunRainProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  CloudSunRain,\n  CloudSunRain as CloudSunRainIcon,\n  type CloudSunRainProps,\n  type CloudSunRainProps as CloudSunRainIconProps,\n};',
+      },
+    ],
+    keywords: ['weather', 'partly', 'rainfall'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/cloud-sun-rain/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-cloud-sun-rain';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-cloud-sun-rain',
+  },
   'icons-cloud-upload': {
     name: 'icons-cloud-upload',
     description: 'Cloud upload icon component.',
@@ -11308,7 +11668,6 @@ export const index: Record<string, any> = {
       },
     ],
     keywords: [
-      'album',
       'album',
       'vinyl',
       'record',
@@ -11827,7 +12186,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/icon.tsx',
         content:
-          "'use client';\n\nimport * as React from 'react';\nimport {\n  SVGMotionProps,\n  useAnimation,\n  UseInViewOptions,\n  type LegacyAnimationControls,\n  type Variants,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport { useIsInView } from '@/hooks/use-is-in-view';\n\nconst staticAnimations = {\n  path: {\n    initial: { pathLength: 1, opacity: 1 },\n    animate: {\n      pathLength: [0.05, 1],\n      opacity: [0, 1],\n      transition: {\n        duration: 0.8,\n        ease: 'easeInOut',\n        opacity: { duration: 0.01 },\n      },\n    },\n  } as Variants,\n  'path-loop': {\n    initial: { pathLength: 1, opacity: 1 },\n    animate: {\n      pathLength: [1, 0.05, 1],\n      opacity: [1, 0, 1],\n      transition: {\n        duration: 1.6,\n        ease: 'easeInOut',\n        opacity: { duration: 0.01 },\n      },\n    },\n  } as Variants,\n} as const;\n\ntype StaticAnimations = keyof typeof staticAnimations;\ntype TriggerProp<T = string> = boolean | StaticAnimations | T;\n\ninterface AnimateIconContextValue {\n  controls: LegacyAnimationControls | undefined;\n  animation: StaticAnimations | string;\n  loop: boolean;\n  loopDelay: number;\n}\n\ninterface DefaultIconProps<T = string> {\n  animate?: TriggerProp<T>;\n  onAnimateChange?: (\n    value: boolean,\n    animation: StaticAnimations | string,\n  ) => void;\n  animateOnHover?: TriggerProp<T>;\n  animateOnTap?: TriggerProp<T>;\n  animateOnView?: TriggerProp<T>;\n  animateOnViewMargin?: UseInViewOptions['margin'];\n  animateOnViewOnce?: boolean;\n  animation?: T | StaticAnimations;\n  loop?: boolean;\n  loopDelay?: number;\n  onAnimateStart?: () => void;\n  onAnimateEnd?: () => void;\n  delay?: number;\n}\n\ninterface AnimateIconProps<T = string> extends DefaultIconProps<T> {\n  children: React.ReactNode;\n  asChild?: boolean;\n}\n\ninterface IconProps<T>\n  extends DefaultIconProps<T>,\n    Omit<\n      SVGMotionProps<SVGSVGElement>,\n      'animate' | 'onAnimationStart' | 'onAnimationEnd'\n    > {\n  size?: number;\n}\n\ninterface IconWrapperProps<T> extends IconProps<T> {\n  icon: React.ComponentType<IconProps<T>>;\n}\n\nconst AnimateIconContext = React.createContext<AnimateIconContextValue | null>(\n  null,\n);\n\nfunction useAnimateIconContext() {\n  const context = React.useContext(AnimateIconContext);\n  if (!context)\n    return {\n      controls: undefined,\n      animation: 'default',\n      loop: false,\n      loopDelay: 0,\n    };\n  return context;\n}\n\nfunction composeEventHandlers<E extends React.SyntheticEvent<unknown>>(\n  theirs?: (event: E) => void,\n  ours?: (event: E) => void,\n) {\n  return (event: E) => {\n    theirs?.(event);\n    ours?.(event);\n  };\n}\n\nfunction mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {\n  return (value: T) => {\n    for (const ref of refs) {\n      if (!ref) continue;\n      if (typeof ref === 'function') ref(value);\n      else (ref as React.MutableRefObject<T | null>).current = value;\n    }\n  };\n}\n\n// eslint-disable-next-line @typescript-eslint/no-explicit-any\ntype AnyProps = Record<string, any>;\n\ntype SlotProps<E extends Element = HTMLElement> = {\n  children: React.ReactElement;\n} & React.HTMLAttributes<E> &\n  AnyProps;\n\nfunction Slot<E extends Element = HTMLElement>({\n  children,\n  ...slotProps\n}: SlotProps<E>) {\n  if (!React.isValidElement(children)) return children;\n\n  const {\n    className: slotClassName,\n    style: slotStyle,\n    ref: slotRef,\n    onMouseEnter: sOnMouseEnter,\n    onMouseLeave: sOnMouseLeave,\n    onPointerDown: sOnPointerDown,\n    onPointerUp: sOnPointerUp,\n    ...restSlot\n  } = slotProps;\n\n  const {\n    className: childClassName,\n    style: childStyle,\n    ref: childRef,\n    onMouseEnter: cOnMouseEnter,\n    onMouseLeave: cOnMouseLeave,\n    onPointerDown: cOnPointerDown,\n    onPointerUp: cOnPointerUp,\n    ...restChild\n  } = (children.props ?? {}) as AnyProps;\n\n  const mergedProps: AnyProps = {\n    ...restChild,\n    ...restSlot,\n    className: cn(childClassName, slotClassName),\n    style: { ...(childStyle || {}), ...(slotStyle || {}) },\n    ref: mergeRefs(childRef, slotRef),\n    onMouseEnter: composeEventHandlers(cOnMouseEnter, sOnMouseEnter),\n    onMouseLeave: composeEventHandlers(cOnMouseLeave, sOnMouseLeave),\n    onPointerDown: composeEventHandlers(cOnPointerDown, sOnPointerDown),\n    onPointerUp: composeEventHandlers(cOnPointerUp, sOnPointerUp),\n  };\n\n  return React.cloneElement(children, mergedProps);\n}\n\nfunction AnimateIcon({\n  animate,\n  onAnimateChange,\n  asChild = true,\n  animateOnHover,\n  animateOnTap,\n  animateOnView,\n  animateOnViewMargin = '0px',\n  animateOnViewOnce = true,\n  animation = 'default',\n  loop = false,\n  loopDelay = 0,\n  onAnimateStart,\n  onAnimateEnd,\n  delay = 0,\n  children,\n}: AnimateIconProps) {\n  const controls = useAnimation();\n\n  const [localAnimate, setLocalAnimate] = React.useState<boolean>(() => {\n    if (animate === undefined || animate === false) return false;\n    return delay <= 0;\n  });\n\n  const [currentAnimation, setCurrentAnimation] = React.useState<\n    string | StaticAnimations\n  >(typeof animate === 'string' ? animate : animation);\n\n  const delayRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);\n\n  const startAnimation = React.useCallback(\n    (trigger: TriggerProp) => {\n      const next = typeof trigger === 'string' ? trigger : animation;\n      if (delayRef.current) {\n        clearTimeout(delayRef.current);\n        delayRef.current = null;\n      }\n      setCurrentAnimation(next);\n      if (delay > 0) {\n        setLocalAnimate(false);\n        delayRef.current = setTimeout(() => {\n          setLocalAnimate(true);\n        }, delay);\n      } else {\n        setLocalAnimate(true);\n      }\n    },\n    [animation, delay],\n  );\n\n  const stopAnimation = React.useCallback(() => {\n    if (delayRef.current) {\n      clearTimeout(delayRef.current);\n      delayRef.current = null;\n    }\n    setLocalAnimate(false);\n  }, []);\n\n  React.useEffect(() => {\n    if (animate === undefined) return;\n    setCurrentAnimation(typeof animate === 'string' ? animate : animation);\n    if (animate) startAnimation(animate as TriggerProp);\n    else stopAnimation();\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [animate]);\n\n  React.useEffect(\n    () => onAnimateChange?.(localAnimate, currentAnimation),\n    [localAnimate, onAnimateChange, currentAnimation],\n  );\n\n  React.useEffect(() => {\n    if (localAnimate) onAnimateStart?.();\n    controls.start(localAnimate ? 'animate' : 'initial').then(() => {\n      if (localAnimate) onAnimateEnd?.();\n    });\n  }, [localAnimate, controls, onAnimateStart, onAnimateEnd]);\n\n  React.useEffect(() => {\n    return () => {\n      if (delayRef.current) clearTimeout(delayRef.current);\n    };\n  }, []);\n\n  const viewOuterRef = React.useRef<HTMLElement>(null);\n  const { ref: inViewRef, isInView } = useIsInView(viewOuterRef, {\n    inView: !!animateOnView,\n    inViewOnce: animateOnViewOnce,\n    inViewMargin: animateOnViewMargin,\n  });\n\n  React.useEffect(() => {\n    if (!animateOnView) return;\n    if (isInView) startAnimation(animateOnView);\n    else stopAnimation();\n  }, [isInView, animateOnView, startAnimation, stopAnimation]);\n\n  const childProps = (\n    React.isValidElement(children) ? (children as React.ReactElement).props : {}\n  ) as AnyProps;\n\n  const handleMouseEnter = composeEventHandlers<React.MouseEvent<HTMLElement>>(\n    childProps.onMouseEnter,\n    () => {\n      if (animateOnHover) startAnimation(animateOnHover);\n    },\n  );\n\n  const handleMouseLeave = composeEventHandlers<React.MouseEvent<HTMLElement>>(\n    childProps.onMouseLeave,\n    () => {\n      if (animateOnHover || animateOnTap) stopAnimation();\n    },\n  );\n\n  const handlePointerDown = composeEventHandlers<\n    React.PointerEvent<HTMLElement>\n  >(childProps.onPointerDown, () => {\n    if (animateOnTap) startAnimation(animateOnTap);\n  });\n\n  const handlePointerUp = composeEventHandlers<React.PointerEvent<HTMLElement>>(\n    childProps.onPointerUp,\n    () => {\n      if (animateOnTap) stopAnimation();\n    },\n  );\n\n  const content = asChild ? (\n    <Slot\n      ref={inViewRef}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onPointerDown={handlePointerDown}\n      onPointerUp={handlePointerUp}\n    >\n      {children as React.ReactElement}\n    </Slot>\n  ) : (\n    <span\n      ref={inViewRef}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onPointerDown={handlePointerDown}\n      onPointerUp={handlePointerUp}\n      style={{ display: 'contents' }}\n    >\n      {children}\n    </span>\n  );\n\n  return (\n    <AnimateIconContext.Provider\n      value={{\n        controls,\n        animation: currentAnimation,\n        loop,\n        loopDelay,\n      }}\n    >\n      {content}\n    </AnimateIconContext.Provider>\n  );\n}\n\nconst pathClassName =\n  \"[&_[stroke-dasharray='1px_1px']]:![stroke-dasharray:1px_0px]\";\n\nfunction IconWrapper<T extends string>({\n  size = 28,\n  animation: animationProp,\n  animate,\n  onAnimateChange,\n  animateOnHover = false,\n  animateOnTap = false,\n  animateOnView = false,\n  animateOnViewMargin = '0px',\n  animateOnViewOnce = true,\n  icon: IconComponent,\n  loop = false,\n  loopDelay = 0,\n  onAnimateStart,\n  onAnimateEnd,\n  delay = 0,\n  className,\n  ...props\n}: IconWrapperProps<T>) {\n  const context = React.useContext(AnimateIconContext);\n\n  if (context) {\n    const {\n      controls,\n      animation: parentAnimation,\n      loop: parentLoop,\n      loopDelay: parentLoopDelay,\n    } = context;\n    const animationToUse = animationProp ?? parentAnimation;\n    const loopToUse = loop || parentLoop;\n    const loopDelayToUse = loopDelay || parentLoopDelay;\n\n    return (\n      <AnimateIconContext.Provider\n        value={{\n          controls,\n          animation: animationToUse,\n          loop: loopToUse,\n          loopDelay: loopDelayToUse,\n        }}\n      >\n        <IconComponent\n          size={size}\n          className={cn(\n            className,\n            (animationToUse === 'path' || animationToUse === 'path-loop') &&\n              pathClassName,\n          )}\n          {...props}\n        />\n      </AnimateIconContext.Provider>\n    );\n  }\n\n  if (\n    animate !== undefined ||\n    onAnimateChange !== undefined ||\n    animateOnHover ||\n    animateOnTap ||\n    animateOnView ||\n    animationProp\n  ) {\n    return (\n      <AnimateIcon\n        animate={animate}\n        onAnimateChange={onAnimateChange}\n        animateOnHover={animateOnHover}\n        animateOnTap={animateOnTap}\n        animateOnView={animateOnView}\n        animateOnViewMargin={animateOnViewMargin}\n        animateOnViewOnce={animateOnViewOnce}\n        animation={animationProp}\n        loop={loop}\n        loopDelay={loopDelay}\n        onAnimateStart={onAnimateStart}\n        onAnimateEnd={onAnimateEnd}\n        delay={delay}\n        asChild\n      >\n        <IconComponent\n          size={size}\n          className={cn(\n            className,\n            (animationProp === 'path' || animationProp === 'path-loop') &&\n              pathClassName,\n          )}\n          {...props}\n        />\n      </AnimateIcon>\n    );\n  }\n\n  return (\n    <IconComponent\n      size={size}\n      className={cn(\n        className,\n        (animationProp === 'path' || animationProp === 'path-loop') &&\n          pathClassName,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction getVariants<\n  V extends { default: T; [key: string]: T },\n  T extends Record<string, Variants>,\n>(animations: V): T {\n  // eslint-disable-next-line react-hooks/rules-of-hooks\n  const { animation: animationType, loop, loopDelay } = useAnimateIconContext();\n\n  let result: T;\n\n  if (animationType in staticAnimations) {\n    const variant = staticAnimations[animationType as StaticAnimations];\n    result = {} as T;\n    for (const key in animations.default) {\n      if (\n        (animationType === 'path' || animationType === 'path-loop') &&\n        key.includes('group')\n      )\n        continue;\n      result[key] = variant as T[Extract<keyof T, string>];\n    }\n  } else {\n    result = (animations[animationType as keyof V] as T) ?? animations.default;\n  }\n\n  if (loop) {\n    for (const key in result) {\n      // eslint-disable-next-line @typescript-eslint/no-explicit-any\n      const state = result[key] as any;\n      const transition = state.animate?.transition;\n      if (!transition) continue;\n\n      const hasNestedKeys = Object.values(transition).some(\n        (v) =>\n          typeof v === 'object' &&\n          v !== null &&\n          ('ease' in v || 'duration' in v || 'times' in v),\n      );\n\n      if (hasNestedKeys) {\n        for (const prop in transition) {\n          const subTrans = transition[prop];\n          if (typeof subTrans === 'object' && subTrans !== null) {\n            transition[prop] = {\n              ...subTrans,\n              repeat: Infinity,\n              repeatType: 'loop',\n              repeatDelay: loopDelay,\n            };\n          }\n        }\n      } else {\n        state.animate.transition = {\n          ...transition,\n          repeat: Infinity,\n          repeatType: 'loop',\n          repeatDelay: loopDelay,\n        };\n      }\n    }\n  }\n\n  return result;\n}\n\nexport {\n  pathClassName,\n  staticAnimations,\n  AnimateIcon,\n  IconWrapper,\n  useAnimateIconContext,\n  getVariants,\n  type IconProps,\n  type IconWrapperProps,\n  type AnimateIconProps,\n  type AnimateIconContextValue,\n};",
+          "'use client';\n\nimport * as React from 'react';\nimport {\n  SVGMotionProps,\n  useAnimation,\n  UseInViewOptions,\n  type LegacyAnimationControls,\n  type Variants,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport { useIsInView } from '@/hooks/use-is-in-view';\n\nconst staticAnimations = {\n  path: {\n    initial: { pathLength: 1, opacity: 1 },\n    animate: {\n      pathLength: [0.05, 1],\n      opacity: [0, 1],\n      transition: {\n        duration: 0.8,\n        ease: 'easeInOut',\n        opacity: { duration: 0.01 },\n      },\n    },\n  } as Variants,\n  'path-loop': {\n    initial: { pathLength: 1, opacity: 1 },\n    animate: {\n      pathLength: [1, 0.05, 1],\n      opacity: [1, 0, 1],\n      transition: {\n        duration: 1.6,\n        ease: 'easeInOut',\n        opacity: { duration: 0.01 },\n      },\n    },\n  } as Variants,\n} as const;\n\ntype StaticAnimations = keyof typeof staticAnimations;\ntype TriggerProp<T = string> = boolean | StaticAnimations | T;\ntype Trigger = TriggerProp<string>;\n\ninterface AnimateIconContextValue {\n  controls: LegacyAnimationControls | undefined;\n  animation: StaticAnimations | string;\n  loop: boolean;\n  loopDelay: number;\n  active: boolean;\n  animate?: Trigger;\n  animateOnHover?: Trigger;\n  animateOnTap?: Trigger;\n  animateOnView?: Trigger;\n  animateOnViewMargin?: UseInViewOptions['margin'];\n  animateOnViewOnce?: boolean;\n  initialOnAnimateEnd?: boolean;\n  delay?: number;\n}\n\ninterface DefaultIconProps<T = string> {\n  animate?: TriggerProp<T>;\n  onAnimateChange?: (\n    value: boolean,\n    animation: StaticAnimations | string,\n  ) => void;\n  animateOnHover?: TriggerProp<T>;\n  animateOnTap?: TriggerProp<T>;\n  animateOnView?: TriggerProp<T>;\n  animateOnViewMargin?: UseInViewOptions['margin'];\n  animateOnViewOnce?: boolean;\n  animation?: T | StaticAnimations;\n  loop?: boolean;\n  loopDelay?: number;\n  onAnimateStart?: () => void;\n  onAnimateEnd?: () => void;\n  initialOnAnimateEnd?: boolean;\n  delay?: number;\n}\n\ninterface AnimateIconProps<T = string> extends DefaultIconProps<T> {\n  children: React.ReactNode;\n  asChild?: boolean;\n}\n\ninterface IconProps<T>\n  extends DefaultIconProps<T>,\n    Omit<\n      SVGMotionProps<SVGSVGElement>,\n      'animate' | 'onAnimationStart' | 'onAnimationEnd'\n    > {\n  size?: number;\n}\n\ninterface IconWrapperProps<T> extends IconProps<T> {\n  icon: React.ComponentType<IconProps<T>>;\n}\n\nconst AnimateIconContext = React.createContext<AnimateIconContextValue | null>(\n  null,\n);\n\nfunction useAnimateIconContext() {\n  const context = React.useContext(AnimateIconContext);\n  if (!context)\n    return {\n      controls: undefined,\n      animation: 'default',\n      loop: false,\n      loopDelay: 0,\n      active: false,\n      animate: undefined,\n      animateOnHover: undefined,\n      animateOnTap: undefined,\n      animateOnView: undefined,\n      animateOnViewMargin: '0px' as UseInViewOptions['margin'],\n      animateOnViewOnce: true,\n      initialOnAnimateEnd: false,\n      delay: 0,\n    };\n  return context;\n}\n\nfunction composeEventHandlers<E extends React.SyntheticEvent<unknown>>(\n  theirs?: (event: E) => void,\n  ours?: (event: E) => void,\n) {\n  return (event: E) => {\n    theirs?.(event);\n    ours?.(event);\n  };\n}\n\nfunction mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {\n  return (value: T) => {\n    for (const ref of refs) {\n      if (!ref) continue;\n      if (typeof ref === 'function') ref(value);\n      else (ref as React.MutableRefObject<T | null>).current = value;\n    }\n  };\n}\n\n// eslint-disable-next-line @typescript-eslint/no-explicit-any\ntype AnyProps = Record<string, any>;\n\ntype SlotProps<E extends Element = HTMLElement> = {\n  children: React.ReactElement;\n} & React.HTMLAttributes<E> &\n  AnyProps;\n\nfunction Slot<E extends Element = HTMLElement>({\n  children,\n  ...slotProps\n}: SlotProps<E>) {\n  if (!React.isValidElement(children)) return children;\n\n  const {\n    className: slotClassName,\n    style: slotStyle,\n    ref: slotRef,\n    onMouseEnter: sOnMouseEnter,\n    onMouseLeave: sOnMouseLeave,\n    onPointerDown: sOnPointerDown,\n    onPointerUp: sOnPointerUp,\n    ...restSlot\n  } = slotProps;\n\n  const {\n    className: childClassName,\n    style: childStyle,\n    ref: childRef,\n    onMouseEnter: cOnMouseEnter,\n    onMouseLeave: cOnMouseLeave,\n    onPointerDown: cOnPointerDown,\n    onPointerUp: cOnPointerUp,\n    ...restChild\n  } = (children.props ?? {}) as AnyProps;\n\n  const mergedProps: AnyProps = {\n    ...restChild,\n    ...restSlot,\n    className: cn(childClassName, slotClassName),\n    style: { ...(childStyle || {}), ...(slotStyle || {}) },\n    ref: mergeRefs(childRef, slotRef),\n    onMouseEnter: composeEventHandlers(cOnMouseEnter, sOnMouseEnter),\n    onMouseLeave: composeEventHandlers(cOnMouseLeave, sOnMouseLeave),\n    onPointerDown: composeEventHandlers(cOnPointerDown, sOnPointerDown),\n    onPointerUp: composeEventHandlers(cOnPointerUp, sOnPointerUp),\n  };\n\n  return React.cloneElement(children, mergedProps);\n}\n\nfunction AnimateIcon({\n  animate,\n  onAnimateChange,\n  asChild = true,\n  animateOnHover,\n  animateOnTap,\n  animateOnView,\n  animateOnViewMargin = '0px',\n  animateOnViewOnce = true,\n  animation = 'default',\n  loop = false,\n  loopDelay = 0,\n  onAnimateStart,\n  onAnimateEnd,\n  initialOnAnimateEnd = false,\n  delay = 0,\n  children,\n}: AnimateIconProps) {\n  const controls = useAnimation();\n\n  const [localAnimate, setLocalAnimate] = React.useState<boolean>(() => {\n    if (animate === undefined || animate === false) return false;\n    return delay <= 0;\n  });\n  const [currentAnimation, setCurrentAnimation] = React.useState<\n    string | StaticAnimations\n  >(typeof animate === 'string' ? animate : animation);\n\n  const delayRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);\n\n  const startAnimation = React.useCallback(\n    (trigger: TriggerProp) => {\n      const next = typeof trigger === 'string' ? trigger : animation;\n      if (delayRef.current) {\n        clearTimeout(delayRef.current);\n        delayRef.current = null;\n      }\n      setCurrentAnimation(next);\n      if (delay > 0) {\n        setLocalAnimate(false);\n        delayRef.current = setTimeout(() => {\n          setLocalAnimate(true);\n        }, delay);\n      } else {\n        setLocalAnimate(true);\n      }\n    },\n    [animation, delay],\n  );\n\n  const stopAnimation = React.useCallback(() => {\n    if (delayRef.current) {\n      clearTimeout(delayRef.current);\n      delayRef.current = null;\n    }\n    setLocalAnimate(false);\n  }, []);\n\n  React.useEffect(() => {\n    if (animate === undefined) return;\n    setCurrentAnimation(typeof animate === 'string' ? animate : animation);\n    if (animate) startAnimation(animate as TriggerProp);\n    else stopAnimation();\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [animate]);\n\n  React.useEffect(\n    () => onAnimateChange?.(localAnimate, currentAnimation),\n    [localAnimate, onAnimateChange, currentAnimation],\n  );\n\n  React.useEffect(() => {\n    return () => {\n      if (delayRef.current) clearTimeout(delayRef.current);\n    };\n  }, []);\n\n  const viewOuterRef = React.useRef<HTMLElement>(null);\n  const { ref: inViewRef, isInView } = useIsInView(viewOuterRef, {\n    inView: !!animateOnView,\n    inViewOnce: animateOnViewOnce,\n    inViewMargin: animateOnViewMargin,\n  });\n\n  React.useEffect(() => {\n    if (!animateOnView) return;\n    if (isInView) startAnimation(animateOnView);\n    else stopAnimation();\n  }, [isInView, animateOnView, startAnimation, stopAnimation]);\n\n  React.useEffect(() => {\n    async function run() {\n      if (!localAnimate) {\n        controls.start('initial');\n        return;\n      }\n\n      onAnimateStart?.();\n\n      try {\n        await controls.start('animate');\n      } catch {\n        return;\n      }\n\n      onAnimateEnd?.();\n\n      if (initialOnAnimateEnd || loop) {\n        try {\n          controls.set('initial');\n        } catch {\n          return;\n        }\n      }\n      if (loop) {\n        if (loopDelay > 0) {\n          await new Promise((r) => setTimeout(r, loopDelay));\n        }\n        await run();\n      }\n    }\n\n    void run();\n  }, [\n    localAnimate,\n    loop,\n    loopDelay,\n    controls,\n    onAnimateStart,\n    onAnimateEnd,\n    initialOnAnimateEnd,\n  ]);\n\n  const childProps = (\n    React.isValidElement(children) ? (children as React.ReactElement).props : {}\n  ) as AnyProps;\n\n  const handleMouseEnter = composeEventHandlers<React.MouseEvent<HTMLElement>>(\n    childProps.onMouseEnter,\n    () => {\n      if (animateOnHover) startAnimation(animateOnHover);\n    },\n  );\n\n  const handleMouseLeave = composeEventHandlers<React.MouseEvent<HTMLElement>>(\n    childProps.onMouseLeave,\n    () => {\n      if (animateOnHover || animateOnTap) stopAnimation();\n    },\n  );\n\n  const handlePointerDown = composeEventHandlers<\n    React.PointerEvent<HTMLElement>\n  >(childProps.onPointerDown, () => {\n    if (animateOnTap) startAnimation(animateOnTap);\n  });\n\n  const handlePointerUp = composeEventHandlers<React.PointerEvent<HTMLElement>>(\n    childProps.onPointerUp,\n    () => {\n      if (animateOnTap) stopAnimation();\n    },\n  );\n\n  const content = asChild ? (\n    <Slot\n      ref={inViewRef}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onPointerDown={handlePointerDown}\n      onPointerUp={handlePointerUp}\n    >\n      {children as React.ReactElement}\n    </Slot>\n  ) : (\n    <span\n      ref={inViewRef}\n      onMouseEnter={handleMouseEnter}\n      onMouseLeave={handleMouseLeave}\n      onPointerDown={handlePointerDown}\n      onPointerUp={handlePointerUp}\n      style={{ display: 'contents' }}\n    >\n      {children}\n    </span>\n  );\n\n  return (\n    <AnimateIconContext.Provider\n      value={{\n        controls,\n        animation: currentAnimation,\n        loop,\n        loopDelay,\n        active: localAnimate,\n        animate,\n        animateOnHover,\n        animateOnTap,\n        animateOnView,\n        animateOnViewMargin,\n        animateOnViewOnce,\n        initialOnAnimateEnd,\n        delay,\n      }}\n    >\n      {content}\n    </AnimateIconContext.Provider>\n  );\n}\n\nconst pathClassName =\n  \"[&_[stroke-dasharray='1px_1px']]:![stroke-dasharray:1px_0px]\";\n\nfunction IconWrapper<T extends string>({\n  size = 28,\n  animation: animationProp,\n  animate,\n  onAnimateChange,\n  animateOnHover = false,\n  animateOnTap = false,\n  animateOnView = false,\n  animateOnViewMargin = '0px',\n  animateOnViewOnce = true,\n  icon: IconComponent,\n  loop = false,\n  loopDelay = 0,\n  onAnimateStart,\n  onAnimateEnd,\n  initialOnAnimateEnd = false,\n  delay = 0,\n  className,\n  ...props\n}: IconWrapperProps<T>) {\n  const context = React.useContext(AnimateIconContext);\n\n  if (context) {\n    const {\n      controls,\n      animation: parentAnimation,\n      loop: parentLoop,\n      loopDelay: parentLoopDelay,\n      active: parentActive,\n      animate: parentAnimate,\n      animateOnHover: parentAnimateOnHover,\n      animateOnTap: parentAnimateOnTap,\n      animateOnView: parentAnimateOnView,\n      animateOnViewMargin: parentAnimateOnViewMargin,\n      animateOnViewOnce: parentAnimateOnViewOnce,\n      initialOnAnimateEnd: parentInitialOnAnimateEnd,\n      delay: parentDelay,\n    } = context;\n\n    const hasOverrides =\n      animate !== undefined ||\n      animationProp !== undefined ||\n      animateOnHover !== false ||\n      animateOnTap !== false ||\n      animateOnView !== false ||\n      loop !== false ||\n      loopDelay !== 0 ||\n      initialOnAnimateEnd !== false ||\n      delay !== 0;\n\n    if (hasOverrides) {\n      const inheritedAnimate: Trigger = parentActive\n        ? (animationProp ?? parentAnimation ?? 'default')\n        : false;\n\n      const finalAnimate: Trigger = (animate ??\n        parentAnimate ??\n        inheritedAnimate) as Trigger;\n\n      return (\n        <AnimateIcon\n          animate={finalAnimate}\n          animateOnHover={animateOnHover ?? parentAnimateOnHover}\n          animateOnTap={animateOnTap ?? parentAnimateOnTap}\n          animateOnView={animateOnView ?? parentAnimateOnView}\n          animateOnViewMargin={animateOnViewMargin ?? parentAnimateOnViewMargin}\n          animateOnViewOnce={animateOnViewOnce ?? parentAnimateOnViewOnce}\n          animation={animationProp ?? parentAnimation}\n          loop={loop ?? parentLoop}\n          loopDelay={loopDelay ?? parentLoopDelay}\n          onAnimateChange={onAnimateChange}\n          onAnimateStart={onAnimateStart}\n          onAnimateEnd={onAnimateEnd}\n          initialOnAnimateEnd={initialOnAnimateEnd ?? parentInitialOnAnimateEnd}\n          delay={delay ?? parentDelay}\n          asChild\n        >\n          <IconComponent\n            size={size}\n            className={cn(\n              className,\n              ((animationProp ?? parentAnimation) === 'path' ||\n                (animationProp ?? parentAnimation) === 'path-loop') &&\n                pathClassName,\n            )}\n            {...props}\n          />\n        </AnimateIcon>\n      );\n    }\n\n    const animationToUse = animationProp ?? parentAnimation;\n    const loopToUse = parentLoop;\n    const loopDelayToUse = parentLoopDelay;\n\n    return (\n      <AnimateIconContext.Provider\n        value={{\n          controls,\n          animation: animationToUse,\n          loop: loopToUse,\n          loopDelay: loopDelayToUse,\n          active: parentActive,\n          animate: parentAnimate,\n          animateOnHover: parentAnimateOnHover,\n          animateOnTap: parentAnimateOnTap,\n          animateOnView: parentAnimateOnView,\n          animateOnViewMargin: parentAnimateOnViewMargin,\n          animateOnViewOnce: parentAnimateOnViewOnce,\n          initialOnAnimateEnd: parentInitialOnAnimateEnd,\n          delay: parentDelay,\n        }}\n      >\n        <IconComponent\n          size={size}\n          className={cn(\n            className,\n            (animationToUse === 'path' || animationToUse === 'path-loop') &&\n              pathClassName,\n          )}\n          {...props}\n        />\n      </AnimateIconContext.Provider>\n    );\n  }\n\n  if (\n    animate !== undefined ||\n    onAnimateChange !== undefined ||\n    animateOnHover ||\n    animateOnTap ||\n    animateOnView ||\n    animationProp\n  ) {\n    return (\n      <AnimateIcon\n        animate={animate}\n        onAnimateChange={onAnimateChange}\n        animateOnHover={animateOnHover}\n        animateOnTap={animateOnTap}\n        animateOnView={animateOnView}\n        animateOnViewMargin={animateOnViewMargin}\n        animateOnViewOnce={animateOnViewOnce}\n        animation={animationProp}\n        loop={loop}\n        loopDelay={loopDelay}\n        onAnimateStart={onAnimateStart}\n        onAnimateEnd={onAnimateEnd}\n        delay={delay}\n        asChild\n      >\n        <IconComponent\n          size={size}\n          className={cn(\n            className,\n            (animationProp === 'path' || animationProp === 'path-loop') &&\n              pathClassName,\n          )}\n          {...props}\n        />\n      </AnimateIcon>\n    );\n  }\n\n  return (\n    <IconComponent\n      size={size}\n      className={cn(\n        className,\n        (animationProp === 'path' || animationProp === 'path-loop') &&\n          pathClassName,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction getVariants<\n  V extends { default: T; [key: string]: T },\n  T extends Record<string, Variants>,\n>(animations: V): T {\n  // eslint-disable-next-line react-hooks/rules-of-hooks\n  const { animation: animationType } = useAnimateIconContext();\n\n  let result: T;\n\n  if (animationType in staticAnimations) {\n    const variant = staticAnimations[animationType as StaticAnimations];\n    result = {} as T;\n    for (const key in animations.default) {\n      if (\n        (animationType === 'path' || animationType === 'path-loop') &&\n        key.includes('group')\n      )\n        continue;\n      result[key] = variant as T[Extract<keyof T, string>];\n    }\n  } else {\n    result = (animations[animationType as keyof V] as T) ?? animations.default;\n  }\n\n  return result;\n}\n\nexport {\n  pathClassName,\n  staticAnimations,\n  AnimateIcon,\n  IconWrapper,\n  useAnimateIconContext,\n  getVariants,\n  type IconProps,\n  type IconWrapperProps,\n  type AnimateIconProps,\n  type AnimateIconContextValue,\n};",
       },
     ],
     keywords: [],
@@ -13665,6 +14024,78 @@ export const index: Record<string, any> = {
     })(),
     command: '@animate-ui/icons-minimize',
   },
+  'icons-moon': {
+    name: 'icons-moon',
+    description: 'Moon icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/moon/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/moon.tsx',
+        content:
+          "'use client';\n\nimport * as React from 'react';\nimport { motion, type Variants } from 'motion/react';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from '@/components/animate-ui/icons/icon';\n\ntype MoonProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path: {\n      initial: {\n        rotate: 0,\n        transition: {\n          duration: 0.5,\n          ease: 'easeInOut',\n        },\n      },\n      animate: {\n        rotate: [0, -30, 400, 360],\n        transition: {\n          duration: 1.2,\n          times: [0, 0.25, 0.75, 1],\n          ease: ['easeInOut', 'easeInOut', 'easeInOut'],\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n  balancing: {\n    path: {\n      initial: {\n        rotate: 0,\n        transition: {\n          duration: 0.5,\n          ease: 'easeInOut',\n        },\n      },\n      animate: {\n        rotate: [0, -30, 25, -15, 10, -5, 0],\n        transition: {\n          duration: 1.2,\n          ease: 'easeInOut',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: MoonProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={size}\n      height={size}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      initial=\"initial\"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d=\"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401\"\n        variants={variants.path}\n        initial=\"initial\"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Moon(props: MoonProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Moon,\n  Moon as MoonIcon,\n  type MoonProps,\n  type MoonProps as MoonIconProps,\n};",
+      },
+    ],
+    keywords: ['dark', 'night'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/moon/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-moon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-moon',
+  },
+  'icons-moon-star': {
+    name: 'icons-moon-star',
+    description: 'Moon star icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/moon-star/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/moon-star.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype MoonStarProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: {\n        rotate: 0,\n        transition: { duration: 0 },\n      },\n      animate: {\n        rotate: [0, -30, 400, 360],\n        transition: {\n          duration: 1.2,\n          times: [0, 0.25, 0.75, 1],\n          ease: [\'easeInOut\', \'easeInOut\', \'easeInOut\'],\n        },\n      },\n    },\n    group: {\n      initial: {\n        scale: 1,\n        rotate: 0,\n        y: 0,\n        x: 0,\n      },\n      animate: {\n        scale: [1, 0, 0, 1],\n        rotate: [0, 90, 90, 0],\n        y: [0, 6, 10, 0],\n        x: [0, -10, -6, 0],\n        transition: {\n          duration: 1.2,\n          ease: \'easeInOut\',\n          times: [0, 0.25, 0.65, 1],\n        },\n      },\n    },\n    path2: {},\n    path3: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: MoonStarProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path\n          d="M18 5h4"\n          variants={variants.path2}\n          initial="initial"\n          animate={controls}\n        />\n        <motion.path\n          d="M20 3v4"\n          variants={variants.path3}\n          initial="initial"\n          animate={controls}\n        />\n      </motion.g>\n    </motion.svg>\n  );\n}\n\nfunction MoonStar(props: MoonStarProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  MoonStar,\n  MoonStar as MoonStarIcon,\n  type MoonStarProps,\n  type MoonStarProps as MoonStarIconProps,\n};',
+      },
+    ],
+    keywords: ['dark', 'night', 'star'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/moon-star/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-moon-star';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-moon-star',
+  },
   'icons-move-down': {
     name: 'icons-move-down',
     description: 'Move down icon component.',
@@ -13826,6 +14257,42 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: '@animate-ui/icons-move-up',
+  },
+  'icons-orbit': {
+    name: 'icons-orbit',
+    description: 'Orbit icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/orbit/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/orbit.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype OrbitProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    group: {\n      initial: { rotate: 0 },\n      animate: {\n        rotate: 360,\n        transition: {\n          duration: 2,\n          ease: \'linear\',\n          repeat: Infinity,\n          repeatType: \'loop\',\n        },\n      },\n    },\n    circle1: {},\n    circle2: {},\n    path1: {},\n    path2: {},\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: OrbitProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      variants={variants.group}\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M20.341 6.484A10 10 0 0 1 10.266 21.85"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M3.659 17.516A10 10 0 0 1 13.74 2.152"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="12"\n        cy="12"\n        r="3"\n        variants={variants.circle1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="19"\n        cy="5"\n        r="2"\n        variants={variants.circle2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.circle\n        cx="5"\n        cy="19"\n        r="2"\n        variants={variants.circle3}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Orbit(props: OrbitProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Orbit,\n  Orbit as OrbitIcon,\n  type OrbitProps,\n  type OrbitProps as OrbitIconProps,\n};',
+      },
+    ],
+    keywords: ['planet', 'space', 'physics', 'satellites', 'moons'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/orbit/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-orbit';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-orbit',
   },
   'icons-paintbrush': {
     name: 'icons-paintbrush',
@@ -14028,7 +14495,7 @@ export const index: Record<string, any> = {
         type: 'registry:ui',
         target: 'components/animate-ui/icons/party-popper.tsx',
         content:
-          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype PartyPopperProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: {\n    path1: {\n      initial: {\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        x: [-1, 1, 0],\n        y: [1, -1, 0],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path2: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-5, 0],\n        y: [5, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path3: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-10, 0],\n        y: [10, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path4: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-10, 0],\n        y: [10, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path5: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-5, 0],\n        y: [5, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path6: {\n      initial: {\n        opacity: 1,\n        pathLength: 1,\n        pathOffset: 0,\n        scale: 1,\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        scale: [0.3, 0.8, 1, 1.1, 1],\n        pathLength: [0, 0.5, 1],\n        pathOffset: [1, 0.5, 0],\n        x: [-5, 0],\n        y: [5, 0],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path7: {\n      initial: {\n        opacity: 1,\n        pathLength: 1,\n        pathOffset: 0,\n        scale: 1,\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        scale: [0.3, 0.8, 1, 1.1, 1],\n        pathLength: [0, 0.5, 1],\n        pathOffset: [1, 0.5, 0],\n        x: [-5, 0],\n        y: [5, 0],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path8: {\n      initial: {\n        opacity: 1,\n        pathLength: 1,\n        pathOffset: 0,\n        scale: 1,\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        scale: [0.3, 0.8, 1, 1.1, 1],\n        pathLength: [0, 0.5, 1],\n        pathOffset: [1, 0.5, 0],\n        x: [-5, 0],\n        y: [5, 0],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path9: {\n      initial: {\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        x: [-1, 1, 0],\n        y: [1, -1, 0],\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: PartyPopperProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.path\n        d="M5.8 11.3 2 22l10.7-3.79"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M4 3h.01"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M22 8h.01"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M15 2h.01"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M22 20h.01"\n        variants={variants.path5}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"\n        variants={variants.path6}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17"\n        variants={variants.path7}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7"\n        variants={variants.path8}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"\n        variants={variants.path9}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction PartyPopper(props: PartyPopperProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  PartyPopper,\n  PartyPopper as PartyPopperIcon,\n  type PartyPopperProps,\n  type PartyPopperProps as PartyPopperIconProps,\n};',
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype PartyPopperProps = IconProps<keyof typeof animations>;\n\nconst popperAnimation: Variants = {\n  initial: {\n    opacity: 1,\n    pathLength: 1,\n    pathOffset: 0,\n    scale: 1,\n    x: 0,\n    y: 0,\n  },\n  animate: {\n    opacity: [0, 0, 0, 1, 1],\n    scale: [0.3, 0.8, 1, 1.1, 1],\n    pathLength: [0, 0.5, 1],\n    pathOffset: [1, 0.5, 0],\n    x: [-5, 0],\n    y: [5, 0],\n    transition: {\n      duration: 0.6,\n      ease: \'easeInOut\',\n    },\n  },\n};\n\nconst animations = {\n  default: {\n    group: {\n      initial: {\n        x: 0,\n        y: 0,\n      },\n      animate: {\n        x: [-1, 1, 0],\n        y: [1, -1, 0],\n        scale: [1, 0.7, 1.1, 1],\n        transformOrigin: \'bottom left\',\n        transition: {\n          duration: 0.6,\n          ease: \'easeInOut\',\n        },\n      },\n    },\n    path1: {},\n    path2: {},\n    path3: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-5, 0],\n        y: [5, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path4: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-10, 0],\n        y: [10, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path5: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-10, 0],\n        y: [10, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path6: {\n      initial: { opacity: 1, scale: 1, x: 0, y: 0 },\n      animate: {\n        opacity: [0, 0, 0, 1, 1],\n        x: [-5, 0],\n        y: [5, 0],\n        scale: [0.5, 1, 1.2, 1],\n        transition: {\n          duration: 0.6,\n        },\n      },\n    },\n    path7: popperAnimation,\n    path8: popperAnimation,\n    path9: popperAnimation,\n  } satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: PartyPopperProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      {...props}\n    >\n      <motion.g variants={variants.group} initial="initial" animate={controls}>\n        <motion.path\n          d="M5.8 11.3 2 22l10.7-3.79"\n          variants={variants.path1}\n          initial="initial"\n          animate={controls}\n        />\n        <motion.path\n          d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"\n          variants={variants.path2}\n          initial="initial"\n          animate={controls}\n        />\n      </motion.g>\n      <motion.path\n        d="M4 3h.01"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M22 8h.01"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M15 2h.01"\n        variants={variants.path5}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M22 20h.01"\n        variants={variants.path6}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"\n        variants={variants.path7}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17"\n        variants={variants.path8}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7"\n        variants={variants.path9}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction PartyPopper(props: PartyPopperProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  PartyPopper,\n  PartyPopper as PartyPopperIcon,\n  type PartyPopperProps,\n  type PartyPopperProps as PartyPopperIconProps,\n};',
       },
     ],
     keywords: [
@@ -15162,6 +15629,160 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: '@animate-ui/icons-star',
+  },
+  'icons-sun': {
+    name: 'icons-sun',
+    description: 'Sun icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/sun/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/sun.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype SunProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      circle: {},\n    };\n\n    for (let i = 1; i <= 8; i++) {\n      animation[`line${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n            delay: (i - 1) * 0.15,\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: SunProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.circle\n        cx="12"\n        cy="12"\n        r="4"\n        variants={variants.circle}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="4"\n        x2="12"\n        y2="2"\n        variants={variants.line1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="6.3"\n        x2="19.1"\n        y2="4.9"\n        variants={variants.line2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="20"\n        y1="12"\n        x2="22"\n        y2="12"\n        variants={variants.line3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="17.7"\n        x2="19.1"\n        y2="19.1"\n        variants={variants.line4}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="20"\n        x2="12"\n        y2="22"\n        variants={variants.line5}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="6.3"\n        y1="17.7"\n        x2="4.9"\n        y2="19.1"\n        variants={variants.line6}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="4"\n        y1="12"\n        x2="2"\n        y2="12"\n        variants={variants.line7}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="6.3"\n        y1="6.3"\n        x2="4.9"\n        y2="4.9"\n        variants={variants.line8}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction Sun(props: SunProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  Sun,\n  Sun as SunIcon,\n  type SunProps,\n  type SunProps as SunIconProps,\n};',
+      },
+    ],
+    keywords: ['brightness', 'weather', 'light', 'summer'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/sun/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-sun';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-sun',
+  },
+  'icons-sun-dim': {
+    name: 'icons-sun-dim',
+    description: 'Sun dim icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/sun-dim/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/sun-dim.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype SunDimProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      circle: {},\n    };\n\n    for (let i = 1; i <= 8; i++) {\n      animation[`path${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: [0, 1],\n          scale: [0, 1],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n            delay: (i - 1) * 0.15,\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: SunDimProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.circle\n        cx="12"\n        cy="12"\n        r="4"\n        variants={variants.circle}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M12 4h.01"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M17.657 6.343h.01"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M20 12h.01"\n        variants={variants.path3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M17.657 17.657h.01"\n        variants={variants.path4}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M12 20h.01"\n        variants={variants.path5}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M6.343 17.657h.01"\n        variants={variants.path6}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M4 12h.01"\n        variants={variants.path7}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M6.343 6.343h.01"\n        variants={variants.path8}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction SunDim(props: SunDimProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  SunDim,\n  SunDim as SunDimIcon,\n  type SunDimProps,\n  type SunDimProps as SunDimIconProps,\n};',
+      },
+    ],
+    keywords: ['brightness', 'dim', 'low', 'brightness low'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/sun-dim/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-sun-dim';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-sun-dim',
+  },
+  'icons-sun-medium': {
+    name: 'icons-sun-medium',
+    description: 'Sun medium icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/sun-medium/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/sun-medium.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype SunMediumProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      circle: {},\n    };\n\n    for (let i = 1; i <= 8; i++) {\n      animation[`line${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n            delay: (i - 1) * 0.15,\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: SunMediumProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.circle\n        cx="12"\n        cy="12"\n        r="4"\n        variants={variants.circle}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="4"\n        x2="12"\n        y2="3"\n        variants={variants.line1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="6.3"\n        x2="18.4"\n        y2="5.6"\n        variants={variants.line2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="20"\n        y1="12"\n        x2="21"\n        y2="12"\n        variants={variants.line3}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="17.7"\n        x2="18.4"\n        y2="18.4"\n        variants={variants.line4}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="20"\n        x2="12"\n        y2="21"\n        variants={variants.line5}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="6.3"\n        y1="17.7"\n        x2="5.6"\n        y2="18.4"\n        variants={variants.line6}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="4"\n        y1="12"\n        x2="3"\n        y2="12"\n        variants={variants.line7}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="6.3"\n        y1="6.3"\n        x2="5.6"\n        y2="5.6"\n        variants={variants.line8}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction SunMedium(props: SunMediumProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  SunMedium,\n  SunMedium as SunMediumIcon,\n  type SunMediumProps,\n  type SunMediumProps as SunMediumIconProps,\n};',
+      },
+    ],
+    keywords: ['brightness', 'medium'],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/sun-medium/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-sun-medium';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-sun-medium',
+  },
+  'icons-sun-moon': {
+    name: 'icons-sun-moon',
+    description: 'Sun moon icon component.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/icons-icon'],
+    files: [
+      {
+        path: 'registry/icons/sun-moon/index.tsx',
+        type: 'registry:ui',
+        target: 'components/animate-ui/icons/sun-moon.tsx',
+        content:
+          '\'use client\';\n\nimport * as React from \'react\';\nimport { motion, type Variants } from \'motion/react\';\n\nimport {\n  getVariants,\n  useAnimateIconContext,\n  IconWrapper,\n  type IconProps,\n} from \'@/components/animate-ui/icons/icon\';\n\ntype SunMoonProps = IconProps<keyof typeof animations>;\n\nconst animations = {\n  default: (() => {\n    const animation: Record<string, Variants> = {\n      path1: {\n        initial: {\n          rotate: 0,\n        },\n        animate: {\n          rotate: [0, -10, 10, 0],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n          },\n        },\n      },\n      path2: {},\n    };\n\n    for (let i = 1; i <= 3; i++) {\n      animation[`line${i}`] = {\n        initial: { opacity: 1, scale: 1 },\n        animate: {\n          opacity: [0, 1],\n          pathLength: [0, 1],\n          transition: {\n            duration: 0.6,\n            ease: \'easeInOut\',\n            delay: (i - 1) * 0.15,\n          },\n        },\n      };\n    }\n\n    return animation;\n  })() satisfies Record<string, Variants>,\n} as const;\n\nfunction IconComponent({ size, ...props }: SunMoonProps) {\n  const { controls } = useAnimateIconContext();\n  const variants = getVariants(animations);\n\n  return (\n    <motion.svg\n      xmlns="http://www.w3.org/2000/svg"\n      width={size}\n      height={size}\n      viewBox="0 0 24 24"\n      fill="none"\n      stroke="currentColor"\n      strokeWidth={2}\n      strokeLinecap="round"\n      strokeLinejoin="round"\n      initial="initial"\n      animate={controls}\n      {...props}\n    >\n      <motion.path\n        d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715"\n        variants={variants.path1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.path\n        d="M16 12a4 4 0 0 0-4-4"\n        variants={variants.path2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="12"\n        y1="4"\n        x2="12"\n        y2="2"\n        variants={variants.line1}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="17.7"\n        y1="6.3"\n        x2="19"\n        y2="5"\n        variants={variants.line2}\n        initial="initial"\n        animate={controls}\n      />\n      <motion.line\n        x1="20"\n        y1="12"\n        x2="22"\n        y2="12"\n        variants={variants.line3}\n        initial="initial"\n        animate={controls}\n      />\n    </motion.svg>\n  );\n}\n\nfunction SunMoon(props: SunMoonProps) {\n  return <IconWrapper icon={IconComponent} {...props} />;\n}\n\nexport {\n  animations,\n  SunMoon,\n  SunMoon as SunMoonIcon,\n  type SunMoonProps,\n  type SunMoonProps as SunMoonIconProps,\n};',
+      },
+    ],
+    keywords: [
+      'dark',
+      'light',
+      'moon',
+      'sun',
+      'brightness',
+      'theme',
+      'auto theme',
+      'system theme',
+      'appearance',
+    ],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/icons/sun-moon/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'icons-sun-moon';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/icons-sun-moon',
   },
   'icons-terminal': {
     name: 'icons-terminal',

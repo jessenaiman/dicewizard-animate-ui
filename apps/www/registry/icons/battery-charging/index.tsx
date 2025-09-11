@@ -14,6 +14,8 @@ type BatteryChargingProps = IconProps<keyof typeof animations>;
 
 const animations = {
   default: {
+    path1: {},
+    path2: {},
     path3: {
       initial: {
         opacity: 1,
@@ -28,6 +30,7 @@ const animations = {
         },
       },
     },
+    line: {},
   } satisfies Record<string, Variants>,
 } as const;
 

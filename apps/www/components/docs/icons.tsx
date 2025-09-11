@@ -1,6 +1,7 @@
 'use client';
 
 import Fuse from 'fuse.js';
+import { useQueryState, parseAsString } from 'nuqs';
 import { index } from '@/__registry__';
 import { Highlight } from '@/registry/primitives/effects/highlight';
 import { AnimateIcon, staticAnimations } from '@/registry/icons/icon';
@@ -34,6 +35,7 @@ import {
 } from '@/registry/components/animate/tooltip';
 import { Button } from '@workspace/ui/components/ui/button';
 import { RotateCcw } from '@/registry/icons/rotate-ccw';
+import { InfinityIcon } from 'lucide-react';
 
 const staticAnimationsLength = Object.keys(staticAnimations).length;
 
@@ -57,21 +59,50 @@ const NEW_ICONS = [
   'icons-chart-no-axes-column-increasing',
   'icons-chart-scatter',
   'icons-chart-spline',
+  'icons-cloud-drizzle',
+  'icons-cloud-hail',
+  'icons-cloud-lightning',
+  'icons-cloud-moon',
+  'icons-cloud-moon-rain',
+  'icons-cloud-rain',
+  'icons-cloud-rain-wind',
+  'icons-cloud-snow',
+  'icons-cloud-sun',
+  'icons-cloud-sun-rain',
   'icons-contrast',
   'icons-cross',
   'icons-ellipsis',
   'icons-ellipsis-vertical',
   'icons-party-popper',
+  'icons-moon',
+  'icons-moon-star',
+  'icons-orbit',
+  'icons-sun',
+  'icons-sun-dim',
+  'icons-sun-medium',
+  'icons-sun-moon',
 ];
 
 export const Icons = () => {
   const [search, setSearch] = useState('');
   const [animationKey, setAnimationKey] = useState(0);
-  const [activeIcon, setActiveIcon] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>('cli');
   const [isCopied, setIsCopied] = useState(false);
   const [activeAnimation, setActiveAnimation] = useState<string>('default');
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoop, setIsLoop] = useState(false);
+
+  const [activeIconWithoutPrefix, setActiveIconWithoutPrefix] = useQueryState(
+    'icon',
+    parseAsString.withOptions({
+      history: 'replace',
+      throttleMs: 150,
+    }),
+  );
+  const activeIcon = useMemo(
+    () => (activeIconWithoutPrefix ? `icons-${activeIconWithoutPrefix}` : null),
+    [activeIconWithoutPrefix],
+  );
 
   const icons = Object.values(index).filter(
     (icon) => icon.name.startsWith('icons-') && icon.name !== 'icons-icon',
@@ -157,8 +188,9 @@ export const Icons = () => {
                             <button
                               data-value={icon.name}
                               onClick={() => {
-                                console.log('clicked', icon.name);
-                                setActiveIcon(icon.name);
+                                setActiveIconWithoutPrefix(
+                                  icon.name.replace('icons-', ''),
+                                );
                               }}
                               className="relative group flex items-center justify-center size-full aspect-square rounded-lg p-3.5"
                             >
@@ -214,7 +246,7 @@ export const Icons = () => {
         </h2>
         <AnimateIcon animateOnHover>
           <button
-            onClick={() => setActiveIcon(null)}
+            onClick={() => setActiveIconWithoutPrefix(null)}
             className="absolute cursor-pointer top-5 right-5 size-8 rounded-full flex items-center justify-center bg-background hover:bg-muted transition-colors duration-200"
           >
             <X className="size-5 text-neutral-500" />
@@ -259,7 +291,7 @@ export const Icons = () => {
                       <DynamicCodeBlock
                         code={icon?.files?.[0]?.content}
                         lang="jsx"
-                        title={`${icon?.name}.tsx`}
+                        title={`${icon?.name.replace('icons-', '')}.tsx`}
                         icon={<ReactIcon />}
                         className="max-h-[92px]"
                       />
@@ -305,12 +337,26 @@ export const Icons = () => {
                   <div className="relative h-[150px] w-full mx-auto rounded-2xl aspect-square bg-muted/50 border flex items-center justify-center">
                     {icon?.component && (
                       <icon.component
-                        key={`${activeAnimation}-${activeIcon}-${animationKey}`}
+                        key={`${activeAnimation}-${activeIcon}-${animationKey}-${isLoop}`}
                         animate
                         animation={activeAnimation}
+                        loop={isLoop}
                         className="text-current size-[100px]"
                       />
                     )}
+
+                    <Button
+                      size="icon-sm"
+                      variant="ghost"
+                      className={cn(
+                        'absolute left-2 top-2 z-[2] backdrop-blur-md bg-transparent hover:bg-black/5 dark:hover:bg-white/10 size-6',
+                        isLoop &&
+                          'bg-black/10 dark:bg-white/15 hover:bg-black/15 dark:hover:bg-white/20',
+                      )}
+                      onClick={() => setIsLoop(!isLoop)}
+                    >
+                      <InfinityIcon className="size-3.5" />
+                    </Button>
 
                     <AnimateIcon animateOnHover>
                       <Button

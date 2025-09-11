@@ -7177,6 +7177,259 @@
       }
     },
     {
+      "name": "icons-cloud-drizzle",
+      "type": "registry:ui",
+      "title": "Cloud Drizzle Icon",
+      "description": "Cloud drizzle icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-drizzle/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-drizzle.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "shower"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-hail",
+      "type": "registry:ui",
+      "title": "Cloud Hail Icon",
+      "description": "Cloud hail icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-hail/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-hail.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "rainfall"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-lightning",
+      "type": "registry:ui",
+      "title": "Cloud Lightning Icon",
+      "description": "Cloud lightning icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-lightning/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-lightning.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "bolt"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-moon",
+      "type": "registry:ui",
+      "title": "Cloud Moon Icon",
+      "description": "Cloud moon icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-moon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-moon.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "night"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-moon-rain",
+      "type": "registry:ui",
+      "title": "Cloud Moon Rain Icon",
+      "description": "Cloud moon rain icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-moon-rain/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-moon-rain.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "partly",
+          "night",
+          "rainfall"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-rain",
+      "type": "registry:ui",
+      "title": "Cloud Rain Icon",
+      "description": "Cloud rain icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-rain/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-rain.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "rainfall"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-rain-wind",
+      "type": "registry:ui",
+      "title": "Cloud Rain Wind Icon",
+      "description": "Cloud rain wind icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-rain-wind/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-rain-wind.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "rainfall"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-snow",
+      "type": "registry:ui",
+      "title": "Cloud Snow Icon",
+      "description": "Cloud snow icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-snow/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-snow.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "blizzard"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-sun",
+      "type": "registry:ui",
+      "title": "Cloud Sun Icon",
+      "description": "Cloud sun icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-sun/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-sun.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "partly"
+        ]
+      }
+    },
+    {
+      "name": "icons-cloud-sun-rain",
+      "type": "registry:ui",
+      "title": "Cloud Sun Rain Icon",
+      "description": "Cloud sun rain icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/cloud-sun-rain/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/cloud-sun-rain.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "weather",
+          "partly",
+          "rainfall"
+        ]
+      }
+    },
+    {
       "name": "icons-cloud-upload",
       "type": "registry:ui",
       "title": "Cloud Upload Icon",
@@ -7361,7 +7614,6 @@
       ],
       "meta": {
         "keywords": [
-          "album",
           "album",
           "vinyl",
           "record",
@@ -9006,6 +9258,57 @@
       }
     },
     {
+      "name": "icons-moon",
+      "type": "registry:ui",
+      "title": "Moon Icon",
+      "description": "Moon icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/moon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/moon.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "dark",
+          "night"
+        ]
+      }
+    },
+    {
+      "name": "icons-moon-star",
+      "type": "registry:ui",
+      "title": "Moon Star Icon",
+      "description": "Moon star icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/moon-star/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/moon-star.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "dark",
+          "night",
+          "star"
+        ]
+      }
+    },
+    {
       "name": "icons-move-down",
       "type": "registry:ui",
       "title": "Move Down Icon",
@@ -9122,6 +9425,34 @@
           "direction",
           "north",
           "↑"
+        ]
+      }
+    },
+    {
+      "name": "icons-orbit",
+      "type": "registry:ui",
+      "title": "Orbit Icon",
+      "description": "Orbit icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/orbit/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/orbit.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "planet",
+          "space",
+          "physics",
+          "satellites",
+          "moons"
         ]
       }
     },
@@ -10103,6 +10434,117 @@
           "like",
           "review",
           "rating"
+        ]
+      }
+    },
+    {
+      "name": "icons-sun",
+      "type": "registry:ui",
+      "title": "Sun Icon",
+      "description": "Sun icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/sun/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/sun.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "brightness",
+          "weather",
+          "light",
+          "summer"
+        ]
+      }
+    },
+    {
+      "name": "icons-sun-dim",
+      "type": "registry:ui",
+      "title": "Sun Dim Icon",
+      "description": "Sun dim icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/sun-dim/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/sun-dim.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "brightness",
+          "dim",
+          "low",
+          "brightness low"
+        ]
+      }
+    },
+    {
+      "name": "icons-sun-medium",
+      "type": "registry:ui",
+      "title": "Sun Medium Icon",
+      "description": "Sun medium icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/sun-medium/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/sun-medium.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "brightness",
+          "medium"
+        ]
+      }
+    },
+    {
+      "name": "icons-sun-moon",
+      "type": "registry:ui",
+      "title": "Sun Moon Icon",
+      "description": "Sun moon icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/sun-moon/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/sun-moon.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "dark",
+          "light",
+          "moon",
+          "sun",
+          "brightness",
+          "theme",
+          "auto theme",
+          "system theme",
+          "appearance"
         ]
       }
     },
