@@ -63,78 +63,82 @@ export const ComponentManualInstallation = ({
   const collapsibleRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Steps>
-      {dependencies && depsCommands && (
-        <Step>
-          <h4 className="pt-1 pb-4">Install the following dependencies:</h4>
-          <CodeTabs codes={depsCommands} />
-        </Step>
-      )}
+    <div className="-mt-6">
+      <Steps>
+        {dependencies && depsCommands && (
+          <Step>
+            <h4 className="pt-1 pb-4">Install the following dependencies:</h4>
+            <CodeTabs codes={depsCommands} />
+          </Step>
+        )}
 
-      {devDependencies && devDepsCommands && (
-        <Step>
-          <h4 className="pt-1 pb-4">Install the following dev dependencies:</h4>
-          <CodeTabs codes={devDepsCommands} />
-        </Step>
-      )}
+        {devDependencies && devDepsCommands && (
+          <Step>
+            <h4 className="pt-1 pb-4">
+              Install the following dev dependencies:
+            </h4>
+            <CodeTabs codes={devDepsCommands} />
+          </Step>
+        )}
 
-      {registryDependencies && registryDepsCommands && (
+        {registryDependencies && registryDepsCommands && (
+          <Step>
+            <h4 className="pt-1 pb-4">
+              Install the following registry dependencies:
+            </h4>
+            <CodeTabs codes={registryDepsCommands} />
+          </Step>
+        )}
+
         <Step>
           <h4 className="pt-1 pb-4">
-            Install the following registry dependencies:
+            Copy and paste the following code into your project:
           </h4>
-          <CodeTabs codes={registryDepsCommands} />
-        </Step>
-      )}
 
-      <Step>
-        <h4 className="pt-1 pb-4">
-          Copy and paste the following code into your project:
-        </h4>
-
-        <Collapsible open={isOpened} onOpenChange={setIsOpened}>
-          <div ref={collapsibleRef} className="relative overflow-hidden">
-            <CollapsibleContent
-              forceMount
-              className={cn('overflow-hidden', !isOpened && 'max-h-32')}
-            >
+          <Collapsible open={isOpened} onOpenChange={setIsOpened}>
+            <div ref={collapsibleRef} className="relative overflow-hidden">
+              <CollapsibleContent
+                forceMount
+                className={cn('overflow-hidden', !isOpened && 'max-h-32')}
+              >
+                <div
+                  className={cn(
+                    '[&_pre]:my-0 [&_pre]:max-h-[650px] [&_code]:pb-[60px]',
+                    !isOpened
+                      ? '[&_pre]:overflow-hidden'
+                      : '[&_pre]:overflow-auto]',
+                  )}
+                >
+                  <DynamicCodeBlock
+                    code={code}
+                    lang="tsx"
+                    title={path}
+                    icon={<ReactIcon />}
+                  />
+                </div>
+              </CollapsibleContent>
               <div
                 className={cn(
-                  '[&_pre]:my-0 [&_pre]:max-h-[650px] [&_code]:pb-[60px]',
-                  !isOpened
-                    ? '[&_pre]:overflow-hidden'
-                    : '[&_pre]:overflow-auto]',
+                  'absolute flex items-center justify-center bg-gradient-to-b rounded-t-xl from-neutral-300/30 to-white dark:from-neutral-700/30 dark:to-neutral-950 p-2',
+                  isOpened ? 'inset-x-0 bottom-0 h-12' : 'inset-0',
                 )}
               >
-                <DynamicCodeBlock
-                  code={code}
-                  lang="tsx"
-                  title={path}
-                  icon={<ReactIcon />}
-                />
+                <CollapsibleTrigger asChild>
+                  <Button variant="secondary" className="h-8 text-xs">
+                    {isOpened ? 'Collapse' : 'Expand'}
+                  </Button>
+                </CollapsibleTrigger>
               </div>
-            </CollapsibleContent>
-            <div
-              className={cn(
-                'absolute flex items-center justify-center bg-gradient-to-b rounded-t-xl from-neutral-300/30 to-white dark:from-neutral-700/30 dark:to-neutral-950 p-2',
-                isOpened ? 'inset-x-0 bottom-0 h-12' : 'inset-0',
-              )}
-            >
-              <CollapsibleTrigger asChild>
-                <Button variant="secondary" className="h-8 text-xs">
-                  {isOpened ? 'Collapse' : 'Expand'}
-                </Button>
-              </CollapsibleTrigger>
             </div>
-          </div>
-        </Collapsible>
-      </Step>
+          </Collapsible>
+        </Step>
 
-      <Step>
-        <h4 className="pt-1 pb-4">
-          Update the import paths to match your project setup.
-        </h4>
-      </Step>
-    </Steps>
+        <Step>
+          <h4 className="pt-1 pb-4">
+            Update the import paths to match your project setup.
+          </h4>
+        </Step>
+      </Steps>
+    </div>
   );
 };
