@@ -12,6 +12,10 @@ import {
 } from '@/registry/primitives/effects/highlight';
 import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
+import {
+  AutoHeight,
+  type AutoHeightProps,
+} from '@/registry/primitives/effects/auto-height';
 
 type TabsContextType = {
   value: string | undefined;
@@ -108,24 +112,19 @@ function TabsContent({
   );
 }
 
-type TabsContentsProps = HTMLMotionProps<'div'> & {
-  children: React.ReactNode;
-};
+type TabsContentsProps = AutoHeightProps;
 
 function TabsContents({
   transition = { type: 'spring', stiffness: 200, damping: 30 },
-  style,
   ...props
 }: TabsContentsProps) {
   const { value } = useTabs();
 
   return (
-    <motion.div
+    <AutoHeight
       data-slot="tabs-contents"
-      layout="size"
-      layoutDependency={value}
-      style={{ overflow: 'hidden', ...style }}
-      transition={{ layout: transition }}
+      deps={[value]}
+      transition={transition}
       {...props}
     />
   );

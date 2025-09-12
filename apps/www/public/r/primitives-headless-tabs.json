@@ -10,7 +10,8 @@
   ],
   "registryDependencies": [
     "@animate-ui/lib-get-strict-context",
-    "@animate-ui/primitives-effects-highlight"
+    "@animate-ui/primitives-effects-highlight",
+    "@animate-ui/primitives-effects-auto-height"
   ],
   "files": [
     {

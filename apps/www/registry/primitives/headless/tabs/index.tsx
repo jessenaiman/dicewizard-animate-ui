@@ -22,6 +22,7 @@ import {
   HighlightProps,
 } from '@/registry/primitives/effects/highlight';
 import { getStrictContext } from '@/registry/lib/get-strict-context';
+import { AutoHeight } from '@/registry/primitives/effects/auto-height';
 
 type TabsContextType = {
   selectedIndex: number;
@@ -97,7 +98,7 @@ function Tab<TTag extends React.ElementType = 'button'>(props: TabProps<TTag>) {
 
   return (
     <TabPrimitive
-      data-slot="tabs-trigger"
+      data-slot="tab"
       as={as as React.ElementType}
       index={index}
       {...rest}
@@ -112,7 +113,7 @@ type TabHighlightItemProps = HighlightItemProps & {
 function TabHighlightItem({ index, ...props }: TabHighlightItemProps) {
   return (
     <HighlightItem
-      data-slot="tabs-highlight-item"
+      data-slot="tab-highlight-item"
       value={index.toString()}
       {...props}
     />
@@ -140,7 +141,7 @@ function TabPanel<TTag extends React.ElementType = typeof motion.div>(
 
   return (
     <TabPanelPrimitive
-      data-slot="tabs-content"
+      data-slot="tab-panel"
       layout
       initial={{ opacity: 0, filter: 'blur(4px)' }}
       animate={{ opacity: 1, filter: 'blur(0px)' }}
@@ -152,35 +153,30 @@ function TabPanel<TTag extends React.ElementType = typeof motion.div>(
   );
 }
 
-type TabPanelsProps<TTag extends React.ElementType = typeof motion.div> = Omit<
+type TabPanelsProps<TTag extends React.ElementType = typeof AutoHeight> = Omit<
   TabPanelsPrimitiveProps<TTag>,
-  'transition'
+  'transition' | 'as'
 > & {
   className?: string;
-  as?: TTag;
   transition?: Transition;
 };
 
-function TabPanels<TTag extends React.ElementType = typeof motion.div>(
+function TabPanels<TTag extends React.ElementType = typeof AutoHeight>(
   props: TabPanelsProps<TTag>,
 ) {
   const { selectedIndex } = useTabs();
 
   const {
-    as = motion.div,
     transition = { type: 'spring', stiffness: 200, damping: 25 },
-    style,
     ...rest
   } = props;
 
   return (
     <TabPanelsPrimitive
-      data-slot="tabs-contents"
-      layout="size"
-      layoutDependency={selectedIndex.toString()}
-      style={{ overflow: 'hidden', ...style }}
-      transition={{ layout: transition }}
-      as={as as React.ElementType}
+      data-slot="tab-panels"
+      deps={[selectedIndex]}
+      transition={transition}
+      as={AutoHeight}
       {...rest}
     />
   );

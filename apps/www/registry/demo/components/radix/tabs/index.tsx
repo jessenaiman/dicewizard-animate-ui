@@ -25,8 +25,8 @@ export function RadixTabsDemo() {
           <TabsTrigger value="account">Account</TabsTrigger>
           <TabsTrigger value="password">Password</TabsTrigger>
         </TabsList>
-        <TabsContents>
-          <Card className="shadow-none">
+        <Card className="shadow-none py-0">
+          <TabsContents className="py-6">
             <TabsContent value="account" className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
@@ -67,8 +67,8 @@ export function RadixTabsDemo() {
                 <Button>Save password</Button>
               </CardFooter>
             </TabsContent>
-          </Card>
-        </TabsContents>
+          </TabsContents>
+        </Card>
       </Tabs>
     </div>
   );

@@ -29,8 +29,8 @@ export function RadixTabsDemo() {
             Password
           </Tab>
         </TabList>
-        <TabPanels>
-          <Card className="shadow-none">
+        <Card className="shadow-none py-0">
+          <TabPanels className="py-6">
             <TabPanel className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
@@ -71,8 +71,8 @@ export function RadixTabsDemo() {
                 <Button>Save password</Button>
               </CardFooter>
             </TabPanel>
-          </Card>
-        </TabPanels>
+          </TabPanels>
+        </Card>
       </TabGroup>
     </div>
   );

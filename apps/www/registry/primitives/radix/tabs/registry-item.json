@@ -7,6 +7,7 @@
   "dependencies": ["motion", "radix-ui"],
   "registryDependencies": [
     "@animate-ui/primitives-effects-highlight",
+    "@animate-ui/primitives-effects-auto-height",
     "@animate-ui/lib-get-strict-context",
     "@animate-ui/hooks-use-controlled-state"
   ],

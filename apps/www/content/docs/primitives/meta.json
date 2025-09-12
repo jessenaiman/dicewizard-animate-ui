@@ -71,6 +71,7 @@
     "texts/splitting",
     "texts/typing",
     "---Effects---",
+    "effects/auto-height",
     "effects/blur",
     "effects/effect",
     "effects/fade",

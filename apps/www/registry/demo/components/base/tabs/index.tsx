@@ -25,8 +25,8 @@ export function BaseTabsDemo() {
           <TabsTab value="account">Account</TabsTab>
           <TabsTab value="password">Password</TabsTab>
         </TabsList>
-        <TabsPanels>
-          <Card className="shadow-none">
+        <Card className="shadow-none py-0">
+          <TabsPanels className="py-6">
             <TabsPanel value="account" className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
@@ -67,8 +67,8 @@ export function BaseTabsDemo() {
                 <Button>Save password</Button>
               </CardFooter>
             </TabsPanel>
-          </Card>
-        </TabsPanels>
+          </TabsPanels>
+        </Card>
       </Tabs>
     </div>
   );

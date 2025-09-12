@@ -181,62 +181,124 @@ function TabsTrigger({
   );
 }
 
-type TabsContentsProps = React.ComponentProps<'div'> & {
+type TabsContentsProps = HTMLMotionProps<'div'> & {
   children: React.ReactNode;
   transition?: Transition;
 };
 
 function TabsContents({
   children,
-  style,
   transition = {
     type: 'spring',
     stiffness: 300,
-    damping: 32,
+    damping: 30,
     bounce: 0,
     restDelta: 0.01,
   },
   ...props
 }: TabsContentsProps) {
   const { activeValue } = useTabs();
-  const childrenArray = React.useMemo(
-    () => React.Children.toArray(children),
-    [children],
-  );
-  const activeIndex = React.useMemo(
-    () =>
-      childrenArray.findIndex(
-        (child): child is React.ReactElement<{ value: string }> =>
-          React.isValidElement(child) &&
-          typeof child.props === 'object' &&
-          child.props !== null &&
-          'value' in child.props &&
-          child.props.value === activeValue,
-      ),
-    [childrenArray, activeValue],
+  const childrenArray = React.Children.toArray(children);
+  const activeIndex = childrenArray.findIndex(
+    (child): child is React.ReactElement<{ value: string }> =>
+      React.isValidElement(child) &&
+      typeof child.props === 'object' &&
+      child.props !== null &&
+      'value' in child.props &&
+      child.props.value === activeValue,
   );
 
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const itemRefs = React.useRef<Array<HTMLDivElement | null>>([]);
+  const [height, setHeight] = React.useState(0);
+  const roRef = React.useRef<ResizeObserver | null>(null);
+
+  const measure = React.useCallback(() => {
+    const pane = itemRefs.current[activeIndex];
+    const container = containerRef.current;
+    if (!pane || !container) return 0;
+
+    const base = pane.getBoundingClientRect().height || 0;
+
+    const cs = getComputedStyle(container);
+    const isBorderBox = cs.boxSizing === 'border-box';
+    const paddingY =
+      (parseFloat(cs.paddingTop || '0') || 0) +
+      (parseFloat(cs.paddingBottom || '0') || 0);
+    const borderY =
+      (parseFloat(cs.borderTopWidth || '0') || 0) +
+      (parseFloat(cs.borderBottomWidth || '0') || 0);
+
+    let total = base + (isBorderBox ? paddingY + borderY : 0);
+
+    const dpr =
+      typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
+    total = Math.ceil(total * dpr) / dpr;
+
+    return total;
+  }, [activeIndex]);
+
+  React.useEffect(() => {
+    if (roRef.current) {
+      roRef.current.disconnect();
+      roRef.current = null;
+    }
+
+    const pane = itemRefs.current[activeIndex];
+    const container = containerRef.current;
+    if (!pane || !container) return;
+
+    setHeight(measure());
+
+    const ro = new ResizeObserver(() => {
+      const next = measure();
+      requestAnimationFrame(() => setHeight(next));
+    });
+
+    ro.observe(pane);
+    ro.observe(container);
+
+    roRef.current = ro;
+    return () => {
+      ro.disconnect();
+      roRef.current = null;
+    };
+  }, [activeIndex, childrenArray.length, measure]);
+
+  React.useLayoutEffect(() => {
+    if (height === 0 && activeIndex >= 0) {
+      const next = measure();
+      if (next !== 0) setHeight(next);
+    }
+  }, [activeIndex, height, measure]);
+
   return (
-    <div
+    <motion.div
+      ref={containerRef}
       data-slot="tabs-contents"
-      style={{ overflow: 'hidden', ...style }}
+      style={{ overflow: 'hidden' }}
+      animate={{ height }}
+      transition={transition}
       {...props}
     >
       <motion.div
-        style={{ display: 'flex', marginInline: '-20px' }}
+        className="flex -mx-2"
         animate={{ x: activeIndex * -100 + '%' }}
         transition={transition}
       >
         {childrenArray.map((child, index) => (
           <div
             key={index}
-            style={{ width: '100%', flexShrink: 0, paddingInline: '20px' }}
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
+            className="w-full shrink-0 px-2 h-full"
           >
             {child}
           </div>
         ))}
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
