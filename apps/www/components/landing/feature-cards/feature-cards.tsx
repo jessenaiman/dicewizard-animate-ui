@@ -8,8 +8,8 @@ import React, {
   MutableRefObject,
 } from "react";
 import { gsap } from "gsap";
-import CountUp from "@/components/CountUp";
-import "./landing/FeatureCards/FeatureCards.css";
+import { CountingNumber } from "@/registry/primitives/texts/counting-number";
+import "./feature-cards.css";
 
 
 interface ParticleCardProps {
@@ -272,7 +272,7 @@ const FeatureCards: React.FC = () => {
                 className="messages-gif"
               />
             </div>
-            <h2>{isMobile ? "110" : <CountUp to={110} />}%</h2>
+            <h2>{isMobile ? "110" : <CountingNumber number={110} />}%</h2>
             <h3>Free & Open Source</h3>
             <p>Loved by developers around the world</p>
           </ParticleCard>
@@ -285,7 +285,7 @@ const FeatureCards: React.FC = () => {
                   className="components-gif"
                 />
               </div>
-              <h2>{isMobile ? "100" : <CountUp to={100} />}+</h2>
+              <h2>{isMobile ? "100" : <CountingNumber number={100} />}+</h2>
               <h3>Creative Components</h3>
               <p>Growing weekly & only getting better</p>
             </ParticleCard>
@@ -298,7 +298,7 @@ const FeatureCards: React.FC = () => {
                 className="switch-gif"
               />
             </div>
-            <h2>{isMobile ? "2" : <CountUp to={2} />}</h2>
+            <h2>{isMobile ? "2" : <CountingNumber number={2} />}</h2>
             <h3>Styling Options</h3>
             <p>CSS or Tailwind, switch with one click</p>
           </ParticleCard>
