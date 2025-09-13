@@ -130,7 +130,7 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
               primary: true,
             },
             {
-              href: '/styleguides',
+              href: '/docs/styleguides',
               label: 'Style Guides',
             },
             {
