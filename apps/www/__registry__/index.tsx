@@ -8508,6 +8508,45 @@ export const index: Record<string, any> = {
     })(),
     command: '@animate-ui/demo-primitives-texts-splitting',
   },
+  'demo-primitives-texts-splitting-example': {
+    name: 'demo-primitives-texts-splitting-example',
+    description: 'Demo showing an animated splitting text.',
+    type: 'registry:ui',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['@animate-ui/primitives-texts-splitting'],
+    files: [
+      {
+        path: 'registry/demo/primitives/texts/splitting-example/index.tsx',
+        type: 'registry:ui',
+        target:
+          'components/animate-ui/demo/primitives/texts/splitting-example.tsx',
+        content:
+          "import { SplittingText } from '@/components/animate-ui/primitives/texts/splitting';\n\nconst TEXT = 'Elevate your UI with fluid, animated components';\n\nexport const SplittingTextDemo = () => {\n  return (\n    <div className=\"relative max-w-[450px]\">\n      <SplittingText\n        text={TEXT}\n        className=\"block text-4xl font-semibold text-center text-neutral-200 dark:text-neutral-800\"\n        disableAnimation\n      />\n      <SplittingText\n        text={TEXT}\n        className=\"block text-4xl font-semibold text-center absolute inset-0\"\n        type=\"chars\"\n        inView\n        initial={{ y: 0, opacity: 0, x: 0, filter: 'blur(10px)' }}\n        animate={{ y: 0, opacity: 1, x: 0, filter: 'blur(0px)' }}\n        transition={{ duration: 0.4, ease: 'easeOut' }}\n      />\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/primitives/texts/splitting-example/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'demo-primitives-texts-splitting-example';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@animate-ui/demo-primitives-texts-splitting-example',
+  },
   'demo-primitives-texts-typing': {
     name: 'demo-primitives-texts-typing',
     description: 'Demo showing an animated typing text.',
