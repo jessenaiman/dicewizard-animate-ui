@@ -1,0 +1,36 @@
+---
+title: Base UI
+description: Flexible unstyled components from @base-ui-components/react.
+---
+
+<Callout>
+  Base UI provides primitives similar to Radix/Headless. Style with Tailwind and animate with Motion.
+</Callout>
+
+## Example: Accordion
+
+```tsx
+import * as React from 'react';
+import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@base-ui-components/react/accordion';
+import { motion } from 'motion/react';
+
+export function BaseAccordion() {
+  return (
+    <Accordion className="w-full border rounded">
+      <AccordionItem value="one">
+        <AccordionHeader asChild>
+          <button className="flex w-full items-center justify-between px-4 py-2">
+            One
+          </button>
+        </AccordionHeader>
+        <AccordionPanel asChild>
+          <motion.div initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }} className="px-4 py-2 border-t">
+            Content
+          </motion.div>
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+

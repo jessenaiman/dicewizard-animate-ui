@@ -1,0 +1,26 @@
+---
+title: tw-animate-css
+description: Extra Tailwind animation utilities via tw-animate-css.
+---
+
+<Callout>
+  `tw-animate-css` is imported in global CSS to expose `animate-*` utility classes beyond Motion-driven animations.
+</Callout>
+
+## Setup
+
+```css
+/* apps/www/app/globals.css */
+@import 'tw-animate-css';
+```
+
+## Usage
+
+```tsx
+<div className="animate-fade-in" />
+<div className="animate-zoom-in" />
+<div className="animate-slide-up" />
+```
+
+Use these for simple entry animations; prefer Motion for interactive/controlled transitions.
+

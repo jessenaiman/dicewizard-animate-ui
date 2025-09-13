@@ -7,6 +7,7 @@ import { Hero } from '@/components/hero';
 import { cn } from '@workspace/ui/lib/utils';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
+import LandingPage from '@/components/landing/landing-page';
 
 const CONTENT_VARIANTS = {
   hidden: {
@@ -32,23 +33,19 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className={cn('relative h-dvh', !isLoaded && 'overflow-y-hidden')}>
+    <main className={cn('relative min-h-screen', !isLoaded && 'overflow-y-hidden')}>
       <Header transition={transition} />
 
-      <div className="h-dvh w-full flex items-center">
-        {transition && (
-          <motion.div
-            variants={CONTENT_VARIANTS}
-            initial="hidden"
-            animate={transition ? 'visible' : 'hidden'}
-            className="w-full"
-          >
-            <Hero key={String(transition)} />
-          </motion.div>
-        )}
-      </div>
-
-      <Features />
+      {transition && (
+        <motion.div
+          variants={CONTENT_VARIANTS}
+          initial="hidden"
+          animate={transition ? 'visible' : 'hidden'}
+          className="w-full"
+        >
+          <LandingPage key={String(transition)} />
+        </motion.div>
+      )}
 
       <Footer />
     </main>

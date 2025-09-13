@@ -1,0 +1,40 @@
+---
+title: Radix UI
+description: Accessible primitives via the `radix-ui` aggregate package.
+---
+
+<Callout>
+  Use the aggregator `radix-ui` for imports. Compose with Motion and Tailwind. Components expose `data-slot` for styling.
+</Callout>
+
+## Imports
+
+```tsx
+import { Dialog as DialogPrimitive } from 'radix-ui';
+```
+
+## Composition pattern
+
+```tsx
+import { Dialog as DialogPrimitive } from 'radix-ui';
+import { motion } from 'motion/react';
+
+export function Dialog({ open, onOpenChange, ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
+  return (
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange} {...props}>
+      <DialogPrimitive.Trigger asChild>
+        <button data-slot="dialog-trigger">Open</button>
+      </DialogPrimitive.Trigger>
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay asChild>
+          <motion.div data-slot="dialog-overlay" className="fixed inset-0 bg-black/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+        </DialogPrimitive.Overlay>
+        <DialogPrimitive.Content asChild>
+          <motion.div data-slot="dialog-content" className="fixed inset-0 m-auto w-[420px] rounded-lg border bg-background p-4" initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 16, opacity: 0 }} />
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
+  );
+}
+```
+

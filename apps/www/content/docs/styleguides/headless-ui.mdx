@@ -1,0 +1,26 @@
+---
+title: Headless UI
+description: Unstyled, accessible components with Motion integration.
+---
+
+<Callout>
+  Use render-prop APIs and pass Motion components via the `as` prop to animate.
+</Callout>
+
+## Checkbox example
+
+```tsx
+import { Checkbox as CheckboxPrimitive } from '@headlessui/react';
+import { motion } from 'motion/react';
+
+export function Checkbox(props: React.ComponentProps<typeof CheckboxPrimitive>) {
+  return (
+    <CheckboxPrimitive as={motion.button} whileTap={{ scale: 0.95 }} className="size-5 rounded border data-[checked=true]:bg-primary data-[checked=true]:text-primary-foreground" {...props}>
+      {({ checked, indeterminate }) => (
+        <motion.span initial={false} animate={{ scale: checked || indeterminate ? 1 : 0 }} className="i-lucide-check size-4" />
+      )}
+    </CheckboxPrimitive>
+  );
+}
+```
+

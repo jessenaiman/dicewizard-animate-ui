@@ -61,7 +61,7 @@ const DOCS_LAYOUT_PROPS: DocsLayoutProps = {
     ],
   },
 
-  githubUrl: 'https://github.com/imskyleen/animate-ui',
+  githubUrl: 'https://github.com/jessenaiman/dicewizard-animate-ui',
   themeSwitch: {
     component: <ThemeSwitcher />,
   },

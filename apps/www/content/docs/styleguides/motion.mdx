@@ -1,0 +1,42 @@
+---
+title: Motion (Framer Motion)
+description: Project-wide animation patterns using motion/react.
+---
+
+<Callout>
+  Prefer named imports from `motion/react`. Default spring: `stiffness: 150`, `damping: 22`.
+</Callout>
+
+## Imports
+
+```tsx
+import { motion, AnimatePresence, type HTMLMotionProps, type Transition } from 'motion/react';
+```
+
+## Quick patterns
+
+```tsx
+// Hover/Tap micro-interactions
+<motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} />
+
+// Default spring transition
+const spring: Transition = { type: 'spring', stiffness: 150, damping: 22 };
+<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={spring} />
+
+// Presence
+<AnimatePresence>
+  {open && (
+    <motion.div initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 12, opacity: 0 }} />
+  )}
+</AnimatePresence>
+```
+
+## Reduced motion
+
+```tsx
+import { useReducedMotion } from 'motion/react';
+const prefersReduced = useReducedMotion();
+```
+
+Use `prefersReduced` to gate large motions or duration.
+

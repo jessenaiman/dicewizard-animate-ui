@@ -1,0 +1,52 @@
+---
+title: Tailwind CSS
+description: Utility-first styling conventions used across the app and UI package.
+---
+
+<Callout>
+  Tailwind v4 is configured via CSS `@import 'tailwindcss'` and `@source` directives. Dark mode uses a custom variant and `next-themes` toggles the `.dark` class.
+</Callout>
+
+## Setup
+
+`apps/www/app/globals.css` includes Tailwind, sources, and variants:
+
+```css
+@import 'tailwindcss';
+@source "../../../apps/**/*.{ts,tsx}";
+@source "../../../components/**/*.{ts,tsx}";
+@source "../../../packages/**/*.{ts,tsx}";
+@source "./**/*.{ts,tsx,mdx}";
+@source "../**/*.{ts,tsx,mdx}";
+
+@custom-variant dark (&:is(.dark *));
+```
+
+## Class merging and composition
+
+- `tailwind-merge` resolves conflicting classes.
+- Use `cn(...)` helper to compose classes safely.
+
+```ts
+// packages/ui/src/lib/utils.ts
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+```tsx
+// usage
+<button className={cn('px-3 py-2 rounded bg-primary', isActive && 'bg-primary/90')} />
+```
+
+## Design tokens
+
+- Theme CSS variables are defined in `apps/www/app/globals.css` under `:root` and `.dark`.
+- Prefer using semantic tokens (e.g. `bg-background`, `text-foreground`, `border-border`).
+
+```tsx
+<div className="bg-background text-foreground border border-border rounded" />
+```
+

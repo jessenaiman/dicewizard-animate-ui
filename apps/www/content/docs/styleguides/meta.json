@@ -1,0 +1,20 @@
+{
+  "title": "Styleguides",
+  "description": "Framework and package cheatsheets used for UI/UX.",
+  "icon": "BookOpen",
+  "root": true,
+  "pages": [
+    "---Frameworks & Libs---",
+    "rules",
+    "tailwind",
+    "motion",
+    "radix-ui",
+    "headless-ui",
+    "base-ui",
+    "floating-ui",
+    "tw-animate-css",
+    "lucide-react",
+    "next-themes",
+    "cva-tailwind-merge"
+  ]
+}

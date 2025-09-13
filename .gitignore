@@ -36,3 +36,7 @@ npm-debug.log*
 *.pem
 
 apps/www/app/(playground)
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md

@@ -1,0 +1,46 @@
+---
+title: Floating UI
+description: Positioning tooltips, popovers, and menus using @floating-ui/react.
+---
+
+<Callout>
+  Use `useFloating` with middlewares (`offset`, `flip`, `shift`, `arrow`) and render portals for layered UI.
+</Callout>
+
+## Tooltip pattern
+
+```tsx
+import {
+  useFloating,
+  autoUpdate,
+  offset as floatingOffset,
+  flip,
+  shift,
+  arrow as floatingArrow,
+  FloatingPortal,
+  FloatingArrow,
+} from '@floating-ui/react';
+import { motion } from 'motion/react';
+
+export function Tooltip({ children, content }: { children: React.ReactNode; content: React.ReactNode }) {
+  const arrowRef = React.useRef(null);
+  const { refs, floatingStyles, context } = useFloating({
+    placement: 'top',
+    whileElementsMounted: autoUpdate,
+    middleware: [floatingOffset(8), flip(), shift({ padding: 8 }), floatingArrow({ element: arrowRef })],
+  });
+
+  return (
+    <>
+      <button ref={refs.setReference}>{children}</button>
+      <FloatingPortal>
+        <motion.div ref={refs.setFloating} style={floatingStyles} initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="rounded bg-popover text-popover-foreground border px-2 py-1 text-xs">
+          {content}
+          <FloatingArrow ref={arrowRef} context={context} className="fill-popover stroke-border" />
+        </motion.div>
+      </FloatingPortal>
+    </>
+  );
+}
+```
+
