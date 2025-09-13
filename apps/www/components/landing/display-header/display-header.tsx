@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { gsap } from 'gsap';
 import { Logo } from '../../logo';
+import { motion } from 'motion/react';
 import {
   GithubStars,
   GithubStarsNumber,
@@ -17,24 +17,14 @@ interface DisplayHeaderProps {
   activeItem?: string;
 }
 
+/* eslint-disable react/prop-types */
 const DisplayHeader: React.FC<DisplayHeaderProps> = ({ activeItem }) => {
   const navRef = useRef<HTMLDivElement>(null);
   const starCountRef = useRef<HTMLSpanElement>(null);
-  // Animate the star count pill on first reveal
+  // Animate the star count pill on first reveal (using Motion defaults)
 
   useEffect(() => {
-    if (!starCountRef.current) return;
-    gsap.fromTo(
-      starCountRef.current,
-      { scale: 0, width: 0, opacity: 0 },
-      {
-        scale: 1,
-        width: '100px',
-        opacity: 1,
-        duration: 0.8,
-        ease: 'back.out(1)'
-      }
-    );
+    // No imperative animation needed when using Motion elements below
   }, []);
 
   return (
@@ -62,7 +52,13 @@ const DisplayHeader: React.FC<DisplayHeaderProps> = ({ activeItem }) => {
             onClick={() => window.open('https://github.com/jessenaiman/dicewizard-animate-ui', '_blank')}
           >
             Star On GitHub
-            <span ref={starCountRef} style={{ opacity: 0 }}>
+            <motion.span
+              ref={starCountRef}
+              initial={{ scale: 0, opacity: 0, width: 0 }}
+              animate={{ scale: 1, opacity: 1, width: 100 }}
+              transition={{ type: 'spring', stiffness: 150, damping: 22 }}
+              style={{ display: 'inline-flex' }}
+            >
               <GithubStars username="jessenaiman" repo="dicewizard-animate-ui" inView>
                 <GithubStarsParticles>
                   <GithubStarsIcon
@@ -73,7 +69,7 @@ const DisplayHeader: React.FC<DisplayHeaderProps> = ({ activeItem }) => {
                 </GithubStarsParticles>
                 <GithubStarsNumber className="font-semibold" />
               </GithubStars>
-            </span>
+            </motion.span>
           </button>
         </div>
       </div>

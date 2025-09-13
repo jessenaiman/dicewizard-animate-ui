@@ -59,7 +59,7 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
           className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1 text-xs font-medium tracking-wide text-primary/90 backdrop-blur-sm"
         >
           <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-primary shadow-[0_0_0_3px_rgba(var(--primary-rgb),0.25)]" />
-          Friction Reduction Lab
+          Frontend Engineering · React · Motion · UX
         </motion.div>
 
         {/* Headline */}
@@ -74,11 +74,9 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
             'text-4xl md:text-6xl font-extrabold tracking-tight leading-tight',
           )}
         >
-          <span className="sr-only">
-            Remove Interface Drag. Ship Creative UI Faster.
-          </span>
+          <span className="sr-only">Designing and building animated React interfaces</span>
           <span className="bg-gradient-to-b from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent">
-            Remove Interface{' '}
+            Build delightful{' '}
             {/* Approximate shiny effect using local SplittingText */}
             <SplittingText
               text="Drag"
@@ -93,7 +91,7 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
           <span className="bg-gradient-to-b from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent inline-block mt-2">
             Ship
             <SplittingText
-              text=" Creative UI "
+              text=" production UI "
               className="px-1 inline-block"
               initial={{ y: 8, opacity: 0, filter: 'blur(6px)' }}
               animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
@@ -116,31 +114,18 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
           }}
           className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground"
         >
-          A tactile design workshop + component sandbox. Touch layouts, motion,
-          spacing & styling directly. Each tweak yields clean React + Tailwind
-          code. Exploration first—commit later.
+          I craft scalable, animated component systems in React + Tailwind,
+          balancing performance, accessibility, and visual polish. Strong focus
+          on DX, clean APIs, and design token workflows.
         </motion.p>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           {[
-            {
-              href: '#tool-explorer',
-              label: 'Start Experimenting',
-              primary: true,
-            },
-            {
-              href: '/docs/styleguides',
-              label: 'Style Guides',
-            },
-            {
-              href: '/docs',
-              label: 'Design Library',
-            },
-            {
-              href: '#pricing',
-              label: 'Services',
-            },
+            { href: 'https://github.com/jessenaiman', label: 'GitHub', primary: true },
+            { href: 'https://github.com/jessenaiman/dicewizard-animate-ui', label: 'This Repo' },
+            { href: '/docs/styleguides', label: 'Style Guides' },
+            { href: '#contact', label: 'Contact' },
           ].map((btn, i) => (
             <motion.div
               key={btn.href}
@@ -161,6 +146,8 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
                     ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40'
                     : 'border border-border/60 bg-background/60 text-foreground backdrop-blur-sm hover:border-border',
                 )}
+                target={btn.href.startsWith('http') ? '_blank' : undefined}
+                rel={btn.href.startsWith('http') ? 'noreferrer noopener' : undefined}
               >
                 <span>{btn.label}</span>
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 transition group-hover:translate-x-0.5">

@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import { CountingNumber } from "@/registry/primitives/texts/counting-number";
+import { MessageSquare, Layers, ToggleLeft } from "lucide-react";
 import "./feature-cards.css";
 
 
@@ -265,42 +266,30 @@ const FeatureCards: React.FC = () => {
 
         <div className="bento-grid" ref={gridRef}>
           <ParticleCard className="feature-card card1" disableAnimations={isMobile}>
-            <div className="messages-gif-wrapper">
-              <img
-                src="/assets/messages.gif"
-                alt="Messages animation"
-                className="messages-gif"
-              />
+            <div className="feature-icon">
+              <MessageSquare className="text-primary size-10" aria-hidden />
             </div>
             <h2>{isMobile ? "110" : <CountingNumber number={110} />}%</h2>
-            <h3>Free & Open Source</h3>
-            <p>Loved by developers around the world</p>
+            <h3>Clear Communication</h3>
+            <p>Strong UX rationale and thoughtful design handoffs</p>
           </ParticleCard>
 
             <ParticleCard className="feature-card card2" disableAnimations={isMobile}>
-              <div className="components-gif-wrapper">
-                <img
-                  src="/assets/components.gif"
-                  alt="Components animation"
-                  className="components-gif"
-                />
+              <div className="feature-icon">
+                <Layers className="text-primary size-10" aria-hidden />
               </div>
               <h2>{isMobile ? "100" : <CountingNumber number={100} />}+</h2>
-              <h3>Creative Components</h3>
-              <p>Growing weekly & only getting better</p>
+              <h3>Production Components</h3>
+              <p>Reusable, animated React + Tailwind building blocks</p>
             </ParticleCard>
 
           <ParticleCard className="feature-card card4" disableAnimations={isMobile}>
-            <div className="switch-gif-wrapper">
-              <img
-                src="/assets/switch.gif"
-                alt="Switch animation"
-                className="switch-gif"
-              />
+            <div className="feature-icon">
+              <ToggleLeft className="text-primary size-10" aria-hidden />
             </div>
             <h2>{isMobile ? "2" : <CountingNumber number={2} />}</h2>
-            <h3>Styling Options</h3>
-            <p>CSS or Tailwind, switch with one click</p>
+            <h3>Flexible Theming</h3>
+            <p>Design tokens and variants tailored to your stack</p>
           </ParticleCard>
         </div>
       </div>
