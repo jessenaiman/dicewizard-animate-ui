@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { motion } from 'motion/react';
+import * as motion from 'motion/react-client';
 
 import {
   TooltipProvider as TooltipProviderPrimitive,
