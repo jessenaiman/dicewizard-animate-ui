@@ -6548,6 +6548,92 @@
       }
     },
     {
+      "name": "icons-check",
+      "type": "registry:ui",
+      "title": "Check Icon",
+      "description": "Check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
+      "name": "icons-check-check",
+      "type": "registry:ui",
+      "title": "Check Check Icon",
+      "description": "Check check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/check-check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/check-check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "received",
+          "double",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
+      "name": "icons-check-line",
+      "type": "registry:ui",
+      "title": "Check Line Icon",
+      "description": "Check line icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/check-line/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/check-line.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
       "name": "icons-cherry",
       "type": "registry:ui",
       "title": "Cherry Icon",
@@ -6752,6 +6838,34 @@
       }
     },
     {
+      "name": "icons-circle-check",
+      "type": "registry:ui",
+      "title": "Circle Check Icon",
+      "description": "Circle check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/circle-check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/circle-check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
       "name": "icons-circle-plus",
       "type": "registry:ui",
       "title": "Circle Plus Icon",
@@ -6817,6 +6931,40 @@
           "math",
           "multiply",
           "multiplication"
+        ]
+      }
+    },
+    {
+      "name": "icons-clapperboard",
+      "type": "registry:ui",
+      "title": "Clapperboard Icon",
+      "description": "Clapperboard icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clapperboard/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clapperboard.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "movie",
+          "film",
+          "video",
+          "camera",
+          "cinema",
+          "cut",
+          "action",
+          "television",
+          "tv",
+          "show",
+          "entertainment"
         ]
       }
     },
@@ -7602,6 +7750,31 @@
       }
     },
     {
+      "name": "icons-crop",
+      "type": "registry:ui",
+      "title": "Crop Icon",
+      "description": "Crop icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/crop/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/crop.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "photo",
+          "image"
+        ]
+      }
+    },
+    {
       "name": "icons-cross",
       "type": "registry:ui",
       "title": "Cross Icon",
@@ -8296,6 +8469,108 @@
           "beach ball",
           "frozen",
           "freeze"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock",
+      "type": "registry:ui",
+      "title": "Lock Icon",
+      "description": "Lock icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security",
+          "password",
+          "secure",
+          "admin"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock-keyhole",
+      "type": "registry:ui",
+      "title": "Lock Keyhole Icon",
+      "description": "Lock keyhole icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock-keyhole/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock-keyhole.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security",
+          "password",
+          "secure",
+          "admin"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock-keyhole-open",
+      "type": "registry:ui",
+      "title": "Lock Keyhole Open Icon",
+      "description": "Lock keyhole open icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock-keyhole-open/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock-keyhole-open.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock-open",
+      "type": "registry:ui",
+      "title": "Lock Open Icon",
+      "description": "Lock open icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock-open/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock-open.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security"
         ]
       }
     },
