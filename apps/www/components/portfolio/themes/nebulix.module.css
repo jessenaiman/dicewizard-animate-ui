@@ -1,0 +1,14 @@
+.nebulix {
+  --parchment: #f7f1e1;
+  --ink: #1a1612;
+  --accent: #7a3e0e;
+  background: var(--parchment);
+  color: var(--ink);
+  min-height: 100dvh;
+  font-family: "IM Fell English", "Goudy Bookletter 1911", Georgia, serif;
+  background-image: radial-gradient( circle at 30% 20%, rgba(0, 0, 0, 0.04), transparent 40% ),
+    radial-gradient( circle at 80% 0%, rgba(0, 0, 0, 0.03), transparent 30% );
+}
+.nebulix h2 { margin-top: 1.75rem; font-size: 1.4rem; }
+.nebulix blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1rem 0; font-style: italic; }
+

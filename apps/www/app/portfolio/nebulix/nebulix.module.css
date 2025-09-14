@@ -1,0 +1,41 @@
+.nebulix {
+  --parchment: #f7f1e1;
+  --ink: #1a1612;
+  --accent: #7a3e0e;
+  background: var(--parchment);
+  color: var(--ink);
+  min-height: 100dvh;
+  font-family: "IM Fell English", "Goudy Bookletter 1911", Georgia, serif;
+  background-image: radial-gradient( circle at 30% 20%, rgba(0, 0, 0, 0.04), transparent 40% ),
+    radial-gradient( circle at 80% 0%, rgba(0, 0, 0, 0.03), transparent 30% );
+}
+
+.header {
+  padding: 2rem 1.25rem 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.title {
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.article {
+  padding: 1.5rem 1.25rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.article h2 {
+  margin-top: 1.75rem;
+  font-size: 1.4rem;
+}
+
+.article blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
