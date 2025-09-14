@@ -2,9 +2,9 @@ import { MorphingText } from '@/registry/primitives/texts/morphing';
 
 const texts = [
   'MorphingText Primitive',
-  'Animate your text effortlessly 🚀',
+  'Animate your text 🚀',
   'Handles emojis 🚀✨',
-  'Built with Motion and React ✨',
+  'Built with Motion ✨',
 ];
 
 interface MorphingTextDemoProps {
