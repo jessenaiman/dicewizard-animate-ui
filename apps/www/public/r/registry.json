@@ -5127,6 +5127,37 @@
       }
     },
     {
+      "name": "demo-primitives-texts-morphing",
+      "type": "registry:ui",
+      "title": "Morphing Text Demo",
+      "description": "Demo showing an animated morphing text.",
+      "registryDependencies": [
+        "@animate-ui/primitives-texts-morphing"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/morphing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/morphing.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "MorphingText": {
+            "loop": {
+              "value": true
+            },
+            "holdDelay": {
+              "value": 2500,
+              "min": 0,
+              "max": 3000,
+              "step": 100
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "demo-primitives-texts-rolling",
       "type": "registry:ui",
       "title": "Rolling Text Demo",
@@ -12749,6 +12780,25 @@
           "path": "registry/primitives/texts/highlight/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/texts/highlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-morphing",
+      "type": "registry:ui",
+      "title": "Morphing Text",
+      "description": "A text component that smoothly morphs characters to transition between strings.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "@animate-ui/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/morphing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/morphing.tsx"
         }
       ]
     },
