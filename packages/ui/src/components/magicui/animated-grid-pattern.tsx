@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useCallback } from "react";
 import { motion } from "motion/react";
 import {
   ComponentPropsWithoutRef,
@@ -13,49 +14,42 @@ import { cn } from "@workspace/ui/lib/utils";
 
 export interface AnimatedGridPatternProps
   extends ComponentPropsWithoutRef<"svg"> {
-  width?: number;
-  height?: number;
-  x?: number;
-  y?: number;
-  strokeDasharray?: any;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  strokeDasharray?: string;
   numSquares?: number;
   maxOpacity?: number;
   duration?: number;
-  repeatDelay?: number;
 }
 
 export function AnimatedGridPattern({
-  width = 40,
-  height = 40,
+  width,
+  height,
   x = -1,
   y = -1,
-  strokeDasharray = 0,
+  strokeDasharray = "0",
   numSquares = 50,
   className,
   maxOpacity = 0.5,
   duration = 4,
-  repeatDelay = 0.5,
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId();
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [squares, setSquares] = useState(() => generateSquares(numSquares));
+  const [squares, setSquares] = useState<Array<{ id: number; pos: [number, number] }>>([]);
 
-  function getPos() {
-    return [
-      Math.floor((Math.random() * dimensions.width) / width),
-      Math.floor((Math.random() * dimensions.height) / height),
-    ];
-  }
-
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
+  const generateSquares = useCallback((count: number): Array<{ id: number; pos: [number, number] }> => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
-      pos: getPos(),
+      pos: [
+        Math.floor((Math.random() * dimensions.width) / width),
+        Math.floor((Math.random() * dimensions.height) / height),
+      ] as [number, number],
     }));
-  }
+  }, [dimensions, width, height]);
 
   // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
@@ -64,7 +58,10 @@ export function AnimatedGridPattern({
         sq.id === id
           ? {
               ...sq,
-              pos: getPos(),
+              pos: [
+                Math.floor((Math.random() * dimensions.width) / width),
+                Math.floor((Math.random() * dimensions.height) / height),
+              ] as [number, number],
             }
           : sq,
       ),
@@ -76,26 +73,28 @@ export function AnimatedGridPattern({
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
-  }, [dimensions, numSquares]);
+  }, [dimensions, numSquares, generateSquares]);
 
   // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
+        const { contentRect } = entry; 
         setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
+          width: contentRect.width,
+          height: contentRect.height,
         });
       }
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    const ref = containerRef.current;
+    if (ref) {
+      resizeObserver.observe(ref);
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (ref) {
+        resizeObserver.unobserve(ref);
       }
     };
   }, [containerRef]);

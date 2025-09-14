@@ -1,10 +1,9 @@
 import { cn } from "@workspace/ui/lib/utils";
-import { Slot } from "@radix-ui/react-slot";
+// Slot import removed; using native button element
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type BaseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const rainbowButtonVariants = cva(
   cn(
@@ -37,15 +36,13 @@ const rainbowButtonVariants = cva(
   },
 );
 
-interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof rainbowButtonVariants> {
-  asChild?: boolean;
+interface RainbowButtonProps extends BaseButtonProps, VariantProps<typeof rainbowButtonVariants> {
+  // asChild prop removed; always renders a button
 }
 
 const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  ({ className, variant, size, ...props }, ref) => {
+    const Comp = "button"; // always a button
     return (
       <Comp
         data-slot="button"
