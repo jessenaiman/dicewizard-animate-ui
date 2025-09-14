@@ -107,37 +107,32 @@ export const Features = () => {
       </MotionEffect>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto xs:px-10 mt-15">
-        {COMPONENTS.map((component, index) => {
-          const Component = component.href ? Link : 'div';
-          return (
-            <MotionEffect
-              slide={{
-                direction: 'down',
-              }}
-              fade
-              zoom
-              inView
-              delay={0.15 * index}
-              key={index}
-            >
-              {/* @ts-ignore */}
-              <Component {...(component.href ? { href: component.href } : {})}>
+        {COMPONENTS.map((component, index) => (
+          <MotionEffect
+            slide={{
+              direction: 'down',
+            }}
+            fade
+            zoom
+            inView
+            delay={0.15 * index}
+            key={index}
+          >
+            {component.href ? (
+              <Link href={component.href}>
                 <motion.div
                   whileHover={{
-                    scale: component.href ? 1.025 : 1,
+                    scale: 1.025,
                   }}
                   whileTap={{
-                    scale: component.href ? 0.925 : 1,
+                    scale: 0.925,
                   }}
                   transition={{
                     type: 'spring',
                     stiffness: 200,
                     damping: 20,
                   }}
-                  className={cn(
-                    'relative w-full dark:bg-neutral-800 bg-neutral-100 rounded-2xl ring-4 ring-black/5 dark:ring-white/5',
-                    !component?.href && 'opacity-50 cursor-not-allowed',
-                  )}
+                  className="relative w-full dark:bg-neutral-800 bg-neutral-100 rounded-2xl ring-4 ring-black/5 dark:ring-white/5"
                 >
                   <p
                     className={cn(
@@ -147,13 +142,31 @@ export const Features = () => {
                   >
                     {component.name}
                   </p>
-
                   {component.icon}
                 </motion.div>
-              </Component>
-            </MotionEffect>
-          );
-        })}
+              </Link>
+            ) : (
+              <motion.div
+                transition={{
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 20,
+                }}
+                className="relative w-full cursor-not-allowed opacity-50 dark:bg-neutral-800 bg-neutral-100 rounded-2xl ring-4 ring-black/5 dark:ring-white/5"
+              >
+                <p
+                  className={cn(
+                    dancing.className,
+                    'sm:text-[25px] text-xl font-black text-muted-foreground absolute sm:top-5 top-4 left-1/2 -translate-x-1/2',
+                  )}
+                >
+                  {component.name}
+                </p>
+                {component.icon}
+              </motion.div>
+            )}
+          </MotionEffect>
+        ))}
       </div>
     </div>
   );

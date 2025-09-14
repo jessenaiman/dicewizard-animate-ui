@@ -1,9 +1,4 @@
-import {
-  defineConfig,
-  defineDocs,
-  frontmatterSchema,
-  metaSchema,
-} from 'fumadocs-mdx/config';
+import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from 'fumadocs-mdx/config';
 import { z } from 'zod';
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
@@ -28,6 +23,8 @@ export const docs = defineDocs({
     schema: metaSchema,
   },
 });
+
+// Portfolio collection removed for now to keep build sandbox-only
 
 export default defineConfig({
   mdxOptions: {},

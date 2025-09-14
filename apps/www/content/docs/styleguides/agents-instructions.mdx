@@ -1,0 +1,517 @@
+---
+title: "Agents Instructions"
+---
+# AGENTS.md: Step-by-Step Implementation Guide for AI Coding Agents
+
+This guide teaches you how to create and implement AGENTS.md files in your projects to improve AI coding agent effectiveness. AGENTS.md is an open standard used by over 20,000 open-source projects to provide clear, agent-specific instructions separate from human-focused READMEs.
+
+## Why AGENTS.md Matters
+
+Before diving in, understand the problem AGENTS.md solves: AI coding agents often lack context about your project's specific conventions, build processes, and testing requirements. Without guidance, they may make incorrect assumptions or follow generic patterns that don't match your codebase. AGENTS.md provides this missing context in a standardized location.
+
+**Key Benefits:**
+
+- **Predictable Location**: Agents know exactly where to find project-specific instructions
+- **Concise READMEs**: Keep human documentation focused while providing detailed agent guidance
+- **Universal Compatibility**: Works across multiple AI tools and platforms
+- **Living Documentation**: Evolves with your project as patterns change
+
+## Step 1: Assess Your Project's Needs
+
+Before creating AGENTS.md, analyze what information agents need to work effectively on your project.
+
+**Self-Assessment Questions:**
+
+1. What are your project's core technologies and frameworks?
+2. What scripts do you use for development, testing, and building?
+3. Are there specific code style rules or conventions?
+4. How do you handle dependencies, environment setup, or deployment?
+5. Are there security considerations or testing patterns agents should know?
+
+**Example Assessment for a React + TypeScript Project:**
+
+- Technologies: React, TypeScript, Vite, ESLint
+- Scripts: `npm run dev`, `npm run build`, `npm test`
+- Style: Functional components, hooks over classes, early returns
+- Testing: Jest with React Testing Library
+- Security: Input validation, no direct DOM manipulation
+
+## Step 2: Create Your AGENTS.md File
+
+Navigate to your project root and create the AGENTS.md file.
+
+```bash
+# In your project root directory
+touch AGENTS.md
+```
+
+Open AGENTS.md in your editor and start with a basic template.
+
+## Step 3: Add Essential Sections
+
+Structure your AGENTS.md with clear sections. Here's a recommended starting template:
+
+```markdown
+# AGENTS.md
+
+## Project Overview
+
+Brief description of your project's purpose and technology stack.
+
+## Development Setup
+
+Instructions for getting the project running locally.
+
+## Code Style Guidelines
+
+Specific conventions and patterns to follow.
+
+## Testing Instructions
+
+How to run tests and what testing patterns to use.
+
+## Build and Deployment
+
+Commands and considerations for production builds.
+
+## Common Pitfalls
+
+Things to avoid or watch out for.
+```
+
+### Project Overview Section
+
+Tell agents what your project does and its key technologies.
+
+**Example:**
+
+```markdown
+## Project Overview
+
+This is a React-based e-commerce application using TypeScript, Redux for state management, and Stripe for payments. The app follows a feature-based folder structure with shared components in a separate directory.
+```
+
+### Development Setup Section
+
+Provide exact commands and environment requirements.
+
+**Example:**
+
+```markdown
+## Development Setup
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- PostgreSQL database
+
+### Installation Steps
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up environment variables (copy `.env.example` to `.env`)
+4. Start the database: `npm run db:start`
+5. Run migrations: `npm run db:migrate`
+6. Start development server: `npm run dev`
+
+### Available Scripts
+
+- `npm run dev` - Start development server on port 3000
+- `npm run build` - Create production build
+- `npm run test` - Run all tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run lint` - Check code style
+- `npm run type-check` - Run TypeScript type checking
+```
+
+## Step 4: Implement Code Style Guidelines
+
+Be specific about your preferred patterns and conventions.
+
+**Example for React/TypeScript Project:**
+
+````markdown
+## Code Style Guidelines
+
+### Component Patterns
+
+- Use functional components with hooks
+- Prefer custom hooks for shared logic
+- Use early returns instead of nested if statements
+- Destructure props at the component level
+
+### Naming Conventions
+
+- Components: PascalCase (UserProfile, ProductCard)
+- Hooks: camelCase with 'use' prefix (useAuth, useCart)
+- Files: kebab-case (user-profile.tsx, product-card.tsx)
+
+### TypeScript Practices
+
+- Use strict mode
+- Define interfaces for all data structures
+- Use union types for state variants
+- Avoid any type; use unknown if necessary
+
+### Code Examples
+
+```typescript
+// Preferred: Early return pattern
+function UserProfile({ user }: { user: User | null }) {
+  if (!user) return <div>Please log in</div>;
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+
+// Avoid: Nested conditionals
+function UserProfile({ user }: { user: User | null }) {
+  if (user) {
+    return (
+      <div>
+        <h1>{user.name}</h1>
+        <p>{user.email}</p>
+      </div>
+    );
+  } else {
+    return <div>Please log in</div>;
+  }
+}
+```
+````
+
+````
+
+## Step 5: Add Testing Instructions
+
+Guide agents on how to write and run tests effectively.
+
+**Example:**
+```markdown
+## Testing Instructions
+
+### Test Structure
+- Unit tests in `__tests__` folders next to components
+- Integration tests in `tests/integration/`
+- E2E tests in `tests/e2e/`
+
+### Running Tests
+- All tests: `npm test`
+- Unit tests only: `npm run test:unit`
+- Integration tests: `npm run test:integration`
+- Watch mode: `npm run test:watch`
+
+### Test Patterns
+- Use describe/it blocks for organization
+- Test user interactions, not implementation details
+- Mock external dependencies (API calls, localStorage)
+- Test error states and edge cases
+
+### Test Example
+```typescript
+import { render, screen, fireEvent } from '@testing-library/react';
+import { UserProfile } from './UserProfile';
+
+test('displays user information when logged in', () => {
+  const mockUser = { name: 'John Doe', email: 'john@example.com' };
+  render(<UserProfile user={mockUser} />);
+
+  expect(screen.getByText('John Doe')).toBeInTheDocument();
+  expect(screen.getByText('john@example.com')).toBeInTheDocument();
+});
+
+test('shows login prompt when no user', () => {
+  render(<UserProfile user={null} />);
+
+  expect(screen.getByText('Please log in')).toBeInTheDocument();
+});
+````
+
+### Test Coverage
+
+Aim for 80%+ coverage. Focus on:
+
+- Happy path scenarios
+- Error conditions
+- Edge cases
+- Component interactions
+
+````
+
+## Step 6: Include Build and Deployment Guidance
+
+**Example:**
+```markdown
+## Build and Deployment
+
+### Production Build
+```bash
+npm run build
+````
+
+This creates an optimized build in the `dist/` directory.
+
+### Environment Variables
+
+Required for production:
+
+- `API_URL` - Backend API endpoint
+- `STRIPE_PUBLISHABLE_KEY` - Stripe payment processing
+- `DATABASE_URL` - Production database connection
+
+### Deployment Checklist
+
+- [ ] Run full test suite
+- [ ] Build passes without warnings
+- [ ] Environment variables configured
+- [ ] Database migrations applied
+- [ ] CDN configured for static assets
+
+````
+
+## Step 7: Document Common Pitfalls
+
+Help agents avoid mistakes.
+
+**Example:**
+```markdown
+## Common Pitfalls
+
+### Avoid These Patterns
+- Don't use `useEffect` for data fetching (use React Query or SWR)
+- Don't access DOM directly (use refs sparingly)
+- Don't hardcode API URLs (use environment variables)
+- Don't skip TypeScript types (even for simple objects)
+
+### Gotchas
+- Redux state updates are asynchronous
+- useEffect cleanup functions prevent memory leaks
+- CSS modules generate unique class names
+- Environment variables are strings (parse numbers/booleans)
+````
+
+## Step 8: Handle Nested Projects (Monorepos)
+
+For large codebases with multiple packages:
+
+```markdown
+## Nested AGENTS.md Files
+
+This monorepo contains multiple packages. Each package can have its own AGENTS.md file for package-specific instructions.
+
+### Package Structure
+```
+
+packages/
+web/ # React frontend
+AGENTS.md # Frontend-specific instructions
+api/ # Express backend
+AGENTS.md # Backend-specific instructions
+shared/ # Shared utilities
+AGENTS.md # Shared code guidelines
+
+````
+
+### Package-Specific Example (packages/web/AGENTS.md)
+```markdown
+# Web Package AGENTS.md
+
+## Component Library
+Use components from `packages/shared/components/` for consistency.
+
+## Styling
+- Use CSS modules for component styles
+- Global styles in `packages/web/src/styles/`
+- Theme variables defined in `packages/shared/theme/`
+
+## Testing
+- Component tests: Jest + React Testing Library
+- Mock API calls using MSW (Mock Service Worker)
+````
+
+The closest AGENTS.md to the file being edited takes precedence.
+
+````
+
+## Step 9: Configure Your AI Tools
+
+Different AI coding assistants may need specific setup to recognize AGENTS.md.
+
+### Cursor Configuration
+Cursor automatically detects AGENTS.md files. No additional configuration needed.
+
+### GitHub Copilot
+Add AGENTS.md to your repository. Copilot will reference it when providing suggestions.
+
+### Aider Configuration
+Create `.aider.conf.yml`:
+```yaml
+read: AGENTS.md
+````
+
+### Gemini CLI Configuration
+
+Create `.gemini/settings.json`:
+
+```json
+{
+  "contextFileName": "AGENTS.md"
+}
+```
+
+## Step 10: Test and Iterate
+
+After creating AGENTS.md:
+
+1. **Ask your AI assistant to make a small change** and observe if it follows your guidelines
+2. **Review the changes** to see if they match your expectations
+3. **Update AGENTS.md** based on what works or needs clarification
+4. **Iterate** as your project evolves
+
+### Validation Checklist
+
+- [ ] AI assistant can run your setup commands
+- [ ] Generated code follows your style guidelines
+- [ ] Tests are written according to your patterns
+- [ ] Build process works as described
+- [ ] Common pitfalls are avoided
+
+## Advanced Examples
+
+### Full AGENTS.md for a Node.js API Project
+
+````markdown
+# AGENTS.md - Node.js API
+
+## Project Overview
+
+RESTful API built with Express.js, TypeScript, and PostgreSQL. Uses JWT for authentication and Redis for caching.
+
+## Development Setup
+
+```bash
+npm install
+cp .env.example .env
+docker-compose up -d  # Start PostgreSQL and Redis
+npm run migrate
+npm run dev
+```
+````
+
+## Code Style Guidelines
+
+- Use async/await over Promises
+- Controller methods should be thin (delegate to services)
+- Validate input using Joi schemas
+- Use meaningful variable names
+
+## Testing Instructions
+
+```bash
+npm test              # Run all tests
+npm run test:unit     # Unit tests only
+npm run test:integration  # Integration tests with database
+```
+
+## API Patterns
+
+- RESTful endpoints with consistent naming
+- JSON responses with standard structure
+- Error handling with appropriate HTTP status codes
+- Pagination for list endpoints
+
+## Security Considerations
+
+- Input validation on all endpoints
+- Rate limiting for public routes
+- CORS configured for allowed origins
+- JWT tokens with reasonable expiration
+
+````
+
+### Full AGENTS.md for a Python Data Science Project
+```markdown
+# AGENTS.md - Python Data Science
+
+## Project Overview
+Machine learning pipeline using scikit-learn, pandas, and Jupyter notebooks for customer churn prediction.
+
+## Development Setup
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+jupyter notebook
+````
+
+## Code Style Guidelines
+
+- Follow PEP 8 standards
+- Use type hints for function parameters and return values
+- Document functions with docstrings
+- Use descriptive variable names
+
+## Data Handling
+
+- Validate data types and ranges
+- Handle missing values explicitly
+- Use pandas for data manipulation
+- Document data transformations
+
+## Testing Instructions
+
+```bash
+pytest tests/          # Run all tests
+pytest tests/unit/     # Unit tests
+pytest tests/integration/  # Integration tests with real data
+```
+
+## Model Development
+
+- Version control for datasets and models
+- Cross-validation for model evaluation
+- Document hyperparameters and results
+- Use MLflow for experiment tracking
+
+```
+
+## Best Practices
+
+1. **Start Simple**: Begin with basic setup and style guidelines, add complexity as needed
+2. **Be Specific**: Use concrete examples rather than vague descriptions
+3. **Keep Updated**: Review and update AGENTS.md as your project evolves
+4. **Test Regularly**: Verify that AI assistants follow your guidelines
+5. **Collaborate**: Share successful patterns with your team
+6. **Version Control**: Include AGENTS.md in version control like any other documentation
+
+## Troubleshooting
+
+### Agent Not Following Guidelines
+- Make instructions more specific with examples
+- Check if the agent supports AGENTS.md (most modern ones do)
+- Ensure AGENTS.md is in the project root
+
+### Conflicting Instructions
+- The closest AGENTS.md takes precedence
+- User prompts override AGENTS.md content
+- Be explicit about priorities if conflicts arise
+
+### Too Much Information
+- Start with essential information only
+- Add details as you identify gaps
+- Consider separate files for complex topics
+
+## Resources
+
+- [Official AGENTS.md Website](https://agents.md/)
+- [AGENTS.md on GitHub](https://github.com/openai/agents.md)
+- [Examples Repository](https://github.com/openai/agents.md/tree/main/examples)
+- Community discussions on AI coding best practices
+
+By following this guide, you'll create effective AGENTS.md files that help AI coding assistants work more productively on your projects, while maintaining clean documentation for human team members.
+```

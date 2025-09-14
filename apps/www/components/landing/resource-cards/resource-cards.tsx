@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "motion/react";
-import { ExternalLink, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/cn";
+import { motion } from 'motion/react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/cn';
 
 interface Resource {
   id: string;
@@ -21,55 +21,58 @@ interface ResourceCardsProps {
 
 const resources: Resource[] = [
   {
-    id: "1",
-    title: "Magic UI",
-    description: "Beautifully designed components and templates for your next project",
-    url: "https://magicui.design",
-    category: "UI Library",
-    color: "from-purple-500 to-pink-500",
-    featured: true
+    id: '1',
+    title: 'Magic UI',
+    description:
+      'Beautifully designed components and templates for your next project',
+    url: 'https://magicui.design',
+    category: 'UI Library',
+    color: 'from-purple-500 to-pink-500',
+    featured: true,
   },
   {
-    id: "2",
-    title: "React Bits",
-    description: "Collection of animated React components for creative developers",
-    url: "https://reactbits.dev",
-    category: "Component Library",
-    color: "from-blue-500 to-cyan-500",
-    featured: true
+    id: '2',
+    title: 'React Bits',
+    description:
+      'Collection of animated React components for creative developers',
+    url: 'https://reactbits.dev',
+    category: 'Component Library',
+    color: 'from-blue-500 to-cyan-500',
+    featured: true,
   },
   {
-    id: "3",
-    title: "Tailwind CSS",
-    description: "A utility-first CSS framework for rapid UI development",
-    url: "https://tailwindcss.com",
-    category: "CSS Framework",
-    color: "from-teal-500 to-green-500"
+    id: '3',
+    title: 'Tailwind CSS',
+    description: 'A utility-first CSS framework for rapid UI development',
+    url: 'https://tailwindcss.com',
+    category: 'CSS Framework',
+    color: 'from-teal-500 to-green-500',
   },
   {
-    id: "4",
-    title: "Next.js",
-    description: "The React framework for production-grade applications",
-    url: "https://nextjs.org",
-    category: "Framework",
-    color: "from-gray-700 to-black"
+    id: '4',
+    title: 'Next.js',
+    description: 'The React framework for production-grade applications',
+    url: 'https://nextjs.org',
+    category: 'Framework',
+    color: 'from-gray-700 to-black',
   },
   {
-    id: "5",
-    title: "Framer Motion",
-    description: "Production-ready motion library for React",
-    url: "https://framer.com/motion",
-    category: "Animation",
-    color: "from-red-500 to-orange-500"
+    id: '5',
+    title: 'Framer Motion',
+    description: 'Production-ready motion library for React',
+    url: 'https://framer.com/motion',
+    category: 'Animation',
+    color: 'from-red-500 to-orange-500',
   },
   {
-    id: "6",
-    title: "shadcn/ui",
-    description: "Beautifully designed components built with Radix UI and Tailwind CSS",
-    url: "https://ui.shadcn.com",
-    category: "UI Library",
-    color: "from-emerald-500 to-blue-500"
-  }
+    id: '6',
+    title: 'shadcn/ui',
+    description:
+      'Beautifully designed components built with Radix UI and Tailwind CSS',
+    url: 'https://ui.shadcn.com',
+    category: 'UI Library',
+    color: 'from-emerald-500 to-blue-500',
+  },
 ];
 
 const ResourceCard = ({ resource }: { resource: Resource }) => {
@@ -81,16 +84,18 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
       transition={{ duration: 0.5 }}
       whileHover={{ y: -5 }}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-background/50 to-background/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-border/60 hover:shadow-xl",
-        resource.featured && "ring-2 ring-primary/20"
+        'group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-background/50 to-background/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-border/60 hover:shadow-xl',
+        resource.featured && 'ring-2 ring-primary/20',
       )}
     >
       {/* Gradient background overlay */}
-      <div className={cn(
-        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-10",
-        resource.color || "from-primary to-secondary"
-      )} />
-      
+      <div
+        className={cn(
+          'absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-10',
+          resource.color || 'from-primary to-secondary',
+        )}
+      />
+
       {/* Content */}
       <div className="relative z-10">
         <div className="mb-4 flex items-center justify-between">
@@ -103,15 +108,15 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
             </span>
           )}
         </div>
-        
+
         <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
           {resource.title}
         </h3>
-        
+
         <p className="mb-4 text-sm text-muted-foreground line-clamp-2">
           {resource.description}
         </p>
-        
+
         <div className="flex items-center justify-between">
           <a
             href={resource.url}
@@ -123,7 +128,7 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
             Visit website
             <ExternalLink className="ml-1 h-4 w-4" />
           </a>
-          
+
           <motion.div
             initial={{ x: 0 }}
             whileHover={{ x: 5 }}
@@ -137,12 +142,12 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
   );
 };
 
-export const ResourceCards: React.FC<ResourceCardsProps> = ({ className }) => {
-  const featuredResources = resources.filter(resource => resource.featured);
-  const otherResources = resources.filter(resource => !resource.featured);
+export const ResourceCards = ({ className }: ResourceCardsProps) => {
+  const featuredResources = resources.filter((resource) => resource.featured);
+  const otherResources = resources.filter((resource) => !resource.featured);
 
   return (
-    <section className={cn("py-20", className)}>
+    <section className={cn('py-20', className)}>
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -156,7 +161,8 @@ export const ResourceCards: React.FC<ResourceCardsProps> = ({ className }) => {
             Developer Resources
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Discover amazing tools and libraries to enhance your development workflow
+            Discover amazing tools and libraries to enhance your development
+            workflow
           </p>
         </motion.div>
 

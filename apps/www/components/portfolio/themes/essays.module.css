@@ -1,0 +1,13 @@
+.cosmos {
+  --bg1: #050816;
+  --bg2: #0b1026;
+  --accent: #7dd3fc;
+  --tw: rgba(124, 58, 237, 0.4);
+  color: #e6f1ff;
+  background: radial-gradient(circle at 30% -10%, var(--tw), transparent 40%),
+    radial-gradient(1200px 600px at 90% 10%, rgba(13, 148, 136, 0.25), transparent 50%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+  min-height: 100dvh;
+}
+.cosmos a { color: var(--accent); }
+

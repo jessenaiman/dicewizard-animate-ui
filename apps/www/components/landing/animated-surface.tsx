@@ -62,7 +62,7 @@ export const AnimatedSurface: React.FC<AnimatedSurfaceProps> = ({
   return (
     <motion.div
       className={base}
-      {...(variants as any)}
+      {...variants}
       {...rest}
     >
       {/* Gradient accent mask */}

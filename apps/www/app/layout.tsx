@@ -10,8 +10,8 @@ import { cn } from '@workspace/ui/lib/utils';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Animate UI',
-    default: 'Animate UI - Animated React Components',
+    template: '%s - Design Workshop',
+    default: 'Design Workshop - Animated React Components',
   },
   description:
     'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, Motion and Shadcn CLI. Browse a list of components you can install, modify, and use in your projects.',
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
       url: 'https://github.com/imskyleen',
     },
   ],
-  publisher: 'Animate UI',
+  publisher: 'Design Workshop',
   openGraph: {
-    title: 'Animate UI',
+    title: 'Design Workshop',
     description:
       'Fully animated, open-source component distribution built with React, TypeScript, Tailwind CSS, Motion and Shadcn CLI. Browse a list of components you can install, modify, and use in your projects.',
-    url: 'https://animate-ui.com',
-    siteName: 'Animate UI',
+    url: 'https://workshop.omega-spiral.com',
+    siteName: 'Design Workshop',
     images: [
       {
         url: 'https://animate-ui.com/og-image.png',

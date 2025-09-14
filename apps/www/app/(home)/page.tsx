@@ -1,9 +1,7 @@
 'use client';
 
-import { Features } from '@/components/features';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { Hero } from '@/components/hero';
 import { cn } from '@workspace/ui/lib/utils';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
@@ -33,7 +31,9 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className={cn('relative min-h-screen', !isLoaded && 'overflow-y-hidden')}>
+    <main
+      className={cn('relative min-h-screen', !isLoaded && 'overflow-y-hidden')}
+    >
       <Header transition={transition} />
 
       {transition && (
