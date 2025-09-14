@@ -117,6 +117,13 @@ author:
 
 <TypeTable
   type={{
+    mode: {
+      description:
+        'The mode of the TabPanels component. The auto-height mode (default) dynamically measures the content to adjust the height, resulting in smoother and more natural animations that integrate seamlessly with surrounding elements. The layout mode relies on Motion’s layout transitions, offering better performance, but the resizing may appear less fluid depending on the content.',
+      type: '"auto-height" | "layout"',
+      required: false,
+      default: '"auto-height"',
+    },
     transition: {
       description: 'The transition of the TabPanels component.',
       type: 'Transition',

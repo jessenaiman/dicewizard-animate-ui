@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { Tabs as TabsPrimitive } from '@base-ui-components/react/tabs';
-import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
+import {
+  motion,
+  AnimatePresence,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import {
   Highlight,
@@ -14,7 +19,7 @@ import { getStrictContext } from '@/registry/lib/get-strict-context';
 import { useControlledState } from '@/registry/hooks/use-controlled-state';
 import {
   AutoHeight,
-  AutoHeightProps,
+  type AutoHeightProps,
 } from '@/registry/primitives/effects/auto-height';
 
 type TabsContextType = {
@@ -116,24 +121,66 @@ function TabsPanel({
   );
 }
 
-type TabsPanelsProps = AutoHeightProps;
+type TabsPanelsAutoProps = Omit<AutoHeightProps, 'children'> & {
+  mode?: 'auto-height';
+  children: React.ReactNode;
+  transition?: Transition;
+};
 
-function TabsPanels({
-  transition = { type: 'spring', stiffness: 200, damping: 30 },
-  children,
-  ...props
-}: TabsPanelsProps) {
+type TabsPanelsLayoutProps = Omit<HTMLMotionProps<'div'>, 'children'> & {
+  mode: 'layout';
+  children: React.ReactNode;
+  transition?: Transition;
+};
+
+type TabsPanelsProps = TabsPanelsAutoProps | TabsPanelsLayoutProps;
+
+const defaultTransition: Transition = {
+  type: 'spring',
+  stiffness: 200,
+  damping: 30,
+};
+
+function isAutoMode(props: TabsPanelsProps): props is TabsPanelsAutoProps {
+  return !props.mode || props.mode === 'auto-height';
+}
+
+function TabsPanels(props: TabsPanelsProps) {
   const { value } = useTabs();
 
+  if (isAutoMode(props)) {
+    const { children, transition = defaultTransition, ...autoProps } = props;
+
+    return (
+      <AutoHeight
+        data-slot="tabs-panels"
+        deps={[value]}
+        transition={transition}
+        {...autoProps}
+      >
+        <React.Fragment key={value}>{children}</React.Fragment>
+      </AutoHeight>
+    );
+  }
+
+  const {
+    children,
+    style,
+    transition = defaultTransition,
+    ...layoutProps
+  } = props;
+
   return (
-    <AutoHeight
+    <motion.div
       data-slot="tabs-panels"
-      deps={[value]}
-      transition={transition}
-      {...props}
+      layout="size"
+      layoutDependency={value}
+      transition={{ layout: transition }}
+      style={{ overflow: 'hidden', ...style }}
+      {...layoutProps}
     >
       <React.Fragment key={value}>{children}</React.Fragment>
-    </AutoHeight>
+    </motion.div>
   );
 }
 

@@ -3725,7 +3725,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/base/tabs.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "TabsPanels": {
+            "mode": {
+              "value": "auto-height",
+              "options": {
+                "auto-height": "auto-height",
+                "layout": "layout"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-base-toggle",
@@ -4531,7 +4544,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/headless/tabs.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "TabsPanels": {
+            "mode": {
+              "value": "auto-height",
+              "options": {
+                "auto-height": "auto-height",
+                "layout": "layout"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-radix-accordion",
@@ -4899,7 +4925,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/radix/tabs.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "TabsPanels": {
+            "mode": {
+              "value": "auto-height",
+              "options": {
+                "auto-height": "auto-height",
+                "layout": "layout"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-radix-toggle",

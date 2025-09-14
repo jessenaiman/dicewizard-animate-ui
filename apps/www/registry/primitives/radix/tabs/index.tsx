@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { Tabs as TabsPrimitive } from 'radix-ui';
-import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
+import {
+  motion,
+  AnimatePresence,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import {
   Highlight,
@@ -112,20 +117,56 @@ function TabsContent({
   );
 }
 
-type TabsContentsProps = AutoHeightProps;
+type TabsContentsAutoProps = AutoHeightProps & {
+  mode?: 'auto-height';
+  children: React.ReactNode;
+  transition?: Transition;
+};
 
-function TabsContents({
-  transition = { type: 'spring', stiffness: 200, damping: 30 },
-  ...props
-}: TabsContentsProps) {
+type TabsContentsLayoutProps = Omit<HTMLMotionProps<'div'>, 'transition'> & {
+  mode: 'layout';
+  children: React.ReactNode;
+  transition?: Transition;
+};
+
+type TabsContentsProps = TabsContentsAutoProps | TabsContentsLayoutProps;
+
+const defaultTransition: Transition = {
+  type: 'spring',
+  stiffness: 200,
+  damping: 30,
+};
+
+function isAutoMode(props: TabsContentsProps): props is TabsContentsAutoProps {
+  return !('mode' in props) || props.mode === 'auto-height';
+}
+
+function TabsContents(props: TabsContentsProps) {
   const { value } = useTabs();
 
+  if (isAutoMode(props)) {
+    const { transition = defaultTransition, ...autoProps } = props;
+
+    return (
+      <AutoHeight
+        data-slot="tabs-contents"
+        deps={[value]}
+        transition={transition}
+        {...autoProps}
+      />
+    );
+  }
+
+  const { transition = defaultTransition, style, ...layoutProps } = props;
+
   return (
-    <AutoHeight
+    <motion.div
       data-slot="tabs-contents"
-      deps={[value]}
-      transition={transition}
-      {...props}
+      layout="size"
+      layoutDependency={value}
+      style={{ overflow: 'hidden', ...style }}
+      transition={{ layout: transition }}
+      {...layoutProps}
     />
   );
 }
