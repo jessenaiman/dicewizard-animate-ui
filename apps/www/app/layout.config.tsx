@@ -40,6 +40,11 @@ export const baseOptions: BaseLayoutProps = {
       secondary: false,
     },
     {
+      text: 'Accessibility',
+      url: '/docs/accessibility',
+      secondary: false,
+    },
+    {
       text: 'MCP',
       url: '/docs/mcp',
       secondary: false,

@@ -11,5 +11,18 @@
       "type": "registry:ui",
       "target": "components/animate-ui/demo/primitives/base/tabs.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "demoProps": {
+      "TabsPanels": {
+        "mode": {
+          "value": "auto-height",
+          "options": {
+            "auto-height": "auto-height",
+            "layout": "layout"
+          }
+        }
+      }
+    }
+  }
 }

@@ -70,9 +70,13 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
+  const { slug = [] } = await props.params;
+  const page = source.getPage(slug);
   if (!page) notFound();
+
+  const image = ['/docs-og', ...slug, 'image.png'].join('/');
+
+  console.log(image, 'image');
 
   return {
     title: page.data.title,
@@ -93,14 +97,7 @@ export async function generateMetadata(props: {
       description: page.data.description,
       url: 'https://animate-ui.com',
       siteName: 'Animate UI',
-      images: [
-        {
-          url: 'https://animate-ui.com/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'Animate UI',
-        },
-      ],
+      images: image,
       locale: 'en_US',
       type: 'website',
     },
@@ -109,14 +106,7 @@ export async function generateMetadata(props: {
       site: '@animate_ui',
       title: page.data.title,
       description: page.data.description,
-      images: [
-        {
-          url: 'https://animate-ui.com/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'Animate UI',
-        },
-      ],
+      images: image,
     },
   };
 }

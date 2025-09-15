@@ -8,9 +8,13 @@ import {
   Tab,
 } from '@/registry/primitives/headless/tabs';
 
-export function HeadlessTabsDemo() {
+interface HeadlessTabsDemoProps {
+  mode: 'auto-height' | 'layout';
+}
+
+export function HeadlessTabsDemo({ mode }: HeadlessTabsDemoProps) {
   return (
-    <TabGroup className="w-[500px]">
+    <TabGroup className="w-[400px]">
       <TabHighlight className="bg-background absolute z-0 inset-0">
         <TabList className="h-10 inline-flex p-1 bg-accent w-full">
           <TabHighlightItem index={0} className="flex-1">
@@ -31,7 +35,10 @@ export function HeadlessTabsDemo() {
           </TabHighlightItem>
         </TabList>
       </TabHighlight>
-      <TabPanels className="bg-background p-3 border-4 border-accent border-t-0">
+      <TabPanels
+        mode={mode}
+        className="bg-background p-3 border-4 border-accent border-t-0"
+      >
         <TabPanel className="space-y-4">
           <p className="text-sm text-muted-foreground">
             Make changes to your account here. Click save when you&apos;re done.
