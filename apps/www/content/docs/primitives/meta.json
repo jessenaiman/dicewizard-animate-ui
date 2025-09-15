@@ -63,6 +63,7 @@
     "texts/counting-number",
     "texts/gradient",
     "texts/highlight",
+    "texts/morphing",
     "texts/rolling",
     "texts/rotating",
     "texts/scrolling-number",

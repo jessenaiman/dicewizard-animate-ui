@@ -3725,7 +3725,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/base/tabs.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "TabsPanels": {
+            "mode": {
+              "value": "auto-height",
+              "options": {
+                "auto-height": "auto-height",
+                "layout": "layout"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-base-toggle",
@@ -4531,7 +4544,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/headless/tabs.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "TabsPanels": {
+            "mode": {
+              "value": "auto-height",
+              "options": {
+                "auto-height": "auto-height",
+                "layout": "layout"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-radix-accordion",
@@ -4899,7 +4925,20 @@
           "type": "registry:ui",
           "target": "components/animate-ui/demo/primitives/radix/tabs.tsx"
         }
-      ]
+      ],
+      "meta": {
+        "demoProps": {
+          "TabsPanels": {
+            "mode": {
+              "value": "auto-height",
+              "options": {
+                "auto-height": "auto-height",
+                "layout": "layout"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "demo-primitives-radix-toggle",
@@ -5079,6 +5118,37 @@
           "HighlightText": {
             "delay": {
               "value": 0,
+              "min": 0,
+              "max": 3000,
+              "step": 100
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "demo-primitives-texts-morphing",
+      "type": "registry:ui",
+      "title": "Morphing Text Demo",
+      "description": "Demo showing an animated morphing text.",
+      "registryDependencies": [
+        "@animate-ui/primitives-texts-morphing"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/morphing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/morphing.tsx"
+        }
+      ],
+      "meta": {
+        "demoProps": {
+          "MorphingText": {
+            "loop": {
+              "value": true
+            },
+            "holdDelay": {
+              "value": 2500,
               "min": 0,
               "max": 3000,
               "step": 100
@@ -5314,6 +5384,22 @@
           }
         }
       }
+    },
+    {
+      "name": "demo-primitives-texts-splitting-example",
+      "type": "registry:ui",
+      "title": "Splitting Text Demo",
+      "description": "Demo showing an animated splitting text.",
+      "registryDependencies": [
+        "@animate-ui/primitives-texts-splitting"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/primitives/texts/splitting-example/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/demo/primitives/texts/splitting-example.tsx"
+        }
+      ]
     },
     {
       "name": "demo-primitives-texts-typing",
@@ -6548,6 +6634,92 @@
       }
     },
     {
+      "name": "icons-check",
+      "type": "registry:ui",
+      "title": "Check Icon",
+      "description": "Check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
+      "name": "icons-check-check",
+      "type": "registry:ui",
+      "title": "Check Check Icon",
+      "description": "Check check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/check-check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/check-check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "received",
+          "double",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
+      "name": "icons-check-line",
+      "type": "registry:ui",
+      "title": "Check Line Icon",
+      "description": "Check line icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/check-line/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/check-line.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
       "name": "icons-cherry",
       "type": "registry:ui",
       "title": "Cherry Icon",
@@ -6752,6 +6924,34 @@
       }
     },
     {
+      "name": "icons-circle-check",
+      "type": "registry:ui",
+      "title": "Circle Check Icon",
+      "description": "Circle check icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/circle-check/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/circle-check.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "done",
+          "todo",
+          "tick",
+          "complete",
+          "task"
+        ]
+      }
+    },
+    {
       "name": "icons-circle-plus",
       "type": "registry:ui",
       "title": "Circle Plus Icon",
@@ -6817,6 +7017,40 @@
           "math",
           "multiply",
           "multiplication"
+        ]
+      }
+    },
+    {
+      "name": "icons-clapperboard",
+      "type": "registry:ui",
+      "title": "Clapperboard Icon",
+      "description": "Clapperboard icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/clapperboard/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/clapperboard.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "movie",
+          "film",
+          "video",
+          "camera",
+          "cinema",
+          "cut",
+          "action",
+          "television",
+          "tv",
+          "show",
+          "entertainment"
         ]
       }
     },
@@ -7602,6 +7836,31 @@
       }
     },
     {
+      "name": "icons-crop",
+      "type": "registry:ui",
+      "title": "Crop Icon",
+      "description": "Crop icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/crop/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/crop.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "photo",
+          "image"
+        ]
+      }
+    },
+    {
       "name": "icons-cross",
       "type": "registry:ui",
       "title": "Cross Icon",
@@ -8296,6 +8555,108 @@
           "beach ball",
           "frozen",
           "freeze"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock",
+      "type": "registry:ui",
+      "title": "Lock Icon",
+      "description": "Lock icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security",
+          "password",
+          "secure",
+          "admin"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock-keyhole",
+      "type": "registry:ui",
+      "title": "Lock Keyhole Icon",
+      "description": "Lock keyhole icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock-keyhole/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock-keyhole.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security",
+          "password",
+          "secure",
+          "admin"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock-keyhole-open",
+      "type": "registry:ui",
+      "title": "Lock Keyhole Open Icon",
+      "description": "Lock keyhole open icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock-keyhole-open/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock-keyhole-open.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security"
+        ]
+      }
+    },
+    {
+      "name": "icons-lock-open",
+      "type": "registry:ui",
+      "title": "Lock Open Icon",
+      "description": "Lock open icon component.",
+      "registryDependencies": [
+        "@animate-ui/icons-icon"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/icons/lock-open/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/icons/lock-open.tsx"
+        }
+      ],
+      "meta": {
+        "keywords": [
+          "security"
         ]
       }
     },
@@ -12419,6 +12780,25 @@
           "path": "registry/primitives/texts/highlight/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/primitives/texts/highlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "primitives-texts-morphing",
+      "type": "registry:ui",
+      "title": "Morphing Text",
+      "description": "A text component that smoothly morphs characters to transition between strings.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "@animate-ui/hooks-use-is-in-view"
+      ],
+      "files": [
+        {
+          "path": "registry/primitives/texts/morphing/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/primitives/texts/morphing.tsx"
         }
       ]
     },

@@ -9,7 +9,7 @@ import { X } from '@/registry/icons/x';
 import { Input } from '@workspace/ui/components/ui/input';
 import { cn } from '@workspace/ui/lib/utils';
 import { useEffect, useMemo, useState } from 'react';
-import { motion } from 'motion/react';
+import { type HTMLMotionProps, motion } from 'motion/react';
 import { CodeTabs } from '@/registry/components/animate/code-tabs';
 import { DynamicCodeBlock } from './dynamic-codeblock';
 import {
@@ -36,8 +36,14 @@ import {
 import { Button } from '@workspace/ui/components/ui/button';
 import { RotateCcw } from '@/registry/icons/rotate-ccw';
 import { InfinityIcon } from 'lucide-react';
+import { Check } from '@/registry/icons/check';
 
 const staticAnimationsLength = Object.keys(staticAnimations).length;
+
+const FILTERS = {
+  all: 'All',
+  new: 'New',
+};
 
 const NEW_ICONS = [
   'icons-accessibility',
@@ -59,6 +65,11 @@ const NEW_ICONS = [
   'icons-chart-no-axes-column-increasing',
   'icons-chart-scatter',
   'icons-chart-spline',
+  'icons-check',
+  'icons-check-check',
+  'icons-check-line',
+  'icons-circle-check',
+  'icons-clapperboard',
   'icons-cloud-drizzle',
   'icons-cloud-hail',
   'icons-cloud-lightning',
@@ -70,9 +81,14 @@ const NEW_ICONS = [
   'icons-cloud-sun',
   'icons-cloud-sun-rain',
   'icons-contrast',
+  'icons-crop',
   'icons-cross',
   'icons-ellipsis',
   'icons-ellipsis-vertical',
+  'icons-lock',
+  'icons-lock-keyhole',
+  'icons-lock-open',
+  'icons-lock-keyhole-open',
   'icons-party-popper',
   'icons-moon',
   'icons-moon-star',
@@ -83,6 +99,33 @@ const NEW_ICONS = [
   'icons-sun-moon',
 ];
 
+type CheckBadgeProps = Omit<HTMLMotionProps<'button'>, 'children'> & {
+  isActive?: boolean;
+  children: React.ReactNode;
+};
+
+const CheckBadge = ({
+  className,
+  children,
+  isActive,
+  ...props
+}: CheckBadgeProps) => {
+  return (
+    <motion.button
+      className={cn(
+        'bg-accent overflow-hidden transition-colors duration-200 ease-in-out flex items-center gap-1 py-1 px-3 rounded-full text-sm font-medium text-accent-foreground hover:bg-accent/80',
+        isActive && 'pl-2 bg-primary text-primary-foreground hover:bg-primary',
+        className,
+      )}
+      layout
+      {...props}
+    >
+      {isActive && <Check animate className="size-3.5 stroke-3" />}
+      <motion.span layout="preserve-aspect">{children}</motion.span>
+    </motion.button>
+  );
+};
+
 export const Icons = () => {
   const [search, setSearch] = useState('');
   const [animationKey, setAnimationKey] = useState(0);
@@ -91,6 +134,7 @@ export const Icons = () => {
   const [activeAnimation, setActiveAnimation] = useState<string>('default');
   const [isMounted, setIsMounted] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
+  const [filter, setFilter] = useState<keyof typeof FILTERS>('all');
 
   const [activeIconWithoutPrefix, setActiveIconWithoutPrefix] = useQueryState(
     'icon',
@@ -108,6 +152,11 @@ export const Icons = () => {
     (icon) => icon.name.startsWith('icons-') && icon.name !== 'icons-icon',
   );
 
+  const filteredIcons = useMemo(() => {
+    if (filter === 'all') return icons;
+    return icons.filter((icon) => NEW_ICONS.includes(icon.name));
+  }, [icons, filter]);
+
   const fuse = useMemo(() => {
     return new Fuse(icons, {
       keys: ['name', 'keywords'],
@@ -116,11 +165,16 @@ export const Icons = () => {
     });
   }, [icons]);
 
-  const filteredIcons = useMemo(() => {
+  const searchedIcons = useMemo(() => {
     const q = search.trim();
-    if (!q) return icons;
+    if (!q) return filteredIcons;
     return fuse.search(q).map((result) => result.item);
-  }, [search, fuse, icons]);
+  }, [search, fuse, filteredIcons]);
+
+  const searchedNewIcons = useMemo(() => {
+    if (!search.trim()) return NEW_ICONS;
+    return searchedIcons.filter((icon) => NEW_ICONS.includes(icon.name));
+  }, [search, searchedIcons]);
 
   const icon = useMemo(
     () => icons.find((icon) => icon.name === activeIcon),
@@ -149,11 +203,11 @@ export const Icons = () => {
   return (
     <div className="-mt-4.5 text-black dark:text-white">
       <p className="text-sm text-muted-foreground">
-        {filteredIcons.length} icons {search.length ? 'found' : 'available'}{' '}
-        {NEW_ICONS.length ? (
+        {searchedIcons.length} icons {search.length ? 'found' : 'available'}{' '}
+        {searchedNewIcons.length ? (
           <span>
             •{' '}
-            <span className="text-foreground">{`${NEW_ICONS.length} new icons`}</span>
+            <span className="text-foreground">{`${searchedNewIcons.length} new icons`}</span>
           </span>
         ) : (
           ''
@@ -166,15 +220,27 @@ export const Icons = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
 
+      <div className="flex items-center gap-2 mt-4">
+        {Object.keys(FILTERS).map((f) => (
+          <CheckBadge
+            key={f}
+            onClick={() => setFilter(f as keyof typeof FILTERS)}
+            isActive={f === filter}
+          >
+            {FILTERS[f as keyof typeof FILTERS]}
+          </CheckBadge>
+        ))}
+      </div>
+
       <div>
-        {filteredIcons.length ? (
+        {searchedIcons.length ? (
           <div className="grid lg:grid-cols-11 sm:grid-cols-9 xs:grid-cols-7 grid-cols-5 gap-4 mt-6">
             <TooltipProvider>
               <Highlight
                 hover
                 className="absolute inset-0 ring-2 ring-foreground bg-transparent rounded-lg -z-1"
               >
-                {filteredIcons.map((icon) => {
+                {searchedIcons.map((icon) => {
                   const animationsLength = Object.keys(
                     icon?.component?.animations ?? {},
                   ).length;

@@ -6,11 +6,16 @@ import {
   TabsHighlightItem,
   TabsList,
   TabsTrigger,
+  type TabsContentsProps,
 } from '@/registry/primitives/radix/tabs';
 
-export function RadixTabsDemo() {
+interface RadixTabsDemoProps {
+  mode: TabsContentsProps['mode'];
+}
+
+export function RadixTabsDemo({ mode }: RadixTabsDemoProps) {
   return (
-    <Tabs defaultValue="account" className="w-[500px]">
+    <Tabs defaultValue="account" className="w-[400px]">
       <TabsHighlight className="bg-background absolute z-0 inset-0">
         <TabsList className="h-10 inline-flex p-1 bg-accent w-full">
           <TabsHighlightItem value="account" className="flex-1">
@@ -31,7 +36,11 @@ export function RadixTabsDemo() {
           </TabsHighlightItem>
         </TabsList>
       </TabsHighlight>
-      <TabsContents className="bg-background p-3 border-4 border-accent border-t-0">
+      {/* @ts-expect-error - typescript does not handle this well */}
+      <TabsContents
+        mode={mode}
+        className="bg-background p-3 border-4 border-accent border-t-0"
+      >
         <TabsContent value="account" className="space-y-4">
           <p className="text-sm text-muted-foreground">
             Make changes to your account here. Click save when you&apos;re done.

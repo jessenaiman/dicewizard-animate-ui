@@ -8,8 +8,8 @@ import {
   CounterPlusButton as CounterPlusButtonPrimitive,
   type CounterProps as CounterPropsPrimitive,
 } from '@/registry/primitives/animate/counter';
-import { cn } from '@workspace/ui/lib/utils';
 import { Button } from '@/registry/components/buttons/button';
+import { cn } from '@workspace/ui/lib/utils';
 
 type CounterProps = Omit<CounterPropsPrimitive, 'children' | 'asChild'>;
 

@@ -156,7 +156,7 @@ export function ComponentPreview({
             exit={{ opacity: 0 }}
           >
             <div className="flex flex-col space-y-4">
-              <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[400px] [&_pre]:overflow-auto">
+              <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:h-[400px] h-[450px] [&_pre]:overflow-auto">
                 <DynamicCodeBlock
                   code={code}
                   lang="tsx"

@@ -31,6 +31,7 @@ function AutoHeight({
     bounce: 0,
     restDelta: 0.01,
   },
+  style,
   animate,
   asChild = false,
   ...props
@@ -41,7 +42,7 @@ function AutoHeight({
 
   return (
     <Comp
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', ...style }}
       animate={{ height, ...animate }}
       transition={transition}
       {...props}

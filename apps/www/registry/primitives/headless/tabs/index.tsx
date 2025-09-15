@@ -153,33 +153,71 @@ function TabPanel<TTag extends React.ElementType = typeof motion.div>(
   );
 }
 
-type TabPanelsProps<TTag extends React.ElementType = typeof AutoHeight> = Omit<
-  TabPanelsPrimitiveProps<TTag>,
-  'transition' | 'as'
-> & {
-  className?: string;
-  transition?: Transition;
+type TabPanelsAutoProps<TTag extends React.ElementType = typeof AutoHeight> =
+  Omit<TabPanelsPrimitiveProps<TTag>, 'transition' | 'as'> & {
+    mode?: 'auto-height';
+    className?: string;
+    transition?: Transition;
+  };
+
+type TabPanelsLayoutProps<TTag extends React.ElementType = typeof motion.div> =
+  Omit<TabPanelsPrimitiveProps<TTag>, 'transition'> & {
+    mode: 'layout';
+    className?: string;
+    transition?: Transition;
+  };
+
+type TabPanelsProps<TTag extends React.ElementType> =
+  | TabPanelsAutoProps<TTag>
+  | TabPanelsLayoutProps<TTag>;
+
+const defaultTransition: Transition = {
+  type: 'spring',
+  stiffness: 200,
+  damping: 25,
 };
 
-function TabPanels<TTag extends React.ElementType = typeof AutoHeight>(
+function TabPanels<TTag extends React.ElementType>(
   props: TabPanelsProps<TTag>,
 ) {
   const { selectedIndex } = useTabs();
 
-  const {
-    transition = { type: 'spring', stiffness: 200, damping: 25 },
-    ...rest
-  } = props;
+  if (!('mode' in props) || props.mode === 'auto-height') {
+    const { transition = defaultTransition, ...rest } = props;
 
-  return (
-    <TabPanelsPrimitive
-      data-slot="tab-panels"
-      deps={[selectedIndex]}
-      transition={transition}
-      as={AutoHeight}
-      {...rest}
-    />
-  );
+    return (
+      <TabPanelsPrimitive
+        data-slot="tab-panels"
+        deps={[selectedIndex]}
+        transition={transition}
+        as={AutoHeight}
+        {...rest}
+      />
+    );
+  }
+
+  if ('mode' in props && props.mode === 'layout') {
+    const {
+      transition = defaultTransition,
+      as = motion.div,
+      style,
+      ...rest
+    } = props;
+
+    return (
+      <TabPanelsPrimitive
+        data-slot="tab-panels"
+        layout="size"
+        layoutDependency={selectedIndex.toString()}
+        style={{ overflow: 'hidden', ...style }}
+        transition={{ layout: transition }}
+        as={as as React.ElementType}
+        {...rest}
+      />
+    );
+  }
+
+  return <React.Fragment />;
 }
 
 export {
