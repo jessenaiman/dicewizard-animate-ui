@@ -28,7 +28,7 @@ This means all Animate UI components can leverage Motion’s accessibility featu
 The recommended way to support Reduced Motion is to wrap your app with `MotionConfig`:
 
 ```tsx
-import { MotionConfig } from 'framer-motion';
+import { MotionConfig } from 'motion/react';
 
 export function App({ children }: { children: React.ReactNode }) {
   return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
